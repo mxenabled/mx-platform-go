@@ -4,7 +4,7 @@ package {{packageName}}
 import (
 	"bytes"
 	"context"
-	"crypto/tls"
+	"crypto/tls" // Required for MX custom tls
 	"encoding/json"
 	"encoding/xml"
 	"errors"
@@ -13,7 +13,7 @@ import (
 	"io/ioutil"
 	"log"
 	"mime/multipart"
-	"net"
+	"net" // Required for MX custom tls
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -63,6 +63,7 @@ type service struct {
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *Configuration) *APIClient {
 	if cfg.HTTPClient == nil {
+		// Start MX custom tls
 		var netTransport = &http.Transport{
  			Dial: (&net.Dialer{
  				Timeout: 5 * time.Second,
@@ -77,6 +78,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
  			Transport: netTransport,
  		}
  		cfg.HTTPClient = netClient
+		// End MX custom tls
 	}
 
 	c := &APIClient{}
