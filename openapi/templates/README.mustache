@@ -14,18 +14,11 @@ Examples for the API endpoints can be found [here.](docs/MxPlatformApi.md)
 
 ## Installation
 
-Install the following dependencies:
+Make sure your project has a `go.mod` file. (it is using Go Modules)
 
+Then `go get` the latest version of this library with the following command.
 ```shell
-go get github.com/stretchr/testify/assert
-go get golang.org/x/oauth2
-go get golang.org/x/net/context
-```
-
-Put the package under your project folder and add the following in import:
-
-```golang
-import sw "./mxplatform"
+go get github.com/mxenabled/mx-platform-go
 ```
 
 ## Getting Started
@@ -37,23 +30,36 @@ Please follow the [installation](#installation) procedure and then run the follo
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"github.com/mxenabled/mx-platform-go"
+	"os"
 )
 
 func main() {
-    userCreateRequestBody := *openapiclient.NewUserCreateRequestBody()
+	configuration := mxplatformgo.NewConfiguration()
+	api_client := mxplatformgo.NewAPIClient(configuration)
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateUser(context.Background()).UserCreateRequestBody(userCreateRequestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateUser``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateUser`: %v\n", resp)
+  # Configure environment. 0 for production, 1 for development
+	ctx := context.WithValue(context.Background(), mxplatformgo.ContextServerIndex, 1)
+
+  // Configure with your Client ID/API Key from https://dashboard.mx.com
+	ctx = context.WithValue(ctx, mxplatformgo.ContextBasicAuth, mxplatformgo.BasicAuth{
+		UserName: "Your Client ID",
+		Password: "Your API Key",
+	})
+
+	userCreateRequest := *mxplatformgo.NewUserCreateRequest()
+	userCreateRequest.SetMetadata("Creating a user!")
+	userCreateRequestBody := *mxplatformgo.NewUserCreateRequestBody()
+	userCreateRequestBody.SetUser(userCreateRequest)
+
+	resp, r, err := api_client.MxPlatformApi.CreateUser(ctx).UserCreateRequestBody(userCreateRequestBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateUser``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	fmt.Printf("Response from `MxPlatformApi.CreateUser`: %#v\n", resp)
 }
 ```
 
