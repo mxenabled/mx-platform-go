@@ -40,10 +40,10 @@ func main() {
 	configuration := mxplatformgo.NewConfiguration()
 	api_client := mxplatformgo.NewAPIClient(configuration)
 
-  # Configure environment. 0 for production, 1 for development
+	// Configure environment. 0 for production, 1 for development
 	ctx := context.WithValue(context.Background(), mxplatformgo.ContextServerIndex, 1)
 
-  // Configure with your Client ID/API Key from https://dashboard.mx.com
+	// Configure with your Client ID/API Key from https://dashboard.mx.com
 	ctx = context.WithValue(ctx, mxplatformgo.ContextBasicAuth, mxplatformgo.BasicAuth{
 		UserName: "Your Client ID",
 		Password: "Your API Key",
