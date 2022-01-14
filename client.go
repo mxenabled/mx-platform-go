@@ -13,7 +13,7 @@ package mxplatformgo
 import (
 	"bytes"
 	"context"
-	"crypto/tls" // Required for MX custom tls
+  "crypto/tls" // Required for MX custom tls
 	"encoding/json"
 	"encoding/xml"
 	"errors"
@@ -22,7 +22,7 @@ import (
 	"io/ioutil"
 	"log"
 	"mime/multipart"
-	"net" // Required for MX custom tls
+  "net" // Required for MX custom tls
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -62,22 +62,22 @@ type service struct {
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *Configuration) *APIClient {
 	if cfg.HTTPClient == nil {
-		// Start MX custom tls
-		var netTransport = &http.Transport{
- 			Dial: (&net.Dialer{
- 				Timeout: 5 * time.Second,
- 			}).Dial,
- 			TLSHandshakeTimeout: 5 * time.Second,
- 			TLSClientConfig: &tls.Config{
- 				ServerName: "moneydesktop.com",
- 			},
- 		}
- 		var netClient = &http.Client{
- 			Timeout:   time.Second * 10,
- 			Transport: netTransport,
- 		}
- 		cfg.HTTPClient = netClient
-		// End MX custom tls
+    // Start MX custom tls
+    var netTransport = &http.Transport{
+      Dial: (&net.Dialer{
+        Timeout: 5 * time.Second,
+      }).Dial,
+      TLSHandshakeTimeout: 5 * time.Second,
+      TLSClientConfig: &tls.Config{
+        ServerName: "moneydesktop.com",
+      },
+    }
+    var netClient = &http.Client{
+      Timeout:   time.Second * 10,
+      Transport: netTransport,
+    }
+    cfg.HTTPClient = netClient
+    // End MX custom tls
 	}
 
 	c := &APIClient{}
@@ -206,6 +206,12 @@ func (c *APIClient) GetConfig() *Configuration {
 	return c.cfg
 }
 
+type formFile struct {
+		fileBytes []byte
+		fileName string
+		formFileName string
+}
+
 // prepareRequest build the request
 func (c *APIClient) prepareRequest(
 	ctx context.Context,
@@ -214,9 +220,7 @@ func (c *APIClient) prepareRequest(
 	headerParams map[string]string,
 	queryParams url.Values,
 	formParams url.Values,
-	formFileName string,
-	fileName string,
-	fileBytes []byte) (localVarRequest *http.Request, err error) {
+	formFiles []formFile) (localVarRequest *http.Request, err error) {
 
 	var body *bytes.Buffer
 
@@ -235,7 +239,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// add form parameters and file if available.
-	if strings.HasPrefix(headerParams["Content-Type"], "multipart/form-data") && len(formParams) > 0 || (len(fileBytes) > 0 && fileName != "") {
+	if strings.HasPrefix(headerParams["Content-Type"], "multipart/form-data") && len(formParams) > 0 || (len(formFiles) > 0) {
 		if body != nil {
 			return nil, errors.New("Cannot specify postBody and multipart form at the same time.")
 		}
@@ -254,16 +258,17 @@ func (c *APIClient) prepareRequest(
 				}
 			}
 		}
-		if len(fileBytes) > 0 && fileName != "" {
-			w.Boundary()
-			//_, fileNm := filepath.Split(fileName)
-			part, err := w.CreateFormFile(formFileName, filepath.Base(fileName))
-			if err != nil {
-				return nil, err
-			}
-			_, err = part.Write(fileBytes)
-			if err != nil {
-				return nil, err
+		for _, formFile := range formFiles {
+			if len(formFile.fileBytes) > 0 && formFile.fileName != "" {
+				w.Boundary()
+				part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
+				if err != nil {
+						return nil, err
+				}
+				_, err = part.Write(formFile.fileBytes)
+				if err != nil {
+						return nil, err
+				}
 			}
 		}
 
@@ -326,7 +331,7 @@ func (c *APIClient) prepareRequest(
 	if len(headerParams) > 0 {
 		headers := http.Header{}
 		for h, v := range headerParams {
-			headers.Set(h, v)
+			headers[h] = []string{v}
 		}
 		localVarRequest.Header = headers
 	}
