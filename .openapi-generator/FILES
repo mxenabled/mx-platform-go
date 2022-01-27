@@ -1,7 +1,6 @@
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 api_mx_platform.go
 client.go
 configuration.go
