@@ -37,6 +37,7 @@ Method | HTTP request | Description
 [**ListDefaultCategoriesByUser**](MxPlatformApi.md#ListDefaultCategoriesByUser) | **Get** /users/{user_guid}/categories/default | List default categories by user
 [**ListFavoriteInstitutions**](MxPlatformApi.md#ListFavoriteInstitutions) | **Get** /institutions/favorites | List favorite institutions
 [**ListHoldings**](MxPlatformApi.md#ListHoldings) | **Get** /users/{user_guid}/holdings | List holdings
+[**ListHoldingsByAccount**](MxPlatformApi.md#ListHoldingsByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/holdings | List holdings by account
 [**ListHoldingsByMember**](MxPlatformApi.md#ListHoldingsByMember) | **Get** /users/{user_guid}/members/{member_guid}/holdings | List holdings by member
 [**ListInstitutionCredentials**](MxPlatformApi.md#ListInstitutionCredentials) | **Get** /institutions/{institution_code}/credentials | List institution credentials
 [**ListInstitutions**](MxPlatformApi.md#ListInstitutions) | **Get** /institutions | List institutions
@@ -2461,6 +2462,87 @@ Other parameters are passed through a pointer to a apiListHoldingsRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+ **fromDate** | **string** | Filter holdings from this date. | 
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+ **toDate** | **string** | Filter holdings to this date. | 
+
+### Return type
+
+[**HoldingsResponseBody**](HoldingsResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListHoldingsByAccount
+
+> HoldingsResponseBody ListHoldingsByAccount(ctx, accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+
+List holdings by account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountGuid := "ACT-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for the `account`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for the `user`.
+    fromDate := "2015-09-20" // string | Filter holdings from this date. (optional)
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    toDate := "2019-10-20" // string | Filter holdings to this date. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.MxPlatformApi.ListHoldingsByAccount(context.Background(), accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListHoldingsByAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListHoldingsByAccount`: HoldingsResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListHoldingsByAccount`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountGuid** | **string** | The unique id for the &#x60;account&#x60;. | 
+**userGuid** | **string** | The unique id for the &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListHoldingsByAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
  **fromDate** | **string** | Filter holdings from this date. | 
  **page** | **int32** | Specify current page. | 

@@ -3705,6 +3705,150 @@ func (a *MxPlatformApiService) ListHoldingsExecute(r ApiListHoldingsRequest) (Ho
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListHoldingsByAccountRequest struct {
+	ctx _context.Context
+	ApiService *MxPlatformApiService
+	accountGuid string
+	userGuid string
+	fromDate *string
+	page *int32
+	recordsPerPage *int32
+	toDate *string
+}
+
+// Filter holdings from this date.
+func (r ApiListHoldingsByAccountRequest) FromDate(fromDate string) ApiListHoldingsByAccountRequest {
+	r.fromDate = &fromDate
+	return r
+}
+// Specify current page.
+func (r ApiListHoldingsByAccountRequest) Page(page int32) ApiListHoldingsByAccountRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiListHoldingsByAccountRequest) RecordsPerPage(recordsPerPage int32) ApiListHoldingsByAccountRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+// Filter holdings to this date.
+func (r ApiListHoldingsByAccountRequest) ToDate(toDate string) ApiListHoldingsByAccountRequest {
+	r.toDate = &toDate
+	return r
+}
+
+func (r ApiListHoldingsByAccountRequest) Execute() (HoldingsResponseBody, *_nethttp.Response, error) {
+	return r.ApiService.ListHoldingsByAccountExecute(r)
+}
+
+/*
+ListHoldingsByAccount List holdings by account
+
+This endpoint returns all holdings associated with the specified `account`.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountGuid The unique id for the `account`.
+ @param userGuid The unique id for the `user`.
+ @return ApiListHoldingsByAccountRequest
+*/
+func (a *MxPlatformApiService) ListHoldingsByAccount(ctx _context.Context, accountGuid string, userGuid string) ApiListHoldingsByAccountRequest {
+	return ApiListHoldingsByAccountRequest{
+		ApiService: a,
+		ctx: ctx,
+		accountGuid: accountGuid,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return HoldingsResponseBody
+func (a *MxPlatformApiService) ListHoldingsByAccountExecute(r ApiListHoldingsByAccountRequest) (HoldingsResponseBody, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  HoldingsResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListHoldingsByAccount")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/accounts/{account_guid}/holdings"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", _neturl.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.fromDate != nil {
+		localVarQueryParams.Add("from_date", parameterToString(*r.fromDate, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	if r.toDate != nil {
+		localVarQueryParams.Add("to_date", parameterToString(*r.toDate, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListHoldingsByMemberRequest struct {
 	ctx _context.Context
 	ApiService *MxPlatformApiService
