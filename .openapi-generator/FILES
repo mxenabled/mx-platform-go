@@ -113,7 +113,6 @@ docs/WidgetRequest.md
 docs/WidgetRequestBody.md
 docs/WidgetResponse.md
 docs/WidgetResponseBody.md
-git_push.sh
 go.mod
 go.sum
 model_account_number_response.go
