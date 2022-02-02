@@ -38,6 +38,7 @@ import (
 
 func main() {
 	configuration := mxplatformgo.NewConfiguration()
+	configuration.AddDefaultHeader("Accept", "application/vnd.mx.api.v1+json")
 	api_client := mxplatformgo.NewAPIClient(configuration)
 
 	// Configure environment. 0 for production, 1 for development
