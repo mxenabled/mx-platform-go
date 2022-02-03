@@ -16,7 +16,7 @@ import (
 
 // MemberResumeRequest struct for MemberResumeRequest
 type MemberResumeRequest struct {
-	Challenges *[]CredentialRequest `json:"challenges,omitempty"`
+	Challenges []CredentialRequest `json:"challenges,omitempty"`
 }
 
 // NewMemberResumeRequest instantiates a new MemberResumeRequest object
@@ -42,12 +42,12 @@ func (o *MemberResumeRequest) GetChallenges() []CredentialRequest {
 		var ret []CredentialRequest
 		return ret
 	}
-	return *o.Challenges
+	return o.Challenges
 }
 
 // GetChallengesOk returns a tuple with the Challenges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberResumeRequest) GetChallengesOk() (*[]CredentialRequest, bool) {
+func (o *MemberResumeRequest) GetChallengesOk() ([]CredentialRequest, bool) {
 	if o == nil || o.Challenges == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *MemberResumeRequest) HasChallenges() bool {
 
 // SetChallenges gets a reference to the given []CredentialRequest and assigns it to the Challenges field.
 func (o *MemberResumeRequest) SetChallenges(v []CredentialRequest) {
-	o.Challenges = &v
+	o.Challenges = v
 }
 
 func (o MemberResumeRequest) MarshalJSON() ([]byte, error) {

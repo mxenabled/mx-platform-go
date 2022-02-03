@@ -16,7 +16,7 @@ import (
 
 // CategoriesResponseBody struct for CategoriesResponseBody
 type CategoriesResponseBody struct {
-	Categories *[]CategoryResponse `json:"categories,omitempty"`
+	Categories []CategoryResponse `json:"categories,omitempty"`
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *CategoriesResponseBody) GetCategories() []CategoryResponse {
 		var ret []CategoryResponse
 		return ret
 	}
-	return *o.Categories
+	return o.Categories
 }
 
 // GetCategoriesOk returns a tuple with the Categories field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CategoriesResponseBody) GetCategoriesOk() (*[]CategoryResponse, bool) {
+func (o *CategoriesResponseBody) GetCategoriesOk() ([]CategoryResponse, bool) {
 	if o == nil || o.Categories == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *CategoriesResponseBody) HasCategories() bool {
 
 // SetCategories gets a reference to the given []CategoryResponse and assigns it to the Categories field.
 func (o *CategoriesResponseBody) SetCategories(v []CategoryResponse) {
-	o.Categories = &v
+	o.Categories = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

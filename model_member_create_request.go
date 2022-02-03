@@ -88,11 +88,11 @@ func (o *MemberCreateRequest) GetCredentials() []CredentialRequest {
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-func (o *MemberCreateRequest) GetCredentialsOk() (*[]CredentialRequest, bool) {
+func (o *MemberCreateRequest) GetCredentialsOk() ([]CredentialRequest, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Credentials, true
+	return o.Credentials, true
 }
 
 // SetCredentials sets field value

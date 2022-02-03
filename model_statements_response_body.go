@@ -17,7 +17,7 @@ import (
 // StatementsResponseBody struct for StatementsResponseBody
 type StatementsResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
-	Statements *[]StatementResponse `json:"statements,omitempty"`
+	Statements []StatementResponse `json:"statements,omitempty"`
 }
 
 // NewStatementsResponseBody instantiates a new StatementsResponseBody object
@@ -75,12 +75,12 @@ func (o *StatementsResponseBody) GetStatements() []StatementResponse {
 		var ret []StatementResponse
 		return ret
 	}
-	return *o.Statements
+	return o.Statements
 }
 
 // GetStatementsOk returns a tuple with the Statements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StatementsResponseBody) GetStatementsOk() (*[]StatementResponse, bool) {
+func (o *StatementsResponseBody) GetStatementsOk() ([]StatementResponse, bool) {
 	if o == nil || o.Statements == nil {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *StatementsResponseBody) HasStatements() bool {
 
 // SetStatements gets a reference to the given []StatementResponse and assigns it to the Statements field.
 func (o *StatementsResponseBody) SetStatements(v []StatementResponse) {
-	o.Statements = &v
+	o.Statements = v
 }
 
 func (o StatementsResponseBody) MarshalJSON() ([]byte, error) {

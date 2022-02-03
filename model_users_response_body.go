@@ -17,7 +17,7 @@ import (
 // UsersResponseBody struct for UsersResponseBody
 type UsersResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
-	Users *[]UserResponse `json:"users,omitempty"`
+	Users []UserResponse `json:"users,omitempty"`
 }
 
 // NewUsersResponseBody instantiates a new UsersResponseBody object
@@ -75,12 +75,12 @@ func (o *UsersResponseBody) GetUsers() []UserResponse {
 		var ret []UserResponse
 		return ret
 	}
-	return *o.Users
+	return o.Users
 }
 
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UsersResponseBody) GetUsersOk() (*[]UserResponse, bool) {
+func (o *UsersResponseBody) GetUsersOk() ([]UserResponse, bool) {
 	if o == nil || o.Users == nil {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *UsersResponseBody) HasUsers() bool {
 
 // SetUsers gets a reference to the given []UserResponse and assigns it to the Users field.
 func (o *UsersResponseBody) SetUsers(v []UserResponse) {
-	o.Users = &v
+	o.Users = v
 }
 
 func (o UsersResponseBody) MarshalJSON() ([]byte, error) {

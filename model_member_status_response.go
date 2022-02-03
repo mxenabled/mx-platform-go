@@ -17,7 +17,7 @@ import (
 // MemberStatusResponse struct for MemberStatusResponse
 type MemberStatusResponse struct {
 	AggregatedAt NullableString `json:"aggregated_at,omitempty"`
-	Challenges *[]ChallengeResponse `json:"challenges,omitempty"`
+	Challenges []ChallengeResponse `json:"challenges,omitempty"`
 	ConnectionStatus NullableString `json:"connection_status,omitempty"`
 	Guid *string `json:"guid,omitempty"`
 	HasProcessedAccounts NullableBool `json:"has_processed_accounts,omitempty"`
@@ -92,12 +92,12 @@ func (o *MemberStatusResponse) GetChallenges() []ChallengeResponse {
 		var ret []ChallengeResponse
 		return ret
 	}
-	return *o.Challenges
+	return o.Challenges
 }
 
 // GetChallengesOk returns a tuple with the Challenges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberStatusResponse) GetChallengesOk() (*[]ChallengeResponse, bool) {
+func (o *MemberStatusResponse) GetChallengesOk() ([]ChallengeResponse, bool) {
 	if o == nil || o.Challenges == nil {
 		return nil, false
 	}
@@ -115,7 +115,7 @@ func (o *MemberStatusResponse) HasChallenges() bool {
 
 // SetChallenges gets a reference to the given []ChallengeResponse and assigns it to the Challenges field.
 func (o *MemberStatusResponse) SetChallenges(v []ChallengeResponse) {
-	o.Challenges = &v
+	o.Challenges = v
 }
 
 // GetConnectionStatus returns the ConnectionStatus field value if set, zero value otherwise (both if not set or set to explicit null).

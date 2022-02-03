@@ -16,7 +16,7 @@ import (
 
 // CredentialsResponseBody struct for CredentialsResponseBody
 type CredentialsResponseBody struct {
-	Credentials *[]CredentialResponse `json:"credentials,omitempty"`
+	Credentials []CredentialResponse `json:"credentials,omitempty"`
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *CredentialsResponseBody) GetCredentials() []CredentialResponse {
 		var ret []CredentialResponse
 		return ret
 	}
-	return *o.Credentials
+	return o.Credentials
 }
 
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialsResponseBody) GetCredentialsOk() (*[]CredentialResponse, bool) {
+func (o *CredentialsResponseBody) GetCredentialsOk() ([]CredentialResponse, bool) {
 	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *CredentialsResponseBody) HasCredentials() bool {
 
 // SetCredentials gets a reference to the given []CredentialResponse and assigns it to the Credentials field.
 func (o *CredentialsResponseBody) SetCredentials(v []CredentialResponse) {
-	o.Credentials = &v
+	o.Credentials = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

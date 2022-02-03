@@ -16,7 +16,7 @@ import (
 
 // EnhanceTransactionsRequestBody struct for EnhanceTransactionsRequestBody
 type EnhanceTransactionsRequestBody struct {
-	Transactions *[]EnhanceTransactionsRequest `json:"transactions,omitempty"`
+	Transactions []EnhanceTransactionsRequest `json:"transactions,omitempty"`
 }
 
 // NewEnhanceTransactionsRequestBody instantiates a new EnhanceTransactionsRequestBody object
@@ -42,12 +42,12 @@ func (o *EnhanceTransactionsRequestBody) GetTransactions() []EnhanceTransactions
 		var ret []EnhanceTransactionsRequest
 		return ret
 	}
-	return *o.Transactions
+	return o.Transactions
 }
 
 // GetTransactionsOk returns a tuple with the Transactions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnhanceTransactionsRequestBody) GetTransactionsOk() (*[]EnhanceTransactionsRequest, bool) {
+func (o *EnhanceTransactionsRequestBody) GetTransactionsOk() ([]EnhanceTransactionsRequest, bool) {
 	if o == nil || o.Transactions == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *EnhanceTransactionsRequestBody) HasTransactions() bool {
 
 // SetTransactions gets a reference to the given []EnhanceTransactionsRequest and assigns it to the Transactions field.
 func (o *EnhanceTransactionsRequestBody) SetTransactions(v []EnhanceTransactionsRequest) {
-	o.Transactions = &v
+	o.Transactions = v
 }
 
 func (o EnhanceTransactionsRequestBody) MarshalJSON() ([]byte, error) {

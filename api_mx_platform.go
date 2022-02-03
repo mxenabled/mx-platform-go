@@ -12,31 +12,31 @@ package mxplatformgo
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 	"os"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // MxPlatformApiService MxPlatformApi service
 type MxPlatformApiService service
 
 type ApiAggregateMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiAggregateMemberRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiAggregateMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.AggregateMemberExecute(r)
 }
 
@@ -45,12 +45,12 @@ AggregateMember Aggregate member
 
 Calling this endpoint initiates an aggregation event for the member. This brings in the latest account and transaction data from the connected institution. If this data has recently been updated, MX may not initiate an aggregation event.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiAggregateMemberRequest
 */
-func (a *MxPlatformApiService) AggregateMember(ctx _context.Context, memberGuid string, userGuid string) ApiAggregateMemberRequest {
+func (a *MxPlatformApiService) AggregateMember(ctx context.Context, memberGuid string, userGuid string) ApiAggregateMemberRequest {
 	return ApiAggregateMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -61,26 +61,26 @@ func (a *MxPlatformApiService) AggregateMember(ctx _context.Context, memberGuid 
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) AggregateMemberExecute(r ApiAggregateMemberRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) AggregateMemberExecute(r ApiAggregateMemberRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.AggregateMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/aggregate"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -109,15 +109,15 @@ func (a *MxPlatformApiService) AggregateMemberExecute(r ApiAggregateMemberReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -126,7 +126,7 @@ func (a *MxPlatformApiService) AggregateMemberExecute(r ApiAggregateMemberReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -137,14 +137,14 @@ func (a *MxPlatformApiService) AggregateMemberExecute(r ApiAggregateMemberReques
 }
 
 type ApiCheckBalancesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiCheckBalancesRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiCheckBalancesRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.CheckBalancesExecute(r)
 }
 
@@ -153,12 +153,12 @@ CheckBalances Check balances
 
 This endpoint operates much like the aggregate member endpoint except that it gathers only account balance information; it does not gather any transaction data.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiCheckBalancesRequest
 */
-func (a *MxPlatformApiService) CheckBalances(ctx _context.Context, memberGuid string, userGuid string) ApiCheckBalancesRequest {
+func (a *MxPlatformApiService) CheckBalances(ctx context.Context, memberGuid string, userGuid string) ApiCheckBalancesRequest {
 	return ApiCheckBalancesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -169,26 +169,26 @@ func (a *MxPlatformApiService) CheckBalances(ctx _context.Context, memberGuid st
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) CheckBalancesExecute(r ApiCheckBalancesRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CheckBalancesExecute(r ApiCheckBalancesRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CheckBalances")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/check_balance"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -217,15 +217,15 @@ func (a *MxPlatformApiService) CheckBalancesExecute(r ApiCheckBalancesRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -234,7 +234,7 @@ func (a *MxPlatformApiService) CheckBalancesExecute(r ApiCheckBalancesRequest) (
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -245,7 +245,7 @@ func (a *MxPlatformApiService) CheckBalancesExecute(r ApiCheckBalancesRequest) (
 }
 
 type ApiCreateCategoryRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	categoryCreateRequestBody *CategoryCreateRequestBody
@@ -257,7 +257,7 @@ func (r ApiCreateCategoryRequest) CategoryCreateRequestBody(categoryCreateReques
 	return r
 }
 
-func (r ApiCreateCategoryRequest) Execute() (CategoryResponseBody, *_nethttp.Response, error) {
+func (r ApiCreateCategoryRequest) Execute() (*CategoryResponseBody, *http.Response, error) {
 	return r.ApiService.CreateCategoryExecute(r)
 }
 
@@ -266,11 +266,11 @@ CreateCategory Create category
 
 Use this endpoint to create a new custom category for a specific `user`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiCreateCategoryRequest
 */
-func (a *MxPlatformApiService) CreateCategory(ctx _context.Context, userGuid string) ApiCreateCategoryRequest {
+func (a *MxPlatformApiService) CreateCategory(ctx context.Context, userGuid string) ApiCreateCategoryRequest {
 	return ApiCreateCategoryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -280,25 +280,25 @@ func (a *MxPlatformApiService) CreateCategory(ctx _context.Context, userGuid str
 
 // Execute executes the request
 //  @return CategoryResponseBody
-func (a *MxPlatformApiService) CreateCategoryExecute(r ApiCreateCategoryRequest) (CategoryResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CreateCategoryExecute(r ApiCreateCategoryRequest) (*CategoryResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  CategoryResponseBody
+		localVarReturnValue  *CategoryResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateCategory")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/categories"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.categoryCreateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("categoryCreateRequestBody is required and must be specified")
 	}
@@ -332,15 +332,15 @@ func (a *MxPlatformApiService) CreateCategoryExecute(r ApiCreateCategoryRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -349,7 +349,7 @@ func (a *MxPlatformApiService) CreateCategoryExecute(r ApiCreateCategoryRequest)
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -360,7 +360,7 @@ func (a *MxPlatformApiService) CreateCategoryExecute(r ApiCreateCategoryRequest)
 }
 
 type ApiCreateManagedAccountRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	memberGuid string
@@ -373,7 +373,7 @@ func (r ApiCreateManagedAccountRequest) ManagedAccountCreateRequestBody(managedA
 	return r
 }
 
-func (r ApiCreateManagedAccountRequest) Execute() (AccountResponseBody, *_nethttp.Response, error) {
+func (r ApiCreateManagedAccountRequest) Execute() (*AccountResponseBody, *http.Response, error) {
 	return r.ApiService.CreateManagedAccountExecute(r)
 }
 
@@ -382,12 +382,12 @@ CreateManagedAccount Create managed account
 
 Use this endpoint to create a partner-managed account.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @param memberGuid The unique id for a `member`.
  @return ApiCreateManagedAccountRequest
 */
-func (a *MxPlatformApiService) CreateManagedAccount(ctx _context.Context, userGuid string, memberGuid string) ApiCreateManagedAccountRequest {
+func (a *MxPlatformApiService) CreateManagedAccount(ctx context.Context, userGuid string, memberGuid string) ApiCreateManagedAccountRequest {
 	return ApiCreateManagedAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -398,26 +398,26 @@ func (a *MxPlatformApiService) CreateManagedAccount(ctx _context.Context, userGu
 
 // Execute executes the request
 //  @return AccountResponseBody
-func (a *MxPlatformApiService) CreateManagedAccountExecute(r ApiCreateManagedAccountRequest) (AccountResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CreateManagedAccountExecute(r ApiCreateManagedAccountRequest) (*AccountResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountResponseBody
+		localVarReturnValue  *AccountResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateManagedAccount")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.managedAccountCreateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("managedAccountCreateRequestBody is required and must be specified")
 	}
@@ -451,15 +451,15 @@ func (a *MxPlatformApiService) CreateManagedAccountExecute(r ApiCreateManagedAcc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -468,7 +468,7 @@ func (a *MxPlatformApiService) CreateManagedAccountExecute(r ApiCreateManagedAcc
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -479,7 +479,7 @@ func (a *MxPlatformApiService) CreateManagedAccountExecute(r ApiCreateManagedAcc
 }
 
 type ApiCreateManagedMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	managedMemberCreateRequestBody *ManagedMemberCreateRequestBody
@@ -491,7 +491,7 @@ func (r ApiCreateManagedMemberRequest) ManagedMemberCreateRequestBody(managedMem
 	return r
 }
 
-func (r ApiCreateManagedMemberRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiCreateManagedMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.CreateManagedMemberExecute(r)
 }
 
@@ -500,11 +500,11 @@ CreateManagedMember Create managed member
 
 Use this endpoint to create a new partner-managed `member`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiCreateManagedMemberRequest
 */
-func (a *MxPlatformApiService) CreateManagedMember(ctx _context.Context, userGuid string) ApiCreateManagedMemberRequest {
+func (a *MxPlatformApiService) CreateManagedMember(ctx context.Context, userGuid string) ApiCreateManagedMemberRequest {
 	return ApiCreateManagedMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -514,25 +514,25 @@ func (a *MxPlatformApiService) CreateManagedMember(ctx _context.Context, userGui
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) CreateManagedMemberExecute(r ApiCreateManagedMemberRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CreateManagedMemberExecute(r ApiCreateManagedMemberRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateManagedMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.managedMemberCreateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("managedMemberCreateRequestBody is required and must be specified")
 	}
@@ -566,15 +566,15 @@ func (a *MxPlatformApiService) CreateManagedMemberExecute(r ApiCreateManagedMemb
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -583,7 +583,7 @@ func (a *MxPlatformApiService) CreateManagedMemberExecute(r ApiCreateManagedMemb
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -594,7 +594,7 @@ func (a *MxPlatformApiService) CreateManagedMemberExecute(r ApiCreateManagedMemb
 }
 
 type ApiCreateManagedTransactionRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	memberGuid string
@@ -607,7 +607,7 @@ func (r ApiCreateManagedTransactionRequest) ManagedTransactionCreateRequestBody(
 	return r
 }
 
-func (r ApiCreateManagedTransactionRequest) Execute() (TransactionResponseBody, *_nethttp.Response, error) {
+func (r ApiCreateManagedTransactionRequest) Execute() (*TransactionResponseBody, *http.Response, error) {
 	return r.ApiService.CreateManagedTransactionExecute(r)
 }
 
@@ -616,12 +616,12 @@ CreateManagedTransaction Create managed transaction
 
 Use this endpoint to create a new partner-managed `transaction`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @param memberGuid The unique id for a `member`.
  @return ApiCreateManagedTransactionRequest
 */
-func (a *MxPlatformApiService) CreateManagedTransaction(ctx _context.Context, userGuid string, memberGuid string) ApiCreateManagedTransactionRequest {
+func (a *MxPlatformApiService) CreateManagedTransaction(ctx context.Context, userGuid string, memberGuid string) ApiCreateManagedTransactionRequest {
 	return ApiCreateManagedTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -632,26 +632,26 @@ func (a *MxPlatformApiService) CreateManagedTransaction(ctx _context.Context, us
 
 // Execute executes the request
 //  @return TransactionResponseBody
-func (a *MxPlatformApiService) CreateManagedTransactionExecute(r ApiCreateManagedTransactionRequest) (TransactionResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CreateManagedTransactionExecute(r ApiCreateManagedTransactionRequest) (*TransactionResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionResponseBody
+		localVarReturnValue  *TransactionResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateManagedTransaction")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.managedTransactionCreateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("managedTransactionCreateRequestBody is required and must be specified")
 	}
@@ -685,15 +685,15 @@ func (a *MxPlatformApiService) CreateManagedTransactionExecute(r ApiCreateManage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -702,7 +702,7 @@ func (a *MxPlatformApiService) CreateManagedTransactionExecute(r ApiCreateManage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -713,7 +713,7 @@ func (a *MxPlatformApiService) CreateManagedTransactionExecute(r ApiCreateManage
 }
 
 type ApiCreateMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	memberCreateRequestBody *MemberCreateRequestBody
@@ -725,7 +725,7 @@ func (r ApiCreateMemberRequest) MemberCreateRequestBody(memberCreateRequestBody 
 	return r
 }
 
-func (r ApiCreateMemberRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiCreateMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.CreateMemberExecute(r)
 }
 
@@ -734,11 +734,11 @@ CreateMember Create member
 
 This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters id and metadata. When creating a member, youll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials` endpoint. If successful, the MX Platform API will respond with the newly-created member object. Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiCreateMemberRequest
 */
-func (a *MxPlatformApiService) CreateMember(ctx _context.Context, userGuid string) ApiCreateMemberRequest {
+func (a *MxPlatformApiService) CreateMember(ctx context.Context, userGuid string) ApiCreateMemberRequest {
 	return ApiCreateMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -748,25 +748,25 @@ func (a *MxPlatformApiService) CreateMember(ctx _context.Context, userGuid strin
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) CreateMemberExecute(r ApiCreateMemberRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CreateMemberExecute(r ApiCreateMemberRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.memberCreateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("memberCreateRequestBody is required and must be specified")
 	}
@@ -800,15 +800,15 @@ func (a *MxPlatformApiService) CreateMemberExecute(r ApiCreateMemberRequest) (Me
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -817,7 +817,7 @@ func (a *MxPlatformApiService) CreateMemberExecute(r ApiCreateMemberRequest) (Me
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -828,7 +828,7 @@ func (a *MxPlatformApiService) CreateMemberExecute(r ApiCreateMemberRequest) (Me
 }
 
 type ApiCreateTagRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	tagCreateRequestBody *TagCreateRequestBody
@@ -840,7 +840,7 @@ func (r ApiCreateTagRequest) TagCreateRequestBody(tagCreateRequestBody TagCreate
 	return r
 }
 
-func (r ApiCreateTagRequest) Execute() (TagResponseBody, *_nethttp.Response, error) {
+func (r ApiCreateTagRequest) Execute() (*TagResponseBody, *http.Response, error) {
 	return r.ApiService.CreateTagExecute(r)
 }
 
@@ -849,11 +849,11 @@ CreateTag Create tag
 
 Use this endpoint to create a new custom tag.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiCreateTagRequest
 */
-func (a *MxPlatformApiService) CreateTag(ctx _context.Context, userGuid string) ApiCreateTagRequest {
+func (a *MxPlatformApiService) CreateTag(ctx context.Context, userGuid string) ApiCreateTagRequest {
 	return ApiCreateTagRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -863,25 +863,25 @@ func (a *MxPlatformApiService) CreateTag(ctx _context.Context, userGuid string) 
 
 // Execute executes the request
 //  @return TagResponseBody
-func (a *MxPlatformApiService) CreateTagExecute(r ApiCreateTagRequest) (TagResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CreateTagExecute(r ApiCreateTagRequest) (*TagResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TagResponseBody
+		localVarReturnValue  *TagResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateTag")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/tags"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.tagCreateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("tagCreateRequestBody is required and must be specified")
 	}
@@ -915,15 +915,15 @@ func (a *MxPlatformApiService) CreateTagExecute(r ApiCreateTagRequest) (TagRespo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -932,7 +932,7 @@ func (a *MxPlatformApiService) CreateTagExecute(r ApiCreateTagRequest) (TagRespo
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -943,7 +943,7 @@ func (a *MxPlatformApiService) CreateTagExecute(r ApiCreateTagRequest) (TagRespo
 }
 
 type ApiCreateTaggingRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	taggingCreateRequestBody *TaggingCreateRequestBody
@@ -955,7 +955,7 @@ func (r ApiCreateTaggingRequest) TaggingCreateRequestBody(taggingCreateRequestBo
 	return r
 }
 
-func (r ApiCreateTaggingRequest) Execute() (TaggingResponseBody, *_nethttp.Response, error) {
+func (r ApiCreateTaggingRequest) Execute() (*TaggingResponseBody, *http.Response, error) {
 	return r.ApiService.CreateTaggingExecute(r)
 }
 
@@ -964,11 +964,11 @@ CreateTagging Create tagging
 
 Use this endpoint to create a new association between a tag and a particular transaction, according to their unique GUIDs.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiCreateTaggingRequest
 */
-func (a *MxPlatformApiService) CreateTagging(ctx _context.Context, userGuid string) ApiCreateTaggingRequest {
+func (a *MxPlatformApiService) CreateTagging(ctx context.Context, userGuid string) ApiCreateTaggingRequest {
 	return ApiCreateTaggingRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -978,25 +978,25 @@ func (a *MxPlatformApiService) CreateTagging(ctx _context.Context, userGuid stri
 
 // Execute executes the request
 //  @return TaggingResponseBody
-func (a *MxPlatformApiService) CreateTaggingExecute(r ApiCreateTaggingRequest) (TaggingResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CreateTaggingExecute(r ApiCreateTaggingRequest) (*TaggingResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TaggingResponseBody
+		localVarReturnValue  *TaggingResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateTagging")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/taggings"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.taggingCreateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("taggingCreateRequestBody is required and must be specified")
 	}
@@ -1030,15 +1030,15 @@ func (a *MxPlatformApiService) CreateTaggingExecute(r ApiCreateTaggingRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1047,7 +1047,7 @@ func (a *MxPlatformApiService) CreateTaggingExecute(r ApiCreateTaggingRequest) (
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1058,7 +1058,7 @@ func (a *MxPlatformApiService) CreateTaggingExecute(r ApiCreateTaggingRequest) (
 }
 
 type ApiCreateTransactionRuleRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	transactionRuleCreateRequestBody *TransactionRuleCreateRequestBody
@@ -1070,7 +1070,7 @@ func (r ApiCreateTransactionRuleRequest) TransactionRuleCreateRequestBody(transa
 	return r
 }
 
-func (r ApiCreateTransactionRuleRequest) Execute() (TransactionRuleResponseBody, *_nethttp.Response, error) {
+func (r ApiCreateTransactionRuleRequest) Execute() (*TransactionRuleResponseBody, *http.Response, error) {
 	return r.ApiService.CreateTransactionRuleExecute(r)
 }
 
@@ -1079,11 +1079,11 @@ CreateTransactionRule Create transaction rule
 
 Use this endpoint to create a new transaction rule. The newly-created `transaction_rule` object will be returned if successful.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiCreateTransactionRuleRequest
 */
-func (a *MxPlatformApiService) CreateTransactionRule(ctx _context.Context, userGuid string) ApiCreateTransactionRuleRequest {
+func (a *MxPlatformApiService) CreateTransactionRule(ctx context.Context, userGuid string) ApiCreateTransactionRuleRequest {
 	return ApiCreateTransactionRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1093,25 +1093,25 @@ func (a *MxPlatformApiService) CreateTransactionRule(ctx _context.Context, userG
 
 // Execute executes the request
 //  @return TransactionRuleResponseBody
-func (a *MxPlatformApiService) CreateTransactionRuleExecute(r ApiCreateTransactionRuleRequest) (TransactionRuleResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CreateTransactionRuleExecute(r ApiCreateTransactionRuleRequest) (*TransactionRuleResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionRuleResponseBody
+		localVarReturnValue  *TransactionRuleResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateTransactionRule")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/transaction_rules"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.transactionRuleCreateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("transactionRuleCreateRequestBody is required and must be specified")
 	}
@@ -1145,15 +1145,15 @@ func (a *MxPlatformApiService) CreateTransactionRuleExecute(r ApiCreateTransacti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1162,7 +1162,7 @@ func (a *MxPlatformApiService) CreateTransactionRuleExecute(r ApiCreateTransacti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1173,7 +1173,7 @@ func (a *MxPlatformApiService) CreateTransactionRuleExecute(r ApiCreateTransacti
 }
 
 type ApiCreateUserRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userCreateRequestBody *UserCreateRequestBody
 }
@@ -1184,7 +1184,7 @@ func (r ApiCreateUserRequest) UserCreateRequestBody(userCreateRequestBody UserCr
 	return r
 }
 
-func (r ApiCreateUserRequest) Execute() (UserResponseBody, *_nethttp.Response, error) {
+func (r ApiCreateUserRequest) Execute() (*UserResponseBody, *http.Response, error) {
 	return r.ApiService.CreateUserExecute(r)
 }
 
@@ -1193,10 +1193,10 @@ CreateUser Create user
 
 Call this endpoint to create a new user. The MX Platform API will respond with the newly-created user object if successful. This endpoint accepts several parameters - id, metadata, and is_disabled. Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that users data until they are no longer disabled. Users who are disabled for the entirety of an MX Platform API billing period will not be factored into that months bill.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUserRequest
 */
-func (a *MxPlatformApiService) CreateUser(ctx _context.Context) ApiCreateUserRequest {
+func (a *MxPlatformApiService) CreateUser(ctx context.Context) ApiCreateUserRequest {
 	return ApiCreateUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1205,24 +1205,24 @@ func (a *MxPlatformApiService) CreateUser(ctx _context.Context) ApiCreateUserReq
 
 // Execute executes the request
 //  @return UserResponseBody
-func (a *MxPlatformApiService) CreateUserExecute(r ApiCreateUserRequest) (UserResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) CreateUserExecute(r ApiCreateUserRequest) (*UserResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  UserResponseBody
+		localVarReturnValue  *UserResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateUser")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userCreateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("userCreateRequestBody is required and must be specified")
 	}
@@ -1256,15 +1256,15 @@ func (a *MxPlatformApiService) CreateUserExecute(r ApiCreateUserRequest) (UserRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1273,7 +1273,7 @@ func (a *MxPlatformApiService) CreateUserExecute(r ApiCreateUserRequest) (UserRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1284,14 +1284,14 @@ func (a *MxPlatformApiService) CreateUserExecute(r ApiCreateUserRequest) (UserRe
 }
 
 type ApiDeleteCategoryRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	categoryGuid string
 	userGuid string
 }
 
 
-func (r ApiDeleteCategoryRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteCategoryRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteCategoryExecute(r)
 }
 
@@ -1300,12 +1300,12 @@ DeleteCategory Delete category
 
 Use this endpoint to delete a specific custom category according to its unique GUID. The API will respond with an empty object and a status of `204 No Content`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param categoryGuid The unique id for a `category`.
  @param userGuid The unique id for a `user`.
  @return ApiDeleteCategoryRequest
 */
-func (a *MxPlatformApiService) DeleteCategory(ctx _context.Context, categoryGuid string, userGuid string) ApiDeleteCategoryRequest {
+func (a *MxPlatformApiService) DeleteCategory(ctx context.Context, categoryGuid string, userGuid string) ApiDeleteCategoryRequest {
 	return ApiDeleteCategoryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1315,25 +1315,25 @@ func (a *MxPlatformApiService) DeleteCategory(ctx _context.Context, categoryGuid
 }
 
 // Execute executes the request
-func (a *MxPlatformApiService) DeleteCategoryExecute(r ApiDeleteCategoryRequest) (*_nethttp.Response, error) {
+func (a *MxPlatformApiService) DeleteCategoryExecute(r ApiDeleteCategoryRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteCategory")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/categories/{category_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"category_guid"+"}", _neturl.PathEscape(parameterToString(r.categoryGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"category_guid"+"}", url.PathEscape(parameterToString(r.categoryGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1362,15 +1362,15 @@ func (a *MxPlatformApiService) DeleteCategoryExecute(r ApiDeleteCategoryRequest)
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1381,7 +1381,7 @@ func (a *MxPlatformApiService) DeleteCategoryExecute(r ApiDeleteCategoryRequest)
 }
 
 type ApiDeleteManagedAccountRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -1389,7 +1389,7 @@ type ApiDeleteManagedAccountRequest struct {
 }
 
 
-func (r ApiDeleteManagedAccountRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteManagedAccountRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteManagedAccountExecute(r)
 }
 
@@ -1398,13 +1398,13 @@ DeleteManagedAccount Delete managed account
 
 Use this endpoint to delete a partner-managed account according to its unique GUID. If successful, the API will respond with a status of `204 No Content`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @param accountGuid The unique id for an `account`.
  @return ApiDeleteManagedAccountRequest
 */
-func (a *MxPlatformApiService) DeleteManagedAccount(ctx _context.Context, memberGuid string, userGuid string, accountGuid string) ApiDeleteManagedAccountRequest {
+func (a *MxPlatformApiService) DeleteManagedAccount(ctx context.Context, memberGuid string, userGuid string, accountGuid string) ApiDeleteManagedAccountRequest {
 	return ApiDeleteManagedAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1415,26 +1415,26 @@ func (a *MxPlatformApiService) DeleteManagedAccount(ctx _context.Context, member
 }
 
 // Execute executes the request
-func (a *MxPlatformApiService) DeleteManagedAccountExecute(r ApiDeleteManagedAccountRequest) (*_nethttp.Response, error) {
+func (a *MxPlatformApiService) DeleteManagedAccountExecute(r ApiDeleteManagedAccountRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteManagedAccount")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", _neturl.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1463,15 +1463,15 @@ func (a *MxPlatformApiService) DeleteManagedAccountExecute(r ApiDeleteManagedAcc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1482,14 +1482,14 @@ func (a *MxPlatformApiService) DeleteManagedAccountExecute(r ApiDeleteManagedAcc
 }
 
 type ApiDeleteManagedMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiDeleteManagedMemberRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteManagedMemberRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteManagedMemberExecute(r)
 }
 
@@ -1498,12 +1498,12 @@ DeleteManagedMember Delete managed member
 
 Use this endpoint to delete the specified partner-managed `member`. The endpoint will respond with a status of `204 No Content` without a resource.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiDeleteManagedMemberRequest
 */
-func (a *MxPlatformApiService) DeleteManagedMember(ctx _context.Context, memberGuid string, userGuid string) ApiDeleteManagedMemberRequest {
+func (a *MxPlatformApiService) DeleteManagedMember(ctx context.Context, memberGuid string, userGuid string) ApiDeleteManagedMemberRequest {
 	return ApiDeleteManagedMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1513,25 +1513,25 @@ func (a *MxPlatformApiService) DeleteManagedMember(ctx _context.Context, memberG
 }
 
 // Execute executes the request
-func (a *MxPlatformApiService) DeleteManagedMemberExecute(r ApiDeleteManagedMemberRequest) (*_nethttp.Response, error) {
+func (a *MxPlatformApiService) DeleteManagedMemberExecute(r ApiDeleteManagedMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteManagedMember")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1560,15 +1560,15 @@ func (a *MxPlatformApiService) DeleteManagedMemberExecute(r ApiDeleteManagedMemb
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1579,7 +1579,7 @@ func (a *MxPlatformApiService) DeleteManagedMemberExecute(r ApiDeleteManagedMemb
 }
 
 type ApiDeleteManagedTransactionRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -1587,7 +1587,7 @@ type ApiDeleteManagedTransactionRequest struct {
 }
 
 
-func (r ApiDeleteManagedTransactionRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteManagedTransactionRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteManagedTransactionExecute(r)
 }
 
@@ -1596,13 +1596,13 @@ DeleteManagedTransaction Delete managed transaction
 
 Use this endpoint to delete the specified partner-managed `transaction`. The endpoint will respond with a status of `204 No Content` without a resource.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @param transactionGuid The unique id for a `transaction`.
  @return ApiDeleteManagedTransactionRequest
 */
-func (a *MxPlatformApiService) DeleteManagedTransaction(ctx _context.Context, memberGuid string, userGuid string, transactionGuid string) ApiDeleteManagedTransactionRequest {
+func (a *MxPlatformApiService) DeleteManagedTransaction(ctx context.Context, memberGuid string, userGuid string, transactionGuid string) ApiDeleteManagedTransactionRequest {
 	return ApiDeleteManagedTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1613,26 +1613,26 @@ func (a *MxPlatformApiService) DeleteManagedTransaction(ctx _context.Context, me
 }
 
 // Execute executes the request
-func (a *MxPlatformApiService) DeleteManagedTransactionExecute(r ApiDeleteManagedTransactionRequest) (*_nethttp.Response, error) {
+func (a *MxPlatformApiService) DeleteManagedTransactionExecute(r ApiDeleteManagedTransactionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteManagedTransaction")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", _neturl.PathEscape(parameterToString(r.transactionGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterToString(r.transactionGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1661,15 +1661,15 @@ func (a *MxPlatformApiService) DeleteManagedTransactionExecute(r ApiDeleteManage
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1680,14 +1680,14 @@ func (a *MxPlatformApiService) DeleteManagedTransactionExecute(r ApiDeleteManage
 }
 
 type ApiDeleteMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiDeleteMemberRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteMemberRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteMemberExecute(r)
 }
 
@@ -1696,12 +1696,12 @@ DeleteMember Delete member
 
 Accessing this endpoint will permanently delete a member.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiDeleteMemberRequest
 */
-func (a *MxPlatformApiService) DeleteMember(ctx _context.Context, memberGuid string, userGuid string) ApiDeleteMemberRequest {
+func (a *MxPlatformApiService) DeleteMember(ctx context.Context, memberGuid string, userGuid string) ApiDeleteMemberRequest {
 	return ApiDeleteMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1711,25 +1711,25 @@ func (a *MxPlatformApiService) DeleteMember(ctx _context.Context, memberGuid str
 }
 
 // Execute executes the request
-func (a *MxPlatformApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*_nethttp.Response, error) {
+func (a *MxPlatformApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteMember")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1758,15 +1758,15 @@ func (a *MxPlatformApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*_
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1777,14 +1777,14 @@ func (a *MxPlatformApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*_
 }
 
 type ApiDeleteTagRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	tagGuid string
 	userGuid string
 }
 
 
-func (r ApiDeleteTagRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteTagRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteTagExecute(r)
 }
 
@@ -1793,12 +1793,12 @@ DeleteTag Delete tag
 
 Use this endpoint to permanently delete a specific tag based on its unique GUID. If successful, the API will respond with status of `204 No Content`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tagGuid The unique id for a `tag`.
  @param userGuid The unique id for a `user`.
  @return ApiDeleteTagRequest
 */
-func (a *MxPlatformApiService) DeleteTag(ctx _context.Context, tagGuid string, userGuid string) ApiDeleteTagRequest {
+func (a *MxPlatformApiService) DeleteTag(ctx context.Context, tagGuid string, userGuid string) ApiDeleteTagRequest {
 	return ApiDeleteTagRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1808,25 +1808,25 @@ func (a *MxPlatformApiService) DeleteTag(ctx _context.Context, tagGuid string, u
 }
 
 // Execute executes the request
-func (a *MxPlatformApiService) DeleteTagExecute(r ApiDeleteTagRequest) (*_nethttp.Response, error) {
+func (a *MxPlatformApiService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteTag")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/tags/{tag_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tag_guid"+"}", _neturl.PathEscape(parameterToString(r.tagGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tag_guid"+"}", url.PathEscape(parameterToString(r.tagGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1855,15 +1855,15 @@ func (a *MxPlatformApiService) DeleteTagExecute(r ApiDeleteTagRequest) (*_nethtt
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1874,14 +1874,14 @@ func (a *MxPlatformApiService) DeleteTagExecute(r ApiDeleteTagRequest) (*_nethtt
 }
 
 type ApiDeleteTaggingRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	taggingGuid string
 	userGuid string
 }
 
 
-func (r ApiDeleteTaggingRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteTaggingRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteTaggingExecute(r)
 }
 
@@ -1890,12 +1890,12 @@ DeleteTagging Delete tagging
 
 Use this endpoint to delete a tagging according to its unique GUID. If successful, the API will respond with an empty body and a status of 204 NO Content.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param taggingGuid The unique id for a `tagging`.
  @param userGuid The unique id for a `user`.
  @return ApiDeleteTaggingRequest
 */
-func (a *MxPlatformApiService) DeleteTagging(ctx _context.Context, taggingGuid string, userGuid string) ApiDeleteTaggingRequest {
+func (a *MxPlatformApiService) DeleteTagging(ctx context.Context, taggingGuid string, userGuid string) ApiDeleteTaggingRequest {
 	return ApiDeleteTaggingRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1905,25 +1905,25 @@ func (a *MxPlatformApiService) DeleteTagging(ctx _context.Context, taggingGuid s
 }
 
 // Execute executes the request
-func (a *MxPlatformApiService) DeleteTaggingExecute(r ApiDeleteTaggingRequest) (*_nethttp.Response, error) {
+func (a *MxPlatformApiService) DeleteTaggingExecute(r ApiDeleteTaggingRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteTagging")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/taggings/{tagging_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tagging_guid"+"}", _neturl.PathEscape(parameterToString(r.taggingGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tagging_guid"+"}", url.PathEscape(parameterToString(r.taggingGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1952,15 +1952,15 @@ func (a *MxPlatformApiService) DeleteTaggingExecute(r ApiDeleteTaggingRequest) (
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1971,14 +1971,14 @@ func (a *MxPlatformApiService) DeleteTaggingExecute(r ApiDeleteTaggingRequest) (
 }
 
 type ApiDeleteTransactionRuleRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	transactionRuleGuid string
 	userGuid string
 }
 
 
-func (r ApiDeleteTransactionRuleRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteTransactionRuleRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteTransactionRuleExecute(r)
 }
 
@@ -1987,12 +1987,12 @@ DeleteTransactionRule Delete transaction rule
 
 Use this endpoint to permanently delete a transaction rule based on its unique GUID.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param transactionRuleGuid The unique id for a `transaction_rule`.
  @param userGuid The unique id for a `user`.
  @return ApiDeleteTransactionRuleRequest
 */
-func (a *MxPlatformApiService) DeleteTransactionRule(ctx _context.Context, transactionRuleGuid string, userGuid string) ApiDeleteTransactionRuleRequest {
+func (a *MxPlatformApiService) DeleteTransactionRule(ctx context.Context, transactionRuleGuid string, userGuid string) ApiDeleteTransactionRuleRequest {
 	return ApiDeleteTransactionRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2002,25 +2002,25 @@ func (a *MxPlatformApiService) DeleteTransactionRule(ctx _context.Context, trans
 }
 
 // Execute executes the request
-func (a *MxPlatformApiService) DeleteTransactionRuleExecute(r ApiDeleteTransactionRuleRequest) (*_nethttp.Response, error) {
+func (a *MxPlatformApiService) DeleteTransactionRuleExecute(r ApiDeleteTransactionRuleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteTransactionRule")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/transaction_rules/{transaction_rule_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"transaction_rule_guid"+"}", _neturl.PathEscape(parameterToString(r.transactionRuleGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_rule_guid"+"}", url.PathEscape(parameterToString(r.transactionRuleGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2049,15 +2049,15 @@ func (a *MxPlatformApiService) DeleteTransactionRuleExecute(r ApiDeleteTransacti
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2068,13 +2068,13 @@ func (a *MxPlatformApiService) DeleteTransactionRuleExecute(r ApiDeleteTransacti
 }
 
 type ApiDeleteUserRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 }
 
 
-func (r ApiDeleteUserRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteUserRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteUserExecute(r)
 }
 
@@ -2083,11 +2083,11 @@ DeleteUser Delete user
 
 Use this endpoint to delete the specified `user`. The response will have a status of `204 No Content` without an object.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiDeleteUserRequest
 */
-func (a *MxPlatformApiService) DeleteUser(ctx _context.Context, userGuid string) ApiDeleteUserRequest {
+func (a *MxPlatformApiService) DeleteUser(ctx context.Context, userGuid string) ApiDeleteUserRequest {
 	return ApiDeleteUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2096,24 +2096,24 @@ func (a *MxPlatformApiService) DeleteUser(ctx _context.Context, userGuid string)
 }
 
 // Execute executes the request
-func (a *MxPlatformApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_nethttp.Response, error) {
+func (a *MxPlatformApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteUser")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2142,15 +2142,15 @@ func (a *MxPlatformApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_neth
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2161,7 +2161,7 @@ func (a *MxPlatformApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_neth
 }
 
 type ApiDownloadStatementPDFRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	statementGuid string
@@ -2169,7 +2169,7 @@ type ApiDownloadStatementPDFRequest struct {
 }
 
 
-func (r ApiDownloadStatementPDFRequest) Execute() (*os.File, *_nethttp.Response, error) {
+func (r ApiDownloadStatementPDFRequest) Execute() (**os.File, *http.Response, error) {
 	return r.ApiService.DownloadStatementPDFExecute(r)
 }
 
@@ -2178,13 +2178,13 @@ DownloadStatementPDF Download statement pdf
 
 Use this endpoint to download a specified statement PDF.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param statementGuid The unique id for a `statement`.
  @param userGuid The unique id for a `user`.
  @return ApiDownloadStatementPDFRequest
 */
-func (a *MxPlatformApiService) DownloadStatementPDF(ctx _context.Context, memberGuid string, statementGuid string, userGuid string) ApiDownloadStatementPDFRequest {
+func (a *MxPlatformApiService) DownloadStatementPDF(ctx context.Context, memberGuid string, statementGuid string, userGuid string) ApiDownloadStatementPDFRequest {
 	return ApiDownloadStatementPDFRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2196,27 +2196,27 @@ func (a *MxPlatformApiService) DownloadStatementPDF(ctx _context.Context, member
 
 // Execute executes the request
 //  @return *os.File
-func (a *MxPlatformApiService) DownloadStatementPDFExecute(r ApiDownloadStatementPDFRequest) (*os.File, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) DownloadStatementPDFExecute(r ApiDownloadStatementPDFRequest) (**os.File, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *os.File
+		localVarReturnValue  **os.File
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DownloadStatementPDF")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"statement_guid"+"}", _neturl.PathEscape(parameterToString(r.statementGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"statement_guid"+"}", url.PathEscape(parameterToString(r.statementGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2245,15 +2245,15 @@ func (a *MxPlatformApiService) DownloadStatementPDFExecute(r ApiDownloadStatemen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2262,7 +2262,7 @@ func (a *MxPlatformApiService) DownloadStatementPDFExecute(r ApiDownloadStatemen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2273,7 +2273,7 @@ func (a *MxPlatformApiService) DownloadStatementPDFExecute(r ApiDownloadStatemen
 }
 
 type ApiEnhanceTransactionsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	enhanceTransactionsRequestBody *EnhanceTransactionsRequestBody
 }
@@ -2284,7 +2284,7 @@ func (r ApiEnhanceTransactionsRequest) EnhanceTransactionsRequestBody(enhanceTra
 	return r
 }
 
-func (r ApiEnhanceTransactionsRequest) Execute() (EnhanceTransactionsResponseBody, *_nethttp.Response, error) {
+func (r ApiEnhanceTransactionsRequest) Execute() (*EnhanceTransactionsResponseBody, *http.Response, error) {
 	return r.ApiService.EnhanceTransactionsExecute(r)
 }
 
@@ -2293,10 +2293,10 @@ EnhanceTransactions Enhance transactions
 
 Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEnhanceTransactionsRequest
 */
-func (a *MxPlatformApiService) EnhanceTransactions(ctx _context.Context) ApiEnhanceTransactionsRequest {
+func (a *MxPlatformApiService) EnhanceTransactions(ctx context.Context) ApiEnhanceTransactionsRequest {
 	return ApiEnhanceTransactionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2305,24 +2305,24 @@ func (a *MxPlatformApiService) EnhanceTransactions(ctx _context.Context) ApiEnha
 
 // Execute executes the request
 //  @return EnhanceTransactionsResponseBody
-func (a *MxPlatformApiService) EnhanceTransactionsExecute(r ApiEnhanceTransactionsRequest) (EnhanceTransactionsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) EnhanceTransactionsExecute(r ApiEnhanceTransactionsRequest) (*EnhanceTransactionsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  EnhanceTransactionsResponseBody
+		localVarReturnValue  *EnhanceTransactionsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.EnhanceTransactions")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/transactions/enhance"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.enhanceTransactionsRequestBody == nil {
 		return localVarReturnValue, nil, reportError("enhanceTransactionsRequestBody is required and must be specified")
 	}
@@ -2356,15 +2356,15 @@ func (a *MxPlatformApiService) EnhanceTransactionsExecute(r ApiEnhanceTransactio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2373,7 +2373,7 @@ func (a *MxPlatformApiService) EnhanceTransactionsExecute(r ApiEnhanceTransactio
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2384,14 +2384,14 @@ func (a *MxPlatformApiService) EnhanceTransactionsExecute(r ApiEnhanceTransactio
 }
 
 type ApiExtendHistoryRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiExtendHistoryRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiExtendHistoryRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.ExtendHistoryExecute(r)
 }
 
@@ -2400,12 +2400,12 @@ ExtendHistory Extend history
 
 Some institutions allow developers to access an extended transaction history with up to 24 months of data associated with a particular member. The process for fetching and then reading this extended transaction history is much like standard aggregation, and it may trigger multi-factor authentication.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique identifier for a `member`.
  @param userGuid The unique identifier for a `user`.
  @return ApiExtendHistoryRequest
 */
-func (a *MxPlatformApiService) ExtendHistory(ctx _context.Context, memberGuid string, userGuid string) ApiExtendHistoryRequest {
+func (a *MxPlatformApiService) ExtendHistory(ctx context.Context, memberGuid string, userGuid string) ApiExtendHistoryRequest {
 	return ApiExtendHistoryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2416,26 +2416,26 @@ func (a *MxPlatformApiService) ExtendHistory(ctx _context.Context, memberGuid st
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) ExtendHistoryExecute(r ApiExtendHistoryRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ExtendHistoryExecute(r ApiExtendHistoryRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ExtendHistory")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/extend_history"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2464,15 +2464,15 @@ func (a *MxPlatformApiService) ExtendHistoryExecute(r ApiExtendHistoryRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2481,7 +2481,7 @@ func (a *MxPlatformApiService) ExtendHistoryExecute(r ApiExtendHistoryRequest) (
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2492,14 +2492,14 @@ func (a *MxPlatformApiService) ExtendHistoryExecute(r ApiExtendHistoryRequest) (
 }
 
 type ApiFetchStatementsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiFetchStatementsRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiFetchStatementsRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.FetchStatementsExecute(r)
 }
 
@@ -2508,12 +2508,12 @@ FetchStatements Fetch statements
 
 Use this endpoint to fetch the statements associated with a particular member.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiFetchStatementsRequest
 */
-func (a *MxPlatformApiService) FetchStatements(ctx _context.Context, memberGuid string, userGuid string) ApiFetchStatementsRequest {
+func (a *MxPlatformApiService) FetchStatements(ctx context.Context, memberGuid string, userGuid string) ApiFetchStatementsRequest {
 	return ApiFetchStatementsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2524,26 +2524,26 @@ func (a *MxPlatformApiService) FetchStatements(ctx _context.Context, memberGuid 
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) FetchStatementsExecute(r ApiFetchStatementsRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) FetchStatementsExecute(r ApiFetchStatementsRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.FetchStatements")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/fetch_statements"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2572,15 +2572,15 @@ func (a *MxPlatformApiService) FetchStatementsExecute(r ApiFetchStatementsReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2589,7 +2589,7 @@ func (a *MxPlatformApiService) FetchStatementsExecute(r ApiFetchStatementsReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2600,14 +2600,14 @@ func (a *MxPlatformApiService) FetchStatementsExecute(r ApiFetchStatementsReques
 }
 
 type ApiIdentifyMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiIdentifyMemberRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiIdentifyMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.IdentifyMemberExecute(r)
 }
 
@@ -2616,12 +2616,12 @@ IdentifyMember Identify member
 
 The identify endpoint begins an identification process for an already-existing member.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiIdentifyMemberRequest
 */
-func (a *MxPlatformApiService) IdentifyMember(ctx _context.Context, memberGuid string, userGuid string) ApiIdentifyMemberRequest {
+func (a *MxPlatformApiService) IdentifyMember(ctx context.Context, memberGuid string, userGuid string) ApiIdentifyMemberRequest {
 	return ApiIdentifyMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2632,26 +2632,26 @@ func (a *MxPlatformApiService) IdentifyMember(ctx _context.Context, memberGuid s
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) IdentifyMemberExecute(r ApiIdentifyMemberRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) IdentifyMemberExecute(r ApiIdentifyMemberRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.IdentifyMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/identify"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2680,15 +2680,15 @@ func (a *MxPlatformApiService) IdentifyMemberExecute(r ApiIdentifyMemberRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2697,7 +2697,7 @@ func (a *MxPlatformApiService) IdentifyMemberExecute(r ApiIdentifyMemberRequest)
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2708,7 +2708,7 @@ func (a *MxPlatformApiService) IdentifyMemberExecute(r ApiIdentifyMemberRequest)
 }
 
 type ApiListAccountNumbersByAccountRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	accountGuid string
 	userGuid string
@@ -2727,7 +2727,7 @@ func (r ApiListAccountNumbersByAccountRequest) RecordsPerPage(recordsPerPage int
 	return r
 }
 
-func (r ApiListAccountNumbersByAccountRequest) Execute() (AccountNumbersResponseBody, *_nethttp.Response, error) {
+func (r ApiListAccountNumbersByAccountRequest) Execute() (*AccountNumbersResponseBody, *http.Response, error) {
 	return r.ApiService.ListAccountNumbersByAccountExecute(r)
 }
 
@@ -2736,12 +2736,12 @@ ListAccountNumbersByAccount List account numbers by account
 
 This endpoint returns a list of account numbers associated with the specified `account`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountGuid The unique id for an `account`.
  @param userGuid The unique id for a `user`.
  @return ApiListAccountNumbersByAccountRequest
 */
-func (a *MxPlatformApiService) ListAccountNumbersByAccount(ctx _context.Context, accountGuid string, userGuid string) ApiListAccountNumbersByAccountRequest {
+func (a *MxPlatformApiService) ListAccountNumbersByAccount(ctx context.Context, accountGuid string, userGuid string) ApiListAccountNumbersByAccountRequest {
 	return ApiListAccountNumbersByAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2752,26 +2752,26 @@ func (a *MxPlatformApiService) ListAccountNumbersByAccount(ctx _context.Context,
 
 // Execute executes the request
 //  @return AccountNumbersResponseBody
-func (a *MxPlatformApiService) ListAccountNumbersByAccountExecute(r ApiListAccountNumbersByAccountRequest) (AccountNumbersResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListAccountNumbersByAccountExecute(r ApiListAccountNumbersByAccountRequest) (*AccountNumbersResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountNumbersResponseBody
+		localVarReturnValue  *AccountNumbersResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListAccountNumbersByAccount")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/accounts/{account_guid}/account_numbers"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", _neturl.PathEscape(parameterToString(r.accountGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -2806,15 +2806,15 @@ func (a *MxPlatformApiService) ListAccountNumbersByAccountExecute(r ApiListAccou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2823,7 +2823,7 @@ func (a *MxPlatformApiService) ListAccountNumbersByAccountExecute(r ApiListAccou
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2834,7 +2834,7 @@ func (a *MxPlatformApiService) ListAccountNumbersByAccountExecute(r ApiListAccou
 }
 
 type ApiListAccountNumbersByMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -2853,7 +2853,7 @@ func (r ApiListAccountNumbersByMemberRequest) RecordsPerPage(recordsPerPage int3
 	return r
 }
 
-func (r ApiListAccountNumbersByMemberRequest) Execute() (AccountNumbersResponseBody, *_nethttp.Response, error) {
+func (r ApiListAccountNumbersByMemberRequest) Execute() (*AccountNumbersResponseBody, *http.Response, error) {
 	return r.ApiService.ListAccountNumbersByMemberExecute(r)
 }
 
@@ -2862,12 +2862,12 @@ ListAccountNumbersByMember List account numbers by member
 
 This endpoint returns a list of account numbers associated with the specified `member`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiListAccountNumbersByMemberRequest
 */
-func (a *MxPlatformApiService) ListAccountNumbersByMember(ctx _context.Context, memberGuid string, userGuid string) ApiListAccountNumbersByMemberRequest {
+func (a *MxPlatformApiService) ListAccountNumbersByMember(ctx context.Context, memberGuid string, userGuid string) ApiListAccountNumbersByMemberRequest {
 	return ApiListAccountNumbersByMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2878,26 +2878,26 @@ func (a *MxPlatformApiService) ListAccountNumbersByMember(ctx _context.Context, 
 
 // Execute executes the request
 //  @return AccountNumbersResponseBody
-func (a *MxPlatformApiService) ListAccountNumbersByMemberExecute(r ApiListAccountNumbersByMemberRequest) (AccountNumbersResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListAccountNumbersByMemberExecute(r ApiListAccountNumbersByMemberRequest) (*AccountNumbersResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountNumbersResponseBody
+		localVarReturnValue  *AccountNumbersResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListAccountNumbersByMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/account_numbers"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -2932,15 +2932,15 @@ func (a *MxPlatformApiService) ListAccountNumbersByMemberExecute(r ApiListAccoun
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2949,7 +2949,7 @@ func (a *MxPlatformApiService) ListAccountNumbersByMemberExecute(r ApiListAccoun
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2960,7 +2960,7 @@ func (a *MxPlatformApiService) ListAccountNumbersByMemberExecute(r ApiListAccoun
 }
 
 type ApiListAccountOwnersByMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -2979,7 +2979,7 @@ func (r ApiListAccountOwnersByMemberRequest) RecordsPerPage(recordsPerPage int32
 	return r
 }
 
-func (r ApiListAccountOwnersByMemberRequest) Execute() (AccountOwnersResponseBody, *_nethttp.Response, error) {
+func (r ApiListAccountOwnersByMemberRequest) Execute() (*AccountOwnersResponseBody, *http.Response, error) {
 	return r.ApiService.ListAccountOwnersByMemberExecute(r)
 }
 
@@ -2988,12 +2988,12 @@ ListAccountOwnersByMember List account owners by member
 
 This endpoint returns an array with information about every account associated with a particular member.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiListAccountOwnersByMemberRequest
 */
-func (a *MxPlatformApiService) ListAccountOwnersByMember(ctx _context.Context, memberGuid string, userGuid string) ApiListAccountOwnersByMemberRequest {
+func (a *MxPlatformApiService) ListAccountOwnersByMember(ctx context.Context, memberGuid string, userGuid string) ApiListAccountOwnersByMemberRequest {
 	return ApiListAccountOwnersByMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3004,26 +3004,26 @@ func (a *MxPlatformApiService) ListAccountOwnersByMember(ctx _context.Context, m
 
 // Execute executes the request
 //  @return AccountOwnersResponseBody
-func (a *MxPlatformApiService) ListAccountOwnersByMemberExecute(r ApiListAccountOwnersByMemberRequest) (AccountOwnersResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListAccountOwnersByMemberExecute(r ApiListAccountOwnersByMemberRequest) (*AccountOwnersResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountOwnersResponseBody
+		localVarReturnValue  *AccountOwnersResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListAccountOwnersByMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/account_owners"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -3058,15 +3058,15 @@ func (a *MxPlatformApiService) ListAccountOwnersByMemberExecute(r ApiListAccount
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3075,7 +3075,7 @@ func (a *MxPlatformApiService) ListAccountOwnersByMemberExecute(r ApiListAccount
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3086,7 +3086,7 @@ func (a *MxPlatformApiService) ListAccountOwnersByMemberExecute(r ApiListAccount
 }
 
 type ApiListCategoriesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	page *int32
@@ -3104,7 +3104,7 @@ func (r ApiListCategoriesRequest) RecordsPerPage(recordsPerPage int32) ApiListCa
 	return r
 }
 
-func (r ApiListCategoriesRequest) Execute() (CategoriesResponseBody, *_nethttp.Response, error) {
+func (r ApiListCategoriesRequest) Execute() (*CategoriesResponseBody, *http.Response, error) {
 	return r.ApiService.ListCategoriesExecute(r)
 }
 
@@ -3113,11 +3113,11 @@ ListCategories List categories
 
 Use this endpoint to list all categories associated with a `user`, including both default and custom categories.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListCategoriesRequest
 */
-func (a *MxPlatformApiService) ListCategories(ctx _context.Context, userGuid string) ApiListCategoriesRequest {
+func (a *MxPlatformApiService) ListCategories(ctx context.Context, userGuid string) ApiListCategoriesRequest {
 	return ApiListCategoriesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3127,25 +3127,25 @@ func (a *MxPlatformApiService) ListCategories(ctx _context.Context, userGuid str
 
 // Execute executes the request
 //  @return CategoriesResponseBody
-func (a *MxPlatformApiService) ListCategoriesExecute(r ApiListCategoriesRequest) (CategoriesResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListCategoriesExecute(r ApiListCategoriesRequest) (*CategoriesResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  CategoriesResponseBody
+		localVarReturnValue  *CategoriesResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListCategories")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/categories"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -3180,15 +3180,15 @@ func (a *MxPlatformApiService) ListCategoriesExecute(r ApiListCategoriesRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3197,7 +3197,7 @@ func (a *MxPlatformApiService) ListCategoriesExecute(r ApiListCategoriesRequest)
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3208,7 +3208,7 @@ func (a *MxPlatformApiService) ListCategoriesExecute(r ApiListCategoriesRequest)
 }
 
 type ApiListDefaultCategoriesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	page *int32
 	recordsPerPage *int32
@@ -3225,7 +3225,7 @@ func (r ApiListDefaultCategoriesRequest) RecordsPerPage(recordsPerPage int32) Ap
 	return r
 }
 
-func (r ApiListDefaultCategoriesRequest) Execute() (CategoriesResponseBody, *_nethttp.Response, error) {
+func (r ApiListDefaultCategoriesRequest) Execute() (*CategoriesResponseBody, *http.Response, error) {
 	return r.ApiService.ListDefaultCategoriesExecute(r)
 }
 
@@ -3234,10 +3234,10 @@ ListDefaultCategories List default categories
 
 Use this endpoint to retrieve a list of all the default categories and subcategories offered within the MX Platform API. In other words, each item in the returned list will have its `is_default` field set to `true`. There are currently 119 default categories and subcategories. Both the _list default categories_ and _list default categories by user_ endpoints return the same results. The different routes are provided for convenience.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDefaultCategoriesRequest
 */
-func (a *MxPlatformApiService) ListDefaultCategories(ctx _context.Context) ApiListDefaultCategoriesRequest {
+func (a *MxPlatformApiService) ListDefaultCategories(ctx context.Context) ApiListDefaultCategoriesRequest {
 	return ApiListDefaultCategoriesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3246,24 +3246,24 @@ func (a *MxPlatformApiService) ListDefaultCategories(ctx _context.Context) ApiLi
 
 // Execute executes the request
 //  @return CategoriesResponseBody
-func (a *MxPlatformApiService) ListDefaultCategoriesExecute(r ApiListDefaultCategoriesRequest) (CategoriesResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListDefaultCategoriesExecute(r ApiListDefaultCategoriesRequest) (*CategoriesResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  CategoriesResponseBody
+		localVarReturnValue  *CategoriesResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListDefaultCategories")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/categories/default"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -3298,15 +3298,15 @@ func (a *MxPlatformApiService) ListDefaultCategoriesExecute(r ApiListDefaultCate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3315,7 +3315,7 @@ func (a *MxPlatformApiService) ListDefaultCategoriesExecute(r ApiListDefaultCate
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3326,7 +3326,7 @@ func (a *MxPlatformApiService) ListDefaultCategoriesExecute(r ApiListDefaultCate
 }
 
 type ApiListDefaultCategoriesByUserRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	page *int32
@@ -3344,7 +3344,7 @@ func (r ApiListDefaultCategoriesByUserRequest) RecordsPerPage(recordsPerPage int
 	return r
 }
 
-func (r ApiListDefaultCategoriesByUserRequest) Execute() (CategoriesResponseBody, *_nethttp.Response, error) {
+func (r ApiListDefaultCategoriesByUserRequest) Execute() (*CategoriesResponseBody, *http.Response, error) {
 	return r.ApiService.ListDefaultCategoriesByUserExecute(r)
 }
 
@@ -3353,11 +3353,11 @@ ListDefaultCategoriesByUser List default categories by user
 
 Use this endpoint to retrieve a list of all the default categories and subcategories, scoped by user, offered within the MX Platform API. In other words, each item in the returned list will have its `is_default` field set to `true`. There are currently 119 default categories and subcategories. Both the _list default categories_ and _list default categories by user_ endpoints return the same results. The different routes are provided for convenience.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListDefaultCategoriesByUserRequest
 */
-func (a *MxPlatformApiService) ListDefaultCategoriesByUser(ctx _context.Context, userGuid string) ApiListDefaultCategoriesByUserRequest {
+func (a *MxPlatformApiService) ListDefaultCategoriesByUser(ctx context.Context, userGuid string) ApiListDefaultCategoriesByUserRequest {
 	return ApiListDefaultCategoriesByUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3367,25 +3367,25 @@ func (a *MxPlatformApiService) ListDefaultCategoriesByUser(ctx _context.Context,
 
 // Execute executes the request
 //  @return CategoriesResponseBody
-func (a *MxPlatformApiService) ListDefaultCategoriesByUserExecute(r ApiListDefaultCategoriesByUserRequest) (CategoriesResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListDefaultCategoriesByUserExecute(r ApiListDefaultCategoriesByUserRequest) (*CategoriesResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  CategoriesResponseBody
+		localVarReturnValue  *CategoriesResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListDefaultCategoriesByUser")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/categories/default"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -3420,15 +3420,15 @@ func (a *MxPlatformApiService) ListDefaultCategoriesByUserExecute(r ApiListDefau
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3437,7 +3437,7 @@ func (a *MxPlatformApiService) ListDefaultCategoriesByUserExecute(r ApiListDefau
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3448,7 +3448,7 @@ func (a *MxPlatformApiService) ListDefaultCategoriesByUserExecute(r ApiListDefau
 }
 
 type ApiListFavoriteInstitutionsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	page *int32
 	recordsPerPage *int32
@@ -3465,7 +3465,7 @@ func (r ApiListFavoriteInstitutionsRequest) RecordsPerPage(recordsPerPage int32)
 	return r
 }
 
-func (r ApiListFavoriteInstitutionsRequest) Execute() (InstitutionsResponseBody, *_nethttp.Response, error) {
+func (r ApiListFavoriteInstitutionsRequest) Execute() (*InstitutionsResponseBody, *http.Response, error) {
 	return r.ApiService.ListFavoriteInstitutionsExecute(r)
 }
 
@@ -3474,10 +3474,10 @@ ListFavoriteInstitutions List favorite institutions
 
 This endpoint returns a paginated list containing institutions that have been set as the partner’s favorites, sorted by popularity. Please contact MX to set a list of favorites.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListFavoriteInstitutionsRequest
 */
-func (a *MxPlatformApiService) ListFavoriteInstitutions(ctx _context.Context) ApiListFavoriteInstitutionsRequest {
+func (a *MxPlatformApiService) ListFavoriteInstitutions(ctx context.Context) ApiListFavoriteInstitutionsRequest {
 	return ApiListFavoriteInstitutionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3486,24 +3486,24 @@ func (a *MxPlatformApiService) ListFavoriteInstitutions(ctx _context.Context) Ap
 
 // Execute executes the request
 //  @return InstitutionsResponseBody
-func (a *MxPlatformApiService) ListFavoriteInstitutionsExecute(r ApiListFavoriteInstitutionsRequest) (InstitutionsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListFavoriteInstitutionsExecute(r ApiListFavoriteInstitutionsRequest) (*InstitutionsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  InstitutionsResponseBody
+		localVarReturnValue  *InstitutionsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListFavoriteInstitutions")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/institutions/favorites"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -3538,15 +3538,15 @@ func (a *MxPlatformApiService) ListFavoriteInstitutionsExecute(r ApiListFavorite
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3555,7 +3555,7 @@ func (a *MxPlatformApiService) ListFavoriteInstitutionsExecute(r ApiListFavorite
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3566,7 +3566,7 @@ func (a *MxPlatformApiService) ListFavoriteInstitutionsExecute(r ApiListFavorite
 }
 
 type ApiListHoldingsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	fromDate *string
@@ -3596,7 +3596,7 @@ func (r ApiListHoldingsRequest) ToDate(toDate string) ApiListHoldingsRequest {
 	return r
 }
 
-func (r ApiListHoldingsRequest) Execute() (HoldingsResponseBody, *_nethttp.Response, error) {
+func (r ApiListHoldingsRequest) Execute() (*HoldingsResponseBody, *http.Response, error) {
 	return r.ApiService.ListHoldingsExecute(r)
 }
 
@@ -3605,11 +3605,11 @@ ListHoldings List holdings
 
 This endpoint returns all holdings associated with the specified `user` across all accounts and members.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListHoldingsRequest
 */
-func (a *MxPlatformApiService) ListHoldings(ctx _context.Context, userGuid string) ApiListHoldingsRequest {
+func (a *MxPlatformApiService) ListHoldings(ctx context.Context, userGuid string) ApiListHoldingsRequest {
 	return ApiListHoldingsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3619,25 +3619,25 @@ func (a *MxPlatformApiService) ListHoldings(ctx _context.Context, userGuid strin
 
 // Execute executes the request
 //  @return HoldingsResponseBody
-func (a *MxPlatformApiService) ListHoldingsExecute(r ApiListHoldingsRequest) (HoldingsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListHoldingsExecute(r ApiListHoldingsRequest) (*HoldingsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  HoldingsResponseBody
+		localVarReturnValue  *HoldingsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListHoldings")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/holdings"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.fromDate != nil {
 		localVarQueryParams.Add("from_date", parameterToString(*r.fromDate, ""))
@@ -3678,15 +3678,15 @@ func (a *MxPlatformApiService) ListHoldingsExecute(r ApiListHoldingsRequest) (Ho
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3695,7 +3695,7 @@ func (a *MxPlatformApiService) ListHoldingsExecute(r ApiListHoldingsRequest) (Ho
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3706,7 +3706,7 @@ func (a *MxPlatformApiService) ListHoldingsExecute(r ApiListHoldingsRequest) (Ho
 }
 
 type ApiListHoldingsByAccountRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	accountGuid string
 	userGuid string
@@ -3737,7 +3737,7 @@ func (r ApiListHoldingsByAccountRequest) ToDate(toDate string) ApiListHoldingsBy
 	return r
 }
 
-func (r ApiListHoldingsByAccountRequest) Execute() (HoldingsResponseBody, *_nethttp.Response, error) {
+func (r ApiListHoldingsByAccountRequest) Execute() (*HoldingsResponseBody, *http.Response, error) {
 	return r.ApiService.ListHoldingsByAccountExecute(r)
 }
 
@@ -3746,12 +3746,12 @@ ListHoldingsByAccount List holdings by account
 
 This endpoint returns all holdings associated with the specified `account`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountGuid The unique id for the `account`.
  @param userGuid The unique id for the `user`.
  @return ApiListHoldingsByAccountRequest
 */
-func (a *MxPlatformApiService) ListHoldingsByAccount(ctx _context.Context, accountGuid string, userGuid string) ApiListHoldingsByAccountRequest {
+func (a *MxPlatformApiService) ListHoldingsByAccount(ctx context.Context, accountGuid string, userGuid string) ApiListHoldingsByAccountRequest {
 	return ApiListHoldingsByAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3762,26 +3762,26 @@ func (a *MxPlatformApiService) ListHoldingsByAccount(ctx _context.Context, accou
 
 // Execute executes the request
 //  @return HoldingsResponseBody
-func (a *MxPlatformApiService) ListHoldingsByAccountExecute(r ApiListHoldingsByAccountRequest) (HoldingsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListHoldingsByAccountExecute(r ApiListHoldingsByAccountRequest) (*HoldingsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  HoldingsResponseBody
+		localVarReturnValue  *HoldingsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListHoldingsByAccount")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/accounts/{account_guid}/holdings"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", _neturl.PathEscape(parameterToString(r.accountGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.fromDate != nil {
 		localVarQueryParams.Add("from_date", parameterToString(*r.fromDate, ""))
@@ -3822,15 +3822,15 @@ func (a *MxPlatformApiService) ListHoldingsByAccountExecute(r ApiListHoldingsByA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3839,7 +3839,7 @@ func (a *MxPlatformApiService) ListHoldingsByAccountExecute(r ApiListHoldingsByA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3850,7 +3850,7 @@ func (a *MxPlatformApiService) ListHoldingsByAccountExecute(r ApiListHoldingsByA
 }
 
 type ApiListHoldingsByMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -3881,7 +3881,7 @@ func (r ApiListHoldingsByMemberRequest) ToDate(toDate string) ApiListHoldingsByM
 	return r
 }
 
-func (r ApiListHoldingsByMemberRequest) Execute() (HoldingsResponseBody, *_nethttp.Response, error) {
+func (r ApiListHoldingsByMemberRequest) Execute() (*HoldingsResponseBody, *http.Response, error) {
 	return r.ApiService.ListHoldingsByMemberExecute(r)
 }
 
@@ -3890,12 +3890,12 @@ ListHoldingsByMember List holdings by member
 
 This endpoint returns all holdings associated with the specified `member` across all accounts.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiListHoldingsByMemberRequest
 */
-func (a *MxPlatformApiService) ListHoldingsByMember(ctx _context.Context, memberGuid string, userGuid string) ApiListHoldingsByMemberRequest {
+func (a *MxPlatformApiService) ListHoldingsByMember(ctx context.Context, memberGuid string, userGuid string) ApiListHoldingsByMemberRequest {
 	return ApiListHoldingsByMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3906,26 +3906,26 @@ func (a *MxPlatformApiService) ListHoldingsByMember(ctx _context.Context, member
 
 // Execute executes the request
 //  @return HoldingsResponseBody
-func (a *MxPlatformApiService) ListHoldingsByMemberExecute(r ApiListHoldingsByMemberRequest) (HoldingsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListHoldingsByMemberExecute(r ApiListHoldingsByMemberRequest) (*HoldingsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  HoldingsResponseBody
+		localVarReturnValue  *HoldingsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListHoldingsByMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/holdings"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.fromDate != nil {
 		localVarQueryParams.Add("from_date", parameterToString(*r.fromDate, ""))
@@ -3966,15 +3966,15 @@ func (a *MxPlatformApiService) ListHoldingsByMemberExecute(r ApiListHoldingsByMe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3983,7 +3983,7 @@ func (a *MxPlatformApiService) ListHoldingsByMemberExecute(r ApiListHoldingsByMe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3994,7 +3994,7 @@ func (a *MxPlatformApiService) ListHoldingsByMemberExecute(r ApiListHoldingsByMe
 }
 
 type ApiListInstitutionCredentialsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	institutionCode string
 	page *int32
@@ -4012,7 +4012,7 @@ func (r ApiListInstitutionCredentialsRequest) RecordsPerPage(recordsPerPage int3
 	return r
 }
 
-func (r ApiListInstitutionCredentialsRequest) Execute() (CredentialsResponseBody, *_nethttp.Response, error) {
+func (r ApiListInstitutionCredentialsRequest) Execute() (*CredentialsResponseBody, *http.Response, error) {
 	return r.ApiService.ListInstitutionCredentialsExecute(r)
 }
 
@@ -4021,11 +4021,11 @@ ListInstitutionCredentials List institution credentials
 
 Use this endpoint to see which credentials will be needed to create a member for a specific institution.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param institutionCode The institution_code of the institution.
  @return ApiListInstitutionCredentialsRequest
 */
-func (a *MxPlatformApiService) ListInstitutionCredentials(ctx _context.Context, institutionCode string) ApiListInstitutionCredentialsRequest {
+func (a *MxPlatformApiService) ListInstitutionCredentials(ctx context.Context, institutionCode string) ApiListInstitutionCredentialsRequest {
 	return ApiListInstitutionCredentialsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4035,25 +4035,25 @@ func (a *MxPlatformApiService) ListInstitutionCredentials(ctx _context.Context, 
 
 // Execute executes the request
 //  @return CredentialsResponseBody
-func (a *MxPlatformApiService) ListInstitutionCredentialsExecute(r ApiListInstitutionCredentialsRequest) (CredentialsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListInstitutionCredentialsExecute(r ApiListInstitutionCredentialsRequest) (*CredentialsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  CredentialsResponseBody
+		localVarReturnValue  *CredentialsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListInstitutionCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/institutions/{institution_code}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"institution_code"+"}", _neturl.PathEscape(parameterToString(r.institutionCode, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"institution_code"+"}", url.PathEscape(parameterToString(r.institutionCode, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -4088,15 +4088,15 @@ func (a *MxPlatformApiService) ListInstitutionCredentialsExecute(r ApiListInstit
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4105,7 +4105,7 @@ func (a *MxPlatformApiService) ListInstitutionCredentialsExecute(r ApiListInstit
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4116,7 +4116,7 @@ func (a *MxPlatformApiService) ListInstitutionCredentialsExecute(r ApiListInstit
 }
 
 type ApiListInstitutionsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	name *string
 	page *int32
@@ -4163,7 +4163,7 @@ func (r ApiListInstitutionsRequest) SupportsTransactionHistory(supportsTransacti
 	return r
 }
 
-func (r ApiListInstitutionsRequest) Execute() (InstitutionsResponseBody, *_nethttp.Response, error) {
+func (r ApiListInstitutionsRequest) Execute() (*InstitutionsResponseBody, *http.Response, error) {
 	return r.ApiService.ListInstitutionsExecute(r)
 }
 
@@ -4172,10 +4172,10 @@ ListInstitutions List institutions
 
 This endpoint returns a list of institutions based on the specified search term or parameter.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListInstitutionsRequest
 */
-func (a *MxPlatformApiService) ListInstitutions(ctx _context.Context) ApiListInstitutionsRequest {
+func (a *MxPlatformApiService) ListInstitutions(ctx context.Context) ApiListInstitutionsRequest {
 	return ApiListInstitutionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4184,24 +4184,24 @@ func (a *MxPlatformApiService) ListInstitutions(ctx _context.Context) ApiListIns
 
 // Execute executes the request
 //  @return InstitutionsResponseBody
-func (a *MxPlatformApiService) ListInstitutionsExecute(r ApiListInstitutionsRequest) (InstitutionsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListInstitutionsExecute(r ApiListInstitutionsRequest) (*InstitutionsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  InstitutionsResponseBody
+		localVarReturnValue  *InstitutionsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListInstitutions")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/institutions"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -4251,15 +4251,15 @@ func (a *MxPlatformApiService) ListInstitutionsExecute(r ApiListInstitutionsRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4268,7 +4268,7 @@ func (a *MxPlatformApiService) ListInstitutionsExecute(r ApiListInstitutionsRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4279,7 +4279,7 @@ func (a *MxPlatformApiService) ListInstitutionsExecute(r ApiListInstitutionsRequ
 }
 
 type ApiListManagedAccountsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	memberGuid string
@@ -4298,7 +4298,7 @@ func (r ApiListManagedAccountsRequest) RecordsPerPage(recordsPerPage int32) ApiL
 	return r
 }
 
-func (r ApiListManagedAccountsRequest) Execute() (AccountsResponseBody, *_nethttp.Response, error) {
+func (r ApiListManagedAccountsRequest) Execute() (*AccountsResponseBody, *http.Response, error) {
 	return r.ApiService.ListManagedAccountsExecute(r)
 }
 
@@ -4307,12 +4307,12 @@ ListManagedAccounts List managed accounts
 
 Use this endpoint to retrieve a list of all the partner-managed accounts associated with the given partner-manage member.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @param memberGuid The unique id for a `member`.
  @return ApiListManagedAccountsRequest
 */
-func (a *MxPlatformApiService) ListManagedAccounts(ctx _context.Context, userGuid string, memberGuid string) ApiListManagedAccountsRequest {
+func (a *MxPlatformApiService) ListManagedAccounts(ctx context.Context, userGuid string, memberGuid string) ApiListManagedAccountsRequest {
 	return ApiListManagedAccountsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4323,26 +4323,26 @@ func (a *MxPlatformApiService) ListManagedAccounts(ctx _context.Context, userGui
 
 // Execute executes the request
 //  @return AccountsResponseBody
-func (a *MxPlatformApiService) ListManagedAccountsExecute(r ApiListManagedAccountsRequest) (AccountsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListManagedAccountsExecute(r ApiListManagedAccountsRequest) (*AccountsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountsResponseBody
+		localVarReturnValue  *AccountsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListManagedAccounts")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -4377,15 +4377,15 @@ func (a *MxPlatformApiService) ListManagedAccountsExecute(r ApiListManagedAccoun
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4394,7 +4394,7 @@ func (a *MxPlatformApiService) ListManagedAccountsExecute(r ApiListManagedAccoun
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4405,7 +4405,7 @@ func (a *MxPlatformApiService) ListManagedAccountsExecute(r ApiListManagedAccoun
 }
 
 type ApiListManagedInstitutionsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	page *int32
 	recordsPerPage *int32
@@ -4422,7 +4422,7 @@ func (r ApiListManagedInstitutionsRequest) RecordsPerPage(recordsPerPage int32) 
 	return r
 }
 
-func (r ApiListManagedInstitutionsRequest) Execute() (InstitutionsResponseBody, *_nethttp.Response, error) {
+func (r ApiListManagedInstitutionsRequest) Execute() (*InstitutionsResponseBody, *http.Response, error) {
 	return r.ApiService.ListManagedInstitutionsExecute(r)
 }
 
@@ -4431,10 +4431,10 @@ ListManagedInstitutions List managed institutions
 
 This endpoint returns a list of institutions which can be used to create partner-managed members.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListManagedInstitutionsRequest
 */
-func (a *MxPlatformApiService) ListManagedInstitutions(ctx _context.Context) ApiListManagedInstitutionsRequest {
+func (a *MxPlatformApiService) ListManagedInstitutions(ctx context.Context) ApiListManagedInstitutionsRequest {
 	return ApiListManagedInstitutionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4443,24 +4443,24 @@ func (a *MxPlatformApiService) ListManagedInstitutions(ctx _context.Context) Api
 
 // Execute executes the request
 //  @return InstitutionsResponseBody
-func (a *MxPlatformApiService) ListManagedInstitutionsExecute(r ApiListManagedInstitutionsRequest) (InstitutionsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListManagedInstitutionsExecute(r ApiListManagedInstitutionsRequest) (*InstitutionsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  InstitutionsResponseBody
+		localVarReturnValue  *InstitutionsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListManagedInstitutions")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/managed_institutions"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -4495,15 +4495,15 @@ func (a *MxPlatformApiService) ListManagedInstitutionsExecute(r ApiListManagedIn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4512,7 +4512,7 @@ func (a *MxPlatformApiService) ListManagedInstitutionsExecute(r ApiListManagedIn
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4523,7 +4523,7 @@ func (a *MxPlatformApiService) ListManagedInstitutionsExecute(r ApiListManagedIn
 }
 
 type ApiListManagedMembersRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	page *int32
@@ -4541,7 +4541,7 @@ func (r ApiListManagedMembersRequest) RecordsPerPage(recordsPerPage int32) ApiLi
 	return r
 }
 
-func (r ApiListManagedMembersRequest) Execute() (MembersResponseBody, *_nethttp.Response, error) {
+func (r ApiListManagedMembersRequest) Execute() (*MembersResponseBody, *http.Response, error) {
 	return r.ApiService.ListManagedMembersExecute(r)
 }
 
@@ -4550,11 +4550,11 @@ ListManagedMembers List managed members
 
 This endpoint returns a list of all the partner-managed members associated with the specified `user`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListManagedMembersRequest
 */
-func (a *MxPlatformApiService) ListManagedMembers(ctx _context.Context, userGuid string) ApiListManagedMembersRequest {
+func (a *MxPlatformApiService) ListManagedMembers(ctx context.Context, userGuid string) ApiListManagedMembersRequest {
 	return ApiListManagedMembersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4564,25 +4564,25 @@ func (a *MxPlatformApiService) ListManagedMembers(ctx _context.Context, userGuid
 
 // Execute executes the request
 //  @return MembersResponseBody
-func (a *MxPlatformApiService) ListManagedMembersExecute(r ApiListManagedMembersRequest) (MembersResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListManagedMembersExecute(r ApiListManagedMembersRequest) (*MembersResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MembersResponseBody
+		localVarReturnValue  *MembersResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListManagedMembers")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -4617,15 +4617,15 @@ func (a *MxPlatformApiService) ListManagedMembersExecute(r ApiListManagedMembers
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4634,7 +4634,7 @@ func (a *MxPlatformApiService) ListManagedMembersExecute(r ApiListManagedMembers
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4645,7 +4645,7 @@ func (a *MxPlatformApiService) ListManagedMembersExecute(r ApiListManagedMembers
 }
 
 type ApiListManagedTransactionsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	memberGuid string
@@ -4664,7 +4664,7 @@ func (r ApiListManagedTransactionsRequest) RecordsPerPage(recordsPerPage int32) 
 	return r
 }
 
-func (r ApiListManagedTransactionsRequest) Execute() (TransactionsResponseBody, *_nethttp.Response, error) {
+func (r ApiListManagedTransactionsRequest) Execute() (*TransactionsResponseBody, *http.Response, error) {
 	return r.ApiService.ListManagedTransactionsExecute(r)
 }
 
@@ -4673,12 +4673,12 @@ ListManagedTransactions List managed transactions
 
 This endpoint returns a list of all the partner-managed transactions associated with the specified `account`, scoped through a `user` and a `member`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @param memberGuid The unique id for a `member`.
  @return ApiListManagedTransactionsRequest
 */
-func (a *MxPlatformApiService) ListManagedTransactions(ctx _context.Context, userGuid string, memberGuid string) ApiListManagedTransactionsRequest {
+func (a *MxPlatformApiService) ListManagedTransactions(ctx context.Context, userGuid string, memberGuid string) ApiListManagedTransactionsRequest {
 	return ApiListManagedTransactionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4689,26 +4689,26 @@ func (a *MxPlatformApiService) ListManagedTransactions(ctx _context.Context, use
 
 // Execute executes the request
 //  @return TransactionsResponseBody
-func (a *MxPlatformApiService) ListManagedTransactionsExecute(r ApiListManagedTransactionsRequest) (TransactionsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListManagedTransactionsExecute(r ApiListManagedTransactionsRequest) (*TransactionsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionsResponseBody
+		localVarReturnValue  *TransactionsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListManagedTransactions")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -4743,15 +4743,15 @@ func (a *MxPlatformApiService) ListManagedTransactionsExecute(r ApiListManagedTr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4760,7 +4760,7 @@ func (a *MxPlatformApiService) ListManagedTransactionsExecute(r ApiListManagedTr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4771,7 +4771,7 @@ func (a *MxPlatformApiService) ListManagedTransactionsExecute(r ApiListManagedTr
 }
 
 type ApiListMemberChallengesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -4790,7 +4790,7 @@ func (r ApiListMemberChallengesRequest) RecordsPerPage(recordsPerPage int32) Api
 	return r
 }
 
-func (r ApiListMemberChallengesRequest) Execute() (ChallengesResponseBody, *_nethttp.Response, error) {
+func (r ApiListMemberChallengesRequest) Execute() (*ChallengesResponseBody, *http.Response, error) {
 	return r.ApiService.ListMemberChallengesExecute(r)
 }
 
@@ -4799,12 +4799,12 @@ ListMemberChallenges List member challenges
 
 Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member. If the aggregation is not challenged, i.e., the member does not have a connection status of `CHALLENGED`, then code `204 No Content` will be returned. If the aggregation has been challenged, i.e., the member does have a connection status of `CHALLENGED`, then code `200 OK` will be returned - along with the corresponding credentials.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiListMemberChallengesRequest
 */
-func (a *MxPlatformApiService) ListMemberChallenges(ctx _context.Context, memberGuid string, userGuid string) ApiListMemberChallengesRequest {
+func (a *MxPlatformApiService) ListMemberChallenges(ctx context.Context, memberGuid string, userGuid string) ApiListMemberChallengesRequest {
 	return ApiListMemberChallengesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4815,26 +4815,26 @@ func (a *MxPlatformApiService) ListMemberChallenges(ctx _context.Context, member
 
 // Execute executes the request
 //  @return ChallengesResponseBody
-func (a *MxPlatformApiService) ListMemberChallengesExecute(r ApiListMemberChallengesRequest) (ChallengesResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListMemberChallengesExecute(r ApiListMemberChallengesRequest) (*ChallengesResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ChallengesResponseBody
+		localVarReturnValue  *ChallengesResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListMemberChallenges")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/challenges"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -4869,15 +4869,15 @@ func (a *MxPlatformApiService) ListMemberChallengesExecute(r ApiListMemberChalle
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4886,7 +4886,7 @@ func (a *MxPlatformApiService) ListMemberChallengesExecute(r ApiListMemberChalle
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4897,7 +4897,7 @@ func (a *MxPlatformApiService) ListMemberChallengesExecute(r ApiListMemberChalle
 }
 
 type ApiListMemberCredentialsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -4916,7 +4916,7 @@ func (r ApiListMemberCredentialsRequest) RecordsPerPage(recordsPerPage int32) Ap
 	return r
 }
 
-func (r ApiListMemberCredentialsRequest) Execute() (CredentialsResponseBody, *_nethttp.Response, error) {
+func (r ApiListMemberCredentialsRequest) Execute() (*CredentialsResponseBody, *http.Response, error) {
 	return r.ApiService.ListMemberCredentialsExecute(r)
 }
 
@@ -4925,12 +4925,12 @@ ListMemberCredentials List member credentials
 
 This endpoint returns an array which contains information on every non-MFA credential associated with a specific member.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiListMemberCredentialsRequest
 */
-func (a *MxPlatformApiService) ListMemberCredentials(ctx _context.Context, memberGuid string, userGuid string) ApiListMemberCredentialsRequest {
+func (a *MxPlatformApiService) ListMemberCredentials(ctx context.Context, memberGuid string, userGuid string) ApiListMemberCredentialsRequest {
 	return ApiListMemberCredentialsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4941,26 +4941,26 @@ func (a *MxPlatformApiService) ListMemberCredentials(ctx _context.Context, membe
 
 // Execute executes the request
 //  @return CredentialsResponseBody
-func (a *MxPlatformApiService) ListMemberCredentialsExecute(r ApiListMemberCredentialsRequest) (CredentialsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListMemberCredentialsExecute(r ApiListMemberCredentialsRequest) (*CredentialsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  CredentialsResponseBody
+		localVarReturnValue  *CredentialsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListMemberCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -4995,15 +4995,15 @@ func (a *MxPlatformApiService) ListMemberCredentialsExecute(r ApiListMemberCrede
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5012,7 +5012,7 @@ func (a *MxPlatformApiService) ListMemberCredentialsExecute(r ApiListMemberCrede
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5023,7 +5023,7 @@ func (a *MxPlatformApiService) ListMemberCredentialsExecute(r ApiListMemberCrede
 }
 
 type ApiListMembersRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	page *int32
@@ -5041,7 +5041,7 @@ func (r ApiListMembersRequest) RecordsPerPage(recordsPerPage int32) ApiListMembe
 	return r
 }
 
-func (r ApiListMembersRequest) Execute() (MembersResponseBody, *_nethttp.Response, error) {
+func (r ApiListMembersRequest) Execute() (*MembersResponseBody, *http.Response, error) {
 	return r.ApiService.ListMembersExecute(r)
 }
 
@@ -5050,11 +5050,11 @@ ListMembers List members
 
 This endpoint returns an array which contains information on every member associated with a specific user.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListMembersRequest
 */
-func (a *MxPlatformApiService) ListMembers(ctx _context.Context, userGuid string) ApiListMembersRequest {
+func (a *MxPlatformApiService) ListMembers(ctx context.Context, userGuid string) ApiListMembersRequest {
 	return ApiListMembersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5064,25 +5064,25 @@ func (a *MxPlatformApiService) ListMembers(ctx _context.Context, userGuid string
 
 // Execute executes the request
 //  @return MembersResponseBody
-func (a *MxPlatformApiService) ListMembersExecute(r ApiListMembersRequest) (MembersResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListMembersExecute(r ApiListMembersRequest) (*MembersResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MembersResponseBody
+		localVarReturnValue  *MembersResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListMembers")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -5117,15 +5117,15 @@ func (a *MxPlatformApiService) ListMembersExecute(r ApiListMembersRequest) (Memb
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5134,7 +5134,7 @@ func (a *MxPlatformApiService) ListMembersExecute(r ApiListMembersRequest) (Memb
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5145,7 +5145,7 @@ func (a *MxPlatformApiService) ListMembersExecute(r ApiListMembersRequest) (Memb
 }
 
 type ApiListMerchantsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	page *int32
 	recordsPerPage *int32
@@ -5162,7 +5162,7 @@ func (r ApiListMerchantsRequest) RecordsPerPage(recordsPerPage int32) ApiListMer
 	return r
 }
 
-func (r ApiListMerchantsRequest) Execute() (MerchantsResponseBody, *_nethttp.Response, error) {
+func (r ApiListMerchantsRequest) Execute() (*MerchantsResponseBody, *http.Response, error) {
 	return r.ApiService.ListMerchantsExecute(r)
 }
 
@@ -5171,10 +5171,10 @@ ListMerchants List merchants
 
 This endpoint returns a paginated list of all the merchants in the MX system.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListMerchantsRequest
 */
-func (a *MxPlatformApiService) ListMerchants(ctx _context.Context) ApiListMerchantsRequest {
+func (a *MxPlatformApiService) ListMerchants(ctx context.Context) ApiListMerchantsRequest {
 	return ApiListMerchantsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5183,24 +5183,24 @@ func (a *MxPlatformApiService) ListMerchants(ctx _context.Context) ApiListMercha
 
 // Execute executes the request
 //  @return MerchantsResponseBody
-func (a *MxPlatformApiService) ListMerchantsExecute(r ApiListMerchantsRequest) (MerchantsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListMerchantsExecute(r ApiListMerchantsRequest) (*MerchantsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MerchantsResponseBody
+		localVarReturnValue  *MerchantsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListMerchants")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/merchants"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -5235,15 +5235,15 @@ func (a *MxPlatformApiService) ListMerchantsExecute(r ApiListMerchantsRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5252,7 +5252,7 @@ func (a *MxPlatformApiService) ListMerchantsExecute(r ApiListMerchantsRequest) (
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5263,7 +5263,7 @@ func (a *MxPlatformApiService) ListMerchantsExecute(r ApiListMerchantsRequest) (
 }
 
 type ApiListStatementsByMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -5282,7 +5282,7 @@ func (r ApiListStatementsByMemberRequest) RecordsPerPage(recordsPerPage int32) A
 	return r
 }
 
-func (r ApiListStatementsByMemberRequest) Execute() (StatementsResponseBody, *_nethttp.Response, error) {
+func (r ApiListStatementsByMemberRequest) Execute() (*StatementsResponseBody, *http.Response, error) {
 	return r.ApiService.ListStatementsByMemberExecute(r)
 }
 
@@ -5291,12 +5291,12 @@ ListStatementsByMember List statements by member
 
 Use this endpoint to get an array of available statements.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiListStatementsByMemberRequest
 */
-func (a *MxPlatformApiService) ListStatementsByMember(ctx _context.Context, memberGuid string, userGuid string) ApiListStatementsByMemberRequest {
+func (a *MxPlatformApiService) ListStatementsByMember(ctx context.Context, memberGuid string, userGuid string) ApiListStatementsByMemberRequest {
 	return ApiListStatementsByMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5307,26 +5307,26 @@ func (a *MxPlatformApiService) ListStatementsByMember(ctx _context.Context, memb
 
 // Execute executes the request
 //  @return StatementsResponseBody
-func (a *MxPlatformApiService) ListStatementsByMemberExecute(r ApiListStatementsByMemberRequest) (StatementsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListStatementsByMemberExecute(r ApiListStatementsByMemberRequest) (*StatementsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  StatementsResponseBody
+		localVarReturnValue  *StatementsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListStatementsByMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/statements"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -5361,15 +5361,15 @@ func (a *MxPlatformApiService) ListStatementsByMemberExecute(r ApiListStatements
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5378,7 +5378,7 @@ func (a *MxPlatformApiService) ListStatementsByMemberExecute(r ApiListStatements
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5389,7 +5389,7 @@ func (a *MxPlatformApiService) ListStatementsByMemberExecute(r ApiListStatements
 }
 
 type ApiListTaggingsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	page *int32
@@ -5407,7 +5407,7 @@ func (r ApiListTaggingsRequest) RecordsPerPage(recordsPerPage int32) ApiListTagg
 	return r
 }
 
-func (r ApiListTaggingsRequest) Execute() (TaggingsResponseBody, *_nethttp.Response, error) {
+func (r ApiListTaggingsRequest) Execute() (*TaggingsResponseBody, *http.Response, error) {
 	return r.ApiService.ListTaggingsExecute(r)
 }
 
@@ -5416,11 +5416,11 @@ ListTaggings List taggings
 
 Use this endpoint to retrieve a list of all the taggings associated with a specific user.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListTaggingsRequest
 */
-func (a *MxPlatformApiService) ListTaggings(ctx _context.Context, userGuid string) ApiListTaggingsRequest {
+func (a *MxPlatformApiService) ListTaggings(ctx context.Context, userGuid string) ApiListTaggingsRequest {
 	return ApiListTaggingsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5430,25 +5430,25 @@ func (a *MxPlatformApiService) ListTaggings(ctx _context.Context, userGuid strin
 
 // Execute executes the request
 //  @return TaggingsResponseBody
-func (a *MxPlatformApiService) ListTaggingsExecute(r ApiListTaggingsRequest) (TaggingsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListTaggingsExecute(r ApiListTaggingsRequest) (*TaggingsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TaggingsResponseBody
+		localVarReturnValue  *TaggingsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListTaggings")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/taggings"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -5483,15 +5483,15 @@ func (a *MxPlatformApiService) ListTaggingsExecute(r ApiListTaggingsRequest) (Ta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5500,7 +5500,7 @@ func (a *MxPlatformApiService) ListTaggingsExecute(r ApiListTaggingsRequest) (Ta
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5511,7 +5511,7 @@ func (a *MxPlatformApiService) ListTaggingsExecute(r ApiListTaggingsRequest) (Ta
 }
 
 type ApiListTagsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	page *int32
@@ -5529,7 +5529,7 @@ func (r ApiListTagsRequest) RecordsPerPage(recordsPerPage int32) ApiListTagsRequ
 	return r
 }
 
-func (r ApiListTagsRequest) Execute() (TagsResponseBody, *_nethttp.Response, error) {
+func (r ApiListTagsRequest) Execute() (*TagsResponseBody, *http.Response, error) {
 	return r.ApiService.ListTagsExecute(r)
 }
 
@@ -5538,11 +5538,11 @@ ListTags List tags
 
 Use this endpoint to list all tags associated with the specified `user`. Each user includes the `Business` tag by default.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListTagsRequest
 */
-func (a *MxPlatformApiService) ListTags(ctx _context.Context, userGuid string) ApiListTagsRequest {
+func (a *MxPlatformApiService) ListTags(ctx context.Context, userGuid string) ApiListTagsRequest {
 	return ApiListTagsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5552,25 +5552,25 @@ func (a *MxPlatformApiService) ListTags(ctx _context.Context, userGuid string) A
 
 // Execute executes the request
 //  @return TagsResponseBody
-func (a *MxPlatformApiService) ListTagsExecute(r ApiListTagsRequest) (TagsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListTagsExecute(r ApiListTagsRequest) (*TagsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TagsResponseBody
+		localVarReturnValue  *TagsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListTags")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/tags"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -5605,15 +5605,15 @@ func (a *MxPlatformApiService) ListTagsExecute(r ApiListTagsRequest) (TagsRespon
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5622,7 +5622,7 @@ func (a *MxPlatformApiService) ListTagsExecute(r ApiListTagsRequest) (TagsRespon
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5633,7 +5633,7 @@ func (a *MxPlatformApiService) ListTagsExecute(r ApiListTagsRequest) (TagsRespon
 }
 
 type ApiListTransactionRulesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	page *int32
@@ -5651,7 +5651,7 @@ func (r ApiListTransactionRulesRequest) RecordsPerPage(recordsPerPage int32) Api
 	return r
 }
 
-func (r ApiListTransactionRulesRequest) Execute() (TransactionRulesResponseBody, *_nethttp.Response, error) {
+func (r ApiListTransactionRulesRequest) Execute() (*TransactionRulesResponseBody, *http.Response, error) {
 	return r.ApiService.ListTransactionRulesExecute(r)
 }
 
@@ -5660,11 +5660,11 @@ ListTransactionRules List transaction rules
 
 Use this endpoint to read the attributes of all existing transaction rules belonging to the user.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListTransactionRulesRequest
 */
-func (a *MxPlatformApiService) ListTransactionRules(ctx _context.Context, userGuid string) ApiListTransactionRulesRequest {
+func (a *MxPlatformApiService) ListTransactionRules(ctx context.Context, userGuid string) ApiListTransactionRulesRequest {
 	return ApiListTransactionRulesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5674,25 +5674,25 @@ func (a *MxPlatformApiService) ListTransactionRules(ctx _context.Context, userGu
 
 // Execute executes the request
 //  @return TransactionRulesResponseBody
-func (a *MxPlatformApiService) ListTransactionRulesExecute(r ApiListTransactionRulesRequest) (TransactionRulesResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListTransactionRulesExecute(r ApiListTransactionRulesRequest) (*TransactionRulesResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionRulesResponseBody
+		localVarReturnValue  *TransactionRulesResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListTransactionRules")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/transaction_rules"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -5727,15 +5727,15 @@ func (a *MxPlatformApiService) ListTransactionRulesExecute(r ApiListTransactionR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5744,7 +5744,7 @@ func (a *MxPlatformApiService) ListTransactionRulesExecute(r ApiListTransactionR
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5755,7 +5755,7 @@ func (a *MxPlatformApiService) ListTransactionRulesExecute(r ApiListTransactionR
 }
 
 type ApiListTransactionsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	fromDate *string
@@ -5785,7 +5785,7 @@ func (r ApiListTransactionsRequest) ToDate(toDate string) ApiListTransactionsReq
 	return r
 }
 
-func (r ApiListTransactionsRequest) Execute() (TransactionsResponseBody, *_nethttp.Response, error) {
+func (r ApiListTransactionsRequest) Execute() (*TransactionsResponseBody, *http.Response, error) {
 	return r.ApiService.ListTransactionsExecute(r)
 }
 
@@ -5794,11 +5794,11 @@ ListTransactions List transactions
 
 Requests to this endpoint return a list of transactions associated with the specified `user`, accross all members and accounts associated with that `user`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListTransactionsRequest
 */
-func (a *MxPlatformApiService) ListTransactions(ctx _context.Context, userGuid string) ApiListTransactionsRequest {
+func (a *MxPlatformApiService) ListTransactions(ctx context.Context, userGuid string) ApiListTransactionsRequest {
 	return ApiListTransactionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5808,25 +5808,25 @@ func (a *MxPlatformApiService) ListTransactions(ctx _context.Context, userGuid s
 
 // Execute executes the request
 //  @return TransactionsResponseBody
-func (a *MxPlatformApiService) ListTransactionsExecute(r ApiListTransactionsRequest) (TransactionsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListTransactionsExecute(r ApiListTransactionsRequest) (*TransactionsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionsResponseBody
+		localVarReturnValue  *TransactionsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListTransactions")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.fromDate != nil {
 		localVarQueryParams.Add("from_date", parameterToString(*r.fromDate, ""))
@@ -5867,15 +5867,15 @@ func (a *MxPlatformApiService) ListTransactionsExecute(r ApiListTransactionsRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5884,7 +5884,7 @@ func (a *MxPlatformApiService) ListTransactionsExecute(r ApiListTransactionsRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5895,7 +5895,7 @@ func (a *MxPlatformApiService) ListTransactionsExecute(r ApiListTransactionsRequ
 }
 
 type ApiListTransactionsByAccountRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	accountGuid string
 	userGuid string
@@ -5926,7 +5926,7 @@ func (r ApiListTransactionsByAccountRequest) ToDate(toDate string) ApiListTransa
 	return r
 }
 
-func (r ApiListTransactionsByAccountRequest) Execute() (TransactionsResponseBody, *_nethttp.Response, error) {
+func (r ApiListTransactionsByAccountRequest) Execute() (*TransactionsResponseBody, *http.Response, error) {
 	return r.ApiService.ListTransactionsByAccountExecute(r)
 }
 
@@ -5935,12 +5935,12 @@ ListTransactionsByAccount List transactions by account
 
 This endpoint returns a list of the last 90 days of transactions associated with the specified account.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountGuid The unique id for an `account`.
  @param userGuid The unique id for a `user`.
  @return ApiListTransactionsByAccountRequest
 */
-func (a *MxPlatformApiService) ListTransactionsByAccount(ctx _context.Context, accountGuid string, userGuid string) ApiListTransactionsByAccountRequest {
+func (a *MxPlatformApiService) ListTransactionsByAccount(ctx context.Context, accountGuid string, userGuid string) ApiListTransactionsByAccountRequest {
 	return ApiListTransactionsByAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5951,26 +5951,26 @@ func (a *MxPlatformApiService) ListTransactionsByAccount(ctx _context.Context, a
 
 // Execute executes the request
 //  @return TransactionsResponseBody
-func (a *MxPlatformApiService) ListTransactionsByAccountExecute(r ApiListTransactionsByAccountRequest) (TransactionsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListTransactionsByAccountExecute(r ApiListTransactionsByAccountRequest) (*TransactionsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionsResponseBody
+		localVarReturnValue  *TransactionsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListTransactionsByAccount")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/accounts/{account_guid}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", _neturl.PathEscape(parameterToString(r.accountGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.fromDate != nil {
 		localVarQueryParams.Add("from_date", parameterToString(*r.fromDate, ""))
@@ -6011,15 +6011,15 @@ func (a *MxPlatformApiService) ListTransactionsByAccountExecute(r ApiListTransac
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6028,7 +6028,7 @@ func (a *MxPlatformApiService) ListTransactionsByAccountExecute(r ApiListTransac
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6039,7 +6039,7 @@ func (a *MxPlatformApiService) ListTransactionsByAccountExecute(r ApiListTransac
 }
 
 type ApiListTransactionsByMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -6070,7 +6070,7 @@ func (r ApiListTransactionsByMemberRequest) ToDate(toDate string) ApiListTransac
 	return r
 }
 
-func (r ApiListTransactionsByMemberRequest) Execute() (TransactionsResponseBody, *_nethttp.Response, error) {
+func (r ApiListTransactionsByMemberRequest) Execute() (*TransactionsResponseBody, *http.Response, error) {
 	return r.ApiService.ListTransactionsByMemberExecute(r)
 }
 
@@ -6079,12 +6079,12 @@ ListTransactionsByMember List transactions by member
 
 Requests to this endpoint return a list of transactions associated with the specified `member`, accross all accounts associated with that `member`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiListTransactionsByMemberRequest
 */
-func (a *MxPlatformApiService) ListTransactionsByMember(ctx _context.Context, memberGuid string, userGuid string) ApiListTransactionsByMemberRequest {
+func (a *MxPlatformApiService) ListTransactionsByMember(ctx context.Context, memberGuid string, userGuid string) ApiListTransactionsByMemberRequest {
 	return ApiListTransactionsByMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6095,26 +6095,26 @@ func (a *MxPlatformApiService) ListTransactionsByMember(ctx _context.Context, me
 
 // Execute executes the request
 //  @return TransactionsResponseBody
-func (a *MxPlatformApiService) ListTransactionsByMemberExecute(r ApiListTransactionsByMemberRequest) (TransactionsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListTransactionsByMemberExecute(r ApiListTransactionsByMemberRequest) (*TransactionsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionsResponseBody
+		localVarReturnValue  *TransactionsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListTransactionsByMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.fromDate != nil {
 		localVarQueryParams.Add("from_date", parameterToString(*r.fromDate, ""))
@@ -6155,15 +6155,15 @@ func (a *MxPlatformApiService) ListTransactionsByMemberExecute(r ApiListTransact
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6172,7 +6172,7 @@ func (a *MxPlatformApiService) ListTransactionsByMemberExecute(r ApiListTransact
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6183,7 +6183,7 @@ func (a *MxPlatformApiService) ListTransactionsByMemberExecute(r ApiListTransact
 }
 
 type ApiListTransactionsByTagRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	tagGuid string
 	userGuid string
@@ -6214,7 +6214,7 @@ func (r ApiListTransactionsByTagRequest) ToDate(toDate string) ApiListTransactio
 	return r
 }
 
-func (r ApiListTransactionsByTagRequest) Execute() (TransactionsResponseBody, *_nethttp.Response, error) {
+func (r ApiListTransactionsByTagRequest) Execute() (*TransactionsResponseBody, *http.Response, error) {
 	return r.ApiService.ListTransactionsByTagExecute(r)
 }
 
@@ -6223,12 +6223,12 @@ ListTransactionsByTag List transactions by tag
 
 Use this endpoint to get a list of all transactions associated with a particular tag according to the tag’s unique GUID. In other words, a list of all transactions that have been assigned to a particular tag using the create a tagging endpoint.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tagGuid The unique id for a `tag`.
  @param userGuid The unique id for a `user`.
  @return ApiListTransactionsByTagRequest
 */
-func (a *MxPlatformApiService) ListTransactionsByTag(ctx _context.Context, tagGuid string, userGuid string) ApiListTransactionsByTagRequest {
+func (a *MxPlatformApiService) ListTransactionsByTag(ctx context.Context, tagGuid string, userGuid string) ApiListTransactionsByTagRequest {
 	return ApiListTransactionsByTagRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6239,26 +6239,26 @@ func (a *MxPlatformApiService) ListTransactionsByTag(ctx _context.Context, tagGu
 
 // Execute executes the request
 //  @return TransactionsResponseBody
-func (a *MxPlatformApiService) ListTransactionsByTagExecute(r ApiListTransactionsByTagRequest) (TransactionsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListTransactionsByTagExecute(r ApiListTransactionsByTagRequest) (*TransactionsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionsResponseBody
+		localVarReturnValue  *TransactionsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListTransactionsByTag")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/tags/{tag_guid}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"tag_guid"+"}", _neturl.PathEscape(parameterToString(r.tagGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tag_guid"+"}", url.PathEscape(parameterToString(r.tagGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.fromDate != nil {
 		localVarQueryParams.Add("from_date", parameterToString(*r.fromDate, ""))
@@ -6299,15 +6299,15 @@ func (a *MxPlatformApiService) ListTransactionsByTagExecute(r ApiListTransaction
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6316,7 +6316,7 @@ func (a *MxPlatformApiService) ListTransactionsByTagExecute(r ApiListTransaction
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6327,7 +6327,7 @@ func (a *MxPlatformApiService) ListTransactionsByTagExecute(r ApiListTransaction
 }
 
 type ApiListUserAccountsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	page *int32
@@ -6345,7 +6345,7 @@ func (r ApiListUserAccountsRequest) RecordsPerPage(recordsPerPage int32) ApiList
 	return r
 }
 
-func (r ApiListUserAccountsRequest) Execute() (AccountsResponseBody, *_nethttp.Response, error) {
+func (r ApiListUserAccountsRequest) Execute() (*AccountsResponseBody, *http.Response, error) {
 	return r.ApiService.ListUserAccountsExecute(r)
 }
 
@@ -6354,11 +6354,11 @@ ListUserAccounts List accounts
 
 This endpoint returns a list of all the accounts associated with the specified `user`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiListUserAccountsRequest
 */
-func (a *MxPlatformApiService) ListUserAccounts(ctx _context.Context, userGuid string) ApiListUserAccountsRequest {
+func (a *MxPlatformApiService) ListUserAccounts(ctx context.Context, userGuid string) ApiListUserAccountsRequest {
 	return ApiListUserAccountsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6368,25 +6368,25 @@ func (a *MxPlatformApiService) ListUserAccounts(ctx _context.Context, userGuid s
 
 // Execute executes the request
 //  @return AccountsResponseBody
-func (a *MxPlatformApiService) ListUserAccountsExecute(r ApiListUserAccountsRequest) (AccountsResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListUserAccountsExecute(r ApiListUserAccountsRequest) (*AccountsResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountsResponseBody
+		localVarReturnValue  *AccountsResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListUserAccounts")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -6421,15 +6421,15 @@ func (a *MxPlatformApiService) ListUserAccountsExecute(r ApiListUserAccountsRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6438,7 +6438,7 @@ func (a *MxPlatformApiService) ListUserAccountsExecute(r ApiListUserAccountsRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6449,7 +6449,7 @@ func (a *MxPlatformApiService) ListUserAccountsExecute(r ApiListUserAccountsRequ
 }
 
 type ApiListUsersRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	page *int32
 	recordsPerPage *int32
@@ -6466,7 +6466,7 @@ func (r ApiListUsersRequest) RecordsPerPage(recordsPerPage int32) ApiListUsersRe
 	return r
 }
 
-func (r ApiListUsersRequest) Execute() (UsersResponseBody, *_nethttp.Response, error) {
+func (r ApiListUsersRequest) Execute() (*UsersResponseBody, *http.Response, error) {
 	return r.ApiService.ListUsersExecute(r)
 }
 
@@ -6475,10 +6475,10 @@ ListUsers List users
 
 Use this endpoint to list every user you've created in the MX Platform API.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListUsersRequest
 */
-func (a *MxPlatformApiService) ListUsers(ctx _context.Context) ApiListUsersRequest {
+func (a *MxPlatformApiService) ListUsers(ctx context.Context) ApiListUsersRequest {
 	return ApiListUsersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6487,24 +6487,24 @@ func (a *MxPlatformApiService) ListUsers(ctx _context.Context) ApiListUsersReque
 
 // Execute executes the request
 //  @return UsersResponseBody
-func (a *MxPlatformApiService) ListUsersExecute(r ApiListUsersRequest) (UsersResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ListUsersExecute(r ApiListUsersRequest) (*UsersResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  UsersResponseBody
+		localVarReturnValue  *UsersResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListUsers")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -6539,15 +6539,15 @@ func (a *MxPlatformApiService) ListUsersExecute(r ApiListUsersRequest) (UsersRes
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6556,7 +6556,7 @@ func (a *MxPlatformApiService) ListUsersExecute(r ApiListUsersRequest) (UsersRes
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6567,14 +6567,14 @@ func (a *MxPlatformApiService) ListUsersExecute(r ApiListUsersRequest) (UsersRes
 }
 
 type ApiReadAccountRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	accountGuid string
 	userGuid string
 }
 
 
-func (r ApiReadAccountRequest) Execute() (AccountResponseBody, *_nethttp.Response, error) {
+func (r ApiReadAccountRequest) Execute() (*AccountResponseBody, *http.Response, error) {
 	return r.ApiService.ReadAccountExecute(r)
 }
 
@@ -6583,12 +6583,12 @@ ReadAccount Read account
 
 This endpoint returns the specified `account` resource.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountGuid The unique id for an `account`.
  @param userGuid The unique id for a `user`.
  @return ApiReadAccountRequest
 */
-func (a *MxPlatformApiService) ReadAccount(ctx _context.Context, accountGuid string, userGuid string) ApiReadAccountRequest {
+func (a *MxPlatformApiService) ReadAccount(ctx context.Context, accountGuid string, userGuid string) ApiReadAccountRequest {
 	return ApiReadAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6599,26 +6599,26 @@ func (a *MxPlatformApiService) ReadAccount(ctx _context.Context, accountGuid str
 
 // Execute executes the request
 //  @return AccountResponseBody
-func (a *MxPlatformApiService) ReadAccountExecute(r ApiReadAccountRequest) (AccountResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadAccountExecute(r ApiReadAccountRequest) (*AccountResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountResponseBody
+		localVarReturnValue  *AccountResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadAccount")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/accounts/{account_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", _neturl.PathEscape(parameterToString(r.accountGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6647,15 +6647,15 @@ func (a *MxPlatformApiService) ReadAccountExecute(r ApiReadAccountRequest) (Acco
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6664,7 +6664,7 @@ func (a *MxPlatformApiService) ReadAccountExecute(r ApiReadAccountRequest) (Acco
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6675,14 +6675,14 @@ func (a *MxPlatformApiService) ReadAccountExecute(r ApiReadAccountRequest) (Acco
 }
 
 type ApiReadCategoryRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	categoryGuid string
 	userGuid string
 }
 
 
-func (r ApiReadCategoryRequest) Execute() (CategoryResponseBody, *_nethttp.Response, error) {
+func (r ApiReadCategoryRequest) Execute() (*CategoryResponseBody, *http.Response, error) {
 	return r.ApiService.ReadCategoryExecute(r)
 }
 
@@ -6691,12 +6691,12 @@ ReadCategory Read a custom category
 
 Use this endpoint to read the attributes of either a default category or a custom category.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param categoryGuid The unique id for a `category`.
  @param userGuid The unique id for a `user`.
  @return ApiReadCategoryRequest
 */
-func (a *MxPlatformApiService) ReadCategory(ctx _context.Context, categoryGuid string, userGuid string) ApiReadCategoryRequest {
+func (a *MxPlatformApiService) ReadCategory(ctx context.Context, categoryGuid string, userGuid string) ApiReadCategoryRequest {
 	return ApiReadCategoryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6707,26 +6707,26 @@ func (a *MxPlatformApiService) ReadCategory(ctx _context.Context, categoryGuid s
 
 // Execute executes the request
 //  @return CategoryResponseBody
-func (a *MxPlatformApiService) ReadCategoryExecute(r ApiReadCategoryRequest) (CategoryResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadCategoryExecute(r ApiReadCategoryRequest) (*CategoryResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  CategoryResponseBody
+		localVarReturnValue  *CategoryResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadCategory")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/categories/{category_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"category_guid"+"}", _neturl.PathEscape(parameterToString(r.categoryGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"category_guid"+"}", url.PathEscape(parameterToString(r.categoryGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6755,15 +6755,15 @@ func (a *MxPlatformApiService) ReadCategoryExecute(r ApiReadCategoryRequest) (Ca
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6772,7 +6772,7 @@ func (a *MxPlatformApiService) ReadCategoryExecute(r ApiReadCategoryRequest) (Ca
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6783,14 +6783,14 @@ func (a *MxPlatformApiService) ReadCategoryExecute(r ApiReadCategoryRequest) (Ca
 }
 
 type ApiReadDefaultCategoryRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	categoryGuid string
 	userGuid string
 }
 
 
-func (r ApiReadDefaultCategoryRequest) Execute() (CategoryResponseBody, *_nethttp.Response, error) {
+func (r ApiReadDefaultCategoryRequest) Execute() (*CategoryResponseBody, *http.Response, error) {
 	return r.ApiService.ReadDefaultCategoryExecute(r)
 }
 
@@ -6799,12 +6799,12 @@ ReadDefaultCategory Read a default category
 
 Use this endpoint to read the attributes of a default category.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param categoryGuid The unique id for a `category`.
  @param userGuid The unique id for a `user`.
  @return ApiReadDefaultCategoryRequest
 */
-func (a *MxPlatformApiService) ReadDefaultCategory(ctx _context.Context, categoryGuid string, userGuid string) ApiReadDefaultCategoryRequest {
+func (a *MxPlatformApiService) ReadDefaultCategory(ctx context.Context, categoryGuid string, userGuid string) ApiReadDefaultCategoryRequest {
 	return ApiReadDefaultCategoryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6815,26 +6815,26 @@ func (a *MxPlatformApiService) ReadDefaultCategory(ctx _context.Context, categor
 
 // Execute executes the request
 //  @return CategoryResponseBody
-func (a *MxPlatformApiService) ReadDefaultCategoryExecute(r ApiReadDefaultCategoryRequest) (CategoryResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadDefaultCategoryExecute(r ApiReadDefaultCategoryRequest) (*CategoryResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  CategoryResponseBody
+		localVarReturnValue  *CategoryResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadDefaultCategory")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/categories/{category_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"category_guid"+"}", _neturl.PathEscape(parameterToString(r.categoryGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"category_guid"+"}", url.PathEscape(parameterToString(r.categoryGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6863,15 +6863,15 @@ func (a *MxPlatformApiService) ReadDefaultCategoryExecute(r ApiReadDefaultCatego
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6880,7 +6880,7 @@ func (a *MxPlatformApiService) ReadDefaultCategoryExecute(r ApiReadDefaultCatego
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6891,14 +6891,14 @@ func (a *MxPlatformApiService) ReadDefaultCategoryExecute(r ApiReadDefaultCatego
 }
 
 type ApiReadHoldingRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	holdingGuid string
 	userGuid string
 }
 
 
-func (r ApiReadHoldingRequest) Execute() (HoldingResponseBody, *_nethttp.Response, error) {
+func (r ApiReadHoldingRequest) Execute() (*HoldingResponseBody, *http.Response, error) {
 	return r.ApiService.ReadHoldingExecute(r)
 }
 
@@ -6907,12 +6907,12 @@ ReadHolding Read holding
 
 Use this endpoint to read the attributes of a specific `holding`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param holdingGuid The unique id for a `holding`.
  @param userGuid The unique id for a `user`.
  @return ApiReadHoldingRequest
 */
-func (a *MxPlatformApiService) ReadHolding(ctx _context.Context, holdingGuid string, userGuid string) ApiReadHoldingRequest {
+func (a *MxPlatformApiService) ReadHolding(ctx context.Context, holdingGuid string, userGuid string) ApiReadHoldingRequest {
 	return ApiReadHoldingRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6923,26 +6923,26 @@ func (a *MxPlatformApiService) ReadHolding(ctx _context.Context, holdingGuid str
 
 // Execute executes the request
 //  @return HoldingResponseBody
-func (a *MxPlatformApiService) ReadHoldingExecute(r ApiReadHoldingRequest) (HoldingResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadHoldingExecute(r ApiReadHoldingRequest) (*HoldingResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  HoldingResponseBody
+		localVarReturnValue  *HoldingResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadHolding")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/holdings/{holding_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"holding_guid"+"}", _neturl.PathEscape(parameterToString(r.holdingGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"holding_guid"+"}", url.PathEscape(parameterToString(r.holdingGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6971,15 +6971,15 @@ func (a *MxPlatformApiService) ReadHoldingExecute(r ApiReadHoldingRequest) (Hold
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6988,7 +6988,7 @@ func (a *MxPlatformApiService) ReadHoldingExecute(r ApiReadHoldingRequest) (Hold
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6999,13 +6999,13 @@ func (a *MxPlatformApiService) ReadHoldingExecute(r ApiReadHoldingRequest) (Hold
 }
 
 type ApiReadInstitutionRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	institutionCode string
 }
 
 
-func (r ApiReadInstitutionRequest) Execute() (InstitutionResponseBody, *_nethttp.Response, error) {
+func (r ApiReadInstitutionRequest) Execute() (*InstitutionResponseBody, *http.Response, error) {
 	return r.ApiService.ReadInstitutionExecute(r)
 }
 
@@ -7014,11 +7014,11 @@ ReadInstitution Read institution
 
 This endpoint returns information about the institution specified by `institution_code`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param institutionCode The institution_code of the institution.
  @return ApiReadInstitutionRequest
 */
-func (a *MxPlatformApiService) ReadInstitution(ctx _context.Context, institutionCode string) ApiReadInstitutionRequest {
+func (a *MxPlatformApiService) ReadInstitution(ctx context.Context, institutionCode string) ApiReadInstitutionRequest {
 	return ApiReadInstitutionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -7028,25 +7028,25 @@ func (a *MxPlatformApiService) ReadInstitution(ctx _context.Context, institution
 
 // Execute executes the request
 //  @return InstitutionResponseBody
-func (a *MxPlatformApiService) ReadInstitutionExecute(r ApiReadInstitutionRequest) (InstitutionResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadInstitutionExecute(r ApiReadInstitutionRequest) (*InstitutionResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  InstitutionResponseBody
+		localVarReturnValue  *InstitutionResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadInstitution")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/institutions/{institution_code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"institution_code"+"}", _neturl.PathEscape(parameterToString(r.institutionCode, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"institution_code"+"}", url.PathEscape(parameterToString(r.institutionCode, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7075,15 +7075,15 @@ func (a *MxPlatformApiService) ReadInstitutionExecute(r ApiReadInstitutionReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7092,7 +7092,7 @@ func (a *MxPlatformApiService) ReadInstitutionExecute(r ApiReadInstitutionReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7103,7 +7103,7 @@ func (a *MxPlatformApiService) ReadInstitutionExecute(r ApiReadInstitutionReques
 }
 
 type ApiReadManagedAccountRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -7111,7 +7111,7 @@ type ApiReadManagedAccountRequest struct {
 }
 
 
-func (r ApiReadManagedAccountRequest) Execute() (AccountResponseBody, *_nethttp.Response, error) {
+func (r ApiReadManagedAccountRequest) Execute() (*AccountResponseBody, *http.Response, error) {
 	return r.ApiService.ReadManagedAccountExecute(r)
 }
 
@@ -7120,13 +7120,13 @@ ReadManagedAccount Read managed account
 
 Use this endpoint to read the attributes of a partner-managed account according to its unique guid.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @param accountGuid The unique id for an `account`.
  @return ApiReadManagedAccountRequest
 */
-func (a *MxPlatformApiService) ReadManagedAccount(ctx _context.Context, memberGuid string, userGuid string, accountGuid string) ApiReadManagedAccountRequest {
+func (a *MxPlatformApiService) ReadManagedAccount(ctx context.Context, memberGuid string, userGuid string, accountGuid string) ApiReadManagedAccountRequest {
 	return ApiReadManagedAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -7138,27 +7138,27 @@ func (a *MxPlatformApiService) ReadManagedAccount(ctx _context.Context, memberGu
 
 // Execute executes the request
 //  @return AccountResponseBody
-func (a *MxPlatformApiService) ReadManagedAccountExecute(r ApiReadManagedAccountRequest) (AccountResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadManagedAccountExecute(r ApiReadManagedAccountRequest) (*AccountResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountResponseBody
+		localVarReturnValue  *AccountResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadManagedAccount")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", _neturl.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7187,15 +7187,15 @@ func (a *MxPlatformApiService) ReadManagedAccountExecute(r ApiReadManagedAccount
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7204,7 +7204,7 @@ func (a *MxPlatformApiService) ReadManagedAccountExecute(r ApiReadManagedAccount
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7215,14 +7215,14 @@ func (a *MxPlatformApiService) ReadManagedAccountExecute(r ApiReadManagedAccount
 }
 
 type ApiReadManagedMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiReadManagedMemberRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiReadManagedMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.ReadManagedMemberExecute(r)
 }
 
@@ -7231,12 +7231,12 @@ ReadManagedMember Read managed member
 
 This endpoint returns the attributes of the specified partner-managed `member`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiReadManagedMemberRequest
 */
-func (a *MxPlatformApiService) ReadManagedMember(ctx _context.Context, memberGuid string, userGuid string) ApiReadManagedMemberRequest {
+func (a *MxPlatformApiService) ReadManagedMember(ctx context.Context, memberGuid string, userGuid string) ApiReadManagedMemberRequest {
 	return ApiReadManagedMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -7247,26 +7247,26 @@ func (a *MxPlatformApiService) ReadManagedMember(ctx _context.Context, memberGui
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) ReadManagedMemberExecute(r ApiReadManagedMemberRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadManagedMemberExecute(r ApiReadManagedMemberRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadManagedMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7295,15 +7295,15 @@ func (a *MxPlatformApiService) ReadManagedMemberExecute(r ApiReadManagedMemberRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7312,7 +7312,7 @@ func (a *MxPlatformApiService) ReadManagedMemberExecute(r ApiReadManagedMemberRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7323,7 +7323,7 @@ func (a *MxPlatformApiService) ReadManagedMemberExecute(r ApiReadManagedMemberRe
 }
 
 type ApiReadManagedTransactionRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -7331,7 +7331,7 @@ type ApiReadManagedTransactionRequest struct {
 }
 
 
-func (r ApiReadManagedTransactionRequest) Execute() (TransactionResponseBody, *_nethttp.Response, error) {
+func (r ApiReadManagedTransactionRequest) Execute() (*TransactionResponseBody, *http.Response, error) {
 	return r.ApiService.ReadManagedTransactionExecute(r)
 }
 
@@ -7340,13 +7340,13 @@ ReadManagedTransaction Read managed transaction
 
 Requests to this endpoint will return the attributes of the specified partner-managed `transaction`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @param transactionGuid The unique id for a `transaction`.
  @return ApiReadManagedTransactionRequest
 */
-func (a *MxPlatformApiService) ReadManagedTransaction(ctx _context.Context, memberGuid string, userGuid string, transactionGuid string) ApiReadManagedTransactionRequest {
+func (a *MxPlatformApiService) ReadManagedTransaction(ctx context.Context, memberGuid string, userGuid string, transactionGuid string) ApiReadManagedTransactionRequest {
 	return ApiReadManagedTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -7358,27 +7358,27 @@ func (a *MxPlatformApiService) ReadManagedTransaction(ctx _context.Context, memb
 
 // Execute executes the request
 //  @return TransactionResponseBody
-func (a *MxPlatformApiService) ReadManagedTransactionExecute(r ApiReadManagedTransactionRequest) (TransactionResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadManagedTransactionExecute(r ApiReadManagedTransactionRequest) (*TransactionResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionResponseBody
+		localVarReturnValue  *TransactionResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadManagedTransaction")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", _neturl.PathEscape(parameterToString(r.transactionGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterToString(r.transactionGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7407,15 +7407,15 @@ func (a *MxPlatformApiService) ReadManagedTransactionExecute(r ApiReadManagedTra
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7424,7 +7424,7 @@ func (a *MxPlatformApiService) ReadManagedTransactionExecute(r ApiReadManagedTra
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7435,14 +7435,14 @@ func (a *MxPlatformApiService) ReadManagedTransactionExecute(r ApiReadManagedTra
 }
 
 type ApiReadMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiReadMemberRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiReadMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.ReadMemberExecute(r)
 }
 
@@ -7451,12 +7451,12 @@ ReadMember Read member
 
 Use this endpoint to read the attributes of a specific member.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiReadMemberRequest
 */
-func (a *MxPlatformApiService) ReadMember(ctx _context.Context, memberGuid string, userGuid string) ApiReadMemberRequest {
+func (a *MxPlatformApiService) ReadMember(ctx context.Context, memberGuid string, userGuid string) ApiReadMemberRequest {
 	return ApiReadMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -7467,26 +7467,26 @@ func (a *MxPlatformApiService) ReadMember(ctx _context.Context, memberGuid strin
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) ReadMemberExecute(r ApiReadMemberRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadMemberExecute(r ApiReadMemberRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7515,15 +7515,15 @@ func (a *MxPlatformApiService) ReadMemberExecute(r ApiReadMemberRequest) (Member
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7532,7 +7532,7 @@ func (a *MxPlatformApiService) ReadMemberExecute(r ApiReadMemberRequest) (Member
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7543,14 +7543,14 @@ func (a *MxPlatformApiService) ReadMemberExecute(r ApiReadMemberRequest) (Member
 }
 
 type ApiReadMemberStatusRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiReadMemberStatusRequest) Execute() (MemberStatusResponseBody, *_nethttp.Response, error) {
+func (r ApiReadMemberStatusRequest) Execute() (*MemberStatusResponseBody, *http.Response, error) {
 	return r.ApiService.ReadMemberStatusExecute(r)
 }
 
@@ -7559,12 +7559,12 @@ ReadMemberStatus Read member status
 
 This endpoint provides the status of the members most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member. MX has introduced new, more detailed information on the current status of a members connection to a financial institution and the state of its aggregation - the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiReadMemberStatusRequest
 */
-func (a *MxPlatformApiService) ReadMemberStatus(ctx _context.Context, memberGuid string, userGuid string) ApiReadMemberStatusRequest {
+func (a *MxPlatformApiService) ReadMemberStatus(ctx context.Context, memberGuid string, userGuid string) ApiReadMemberStatusRequest {
 	return ApiReadMemberStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -7575,26 +7575,26 @@ func (a *MxPlatformApiService) ReadMemberStatus(ctx _context.Context, memberGuid
 
 // Execute executes the request
 //  @return MemberStatusResponseBody
-func (a *MxPlatformApiService) ReadMemberStatusExecute(r ApiReadMemberStatusRequest) (MemberStatusResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadMemberStatusExecute(r ApiReadMemberStatusRequest) (*MemberStatusResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberStatusResponseBody
+		localVarReturnValue  *MemberStatusResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadMemberStatus")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7623,15 +7623,15 @@ func (a *MxPlatformApiService) ReadMemberStatusExecute(r ApiReadMemberStatusRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7640,7 +7640,7 @@ func (a *MxPlatformApiService) ReadMemberStatusExecute(r ApiReadMemberStatusRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7651,13 +7651,13 @@ func (a *MxPlatformApiService) ReadMemberStatusExecute(r ApiReadMemberStatusRequ
 }
 
 type ApiReadMerchantRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	merchantGuid string
 }
 
 
-func (r ApiReadMerchantRequest) Execute() (MerchantResponseBody, *_nethttp.Response, error) {
+func (r ApiReadMerchantRequest) Execute() (*MerchantResponseBody, *http.Response, error) {
 	return r.ApiService.ReadMerchantExecute(r)
 }
 
@@ -7666,11 +7666,11 @@ ReadMerchant Read merchant
 
 Returns information about a particular merchant, such as a logo, name, and website.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param merchantGuid The unique id for a `merchant`.
  @return ApiReadMerchantRequest
 */
-func (a *MxPlatformApiService) ReadMerchant(ctx _context.Context, merchantGuid string) ApiReadMerchantRequest {
+func (a *MxPlatformApiService) ReadMerchant(ctx context.Context, merchantGuid string) ApiReadMerchantRequest {
 	return ApiReadMerchantRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -7680,25 +7680,25 @@ func (a *MxPlatformApiService) ReadMerchant(ctx _context.Context, merchantGuid s
 
 // Execute executes the request
 //  @return MerchantResponseBody
-func (a *MxPlatformApiService) ReadMerchantExecute(r ApiReadMerchantRequest) (MerchantResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadMerchantExecute(r ApiReadMerchantRequest) (*MerchantResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MerchantResponseBody
+		localVarReturnValue  *MerchantResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadMerchant")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/merchants/{merchant_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"merchant_guid"+"}", _neturl.PathEscape(parameterToString(r.merchantGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"merchant_guid"+"}", url.PathEscape(parameterToString(r.merchantGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7727,15 +7727,15 @@ func (a *MxPlatformApiService) ReadMerchantExecute(r ApiReadMerchantRequest) (Me
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7744,7 +7744,7 @@ func (a *MxPlatformApiService) ReadMerchantExecute(r ApiReadMerchantRequest) (Me
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7755,13 +7755,13 @@ func (a *MxPlatformApiService) ReadMerchantExecute(r ApiReadMerchantRequest) (Me
 }
 
 type ApiReadMerchantLocationRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	merchantLocationGuid string
 }
 
 
-func (r ApiReadMerchantLocationRequest) Execute() (MerchantLocationResponseBody, *_nethttp.Response, error) {
+func (r ApiReadMerchantLocationRequest) Execute() (*MerchantLocationResponseBody, *http.Response, error) {
 	return r.ApiService.ReadMerchantLocationExecute(r)
 }
 
@@ -7770,11 +7770,11 @@ ReadMerchantLocation Read merchant location
 
 This endpoint returns the specified merchant_location resource.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param merchantLocationGuid The unique id for a `merchant_location`.
  @return ApiReadMerchantLocationRequest
 */
-func (a *MxPlatformApiService) ReadMerchantLocation(ctx _context.Context, merchantLocationGuid string) ApiReadMerchantLocationRequest {
+func (a *MxPlatformApiService) ReadMerchantLocation(ctx context.Context, merchantLocationGuid string) ApiReadMerchantLocationRequest {
 	return ApiReadMerchantLocationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -7784,25 +7784,25 @@ func (a *MxPlatformApiService) ReadMerchantLocation(ctx _context.Context, mercha
 
 // Execute executes the request
 //  @return MerchantLocationResponseBody
-func (a *MxPlatformApiService) ReadMerchantLocationExecute(r ApiReadMerchantLocationRequest) (MerchantLocationResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadMerchantLocationExecute(r ApiReadMerchantLocationRequest) (*MerchantLocationResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MerchantLocationResponseBody
+		localVarReturnValue  *MerchantLocationResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadMerchantLocation")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/merchant_locations/{merchant_location_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"merchant_location_guid"+"}", _neturl.PathEscape(parameterToString(r.merchantLocationGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"merchant_location_guid"+"}", url.PathEscape(parameterToString(r.merchantLocationGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7831,15 +7831,15 @@ func (a *MxPlatformApiService) ReadMerchantLocationExecute(r ApiReadMerchantLoca
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7848,7 +7848,7 @@ func (a *MxPlatformApiService) ReadMerchantLocationExecute(r ApiReadMerchantLoca
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7859,7 +7859,7 @@ func (a *MxPlatformApiService) ReadMerchantLocationExecute(r ApiReadMerchantLoca
 }
 
 type ApiReadStatementByMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	statementGuid string
@@ -7867,7 +7867,7 @@ type ApiReadStatementByMemberRequest struct {
 }
 
 
-func (r ApiReadStatementByMemberRequest) Execute() (StatementResponseBody, *_nethttp.Response, error) {
+func (r ApiReadStatementByMemberRequest) Execute() (*StatementResponseBody, *http.Response, error) {
 	return r.ApiService.ReadStatementByMemberExecute(r)
 }
 
@@ -7876,13 +7876,13 @@ ReadStatementByMember Read statement by member
 
 Use this endpoint to read a JSON representation of the statement.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param statementGuid The unique id for a `statement`.
  @param userGuid The unique id for a `user`.
  @return ApiReadStatementByMemberRequest
 */
-func (a *MxPlatformApiService) ReadStatementByMember(ctx _context.Context, memberGuid string, statementGuid string, userGuid string) ApiReadStatementByMemberRequest {
+func (a *MxPlatformApiService) ReadStatementByMember(ctx context.Context, memberGuid string, statementGuid string, userGuid string) ApiReadStatementByMemberRequest {
 	return ApiReadStatementByMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -7894,27 +7894,27 @@ func (a *MxPlatformApiService) ReadStatementByMember(ctx _context.Context, membe
 
 // Execute executes the request
 //  @return StatementResponseBody
-func (a *MxPlatformApiService) ReadStatementByMemberExecute(r ApiReadStatementByMemberRequest) (StatementResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadStatementByMemberExecute(r ApiReadStatementByMemberRequest) (*StatementResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  StatementResponseBody
+		localVarReturnValue  *StatementResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadStatementByMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/statements/{statement_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"statement_guid"+"}", _neturl.PathEscape(parameterToString(r.statementGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"statement_guid"+"}", url.PathEscape(parameterToString(r.statementGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7943,15 +7943,15 @@ func (a *MxPlatformApiService) ReadStatementByMemberExecute(r ApiReadStatementBy
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7960,7 +7960,7 @@ func (a *MxPlatformApiService) ReadStatementByMemberExecute(r ApiReadStatementBy
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7971,14 +7971,14 @@ func (a *MxPlatformApiService) ReadStatementByMemberExecute(r ApiReadStatementBy
 }
 
 type ApiReadTagRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	tagGuid string
 	userGuid string
 }
 
 
-func (r ApiReadTagRequest) Execute() (TagResponseBody, *_nethttp.Response, error) {
+func (r ApiReadTagRequest) Execute() (*TagResponseBody, *http.Response, error) {
 	return r.ApiService.ReadTagExecute(r)
 }
 
@@ -7987,12 +7987,12 @@ ReadTag Read tag
 
 Use this endpoint to read the attributes of a particular tag according to its unique GUID.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tagGuid The unique id for a `tag`.
  @param userGuid The unique id for a `user`.
  @return ApiReadTagRequest
 */
-func (a *MxPlatformApiService) ReadTag(ctx _context.Context, tagGuid string, userGuid string) ApiReadTagRequest {
+func (a *MxPlatformApiService) ReadTag(ctx context.Context, tagGuid string, userGuid string) ApiReadTagRequest {
 	return ApiReadTagRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -8003,26 +8003,26 @@ func (a *MxPlatformApiService) ReadTag(ctx _context.Context, tagGuid string, use
 
 // Execute executes the request
 //  @return TagResponseBody
-func (a *MxPlatformApiService) ReadTagExecute(r ApiReadTagRequest) (TagResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadTagExecute(r ApiReadTagRequest) (*TagResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TagResponseBody
+		localVarReturnValue  *TagResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadTag")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/tags/{tag_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tag_guid"+"}", _neturl.PathEscape(parameterToString(r.tagGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tag_guid"+"}", url.PathEscape(parameterToString(r.tagGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8051,15 +8051,15 @@ func (a *MxPlatformApiService) ReadTagExecute(r ApiReadTagRequest) (TagResponseB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8068,7 +8068,7 @@ func (a *MxPlatformApiService) ReadTagExecute(r ApiReadTagRequest) (TagResponseB
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8079,14 +8079,14 @@ func (a *MxPlatformApiService) ReadTagExecute(r ApiReadTagRequest) (TagResponseB
 }
 
 type ApiReadTaggingRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	taggingGuid string
 	userGuid string
 }
 
 
-func (r ApiReadTaggingRequest) Execute() (TaggingResponseBody, *_nethttp.Response, error) {
+func (r ApiReadTaggingRequest) Execute() (*TaggingResponseBody, *http.Response, error) {
 	return r.ApiService.ReadTaggingExecute(r)
 }
 
@@ -8095,12 +8095,12 @@ ReadTagging Read tagging
 
 Use this endpoint to read the attributes of a `tagging` according to its unique GUID.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param taggingGuid The unique id for a `tagging`.
  @param userGuid The unique id for a `user`.
  @return ApiReadTaggingRequest
 */
-func (a *MxPlatformApiService) ReadTagging(ctx _context.Context, taggingGuid string, userGuid string) ApiReadTaggingRequest {
+func (a *MxPlatformApiService) ReadTagging(ctx context.Context, taggingGuid string, userGuid string) ApiReadTaggingRequest {
 	return ApiReadTaggingRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -8111,26 +8111,26 @@ func (a *MxPlatformApiService) ReadTagging(ctx _context.Context, taggingGuid str
 
 // Execute executes the request
 //  @return TaggingResponseBody
-func (a *MxPlatformApiService) ReadTaggingExecute(r ApiReadTaggingRequest) (TaggingResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadTaggingExecute(r ApiReadTaggingRequest) (*TaggingResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TaggingResponseBody
+		localVarReturnValue  *TaggingResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadTagging")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/taggings/{tagging_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tagging_guid"+"}", _neturl.PathEscape(parameterToString(r.taggingGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tagging_guid"+"}", url.PathEscape(parameterToString(r.taggingGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8159,15 +8159,15 @@ func (a *MxPlatformApiService) ReadTaggingExecute(r ApiReadTaggingRequest) (Tagg
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8176,7 +8176,7 @@ func (a *MxPlatformApiService) ReadTaggingExecute(r ApiReadTaggingRequest) (Tagg
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8187,14 +8187,14 @@ func (a *MxPlatformApiService) ReadTaggingExecute(r ApiReadTaggingRequest) (Tagg
 }
 
 type ApiReadTransactionRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	transactionGuid string
 	userGuid string
 }
 
 
-func (r ApiReadTransactionRequest) Execute() (TransactionResponseBody, *_nethttp.Response, error) {
+func (r ApiReadTransactionRequest) Execute() (*TransactionResponseBody, *http.Response, error) {
 	return r.ApiService.ReadTransactionExecute(r)
 }
 
@@ -8203,12 +8203,12 @@ ReadTransaction Read transaction
 
 Requests to this endpoint will return the attributes of the specified `transaction`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param transactionGuid The unique id for a `transaction`.
  @param userGuid The unique id for a `user`.
  @return ApiReadTransactionRequest
 */
-func (a *MxPlatformApiService) ReadTransaction(ctx _context.Context, transactionGuid string, userGuid string) ApiReadTransactionRequest {
+func (a *MxPlatformApiService) ReadTransaction(ctx context.Context, transactionGuid string, userGuid string) ApiReadTransactionRequest {
 	return ApiReadTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -8219,26 +8219,26 @@ func (a *MxPlatformApiService) ReadTransaction(ctx _context.Context, transaction
 
 // Execute executes the request
 //  @return TransactionResponseBody
-func (a *MxPlatformApiService) ReadTransactionExecute(r ApiReadTransactionRequest) (TransactionResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadTransactionExecute(r ApiReadTransactionRequest) (*TransactionResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionResponseBody
+		localVarReturnValue  *TransactionResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadTransaction")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/transactions/{transaction_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", _neturl.PathEscape(parameterToString(r.transactionGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterToString(r.transactionGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8267,15 +8267,15 @@ func (a *MxPlatformApiService) ReadTransactionExecute(r ApiReadTransactionReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8284,7 +8284,7 @@ func (a *MxPlatformApiService) ReadTransactionExecute(r ApiReadTransactionReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8295,14 +8295,14 @@ func (a *MxPlatformApiService) ReadTransactionExecute(r ApiReadTransactionReques
 }
 
 type ApiReadTransactionRuleRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	transactionRuleGuid string
 	userGuid string
 }
 
 
-func (r ApiReadTransactionRuleRequest) Execute() (TransactionRuleResponseBody, *_nethttp.Response, error) {
+func (r ApiReadTransactionRuleRequest) Execute() (*TransactionRuleResponseBody, *http.Response, error) {
 	return r.ApiService.ReadTransactionRuleExecute(r)
 }
 
@@ -8311,12 +8311,12 @@ ReadTransactionRule Read transaction rule
 
 Use this endpoint to read the attributes of an existing transaction rule based on the rule’s unique GUID.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param transactionRuleGuid The unique id for a `transaction_rule`.
  @param userGuid The unique id for a `user`.
  @return ApiReadTransactionRuleRequest
 */
-func (a *MxPlatformApiService) ReadTransactionRule(ctx _context.Context, transactionRuleGuid string, userGuid string) ApiReadTransactionRuleRequest {
+func (a *MxPlatformApiService) ReadTransactionRule(ctx context.Context, transactionRuleGuid string, userGuid string) ApiReadTransactionRuleRequest {
 	return ApiReadTransactionRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -8327,26 +8327,26 @@ func (a *MxPlatformApiService) ReadTransactionRule(ctx _context.Context, transac
 
 // Execute executes the request
 //  @return TransactionRuleResponseBody
-func (a *MxPlatformApiService) ReadTransactionRuleExecute(r ApiReadTransactionRuleRequest) (TransactionRuleResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadTransactionRuleExecute(r ApiReadTransactionRuleRequest) (*TransactionRuleResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionRuleResponseBody
+		localVarReturnValue  *TransactionRuleResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadTransactionRule")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/transaction_rules/{transaction_rule_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"transaction_rule_guid"+"}", _neturl.PathEscape(parameterToString(r.transactionRuleGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_rule_guid"+"}", url.PathEscape(parameterToString(r.transactionRuleGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8375,15 +8375,15 @@ func (a *MxPlatformApiService) ReadTransactionRuleExecute(r ApiReadTransactionRu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8392,7 +8392,7 @@ func (a *MxPlatformApiService) ReadTransactionRuleExecute(r ApiReadTransactionRu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8403,13 +8403,13 @@ func (a *MxPlatformApiService) ReadTransactionRuleExecute(r ApiReadTransactionRu
 }
 
 type ApiReadUserRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 }
 
 
-func (r ApiReadUserRequest) Execute() (UserResponseBody, *_nethttp.Response, error) {
+func (r ApiReadUserRequest) Execute() (*UserResponseBody, *http.Response, error) {
 	return r.ApiService.ReadUserExecute(r)
 }
 
@@ -8418,11 +8418,11 @@ ReadUser Read user
 
 Use this endpoint to read the attributes of a specific user.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiReadUserRequest
 */
-func (a *MxPlatformApiService) ReadUser(ctx _context.Context, userGuid string) ApiReadUserRequest {
+func (a *MxPlatformApiService) ReadUser(ctx context.Context, userGuid string) ApiReadUserRequest {
 	return ApiReadUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -8432,25 +8432,25 @@ func (a *MxPlatformApiService) ReadUser(ctx _context.Context, userGuid string) A
 
 // Execute executes the request
 //  @return UserResponseBody
-func (a *MxPlatformApiService) ReadUserExecute(r ApiReadUserRequest) (UserResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ReadUserExecute(r ApiReadUserRequest) (*UserResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  UserResponseBody
+		localVarReturnValue  *UserResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadUser")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8479,15 +8479,15 @@ func (a *MxPlatformApiService) ReadUserExecute(r ApiReadUserRequest) (UserRespon
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8496,7 +8496,7 @@ func (a *MxPlatformApiService) ReadUserExecute(r ApiReadUserRequest) (UserRespon
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8507,7 +8507,7 @@ func (a *MxPlatformApiService) ReadUserExecute(r ApiReadUserRequest) (UserRespon
 }
 
 type ApiRequestConnectWidgetURLRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	connectWidgetRequestBody *ConnectWidgetRequestBody
@@ -8519,7 +8519,7 @@ func (r ApiRequestConnectWidgetURLRequest) ConnectWidgetRequestBody(connectWidge
 	return r
 }
 
-func (r ApiRequestConnectWidgetURLRequest) Execute() (ConnectWidgetResponseBody, *_nethttp.Response, error) {
+func (r ApiRequestConnectWidgetURLRequest) Execute() (*ConnectWidgetResponseBody, *http.Response, error) {
 	return r.ApiService.RequestConnectWidgetURLExecute(r)
 }
 
@@ -8528,11 +8528,11 @@ RequestConnectWidgetURL Request connect widget url
 
 This endpoint will return a URL for an embeddable version of MX Connect.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiRequestConnectWidgetURLRequest
 */
-func (a *MxPlatformApiService) RequestConnectWidgetURL(ctx _context.Context, userGuid string) ApiRequestConnectWidgetURLRequest {
+func (a *MxPlatformApiService) RequestConnectWidgetURL(ctx context.Context, userGuid string) ApiRequestConnectWidgetURLRequest {
 	return ApiRequestConnectWidgetURLRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -8542,25 +8542,25 @@ func (a *MxPlatformApiService) RequestConnectWidgetURL(ctx _context.Context, use
 
 // Execute executes the request
 //  @return ConnectWidgetResponseBody
-func (a *MxPlatformApiService) RequestConnectWidgetURLExecute(r ApiRequestConnectWidgetURLRequest) (ConnectWidgetResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) RequestConnectWidgetURLExecute(r ApiRequestConnectWidgetURLRequest) (*ConnectWidgetResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ConnectWidgetResponseBody
+		localVarReturnValue  *ConnectWidgetResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestConnectWidgetURL")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/connect_widget_url"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -8591,15 +8591,15 @@ func (a *MxPlatformApiService) RequestConnectWidgetURLExecute(r ApiRequestConnec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8608,7 +8608,7 @@ func (a *MxPlatformApiService) RequestConnectWidgetURLExecute(r ApiRequestConnec
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8619,7 +8619,7 @@ func (a *MxPlatformApiService) RequestConnectWidgetURLExecute(r ApiRequestConnec
 }
 
 type ApiRequestOAuthWindowURIRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -8644,7 +8644,7 @@ func (r ApiRequestOAuthWindowURIRequest) SkipAggregation(skipAggregation bool) A
 	return r
 }
 
-func (r ApiRequestOAuthWindowURIRequest) Execute() (OAuthWindowResponseBody, *_nethttp.Response, error) {
+func (r ApiRequestOAuthWindowURIRequest) Execute() (*OAuthWindowResponseBody, *http.Response, error) {
 	return r.ApiService.RequestOAuthWindowURIExecute(r)
 }
 
@@ -8653,12 +8653,12 @@ RequestOAuthWindowURI Request oauth window uri
 
 This endpoint will generate an `oauth_window_uri` for the specified `member`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiRequestOAuthWindowURIRequest
 */
-func (a *MxPlatformApiService) RequestOAuthWindowURI(ctx _context.Context, memberGuid string, userGuid string) ApiRequestOAuthWindowURIRequest {
+func (a *MxPlatformApiService) RequestOAuthWindowURI(ctx context.Context, memberGuid string, userGuid string) ApiRequestOAuthWindowURIRequest {
 	return ApiRequestOAuthWindowURIRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -8669,26 +8669,26 @@ func (a *MxPlatformApiService) RequestOAuthWindowURI(ctx _context.Context, membe
 
 // Execute executes the request
 //  @return OAuthWindowResponseBody
-func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWindowURIRequest) (OAuthWindowResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWindowURIRequest) (*OAuthWindowResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  OAuthWindowResponseBody
+		localVarReturnValue  *OAuthWindowResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestOAuthWindowURI")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/oauth_window_uri"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.referralSource != nil {
 		localVarQueryParams.Add("referral_source", parameterToString(*r.referralSource, ""))
@@ -8726,15 +8726,15 @@ func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8743,7 +8743,7 @@ func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWin
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8754,7 +8754,7 @@ func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWin
 }
 
 type ApiRequestWidgetURLRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	widgetRequestBody *WidgetRequestBody
@@ -8772,7 +8772,7 @@ func (r ApiRequestWidgetURLRequest) AcceptLanguage(acceptLanguage string) ApiReq
 	return r
 }
 
-func (r ApiRequestWidgetURLRequest) Execute() (WidgetResponseBody, *_nethttp.Response, error) {
+func (r ApiRequestWidgetURLRequest) Execute() (*WidgetResponseBody, *http.Response, error) {
 	return r.ApiService.RequestWidgetURLExecute(r)
 }
 
@@ -8781,11 +8781,11 @@ RequestWidgetURL Request widget url
 
 This endpoint allows partners to get a URL by passing the `widget_type` in the request body, as well as configuring it in several different ways. In the case of Connect, that means setting the `widget_type` to `connect_widget`. Partners may also pass an optional `Accept-Language` header as well as a number of configuration options. Note that this is a `POST` request.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiRequestWidgetURLRequest
 */
-func (a *MxPlatformApiService) RequestWidgetURL(ctx _context.Context, userGuid string) ApiRequestWidgetURLRequest {
+func (a *MxPlatformApiService) RequestWidgetURL(ctx context.Context, userGuid string) ApiRequestWidgetURLRequest {
 	return ApiRequestWidgetURLRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -8795,25 +8795,25 @@ func (a *MxPlatformApiService) RequestWidgetURL(ctx _context.Context, userGuid s
 
 // Execute executes the request
 //  @return WidgetResponseBody
-func (a *MxPlatformApiService) RequestWidgetURLExecute(r ApiRequestWidgetURLRequest) (WidgetResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) RequestWidgetURLExecute(r ApiRequestWidgetURLRequest) (*WidgetResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  WidgetResponseBody
+		localVarReturnValue  *WidgetResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestWidgetURL")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/widget_urls"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.widgetRequestBody == nil {
 		return localVarReturnValue, nil, reportError("widgetRequestBody is required and must be specified")
 	}
@@ -8850,15 +8850,15 @@ func (a *MxPlatformApiService) RequestWidgetURLExecute(r ApiRequestWidgetURLRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8867,7 +8867,7 @@ func (a *MxPlatformApiService) RequestWidgetURLExecute(r ApiRequestWidgetURLRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8878,7 +8878,7 @@ func (a *MxPlatformApiService) RequestWidgetURLExecute(r ApiRequestWidgetURLRequ
 }
 
 type ApiResumeAggregationRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -8891,7 +8891,7 @@ func (r ApiResumeAggregationRequest) MemberResumeRequestBody(memberResumeRequest
 	return r
 }
 
-func (r ApiResumeAggregationRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiResumeAggregationRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.ResumeAggregationExecute(r)
 }
 
@@ -8900,12 +8900,12 @@ ResumeAggregation Resume aggregation
 
 This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiResumeAggregationRequest
 */
-func (a *MxPlatformApiService) ResumeAggregation(ctx _context.Context, memberGuid string, userGuid string) ApiResumeAggregationRequest {
+func (a *MxPlatformApiService) ResumeAggregation(ctx context.Context, memberGuid string, userGuid string) ApiResumeAggregationRequest {
 	return ApiResumeAggregationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -8916,26 +8916,26 @@ func (a *MxPlatformApiService) ResumeAggregation(ctx _context.Context, memberGui
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) ResumeAggregationExecute(r ApiResumeAggregationRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) ResumeAggregationExecute(r ApiResumeAggregationRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ResumeAggregation")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/resume"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.memberResumeRequestBody == nil {
 		return localVarReturnValue, nil, reportError("memberResumeRequestBody is required and must be specified")
 	}
@@ -8969,15 +8969,15 @@ func (a *MxPlatformApiService) ResumeAggregationExecute(r ApiResumeAggregationRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8986,7 +8986,7 @@ func (a *MxPlatformApiService) ResumeAggregationExecute(r ApiResumeAggregationRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8997,7 +8997,7 @@ func (a *MxPlatformApiService) ResumeAggregationExecute(r ApiResumeAggregationRe
 }
 
 type ApiUpdateAccountByMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	memberGuid string
@@ -9011,7 +9011,7 @@ func (r ApiUpdateAccountByMemberRequest) AccountUpdateRequestBody(accountUpdateR
 	return r
 }
 
-func (r ApiUpdateAccountByMemberRequest) Execute() (AccountResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateAccountByMemberRequest) Execute() (*AccountResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateAccountByMemberExecute(r)
 }
 
@@ -9020,13 +9020,13 @@ UpdateAccountByMember Update account by member
 
 This endpoint allows you to update certain attributes of an `account` resource.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @param memberGuid The unique id for a `member`.
  @param accountGuid The unique id for an `account`.
  @return ApiUpdateAccountByMemberRequest
 */
-func (a *MxPlatformApiService) UpdateAccountByMember(ctx _context.Context, userGuid string, memberGuid string, accountGuid string) ApiUpdateAccountByMemberRequest {
+func (a *MxPlatformApiService) UpdateAccountByMember(ctx context.Context, userGuid string, memberGuid string, accountGuid string) ApiUpdateAccountByMemberRequest {
 	return ApiUpdateAccountByMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -9038,27 +9038,27 @@ func (a *MxPlatformApiService) UpdateAccountByMember(ctx _context.Context, userG
 
 // Execute executes the request
 //  @return AccountResponseBody
-func (a *MxPlatformApiService) UpdateAccountByMemberExecute(r ApiUpdateAccountByMemberRequest) (AccountResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateAccountByMemberExecute(r ApiUpdateAccountByMemberRequest) (*AccountResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountResponseBody
+		localVarReturnValue  *AccountResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateAccountByMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", _neturl.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.accountUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("accountUpdateRequestBody is required and must be specified")
 	}
@@ -9092,15 +9092,15 @@ func (a *MxPlatformApiService) UpdateAccountByMemberExecute(r ApiUpdateAccountBy
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9109,7 +9109,7 @@ func (a *MxPlatformApiService) UpdateAccountByMemberExecute(r ApiUpdateAccountBy
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9120,7 +9120,7 @@ func (a *MxPlatformApiService) UpdateAccountByMemberExecute(r ApiUpdateAccountBy
 }
 
 type ApiUpdateCategoryRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	categoryGuid string
 	userGuid string
@@ -9133,7 +9133,7 @@ func (r ApiUpdateCategoryRequest) CategoryUpdateRequestBody(categoryUpdateReques
 	return r
 }
 
-func (r ApiUpdateCategoryRequest) Execute() (CategoryResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateCategoryRequest) Execute() (*CategoryResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateCategoryExecute(r)
 }
 
@@ -9142,12 +9142,12 @@ UpdateCategory Update category
 
 Use this endpoint to update the attributes of a custom category according to its unique GUID.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param categoryGuid The unique id for a `category`.
  @param userGuid The unique id for a `user`.
  @return ApiUpdateCategoryRequest
 */
-func (a *MxPlatformApiService) UpdateCategory(ctx _context.Context, categoryGuid string, userGuid string) ApiUpdateCategoryRequest {
+func (a *MxPlatformApiService) UpdateCategory(ctx context.Context, categoryGuid string, userGuid string) ApiUpdateCategoryRequest {
 	return ApiUpdateCategoryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -9158,26 +9158,26 @@ func (a *MxPlatformApiService) UpdateCategory(ctx _context.Context, categoryGuid
 
 // Execute executes the request
 //  @return CategoryResponseBody
-func (a *MxPlatformApiService) UpdateCategoryExecute(r ApiUpdateCategoryRequest) (CategoryResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateCategoryExecute(r ApiUpdateCategoryRequest) (*CategoryResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  CategoryResponseBody
+		localVarReturnValue  *CategoryResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateCategory")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/categories/{category_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"category_guid"+"}", _neturl.PathEscape(parameterToString(r.categoryGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"category_guid"+"}", url.PathEscape(parameterToString(r.categoryGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.categoryUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("categoryUpdateRequestBody is required and must be specified")
 	}
@@ -9211,15 +9211,15 @@ func (a *MxPlatformApiService) UpdateCategoryExecute(r ApiUpdateCategoryRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9228,7 +9228,7 @@ func (a *MxPlatformApiService) UpdateCategoryExecute(r ApiUpdateCategoryRequest)
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9239,7 +9239,7 @@ func (a *MxPlatformApiService) UpdateCategoryExecute(r ApiUpdateCategoryRequest)
 }
 
 type ApiUpdateManagedAccountRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -9253,7 +9253,7 @@ func (r ApiUpdateManagedAccountRequest) ManagedAccountUpdateRequestBody(managedA
 	return r
 }
 
-func (r ApiUpdateManagedAccountRequest) Execute() (AccountResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateManagedAccountRequest) Execute() (*AccountResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateManagedAccountExecute(r)
 }
 
@@ -9262,13 +9262,13 @@ UpdateManagedAccount Update managed account
 
 Use this endpoint to update the attributes of a partner-managed account according to its unique GUID.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @param accountGuid The unique id for an `account`.
  @return ApiUpdateManagedAccountRequest
 */
-func (a *MxPlatformApiService) UpdateManagedAccount(ctx _context.Context, memberGuid string, userGuid string, accountGuid string) ApiUpdateManagedAccountRequest {
+func (a *MxPlatformApiService) UpdateManagedAccount(ctx context.Context, memberGuid string, userGuid string, accountGuid string) ApiUpdateManagedAccountRequest {
 	return ApiUpdateManagedAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -9280,27 +9280,27 @@ func (a *MxPlatformApiService) UpdateManagedAccount(ctx _context.Context, member
 
 // Execute executes the request
 //  @return AccountResponseBody
-func (a *MxPlatformApiService) UpdateManagedAccountExecute(r ApiUpdateManagedAccountRequest) (AccountResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateManagedAccountExecute(r ApiUpdateManagedAccountRequest) (*AccountResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  AccountResponseBody
+		localVarReturnValue  *AccountResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateManagedAccount")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", _neturl.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.managedAccountUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("managedAccountUpdateRequestBody is required and must be specified")
 	}
@@ -9334,15 +9334,15 @@ func (a *MxPlatformApiService) UpdateManagedAccountExecute(r ApiUpdateManagedAcc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9351,7 +9351,7 @@ func (a *MxPlatformApiService) UpdateManagedAccountExecute(r ApiUpdateManagedAcc
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9362,7 +9362,7 @@ func (a *MxPlatformApiService) UpdateManagedAccountExecute(r ApiUpdateManagedAcc
 }
 
 type ApiUpdateManagedMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -9375,7 +9375,7 @@ func (r ApiUpdateManagedMemberRequest) ManagedMemberUpdateRequestBody(managedMem
 	return r
 }
 
-func (r ApiUpdateManagedMemberRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateManagedMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateManagedMemberExecute(r)
 }
 
@@ -9384,12 +9384,12 @@ UpdateManagedMember Update managed member
 
 Use this endpoint to update the attributes of the specified partner_managed `member`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiUpdateManagedMemberRequest
 */
-func (a *MxPlatformApiService) UpdateManagedMember(ctx _context.Context, memberGuid string, userGuid string) ApiUpdateManagedMemberRequest {
+func (a *MxPlatformApiService) UpdateManagedMember(ctx context.Context, memberGuid string, userGuid string) ApiUpdateManagedMemberRequest {
 	return ApiUpdateManagedMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -9400,26 +9400,26 @@ func (a *MxPlatformApiService) UpdateManagedMember(ctx _context.Context, memberG
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) UpdateManagedMemberExecute(r ApiUpdateManagedMemberRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateManagedMemberExecute(r ApiUpdateManagedMemberRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateManagedMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.managedMemberUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("managedMemberUpdateRequestBody is required and must be specified")
 	}
@@ -9453,15 +9453,15 @@ func (a *MxPlatformApiService) UpdateManagedMemberExecute(r ApiUpdateManagedMemb
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9470,7 +9470,7 @@ func (a *MxPlatformApiService) UpdateManagedMemberExecute(r ApiUpdateManagedMemb
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9481,7 +9481,7 @@ func (a *MxPlatformApiService) UpdateManagedMemberExecute(r ApiUpdateManagedMemb
 }
 
 type ApiUpdateManagedTransactionRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -9495,7 +9495,7 @@ func (r ApiUpdateManagedTransactionRequest) ManagedTransactionUpdateRequestBody(
 	return r
 }
 
-func (r ApiUpdateManagedTransactionRequest) Execute() (TransactionResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateManagedTransactionRequest) Execute() (*TransactionResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateManagedTransactionExecute(r)
 }
 
@@ -9504,13 +9504,13 @@ UpdateManagedTransaction Update managed transaction
 
 Use this endpoint to update the attributes of the specified partner_managed `transaction`.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @param transactionGuid The unique id for a `transaction`.
  @return ApiUpdateManagedTransactionRequest
 */
-func (a *MxPlatformApiService) UpdateManagedTransaction(ctx _context.Context, memberGuid string, userGuid string, transactionGuid string) ApiUpdateManagedTransactionRequest {
+func (a *MxPlatformApiService) UpdateManagedTransaction(ctx context.Context, memberGuid string, userGuid string, transactionGuid string) ApiUpdateManagedTransactionRequest {
 	return ApiUpdateManagedTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -9522,27 +9522,27 @@ func (a *MxPlatformApiService) UpdateManagedTransaction(ctx _context.Context, me
 
 // Execute executes the request
 //  @return TransactionResponseBody
-func (a *MxPlatformApiService) UpdateManagedTransactionExecute(r ApiUpdateManagedTransactionRequest) (TransactionResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateManagedTransactionExecute(r ApiUpdateManagedTransactionRequest) (*TransactionResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionResponseBody
+		localVarReturnValue  *TransactionResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateManagedTransaction")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", _neturl.PathEscape(parameterToString(r.transactionGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterToString(r.transactionGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.managedTransactionUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("managedTransactionUpdateRequestBody is required and must be specified")
 	}
@@ -9576,15 +9576,15 @@ func (a *MxPlatformApiService) UpdateManagedTransactionExecute(r ApiUpdateManage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9593,7 +9593,7 @@ func (a *MxPlatformApiService) UpdateManagedTransactionExecute(r ApiUpdateManage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9604,7 +9604,7 @@ func (a *MxPlatformApiService) UpdateManagedTransactionExecute(r ApiUpdateManage
 }
 
 type ApiUpdateMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
@@ -9617,7 +9617,7 @@ func (r ApiUpdateMemberRequest) MemberUpdateRequestBody(memberUpdateRequestBody 
 	return r
 }
 
-func (r ApiUpdateMemberRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateMemberExecute(r)
 }
 
@@ -9626,12 +9626,12 @@ UpdateMember Update member
 
 Use this endpoint to update a members attributes. Only the credentials, id, and metadata parameters can be updated. To get a list of the required credentials for the member, use the list member credentials endpoint.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiUpdateMemberRequest
 */
-func (a *MxPlatformApiService) UpdateMember(ctx _context.Context, memberGuid string, userGuid string) ApiUpdateMemberRequest {
+func (a *MxPlatformApiService) UpdateMember(ctx context.Context, memberGuid string, userGuid string) ApiUpdateMemberRequest {
 	return ApiUpdateMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -9642,26 +9642,26 @@ func (a *MxPlatformApiService) UpdateMember(ctx _context.Context, memberGuid str
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) UpdateMemberExecute(r ApiUpdateMemberRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateMemberExecute(r ApiUpdateMemberRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.memberUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("memberUpdateRequestBody is required and must be specified")
 	}
@@ -9695,15 +9695,15 @@ func (a *MxPlatformApiService) UpdateMemberExecute(r ApiUpdateMemberRequest) (Me
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9712,7 +9712,7 @@ func (a *MxPlatformApiService) UpdateMemberExecute(r ApiUpdateMemberRequest) (Me
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9723,7 +9723,7 @@ func (a *MxPlatformApiService) UpdateMemberExecute(r ApiUpdateMemberRequest) (Me
 }
 
 type ApiUpdateTagRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	tagGuid string
 	userGuid string
@@ -9736,7 +9736,7 @@ func (r ApiUpdateTagRequest) TagUpdateRequestBody(tagUpdateRequestBody TagUpdate
 	return r
 }
 
-func (r ApiUpdateTagRequest) Execute() (TagResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateTagRequest) Execute() (*TagResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateTagExecute(r)
 }
 
@@ -9745,12 +9745,12 @@ UpdateTag Update tag
 
 Use this endpoint to update the name of a specific tag according to its unique GUID.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tagGuid The unique id for a `tag`.
  @param userGuid The unique id for a `user`.
  @return ApiUpdateTagRequest
 */
-func (a *MxPlatformApiService) UpdateTag(ctx _context.Context, tagGuid string, userGuid string) ApiUpdateTagRequest {
+func (a *MxPlatformApiService) UpdateTag(ctx context.Context, tagGuid string, userGuid string) ApiUpdateTagRequest {
 	return ApiUpdateTagRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -9761,26 +9761,26 @@ func (a *MxPlatformApiService) UpdateTag(ctx _context.Context, tagGuid string, u
 
 // Execute executes the request
 //  @return TagResponseBody
-func (a *MxPlatformApiService) UpdateTagExecute(r ApiUpdateTagRequest) (TagResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateTagExecute(r ApiUpdateTagRequest) (*TagResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TagResponseBody
+		localVarReturnValue  *TagResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateTag")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/tags/{tag_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tag_guid"+"}", _neturl.PathEscape(parameterToString(r.tagGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tag_guid"+"}", url.PathEscape(parameterToString(r.tagGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.tagUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("tagUpdateRequestBody is required and must be specified")
 	}
@@ -9814,15 +9814,15 @@ func (a *MxPlatformApiService) UpdateTagExecute(r ApiUpdateTagRequest) (TagRespo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9831,7 +9831,7 @@ func (a *MxPlatformApiService) UpdateTagExecute(r ApiUpdateTagRequest) (TagRespo
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9842,7 +9842,7 @@ func (a *MxPlatformApiService) UpdateTagExecute(r ApiUpdateTagRequest) (TagRespo
 }
 
 type ApiUpdateTaggingRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	taggingGuid string
 	userGuid string
@@ -9855,7 +9855,7 @@ func (r ApiUpdateTaggingRequest) TaggingUpdateRequestBody(taggingUpdateRequestBo
 	return r
 }
 
-func (r ApiUpdateTaggingRequest) Execute() (TaggingResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateTaggingRequest) Execute() (*TaggingResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateTaggingExecute(r)
 }
 
@@ -9864,12 +9864,12 @@ UpdateTagging Update tagging
 
 Use this endpoint to update a tagging.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param taggingGuid The unique id for a `tagging`.
  @param userGuid The unique id for a `user`.
  @return ApiUpdateTaggingRequest
 */
-func (a *MxPlatformApiService) UpdateTagging(ctx _context.Context, taggingGuid string, userGuid string) ApiUpdateTaggingRequest {
+func (a *MxPlatformApiService) UpdateTagging(ctx context.Context, taggingGuid string, userGuid string) ApiUpdateTaggingRequest {
 	return ApiUpdateTaggingRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -9880,26 +9880,26 @@ func (a *MxPlatformApiService) UpdateTagging(ctx _context.Context, taggingGuid s
 
 // Execute executes the request
 //  @return TaggingResponseBody
-func (a *MxPlatformApiService) UpdateTaggingExecute(r ApiUpdateTaggingRequest) (TaggingResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateTaggingExecute(r ApiUpdateTaggingRequest) (*TaggingResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TaggingResponseBody
+		localVarReturnValue  *TaggingResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateTagging")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/taggings/{tagging_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tagging_guid"+"}", _neturl.PathEscape(parameterToString(r.taggingGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tagging_guid"+"}", url.PathEscape(parameterToString(r.taggingGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.taggingUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("taggingUpdateRequestBody is required and must be specified")
 	}
@@ -9933,15 +9933,15 @@ func (a *MxPlatformApiService) UpdateTaggingExecute(r ApiUpdateTaggingRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9950,7 +9950,7 @@ func (a *MxPlatformApiService) UpdateTaggingExecute(r ApiUpdateTaggingRequest) (
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9961,7 +9961,7 @@ func (a *MxPlatformApiService) UpdateTaggingExecute(r ApiUpdateTaggingRequest) (
 }
 
 type ApiUpdateTransactionRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	transactionGuid string
 	userGuid string
@@ -9974,7 +9974,7 @@ func (r ApiUpdateTransactionRequest) TransactionUpdateRequestBody(transactionUpd
 	return r
 }
 
-func (r ApiUpdateTransactionRequest) Execute() (TransactionResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateTransactionRequest) Execute() (*TransactionResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateTransactionExecute(r)
 }
 
@@ -9983,12 +9983,12 @@ UpdateTransaction Update transaction
 
 Use this endpoint to update the `description` of a specific transaction according to its unique GUID.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param transactionGuid The unique id for a `transaction`.
  @param userGuid The unique id for a `user`.
  @return ApiUpdateTransactionRequest
 */
-func (a *MxPlatformApiService) UpdateTransaction(ctx _context.Context, transactionGuid string, userGuid string) ApiUpdateTransactionRequest {
+func (a *MxPlatformApiService) UpdateTransaction(ctx context.Context, transactionGuid string, userGuid string) ApiUpdateTransactionRequest {
 	return ApiUpdateTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -9999,26 +9999,26 @@ func (a *MxPlatformApiService) UpdateTransaction(ctx _context.Context, transacti
 
 // Execute executes the request
 //  @return TransactionResponseBody
-func (a *MxPlatformApiService) UpdateTransactionExecute(r ApiUpdateTransactionRequest) (TransactionResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateTransactionExecute(r ApiUpdateTransactionRequest) (*TransactionResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionResponseBody
+		localVarReturnValue  *TransactionResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateTransaction")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/transactions/{transaction_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", _neturl.PathEscape(parameterToString(r.transactionGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterToString(r.transactionGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.transactionUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("transactionUpdateRequestBody is required and must be specified")
 	}
@@ -10052,15 +10052,15 @@ func (a *MxPlatformApiService) UpdateTransactionExecute(r ApiUpdateTransactionRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10069,7 +10069,7 @@ func (a *MxPlatformApiService) UpdateTransactionExecute(r ApiUpdateTransactionRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -10080,7 +10080,7 @@ func (a *MxPlatformApiService) UpdateTransactionExecute(r ApiUpdateTransactionRe
 }
 
 type ApiUpdateTransactionRuleRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	transactionRuleGuid string
 	userGuid string
@@ -10093,7 +10093,7 @@ func (r ApiUpdateTransactionRuleRequest) TransactionRuleUpdateRequestBody(transa
 	return r
 }
 
-func (r ApiUpdateTransactionRuleRequest) Execute() (TransactionRuleResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateTransactionRuleRequest) Execute() (*TransactionRuleResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateTransactionRuleExecute(r)
 }
 
@@ -10102,12 +10102,12 @@ UpdateTransactionRule Update transaction_rule
 
 Use this endpoint to update the attributes of a specific transaction rule based on its unique GUID. The API will respond with the updated transaction_rule object. Any attributes not provided will be left unchanged.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param transactionRuleGuid The unique id for a `transaction_rule`.
  @param userGuid The unique id for a `user`.
  @return ApiUpdateTransactionRuleRequest
 */
-func (a *MxPlatformApiService) UpdateTransactionRule(ctx _context.Context, transactionRuleGuid string, userGuid string) ApiUpdateTransactionRuleRequest {
+func (a *MxPlatformApiService) UpdateTransactionRule(ctx context.Context, transactionRuleGuid string, userGuid string) ApiUpdateTransactionRuleRequest {
 	return ApiUpdateTransactionRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -10118,26 +10118,26 @@ func (a *MxPlatformApiService) UpdateTransactionRule(ctx _context.Context, trans
 
 // Execute executes the request
 //  @return TransactionRuleResponseBody
-func (a *MxPlatformApiService) UpdateTransactionRuleExecute(r ApiUpdateTransactionRuleRequest) (TransactionRuleResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateTransactionRuleExecute(r ApiUpdateTransactionRuleRequest) (*TransactionRuleResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  TransactionRuleResponseBody
+		localVarReturnValue  *TransactionRuleResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateTransactionRule")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/transaction_rules/{transaction_rule_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"transaction_rule_guid"+"}", _neturl.PathEscape(parameterToString(r.transactionRuleGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_rule_guid"+"}", url.PathEscape(parameterToString(r.transactionRuleGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.transactionRuleUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("transactionRuleUpdateRequestBody is required and must be specified")
 	}
@@ -10171,15 +10171,15 @@ func (a *MxPlatformApiService) UpdateTransactionRuleExecute(r ApiUpdateTransacti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10188,7 +10188,7 @@ func (a *MxPlatformApiService) UpdateTransactionRuleExecute(r ApiUpdateTransacti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -10199,7 +10199,7 @@ func (a *MxPlatformApiService) UpdateTransactionRuleExecute(r ApiUpdateTransacti
 }
 
 type ApiUpdateUserRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
 	userUpdateRequestBody *UserUpdateRequestBody
@@ -10211,7 +10211,7 @@ func (r ApiUpdateUserRequest) UserUpdateRequestBody(userUpdateRequestBody UserUp
 	return r
 }
 
-func (r ApiUpdateUserRequest) Execute() (UserResponseBody, *_nethttp.Response, error) {
+func (r ApiUpdateUserRequest) Execute() (*UserResponseBody, *http.Response, error) {
 	return r.ApiService.UpdateUserExecute(r)
 }
 
@@ -10220,11 +10220,11 @@ UpdateUser Update user
 
 Use this endpoint to update the attributes of a specific user. The MX Platform API will respond with the updated user object. Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that users data until they are no longer disabled. Users who are disabled for the entirety of an MX Platform API billing period will not be factored into that months bill. To disable a user, update it and set the is_disabled parameter to true. Set it to false to re-enable the user.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.
  @return ApiUpdateUserRequest
 */
-func (a *MxPlatformApiService) UpdateUser(ctx _context.Context, userGuid string) ApiUpdateUserRequest {
+func (a *MxPlatformApiService) UpdateUser(ctx context.Context, userGuid string) ApiUpdateUserRequest {
 	return ApiUpdateUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -10234,25 +10234,25 @@ func (a *MxPlatformApiService) UpdateUser(ctx _context.Context, userGuid string)
 
 // Execute executes the request
 //  @return UserResponseBody
-func (a *MxPlatformApiService) UpdateUserExecute(r ApiUpdateUserRequest) (UserResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) UpdateUserExecute(r ApiUpdateUserRequest) (*UserResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  UserResponseBody
+		localVarReturnValue  *UserResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateUser")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userUpdateRequestBody == nil {
 		return localVarReturnValue, nil, reportError("userUpdateRequestBody is required and must be specified")
 	}
@@ -10286,15 +10286,15 @@ func (a *MxPlatformApiService) UpdateUserExecute(r ApiUpdateUserRequest) (UserRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10303,7 +10303,7 @@ func (a *MxPlatformApiService) UpdateUserExecute(r ApiUpdateUserRequest) (UserRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -10314,14 +10314,14 @@ func (a *MxPlatformApiService) UpdateUserExecute(r ApiUpdateUserRequest) (UserRe
 }
 
 type ApiVerifyMemberRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
 }
 
 
-func (r ApiVerifyMemberRequest) Execute() (MemberResponseBody, *_nethttp.Response, error) {
+func (r ApiVerifyMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
 	return r.ApiService.VerifyMemberExecute(r)
 }
 
@@ -10330,12 +10330,12 @@ VerifyMember Verify member
 
 The verify endpoint begins a verification process for a member.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
  @return ApiVerifyMemberRequest
 */
-func (a *MxPlatformApiService) VerifyMember(ctx _context.Context, memberGuid string, userGuid string) ApiVerifyMemberRequest {
+func (a *MxPlatformApiService) VerifyMember(ctx context.Context, memberGuid string, userGuid string) ApiVerifyMemberRequest {
 	return ApiVerifyMemberRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -10346,26 +10346,26 @@ func (a *MxPlatformApiService) VerifyMember(ctx _context.Context, memberGuid str
 
 // Execute executes the request
 //  @return MemberResponseBody
-func (a *MxPlatformApiService) VerifyMemberExecute(r ApiVerifyMemberRequest) (MemberResponseBody, *_nethttp.Response, error) {
+func (a *MxPlatformApiService) VerifyMemberExecute(r ApiVerifyMemberRequest) (*MemberResponseBody, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  MemberResponseBody
+		localVarReturnValue  *MemberResponseBody
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.VerifyMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/verify"
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", _neturl.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", _neturl.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10394,15 +10394,15 @@ func (a *MxPlatformApiService) VerifyMemberExecute(r ApiVerifyMemberRequest) (Me
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10411,7 +10411,7 @@ func (a *MxPlatformApiService) VerifyMemberExecute(r ApiVerifyMemberRequest) (Me
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

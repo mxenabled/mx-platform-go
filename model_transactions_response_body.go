@@ -17,7 +17,7 @@ import (
 // TransactionsResponseBody struct for TransactionsResponseBody
 type TransactionsResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
-	Transactions *[]TransactionResponse `json:"transactions,omitempty"`
+	Transactions []TransactionResponse `json:"transactions,omitempty"`
 }
 
 // NewTransactionsResponseBody instantiates a new TransactionsResponseBody object
@@ -75,12 +75,12 @@ func (o *TransactionsResponseBody) GetTransactions() []TransactionResponse {
 		var ret []TransactionResponse
 		return ret
 	}
-	return *o.Transactions
+	return o.Transactions
 }
 
 // GetTransactionsOk returns a tuple with the Transactions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionsResponseBody) GetTransactionsOk() (*[]TransactionResponse, bool) {
+func (o *TransactionsResponseBody) GetTransactionsOk() ([]TransactionResponse, bool) {
 	if o == nil || o.Transactions == nil {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *TransactionsResponseBody) HasTransactions() bool {
 
 // SetTransactions gets a reference to the given []TransactionResponse and assigns it to the Transactions field.
 func (o *TransactionsResponseBody) SetTransactions(v []TransactionResponse) {
-	o.Transactions = &v
+	o.Transactions = v
 }
 
 func (o TransactionsResponseBody) MarshalJSON() ([]byte, error) {

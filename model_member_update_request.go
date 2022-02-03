@@ -17,7 +17,7 @@ import (
 // MemberUpdateRequest struct for MemberUpdateRequest
 type MemberUpdateRequest struct {
 	BackgroundAggregationIsDisabled *bool `json:"background_aggregation_is_disabled,omitempty"`
-	Credentials *[]CredentialRequest `json:"credentials,omitempty"`
+	Credentials []CredentialRequest `json:"credentials,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Metadata *string `json:"metadata,omitempty"`
 	SkipAggregation *bool `json:"skip_aggregation,omitempty"`
@@ -78,12 +78,12 @@ func (o *MemberUpdateRequest) GetCredentials() []CredentialRequest {
 		var ret []CredentialRequest
 		return ret
 	}
-	return *o.Credentials
+	return o.Credentials
 }
 
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberUpdateRequest) GetCredentialsOk() (*[]CredentialRequest, bool) {
+func (o *MemberUpdateRequest) GetCredentialsOk() ([]CredentialRequest, bool) {
 	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
@@ -101,7 +101,7 @@ func (o *MemberUpdateRequest) HasCredentials() bool {
 
 // SetCredentials gets a reference to the given []CredentialRequest and assigns it to the Credentials field.
 func (o *MemberUpdateRequest) SetCredentials(v []CredentialRequest) {
-	o.Credentials = &v
+	o.Credentials = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.

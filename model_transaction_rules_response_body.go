@@ -17,7 +17,7 @@ import (
 // TransactionRulesResponseBody struct for TransactionRulesResponseBody
 type TransactionRulesResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
-	TransactionRules *[]TransactionRuleResponse `json:"transaction_rules,omitempty"`
+	TransactionRules []TransactionRuleResponse `json:"transaction_rules,omitempty"`
 }
 
 // NewTransactionRulesResponseBody instantiates a new TransactionRulesResponseBody object
@@ -75,12 +75,12 @@ func (o *TransactionRulesResponseBody) GetTransactionRules() []TransactionRuleRe
 		var ret []TransactionRuleResponse
 		return ret
 	}
-	return *o.TransactionRules
+	return o.TransactionRules
 }
 
 // GetTransactionRulesOk returns a tuple with the TransactionRules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionRulesResponseBody) GetTransactionRulesOk() (*[]TransactionRuleResponse, bool) {
+func (o *TransactionRulesResponseBody) GetTransactionRulesOk() ([]TransactionRuleResponse, bool) {
 	if o == nil || o.TransactionRules == nil {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *TransactionRulesResponseBody) HasTransactionRules() bool {
 
 // SetTransactionRules gets a reference to the given []TransactionRuleResponse and assigns it to the TransactionRules field.
 func (o *TransactionRulesResponseBody) SetTransactionRules(v []TransactionRuleResponse) {
-	o.TransactionRules = &v
+	o.TransactionRules = v
 }
 
 func (o TransactionRulesResponseBody) MarshalJSON() ([]byte, error) {
