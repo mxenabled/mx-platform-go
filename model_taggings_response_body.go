@@ -17,7 +17,7 @@ import (
 // TaggingsResponseBody struct for TaggingsResponseBody
 type TaggingsResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
-	Taggings *[]TaggingResponse `json:"taggings,omitempty"`
+	Taggings []TaggingResponse `json:"taggings,omitempty"`
 }
 
 // NewTaggingsResponseBody instantiates a new TaggingsResponseBody object
@@ -75,12 +75,12 @@ func (o *TaggingsResponseBody) GetTaggings() []TaggingResponse {
 		var ret []TaggingResponse
 		return ret
 	}
-	return *o.Taggings
+	return o.Taggings
 }
 
 // GetTaggingsOk returns a tuple with the Taggings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TaggingsResponseBody) GetTaggingsOk() (*[]TaggingResponse, bool) {
+func (o *TaggingsResponseBody) GetTaggingsOk() ([]TaggingResponse, bool) {
 	if o == nil || o.Taggings == nil {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *TaggingsResponseBody) HasTaggings() bool {
 
 // SetTaggings gets a reference to the given []TaggingResponse and assigns it to the Taggings field.
 func (o *TaggingsResponseBody) SetTaggings(v []TaggingResponse) {
-	o.Taggings = &v
+	o.Taggings = v
 }
 
 func (o TaggingsResponseBody) MarshalJSON() ([]byte, error) {

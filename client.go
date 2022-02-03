@@ -13,7 +13,7 @@ package mxplatformgo
 import (
 	"bytes"
 	"context"
-  "crypto/tls" // Required for MX custom tls
+	"crypto/tls" // Required for MX custom tls
 	"encoding/json"
 	"encoding/xml"
 	"errors"
@@ -22,7 +22,7 @@ import (
 	"io/ioutil"
 	"log"
 	"mime/multipart"
-  "net" // Required for MX custom tls
+	"net" // Required for MX custom tls
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -62,22 +62,22 @@ type service struct {
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *Configuration) *APIClient {
 	if cfg.HTTPClient == nil {
-    // Start MX custom tls
-    var netTransport = &http.Transport{
-      Dial: (&net.Dialer{
-        Timeout: 5 * time.Second,
-      }).Dial,
-      TLSHandshakeTimeout: 5 * time.Second,
-      TLSClientConfig: &tls.Config{
-        ServerName: "moneydesktop.com",
-      },
-    }
-    var netClient = &http.Client{
-      Timeout:   time.Second * 10,
-      Transport: netTransport,
-    }
-    cfg.HTTPClient = netClient
-    // End MX custom tls
+		// Start MX custom tls
+		var netTransport = &http.Transport{
+			Dial: (&net.Dialer{
+				Timeout: 5 * time.Second,
+			}).Dial,
+			TLSHandshakeTimeout: 5 * time.Second,
+			TLSClientConfig: &tls.Config{
+				ServerName: "moneydesktop.com",
+			},
+		}
+		var netClient = &http.Client{
+			Timeout:   time.Second * 10,
+			Transport: netTransport,
+		}
+		cfg.HTTPClient = netClient
+		// End MX custom tls
 	}
 
 	c := &APIClient{}
@@ -437,6 +437,13 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 // Prevent trying to import "fmt"
 func reportError(format string, a ...interface{}) error {
 	return fmt.Errorf(format, a...)
+}
+
+// A wrapper for strict JSON decoding
+func newStrictDecoder(data []byte) *json.Decoder {
+	dec := json.NewDecoder(bytes.NewBuffer(data))
+	dec.DisallowUnknownFields()
+	return dec
 }
 
 // Set request body from an interface{}

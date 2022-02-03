@@ -16,7 +16,7 @@ import (
 
 // MembersResponseBody struct for MembersResponseBody
 type MembersResponseBody struct {
-	Members *[]MemberResponse `json:"members,omitempty"`
+	Members []MemberResponse `json:"members,omitempty"`
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *MembersResponseBody) GetMembers() []MemberResponse {
 		var ret []MemberResponse
 		return ret
 	}
-	return *o.Members
+	return o.Members
 }
 
 // GetMembersOk returns a tuple with the Members field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MembersResponseBody) GetMembersOk() (*[]MemberResponse, bool) {
+func (o *MembersResponseBody) GetMembersOk() ([]MemberResponse, bool) {
 	if o == nil || o.Members == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *MembersResponseBody) HasMembers() bool {
 
 // SetMembers gets a reference to the given []MemberResponse and assigns it to the Members field.
 func (o *MembersResponseBody) SetMembers(v []MemberResponse) {
-	o.Members = &v
+	o.Members = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

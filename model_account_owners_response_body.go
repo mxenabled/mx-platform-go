@@ -16,7 +16,7 @@ import (
 
 // AccountOwnersResponseBody struct for AccountOwnersResponseBody
 type AccountOwnersResponseBody struct {
-	AccountOwners *[]AccountOwnerResponse `json:"account_owners,omitempty"`
+	AccountOwners []AccountOwnerResponse `json:"account_owners,omitempty"`
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *AccountOwnersResponseBody) GetAccountOwners() []AccountOwnerResponse {
 		var ret []AccountOwnerResponse
 		return ret
 	}
-	return *o.AccountOwners
+	return o.AccountOwners
 }
 
 // GetAccountOwnersOk returns a tuple with the AccountOwners field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountOwnersResponseBody) GetAccountOwnersOk() (*[]AccountOwnerResponse, bool) {
+func (o *AccountOwnersResponseBody) GetAccountOwnersOk() ([]AccountOwnerResponse, bool) {
 	if o == nil || o.AccountOwners == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *AccountOwnersResponseBody) HasAccountOwners() bool {
 
 // SetAccountOwners gets a reference to the given []AccountOwnerResponse and assigns it to the AccountOwners field.
 func (o *AccountOwnersResponseBody) SetAccountOwners(v []AccountOwnerResponse) {
-	o.AccountOwners = &v
+	o.AccountOwners = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

@@ -121,8 +121,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.AggregateMember(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.AggregateMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.AggregateMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -194,8 +194,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CheckBalances(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CheckBalances(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CheckBalances``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -267,8 +267,8 @@ func main() {
     categoryCreateRequestBody := *openapiclient.NewCategoryCreateRequestBody() // CategoryCreateRequestBody | Custom category object to be created
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateCategory(context.Background(), userGuid).CategoryCreateRequestBody(categoryCreateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateCategory(context.Background(), userGuid).CategoryCreateRequestBody(categoryCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -340,8 +340,8 @@ func main() {
     managedAccountCreateRequestBody := *openapiclient.NewManagedAccountCreateRequestBody() // ManagedAccountCreateRequestBody | Managed account to be created.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateManagedAccount(context.Background(), userGuid, memberGuid).ManagedAccountCreateRequestBody(managedAccountCreateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateManagedAccount(context.Background(), userGuid, memberGuid).ManagedAccountCreateRequestBody(managedAccountCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -414,8 +414,8 @@ func main() {
     managedMemberCreateRequestBody := *openapiclient.NewManagedMemberCreateRequestBody() // ManagedMemberCreateRequestBody | Managed member to be created.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateManagedMember(context.Background(), userGuid).ManagedMemberCreateRequestBody(managedMemberCreateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateManagedMember(context.Background(), userGuid).ManagedMemberCreateRequestBody(managedMemberCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManagedMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -487,8 +487,8 @@ func main() {
     managedTransactionCreateRequestBody := *openapiclient.NewManagedTransactionCreateRequestBody() // ManagedTransactionCreateRequestBody | Managed transaction to be created.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateManagedTransaction(context.Background(), userGuid, memberGuid).ManagedTransactionCreateRequestBody(managedTransactionCreateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateManagedTransaction(context.Background(), userGuid, memberGuid).ManagedTransactionCreateRequestBody(managedTransactionCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -561,8 +561,8 @@ func main() {
     memberCreateRequestBody := *openapiclient.NewMemberCreateRequestBody() // MemberCreateRequestBody | Member object to be created with optional parameters (id and metadata) and required parameters (credentials and institution_code)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateMember(context.Background(), userGuid).MemberCreateRequestBody(memberCreateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateMember(context.Background(), userGuid).MemberCreateRequestBody(memberCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -633,8 +633,8 @@ func main() {
     tagCreateRequestBody := *openapiclient.NewTagCreateRequestBody() // TagCreateRequestBody | Tag object to be created with required parameters (tag_guid)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateTag(context.Background(), userGuid).TagCreateRequestBody(tagCreateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateTag(context.Background(), userGuid).TagCreateRequestBody(tagCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -705,8 +705,8 @@ func main() {
     taggingCreateRequestBody := *openapiclient.NewTaggingCreateRequestBody() // TaggingCreateRequestBody | Tagging object to be created with required parameters (tag_guid and transaction_guid)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateTagging(context.Background(), userGuid).TaggingCreateRequestBody(taggingCreateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateTagging(context.Background(), userGuid).TaggingCreateRequestBody(taggingCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateTagging``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -777,8 +777,8 @@ func main() {
     transactionRuleCreateRequestBody := *openapiclient.NewTransactionRuleCreateRequestBody() // TransactionRuleCreateRequestBody | TransactionRule object to be created with optional parameters (description) and required parameters (category_guid and match_description)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateTransactionRule(context.Background(), userGuid).TransactionRuleCreateRequestBody(transactionRuleCreateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateTransactionRule(context.Background(), userGuid).TransactionRuleCreateRequestBody(transactionRuleCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateTransactionRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -848,8 +848,8 @@ func main() {
     userCreateRequestBody := *openapiclient.NewUserCreateRequestBody() // UserCreateRequestBody | User object to be created. (None of these parameters are required, but the user object cannot be empty)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.CreateUser(context.Background()).UserCreateRequestBody(userCreateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateUser(context.Background()).UserCreateRequestBody(userCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -915,8 +915,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DeleteCategory(context.Background(), categoryGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteCategory(context.Background(), categoryGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -987,8 +987,8 @@ func main() {
     accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DeleteManagedAccount(context.Background(), memberGuid, userGuid, accountGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteManagedAccount(context.Background(), memberGuid, userGuid, accountGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1060,8 +1060,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DeleteManagedMember(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteManagedMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManagedMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1132,8 +1132,8 @@ func main() {
     transactionGuid := "TRN-810828b0-5210-4878-9bd3-f4ce514f90c4" // string | The unique id for a `transaction`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DeleteManagedTransaction(context.Background(), memberGuid, userGuid, transactionGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteManagedTransaction(context.Background(), memberGuid, userGuid, transactionGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1205,8 +1205,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DeleteMember(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1276,8 +1276,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DeleteTag(context.Background(), tagGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteTag(context.Background(), tagGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1347,8 +1347,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DeleteTagging(context.Background(), taggingGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteTagging(context.Background(), taggingGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteTagging``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1418,8 +1418,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DeleteTransactionRule(context.Background(), transactionRuleGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteTransactionRule(context.Background(), transactionRuleGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteTransactionRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1488,8 +1488,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DeleteUser(context.Background(), userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteUser(context.Background(), userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1558,8 +1558,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.DownloadStatementPDF(context.Background(), memberGuid, statementGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DownloadStatementPDF(context.Background(), memberGuid, statementGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DownloadStatementPDF``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1632,8 +1632,8 @@ func main() {
     enhanceTransactionsRequestBody := *openapiclient.NewEnhanceTransactionsRequestBody() // EnhanceTransactionsRequestBody | Transaction object to be enhanced
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.EnhanceTransactions(context.Background()).EnhanceTransactionsRequestBody(enhanceTransactionsRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.EnhanceTransactions(context.Background()).EnhanceTransactionsRequestBody(enhanceTransactionsRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.EnhanceTransactions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1699,8 +1699,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ExtendHistory(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ExtendHistory(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ExtendHistory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1772,8 +1772,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.FetchStatements(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.FetchStatements(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.FetchStatements``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1845,8 +1845,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.IdentifyMember(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.IdentifyMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.IdentifyMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1920,8 +1920,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListAccountNumbersByAccount(context.Background(), accountGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListAccountNumbersByAccount(context.Background(), accountGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListAccountNumbersByAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1997,8 +1997,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListAccountNumbersByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListAccountNumbersByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListAccountNumbersByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2074,8 +2074,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListAccountOwnersByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListAccountOwnersByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListAccountOwnersByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2150,8 +2150,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListCategories(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListCategories(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListCategories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2223,8 +2223,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListDefaultCategories(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListDefaultCategories(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListDefaultCategories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2292,8 +2292,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListDefaultCategoriesByUser(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListDefaultCategoriesByUser(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListDefaultCategoriesByUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2365,8 +2365,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListFavoriteInstitutions(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListFavoriteInstitutions(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListFavoriteInstitutions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2436,8 +2436,8 @@ func main() {
     toDate := "2019-10-20" // string | Filter holdings to this date. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListHoldings(context.Background(), userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListHoldings(context.Background(), userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListHoldings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2515,8 +2515,8 @@ func main() {
     toDate := "2019-10-20" // string | Filter holdings to this date. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListHoldingsByAccount(context.Background(), accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListHoldingsByAccount(context.Background(), accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListHoldingsByAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2596,8 +2596,8 @@ func main() {
     toDate := "2019-10-20" // string | Filter holdings to this date. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListHoldingsByMember(context.Background(), memberGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListHoldingsByMember(context.Background(), memberGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListHoldingsByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2674,8 +2674,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListInstitutionCredentials(context.Background(), institutionCode).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListInstitutionCredentials(context.Background(), institutionCode).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListInstitutionCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2752,8 +2752,8 @@ func main() {
     supportsTransactionHistory := true // bool | Filter only institutions which support extended transaction history. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListInstitutions(context.Background()).Name(name).Page(page).RecordsPerPage(recordsPerPage).SupportsAccountIdentification(supportsAccountIdentification).SupportsAccountStatement(supportsAccountStatement).SupportsAccountVerification(supportsAccountVerification).SupportsTransactionHistory(supportsTransactionHistory).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListInstitutions(context.Background()).Name(name).Page(page).RecordsPerPage(recordsPerPage).SupportsAccountIdentification(supportsAccountIdentification).SupportsAccountStatement(supportsAccountStatement).SupportsAccountVerification(supportsAccountVerification).SupportsTransactionHistory(supportsTransactionHistory).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListInstitutions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2827,8 +2827,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListManagedAccounts(context.Background(), userGuid, memberGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListManagedAccounts(context.Background(), userGuid, memberGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2902,8 +2902,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListManagedInstitutions(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListManagedInstitutions(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedInstitutions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2971,8 +2971,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListManagedMembers(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListManagedMembers(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3046,8 +3046,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListManagedTransactions(context.Background(), userGuid, memberGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListManagedTransactions(context.Background(), userGuid, memberGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedTransactions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3123,8 +3123,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListMemberChallenges(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListMemberChallenges(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMemberChallenges``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3200,8 +3200,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListMemberCredentials(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListMemberCredentials(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMemberCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3276,8 +3276,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListMembers(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListMembers(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3349,8 +3349,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListMerchants(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListMerchants(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMerchants``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3419,8 +3419,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListStatementsByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListStatementsByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListStatementsByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3495,8 +3495,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListTaggings(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListTaggings(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTaggings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3569,8 +3569,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListTags(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListTags(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTags``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3643,8 +3643,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListTransactionRules(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListTransactionRules(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactionRules``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3719,8 +3719,8 @@ func main() {
     toDate := "2019-10-20" // string | Filter transactions to this date. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListTransactions(context.Background(), userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListTransactions(context.Background(), userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3798,8 +3798,8 @@ func main() {
     toDate := "2019-10-20" // string | Filter transactions to this date. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListTransactionsByAccount(context.Background(), accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListTransactionsByAccount(context.Background(), accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactionsByAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3879,8 +3879,8 @@ func main() {
     toDate := "2019-10-20" // string | Filter transactions to this date. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListTransactionsByMember(context.Background(), memberGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListTransactionsByMember(context.Background(), memberGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactionsByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3960,8 +3960,8 @@ func main() {
     toDate := "2019-10-20" // string | Filter transactions to this date. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListTransactionsByTag(context.Background(), tagGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListTransactionsByTag(context.Background(), tagGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactionsByTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4038,8 +4038,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListUserAccounts(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListUserAccounts(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListUserAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4111,8 +4111,8 @@ func main() {
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ListUsers(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListUsers(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4179,8 +4179,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadAccount(context.Background(), accountGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadAccount(context.Background(), accountGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4252,8 +4252,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadCategory(context.Background(), categoryGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadCategory(context.Background(), categoryGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4325,8 +4325,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadDefaultCategory(context.Background(), categoryGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadDefaultCategory(context.Background(), categoryGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadDefaultCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4398,8 +4398,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadHolding(context.Background(), holdingGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadHolding(context.Background(), holdingGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadHolding``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4470,8 +4470,8 @@ func main() {
     institutionCode := "chase" // string | The institution_code of the institution.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadInstitution(context.Background(), institutionCode).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadInstitution(context.Background(), institutionCode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadInstitution``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4542,8 +4542,8 @@ func main() {
     accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadManagedAccount(context.Background(), memberGuid, userGuid, accountGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadManagedAccount(context.Background(), memberGuid, userGuid, accountGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4617,8 +4617,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadManagedMember(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadManagedMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadManagedMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4691,8 +4691,8 @@ func main() {
     transactionGuid := "TRN-810828b0-5210-4878-9bd3-f4ce514f90c4" // string | The unique id for a `transaction`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadManagedTransaction(context.Background(), memberGuid, userGuid, transactionGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadManagedTransaction(context.Background(), memberGuid, userGuid, transactionGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4766,8 +4766,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadMember(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4839,8 +4839,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadMemberStatus(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadMemberStatus(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadMemberStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4911,8 +4911,8 @@ func main() {
     merchantGuid := "MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b" // string | The unique id for a `merchant`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadMerchant(context.Background(), merchantGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadMerchant(context.Background(), merchantGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadMerchant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4981,8 +4981,8 @@ func main() {
     merchantLocationGuid := "MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621" // string | The unique id for a `merchant_location`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadMerchantLocation(context.Background(), merchantLocationGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadMerchantLocation(context.Background(), merchantLocationGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadMerchantLocation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5053,8 +5053,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadStatementByMember(context.Background(), memberGuid, statementGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadStatementByMember(context.Background(), memberGuid, statementGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadStatementByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5128,8 +5128,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadTag(context.Background(), tagGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadTag(context.Background(), tagGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5201,8 +5201,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadTagging(context.Background(), taggingGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadTagging(context.Background(), taggingGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTagging``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5274,8 +5274,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadTransaction(context.Background(), transactionGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadTransaction(context.Background(), transactionGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5347,8 +5347,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadTransactionRule(context.Background(), transactionRuleGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadTransactionRule(context.Background(), transactionRuleGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTransactionRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5419,8 +5419,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ReadUser(context.Background(), userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadUser(context.Background(), userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5490,8 +5490,8 @@ func main() {
     connectWidgetRequestBody := *openapiclient.NewConnectWidgetRequestBody() // ConnectWidgetRequestBody | Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.RequestConnectWidgetURL(context.Background(), userGuid).ConnectWidgetRequestBody(connectWidgetRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.RequestConnectWidgetURL(context.Background(), userGuid).ConnectWidgetRequestBody(connectWidgetRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestConnectWidgetURL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5565,8 +5565,8 @@ func main() {
     skipAggregation := false // bool | Setting this parameter to `true` will prevent the member from automatically aggregating after being redirected from the authorization page. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.RequestOAuthWindowURI(context.Background(), memberGuid, userGuid).ReferralSource(referralSource).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).SkipAggregation(skipAggregation).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.RequestOAuthWindowURI(context.Background(), memberGuid, userGuid).ReferralSource(referralSource).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).SkipAggregation(skipAggregation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestOAuthWindowURI``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5642,8 +5642,8 @@ func main() {
     acceptLanguage := "en-US" // string | The desired language of the widget. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.RequestWidgetURL(context.Background(), userGuid).WidgetRequestBody(widgetRequestBody).AcceptLanguage(acceptLanguage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.RequestWidgetURL(context.Background(), userGuid).WidgetRequestBody(widgetRequestBody).AcceptLanguage(acceptLanguage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestWidgetURL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5716,8 +5716,8 @@ func main() {
     memberResumeRequestBody := *openapiclient.NewMemberResumeRequestBody() // MemberResumeRequestBody | Member object with MFA challenge answers
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.ResumeAggregation(context.Background(), memberGuid, userGuid).MemberResumeRequestBody(memberResumeRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ResumeAggregation(context.Background(), memberGuid, userGuid).MemberResumeRequestBody(memberResumeRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ResumeAggregation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5792,8 +5792,8 @@ func main() {
     accountUpdateRequestBody := *openapiclient.NewAccountUpdateRequestBody() // AccountUpdateRequestBody | Account object to be created with optional parameters (is_hidden)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateAccountByMember(context.Background(), userGuid, memberGuid, accountGuid).AccountUpdateRequestBody(accountUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateAccountByMember(context.Background(), userGuid, memberGuid, accountGuid).AccountUpdateRequestBody(accountUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateAccountByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5869,8 +5869,8 @@ func main() {
     categoryUpdateRequestBody := *openapiclient.NewCategoryUpdateRequestBody() // CategoryUpdateRequestBody | Category object to be updated (While no single parameter is required, the `category` object cannot be empty)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateCategory(context.Background(), categoryGuid, userGuid).CategoryUpdateRequestBody(categoryUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateCategory(context.Background(), categoryGuid, userGuid).CategoryUpdateRequestBody(categoryUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5945,8 +5945,8 @@ func main() {
     managedAccountUpdateRequestBody := *openapiclient.NewManagedAccountUpdateRequestBody() // ManagedAccountUpdateRequestBody | Managed account object to be updated (While no single parameter is required, the request body can't be empty)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateManagedAccount(context.Background(), memberGuid, userGuid, accountGuid).ManagedAccountUpdateRequestBody(managedAccountUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateManagedAccount(context.Background(), memberGuid, userGuid, accountGuid).ManagedAccountUpdateRequestBody(managedAccountUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6022,8 +6022,8 @@ func main() {
     managedMemberUpdateRequestBody := *openapiclient.NewManagedMemberUpdateRequestBody() // ManagedMemberUpdateRequestBody | Managed member object to be updated (While no single parameter is required, the request body can't be empty)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateManagedMember(context.Background(), memberGuid, userGuid).ManagedMemberUpdateRequestBody(managedMemberUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateManagedMember(context.Background(), memberGuid, userGuid).ManagedMemberUpdateRequestBody(managedMemberUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateManagedMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6098,8 +6098,8 @@ func main() {
     managedTransactionUpdateRequestBody := *openapiclient.NewManagedTransactionUpdateRequestBody() // ManagedTransactionUpdateRequestBody | Managed transaction object to be updated (While no single parameter is required, the request body can't be empty)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateManagedTransaction(context.Background(), memberGuid, userGuid, transactionGuid).ManagedTransactionUpdateRequestBody(managedTransactionUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateManagedTransaction(context.Background(), memberGuid, userGuid, transactionGuid).ManagedTransactionUpdateRequestBody(managedTransactionUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6175,8 +6175,8 @@ func main() {
     memberUpdateRequestBody := *openapiclient.NewMemberUpdateRequestBody() // MemberUpdateRequestBody | Member object to be updated (While no single parameter is required, the request body can't be empty)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateMember(context.Background(), memberGuid, userGuid).MemberUpdateRequestBody(memberUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateMember(context.Background(), memberGuid, userGuid).MemberUpdateRequestBody(memberUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6250,8 +6250,8 @@ func main() {
     tagUpdateRequestBody := *openapiclient.NewTagUpdateRequestBody() // TagUpdateRequestBody | Tag object to be updated with required parameter (tag_guid)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateTag(context.Background(), tagGuid, userGuid).TagUpdateRequestBody(tagUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateTag(context.Background(), tagGuid, userGuid).TagUpdateRequestBody(tagUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6325,8 +6325,8 @@ func main() {
     taggingUpdateRequestBody := *openapiclient.NewTaggingUpdateRequestBody() // TaggingUpdateRequestBody | Tagging object to be updated with required parameter (tag_guid)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateTagging(context.Background(), taggingGuid, userGuid).TaggingUpdateRequestBody(taggingUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateTagging(context.Background(), taggingGuid, userGuid).TaggingUpdateRequestBody(taggingUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateTagging``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6400,8 +6400,8 @@ func main() {
     transactionUpdateRequestBody := *openapiclient.NewTransactionUpdateRequestBody() // TransactionUpdateRequestBody | Transaction object to be updated with a new description
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateTransaction(context.Background(), transactionGuid, userGuid).TransactionUpdateRequestBody(transactionUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateTransaction(context.Background(), transactionGuid, userGuid).TransactionUpdateRequestBody(transactionUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6475,8 +6475,8 @@ func main() {
     transactionRuleUpdateRequestBody := *openapiclient.NewTransactionRuleUpdateRequestBody() // TransactionRuleUpdateRequestBody | TransactionRule object to be updated
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateTransactionRule(context.Background(), transactionRuleGuid, userGuid).TransactionRuleUpdateRequestBody(transactionRuleUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateTransactionRule(context.Background(), transactionRuleGuid, userGuid).TransactionRuleUpdateRequestBody(transactionRuleUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateTransactionRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6549,8 +6549,8 @@ func main() {
     userUpdateRequestBody := *openapiclient.NewUserUpdateRequestBody() // UserUpdateRequestBody | User object to be updated (None of these parameters are required, but the user object cannot be empty.)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.UpdateUser(context.Background(), userGuid).UserUpdateRequestBody(userUpdateRequestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateUser(context.Background(), userGuid).UserUpdateRequestBody(userUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6621,8 +6621,8 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MxPlatformApi.VerifyMember(context.Background(), memberGuid, userGuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.VerifyMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.VerifyMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

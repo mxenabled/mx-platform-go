@@ -16,7 +16,7 @@ import (
 
 // InstitutionsResponseBody struct for InstitutionsResponseBody
 type InstitutionsResponseBody struct {
-	Institutions *[]InstitutionResponse `json:"institutions,omitempty"`
+	Institutions []InstitutionResponse `json:"institutions,omitempty"`
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *InstitutionsResponseBody) GetInstitutions() []InstitutionResponse {
 		var ret []InstitutionResponse
 		return ret
 	}
-	return *o.Institutions
+	return o.Institutions
 }
 
 // GetInstitutionsOk returns a tuple with the Institutions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstitutionsResponseBody) GetInstitutionsOk() (*[]InstitutionResponse, bool) {
+func (o *InstitutionsResponseBody) GetInstitutionsOk() ([]InstitutionResponse, bool) {
 	if o == nil || o.Institutions == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *InstitutionsResponseBody) HasInstitutions() bool {
 
 // SetInstitutions gets a reference to the given []InstitutionResponse and assigns it to the Institutions field.
 func (o *InstitutionsResponseBody) SetInstitutions(v []InstitutionResponse) {
-	o.Institutions = &v
+	o.Institutions = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

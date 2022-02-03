@@ -16,7 +16,7 @@ import (
 
 // ChallengesResponseBody struct for ChallengesResponseBody
 type ChallengesResponseBody struct {
-	Challenges *[]ChallengeResponse `json:"challenges,omitempty"`
+	Challenges []ChallengeResponse `json:"challenges,omitempty"`
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ChallengesResponseBody) GetChallenges() []ChallengeResponse {
 		var ret []ChallengeResponse
 		return ret
 	}
-	return *o.Challenges
+	return o.Challenges
 }
 
 // GetChallengesOk returns a tuple with the Challenges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChallengesResponseBody) GetChallengesOk() (*[]ChallengeResponse, bool) {
+func (o *ChallengesResponseBody) GetChallengesOk() ([]ChallengeResponse, bool) {
 	if o == nil || o.Challenges == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ChallengesResponseBody) HasChallenges() bool {
 
 // SetChallenges gets a reference to the given []ChallengeResponse and assigns it to the Challenges field.
 func (o *ChallengesResponseBody) SetChallenges(v []ChallengeResponse) {
-	o.Challenges = &v
+	o.Challenges = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

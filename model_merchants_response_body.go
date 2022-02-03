@@ -16,7 +16,7 @@ import (
 
 // MerchantsResponseBody struct for MerchantsResponseBody
 type MerchantsResponseBody struct {
-	Merchants *[]MerchantResponse `json:"merchants,omitempty"`
+	Merchants []MerchantResponse `json:"merchants,omitempty"`
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *MerchantsResponseBody) GetMerchants() []MerchantResponse {
 		var ret []MerchantResponse
 		return ret
 	}
-	return *o.Merchants
+	return o.Merchants
 }
 
 // GetMerchantsOk returns a tuple with the Merchants field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MerchantsResponseBody) GetMerchantsOk() (*[]MerchantResponse, bool) {
+func (o *MerchantsResponseBody) GetMerchantsOk() ([]MerchantResponse, bool) {
 	if o == nil || o.Merchants == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *MerchantsResponseBody) HasMerchants() bool {
 
 // SetMerchants gets a reference to the given []MerchantResponse and assigns it to the Merchants field.
 func (o *MerchantsResponseBody) SetMerchants(v []MerchantResponse) {
-	o.Merchants = &v
+	o.Merchants = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

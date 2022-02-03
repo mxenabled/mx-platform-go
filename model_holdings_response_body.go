@@ -16,7 +16,7 @@ import (
 
 // HoldingsResponseBody struct for HoldingsResponseBody
 type HoldingsResponseBody struct {
-	Holdings *[]HoldingResponse `json:"holdings,omitempty"`
+	Holdings []HoldingResponse `json:"holdings,omitempty"`
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *HoldingsResponseBody) GetHoldings() []HoldingResponse {
 		var ret []HoldingResponse
 		return ret
 	}
-	return *o.Holdings
+	return o.Holdings
 }
 
 // GetHoldingsOk returns a tuple with the Holdings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HoldingsResponseBody) GetHoldingsOk() (*[]HoldingResponse, bool) {
+func (o *HoldingsResponseBody) GetHoldingsOk() ([]HoldingResponse, bool) {
 	if o == nil || o.Holdings == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *HoldingsResponseBody) HasHoldings() bool {
 
 // SetHoldings gets a reference to the given []HoldingResponse and assigns it to the Holdings field.
 func (o *HoldingsResponseBody) SetHoldings(v []HoldingResponse) {
-	o.Holdings = &v
+	o.Holdings = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

@@ -19,9 +19,9 @@ type ChallengeResponse struct {
 	FieldName NullableString `json:"field_name,omitempty"`
 	Guid *string `json:"guid,omitempty"`
 	ImageData NullableString `json:"image_data,omitempty"`
-	ImageOptions *[]ImageOptionResponse `json:"image_options,omitempty"`
+	ImageOptions []ImageOptionResponse `json:"image_options,omitempty"`
 	Label NullableString `json:"label,omitempty"`
-	Options *[]OptionResponse `json:"options,omitempty"`
+	Options []OptionResponse `json:"options,omitempty"`
 	Type NullableString `json:"type,omitempty"`
 }
 
@@ -164,12 +164,12 @@ func (o *ChallengeResponse) GetImageOptions() []ImageOptionResponse {
 		var ret []ImageOptionResponse
 		return ret
 	}
-	return *o.ImageOptions
+	return o.ImageOptions
 }
 
 // GetImageOptionsOk returns a tuple with the ImageOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChallengeResponse) GetImageOptionsOk() (*[]ImageOptionResponse, bool) {
+func (o *ChallengeResponse) GetImageOptionsOk() ([]ImageOptionResponse, bool) {
 	if o == nil || o.ImageOptions == nil {
 		return nil, false
 	}
@@ -187,7 +187,7 @@ func (o *ChallengeResponse) HasImageOptions() bool {
 
 // SetImageOptions gets a reference to the given []ImageOptionResponse and assigns it to the ImageOptions field.
 func (o *ChallengeResponse) SetImageOptions(v []ImageOptionResponse) {
-	o.ImageOptions = &v
+	o.ImageOptions = v
 }
 
 // GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -238,12 +238,12 @@ func (o *ChallengeResponse) GetOptions() []OptionResponse {
 		var ret []OptionResponse
 		return ret
 	}
-	return *o.Options
+	return o.Options
 }
 
 // GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChallengeResponse) GetOptionsOk() (*[]OptionResponse, bool) {
+func (o *ChallengeResponse) GetOptionsOk() ([]OptionResponse, bool) {
 	if o == nil || o.Options == nil {
 		return nil, false
 	}
@@ -261,7 +261,7 @@ func (o *ChallengeResponse) HasOptions() bool {
 
 // SetOptions gets a reference to the given []OptionResponse and assigns it to the Options field.
 func (o *ChallengeResponse) SetOptions(v []OptionResponse) {
-	o.Options = &v
+	o.Options = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
