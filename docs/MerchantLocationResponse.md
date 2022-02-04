@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **City** | Pointer to **NullableString** |  | [optional] 
 **Country** | Pointer to **NullableString** |  | [optional] 
 **CreatedAt** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **Latitude** | Pointer to **NullableFloat32** |  | [optional] 
 **Longitude** | Pointer to **NullableFloat32** |  | [optional] 
-**MerchantGuid** | Pointer to **string** |  | [optional] 
+**MerchantGuid** | Pointer to **NullableString** |  | [optional] 
 **PhoneNumber** | Pointer to **NullableString** |  | [optional] 
 **PostalCode** | Pointer to **NullableString** |  | [optional] 
 **State** | Pointer to **NullableString** |  | [optional] 
@@ -166,6 +166,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *MerchantLocationResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *MerchantLocationResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetLatitude
 
 `func (o *MerchantLocationResponse) GetLatitude() float32`
@@ -261,6 +271,16 @@ SetMerchantGuid sets MerchantGuid field to given value.
 
 HasMerchantGuid returns a boolean if a field has been set.
 
+### SetMerchantGuidNil
+
+`func (o *MerchantLocationResponse) SetMerchantGuidNil(b bool)`
+
+ SetMerchantGuidNil sets the value for MerchantGuid to be an explicit nil
+
+### UnsetMerchantGuid
+`func (o *MerchantLocationResponse) UnsetMerchantGuid()`
+
+UnsetMerchantGuid ensures that no value is present for MerchantGuid, not even an explicit nil
 ### GetPhoneNumber
 
 `func (o *MerchantLocationResponse) GetPhoneNumber() string`

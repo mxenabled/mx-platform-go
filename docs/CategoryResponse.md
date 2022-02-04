@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **IsDefault** | Pointer to **NullableBool** |  | [optional] 
 **IsIncome** | Pointer to **NullableBool** |  | [optional] 
 **Metadata** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
-**ParentGuid** | Pointer to **string** |  | [optional] 
+**ParentGuid** | Pointer to **NullableString** |  | [optional] 
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -92,6 +92,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *CategoryResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *CategoryResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetIsDefault
 
 `func (o *CategoryResponse) GetIsDefault() bool`
@@ -257,6 +267,16 @@ SetParentGuid sets ParentGuid field to given value.
 
 HasParentGuid returns a boolean if a field has been set.
 
+### SetParentGuidNil
+
+`func (o *CategoryResponse) SetParentGuidNil(b bool)`
+
+ SetParentGuidNil sets the value for ParentGuid to be an explicit nil
+
+### UnsetParentGuid
+`func (o *CategoryResponse) UnsetParentGuid()`
+
+UnsetParentGuid ensures that no value is present for ParentGuid, not even an explicit nil
 ### GetUpdatedAt
 
 `func (o *CategoryResponse) GetUpdatedAt() string`

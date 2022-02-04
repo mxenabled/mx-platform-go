@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **OauthWindowUri** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -51,6 +51,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *OAuthWindowResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *OAuthWindowResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetOauthWindowUri
 
 `func (o *OAuthWindowResponse) GetOauthWindowUri() string`

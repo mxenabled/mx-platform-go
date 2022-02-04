@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **LogoUrl** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
@@ -90,6 +90,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *MerchantResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *MerchantResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetLogoUrl
 
 `func (o *MerchantResponse) GetLogoUrl() string`

@@ -17,7 +17,7 @@ import (
 // ConnectWidgetResponse struct for ConnectWidgetResponse
 type ConnectWidgetResponse struct {
 	ConnectWidgetUrl NullableString `json:"connect_widget_url,omitempty"`
-	Guid *string `json:"guid,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
 }
 
 // NewConnectWidgetResponse instantiates a new ConnectWidgetResponse object
@@ -79,36 +79,46 @@ func (o *ConnectWidgetResponse) UnsetConnectWidgetUrl() {
 	o.ConnectWidgetUrl.Unset()
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise.
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectWidgetResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || o.Guid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Guid
+	return *o.Guid.Get()
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectWidgetResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Guid, true
+	return o.Guid.Get(), o.Guid.IsSet()
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *ConnectWidgetResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && o.Guid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given string and assigns it to the Guid field.
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
 func (o *ConnectWidgetResponse) SetGuid(v string) {
-	o.Guid = &v
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *ConnectWidgetResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *ConnectWidgetResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 func (o ConnectWidgetResponse) MarshalJSON() ([]byte, error) {
@@ -116,8 +126,8 @@ func (o ConnectWidgetResponse) MarshalJSON() ([]byte, error) {
 	if o.ConnectWidgetUrl.IsSet() {
 		toSerialize["connect_widget_url"] = o.ConnectWidgetUrl.Get()
 	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
 	return json.Marshal(toSerialize)
 }

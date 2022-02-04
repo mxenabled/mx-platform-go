@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ConnectWidgetUrl** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -86,6 +86,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *ConnectWidgetResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *ConnectWidgetResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

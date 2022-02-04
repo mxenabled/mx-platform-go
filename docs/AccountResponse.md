@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **CurrencyCode** | Pointer to **NullableString** |  | [optional] 
 **DayPaymentIsDue** | Pointer to **NullableInt32** |  | [optional] 
 **DeathBenefit** | Pointer to **NullableInt32** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **HoldingsValue** | Pointer to **NullableFloat32** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
 **ImportedAt** | Pointer to **NullableString** |  | [optional] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **LastPaymentAt** | Pointer to **NullableString** |  | [optional] 
 **LoanAmount** | Pointer to **NullableFloat32** |  | [optional] 
 **MaturesOn** | Pointer to **NullableString** |  | [optional] 
-**MemberGuid** | Pointer to **string** |  | [optional] 
+**MemberGuid** | Pointer to **NullableString** |  | [optional] 
 **MemberId** | Pointer to **NullableString** |  | [optional] 
 **MemberIsManagedByUser** | Pointer to **NullableBool** |  | [optional] 
 **Metadata** | Pointer to **NullableString** |  | [optional] 
@@ -49,7 +49,7 @@ Name | Type | Description | Notes
 **TotalAccountValue** | Pointer to **NullableFloat32** |  | [optional] 
 **Type** | Pointer to **NullableString** |  | [optional] 
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
-**UserGuid** | Pointer to **string** |  | [optional] 
+**UserGuid** | Pointer to **NullableString** |  | [optional] 
 **UserId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -551,6 +551,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *AccountResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *AccountResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetHoldingsValue
 
 `func (o *AccountResponse) GetHoldingsValue() float32`
@@ -996,6 +1006,16 @@ SetMemberGuid sets MemberGuid field to given value.
 
 HasMemberGuid returns a boolean if a field has been set.
 
+### SetMemberGuidNil
+
+`func (o *AccountResponse) SetMemberGuidNil(b bool)`
+
+ SetMemberGuidNil sets the value for MemberGuid to be an explicit nil
+
+### UnsetMemberGuid
+`func (o *AccountResponse) UnsetMemberGuid()`
+
+UnsetMemberGuid ensures that no value is present for MemberGuid, not even an explicit nil
 ### GetMemberId
 
 `func (o *AccountResponse) GetMemberId() string`
@@ -1651,6 +1671,16 @@ SetUserGuid sets UserGuid field to given value.
 
 HasUserGuid returns a boolean if a field has been set.
 
+### SetUserGuidNil
+
+`func (o *AccountResponse) SetUserGuidNil(b bool)`
+
+ SetUserGuidNil sets the value for UserGuid to be an explicit nil
+
+### UnsetUserGuid
+`func (o *AccountResponse) UnsetUserGuid()`
+
+UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
 ### GetUserId
 
 `func (o *AccountResponse) GetUserId() string`

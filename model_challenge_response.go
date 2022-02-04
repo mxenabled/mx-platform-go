@@ -17,7 +17,7 @@ import (
 // ChallengeResponse struct for ChallengeResponse
 type ChallengeResponse struct {
 	FieldName NullableString `json:"field_name,omitempty"`
-	Guid *string `json:"guid,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
 	ImageData NullableString `json:"image_data,omitempty"`
 	ImageOptions []ImageOptionResponse `json:"image_options,omitempty"`
 	Label NullableString `json:"label,omitempty"`
@@ -84,36 +84,46 @@ func (o *ChallengeResponse) UnsetFieldName() {
 	o.FieldName.Unset()
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise.
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChallengeResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || o.Guid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Guid
+	return *o.Guid.Get()
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChallengeResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Guid, true
+	return o.Guid.Get(), o.Guid.IsSet()
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *ChallengeResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && o.Guid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given string and assigns it to the Guid field.
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
 func (o *ChallengeResponse) SetGuid(v string) {
-	o.Guid = &v
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *ChallengeResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *ChallengeResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 // GetImageData returns the ImageData field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -311,8 +321,8 @@ func (o ChallengeResponse) MarshalJSON() ([]byte, error) {
 	if o.FieldName.IsSet() {
 		toSerialize["field_name"] = o.FieldName.Get()
 	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
 	if o.ImageData.IsSet() {
 		toSerialize["image_data"] = o.ImageData.Get()

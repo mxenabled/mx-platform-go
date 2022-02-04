@@ -17,8 +17,8 @@ import (
 // TransactionRuleUpdateRequest struct for TransactionRuleUpdateRequest
 type TransactionRuleUpdateRequest struct {
 	CategoryGuid *string `json:"category_guid,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	MatchDescription NullableString `json:"match_description,omitempty"`
+	Description *string `json:"description,omitempty"`
+	MatchDescription *string `json:"match_description,omitempty"`
 }
 
 // NewTransactionRuleUpdateRequest instantiates a new TransactionRuleUpdateRequest object
@@ -70,88 +70,68 @@ func (o *TransactionRuleUpdateRequest) SetCategoryGuid(v string) {
 	o.CategoryGuid = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TransactionRuleUpdateRequest) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || o.Description == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionRuleUpdateRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *TransactionRuleUpdateRequest) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *TransactionRuleUpdateRequest) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *TransactionRuleUpdateRequest) SetDescriptionNil() {
-	o.Description.Set(nil)
+	o.Description = &v
 }
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *TransactionRuleUpdateRequest) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetMatchDescription returns the MatchDescription field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMatchDescription returns the MatchDescription field value if set, zero value otherwise.
 func (o *TransactionRuleUpdateRequest) GetMatchDescription() string {
-	if o == nil || o.MatchDescription.Get() == nil {
+	if o == nil || o.MatchDescription == nil {
 		var ret string
 		return ret
 	}
-	return *o.MatchDescription.Get()
+	return *o.MatchDescription
 }
 
 // GetMatchDescriptionOk returns a tuple with the MatchDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionRuleUpdateRequest) GetMatchDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.MatchDescription == nil {
 		return nil, false
 	}
-	return o.MatchDescription.Get(), o.MatchDescription.IsSet()
+	return o.MatchDescription, true
 }
 
 // HasMatchDescription returns a boolean if a field has been set.
 func (o *TransactionRuleUpdateRequest) HasMatchDescription() bool {
-	if o != nil && o.MatchDescription.IsSet() {
+	if o != nil && o.MatchDescription != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMatchDescription gets a reference to the given NullableString and assigns it to the MatchDescription field.
+// SetMatchDescription gets a reference to the given string and assigns it to the MatchDescription field.
 func (o *TransactionRuleUpdateRequest) SetMatchDescription(v string) {
-	o.MatchDescription.Set(&v)
-}
-// SetMatchDescriptionNil sets the value for MatchDescription to be an explicit nil
-func (o *TransactionRuleUpdateRequest) SetMatchDescriptionNil() {
-	o.MatchDescription.Set(nil)
-}
-
-// UnsetMatchDescription ensures that no value is present for MatchDescription, not even an explicit nil
-func (o *TransactionRuleUpdateRequest) UnsetMatchDescription() {
-	o.MatchDescription.Unset()
+	o.MatchDescription = &v
 }
 
 func (o TransactionRuleUpdateRequest) MarshalJSON() ([]byte, error) {
@@ -159,11 +139,11 @@ func (o TransactionRuleUpdateRequest) MarshalJSON() ([]byte, error) {
 	if o.CategoryGuid != nil {
 		toSerialize["category_guid"] = o.CategoryGuid
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
-	if o.MatchDescription.IsSet() {
-		toSerialize["match_description"] = o.MatchDescription.Get()
+	if o.MatchDescription != nil {
+		toSerialize["match_description"] = o.MatchDescription
 	}
 	return json.Marshal(toSerialize)
 }

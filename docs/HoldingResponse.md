@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountGuid** | Pointer to **string** |  | [optional] 
+**AccountGuid** | Pointer to **NullableString** |  | [optional] 
 **CostBasis** | Pointer to **NullableFloat32** |  | [optional] 
 **CreatedAt** | Pointer to **NullableString** |  | [optional] 
 **CurrencyCode** | Pointer to **NullableString** |  | [optional] 
 **Cusip** | Pointer to **NullableString** |  | [optional] 
 **DailyChange** | Pointer to **NullableFloat32** |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **HoldingType** | Pointer to **NullableString** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
 **MarketValue** | Pointer to **NullableFloat32** |  | [optional] 
-**MemberGuid** | Pointer to **string** |  | [optional] 
+**MemberGuid** | Pointer to **NullableString** |  | [optional] 
 **Metadata** | Pointer to **NullableString** |  | [optional] 
 **PurchasePrice** | Pointer to **NullableFloat32** |  | [optional] 
 **Shares** | Pointer to **NullableFloat32** |  | [optional] 
 **Symbol** | Pointer to **NullableString** |  | [optional] 
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
-**UserGuid** | Pointer to **string** |  | [optional] 
+**UserGuid** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -67,6 +67,16 @@ SetAccountGuid sets AccountGuid field to given value.
 
 HasAccountGuid returns a boolean if a field has been set.
 
+### SetAccountGuidNil
+
+`func (o *HoldingResponse) SetAccountGuidNil(b bool)`
+
+ SetAccountGuidNil sets the value for AccountGuid to be an explicit nil
+
+### UnsetAccountGuid
+`func (o *HoldingResponse) UnsetAccountGuid()`
+
+UnsetAccountGuid ensures that no value is present for AccountGuid, not even an explicit nil
 ### GetCostBasis
 
 `func (o *HoldingResponse) GetCostBasis() float32`
@@ -302,6 +312,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *HoldingResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *HoldingResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetHoldingType
 
 `func (o *HoldingResponse) GetHoldingType() string`
@@ -432,6 +452,16 @@ SetMemberGuid sets MemberGuid field to given value.
 
 HasMemberGuid returns a boolean if a field has been set.
 
+### SetMemberGuidNil
+
+`func (o *HoldingResponse) SetMemberGuidNil(b bool)`
+
+ SetMemberGuidNil sets the value for MemberGuid to be an explicit nil
+
+### UnsetMemberGuid
+`func (o *HoldingResponse) UnsetMemberGuid()`
+
+UnsetMemberGuid ensures that no value is present for MemberGuid, not even an explicit nil
 ### GetMetadata
 
 `func (o *HoldingResponse) GetMetadata() string`
@@ -632,6 +662,16 @@ SetUserGuid sets UserGuid field to given value.
 
 HasUserGuid returns a boolean if a field has been set.
 
+### SetUserGuidNil
+
+`func (o *HoldingResponse) SetUserGuidNil(b bool)`
+
+ SetUserGuidNil sets the value for UserGuid to be an explicit nil
+
+### UnsetUserGuid
+`func (o *HoldingResponse) UnsetUserGuid()`
+
+UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

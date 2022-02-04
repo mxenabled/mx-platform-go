@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
-**UserGuid** | Pointer to **string** |  | [optional] 
+**UserGuid** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -52,6 +52,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *TagResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *TagResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetName
 
 `func (o *TagResponse) GetName() string`
@@ -112,6 +122,16 @@ SetUserGuid sets UserGuid field to given value.
 
 HasUserGuid returns a boolean if a field has been set.
 
+### SetUserGuidNil
+
+`func (o *TagResponse) SetUserGuidNil(b bool)`
+
+ SetUserGuidNil sets the value for UserGuid to be an explicit nil
+
+### UnsetUserGuid
+`func (o *TagResponse) UnsetUserGuid()`
+
+UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

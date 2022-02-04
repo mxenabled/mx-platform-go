@@ -17,12 +17,12 @@ import (
 // CategoryResponse struct for CategoryResponse
 type CategoryResponse struct {
 	CreatedAt NullableString `json:"created_at,omitempty"`
-	Guid *string `json:"guid,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
 	IsDefault NullableBool `json:"is_default,omitempty"`
 	IsIncome NullableBool `json:"is_income,omitempty"`
 	Metadata NullableString `json:"metadata,omitempty"`
 	Name NullableString `json:"name,omitempty"`
-	ParentGuid *string `json:"parent_guid,omitempty"`
+	ParentGuid NullableString `json:"parent_guid,omitempty"`
 	UpdatedAt NullableString `json:"updated_at,omitempty"`
 }
 
@@ -85,36 +85,46 @@ func (o *CategoryResponse) UnsetCreatedAt() {
 	o.CreatedAt.Unset()
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise.
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || o.Guid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Guid
+	return *o.Guid.Get()
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Guid, true
+	return o.Guid.Get(), o.Guid.IsSet()
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *CategoryResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && o.Guid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given string and assigns it to the Guid field.
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
 func (o *CategoryResponse) SetGuid(v string) {
-	o.Guid = &v
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *CategoryResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *CategoryResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -285,36 +295,46 @@ func (o *CategoryResponse) UnsetName() {
 	o.Name.Unset()
 }
 
-// GetParentGuid returns the ParentGuid field value if set, zero value otherwise.
+// GetParentGuid returns the ParentGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetParentGuid() string {
-	if o == nil || o.ParentGuid == nil {
+	if o == nil || o.ParentGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.ParentGuid
+	return *o.ParentGuid.Get()
 }
 
 // GetParentGuidOk returns a tuple with the ParentGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetParentGuidOk() (*string, bool) {
-	if o == nil || o.ParentGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.ParentGuid, true
+	return o.ParentGuid.Get(), o.ParentGuid.IsSet()
 }
 
 // HasParentGuid returns a boolean if a field has been set.
 func (o *CategoryResponse) HasParentGuid() bool {
-	if o != nil && o.ParentGuid != nil {
+	if o != nil && o.ParentGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetParentGuid gets a reference to the given string and assigns it to the ParentGuid field.
+// SetParentGuid gets a reference to the given NullableString and assigns it to the ParentGuid field.
 func (o *CategoryResponse) SetParentGuid(v string) {
-	o.ParentGuid = &v
+	o.ParentGuid.Set(&v)
+}
+// SetParentGuidNil sets the value for ParentGuid to be an explicit nil
+func (o *CategoryResponse) SetParentGuidNil() {
+	o.ParentGuid.Set(nil)
+}
+
+// UnsetParentGuid ensures that no value is present for ParentGuid, not even an explicit nil
+func (o *CategoryResponse) UnsetParentGuid() {
+	o.ParentGuid.Unset()
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -364,8 +384,8 @@ func (o CategoryResponse) MarshalJSON() ([]byte, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
 	if o.IsDefault.IsSet() {
 		toSerialize["is_default"] = o.IsDefault.Get()
@@ -379,8 +399,8 @@ func (o CategoryResponse) MarshalJSON() ([]byte, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if o.ParentGuid != nil {
-		toSerialize["parent_guid"] = o.ParentGuid
+	if o.ParentGuid.IsSet() {
+		toSerialize["parent_guid"] = o.ParentGuid.Get()
 	}
 	if o.UpdatedAt.IsSet() {
 		toSerialize["updated_at"] = o.UpdatedAt.Get()

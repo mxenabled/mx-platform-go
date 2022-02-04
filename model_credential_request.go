@@ -17,7 +17,7 @@ import (
 // CredentialRequest struct for CredentialRequest
 type CredentialRequest struct {
 	Guid *string `json:"guid,omitempty"`
-	Value NullableString `json:"value,omitempty"`
+	Value *string `json:"value,omitempty"`
 }
 
 // NewCredentialRequest instantiates a new CredentialRequest object
@@ -69,46 +69,36 @@ func (o *CredentialRequest) SetGuid(v string) {
 	o.Guid = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetValue returns the Value field value if set, zero value otherwise.
 func (o *CredentialRequest) GetValue() string {
-	if o == nil || o.Value.Get() == nil {
+	if o == nil || o.Value == nil {
 		var ret string
 		return ret
 	}
-	return *o.Value.Get()
+	return *o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialRequest) GetValueOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.Value == nil {
 		return nil, false
 	}
-	return o.Value.Get(), o.Value.IsSet()
+	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *CredentialRequest) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
+	if o != nil && o.Value != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given NullableString and assigns it to the Value field.
+// SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *CredentialRequest) SetValue(v string) {
-	o.Value.Set(&v)
-}
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *CredentialRequest) SetValueNil() {
-	o.Value.Set(nil)
-}
-
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *CredentialRequest) UnsetValue() {
-	o.Value.Unset()
+	o.Value = &v
 }
 
 func (o CredentialRequest) MarshalJSON() ([]byte, error) {
@@ -116,8 +106,8 @@ func (o CredentialRequest) MarshalJSON() ([]byte, error) {
 	if o.Guid != nil {
 		toSerialize["guid"] = o.Guid
 	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
+	if o.Value != nil {
+		toSerialize["value"] = o.Value
 	}
 	return json.Marshal(toSerialize)
 }
