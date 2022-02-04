@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AggregatedAt** | Pointer to **NullableString** |  | [optional] 
 **Challenges** | Pointer to [**[]ChallengeResponse**](ChallengeResponse.md) |  | [optional] 
 **ConnectionStatus** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **HasProcessedAccounts** | Pointer to **NullableBool** |  | [optional] 
 **HasProcessedTransactions** | Pointer to **NullableBool** |  | [optional] 
 **IsAuthenticated** | Pointer to **NullableBool** |  | [optional] 
@@ -153,6 +153,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *MemberStatusResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *MemberStatusResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetHasProcessedAccounts
 
 `func (o *MemberStatusResponse) GetHasProcessedAccounts() bool`

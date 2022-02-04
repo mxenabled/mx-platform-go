@@ -16,11 +16,11 @@ import (
 
 // TaggingResponse struct for TaggingResponse
 type TaggingResponse struct {
-	Guid *string `json:"guid,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
 	MemberIsManagedByUser NullableBool `json:"member_is_managed_by_user,omitempty"`
-	TagGuid *string `json:"tag_guid,omitempty"`
-	TransactionGuid *string `json:"transaction_guid,omitempty"`
-	UserGuid *string `json:"user_guid,omitempty"`
+	TagGuid NullableString `json:"tag_guid,omitempty"`
+	TransactionGuid NullableString `json:"transaction_guid,omitempty"`
+	UserGuid NullableString `json:"user_guid,omitempty"`
 }
 
 // NewTaggingResponse instantiates a new TaggingResponse object
@@ -40,36 +40,46 @@ func NewTaggingResponseWithDefaults() *TaggingResponse {
 	return &this
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise.
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaggingResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || o.Guid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Guid
+	return *o.Guid.Get()
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaggingResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Guid, true
+	return o.Guid.Get(), o.Guid.IsSet()
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *TaggingResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && o.Guid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given string and assigns it to the Guid field.
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
 func (o *TaggingResponse) SetGuid(v string) {
-	o.Guid = &v
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *TaggingResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *TaggingResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 // GetMemberIsManagedByUser returns the MemberIsManagedByUser field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -114,118 +124,148 @@ func (o *TaggingResponse) UnsetMemberIsManagedByUser() {
 	o.MemberIsManagedByUser.Unset()
 }
 
-// GetTagGuid returns the TagGuid field value if set, zero value otherwise.
+// GetTagGuid returns the TagGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaggingResponse) GetTagGuid() string {
-	if o == nil || o.TagGuid == nil {
+	if o == nil || o.TagGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.TagGuid
+	return *o.TagGuid.Get()
 }
 
 // GetTagGuidOk returns a tuple with the TagGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaggingResponse) GetTagGuidOk() (*string, bool) {
-	if o == nil || o.TagGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.TagGuid, true
+	return o.TagGuid.Get(), o.TagGuid.IsSet()
 }
 
 // HasTagGuid returns a boolean if a field has been set.
 func (o *TaggingResponse) HasTagGuid() bool {
-	if o != nil && o.TagGuid != nil {
+	if o != nil && o.TagGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTagGuid gets a reference to the given string and assigns it to the TagGuid field.
+// SetTagGuid gets a reference to the given NullableString and assigns it to the TagGuid field.
 func (o *TaggingResponse) SetTagGuid(v string) {
-	o.TagGuid = &v
+	o.TagGuid.Set(&v)
+}
+// SetTagGuidNil sets the value for TagGuid to be an explicit nil
+func (o *TaggingResponse) SetTagGuidNil() {
+	o.TagGuid.Set(nil)
 }
 
-// GetTransactionGuid returns the TransactionGuid field value if set, zero value otherwise.
+// UnsetTagGuid ensures that no value is present for TagGuid, not even an explicit nil
+func (o *TaggingResponse) UnsetTagGuid() {
+	o.TagGuid.Unset()
+}
+
+// GetTransactionGuid returns the TransactionGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaggingResponse) GetTransactionGuid() string {
-	if o == nil || o.TransactionGuid == nil {
+	if o == nil || o.TransactionGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.TransactionGuid
+	return *o.TransactionGuid.Get()
 }
 
 // GetTransactionGuidOk returns a tuple with the TransactionGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaggingResponse) GetTransactionGuidOk() (*string, bool) {
-	if o == nil || o.TransactionGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.TransactionGuid, true
+	return o.TransactionGuid.Get(), o.TransactionGuid.IsSet()
 }
 
 // HasTransactionGuid returns a boolean if a field has been set.
 func (o *TaggingResponse) HasTransactionGuid() bool {
-	if o != nil && o.TransactionGuid != nil {
+	if o != nil && o.TransactionGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTransactionGuid gets a reference to the given string and assigns it to the TransactionGuid field.
+// SetTransactionGuid gets a reference to the given NullableString and assigns it to the TransactionGuid field.
 func (o *TaggingResponse) SetTransactionGuid(v string) {
-	o.TransactionGuid = &v
+	o.TransactionGuid.Set(&v)
+}
+// SetTransactionGuidNil sets the value for TransactionGuid to be an explicit nil
+func (o *TaggingResponse) SetTransactionGuidNil() {
+	o.TransactionGuid.Set(nil)
 }
 
-// GetUserGuid returns the UserGuid field value if set, zero value otherwise.
+// UnsetTransactionGuid ensures that no value is present for TransactionGuid, not even an explicit nil
+func (o *TaggingResponse) UnsetTransactionGuid() {
+	o.TransactionGuid.Unset()
+}
+
+// GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaggingResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid == nil {
+	if o == nil || o.UserGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.UserGuid
+	return *o.UserGuid.Get()
 }
 
 // GetUserGuidOk returns a tuple with the UserGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaggingResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil || o.UserGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.UserGuid, true
+	return o.UserGuid.Get(), o.UserGuid.IsSet()
 }
 
 // HasUserGuid returns a boolean if a field has been set.
 func (o *TaggingResponse) HasUserGuid() bool {
-	if o != nil && o.UserGuid != nil {
+	if o != nil && o.UserGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserGuid gets a reference to the given string and assigns it to the UserGuid field.
+// SetUserGuid gets a reference to the given NullableString and assigns it to the UserGuid field.
 func (o *TaggingResponse) SetUserGuid(v string) {
-	o.UserGuid = &v
+	o.UserGuid.Set(&v)
+}
+// SetUserGuidNil sets the value for UserGuid to be an explicit nil
+func (o *TaggingResponse) SetUserGuidNil() {
+	o.UserGuid.Set(nil)
+}
+
+// UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
+func (o *TaggingResponse) UnsetUserGuid() {
+	o.UserGuid.Unset()
 }
 
 func (o TaggingResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
 	if o.MemberIsManagedByUser.IsSet() {
 		toSerialize["member_is_managed_by_user"] = o.MemberIsManagedByUser.Get()
 	}
-	if o.TagGuid != nil {
-		toSerialize["tag_guid"] = o.TagGuid
+	if o.TagGuid.IsSet() {
+		toSerialize["tag_guid"] = o.TagGuid.Get()
 	}
-	if o.TransactionGuid != nil {
-		toSerialize["transaction_guid"] = o.TransactionGuid
+	if o.TransactionGuid.IsSet() {
+		toSerialize["transaction_guid"] = o.TransactionGuid.Get()
 	}
-	if o.UserGuid != nil {
-		toSerialize["user_guid"] = o.UserGuid
+	if o.UserGuid.IsSet() {
+		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
 	return json.Marshal(toSerialize)
 }

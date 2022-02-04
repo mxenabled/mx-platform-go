@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FieldName** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **ImageData** | Pointer to **NullableString** |  | [optional] 
 **ImageOptions** | Pointer to [**[]ImageOptionResponse**](ImageOptionResponse.md) |  | [optional] 
 **Label** | Pointer to **NullableString** |  | [optional] 
@@ -91,6 +91,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *ChallengeResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *ChallengeResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetImageData
 
 `func (o *ChallengeResponse) GetImageData() string`

@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **IsSubscription** | Pointer to **NullableBool** |  | [optional] 
 **Memo** | Pointer to **NullableString** |  | [optional] 
 **MerchantCategoryCode** | Pointer to **NullableInt32** |  | [optional] 
-**MerchantGuid** | Pointer to **string** |  | [optional] 
+**MerchantGuid** | Pointer to **NullableString** |  | [optional] 
 **MerchantLocationGuid** | Pointer to **NullableString** |  | [optional] 
 **OriginalDescription** | Pointer to **NullableString** |  | [optional] 
 **Type** | Pointer to **NullableString** |  | [optional] 
@@ -737,6 +737,16 @@ SetMerchantGuid sets MerchantGuid field to given value.
 
 HasMerchantGuid returns a boolean if a field has been set.
 
+### SetMerchantGuidNil
+
+`func (o *EnhanceTransactionResponse) SetMerchantGuidNil(b bool)`
+
+ SetMerchantGuidNil sets the value for MerchantGuid to be an explicit nil
+
+### UnsetMerchantGuid
+`func (o *EnhanceTransactionResponse) UnsetMerchantGuid()`
+
+UnsetMerchantGuid ensures that no value is present for MerchantGuid, not even an explicit nil
 ### GetMerchantLocationGuid
 
 `func (o *EnhanceTransactionResponse) GetMerchantLocationGuid() string`

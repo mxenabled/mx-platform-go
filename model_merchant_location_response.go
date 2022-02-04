@@ -19,10 +19,10 @@ type MerchantLocationResponse struct {
 	City NullableString `json:"city,omitempty"`
 	Country NullableString `json:"country,omitempty"`
 	CreatedAt NullableString `json:"created_at,omitempty"`
-	Guid *string `json:"guid,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
 	Latitude NullableFloat32 `json:"latitude,omitempty"`
 	Longitude NullableFloat32 `json:"longitude,omitempty"`
-	MerchantGuid *string `json:"merchant_guid,omitempty"`
+	MerchantGuid NullableString `json:"merchant_guid,omitempty"`
 	PhoneNumber NullableString `json:"phone_number,omitempty"`
 	PostalCode NullableString `json:"postal_code,omitempty"`
 	State NullableString `json:"state,omitempty"`
@@ -173,36 +173,46 @@ func (o *MerchantLocationResponse) UnsetCreatedAt() {
 	o.CreatedAt.Unset()
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise.
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || o.Guid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Guid
+	return *o.Guid.Get()
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Guid, true
+	return o.Guid.Get(), o.Guid.IsSet()
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *MerchantLocationResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && o.Guid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given string and assigns it to the Guid field.
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
 func (o *MerchantLocationResponse) SetGuid(v string) {
-	o.Guid = &v
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *MerchantLocationResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *MerchantLocationResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 // GetLatitude returns the Latitude field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -289,36 +299,46 @@ func (o *MerchantLocationResponse) UnsetLongitude() {
 	o.Longitude.Unset()
 }
 
-// GetMerchantGuid returns the MerchantGuid field value if set, zero value otherwise.
+// GetMerchantGuid returns the MerchantGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetMerchantGuid() string {
-	if o == nil || o.MerchantGuid == nil {
+	if o == nil || o.MerchantGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.MerchantGuid
+	return *o.MerchantGuid.Get()
 }
 
 // GetMerchantGuidOk returns a tuple with the MerchantGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetMerchantGuidOk() (*string, bool) {
-	if o == nil || o.MerchantGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.MerchantGuid, true
+	return o.MerchantGuid.Get(), o.MerchantGuid.IsSet()
 }
 
 // HasMerchantGuid returns a boolean if a field has been set.
 func (o *MerchantLocationResponse) HasMerchantGuid() bool {
-	if o != nil && o.MerchantGuid != nil {
+	if o != nil && o.MerchantGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMerchantGuid gets a reference to the given string and assigns it to the MerchantGuid field.
+// SetMerchantGuid gets a reference to the given NullableString and assigns it to the MerchantGuid field.
 func (o *MerchantLocationResponse) SetMerchantGuid(v string) {
-	o.MerchantGuid = &v
+	o.MerchantGuid.Set(&v)
+}
+// SetMerchantGuidNil sets the value for MerchantGuid to be an explicit nil
+func (o *MerchantLocationResponse) SetMerchantGuidNil() {
+	o.MerchantGuid.Set(nil)
+}
+
+// UnsetMerchantGuid ensures that no value is present for MerchantGuid, not even an explicit nil
+func (o *MerchantLocationResponse) UnsetMerchantGuid() {
+	o.MerchantGuid.Unset()
 }
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -542,8 +562,8 @@ func (o MerchantLocationResponse) MarshalJSON() ([]byte, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
 	if o.Latitude.IsSet() {
 		toSerialize["latitude"] = o.Latitude.Get()
@@ -551,8 +571,8 @@ func (o MerchantLocationResponse) MarshalJSON() ([]byte, error) {
 	if o.Longitude.IsSet() {
 		toSerialize["longitude"] = o.Longitude.Get()
 	}
-	if o.MerchantGuid != nil {
-		toSerialize["merchant_guid"] = o.MerchantGuid
+	if o.MerchantGuid.IsSet() {
+		toSerialize["merchant_guid"] = o.MerchantGuid.Get()
 	}
 	if o.PhoneNumber.IsSet() {
 		toSerialize["phone_number"] = o.PhoneNumber.Get()

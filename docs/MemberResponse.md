@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AggregatedAt** | Pointer to **NullableString** |  | [optional] 
 **ConnectionStatus** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
 **InstitutionCode** | Pointer to **NullableString** |  | [optional] 
 **IsBeingAggregated** | Pointer to **NullableBool** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** |  | [optional] 
 **OauthWindowUri** | Pointer to **NullableString** |  | [optional] 
 **SuccessfullyAggregatedAt** | Pointer to **NullableString** |  | [optional] 
-**UserGuid** | Pointer to **string** |  | [optional] 
+**UserGuid** | Pointer to **NullableString** |  | [optional] 
 **UserId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -133,6 +133,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *MemberResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *MemberResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetId
 
 `func (o *MemberResponse) GetId() string`
@@ -473,6 +483,16 @@ SetUserGuid sets UserGuid field to given value.
 
 HasUserGuid returns a boolean if a field has been set.
 
+### SetUserGuidNil
+
+`func (o *MemberResponse) SetUserGuidNil(b bool)`
+
+ SetUserGuidNil sets the value for UserGuid to be an explicit nil
+
+### UnsetUserGuid
+`func (o *MemberResponse) UnsetUserGuid()`
+
+UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
 ### GetUserId
 
 `func (o *MemberResponse) GetUserId() string`

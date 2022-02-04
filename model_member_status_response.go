@@ -19,7 +19,7 @@ type MemberStatusResponse struct {
 	AggregatedAt NullableString `json:"aggregated_at,omitempty"`
 	Challenges []ChallengeResponse `json:"challenges,omitempty"`
 	ConnectionStatus NullableString `json:"connection_status,omitempty"`
-	Guid *string `json:"guid,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
 	HasProcessedAccounts NullableBool `json:"has_processed_accounts,omitempty"`
 	HasProcessedTransactions NullableBool `json:"has_processed_transactions,omitempty"`
 	IsAuthenticated NullableBool `json:"is_authenticated,omitempty"`
@@ -160,36 +160,46 @@ func (o *MemberStatusResponse) UnsetConnectionStatus() {
 	o.ConnectionStatus.Unset()
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise.
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberStatusResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || o.Guid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Guid
+	return *o.Guid.Get()
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberStatusResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Guid, true
+	return o.Guid.Get(), o.Guid.IsSet()
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *MemberStatusResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && o.Guid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given string and assigns it to the Guid field.
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
 func (o *MemberStatusResponse) SetGuid(v string) {
-	o.Guid = &v
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *MemberStatusResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *MemberStatusResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 // GetHasProcessedAccounts returns the HasProcessedAccounts field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -413,8 +423,8 @@ func (o MemberStatusResponse) MarshalJSON() ([]byte, error) {
 	if o.ConnectionStatus.IsSet() {
 		toSerialize["connection_status"] = o.ConnectionStatus.Get()
 	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
 	if o.HasProcessedAccounts.IsSet() {
 		toSerialize["has_processed_accounts"] = o.HasProcessedAccounts.Get()

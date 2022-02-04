@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CategoryGuid** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**MatchDescription** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
+**MatchDescription** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -77,16 +77,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *TransactionRuleUpdateRequest) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *TransactionRuleUpdateRequest) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetMatchDescription
 
 `func (o *TransactionRuleUpdateRequest) GetMatchDescription() string`
@@ -112,16 +102,6 @@ SetMatchDescription sets MatchDescription field to given value.
 
 HasMatchDescription returns a boolean if a field has been set.
 
-### SetMatchDescriptionNil
-
-`func (o *TransactionRuleUpdateRequest) SetMatchDescriptionNil(b bool)`
-
- SetMatchDescriptionNil sets the value for MatchDescription to be an explicit nil
-
-### UnsetMatchDescription
-`func (o *TransactionRuleUpdateRequest) UnsetMatchDescription()`
-
-UnsetMatchDescription ensures that no value is present for MatchDescription, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountGuid** | Pointer to **string** |  | [optional] 
+**AccountGuid** | Pointer to **NullableString** |  | [optional] 
 **AccountId** | Pointer to **NullableString** |  | [optional] 
 **Amount** | Pointer to **NullableFloat32** |  | [optional] 
 **Category** | Pointer to **NullableString** |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Date** | Pointer to **NullableString** |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **ExtendedTransactionType** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
 **IsBillPay** | Pointer to **NullableBool** |  | [optional] 
 **IsDirectDeposit** | Pointer to **NullableBool** |  | [optional] 
@@ -31,12 +31,12 @@ Name | Type | Description | Notes
 **LocalizedDescription** | Pointer to **NullableString** |  | [optional] 
 **LocalizedMemo** | Pointer to **NullableString** |  | [optional] 
 **Longitude** | Pointer to **NullableFloat32** |  | [optional] 
-**MemberGuid** | Pointer to **string** |  | [optional] 
+**MemberGuid** | Pointer to **NullableString** |  | [optional] 
 **MemberIsManagedByUser** | Pointer to **NullableBool** |  | [optional] 
 **Memo** | Pointer to **NullableString** |  | [optional] 
 **MerchantCategoryCode** | Pointer to **NullableInt32** |  | [optional] 
-**MerchantGuid** | Pointer to **string** |  | [optional] 
-**MerchantLocationGuid** | Pointer to **string** |  | [optional] 
+**MerchantGuid** | Pointer to **NullableString** |  | [optional] 
+**MerchantLocationGuid** | Pointer to **NullableString** |  | [optional] 
 **Metadata** | Pointer to **NullableString** |  | [optional] 
 **OriginalDescription** | Pointer to **NullableString** |  | [optional] 
 **PostedAt** | Pointer to **NullableString** |  | [optional] 
@@ -45,7 +45,7 @@ Name | Type | Description | Notes
 **TransactedAt** | Pointer to **NullableString** |  | [optional] 
 **Type** | Pointer to **NullableString** |  | [optional] 
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
-**UserGuid** | Pointer to **string** |  | [optional] 
+**UserGuid** | Pointer to **NullableString** |  | [optional] 
 **UserId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -92,6 +92,16 @@ SetAccountGuid sets AccountGuid field to given value.
 
 HasAccountGuid returns a boolean if a field has been set.
 
+### SetAccountGuidNil
+
+`func (o *TransactionResponse) SetAccountGuidNil(b bool)`
+
+ SetAccountGuidNil sets the value for AccountGuid to be an explicit nil
+
+### UnsetAccountGuid
+`func (o *TransactionResponse) UnsetAccountGuid()`
+
+UnsetAccountGuid ensures that no value is present for AccountGuid, not even an explicit nil
 ### GetAccountId
 
 `func (o *TransactionResponse) GetAccountId() string`
@@ -467,6 +477,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *TransactionResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *TransactionResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetId
 
 `func (o *TransactionResponse) GetId() string`
@@ -1017,6 +1037,16 @@ SetMemberGuid sets MemberGuid field to given value.
 
 HasMemberGuid returns a boolean if a field has been set.
 
+### SetMemberGuidNil
+
+`func (o *TransactionResponse) SetMemberGuidNil(b bool)`
+
+ SetMemberGuidNil sets the value for MemberGuid to be an explicit nil
+
+### UnsetMemberGuid
+`func (o *TransactionResponse) UnsetMemberGuid()`
+
+UnsetMemberGuid ensures that no value is present for MemberGuid, not even an explicit nil
 ### GetMemberIsManagedByUser
 
 `func (o *TransactionResponse) GetMemberIsManagedByUser() bool`
@@ -1147,6 +1177,16 @@ SetMerchantGuid sets MerchantGuid field to given value.
 
 HasMerchantGuid returns a boolean if a field has been set.
 
+### SetMerchantGuidNil
+
+`func (o *TransactionResponse) SetMerchantGuidNil(b bool)`
+
+ SetMerchantGuidNil sets the value for MerchantGuid to be an explicit nil
+
+### UnsetMerchantGuid
+`func (o *TransactionResponse) UnsetMerchantGuid()`
+
+UnsetMerchantGuid ensures that no value is present for MerchantGuid, not even an explicit nil
 ### GetMerchantLocationGuid
 
 `func (o *TransactionResponse) GetMerchantLocationGuid() string`
@@ -1172,6 +1212,16 @@ SetMerchantLocationGuid sets MerchantLocationGuid field to given value.
 
 HasMerchantLocationGuid returns a boolean if a field has been set.
 
+### SetMerchantLocationGuidNil
+
+`func (o *TransactionResponse) SetMerchantLocationGuidNil(b bool)`
+
+ SetMerchantLocationGuidNil sets the value for MerchantLocationGuid to be an explicit nil
+
+### UnsetMerchantLocationGuid
+`func (o *TransactionResponse) UnsetMerchantLocationGuid()`
+
+UnsetMerchantLocationGuid ensures that no value is present for MerchantLocationGuid, not even an explicit nil
 ### GetMetadata
 
 `func (o *TransactionResponse) GetMetadata() string`
@@ -1477,6 +1527,16 @@ SetUserGuid sets UserGuid field to given value.
 
 HasUserGuid returns a boolean if a field has been set.
 
+### SetUserGuidNil
+
+`func (o *TransactionResponse) SetUserGuidNil(b bool)`
+
+ SetUserGuidNil sets the value for UserGuid to be an explicit nil
+
+### UnsetUserGuid
+`func (o *TransactionResponse) UnsetUserGuid()`
+
+UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
 ### GetUserId
 
 `func (o *TransactionResponse) GetUserId() string`

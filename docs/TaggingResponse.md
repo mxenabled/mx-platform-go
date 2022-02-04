@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **MemberIsManagedByUser** | Pointer to **NullableBool** |  | [optional] 
-**TagGuid** | Pointer to **string** |  | [optional] 
-**TransactionGuid** | Pointer to **string** |  | [optional] 
-**UserGuid** | Pointer to **string** |  | [optional] 
+**TagGuid** | Pointer to **NullableString** |  | [optional] 
+**TransactionGuid** | Pointer to **NullableString** |  | [optional] 
+**UserGuid** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -54,6 +54,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *TaggingResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *TaggingResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetMemberIsManagedByUser
 
 `func (o *TaggingResponse) GetMemberIsManagedByUser() bool`
@@ -114,6 +124,16 @@ SetTagGuid sets TagGuid field to given value.
 
 HasTagGuid returns a boolean if a field has been set.
 
+### SetTagGuidNil
+
+`func (o *TaggingResponse) SetTagGuidNil(b bool)`
+
+ SetTagGuidNil sets the value for TagGuid to be an explicit nil
+
+### UnsetTagGuid
+`func (o *TaggingResponse) UnsetTagGuid()`
+
+UnsetTagGuid ensures that no value is present for TagGuid, not even an explicit nil
 ### GetTransactionGuid
 
 `func (o *TaggingResponse) GetTransactionGuid() string`
@@ -139,6 +159,16 @@ SetTransactionGuid sets TransactionGuid field to given value.
 
 HasTransactionGuid returns a boolean if a field has been set.
 
+### SetTransactionGuidNil
+
+`func (o *TaggingResponse) SetTransactionGuidNil(b bool)`
+
+ SetTransactionGuidNil sets the value for TransactionGuid to be an explicit nil
+
+### UnsetTransactionGuid
+`func (o *TaggingResponse) UnsetTransactionGuid()`
+
+UnsetTransactionGuid ensures that no value is present for TransactionGuid, not even an explicit nil
 ### GetUserGuid
 
 `func (o *TaggingResponse) GetUserGuid() string`
@@ -164,6 +194,16 @@ SetUserGuid sets UserGuid field to given value.
 
 HasUserGuid returns a boolean if a field has been set.
 
+### SetUserGuidNil
+
+`func (o *TaggingResponse) SetUserGuidNil(b bool)`
+
+ SetUserGuidNil sets the value for UserGuid to be an explicit nil
+
+### UnsetUserGuid
+`func (o *TaggingResponse) UnsetUserGuid()`
+
+UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

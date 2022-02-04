@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **DisplayOrder** | Pointer to **NullableInt32** |  | [optional] 
 **FieldName** | Pointer to **NullableString** |  | [optional] 
 **FieldType** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
-**Label** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
+**Label** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -159,6 +159,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *CredentialResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *CredentialResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetLabel
 
 `func (o *CredentialResponse) GetLabel() string`
@@ -184,6 +194,16 @@ SetLabel sets Label field to given value.
 
 HasLabel returns a boolean if a field has been set.
 
+### SetLabelNil
+
+`func (o *CredentialResponse) SetLabelNil(b bool)`
+
+ SetLabelNil sets the value for Label to be an explicit nil
+
+### UnsetLabel
+`func (o *CredentialResponse) UnsetLabel()`
+
+UnsetLabel ensures that no value is present for Label, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

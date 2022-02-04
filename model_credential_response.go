@@ -19,8 +19,8 @@ type CredentialResponse struct {
 	DisplayOrder NullableInt32 `json:"display_order,omitempty"`
 	FieldName NullableString `json:"field_name,omitempty"`
 	FieldType NullableString `json:"field_type,omitempty"`
-	Guid *string `json:"guid,omitempty"`
-	Label *string `json:"label,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
+	Label NullableString `json:"label,omitempty"`
 }
 
 // NewCredentialResponse instantiates a new CredentialResponse object
@@ -166,68 +166,88 @@ func (o *CredentialResponse) UnsetFieldType() {
 	o.FieldType.Unset()
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise.
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || o.Guid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Guid
+	return *o.Guid.Get()
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Guid, true
+	return o.Guid.Get(), o.Guid.IsSet()
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *CredentialResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && o.Guid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given string and assigns it to the Guid field.
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
 func (o *CredentialResponse) SetGuid(v string) {
-	o.Guid = &v
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *CredentialResponse) SetGuidNil() {
+	o.Guid.Set(nil)
 }
 
-// GetLabel returns the Label field value if set, zero value otherwise.
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *CredentialResponse) UnsetGuid() {
+	o.Guid.Unset()
+}
+
+// GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialResponse) GetLabel() string {
-	if o == nil || o.Label == nil {
+	if o == nil || o.Label.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Label
+	return *o.Label.Get()
 }
 
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialResponse) GetLabelOk() (*string, bool) {
-	if o == nil || o.Label == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Label, true
+	return o.Label.Get(), o.Label.IsSet()
 }
 
 // HasLabel returns a boolean if a field has been set.
 func (o *CredentialResponse) HasLabel() bool {
-	if o != nil && o.Label != nil {
+	if o != nil && o.Label.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLabel gets a reference to the given string and assigns it to the Label field.
+// SetLabel gets a reference to the given NullableString and assigns it to the Label field.
 func (o *CredentialResponse) SetLabel(v string) {
-	o.Label = &v
+	o.Label.Set(&v)
+}
+// SetLabelNil sets the value for Label to be an explicit nil
+func (o *CredentialResponse) SetLabelNil() {
+	o.Label.Set(nil)
+}
+
+// UnsetLabel ensures that no value is present for Label, not even an explicit nil
+func (o *CredentialResponse) UnsetLabel() {
+	o.Label.Unset()
 }
 
 func (o CredentialResponse) MarshalJSON() ([]byte, error) {
@@ -241,11 +261,11 @@ func (o CredentialResponse) MarshalJSON() ([]byte, error) {
 	if o.FieldType.IsSet() {
 		toSerialize["field_type"] = o.FieldType.Get()
 	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
-	if o.Label != nil {
-		toSerialize["label"] = o.Label
+	if o.Label.IsSet() {
+		toSerialize["label"] = o.Label.Get()
 	}
 	return json.Marshal(toSerialize)
 }

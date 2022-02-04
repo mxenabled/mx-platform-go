@@ -35,7 +35,7 @@ type EnhanceTransactionResponse struct {
 	IsSubscription NullableBool `json:"is_subscription,omitempty"`
 	Memo NullableString `json:"memo,omitempty"`
 	MerchantCategoryCode NullableInt32 `json:"merchant_category_code,omitempty"`
-	MerchantGuid *string `json:"merchant_guid,omitempty"`
+	MerchantGuid NullableString `json:"merchant_guid,omitempty"`
 	MerchantLocationGuid NullableString `json:"merchant_location_guid,omitempty"`
 	OriginalDescription NullableString `json:"original_description,omitempty"`
 	Type NullableString `json:"type,omitempty"`
@@ -856,36 +856,46 @@ func (o *EnhanceTransactionResponse) UnsetMerchantCategoryCode() {
 	o.MerchantCategoryCode.Unset()
 }
 
-// GetMerchantGuid returns the MerchantGuid field value if set, zero value otherwise.
+// GetMerchantGuid returns the MerchantGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnhanceTransactionResponse) GetMerchantGuid() string {
-	if o == nil || o.MerchantGuid == nil {
+	if o == nil || o.MerchantGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.MerchantGuid
+	return *o.MerchantGuid.Get()
 }
 
 // GetMerchantGuidOk returns a tuple with the MerchantGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnhanceTransactionResponse) GetMerchantGuidOk() (*string, bool) {
-	if o == nil || o.MerchantGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.MerchantGuid, true
+	return o.MerchantGuid.Get(), o.MerchantGuid.IsSet()
 }
 
 // HasMerchantGuid returns a boolean if a field has been set.
 func (o *EnhanceTransactionResponse) HasMerchantGuid() bool {
-	if o != nil && o.MerchantGuid != nil {
+	if o != nil && o.MerchantGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMerchantGuid gets a reference to the given string and assigns it to the MerchantGuid field.
+// SetMerchantGuid gets a reference to the given NullableString and assigns it to the MerchantGuid field.
 func (o *EnhanceTransactionResponse) SetMerchantGuid(v string) {
-	o.MerchantGuid = &v
+	o.MerchantGuid.Set(&v)
+}
+// SetMerchantGuidNil sets the value for MerchantGuid to be an explicit nil
+func (o *EnhanceTransactionResponse) SetMerchantGuidNil() {
+	o.MerchantGuid.Set(nil)
+}
+
+// UnsetMerchantGuid ensures that no value is present for MerchantGuid, not even an explicit nil
+func (o *EnhanceTransactionResponse) UnsetMerchantGuid() {
+	o.MerchantGuid.Unset()
 }
 
 // GetMerchantLocationGuid returns the MerchantLocationGuid field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1073,8 +1083,8 @@ func (o EnhanceTransactionResponse) MarshalJSON() ([]byte, error) {
 	if o.MerchantCategoryCode.IsSet() {
 		toSerialize["merchant_category_code"] = o.MerchantCategoryCode.Get()
 	}
-	if o.MerchantGuid != nil {
-		toSerialize["merchant_guid"] = o.MerchantGuid
+	if o.MerchantGuid.IsSet() {
+		toSerialize["merchant_guid"] = o.MerchantGuid.Get()
 	}
 	if o.MerchantLocationGuid.IsSet() {
 		toSerialize["merchant_location_guid"] = o.MerchantLocationGuid.Get()

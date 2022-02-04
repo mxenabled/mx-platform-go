@@ -16,24 +16,24 @@ import (
 
 // HoldingResponse struct for HoldingResponse
 type HoldingResponse struct {
-	AccountGuid *string `json:"account_guid,omitempty"`
+	AccountGuid NullableString `json:"account_guid,omitempty"`
 	CostBasis NullableFloat32 `json:"cost_basis,omitempty"`
 	CreatedAt NullableString `json:"created_at,omitempty"`
 	CurrencyCode NullableString `json:"currency_code,omitempty"`
 	Cusip NullableString `json:"cusip,omitempty"`
 	DailyChange NullableFloat32 `json:"daily_change,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	Guid *string `json:"guid,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
 	HoldingType NullableString `json:"holding_type,omitempty"`
 	Id NullableString `json:"id,omitempty"`
 	MarketValue NullableFloat32 `json:"market_value,omitempty"`
-	MemberGuid *string `json:"member_guid,omitempty"`
+	MemberGuid NullableString `json:"member_guid,omitempty"`
 	Metadata NullableString `json:"metadata,omitempty"`
 	PurchasePrice NullableFloat32 `json:"purchase_price,omitempty"`
 	Shares NullableFloat32 `json:"shares,omitempty"`
 	Symbol NullableString `json:"symbol,omitempty"`
 	UpdatedAt NullableString `json:"updated_at,omitempty"`
-	UserGuid *string `json:"user_guid,omitempty"`
+	UserGuid NullableString `json:"user_guid,omitempty"`
 }
 
 // NewHoldingResponse instantiates a new HoldingResponse object
@@ -53,36 +53,46 @@ func NewHoldingResponseWithDefaults() *HoldingResponse {
 	return &this
 }
 
-// GetAccountGuid returns the AccountGuid field value if set, zero value otherwise.
+// GetAccountGuid returns the AccountGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetAccountGuid() string {
-	if o == nil || o.AccountGuid == nil {
+	if o == nil || o.AccountGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccountGuid
+	return *o.AccountGuid.Get()
 }
 
 // GetAccountGuidOk returns a tuple with the AccountGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetAccountGuidOk() (*string, bool) {
-	if o == nil || o.AccountGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.AccountGuid, true
+	return o.AccountGuid.Get(), o.AccountGuid.IsSet()
 }
 
 // HasAccountGuid returns a boolean if a field has been set.
 func (o *HoldingResponse) HasAccountGuid() bool {
-	if o != nil && o.AccountGuid != nil {
+	if o != nil && o.AccountGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountGuid gets a reference to the given string and assigns it to the AccountGuid field.
+// SetAccountGuid gets a reference to the given NullableString and assigns it to the AccountGuid field.
 func (o *HoldingResponse) SetAccountGuid(v string) {
-	o.AccountGuid = &v
+	o.AccountGuid.Set(&v)
+}
+// SetAccountGuidNil sets the value for AccountGuid to be an explicit nil
+func (o *HoldingResponse) SetAccountGuidNil() {
+	o.AccountGuid.Set(nil)
+}
+
+// UnsetAccountGuid ensures that no value is present for AccountGuid, not even an explicit nil
+func (o *HoldingResponse) UnsetAccountGuid() {
+	o.AccountGuid.Unset()
 }
 
 // GetCostBasis returns the CostBasis field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -337,36 +347,46 @@ func (o *HoldingResponse) UnsetDescription() {
 	o.Description.Unset()
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise.
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || o.Guid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Guid
+	return *o.Guid.Get()
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Guid, true
+	return o.Guid.Get(), o.Guid.IsSet()
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *HoldingResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && o.Guid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given string and assigns it to the Guid field.
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
 func (o *HoldingResponse) SetGuid(v string) {
-	o.Guid = &v
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *HoldingResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *HoldingResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 // GetHoldingType returns the HoldingType field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -495,36 +515,46 @@ func (o *HoldingResponse) UnsetMarketValue() {
 	o.MarketValue.Unset()
 }
 
-// GetMemberGuid returns the MemberGuid field value if set, zero value otherwise.
+// GetMemberGuid returns the MemberGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetMemberGuid() string {
-	if o == nil || o.MemberGuid == nil {
+	if o == nil || o.MemberGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.MemberGuid
+	return *o.MemberGuid.Get()
 }
 
 // GetMemberGuidOk returns a tuple with the MemberGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetMemberGuidOk() (*string, bool) {
-	if o == nil || o.MemberGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.MemberGuid, true
+	return o.MemberGuid.Get(), o.MemberGuid.IsSet()
 }
 
 // HasMemberGuid returns a boolean if a field has been set.
 func (o *HoldingResponse) HasMemberGuid() bool {
-	if o != nil && o.MemberGuid != nil {
+	if o != nil && o.MemberGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMemberGuid gets a reference to the given string and assigns it to the MemberGuid field.
+// SetMemberGuid gets a reference to the given NullableString and assigns it to the MemberGuid field.
 func (o *HoldingResponse) SetMemberGuid(v string) {
-	o.MemberGuid = &v
+	o.MemberGuid.Set(&v)
+}
+// SetMemberGuidNil sets the value for MemberGuid to be an explicit nil
+func (o *HoldingResponse) SetMemberGuidNil() {
+	o.MemberGuid.Set(nil)
+}
+
+// UnsetMemberGuid ensures that no value is present for MemberGuid, not even an explicit nil
+func (o *HoldingResponse) UnsetMemberGuid() {
+	o.MemberGuid.Unset()
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -737,42 +767,52 @@ func (o *HoldingResponse) UnsetUpdatedAt() {
 	o.UpdatedAt.Unset()
 }
 
-// GetUserGuid returns the UserGuid field value if set, zero value otherwise.
+// GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid == nil {
+	if o == nil || o.UserGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.UserGuid
+	return *o.UserGuid.Get()
 }
 
 // GetUserGuidOk returns a tuple with the UserGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil || o.UserGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.UserGuid, true
+	return o.UserGuid.Get(), o.UserGuid.IsSet()
 }
 
 // HasUserGuid returns a boolean if a field has been set.
 func (o *HoldingResponse) HasUserGuid() bool {
-	if o != nil && o.UserGuid != nil {
+	if o != nil && o.UserGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserGuid gets a reference to the given string and assigns it to the UserGuid field.
+// SetUserGuid gets a reference to the given NullableString and assigns it to the UserGuid field.
 func (o *HoldingResponse) SetUserGuid(v string) {
-	o.UserGuid = &v
+	o.UserGuid.Set(&v)
+}
+// SetUserGuidNil sets the value for UserGuid to be an explicit nil
+func (o *HoldingResponse) SetUserGuidNil() {
+	o.UserGuid.Set(nil)
+}
+
+// UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
+func (o *HoldingResponse) UnsetUserGuid() {
+	o.UserGuid.Unset()
 }
 
 func (o HoldingResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccountGuid != nil {
-		toSerialize["account_guid"] = o.AccountGuid
+	if o.AccountGuid.IsSet() {
+		toSerialize["account_guid"] = o.AccountGuid.Get()
 	}
 	if o.CostBasis.IsSet() {
 		toSerialize["cost_basis"] = o.CostBasis.Get()
@@ -792,8 +832,8 @@ func (o HoldingResponse) MarshalJSON() ([]byte, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
 	if o.HoldingType.IsSet() {
 		toSerialize["holding_type"] = o.HoldingType.Get()
@@ -804,8 +844,8 @@ func (o HoldingResponse) MarshalJSON() ([]byte, error) {
 	if o.MarketValue.IsSet() {
 		toSerialize["market_value"] = o.MarketValue.Get()
 	}
-	if o.MemberGuid != nil {
-		toSerialize["member_guid"] = o.MemberGuid
+	if o.MemberGuid.IsSet() {
+		toSerialize["member_guid"] = o.MemberGuid.Get()
 	}
 	if o.Metadata.IsSet() {
 		toSerialize["metadata"] = o.Metadata.Get()
@@ -822,8 +862,8 @@ func (o HoldingResponse) MarshalJSON() ([]byte, error) {
 	if o.UpdatedAt.IsSet() {
 		toSerialize["updated_at"] = o.UpdatedAt.Get()
 	}
-	if o.UserGuid != nil {
-		toSerialize["user_guid"] = o.UserGuid
+	if o.UserGuid.IsSet() {
+		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
 	return json.Marshal(toSerialize)
 }

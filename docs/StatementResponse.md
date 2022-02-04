@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountGuid** | Pointer to **string** |  | [optional] 
+**AccountGuid** | Pointer to **NullableString** |  | [optional] 
 **ContentHash** | Pointer to **NullableString** |  | [optional] 
 **CreatedAt** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
-**MemberGuid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
+**MemberGuid** | Pointer to **NullableString** |  | [optional] 
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
 **Uri** | Pointer to **NullableString** |  | [optional] 
-**UserGuid** | Pointer to **string** |  | [optional] 
+**UserGuid** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -57,6 +57,16 @@ SetAccountGuid sets AccountGuid field to given value.
 
 HasAccountGuid returns a boolean if a field has been set.
 
+### SetAccountGuidNil
+
+`func (o *StatementResponse) SetAccountGuidNil(b bool)`
+
+ SetAccountGuidNil sets the value for AccountGuid to be an explicit nil
+
+### UnsetAccountGuid
+`func (o *StatementResponse) UnsetAccountGuid()`
+
+UnsetAccountGuid ensures that no value is present for AccountGuid, not even an explicit nil
 ### GetContentHash
 
 `func (o *StatementResponse) GetContentHash() string`
@@ -152,6 +162,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *StatementResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *StatementResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetMemberGuid
 
 `func (o *StatementResponse) GetMemberGuid() string`
@@ -177,6 +197,16 @@ SetMemberGuid sets MemberGuid field to given value.
 
 HasMemberGuid returns a boolean if a field has been set.
 
+### SetMemberGuidNil
+
+`func (o *StatementResponse) SetMemberGuidNil(b bool)`
+
+ SetMemberGuidNil sets the value for MemberGuid to be an explicit nil
+
+### UnsetMemberGuid
+`func (o *StatementResponse) UnsetMemberGuid()`
+
+UnsetMemberGuid ensures that no value is present for MemberGuid, not even an explicit nil
 ### GetUpdatedAt
 
 `func (o *StatementResponse) GetUpdatedAt() string`
@@ -272,6 +302,16 @@ SetUserGuid sets UserGuid field to given value.
 
 HasUserGuid returns a boolean if a field has been set.
 
+### SetUserGuidNil
+
+`func (o *StatementResponse) SetUserGuidNil(b bool)`
+
+ SetUserGuidNil sets the value for UserGuid to be an explicit nil
+
+### UnsetUserGuid
+`func (o *StatementResponse) UnsetUserGuid()`
+
+UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

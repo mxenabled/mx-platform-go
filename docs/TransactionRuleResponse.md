@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CategoryGuid** | Pointer to **string** |  | [optional] 
+**CategoryGuid** | Pointer to **NullableString** |  | [optional] 
 **CreatedAt** | Pointer to **NullableString** |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Guid** | Pointer to **string** |  | [optional] 
+**Guid** | Pointer to **NullableString** |  | [optional] 
 **MatchDescription** | Pointer to **NullableString** |  | [optional] 
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
-**UserGuid** | Pointer to **string** |  | [optional] 
+**UserGuid** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -56,6 +56,16 @@ SetCategoryGuid sets CategoryGuid field to given value.
 
 HasCategoryGuid returns a boolean if a field has been set.
 
+### SetCategoryGuidNil
+
+`func (o *TransactionRuleResponse) SetCategoryGuidNil(b bool)`
+
+ SetCategoryGuidNil sets the value for CategoryGuid to be an explicit nil
+
+### UnsetCategoryGuid
+`func (o *TransactionRuleResponse) UnsetCategoryGuid()`
+
+UnsetCategoryGuid ensures that no value is present for CategoryGuid, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *TransactionRuleResponse) GetCreatedAt() string`
@@ -151,6 +161,16 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
+### SetGuidNil
+
+`func (o *TransactionRuleResponse) SetGuidNil(b bool)`
+
+ SetGuidNil sets the value for Guid to be an explicit nil
+
+### UnsetGuid
+`func (o *TransactionRuleResponse) UnsetGuid()`
+
+UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetMatchDescription
 
 `func (o *TransactionRuleResponse) GetMatchDescription() string`
@@ -246,6 +266,16 @@ SetUserGuid sets UserGuid field to given value.
 
 HasUserGuid returns a boolean if a field has been set.
 
+### SetUserGuidNil
+
+`func (o *TransactionRuleResponse) SetUserGuidNil(b bool)`
+
+ SetUserGuidNil sets the value for UserGuid to be an explicit nil
+
+### UnsetUserGuid
+`func (o *TransactionRuleResponse) UnsetUserGuid()`
+
+UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

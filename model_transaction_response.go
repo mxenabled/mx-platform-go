@@ -16,7 +16,7 @@ import (
 
 // TransactionResponse struct for TransactionResponse
 type TransactionResponse struct {
-	AccountGuid *string `json:"account_guid,omitempty"`
+	AccountGuid NullableString `json:"account_guid,omitempty"`
 	AccountId NullableString `json:"account_id,omitempty"`
 	Amount NullableFloat32 `json:"amount,omitempty"`
 	Category NullableString `json:"category,omitempty"`
@@ -27,7 +27,7 @@ type TransactionResponse struct {
 	Date NullableString `json:"date,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	ExtendedTransactionType NullableString `json:"extended_transaction_type,omitempty"`
-	Guid *string `json:"guid,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
 	Id NullableString `json:"id,omitempty"`
 	IsBillPay NullableBool `json:"is_bill_pay,omitempty"`
 	IsDirectDeposit NullableBool `json:"is_direct_deposit,omitempty"`
@@ -43,12 +43,12 @@ type TransactionResponse struct {
 	LocalizedDescription NullableString `json:"localized_description,omitempty"`
 	LocalizedMemo NullableString `json:"localized_memo,omitempty"`
 	Longitude NullableFloat32 `json:"longitude,omitempty"`
-	MemberGuid *string `json:"member_guid,omitempty"`
+	MemberGuid NullableString `json:"member_guid,omitempty"`
 	MemberIsManagedByUser NullableBool `json:"member_is_managed_by_user,omitempty"`
 	Memo NullableString `json:"memo,omitempty"`
 	MerchantCategoryCode NullableInt32 `json:"merchant_category_code,omitempty"`
-	MerchantGuid *string `json:"merchant_guid,omitempty"`
-	MerchantLocationGuid *string `json:"merchant_location_guid,omitempty"`
+	MerchantGuid NullableString `json:"merchant_guid,omitempty"`
+	MerchantLocationGuid NullableString `json:"merchant_location_guid,omitempty"`
 	Metadata NullableString `json:"metadata,omitempty"`
 	OriginalDescription NullableString `json:"original_description,omitempty"`
 	PostedAt NullableString `json:"posted_at,omitempty"`
@@ -57,7 +57,7 @@ type TransactionResponse struct {
 	TransactedAt NullableString `json:"transacted_at,omitempty"`
 	Type NullableString `json:"type,omitempty"`
 	UpdatedAt NullableString `json:"updated_at,omitempty"`
-	UserGuid *string `json:"user_guid,omitempty"`
+	UserGuid NullableString `json:"user_guid,omitempty"`
 	UserId NullableString `json:"user_id,omitempty"`
 }
 
@@ -78,36 +78,46 @@ func NewTransactionResponseWithDefaults() *TransactionResponse {
 	return &this
 }
 
-// GetAccountGuid returns the AccountGuid field value if set, zero value otherwise.
+// GetAccountGuid returns the AccountGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetAccountGuid() string {
-	if o == nil || o.AccountGuid == nil {
+	if o == nil || o.AccountGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccountGuid
+	return *o.AccountGuid.Get()
 }
 
 // GetAccountGuidOk returns a tuple with the AccountGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetAccountGuidOk() (*string, bool) {
-	if o == nil || o.AccountGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.AccountGuid, true
+	return o.AccountGuid.Get(), o.AccountGuid.IsSet()
 }
 
 // HasAccountGuid returns a boolean if a field has been set.
 func (o *TransactionResponse) HasAccountGuid() bool {
-	if o != nil && o.AccountGuid != nil {
+	if o != nil && o.AccountGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountGuid gets a reference to the given string and assigns it to the AccountGuid field.
+// SetAccountGuid gets a reference to the given NullableString and assigns it to the AccountGuid field.
 func (o *TransactionResponse) SetAccountGuid(v string) {
-	o.AccountGuid = &v
+	o.AccountGuid.Set(&v)
+}
+// SetAccountGuidNil sets the value for AccountGuid to be an explicit nil
+func (o *TransactionResponse) SetAccountGuidNil() {
+	o.AccountGuid.Set(nil)
+}
+
+// UnsetAccountGuid ensures that no value is present for AccountGuid, not even an explicit nil
+func (o *TransactionResponse) UnsetAccountGuid() {
+	o.AccountGuid.Unset()
 }
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -530,36 +540,46 @@ func (o *TransactionResponse) UnsetExtendedTransactionType() {
 	o.ExtendedTransactionType.Unset()
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise.
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || o.Guid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Guid
+	return *o.Guid.Get()
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Guid, true
+	return o.Guid.Get(), o.Guid.IsSet()
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *TransactionResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && o.Guid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given string and assigns it to the Guid field.
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
 func (o *TransactionResponse) SetGuid(v string) {
-	o.Guid = &v
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *TransactionResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *TransactionResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1192,36 +1212,46 @@ func (o *TransactionResponse) UnsetLongitude() {
 	o.Longitude.Unset()
 }
 
-// GetMemberGuid returns the MemberGuid field value if set, zero value otherwise.
+// GetMemberGuid returns the MemberGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMemberGuid() string {
-	if o == nil || o.MemberGuid == nil {
+	if o == nil || o.MemberGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.MemberGuid
+	return *o.MemberGuid.Get()
 }
 
 // GetMemberGuidOk returns a tuple with the MemberGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMemberGuidOk() (*string, bool) {
-	if o == nil || o.MemberGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.MemberGuid, true
+	return o.MemberGuid.Get(), o.MemberGuid.IsSet()
 }
 
 // HasMemberGuid returns a boolean if a field has been set.
 func (o *TransactionResponse) HasMemberGuid() bool {
-	if o != nil && o.MemberGuid != nil {
+	if o != nil && o.MemberGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMemberGuid gets a reference to the given string and assigns it to the MemberGuid field.
+// SetMemberGuid gets a reference to the given NullableString and assigns it to the MemberGuid field.
 func (o *TransactionResponse) SetMemberGuid(v string) {
-	o.MemberGuid = &v
+	o.MemberGuid.Set(&v)
+}
+// SetMemberGuidNil sets the value for MemberGuid to be an explicit nil
+func (o *TransactionResponse) SetMemberGuidNil() {
+	o.MemberGuid.Set(nil)
+}
+
+// UnsetMemberGuid ensures that no value is present for MemberGuid, not even an explicit nil
+func (o *TransactionResponse) UnsetMemberGuid() {
+	o.MemberGuid.Unset()
 }
 
 // GetMemberIsManagedByUser returns the MemberIsManagedByUser field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1350,68 +1380,88 @@ func (o *TransactionResponse) UnsetMerchantCategoryCode() {
 	o.MerchantCategoryCode.Unset()
 }
 
-// GetMerchantGuid returns the MerchantGuid field value if set, zero value otherwise.
+// GetMerchantGuid returns the MerchantGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMerchantGuid() string {
-	if o == nil || o.MerchantGuid == nil {
+	if o == nil || o.MerchantGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.MerchantGuid
+	return *o.MerchantGuid.Get()
 }
 
 // GetMerchantGuidOk returns a tuple with the MerchantGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMerchantGuidOk() (*string, bool) {
-	if o == nil || o.MerchantGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.MerchantGuid, true
+	return o.MerchantGuid.Get(), o.MerchantGuid.IsSet()
 }
 
 // HasMerchantGuid returns a boolean if a field has been set.
 func (o *TransactionResponse) HasMerchantGuid() bool {
-	if o != nil && o.MerchantGuid != nil {
+	if o != nil && o.MerchantGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMerchantGuid gets a reference to the given string and assigns it to the MerchantGuid field.
+// SetMerchantGuid gets a reference to the given NullableString and assigns it to the MerchantGuid field.
 func (o *TransactionResponse) SetMerchantGuid(v string) {
-	o.MerchantGuid = &v
+	o.MerchantGuid.Set(&v)
+}
+// SetMerchantGuidNil sets the value for MerchantGuid to be an explicit nil
+func (o *TransactionResponse) SetMerchantGuidNil() {
+	o.MerchantGuid.Set(nil)
 }
 
-// GetMerchantLocationGuid returns the MerchantLocationGuid field value if set, zero value otherwise.
+// UnsetMerchantGuid ensures that no value is present for MerchantGuid, not even an explicit nil
+func (o *TransactionResponse) UnsetMerchantGuid() {
+	o.MerchantGuid.Unset()
+}
+
+// GetMerchantLocationGuid returns the MerchantLocationGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMerchantLocationGuid() string {
-	if o == nil || o.MerchantLocationGuid == nil {
+	if o == nil || o.MerchantLocationGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.MerchantLocationGuid
+	return *o.MerchantLocationGuid.Get()
 }
 
 // GetMerchantLocationGuidOk returns a tuple with the MerchantLocationGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMerchantLocationGuidOk() (*string, bool) {
-	if o == nil || o.MerchantLocationGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.MerchantLocationGuid, true
+	return o.MerchantLocationGuid.Get(), o.MerchantLocationGuid.IsSet()
 }
 
 // HasMerchantLocationGuid returns a boolean if a field has been set.
 func (o *TransactionResponse) HasMerchantLocationGuid() bool {
-	if o != nil && o.MerchantLocationGuid != nil {
+	if o != nil && o.MerchantLocationGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMerchantLocationGuid gets a reference to the given string and assigns it to the MerchantLocationGuid field.
+// SetMerchantLocationGuid gets a reference to the given NullableString and assigns it to the MerchantLocationGuid field.
 func (o *TransactionResponse) SetMerchantLocationGuid(v string) {
-	o.MerchantLocationGuid = &v
+	o.MerchantLocationGuid.Set(&v)
+}
+// SetMerchantLocationGuidNil sets the value for MerchantLocationGuid to be an explicit nil
+func (o *TransactionResponse) SetMerchantLocationGuidNil() {
+	o.MerchantLocationGuid.Set(nil)
+}
+
+// UnsetMerchantLocationGuid ensures that no value is present for MerchantLocationGuid, not even an explicit nil
+func (o *TransactionResponse) UnsetMerchantLocationGuid() {
+	o.MerchantLocationGuid.Unset()
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1750,36 +1800,46 @@ func (o *TransactionResponse) UnsetUpdatedAt() {
 	o.UpdatedAt.Unset()
 }
 
-// GetUserGuid returns the UserGuid field value if set, zero value otherwise.
+// GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid == nil {
+	if o == nil || o.UserGuid.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.UserGuid
+	return *o.UserGuid.Get()
 }
 
 // GetUserGuidOk returns a tuple with the UserGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil || o.UserGuid == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.UserGuid, true
+	return o.UserGuid.Get(), o.UserGuid.IsSet()
 }
 
 // HasUserGuid returns a boolean if a field has been set.
 func (o *TransactionResponse) HasUserGuid() bool {
-	if o != nil && o.UserGuid != nil {
+	if o != nil && o.UserGuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserGuid gets a reference to the given string and assigns it to the UserGuid field.
+// SetUserGuid gets a reference to the given NullableString and assigns it to the UserGuid field.
 func (o *TransactionResponse) SetUserGuid(v string) {
-	o.UserGuid = &v
+	o.UserGuid.Set(&v)
+}
+// SetUserGuidNil sets the value for UserGuid to be an explicit nil
+func (o *TransactionResponse) SetUserGuidNil() {
+	o.UserGuid.Set(nil)
+}
+
+// UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
+func (o *TransactionResponse) UnsetUserGuid() {
+	o.UserGuid.Unset()
 }
 
 // GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1826,8 +1886,8 @@ func (o *TransactionResponse) UnsetUserId() {
 
 func (o TransactionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccountGuid != nil {
-		toSerialize["account_guid"] = o.AccountGuid
+	if o.AccountGuid.IsSet() {
+		toSerialize["account_guid"] = o.AccountGuid.Get()
 	}
 	if o.AccountId.IsSet() {
 		toSerialize["account_id"] = o.AccountId.Get()
@@ -1859,8 +1919,8 @@ func (o TransactionResponse) MarshalJSON() ([]byte, error) {
 	if o.ExtendedTransactionType.IsSet() {
 		toSerialize["extended_transaction_type"] = o.ExtendedTransactionType.Get()
 	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
 	if o.Id.IsSet() {
 		toSerialize["id"] = o.Id.Get()
@@ -1907,8 +1967,8 @@ func (o TransactionResponse) MarshalJSON() ([]byte, error) {
 	if o.Longitude.IsSet() {
 		toSerialize["longitude"] = o.Longitude.Get()
 	}
-	if o.MemberGuid != nil {
-		toSerialize["member_guid"] = o.MemberGuid
+	if o.MemberGuid.IsSet() {
+		toSerialize["member_guid"] = o.MemberGuid.Get()
 	}
 	if o.MemberIsManagedByUser.IsSet() {
 		toSerialize["member_is_managed_by_user"] = o.MemberIsManagedByUser.Get()
@@ -1919,11 +1979,11 @@ func (o TransactionResponse) MarshalJSON() ([]byte, error) {
 	if o.MerchantCategoryCode.IsSet() {
 		toSerialize["merchant_category_code"] = o.MerchantCategoryCode.Get()
 	}
-	if o.MerchantGuid != nil {
-		toSerialize["merchant_guid"] = o.MerchantGuid
+	if o.MerchantGuid.IsSet() {
+		toSerialize["merchant_guid"] = o.MerchantGuid.Get()
 	}
-	if o.MerchantLocationGuid != nil {
-		toSerialize["merchant_location_guid"] = o.MerchantLocationGuid
+	if o.MerchantLocationGuid.IsSet() {
+		toSerialize["merchant_location_guid"] = o.MerchantLocationGuid.Get()
 	}
 	if o.Metadata.IsSet() {
 		toSerialize["metadata"] = o.Metadata.Get()
@@ -1949,8 +2009,8 @@ func (o TransactionResponse) MarshalJSON() ([]byte, error) {
 	if o.UpdatedAt.IsSet() {
 		toSerialize["updated_at"] = o.UpdatedAt.Get()
 	}
-	if o.UserGuid != nil {
-		toSerialize["user_guid"] = o.UserGuid
+	if o.UserGuid.IsSet() {
+		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
 	if o.UserId.IsSet() {
 		toSerialize["user_id"] = o.UserId.Get()
