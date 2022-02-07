@@ -4302,7 +4302,7 @@ Name | Type | Description  | Notes
 
 ## ReadDefaultCategory
 
-> CategoryResponseBody ReadDefaultCategory(ctx, categoryGuid, userGuid).Execute()
+> CategoryResponseBody ReadDefaultCategory(ctx, categoryGuid).Execute()
 
 Read a default category
 
@@ -4322,11 +4322,10 @@ import (
 
 func main() {
     categoryGuid := "CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874" // string | The unique id for a `category`.
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadDefaultCategory(context.Background(), categoryGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformApi.ReadDefaultCategory(context.Background(), categoryGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadDefaultCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4343,7 +4342,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **categoryGuid** | **string** | The unique id for a &#x60;category&#x60;. | 
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 
 ### Other Parameters
 
@@ -4352,7 +4350,6 @@ Other parameters are passed through a pointer to a apiReadDefaultCategoryRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 
 ### Return type
@@ -5487,7 +5484,7 @@ import (
 
 func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
-    connectWidgetRequestBody := *openapiclient.NewConnectWidgetRequestBody() // ConnectWidgetRequestBody | Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials) (optional)
+    connectWidgetRequestBody := *openapiclient.NewConnectWidgetRequestBody() // ConnectWidgetRequestBody | Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

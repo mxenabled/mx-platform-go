@@ -6786,7 +6786,6 @@ type ApiReadDefaultCategoryRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
 	categoryGuid string
-	userGuid string
 }
 
 
@@ -6801,15 +6800,13 @@ Use this endpoint to read the attributes of a default category.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param categoryGuid The unique id for a `category`.
- @param userGuid The unique id for a `user`.
  @return ApiReadDefaultCategoryRequest
 */
-func (a *MxPlatformApiService) ReadDefaultCategory(ctx context.Context, categoryGuid string, userGuid string) ApiReadDefaultCategoryRequest {
+func (a *MxPlatformApiService) ReadDefaultCategory(ctx context.Context, categoryGuid string) ApiReadDefaultCategoryRequest {
 	return ApiReadDefaultCategoryRequest{
 		ApiService: a,
 		ctx: ctx,
 		categoryGuid: categoryGuid,
-		userGuid: userGuid,
 	}
 }
 
@@ -6830,7 +6827,6 @@ func (a *MxPlatformApiService) ReadDefaultCategoryExecute(r ApiReadDefaultCatego
 
 	localVarPath := localBasePath + "/categories/{category_guid}"
 	localVarPath = strings.Replace(localVarPath, "{"+"category_guid"+"}", url.PathEscape(parameterToString(r.categoryGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8561,6 +8557,9 @@ func (a *MxPlatformApiService) RequestConnectWidgetURLExecute(r ApiRequestConnec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.connectWidgetRequestBody == nil {
+		return localVarReturnValue, nil, reportError("connectWidgetRequestBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

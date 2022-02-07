@@ -30,37 +30,37 @@ Please follow the [installation](#installation) procedure and then run the follo
 package main
 
 import (
-	"context"
-	"fmt"
-	"github.com/mxenabled/mx-platform-go"
-	"os"
+  "context"
+  "fmt"
+  "github.com/mxenabled/mx-platform-go"
+  "os"
 )
 
 func main() {
-	configuration := mxplatformgo.NewConfiguration()
-	configuration.AddDefaultHeader("Accept", "application/vnd.mx.api.v1+json")
-	api_client := mxplatformgo.NewAPIClient(configuration)
+  configuration := mxplatformgo.NewConfiguration()
+  configuration.AddDefaultHeader("Accept", "application/vnd.mx.api.v1+json")
+  api_client := mxplatformgo.NewAPIClient(configuration)
 
-	// Configure environment. 0 for production, 1 for development
-	ctx := context.WithValue(context.Background(), mxplatformgo.ContextServerIndex, 1)
+  // Configure environment. 0 for production, 1 for development
+  ctx := context.WithValue(context.Background(), mxplatformgo.ContextServerIndex, 1)
 
-	// Configure with your Client ID/API Key from https://dashboard.mx.com
-	ctx = context.WithValue(ctx, mxplatformgo.ContextBasicAuth, mxplatformgo.BasicAuth{
-		UserName: "Your Client ID",
-		Password: "Your API Key",
-	})
+  // Configure with your Client ID/API Key from https://dashboard.mx.com
+  ctx = context.WithValue(ctx, mxplatformgo.ContextBasicAuth, mxplatformgo.BasicAuth{
+    UserName: "Your Client ID",
+    Password: "Your API Key",
+  })
 
-	userCreateRequest := *mxplatformgo.NewUserCreateRequest()
-	userCreateRequest.SetMetadata("Creating a user!")
-	userCreateRequestBody := *mxplatformgo.NewUserCreateRequestBody()
-	userCreateRequestBody.SetUser(userCreateRequest)
+  userCreateRequestBody := *mxplatformgo.NewUserCreateRequestBodyWithDefaults()
+  userCreateRequest := *mxplatformgo.NewUserCreateRequestWithDefaults()
+  userCreateRequest.SetMetadata("Creating a user!")
+  userCreateRequestBody.SetUser(userCreateRequest)
 
-	resp, r, err := api_client.MxPlatformApi.CreateUser(ctx).UserCreateRequestBody(userCreateRequestBody).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateUser``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	fmt.Printf("Response from `MxPlatformApi.CreateUser`: %#v\n", resp)
+  resp, r, err := api_client.MxPlatformApi.CreateUser(ctx).UserCreateRequestBody(userCreateRequestBody).Execute()
+  if err != nil {
+    fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateUser``: %v\n", err)
+    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+  }
+  fmt.Printf("Response from `MxPlatformApi.CreateUser`: %#v\n", resp)
 }
 ```
 
