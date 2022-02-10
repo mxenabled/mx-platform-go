@@ -362,8 +362,8 @@ func (a *MxPlatformApiService) CreateCategoryExecute(r ApiCreateCategoryRequest)
 type ApiCreateManagedAccountRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
-	userGuid string
 	memberGuid string
+	userGuid string
 	managedAccountCreateRequestBody *ManagedAccountCreateRequestBody
 }
 
@@ -383,16 +383,16 @@ CreateManagedAccount Create managed account
 Use this endpoint to create a partner-managed account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param userGuid The unique id for a `user`.
  @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
  @return ApiCreateManagedAccountRequest
 */
-func (a *MxPlatformApiService) CreateManagedAccount(ctx context.Context, userGuid string, memberGuid string) ApiCreateManagedAccountRequest {
+func (a *MxPlatformApiService) CreateManagedAccount(ctx context.Context, memberGuid string, userGuid string) ApiCreateManagedAccountRequest {
 	return ApiCreateManagedAccountRequest{
 		ApiService: a,
 		ctx: ctx,
-		userGuid: userGuid,
 		memberGuid: memberGuid,
+		userGuid: userGuid,
 	}
 }
 
@@ -412,8 +412,8 @@ func (a *MxPlatformApiService) CreateManagedAccountExecute(r ApiCreateManagedAcc
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -596,8 +596,9 @@ func (a *MxPlatformApiService) CreateManagedMemberExecute(r ApiCreateManagedMemb
 type ApiCreateManagedTransactionRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
-	userGuid string
+	accountGuid string
 	memberGuid string
+	userGuid string
 	managedTransactionCreateRequestBody *ManagedTransactionCreateRequestBody
 }
 
@@ -617,16 +618,18 @@ CreateManagedTransaction Create managed transaction
 Use this endpoint to create a new partner-managed `transaction`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param userGuid The unique id for a `user`.
+ @param accountGuid The unique id for an `account`.
  @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
  @return ApiCreateManagedTransactionRequest
 */
-func (a *MxPlatformApiService) CreateManagedTransaction(ctx context.Context, userGuid string, memberGuid string) ApiCreateManagedTransactionRequest {
+func (a *MxPlatformApiService) CreateManagedTransaction(ctx context.Context, accountGuid string, memberGuid string, userGuid string) ApiCreateManagedTransactionRequest {
 	return ApiCreateManagedTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
-		userGuid: userGuid,
+		accountGuid: accountGuid,
 		memberGuid: memberGuid,
+		userGuid: userGuid,
 	}
 }
 
@@ -645,9 +648,10 @@ func (a *MxPlatformApiService) CreateManagedTransactionExecute(r ApiCreateManage
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1383,9 +1387,9 @@ func (a *MxPlatformApiService) DeleteCategoryExecute(r ApiDeleteCategoryRequest)
 type ApiDeleteManagedAccountRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
+	accountGuid string
 	memberGuid string
 	userGuid string
-	accountGuid string
 }
 
 
@@ -1399,18 +1403,18 @@ DeleteManagedAccount Delete managed account
 Use this endpoint to delete a partner-managed account according to its unique GUID. If successful, the API will respond with a status of `204 No Content`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountGuid The unique id for an `account`.
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
- @param accountGuid The unique id for an `account`.
  @return ApiDeleteManagedAccountRequest
 */
-func (a *MxPlatformApiService) DeleteManagedAccount(ctx context.Context, memberGuid string, userGuid string, accountGuid string) ApiDeleteManagedAccountRequest {
+func (a *MxPlatformApiService) DeleteManagedAccount(ctx context.Context, accountGuid string, memberGuid string, userGuid string) ApiDeleteManagedAccountRequest {
 	return ApiDeleteManagedAccountRequest{
 		ApiService: a,
 		ctx: ctx,
+		accountGuid: accountGuid,
 		memberGuid: memberGuid,
 		userGuid: userGuid,
-		accountGuid: accountGuid,
 	}
 }
 
@@ -1428,9 +1432,9 @@ func (a *MxPlatformApiService) DeleteManagedAccountExecute(r ApiDeleteManagedAcc
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1581,9 +1585,10 @@ func (a *MxPlatformApiService) DeleteManagedMemberExecute(r ApiDeleteManagedMemb
 type ApiDeleteManagedTransactionRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
+	accountGuid string
 	memberGuid string
-	userGuid string
 	transactionGuid string
+	userGuid string
 }
 
 
@@ -1597,18 +1602,20 @@ DeleteManagedTransaction Delete managed transaction
 Use this endpoint to delete the specified partner-managed `transaction`. The endpoint will respond with a status of `204 No Content` without a resource.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountGuid The unique id for an `account`.
  @param memberGuid The unique id for a `member`.
- @param userGuid The unique id for a `user`.
  @param transactionGuid The unique id for a `transaction`.
+ @param userGuid The unique id for a `user`.
  @return ApiDeleteManagedTransactionRequest
 */
-func (a *MxPlatformApiService) DeleteManagedTransaction(ctx context.Context, memberGuid string, userGuid string, transactionGuid string) ApiDeleteManagedTransactionRequest {
+func (a *MxPlatformApiService) DeleteManagedTransaction(ctx context.Context, accountGuid string, memberGuid string, transactionGuid string, userGuid string) ApiDeleteManagedTransactionRequest {
 	return ApiDeleteManagedTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
+		accountGuid: accountGuid,
 		memberGuid: memberGuid,
-		userGuid: userGuid,
 		transactionGuid: transactionGuid,
+		userGuid: userGuid,
 	}
 }
 
@@ -1625,10 +1632,11 @@ func (a *MxPlatformApiService) DeleteManagedTransactionExecute(r ApiDeleteManage
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid}"
+	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterToString(r.transactionGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4281,8 +4289,8 @@ func (a *MxPlatformApiService) ListInstitutionsExecute(r ApiListInstitutionsRequ
 type ApiListManagedAccountsRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
-	userGuid string
 	memberGuid string
+	userGuid string
 	page *int32
 	recordsPerPage *int32
 }
@@ -4308,16 +4316,16 @@ ListManagedAccounts List managed accounts
 Use this endpoint to retrieve a list of all the partner-managed accounts associated with the given partner-manage member.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param userGuid The unique id for a `user`.
  @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
  @return ApiListManagedAccountsRequest
 */
-func (a *MxPlatformApiService) ListManagedAccounts(ctx context.Context, userGuid string, memberGuid string) ApiListManagedAccountsRequest {
+func (a *MxPlatformApiService) ListManagedAccounts(ctx context.Context, memberGuid string, userGuid string) ApiListManagedAccountsRequest {
 	return ApiListManagedAccountsRequest{
 		ApiService: a,
 		ctx: ctx,
-		userGuid: userGuid,
 		memberGuid: memberGuid,
+		userGuid: userGuid,
 	}
 }
 
@@ -4337,8 +4345,8 @@ func (a *MxPlatformApiService) ListManagedAccountsExecute(r ApiListManagedAccoun
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4647,8 +4655,9 @@ func (a *MxPlatformApiService) ListManagedMembersExecute(r ApiListManagedMembers
 type ApiListManagedTransactionsRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
-	userGuid string
+	accountGuid string
 	memberGuid string
+	userGuid string
 	page *int32
 	recordsPerPage *int32
 }
@@ -4674,16 +4683,18 @@ ListManagedTransactions List managed transactions
 This endpoint returns a list of all the partner-managed transactions associated with the specified `account`, scoped through a `user` and a `member`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param userGuid The unique id for a `user`.
+ @param accountGuid The unique id for an `account`.
  @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
  @return ApiListManagedTransactionsRequest
 */
-func (a *MxPlatformApiService) ListManagedTransactions(ctx context.Context, userGuid string, memberGuid string) ApiListManagedTransactionsRequest {
+func (a *MxPlatformApiService) ListManagedTransactions(ctx context.Context, accountGuid string, memberGuid string, userGuid string) ApiListManagedTransactionsRequest {
 	return ApiListManagedTransactionsRequest{
 		ApiService: a,
 		ctx: ctx,
-		userGuid: userGuid,
+		accountGuid: accountGuid,
 		memberGuid: memberGuid,
+		userGuid: userGuid,
 	}
 }
 
@@ -4702,9 +4713,10 @@ func (a *MxPlatformApiService) ListManagedTransactionsExecute(r ApiListManagedTr
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7101,9 +7113,9 @@ func (a *MxPlatformApiService) ReadInstitutionExecute(r ApiReadInstitutionReques
 type ApiReadManagedAccountRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
+	accountGuid string
 	memberGuid string
 	userGuid string
-	accountGuid string
 }
 
 
@@ -7117,18 +7129,18 @@ ReadManagedAccount Read managed account
 Use this endpoint to read the attributes of a partner-managed account according to its unique guid.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountGuid The unique id for an `account`.
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
- @param accountGuid The unique id for an `account`.
  @return ApiReadManagedAccountRequest
 */
-func (a *MxPlatformApiService) ReadManagedAccount(ctx context.Context, memberGuid string, userGuid string, accountGuid string) ApiReadManagedAccountRequest {
+func (a *MxPlatformApiService) ReadManagedAccount(ctx context.Context, accountGuid string, memberGuid string, userGuid string) ApiReadManagedAccountRequest {
 	return ApiReadManagedAccountRequest{
 		ApiService: a,
 		ctx: ctx,
+		accountGuid: accountGuid,
 		memberGuid: memberGuid,
 		userGuid: userGuid,
-		accountGuid: accountGuid,
 	}
 }
 
@@ -7148,9 +7160,9 @@ func (a *MxPlatformApiService) ReadManagedAccountExecute(r ApiReadManagedAccount
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7321,9 +7333,10 @@ func (a *MxPlatformApiService) ReadManagedMemberExecute(r ApiReadManagedMemberRe
 type ApiReadManagedTransactionRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
+	accountGuid string
 	memberGuid string
-	userGuid string
 	transactionGuid string
+	userGuid string
 }
 
 
@@ -7337,18 +7350,20 @@ ReadManagedTransaction Read managed transaction
 Requests to this endpoint will return the attributes of the specified partner-managed `transaction`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountGuid The unique id for an `account`.
  @param memberGuid The unique id for a `member`.
- @param userGuid The unique id for a `user`.
  @param transactionGuid The unique id for a `transaction`.
+ @param userGuid The unique id for a `user`.
  @return ApiReadManagedTransactionRequest
 */
-func (a *MxPlatformApiService) ReadManagedTransaction(ctx context.Context, memberGuid string, userGuid string, transactionGuid string) ApiReadManagedTransactionRequest {
+func (a *MxPlatformApiService) ReadManagedTransaction(ctx context.Context, accountGuid string, memberGuid string, transactionGuid string, userGuid string) ApiReadManagedTransactionRequest {
 	return ApiReadManagedTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
+		accountGuid: accountGuid,
 		memberGuid: memberGuid,
-		userGuid: userGuid,
 		transactionGuid: transactionGuid,
+		userGuid: userGuid,
 	}
 }
 
@@ -7367,10 +7382,11 @@ func (a *MxPlatformApiService) ReadManagedTransactionExecute(r ApiReadManagedTra
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid}"
+	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterToString(r.transactionGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8623,8 +8639,8 @@ type ApiRequestOAuthWindowURIRequest struct {
 	memberGuid string
 	userGuid string
 	referralSource *string
-	uiMessageWebviewUrlScheme *string
 	skipAggregation *bool
+	uiMessageWebviewUrlScheme *string
 }
 
 // Must be either &#x60;BROWSER&#x60; or &#x60;APP&#x60; depending on the implementation. Defaults to &#x60;BROWSER&#x60;.
@@ -8632,14 +8648,14 @@ func (r ApiRequestOAuthWindowURIRequest) ReferralSource(referralSource string) A
 	r.referralSource = &referralSource
 	return r
 }
-// A scheme for routing the user back to the application state they were previously in.
-func (r ApiRequestOAuthWindowURIRequest) UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme string) ApiRequestOAuthWindowURIRequest {
-	r.uiMessageWebviewUrlScheme = &uiMessageWebviewUrlScheme
-	return r
-}
 // Setting this parameter to &#x60;true&#x60; will prevent the member from automatically aggregating after being redirected from the authorization page.
 func (r ApiRequestOAuthWindowURIRequest) SkipAggregation(skipAggregation bool) ApiRequestOAuthWindowURIRequest {
 	r.skipAggregation = &skipAggregation
+	return r
+}
+// A scheme for routing the user back to the application state they were previously in.
+func (r ApiRequestOAuthWindowURIRequest) UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme string) ApiRequestOAuthWindowURIRequest {
+	r.uiMessageWebviewUrlScheme = &uiMessageWebviewUrlScheme
 	return r
 }
 
@@ -8692,11 +8708,11 @@ func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWin
 	if r.referralSource != nil {
 		localVarQueryParams.Add("referral_source", parameterToString(*r.referralSource, ""))
 	}
-	if r.uiMessageWebviewUrlScheme != nil {
-		localVarQueryParams.Add("ui_message_webview_url_scheme", parameterToString(*r.uiMessageWebviewUrlScheme, ""))
-	}
 	if r.skipAggregation != nil {
 		localVarQueryParams.Add("skip_aggregation", parameterToString(*r.skipAggregation, ""))
+	}
+	if r.uiMessageWebviewUrlScheme != nil {
+		localVarQueryParams.Add("ui_message_webview_url_scheme", parameterToString(*r.uiMessageWebviewUrlScheme, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8998,9 +9014,9 @@ func (a *MxPlatformApiService) ResumeAggregationExecute(r ApiResumeAggregationRe
 type ApiUpdateAccountByMemberRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
-	userGuid string
-	memberGuid string
 	accountGuid string
+	memberGuid string
+	userGuid string
 	accountUpdateRequestBody *AccountUpdateRequestBody
 }
 
@@ -9020,18 +9036,18 @@ UpdateAccountByMember Update account by member
 This endpoint allows you to update certain attributes of an `account` resource.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param userGuid The unique id for a `user`.
- @param memberGuid The unique id for a `member`.
  @param accountGuid The unique id for an `account`.
+ @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
  @return ApiUpdateAccountByMemberRequest
 */
-func (a *MxPlatformApiService) UpdateAccountByMember(ctx context.Context, userGuid string, memberGuid string, accountGuid string) ApiUpdateAccountByMemberRequest {
+func (a *MxPlatformApiService) UpdateAccountByMember(ctx context.Context, accountGuid string, memberGuid string, userGuid string) ApiUpdateAccountByMemberRequest {
 	return ApiUpdateAccountByMemberRequest{
 		ApiService: a,
 		ctx: ctx,
-		userGuid: userGuid,
-		memberGuid: memberGuid,
 		accountGuid: accountGuid,
+		memberGuid: memberGuid,
+		userGuid: userGuid,
 	}
 }
 
@@ -9051,9 +9067,9 @@ func (a *MxPlatformApiService) UpdateAccountByMemberExecute(r ApiUpdateAccountBy
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9240,9 +9256,9 @@ func (a *MxPlatformApiService) UpdateCategoryExecute(r ApiUpdateCategoryRequest)
 type ApiUpdateManagedAccountRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
+	accountGuid string
 	memberGuid string
 	userGuid string
-	accountGuid string
 	managedAccountUpdateRequestBody *ManagedAccountUpdateRequestBody
 }
 
@@ -9262,18 +9278,18 @@ UpdateManagedAccount Update managed account
 Use this endpoint to update the attributes of a partner-managed account according to its unique GUID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountGuid The unique id for an `account`.
  @param memberGuid The unique id for a `member`.
  @param userGuid The unique id for a `user`.
- @param accountGuid The unique id for an `account`.
  @return ApiUpdateManagedAccountRequest
 */
-func (a *MxPlatformApiService) UpdateManagedAccount(ctx context.Context, memberGuid string, userGuid string, accountGuid string) ApiUpdateManagedAccountRequest {
+func (a *MxPlatformApiService) UpdateManagedAccount(ctx context.Context, accountGuid string, memberGuid string, userGuid string) ApiUpdateManagedAccountRequest {
 	return ApiUpdateManagedAccountRequest{
 		ApiService: a,
 		ctx: ctx,
+		accountGuid: accountGuid,
 		memberGuid: memberGuid,
 		userGuid: userGuid,
-		accountGuid: accountGuid,
 	}
 }
 
@@ -9293,9 +9309,9 @@ func (a *MxPlatformApiService) UpdateManagedAccountExecute(r ApiUpdateManagedAcc
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9482,9 +9498,10 @@ func (a *MxPlatformApiService) UpdateManagedMemberExecute(r ApiUpdateManagedMemb
 type ApiUpdateManagedTransactionRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
+	accountGuid string
 	memberGuid string
-	userGuid string
 	transactionGuid string
+	userGuid string
 	managedTransactionUpdateRequestBody *ManagedTransactionUpdateRequestBody
 }
 
@@ -9504,18 +9521,20 @@ UpdateManagedTransaction Update managed transaction
 Use this endpoint to update the attributes of the specified partner_managed `transaction`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountGuid The unique id for an `account`.
  @param memberGuid The unique id for a `member`.
- @param userGuid The unique id for a `user`.
  @param transactionGuid The unique id for a `transaction`.
+ @param userGuid The unique id for a `user`.
  @return ApiUpdateManagedTransactionRequest
 */
-func (a *MxPlatformApiService) UpdateManagedTransaction(ctx context.Context, memberGuid string, userGuid string, transactionGuid string) ApiUpdateManagedTransactionRequest {
+func (a *MxPlatformApiService) UpdateManagedTransaction(ctx context.Context, accountGuid string, memberGuid string, transactionGuid string, userGuid string) ApiUpdateManagedTransactionRequest {
 	return ApiUpdateManagedTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
+		accountGuid: accountGuid,
 		memberGuid: memberGuid,
-		userGuid: userGuid,
 		transactionGuid: transactionGuid,
+		userGuid: userGuid,
 	}
 }
 
@@ -9534,10 +9553,11 @@ func (a *MxPlatformApiService) UpdateManagedTransactionExecute(r ApiUpdateManage
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid}"
+	localVarPath := localBasePath + "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterToString(r.transactionGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
