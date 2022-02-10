@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**CreateCategory**](MxPlatformApi.md#CreateCategory) | **Post** /users/{user_guid}/categories | Create category
 [**CreateManagedAccount**](MxPlatformApi.md#CreateManagedAccount) | **Post** /users/{user_guid}/managed_members/{member_guid}/accounts | Create managed account
 [**CreateManagedMember**](MxPlatformApi.md#CreateManagedMember) | **Post** /users/{user_guid}/managed_members | Create managed member
-[**CreateManagedTransaction**](MxPlatformApi.md#CreateManagedTransaction) | **Post** /users/{user_guid}/managed_members/{member_guid}/transactions | Create managed transaction
+[**CreateManagedTransaction**](MxPlatformApi.md#CreateManagedTransaction) | **Post** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions | Create managed transaction
 [**CreateMember**](MxPlatformApi.md#CreateMember) | **Post** /users/{user_guid}/members | Create member
 [**CreateTag**](MxPlatformApi.md#CreateTag) | **Post** /users/{user_guid}/tags | Create tag
 [**CreateTagging**](MxPlatformApi.md#CreateTagging) | **Post** /users/{user_guid}/taggings | Create tagging
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**DeleteCategory**](MxPlatformApi.md#DeleteCategory) | **Delete** /users/{user_guid}/categories/{category_guid} | Delete category
 [**DeleteManagedAccount**](MxPlatformApi.md#DeleteManagedAccount) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Delete managed account
 [**DeleteManagedMember**](MxPlatformApi.md#DeleteManagedMember) | **Delete** /users/{user_guid}/managed_members/{member_guid} | Delete managed member
-[**DeleteManagedTransaction**](MxPlatformApi.md#DeleteManagedTransaction) | **Delete** /users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid} | Delete managed transaction
+[**DeleteManagedTransaction**](MxPlatformApi.md#DeleteManagedTransaction) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Delete managed transaction
 [**DeleteMember**](MxPlatformApi.md#DeleteMember) | **Delete** /users/{user_guid}/members/{member_guid} | Delete member
 [**DeleteTag**](MxPlatformApi.md#DeleteTag) | **Delete** /users/{user_guid}/tags/{tag_guid} | Delete tag
 [**DeleteTagging**](MxPlatformApi.md#DeleteTagging) | **Delete** /users/{user_guid}/taggings/{tagging_guid} | Delete tagging
@@ -44,7 +44,7 @@ Method | HTTP request | Description
 [**ListManagedAccounts**](MxPlatformApi.md#ListManagedAccounts) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts | List managed accounts
 [**ListManagedInstitutions**](MxPlatformApi.md#ListManagedInstitutions) | **Get** /managed_institutions | List managed institutions
 [**ListManagedMembers**](MxPlatformApi.md#ListManagedMembers) | **Get** /users/{user_guid}/managed_members | List managed members
-[**ListManagedTransactions**](MxPlatformApi.md#ListManagedTransactions) | **Get** /users/{user_guid}/managed_members/{member_guid}/transactions | List managed transactions
+[**ListManagedTransactions**](MxPlatformApi.md#ListManagedTransactions) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions | List managed transactions
 [**ListMemberChallenges**](MxPlatformApi.md#ListMemberChallenges) | **Get** /users/{user_guid}/members/{member_guid}/challenges | List member challenges
 [**ListMemberCredentials**](MxPlatformApi.md#ListMemberCredentials) | **Get** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
 [**ListMembers**](MxPlatformApi.md#ListMembers) | **Get** /users/{user_guid}/members | List members
@@ -66,7 +66,7 @@ Method | HTTP request | Description
 [**ReadInstitution**](MxPlatformApi.md#ReadInstitution) | **Get** /institutions/{institution_code} | Read institution
 [**ReadManagedAccount**](MxPlatformApi.md#ReadManagedAccount) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Read managed account
 [**ReadManagedMember**](MxPlatformApi.md#ReadManagedMember) | **Get** /users/{user_guid}/managed_members/{member_guid} | Read managed member
-[**ReadManagedTransaction**](MxPlatformApi.md#ReadManagedTransaction) | **Get** /users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid} | Read managed transaction
+[**ReadManagedTransaction**](MxPlatformApi.md#ReadManagedTransaction) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Read managed transaction
 [**ReadMember**](MxPlatformApi.md#ReadMember) | **Get** /users/{user_guid}/members/{member_guid} | Read member
 [**ReadMemberStatus**](MxPlatformApi.md#ReadMemberStatus) | **Get** /users/{user_guid}/members/{member_guid}/status | Read member status
 [**ReadMerchant**](MxPlatformApi.md#ReadMerchant) | **Get** /merchants/{merchant_guid} | Read merchant
@@ -85,7 +85,7 @@ Method | HTTP request | Description
 [**UpdateCategory**](MxPlatformApi.md#UpdateCategory) | **Put** /users/{user_guid}/categories/{category_guid} | Update category
 [**UpdateManagedAccount**](MxPlatformApi.md#UpdateManagedAccount) | **Put** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Update managed account
 [**UpdateManagedMember**](MxPlatformApi.md#UpdateManagedMember) | **Put** /users/{user_guid}/managed_members/{member_guid} | Update managed member
-[**UpdateManagedTransaction**](MxPlatformApi.md#UpdateManagedTransaction) | **Put** /users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid} | Update managed transaction
+[**UpdateManagedTransaction**](MxPlatformApi.md#UpdateManagedTransaction) | **Put** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Update managed transaction
 [**UpdateMember**](MxPlatformApi.md#UpdateMember) | **Put** /users/{user_guid}/members/{member_guid} | Update member
 [**UpdateTag**](MxPlatformApi.md#UpdateTag) | **Put** /users/{user_guid}/tags/{tag_guid} | Update tag
 [**UpdateTagging**](MxPlatformApi.md#UpdateTagging) | **Put** /users/{user_guid}/taggings/{tagging_guid} | Update tagging
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 
 ## CreateManagedAccount
 
-> AccountResponseBody CreateManagedAccount(ctx, userGuid, memberGuid).ManagedAccountCreateRequestBody(managedAccountCreateRequestBody).Execute()
+> AccountResponseBody CreateManagedAccount(ctx, memberGuid, userGuid).ManagedAccountCreateRequestBody(managedAccountCreateRequestBody).Execute()
 
 Create managed account
 
@@ -335,13 +335,13 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     managedAccountCreateRequestBody := *openapiclient.NewManagedAccountCreateRequestBody() // ManagedAccountCreateRequestBody | Managed account to be created.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateManagedAccount(context.Background(), userGuid, memberGuid).ManagedAccountCreateRequestBody(managedAccountCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformApi.CreateManagedAccount(context.Background(), memberGuid, userGuid).ManagedAccountCreateRequestBody(managedAccountCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -357,8 +357,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 
 ### Other Parameters
 
@@ -463,7 +463,7 @@ Name | Type | Description  | Notes
 
 ## CreateManagedTransaction
 
-> TransactionResponseBody CreateManagedTransaction(ctx, userGuid, memberGuid).ManagedTransactionCreateRequestBody(managedTransactionCreateRequestBody).Execute()
+> TransactionResponseBody CreateManagedTransaction(ctx, accountGuid, memberGuid, userGuid).ManagedTransactionCreateRequestBody(managedTransactionCreateRequestBody).Execute()
 
 Create managed transaction
 
@@ -482,13 +482,14 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     managedTransactionCreateRequestBody := *openapiclient.NewManagedTransactionCreateRequestBody() // ManagedTransactionCreateRequestBody | Managed transaction to be created.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateManagedTransaction(context.Background(), userGuid, memberGuid).ManagedTransactionCreateRequestBody(managedTransactionCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformApi.CreateManagedTransaction(context.Background(), accountGuid, memberGuid, userGuid).ManagedTransactionCreateRequestBody(managedTransactionCreateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -504,8 +505,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 
 ### Other Parameters
 
@@ -514,6 +516,7 @@ Other parameters are passed through a pointer to a apiCreateManagedTransactionRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **managedTransactionCreateRequestBody** | [**ManagedTransactionCreateRequestBody**](ManagedTransactionCreateRequestBody.md) | Managed transaction to be created. | 
@@ -963,7 +966,7 @@ Name | Type | Description  | Notes
 
 ## DeleteManagedAccount
 
-> DeleteManagedAccount(ctx, memberGuid, userGuid, accountGuid).Execute()
+> DeleteManagedAccount(ctx, accountGuid, memberGuid, userGuid).Execute()
 
 Delete managed account
 
@@ -982,13 +985,13 @@ import (
 )
 
 func main() {
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
-    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteManagedAccount(context.Background(), memberGuid, userGuid, accountGuid).Execute()
+    resp, r, err := apiClient.MxPlatformApi.DeleteManagedAccount(context.Background(), accountGuid, memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1002,9 +1005,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
 **userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
-**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 
 ### Other Parameters
 
@@ -1108,7 +1111,7 @@ Name | Type | Description  | Notes
 
 ## DeleteManagedTransaction
 
-> DeleteManagedTransaction(ctx, memberGuid, userGuid, transactionGuid).Execute()
+> DeleteManagedTransaction(ctx, accountGuid, memberGuid, transactionGuid, userGuid).Execute()
 
 Delete managed transaction
 
@@ -1127,13 +1130,14 @@ import (
 )
 
 func main() {
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     transactionGuid := "TRN-810828b0-5210-4878-9bd3-f4ce514f90c4" // string | The unique id for a `transaction`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteManagedTransaction(context.Background(), memberGuid, userGuid, transactionGuid).Execute()
+    resp, r, err := apiClient.MxPlatformApi.DeleteManagedTransaction(context.Background(), accountGuid, memberGuid, transactionGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1147,9 +1151,10 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 **transactionGuid** | **string** | The unique id for a &#x60;transaction&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 
 ### Other Parameters
 
@@ -1158,6 +1163,7 @@ Other parameters are passed through a pointer to a apiDeleteManagedTransactionRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 
@@ -2802,7 +2808,7 @@ Name | Type | Description  | Notes
 
 ## ListManagedAccounts
 
-> AccountsResponseBody ListManagedAccounts(ctx, userGuid, memberGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+> AccountsResponseBody ListManagedAccounts(ctx, memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
 
 List managed accounts
 
@@ -2821,14 +2827,14 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     page := int32(1) // int32 | Specify current page. (optional)
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListManagedAccounts(context.Background(), userGuid, memberGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformApi.ListManagedAccounts(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2844,8 +2850,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 
 ### Other Parameters
 
@@ -3021,7 +3027,7 @@ Name | Type | Description  | Notes
 
 ## ListManagedTransactions
 
-> TransactionsResponseBody ListManagedTransactions(ctx, userGuid, memberGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+> TransactionsResponseBody ListManagedTransactions(ctx, accountGuid, memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
 
 List managed transactions
 
@@ -3040,14 +3046,15 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     page := int32(1) // int32 | Specify current page. (optional)
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListManagedTransactions(context.Background(), userGuid, memberGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformApi.ListManagedTransactions(context.Background(), accountGuid, memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedTransactions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3063,8 +3070,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 
 ### Other Parameters
 
@@ -3073,6 +3081,7 @@ Other parameters are passed through a pointer to a apiListManagedTransactionsReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **page** | **int32** | Specify current page. | 
@@ -4515,7 +4524,7 @@ Name | Type | Description  | Notes
 
 ## ReadManagedAccount
 
-> AccountResponseBody ReadManagedAccount(ctx, memberGuid, userGuid, accountGuid).Execute()
+> AccountResponseBody ReadManagedAccount(ctx, accountGuid, memberGuid, userGuid).Execute()
 
 Read managed account
 
@@ -4534,13 +4543,13 @@ import (
 )
 
 func main() {
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
-    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadManagedAccount(context.Background(), memberGuid, userGuid, accountGuid).Execute()
+    resp, r, err := apiClient.MxPlatformApi.ReadManagedAccount(context.Background(), accountGuid, memberGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4556,9 +4565,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
 **userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
-**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 
 ### Other Parameters
 
@@ -4664,7 +4673,7 @@ Name | Type | Description  | Notes
 
 ## ReadManagedTransaction
 
-> TransactionResponseBody ReadManagedTransaction(ctx, memberGuid, userGuid, transactionGuid).Execute()
+> TransactionResponseBody ReadManagedTransaction(ctx, accountGuid, memberGuid, transactionGuid, userGuid).Execute()
 
 Read managed transaction
 
@@ -4683,13 +4692,14 @@ import (
 )
 
 func main() {
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     transactionGuid := "TRN-810828b0-5210-4878-9bd3-f4ce514f90c4" // string | The unique id for a `transaction`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadManagedTransaction(context.Background(), memberGuid, userGuid, transactionGuid).Execute()
+    resp, r, err := apiClient.MxPlatformApi.ReadManagedTransaction(context.Background(), accountGuid, memberGuid, transactionGuid, userGuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4705,9 +4715,10 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 **transactionGuid** | **string** | The unique id for a &#x60;transaction&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 
 ### Other Parameters
 
@@ -4716,6 +4727,7 @@ Other parameters are passed through a pointer to a apiReadManagedTransactionRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 
@@ -5536,7 +5548,7 @@ Name | Type | Description  | Notes
 
 ## RequestOAuthWindowURI
 
-> OAuthWindowResponseBody RequestOAuthWindowURI(ctx, memberGuid, userGuid).ReferralSource(referralSource).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).SkipAggregation(skipAggregation).Execute()
+> OAuthWindowResponseBody RequestOAuthWindowURI(ctx, memberGuid, userGuid).ReferralSource(referralSource).SkipAggregation(skipAggregation).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).Execute()
 
 Request oauth window uri
 
@@ -5558,12 +5570,12 @@ func main() {
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     referralSource := "APP" // string | Must be either `BROWSER` or `APP` depending on the implementation. Defaults to `BROWSER`. (optional)
-    uiMessageWebviewUrlScheme := "mx" // string | A scheme for routing the user back to the application state they were previously in. (optional)
     skipAggregation := false // bool | Setting this parameter to `true` will prevent the member from automatically aggregating after being redirected from the authorization page. (optional)
+    uiMessageWebviewUrlScheme := "mx" // string | A scheme for routing the user back to the application state they were previously in. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.RequestOAuthWindowURI(context.Background(), memberGuid, userGuid).ReferralSource(referralSource).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).SkipAggregation(skipAggregation).Execute()
+    resp, r, err := apiClient.MxPlatformApi.RequestOAuthWindowURI(context.Background(), memberGuid, userGuid).ReferralSource(referralSource).SkipAggregation(skipAggregation).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestOAuthWindowURI``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5592,8 +5604,8 @@ Name | Type | Description  | Notes
 
 
  **referralSource** | **string** | Must be either &#x60;BROWSER&#x60; or &#x60;APP&#x60; depending on the implementation. Defaults to &#x60;BROWSER&#x60;. | 
- **uiMessageWebviewUrlScheme** | **string** | A scheme for routing the user back to the application state they were previously in. | 
  **skipAggregation** | **bool** | Setting this parameter to &#x60;true&#x60; will prevent the member from automatically aggregating after being redirected from the authorization page. | 
+ **uiMessageWebviewUrlScheme** | **string** | A scheme for routing the user back to the application state they were previously in. | 
 
 ### Return type
 
@@ -5764,7 +5776,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAccountByMember
 
-> AccountResponseBody UpdateAccountByMember(ctx, userGuid, memberGuid, accountGuid).AccountUpdateRequestBody(accountUpdateRequestBody).Execute()
+> AccountResponseBody UpdateAccountByMember(ctx, accountGuid, memberGuid, userGuid).AccountUpdateRequestBody(accountUpdateRequestBody).Execute()
 
 Update account by member
 
@@ -5783,14 +5795,14 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
-    memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
     accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
+    memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     accountUpdateRequestBody := *openapiclient.NewAccountUpdateRequestBody() // AccountUpdateRequestBody | Account object to be created with optional parameters (is_hidden)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateAccountByMember(context.Background(), userGuid, memberGuid, accountGuid).AccountUpdateRequestBody(accountUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformApi.UpdateAccountByMember(context.Background(), accountGuid, memberGuid, userGuid).AccountUpdateRequestBody(accountUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateAccountByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5806,9 +5818,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
-**memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
 **accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
+**memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 
 ### Other Parameters
 
@@ -5917,7 +5929,7 @@ Name | Type | Description  | Notes
 
 ## UpdateManagedAccount
 
-> AccountResponseBody UpdateManagedAccount(ctx, memberGuid, userGuid, accountGuid).ManagedAccountUpdateRequestBody(managedAccountUpdateRequestBody).Execute()
+> AccountResponseBody UpdateManagedAccount(ctx, accountGuid, memberGuid, userGuid).ManagedAccountUpdateRequestBody(managedAccountUpdateRequestBody).Execute()
 
 Update managed account
 
@@ -5936,14 +5948,14 @@ import (
 )
 
 func main() {
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
-    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     managedAccountUpdateRequestBody := *openapiclient.NewManagedAccountUpdateRequestBody() // ManagedAccountUpdateRequestBody | Managed account object to be updated (While no single parameter is required, the request body can't be empty)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateManagedAccount(context.Background(), memberGuid, userGuid, accountGuid).ManagedAccountUpdateRequestBody(managedAccountUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformApi.UpdateManagedAccount(context.Background(), accountGuid, memberGuid, userGuid).ManagedAccountUpdateRequestBody(managedAccountUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5959,9 +5971,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
 **userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
-**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 
 ### Other Parameters
 
@@ -6070,7 +6082,7 @@ Name | Type | Description  | Notes
 
 ## UpdateManagedTransaction
 
-> TransactionResponseBody UpdateManagedTransaction(ctx, memberGuid, userGuid, transactionGuid).ManagedTransactionUpdateRequestBody(managedTransactionUpdateRequestBody).Execute()
+> TransactionResponseBody UpdateManagedTransaction(ctx, accountGuid, memberGuid, transactionGuid, userGuid).ManagedTransactionUpdateRequestBody(managedTransactionUpdateRequestBody).Execute()
 
 Update managed transaction
 
@@ -6089,14 +6101,15 @@ import (
 )
 
 func main() {
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     transactionGuid := "TRN-810828b0-5210-4878-9bd3-f4ce514f90c4" // string | The unique id for a `transaction`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     managedTransactionUpdateRequestBody := *openapiclient.NewManagedTransactionUpdateRequestBody() // ManagedTransactionUpdateRequestBody | Managed transaction object to be updated (While no single parameter is required, the request body can't be empty)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateManagedTransaction(context.Background(), memberGuid, userGuid, transactionGuid).ManagedTransactionUpdateRequestBody(managedTransactionUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformApi.UpdateManagedTransaction(context.Background(), accountGuid, memberGuid, transactionGuid, userGuid).ManagedTransactionUpdateRequestBody(managedTransactionUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6112,9 +6125,10 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
 **memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 **transactionGuid** | **string** | The unique id for a &#x60;transaction&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
 
 ### Other Parameters
 
@@ -6123,6 +6137,7 @@ Other parameters are passed through a pointer to a apiUpdateManagedTransactionRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 
