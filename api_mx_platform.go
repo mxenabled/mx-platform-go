@@ -8768,6 +8768,335 @@ func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiRequestPaymentAccountRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+}
+
+
+func (r ApiRequestPaymentAccountRequest) Execute() (*PaymentAccountResponseBody, *http.Response, error) {
+	return r.ApiService.RequestPaymentAccountExecute(r)
+}
+
+/*
+RequestPaymentAccount Request payment account
+
+Use this endpoint to request a payment account.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRequestPaymentAccountRequest
+*/
+func (a *MxPlatformApiService) RequestPaymentAccount(ctx context.Context) ApiRequestPaymentAccountRequest {
+	return ApiRequestPaymentAccountRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return PaymentAccountResponseBody
+func (a *MxPlatformApiService) RequestPaymentAccountExecute(r ApiRequestPaymentAccountRequest) (*PaymentAccountResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PaymentAccountResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestPaymentAccount")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/payment_account"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRequestPaymentProcessorAuthorizationCodeRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	paymentProcessorAuthorizationCodeRequestBody *PaymentProcessorAuthorizationCodeRequestBody
+}
+
+// Payment processor authorization code object containing account_guid, member_guid, and user_guid.
+func (r ApiRequestPaymentProcessorAuthorizationCodeRequest) PaymentProcessorAuthorizationCodeRequestBody(paymentProcessorAuthorizationCodeRequestBody PaymentProcessorAuthorizationCodeRequestBody) ApiRequestPaymentProcessorAuthorizationCodeRequest {
+	r.paymentProcessorAuthorizationCodeRequestBody = &paymentProcessorAuthorizationCodeRequestBody
+	return r
+}
+
+func (r ApiRequestPaymentProcessorAuthorizationCodeRequest) Execute() (*PaymentProcessorAuthorizationCodeResponseBody, *http.Response, error) {
+	return r.ApiService.RequestPaymentProcessorAuthorizationCodeExecute(r)
+}
+
+/*
+RequestPaymentProcessorAuthorizationCode Request payment processor authorization code
+
+Use this endpoint to request a payment processor authorization code.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRequestPaymentProcessorAuthorizationCodeRequest
+*/
+func (a *MxPlatformApiService) RequestPaymentProcessorAuthorizationCode(ctx context.Context) ApiRequestPaymentProcessorAuthorizationCodeRequest {
+	return ApiRequestPaymentProcessorAuthorizationCodeRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return PaymentProcessorAuthorizationCodeResponseBody
+func (a *MxPlatformApiService) RequestPaymentProcessorAuthorizationCodeExecute(r ApiRequestPaymentProcessorAuthorizationCodeRequest) (*PaymentProcessorAuthorizationCodeResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PaymentProcessorAuthorizationCodeResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestPaymentProcessorAuthorizationCode")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/payment_processor_authorization_code"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.paymentProcessorAuthorizationCodeRequestBody == nil {
+		return localVarReturnValue, nil, reportError("paymentProcessorAuthorizationCodeRequestBody is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.paymentProcessorAuthorizationCodeRequestBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRequestPaymentProcessorTokenRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	code *string
+	grantType *string
+}
+
+// Code to request processor token.
+func (r ApiRequestPaymentProcessorTokenRequest) Code(code string) ApiRequestPaymentProcessorTokenRequest {
+	r.code = &code
+	return r
+}
+// Specify grant type.
+func (r ApiRequestPaymentProcessorTokenRequest) GrantType(grantType string) ApiRequestPaymentProcessorTokenRequest {
+	r.grantType = &grantType
+	return r
+}
+
+func (r ApiRequestPaymentProcessorTokenRequest) Execute() (*PaymentProcessorTokenResponseBody, *http.Response, error) {
+	return r.ApiService.RequestPaymentProcessorTokenExecute(r)
+}
+
+/*
+RequestPaymentProcessorToken Request payment processor token
+
+Use this endpoint to request a payment processor token.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRequestPaymentProcessorTokenRequest
+*/
+func (a *MxPlatformApiService) RequestPaymentProcessorToken(ctx context.Context) ApiRequestPaymentProcessorTokenRequest {
+	return ApiRequestPaymentProcessorTokenRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return PaymentProcessorTokenResponseBody
+func (a *MxPlatformApiService) RequestPaymentProcessorTokenExecute(r ApiRequestPaymentProcessorTokenRequest) (*PaymentProcessorTokenResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PaymentProcessorTokenResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestPaymentProcessorToken")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/payment_processor_token"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.code != nil {
+		localVarQueryParams.Add("code", parameterToString(*r.code, ""))
+	}
+	if r.grantType != nil {
+		localVarQueryParams.Add("grant_type", parameterToString(*r.grantType, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiRequestWidgetURLRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService

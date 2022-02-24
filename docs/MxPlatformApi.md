@@ -79,6 +79,9 @@ Method | HTTP request | Description
 [**ReadUser**](MxPlatformApi.md#ReadUser) | **Get** /users/{user_guid} | Read user
 [**RequestConnectWidgetURL**](MxPlatformApi.md#RequestConnectWidgetURL) | **Post** /users/{user_guid}/connect_widget_url | Request connect widget url
 [**RequestOAuthWindowURI**](MxPlatformApi.md#RequestOAuthWindowURI) | **Get** /users/{user_guid}/members/{member_guid}/oauth_window_uri | Request oauth window uri
+[**RequestPaymentAccount**](MxPlatformApi.md#RequestPaymentAccount) | **Get** /payment_account | Request payment account
+[**RequestPaymentProcessorAuthorizationCode**](MxPlatformApi.md#RequestPaymentProcessorAuthorizationCode) | **Post** /payment_processor_authorization_code | Request payment processor authorization code
+[**RequestPaymentProcessorToken**](MxPlatformApi.md#RequestPaymentProcessorToken) | **Post** /payment_processor_token | Request payment processor token
 [**RequestWidgetURL**](MxPlatformApi.md#RequestWidgetURL) | **Post** /users/{user_guid}/widget_urls | Request widget url
 [**ResumeAggregation**](MxPlatformApi.md#ResumeAggregation) | **Put** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation
 [**UpdateAccountByMember**](MxPlatformApi.md#UpdateAccountByMember) | **Put** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Update account by member
@@ -5610,6 +5613,201 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OAuthWindowResponseBody**](OAuthWindowResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RequestPaymentAccount
+
+> PaymentAccountResponseBody RequestPaymentAccount(ctx).Execute()
+
+Request payment account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.RequestPaymentAccount(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestPaymentAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RequestPaymentAccount`: PaymentAccountResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.RequestPaymentAccount`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRequestPaymentAccountRequest struct via the builder pattern
+
+
+### Return type
+
+[**PaymentAccountResponseBody**](PaymentAccountResponseBody.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RequestPaymentProcessorAuthorizationCode
+
+> PaymentProcessorAuthorizationCodeResponseBody RequestPaymentProcessorAuthorizationCode(ctx).PaymentProcessorAuthorizationCodeRequestBody(paymentProcessorAuthorizationCodeRequestBody).Execute()
+
+Request payment processor authorization code
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    paymentProcessorAuthorizationCodeRequestBody := *openapiclient.NewPaymentProcessorAuthorizationCodeRequestBody() // PaymentProcessorAuthorizationCodeRequestBody | Payment processor authorization code object containing account_guid, member_guid, and user_guid.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.RequestPaymentProcessorAuthorizationCode(context.Background()).PaymentProcessorAuthorizationCodeRequestBody(paymentProcessorAuthorizationCodeRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestPaymentProcessorAuthorizationCode``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RequestPaymentProcessorAuthorizationCode`: PaymentProcessorAuthorizationCodeResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.RequestPaymentProcessorAuthorizationCode`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRequestPaymentProcessorAuthorizationCodeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **paymentProcessorAuthorizationCodeRequestBody** | [**PaymentProcessorAuthorizationCodeRequestBody**](PaymentProcessorAuthorizationCodeRequestBody.md) | Payment processor authorization code object containing account_guid, member_guid, and user_guid. | 
+
+### Return type
+
+[**PaymentProcessorAuthorizationCodeResponseBody**](PaymentProcessorAuthorizationCodeResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RequestPaymentProcessorToken
+
+> PaymentProcessorTokenResponseBody RequestPaymentProcessorToken(ctx).Code(code).GrantType(grantType).Execute()
+
+Request payment processor token
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    code := "sN3Ffd1nJg_iwEMuxcEo2Z5taC0RvMilfvYKsnM2XGM" // string | Code to request processor token. (optional)
+    grantType := "authorization_code" // string | Specify grant type. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.RequestPaymentProcessorToken(context.Background()).Code(code).GrantType(grantType).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestPaymentProcessorToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RequestPaymentProcessorToken`: PaymentProcessorTokenResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.RequestPaymentProcessorToken`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRequestPaymentProcessorTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **string** | Code to request processor token. | 
+ **grantType** | **string** | Specify grant type. | 
+
+### Return type
+
+[**PaymentProcessorTokenResponseBody**](PaymentProcessorTokenResponseBody.md)
 
 ### Authorization
 
