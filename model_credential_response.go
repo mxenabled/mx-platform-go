@@ -21,6 +21,7 @@ type CredentialResponse struct {
 	FieldType NullableString `json:"field_type,omitempty"`
 	Guid NullableString `json:"guid,omitempty"`
 	Label NullableString `json:"label,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 }
 
 // NewCredentialResponse instantiates a new CredentialResponse object
@@ -250,6 +251,48 @@ func (o *CredentialResponse) UnsetLabel() {
 	o.Label.Unset()
 }
 
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CredentialResponse) GetType() string {
+	if o == nil || o.Type.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type.Get()
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CredentialResponse) GetTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.Type.Get(), o.Type.IsSet()
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *CredentialResponse) HasType() bool {
+	if o != nil && o.Type.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
+func (o *CredentialResponse) SetType(v string) {
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *CredentialResponse) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *CredentialResponse) UnsetType() {
+	o.Type.Unset()
+}
+
 func (o CredentialResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DisplayOrder.IsSet() {
@@ -266,6 +309,9 @@ func (o CredentialResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.Label.IsSet() {
 		toSerialize["label"] = o.Label.Get()
+	}
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 	return json.Marshal(toSerialize)
 }
