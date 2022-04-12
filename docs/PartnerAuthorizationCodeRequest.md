@@ -1,4 +1,4 @@
-# PaymentProcessorAuthorizationCodeRequest
+# PartnerAuthorizationCodeRequest
 
 ## Properties
 
@@ -10,95 +10,95 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewPaymentProcessorAuthorizationCodeRequest
+### NewPartnerAuthorizationCodeRequest
 
-`func NewPaymentProcessorAuthorizationCodeRequest() *PaymentProcessorAuthorizationCodeRequest`
+`func NewPartnerAuthorizationCodeRequest() *PartnerAuthorizationCodeRequest`
 
-NewPaymentProcessorAuthorizationCodeRequest instantiates a new PaymentProcessorAuthorizationCodeRequest object
+NewPartnerAuthorizationCodeRequest instantiates a new PartnerAuthorizationCodeRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPaymentProcessorAuthorizationCodeRequestWithDefaults
+### NewPartnerAuthorizationCodeRequestWithDefaults
 
-`func NewPaymentProcessorAuthorizationCodeRequestWithDefaults() *PaymentProcessorAuthorizationCodeRequest`
+`func NewPartnerAuthorizationCodeRequestWithDefaults() *PartnerAuthorizationCodeRequest`
 
-NewPaymentProcessorAuthorizationCodeRequestWithDefaults instantiates a new PaymentProcessorAuthorizationCodeRequest object
+NewPartnerAuthorizationCodeRequestWithDefaults instantiates a new PartnerAuthorizationCodeRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetAccountGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) GetAccountGuid() string`
+`func (o *PartnerAuthorizationCodeRequest) GetAccountGuid() string`
 
 GetAccountGuid returns the AccountGuid field if non-nil, zero value otherwise.
 
 ### GetAccountGuidOk
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) GetAccountGuidOk() (*string, bool)`
+`func (o *PartnerAuthorizationCodeRequest) GetAccountGuidOk() (*string, bool)`
 
 GetAccountGuidOk returns a tuple with the AccountGuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) SetAccountGuid(v string)`
+`func (o *PartnerAuthorizationCodeRequest) SetAccountGuid(v string)`
 
 SetAccountGuid sets AccountGuid field to given value.
 
 ### HasAccountGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) HasAccountGuid() bool`
+`func (o *PartnerAuthorizationCodeRequest) HasAccountGuid() bool`
 
 HasAccountGuid returns a boolean if a field has been set.
 
 ### GetMemberGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuid() string`
+`func (o *PartnerAuthorizationCodeRequest) GetMemberGuid() string`
 
 GetMemberGuid returns the MemberGuid field if non-nil, zero value otherwise.
 
 ### GetMemberGuidOk
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuidOk() (*string, bool)`
+`func (o *PartnerAuthorizationCodeRequest) GetMemberGuidOk() (*string, bool)`
 
 GetMemberGuidOk returns a tuple with the MemberGuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemberGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) SetMemberGuid(v string)`
+`func (o *PartnerAuthorizationCodeRequest) SetMemberGuid(v string)`
 
 SetMemberGuid sets MemberGuid field to given value.
 
 ### HasMemberGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) HasMemberGuid() bool`
+`func (o *PartnerAuthorizationCodeRequest) HasMemberGuid() bool`
 
 HasMemberGuid returns a boolean if a field has been set.
 
 ### GetUserGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuid() string`
+`func (o *PartnerAuthorizationCodeRequest) GetUserGuid() string`
 
 GetUserGuid returns the UserGuid field if non-nil, zero value otherwise.
 
 ### GetUserGuidOk
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuidOk() (*string, bool)`
+`func (o *PartnerAuthorizationCodeRequest) GetUserGuidOk() (*string, bool)`
 
 GetUserGuidOk returns a tuple with the UserGuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) SetUserGuid(v string)`
+`func (o *PartnerAuthorizationCodeRequest) SetUserGuid(v string)`
 
 SetUserGuid sets UserGuid field to given value.
 
 ### HasUserGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) HasUserGuid() bool`
+`func (o *PartnerAuthorizationCodeRequest) HasUserGuid() bool`
 
 HasUserGuid returns a boolean if a field has been set.
 

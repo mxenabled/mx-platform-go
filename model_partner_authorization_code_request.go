@@ -14,32 +14,32 @@ import (
 	"encoding/json"
 )
 
-// PaymentProcessorAuthorizationCodeRequest struct for PaymentProcessorAuthorizationCodeRequest
-type PaymentProcessorAuthorizationCodeRequest struct {
+// PartnerAuthorizationCodeRequest struct for PartnerAuthorizationCodeRequest
+type PartnerAuthorizationCodeRequest struct {
 	AccountGuid *string `json:"account_guid,omitempty"`
 	MemberGuid *string `json:"member_guid,omitempty"`
 	UserGuid *string `json:"user_guid,omitempty"`
 }
 
-// NewPaymentProcessorAuthorizationCodeRequest instantiates a new PaymentProcessorAuthorizationCodeRequest object
+// NewPartnerAuthorizationCodeRequest instantiates a new PartnerAuthorizationCodeRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentProcessorAuthorizationCodeRequest() *PaymentProcessorAuthorizationCodeRequest {
-	this := PaymentProcessorAuthorizationCodeRequest{}
+func NewPartnerAuthorizationCodeRequest() *PartnerAuthorizationCodeRequest {
+	this := PartnerAuthorizationCodeRequest{}
 	return &this
 }
 
-// NewPaymentProcessorAuthorizationCodeRequestWithDefaults instantiates a new PaymentProcessorAuthorizationCodeRequest object
+// NewPartnerAuthorizationCodeRequestWithDefaults instantiates a new PartnerAuthorizationCodeRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaymentProcessorAuthorizationCodeRequestWithDefaults() *PaymentProcessorAuthorizationCodeRequest {
-	this := PaymentProcessorAuthorizationCodeRequest{}
+func NewPartnerAuthorizationCodeRequestWithDefaults() *PartnerAuthorizationCodeRequest {
+	this := PartnerAuthorizationCodeRequest{}
 	return &this
 }
 
 // GetAccountGuid returns the AccountGuid field value if set, zero value otherwise.
-func (o *PaymentProcessorAuthorizationCodeRequest) GetAccountGuid() string {
+func (o *PartnerAuthorizationCodeRequest) GetAccountGuid() string {
 	if o == nil || o.AccountGuid == nil {
 		var ret string
 		return ret
@@ -49,7 +49,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) GetAccountGuid() string {
 
 // GetAccountGuidOk returns a tuple with the AccountGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaymentProcessorAuthorizationCodeRequest) GetAccountGuidOk() (*string, bool) {
+func (o *PartnerAuthorizationCodeRequest) GetAccountGuidOk() (*string, bool) {
 	if o == nil || o.AccountGuid == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) GetAccountGuidOk() (*string, 
 }
 
 // HasAccountGuid returns a boolean if a field has been set.
-func (o *PaymentProcessorAuthorizationCodeRequest) HasAccountGuid() bool {
+func (o *PartnerAuthorizationCodeRequest) HasAccountGuid() bool {
 	if o != nil && o.AccountGuid != nil {
 		return true
 	}
@@ -66,12 +66,12 @@ func (o *PaymentProcessorAuthorizationCodeRequest) HasAccountGuid() bool {
 }
 
 // SetAccountGuid gets a reference to the given string and assigns it to the AccountGuid field.
-func (o *PaymentProcessorAuthorizationCodeRequest) SetAccountGuid(v string) {
+func (o *PartnerAuthorizationCodeRequest) SetAccountGuid(v string) {
 	o.AccountGuid = &v
 }
 
 // GetMemberGuid returns the MemberGuid field value if set, zero value otherwise.
-func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuid() string {
+func (o *PartnerAuthorizationCodeRequest) GetMemberGuid() string {
 	if o == nil || o.MemberGuid == nil {
 		var ret string
 		return ret
@@ -81,7 +81,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuid() string {
 
 // GetMemberGuidOk returns a tuple with the MemberGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuidOk() (*string, bool) {
+func (o *PartnerAuthorizationCodeRequest) GetMemberGuidOk() (*string, bool) {
 	if o == nil || o.MemberGuid == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuidOk() (*string, b
 }
 
 // HasMemberGuid returns a boolean if a field has been set.
-func (o *PaymentProcessorAuthorizationCodeRequest) HasMemberGuid() bool {
+func (o *PartnerAuthorizationCodeRequest) HasMemberGuid() bool {
 	if o != nil && o.MemberGuid != nil {
 		return true
 	}
@@ -98,12 +98,12 @@ func (o *PaymentProcessorAuthorizationCodeRequest) HasMemberGuid() bool {
 }
 
 // SetMemberGuid gets a reference to the given string and assigns it to the MemberGuid field.
-func (o *PaymentProcessorAuthorizationCodeRequest) SetMemberGuid(v string) {
+func (o *PartnerAuthorizationCodeRequest) SetMemberGuid(v string) {
 	o.MemberGuid = &v
 }
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise.
-func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuid() string {
+func (o *PartnerAuthorizationCodeRequest) GetUserGuid() string {
 	if o == nil || o.UserGuid == nil {
 		var ret string
 		return ret
@@ -113,7 +113,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuid() string {
 
 // GetUserGuidOk returns a tuple with the UserGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuidOk() (*string, bool) {
+func (o *PartnerAuthorizationCodeRequest) GetUserGuidOk() (*string, bool) {
 	if o == nil || o.UserGuid == nil {
 		return nil, false
 	}
@@ -121,7 +121,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuidOk() (*string, boo
 }
 
 // HasUserGuid returns a boolean if a field has been set.
-func (o *PaymentProcessorAuthorizationCodeRequest) HasUserGuid() bool {
+func (o *PartnerAuthorizationCodeRequest) HasUserGuid() bool {
 	if o != nil && o.UserGuid != nil {
 		return true
 	}
@@ -130,11 +130,11 @@ func (o *PaymentProcessorAuthorizationCodeRequest) HasUserGuid() bool {
 }
 
 // SetUserGuid gets a reference to the given string and assigns it to the UserGuid field.
-func (o *PaymentProcessorAuthorizationCodeRequest) SetUserGuid(v string) {
+func (o *PartnerAuthorizationCodeRequest) SetUserGuid(v string) {
 	o.UserGuid = &v
 }
 
-func (o PaymentProcessorAuthorizationCodeRequest) MarshalJSON() ([]byte, error) {
+func (o PartnerAuthorizationCodeRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountGuid != nil {
 		toSerialize["account_guid"] = o.AccountGuid
@@ -148,38 +148,38 @@ func (o PaymentProcessorAuthorizationCodeRequest) MarshalJSON() ([]byte, error) 
 	return json.Marshal(toSerialize)
 }
 
-type NullablePaymentProcessorAuthorizationCodeRequest struct {
-	value *PaymentProcessorAuthorizationCodeRequest
+type NullablePartnerAuthorizationCodeRequest struct {
+	value *PartnerAuthorizationCodeRequest
 	isSet bool
 }
 
-func (v NullablePaymentProcessorAuthorizationCodeRequest) Get() *PaymentProcessorAuthorizationCodeRequest {
+func (v NullablePartnerAuthorizationCodeRequest) Get() *PartnerAuthorizationCodeRequest {
 	return v.value
 }
 
-func (v *NullablePaymentProcessorAuthorizationCodeRequest) Set(val *PaymentProcessorAuthorizationCodeRequest) {
+func (v *NullablePartnerAuthorizationCodeRequest) Set(val *PartnerAuthorizationCodeRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePaymentProcessorAuthorizationCodeRequest) IsSet() bool {
+func (v NullablePartnerAuthorizationCodeRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePaymentProcessorAuthorizationCodeRequest) Unset() {
+func (v *NullablePartnerAuthorizationCodeRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePaymentProcessorAuthorizationCodeRequest(val *PaymentProcessorAuthorizationCodeRequest) *NullablePaymentProcessorAuthorizationCodeRequest {
-	return &NullablePaymentProcessorAuthorizationCodeRequest{value: val, isSet: true}
+func NewNullablePartnerAuthorizationCodeRequest(val *PartnerAuthorizationCodeRequest) *NullablePartnerAuthorizationCodeRequest {
+	return &NullablePartnerAuthorizationCodeRequest{value: val, isSet: true}
 }
 
-func (v NullablePaymentProcessorAuthorizationCodeRequest) MarshalJSON() ([]byte, error) {
+func (v NullablePartnerAuthorizationCodeRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePaymentProcessorAuthorizationCodeRequest) UnmarshalJSON(src []byte) error {
+func (v *NullablePartnerAuthorizationCodeRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
