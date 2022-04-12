@@ -14,30 +14,30 @@ import (
 	"encoding/json"
 )
 
-// PaymentProcessorAuthorizationCodeResponse struct for PaymentProcessorAuthorizationCodeResponse
-type PaymentProcessorAuthorizationCodeResponse struct {
+// PartnerAuthorizationCodeResponse struct for PartnerAuthorizationCodeResponse
+type PartnerAuthorizationCodeResponse struct {
 	AuthorizationCode NullableString `json:"authorization_code,omitempty"`
 }
 
-// NewPaymentProcessorAuthorizationCodeResponse instantiates a new PaymentProcessorAuthorizationCodeResponse object
+// NewPartnerAuthorizationCodeResponse instantiates a new PartnerAuthorizationCodeResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentProcessorAuthorizationCodeResponse() *PaymentProcessorAuthorizationCodeResponse {
-	this := PaymentProcessorAuthorizationCodeResponse{}
+func NewPartnerAuthorizationCodeResponse() *PartnerAuthorizationCodeResponse {
+	this := PartnerAuthorizationCodeResponse{}
 	return &this
 }
 
-// NewPaymentProcessorAuthorizationCodeResponseWithDefaults instantiates a new PaymentProcessorAuthorizationCodeResponse object
+// NewPartnerAuthorizationCodeResponseWithDefaults instantiates a new PartnerAuthorizationCodeResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaymentProcessorAuthorizationCodeResponseWithDefaults() *PaymentProcessorAuthorizationCodeResponse {
-	this := PaymentProcessorAuthorizationCodeResponse{}
+func NewPartnerAuthorizationCodeResponseWithDefaults() *PartnerAuthorizationCodeResponse {
+	this := PartnerAuthorizationCodeResponse{}
 	return &this
 }
 
 // GetAuthorizationCode returns the AuthorizationCode field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentProcessorAuthorizationCodeResponse) GetAuthorizationCode() string {
+func (o *PartnerAuthorizationCodeResponse) GetAuthorizationCode() string {
 	if o == nil || o.AuthorizationCode.Get() == nil {
 		var ret string
 		return ret
@@ -48,7 +48,7 @@ func (o *PaymentProcessorAuthorizationCodeResponse) GetAuthorizationCode() strin
 // GetAuthorizationCodeOk returns a tuple with the AuthorizationCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentProcessorAuthorizationCodeResponse) GetAuthorizationCodeOk() (*string, bool) {
+func (o *PartnerAuthorizationCodeResponse) GetAuthorizationCodeOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *PaymentProcessorAuthorizationCodeResponse) GetAuthorizationCodeOk() (*s
 }
 
 // HasAuthorizationCode returns a boolean if a field has been set.
-func (o *PaymentProcessorAuthorizationCodeResponse) HasAuthorizationCode() bool {
+func (o *PartnerAuthorizationCodeResponse) HasAuthorizationCode() bool {
 	if o != nil && o.AuthorizationCode.IsSet() {
 		return true
 	}
@@ -65,20 +65,20 @@ func (o *PaymentProcessorAuthorizationCodeResponse) HasAuthorizationCode() bool 
 }
 
 // SetAuthorizationCode gets a reference to the given NullableString and assigns it to the AuthorizationCode field.
-func (o *PaymentProcessorAuthorizationCodeResponse) SetAuthorizationCode(v string) {
+func (o *PartnerAuthorizationCodeResponse) SetAuthorizationCode(v string) {
 	o.AuthorizationCode.Set(&v)
 }
 // SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
-func (o *PaymentProcessorAuthorizationCodeResponse) SetAuthorizationCodeNil() {
+func (o *PartnerAuthorizationCodeResponse) SetAuthorizationCodeNil() {
 	o.AuthorizationCode.Set(nil)
 }
 
 // UnsetAuthorizationCode ensures that no value is present for AuthorizationCode, not even an explicit nil
-func (o *PaymentProcessorAuthorizationCodeResponse) UnsetAuthorizationCode() {
+func (o *PartnerAuthorizationCodeResponse) UnsetAuthorizationCode() {
 	o.AuthorizationCode.Unset()
 }
 
-func (o PaymentProcessorAuthorizationCodeResponse) MarshalJSON() ([]byte, error) {
+func (o PartnerAuthorizationCodeResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AuthorizationCode.IsSet() {
 		toSerialize["authorization_code"] = o.AuthorizationCode.Get()
@@ -86,38 +86,38 @@ func (o PaymentProcessorAuthorizationCodeResponse) MarshalJSON() ([]byte, error)
 	return json.Marshal(toSerialize)
 }
 
-type NullablePaymentProcessorAuthorizationCodeResponse struct {
-	value *PaymentProcessorAuthorizationCodeResponse
+type NullablePartnerAuthorizationCodeResponse struct {
+	value *PartnerAuthorizationCodeResponse
 	isSet bool
 }
 
-func (v NullablePaymentProcessorAuthorizationCodeResponse) Get() *PaymentProcessorAuthorizationCodeResponse {
+func (v NullablePartnerAuthorizationCodeResponse) Get() *PartnerAuthorizationCodeResponse {
 	return v.value
 }
 
-func (v *NullablePaymentProcessorAuthorizationCodeResponse) Set(val *PaymentProcessorAuthorizationCodeResponse) {
+func (v *NullablePartnerAuthorizationCodeResponse) Set(val *PartnerAuthorizationCodeResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePaymentProcessorAuthorizationCodeResponse) IsSet() bool {
+func (v NullablePartnerAuthorizationCodeResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePaymentProcessorAuthorizationCodeResponse) Unset() {
+func (v *NullablePartnerAuthorizationCodeResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePaymentProcessorAuthorizationCodeResponse(val *PaymentProcessorAuthorizationCodeResponse) *NullablePaymentProcessorAuthorizationCodeResponse {
-	return &NullablePaymentProcessorAuthorizationCodeResponse{value: val, isSet: true}
+func NewNullablePartnerAuthorizationCodeResponse(val *PartnerAuthorizationCodeResponse) *NullablePartnerAuthorizationCodeResponse {
+	return &NullablePartnerAuthorizationCodeResponse{value: val, isSet: true}
 }
 
-func (v NullablePaymentProcessorAuthorizationCodeResponse) MarshalJSON() ([]byte, error) {
+func (v NullablePartnerAuthorizationCodeResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePaymentProcessorAuthorizationCodeResponse) UnmarshalJSON(src []byte) error {
+func (v *NullablePartnerAuthorizationCodeResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

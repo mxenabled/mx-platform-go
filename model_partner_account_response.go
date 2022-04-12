@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// PaymentAccountResponse struct for PaymentAccountResponse
-type PaymentAccountResponse struct {
+// PartnerAccountResponse struct for PartnerAccountResponse
+type PartnerAccountResponse struct {
 	AccountName NullableString `json:"account_name,omitempty"`
 	AccountNumber NullableString `json:"account_number,omitempty"`
 	AccountType NullableString `json:"account_type,omitempty"`
@@ -25,25 +25,25 @@ type PaymentAccountResponse struct {
 	TransitNumber NullableString `json:"transit_number,omitempty"`
 }
 
-// NewPaymentAccountResponse instantiates a new PaymentAccountResponse object
+// NewPartnerAccountResponse instantiates a new PartnerAccountResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentAccountResponse() *PaymentAccountResponse {
-	this := PaymentAccountResponse{}
+func NewPartnerAccountResponse() *PartnerAccountResponse {
+	this := PartnerAccountResponse{}
 	return &this
 }
 
-// NewPaymentAccountResponseWithDefaults instantiates a new PaymentAccountResponse object
+// NewPartnerAccountResponseWithDefaults instantiates a new PartnerAccountResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaymentAccountResponseWithDefaults() *PaymentAccountResponse {
-	this := PaymentAccountResponse{}
+func NewPartnerAccountResponseWithDefaults() *PartnerAccountResponse {
+	this := PartnerAccountResponse{}
 	return &this
 }
 
 // GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentAccountResponse) GetAccountName() string {
+func (o *PartnerAccountResponse) GetAccountName() string {
 	if o == nil || o.AccountName.Get() == nil {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *PaymentAccountResponse) GetAccountName() string {
 // GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentAccountResponse) GetAccountNameOk() (*string, bool) {
+func (o *PartnerAccountResponse) GetAccountNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *PaymentAccountResponse) GetAccountNameOk() (*string, bool) {
 }
 
 // HasAccountName returns a boolean if a field has been set.
-func (o *PaymentAccountResponse) HasAccountName() bool {
+func (o *PartnerAccountResponse) HasAccountName() bool {
 	if o != nil && o.AccountName.IsSet() {
 		return true
 	}
@@ -71,21 +71,21 @@ func (o *PaymentAccountResponse) HasAccountName() bool {
 }
 
 // SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
-func (o *PaymentAccountResponse) SetAccountName(v string) {
+func (o *PartnerAccountResponse) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
-func (o *PaymentAccountResponse) SetAccountNameNil() {
+func (o *PartnerAccountResponse) SetAccountNameNil() {
 	o.AccountName.Set(nil)
 }
 
 // UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
-func (o *PaymentAccountResponse) UnsetAccountName() {
+func (o *PartnerAccountResponse) UnsetAccountName() {
 	o.AccountName.Unset()
 }
 
 // GetAccountNumber returns the AccountNumber field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentAccountResponse) GetAccountNumber() string {
+func (o *PartnerAccountResponse) GetAccountNumber() string {
 	if o == nil || o.AccountNumber.Get() == nil {
 		var ret string
 		return ret
@@ -96,7 +96,7 @@ func (o *PaymentAccountResponse) GetAccountNumber() string {
 // GetAccountNumberOk returns a tuple with the AccountNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentAccountResponse) GetAccountNumberOk() (*string, bool) {
+func (o *PartnerAccountResponse) GetAccountNumberOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -104,7 +104,7 @@ func (o *PaymentAccountResponse) GetAccountNumberOk() (*string, bool) {
 }
 
 // HasAccountNumber returns a boolean if a field has been set.
-func (o *PaymentAccountResponse) HasAccountNumber() bool {
+func (o *PartnerAccountResponse) HasAccountNumber() bool {
 	if o != nil && o.AccountNumber.IsSet() {
 		return true
 	}
@@ -113,21 +113,21 @@ func (o *PaymentAccountResponse) HasAccountNumber() bool {
 }
 
 // SetAccountNumber gets a reference to the given NullableString and assigns it to the AccountNumber field.
-func (o *PaymentAccountResponse) SetAccountNumber(v string) {
+func (o *PartnerAccountResponse) SetAccountNumber(v string) {
 	o.AccountNumber.Set(&v)
 }
 // SetAccountNumberNil sets the value for AccountNumber to be an explicit nil
-func (o *PaymentAccountResponse) SetAccountNumberNil() {
+func (o *PartnerAccountResponse) SetAccountNumberNil() {
 	o.AccountNumber.Set(nil)
 }
 
 // UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
-func (o *PaymentAccountResponse) UnsetAccountNumber() {
+func (o *PartnerAccountResponse) UnsetAccountNumber() {
 	o.AccountNumber.Unset()
 }
 
 // GetAccountType returns the AccountType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentAccountResponse) GetAccountType() string {
+func (o *PartnerAccountResponse) GetAccountType() string {
 	if o == nil || o.AccountType.Get() == nil {
 		var ret string
 		return ret
@@ -138,7 +138,7 @@ func (o *PaymentAccountResponse) GetAccountType() string {
 // GetAccountTypeOk returns a tuple with the AccountType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentAccountResponse) GetAccountTypeOk() (*string, bool) {
+func (o *PartnerAccountResponse) GetAccountTypeOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -146,7 +146,7 @@ func (o *PaymentAccountResponse) GetAccountTypeOk() (*string, bool) {
 }
 
 // HasAccountType returns a boolean if a field has been set.
-func (o *PaymentAccountResponse) HasAccountType() bool {
+func (o *PartnerAccountResponse) HasAccountType() bool {
 	if o != nil && o.AccountType.IsSet() {
 		return true
 	}
@@ -155,21 +155,21 @@ func (o *PaymentAccountResponse) HasAccountType() bool {
 }
 
 // SetAccountType gets a reference to the given NullableString and assigns it to the AccountType field.
-func (o *PaymentAccountResponse) SetAccountType(v string) {
+func (o *PartnerAccountResponse) SetAccountType(v string) {
 	o.AccountType.Set(&v)
 }
 // SetAccountTypeNil sets the value for AccountType to be an explicit nil
-func (o *PaymentAccountResponse) SetAccountTypeNil() {
+func (o *PartnerAccountResponse) SetAccountTypeNil() {
 	o.AccountType.Set(nil)
 }
 
 // UnsetAccountType ensures that no value is present for AccountType, not even an explicit nil
-func (o *PaymentAccountResponse) UnsetAccountType() {
+func (o *PartnerAccountResponse) UnsetAccountType() {
 	o.AccountType.Unset()
 }
 
 // GetAvailableBalance returns the AvailableBalance field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentAccountResponse) GetAvailableBalance() float32 {
+func (o *PartnerAccountResponse) GetAvailableBalance() float32 {
 	if o == nil || o.AvailableBalance.Get() == nil {
 		var ret float32
 		return ret
@@ -180,7 +180,7 @@ func (o *PaymentAccountResponse) GetAvailableBalance() float32 {
 // GetAvailableBalanceOk returns a tuple with the AvailableBalance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentAccountResponse) GetAvailableBalanceOk() (*float32, bool) {
+func (o *PartnerAccountResponse) GetAvailableBalanceOk() (*float32, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -188,7 +188,7 @@ func (o *PaymentAccountResponse) GetAvailableBalanceOk() (*float32, bool) {
 }
 
 // HasAvailableBalance returns a boolean if a field has been set.
-func (o *PaymentAccountResponse) HasAvailableBalance() bool {
+func (o *PartnerAccountResponse) HasAvailableBalance() bool {
 	if o != nil && o.AvailableBalance.IsSet() {
 		return true
 	}
@@ -197,21 +197,21 @@ func (o *PaymentAccountResponse) HasAvailableBalance() bool {
 }
 
 // SetAvailableBalance gets a reference to the given NullableFloat32 and assigns it to the AvailableBalance field.
-func (o *PaymentAccountResponse) SetAvailableBalance(v float32) {
+func (o *PartnerAccountResponse) SetAvailableBalance(v float32) {
 	o.AvailableBalance.Set(&v)
 }
 // SetAvailableBalanceNil sets the value for AvailableBalance to be an explicit nil
-func (o *PaymentAccountResponse) SetAvailableBalanceNil() {
+func (o *PartnerAccountResponse) SetAvailableBalanceNil() {
 	o.AvailableBalance.Set(nil)
 }
 
 // UnsetAvailableBalance ensures that no value is present for AvailableBalance, not even an explicit nil
-func (o *PaymentAccountResponse) UnsetAvailableBalance() {
+func (o *PartnerAccountResponse) UnsetAvailableBalance() {
 	o.AvailableBalance.Unset()
 }
 
 // GetBalance returns the Balance field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentAccountResponse) GetBalance() float32 {
+func (o *PartnerAccountResponse) GetBalance() float32 {
 	if o == nil || o.Balance.Get() == nil {
 		var ret float32
 		return ret
@@ -222,7 +222,7 @@ func (o *PaymentAccountResponse) GetBalance() float32 {
 // GetBalanceOk returns a tuple with the Balance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentAccountResponse) GetBalanceOk() (*float32, bool) {
+func (o *PartnerAccountResponse) GetBalanceOk() (*float32, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -230,7 +230,7 @@ func (o *PaymentAccountResponse) GetBalanceOk() (*float32, bool) {
 }
 
 // HasBalance returns a boolean if a field has been set.
-func (o *PaymentAccountResponse) HasBalance() bool {
+func (o *PartnerAccountResponse) HasBalance() bool {
 	if o != nil && o.Balance.IsSet() {
 		return true
 	}
@@ -239,21 +239,21 @@ func (o *PaymentAccountResponse) HasBalance() bool {
 }
 
 // SetBalance gets a reference to the given NullableFloat32 and assigns it to the Balance field.
-func (o *PaymentAccountResponse) SetBalance(v float32) {
+func (o *PartnerAccountResponse) SetBalance(v float32) {
 	o.Balance.Set(&v)
 }
 // SetBalanceNil sets the value for Balance to be an explicit nil
-func (o *PaymentAccountResponse) SetBalanceNil() {
+func (o *PartnerAccountResponse) SetBalanceNil() {
 	o.Balance.Set(nil)
 }
 
 // UnsetBalance ensures that no value is present for Balance, not even an explicit nil
-func (o *PaymentAccountResponse) UnsetBalance() {
+func (o *PartnerAccountResponse) UnsetBalance() {
 	o.Balance.Unset()
 }
 
 // GetRoutingNumber returns the RoutingNumber field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentAccountResponse) GetRoutingNumber() string {
+func (o *PartnerAccountResponse) GetRoutingNumber() string {
 	if o == nil || o.RoutingNumber.Get() == nil {
 		var ret string
 		return ret
@@ -264,7 +264,7 @@ func (o *PaymentAccountResponse) GetRoutingNumber() string {
 // GetRoutingNumberOk returns a tuple with the RoutingNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentAccountResponse) GetRoutingNumberOk() (*string, bool) {
+func (o *PartnerAccountResponse) GetRoutingNumberOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -272,7 +272,7 @@ func (o *PaymentAccountResponse) GetRoutingNumberOk() (*string, bool) {
 }
 
 // HasRoutingNumber returns a boolean if a field has been set.
-func (o *PaymentAccountResponse) HasRoutingNumber() bool {
+func (o *PartnerAccountResponse) HasRoutingNumber() bool {
 	if o != nil && o.RoutingNumber.IsSet() {
 		return true
 	}
@@ -281,21 +281,21 @@ func (o *PaymentAccountResponse) HasRoutingNumber() bool {
 }
 
 // SetRoutingNumber gets a reference to the given NullableString and assigns it to the RoutingNumber field.
-func (o *PaymentAccountResponse) SetRoutingNumber(v string) {
+func (o *PartnerAccountResponse) SetRoutingNumber(v string) {
 	o.RoutingNumber.Set(&v)
 }
 // SetRoutingNumberNil sets the value for RoutingNumber to be an explicit nil
-func (o *PaymentAccountResponse) SetRoutingNumberNil() {
+func (o *PartnerAccountResponse) SetRoutingNumberNil() {
 	o.RoutingNumber.Set(nil)
 }
 
 // UnsetRoutingNumber ensures that no value is present for RoutingNumber, not even an explicit nil
-func (o *PaymentAccountResponse) UnsetRoutingNumber() {
+func (o *PartnerAccountResponse) UnsetRoutingNumber() {
 	o.RoutingNumber.Unset()
 }
 
 // GetTransitNumber returns the TransitNumber field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentAccountResponse) GetTransitNumber() string {
+func (o *PartnerAccountResponse) GetTransitNumber() string {
 	if o == nil || o.TransitNumber.Get() == nil {
 		var ret string
 		return ret
@@ -306,7 +306,7 @@ func (o *PaymentAccountResponse) GetTransitNumber() string {
 // GetTransitNumberOk returns a tuple with the TransitNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentAccountResponse) GetTransitNumberOk() (*string, bool) {
+func (o *PartnerAccountResponse) GetTransitNumberOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -314,7 +314,7 @@ func (o *PaymentAccountResponse) GetTransitNumberOk() (*string, bool) {
 }
 
 // HasTransitNumber returns a boolean if a field has been set.
-func (o *PaymentAccountResponse) HasTransitNumber() bool {
+func (o *PartnerAccountResponse) HasTransitNumber() bool {
 	if o != nil && o.TransitNumber.IsSet() {
 		return true
 	}
@@ -323,20 +323,20 @@ func (o *PaymentAccountResponse) HasTransitNumber() bool {
 }
 
 // SetTransitNumber gets a reference to the given NullableString and assigns it to the TransitNumber field.
-func (o *PaymentAccountResponse) SetTransitNumber(v string) {
+func (o *PartnerAccountResponse) SetTransitNumber(v string) {
 	o.TransitNumber.Set(&v)
 }
 // SetTransitNumberNil sets the value for TransitNumber to be an explicit nil
-func (o *PaymentAccountResponse) SetTransitNumberNil() {
+func (o *PartnerAccountResponse) SetTransitNumberNil() {
 	o.TransitNumber.Set(nil)
 }
 
 // UnsetTransitNumber ensures that no value is present for TransitNumber, not even an explicit nil
-func (o *PaymentAccountResponse) UnsetTransitNumber() {
+func (o *PartnerAccountResponse) UnsetTransitNumber() {
 	o.TransitNumber.Unset()
 }
 
-func (o PaymentAccountResponse) MarshalJSON() ([]byte, error) {
+func (o PartnerAccountResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountName.IsSet() {
 		toSerialize["account_name"] = o.AccountName.Get()
@@ -362,38 +362,38 @@ func (o PaymentAccountResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullablePaymentAccountResponse struct {
-	value *PaymentAccountResponse
+type NullablePartnerAccountResponse struct {
+	value *PartnerAccountResponse
 	isSet bool
 }
 
-func (v NullablePaymentAccountResponse) Get() *PaymentAccountResponse {
+func (v NullablePartnerAccountResponse) Get() *PartnerAccountResponse {
 	return v.value
 }
 
-func (v *NullablePaymentAccountResponse) Set(val *PaymentAccountResponse) {
+func (v *NullablePartnerAccountResponse) Set(val *PartnerAccountResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePaymentAccountResponse) IsSet() bool {
+func (v NullablePartnerAccountResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePaymentAccountResponse) Unset() {
+func (v *NullablePartnerAccountResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePaymentAccountResponse(val *PaymentAccountResponse) *NullablePaymentAccountResponse {
-	return &NullablePaymentAccountResponse{value: val, isSet: true}
+func NewNullablePartnerAccountResponse(val *PartnerAccountResponse) *NullablePartnerAccountResponse {
+	return &NullablePartnerAccountResponse{value: val, isSet: true}
 }
 
-func (v NullablePaymentAccountResponse) MarshalJSON() ([]byte, error) {
+func (v NullablePartnerAccountResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePaymentAccountResponse) UnmarshalJSON(src []byte) error {
+func (v *NullablePartnerAccountResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -8768,47 +8768,47 @@ func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRequestPaymentAccountRequest struct {
+type ApiRequestPartnerAccountRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
 }
 
 
-func (r ApiRequestPaymentAccountRequest) Execute() (*PaymentAccountResponseBody, *http.Response, error) {
-	return r.ApiService.RequestPaymentAccountExecute(r)
+func (r ApiRequestPartnerAccountRequest) Execute() (*PartnerAccountResponseBody, *http.Response, error) {
+	return r.ApiService.RequestPartnerAccountExecute(r)
 }
 
 /*
-RequestPaymentAccount Request payment account
+RequestPartnerAccount Request partner account
 
-Use this endpoint to request a payment account.
+Use this endpoint to request a partner account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRequestPaymentAccountRequest
+ @return ApiRequestPartnerAccountRequest
 */
-func (a *MxPlatformApiService) RequestPaymentAccount(ctx context.Context) ApiRequestPaymentAccountRequest {
-	return ApiRequestPaymentAccountRequest{
+func (a *MxPlatformApiService) RequestPartnerAccount(ctx context.Context) ApiRequestPartnerAccountRequest {
+	return ApiRequestPartnerAccountRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PaymentAccountResponseBody
-func (a *MxPlatformApiService) RequestPaymentAccountExecute(r ApiRequestPaymentAccountRequest) (*PaymentAccountResponseBody, *http.Response, error) {
+//  @return PartnerAccountResponseBody
+func (a *MxPlatformApiService) RequestPartnerAccountExecute(r ApiRequestPartnerAccountRequest) (*PartnerAccountResponseBody, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaymentAccountResponseBody
+		localVarReturnValue  *PartnerAccountResponseBody
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestPaymentAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestPartnerAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/payment_account"
+	localVarPath := localBasePath + "/partner_account"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8868,59 +8868,59 @@ func (a *MxPlatformApiService) RequestPaymentAccountExecute(r ApiRequestPaymentA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRequestPaymentProcessorAuthorizationCodeRequest struct {
+type ApiRequestPartnerAuthorizationCodeRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
-	paymentProcessorAuthorizationCodeRequestBody *PaymentProcessorAuthorizationCodeRequestBody
+	partnerAuthorizationCodeRequestBody *PartnerAuthorizationCodeRequestBody
 }
 
-// Payment processor authorization code object containing account_guid, member_guid, and user_guid.
-func (r ApiRequestPaymentProcessorAuthorizationCodeRequest) PaymentProcessorAuthorizationCodeRequestBody(paymentProcessorAuthorizationCodeRequestBody PaymentProcessorAuthorizationCodeRequestBody) ApiRequestPaymentProcessorAuthorizationCodeRequest {
-	r.paymentProcessorAuthorizationCodeRequestBody = &paymentProcessorAuthorizationCodeRequestBody
+// Partner authorization code object containing account_guid, member_guid, and user_guid.
+func (r ApiRequestPartnerAuthorizationCodeRequest) PartnerAuthorizationCodeRequestBody(partnerAuthorizationCodeRequestBody PartnerAuthorizationCodeRequestBody) ApiRequestPartnerAuthorizationCodeRequest {
+	r.partnerAuthorizationCodeRequestBody = &partnerAuthorizationCodeRequestBody
 	return r
 }
 
-func (r ApiRequestPaymentProcessorAuthorizationCodeRequest) Execute() (*PaymentProcessorAuthorizationCodeResponseBody, *http.Response, error) {
-	return r.ApiService.RequestPaymentProcessorAuthorizationCodeExecute(r)
+func (r ApiRequestPartnerAuthorizationCodeRequest) Execute() (*PartnerAuthorizationCodeResponseBody, *http.Response, error) {
+	return r.ApiService.RequestPartnerAuthorizationCodeExecute(r)
 }
 
 /*
-RequestPaymentProcessorAuthorizationCode Request payment processor authorization code
+RequestPartnerAuthorizationCode Request partner authorization code
 
-Use this endpoint to request a payment processor authorization code.
+Use this endpoint to request a partner authorization code.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRequestPaymentProcessorAuthorizationCodeRequest
+ @return ApiRequestPartnerAuthorizationCodeRequest
 */
-func (a *MxPlatformApiService) RequestPaymentProcessorAuthorizationCode(ctx context.Context) ApiRequestPaymentProcessorAuthorizationCodeRequest {
-	return ApiRequestPaymentProcessorAuthorizationCodeRequest{
+func (a *MxPlatformApiService) RequestPartnerAuthorizationCode(ctx context.Context) ApiRequestPartnerAuthorizationCodeRequest {
+	return ApiRequestPartnerAuthorizationCodeRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PaymentProcessorAuthorizationCodeResponseBody
-func (a *MxPlatformApiService) RequestPaymentProcessorAuthorizationCodeExecute(r ApiRequestPaymentProcessorAuthorizationCodeRequest) (*PaymentProcessorAuthorizationCodeResponseBody, *http.Response, error) {
+//  @return PartnerAuthorizationCodeResponseBody
+func (a *MxPlatformApiService) RequestPartnerAuthorizationCodeExecute(r ApiRequestPartnerAuthorizationCodeRequest) (*PartnerAuthorizationCodeResponseBody, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaymentProcessorAuthorizationCodeResponseBody
+		localVarReturnValue  *PartnerAuthorizationCodeResponseBody
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestPaymentProcessorAuthorizationCode")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestPartnerAuthorizationCode")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/payment_processor_authorization_code"
+	localVarPath := localBasePath + "/partner_authorization_code"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.paymentProcessorAuthorizationCodeRequestBody == nil {
-		return localVarReturnValue, nil, reportError("paymentProcessorAuthorizationCodeRequestBody is required and must be specified")
+	if r.partnerAuthorizationCodeRequestBody == nil {
+		return localVarReturnValue, nil, reportError("partnerAuthorizationCodeRequestBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -8941,7 +8941,7 @@ func (a *MxPlatformApiService) RequestPaymentProcessorAuthorizationCodeExecute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.paymentProcessorAuthorizationCodeRequestBody
+	localVarPostBody = r.partnerAuthorizationCodeRequestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -8979,59 +8979,59 @@ func (a *MxPlatformApiService) RequestPaymentProcessorAuthorizationCodeExecute(r
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRequestPaymentProcessorTokenRequest struct {
+type ApiRequestPartnerTokenRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
 	code *string
 	grantType *string
 }
 
-// Code to request processor token.
-func (r ApiRequestPaymentProcessorTokenRequest) Code(code string) ApiRequestPaymentProcessorTokenRequest {
+// Code to request partner token.
+func (r ApiRequestPartnerTokenRequest) Code(code string) ApiRequestPartnerTokenRequest {
 	r.code = &code
 	return r
 }
 // Specify grant type.
-func (r ApiRequestPaymentProcessorTokenRequest) GrantType(grantType string) ApiRequestPaymentProcessorTokenRequest {
+func (r ApiRequestPartnerTokenRequest) GrantType(grantType string) ApiRequestPartnerTokenRequest {
 	r.grantType = &grantType
 	return r
 }
 
-func (r ApiRequestPaymentProcessorTokenRequest) Execute() (*PaymentProcessorTokenResponseBody, *http.Response, error) {
-	return r.ApiService.RequestPaymentProcessorTokenExecute(r)
+func (r ApiRequestPartnerTokenRequest) Execute() (*PartnerTokenResponseBody, *http.Response, error) {
+	return r.ApiService.RequestPartnerTokenExecute(r)
 }
 
 /*
-RequestPaymentProcessorToken Request payment processor token
+RequestPartnerToken Request partner token
 
-Use this endpoint to request a payment processor token.
+Use this endpoint to request a partner token.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRequestPaymentProcessorTokenRequest
+ @return ApiRequestPartnerTokenRequest
 */
-func (a *MxPlatformApiService) RequestPaymentProcessorToken(ctx context.Context) ApiRequestPaymentProcessorTokenRequest {
-	return ApiRequestPaymentProcessorTokenRequest{
+func (a *MxPlatformApiService) RequestPartnerToken(ctx context.Context) ApiRequestPartnerTokenRequest {
+	return ApiRequestPartnerTokenRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PaymentProcessorTokenResponseBody
-func (a *MxPlatformApiService) RequestPaymentProcessorTokenExecute(r ApiRequestPaymentProcessorTokenRequest) (*PaymentProcessorTokenResponseBody, *http.Response, error) {
+//  @return PartnerTokenResponseBody
+func (a *MxPlatformApiService) RequestPartnerTokenExecute(r ApiRequestPartnerTokenRequest) (*PartnerTokenResponseBody, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaymentProcessorTokenResponseBody
+		localVarReturnValue  *PartnerTokenResponseBody
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestPaymentProcessorToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.RequestPartnerToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/payment_processor_token"
+	localVarPath := localBasePath + "/partner_token"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

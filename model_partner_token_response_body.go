@@ -14,32 +14,32 @@ import (
 	"encoding/json"
 )
 
-// PaymentProcessorTokenResponseBody struct for PaymentProcessorTokenResponseBody
-type PaymentProcessorTokenResponseBody struct {
+// PartnerTokenResponseBody struct for PartnerTokenResponseBody
+type PartnerTokenResponseBody struct {
 	AccessToken NullableString `json:"access_token,omitempty"`
 	Scope NullableString `json:"scope,omitempty"`
 	TokenType NullableString `json:"token_type,omitempty"`
 }
 
-// NewPaymentProcessorTokenResponseBody instantiates a new PaymentProcessorTokenResponseBody object
+// NewPartnerTokenResponseBody instantiates a new PartnerTokenResponseBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentProcessorTokenResponseBody() *PaymentProcessorTokenResponseBody {
-	this := PaymentProcessorTokenResponseBody{}
+func NewPartnerTokenResponseBody() *PartnerTokenResponseBody {
+	this := PartnerTokenResponseBody{}
 	return &this
 }
 
-// NewPaymentProcessorTokenResponseBodyWithDefaults instantiates a new PaymentProcessorTokenResponseBody object
+// NewPartnerTokenResponseBodyWithDefaults instantiates a new PartnerTokenResponseBody object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaymentProcessorTokenResponseBodyWithDefaults() *PaymentProcessorTokenResponseBody {
-	this := PaymentProcessorTokenResponseBody{}
+func NewPartnerTokenResponseBodyWithDefaults() *PartnerTokenResponseBody {
+	this := PartnerTokenResponseBody{}
 	return &this
 }
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentProcessorTokenResponseBody) GetAccessToken() string {
+func (o *PartnerTokenResponseBody) GetAccessToken() string {
 	if o == nil || o.AccessToken.Get() == nil {
 		var ret string
 		return ret
@@ -50,7 +50,7 @@ func (o *PaymentProcessorTokenResponseBody) GetAccessToken() string {
 // GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentProcessorTokenResponseBody) GetAccessTokenOk() (*string, bool) {
+func (o *PartnerTokenResponseBody) GetAccessTokenOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *PaymentProcessorTokenResponseBody) GetAccessTokenOk() (*string, bool) {
 }
 
 // HasAccessToken returns a boolean if a field has been set.
-func (o *PaymentProcessorTokenResponseBody) HasAccessToken() bool {
+func (o *PartnerTokenResponseBody) HasAccessToken() bool {
 	if o != nil && o.AccessToken.IsSet() {
 		return true
 	}
@@ -67,21 +67,21 @@ func (o *PaymentProcessorTokenResponseBody) HasAccessToken() bool {
 }
 
 // SetAccessToken gets a reference to the given NullableString and assigns it to the AccessToken field.
-func (o *PaymentProcessorTokenResponseBody) SetAccessToken(v string) {
+func (o *PartnerTokenResponseBody) SetAccessToken(v string) {
 	o.AccessToken.Set(&v)
 }
 // SetAccessTokenNil sets the value for AccessToken to be an explicit nil
-func (o *PaymentProcessorTokenResponseBody) SetAccessTokenNil() {
+func (o *PartnerTokenResponseBody) SetAccessTokenNil() {
 	o.AccessToken.Set(nil)
 }
 
 // UnsetAccessToken ensures that no value is present for AccessToken, not even an explicit nil
-func (o *PaymentProcessorTokenResponseBody) UnsetAccessToken() {
+func (o *PartnerTokenResponseBody) UnsetAccessToken() {
 	o.AccessToken.Unset()
 }
 
 // GetScope returns the Scope field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentProcessorTokenResponseBody) GetScope() string {
+func (o *PartnerTokenResponseBody) GetScope() string {
 	if o == nil || o.Scope.Get() == nil {
 		var ret string
 		return ret
@@ -92,7 +92,7 @@ func (o *PaymentProcessorTokenResponseBody) GetScope() string {
 // GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentProcessorTokenResponseBody) GetScopeOk() (*string, bool) {
+func (o *PartnerTokenResponseBody) GetScopeOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *PaymentProcessorTokenResponseBody) GetScopeOk() (*string, bool) {
 }
 
 // HasScope returns a boolean if a field has been set.
-func (o *PaymentProcessorTokenResponseBody) HasScope() bool {
+func (o *PartnerTokenResponseBody) HasScope() bool {
 	if o != nil && o.Scope.IsSet() {
 		return true
 	}
@@ -109,21 +109,21 @@ func (o *PaymentProcessorTokenResponseBody) HasScope() bool {
 }
 
 // SetScope gets a reference to the given NullableString and assigns it to the Scope field.
-func (o *PaymentProcessorTokenResponseBody) SetScope(v string) {
+func (o *PartnerTokenResponseBody) SetScope(v string) {
 	o.Scope.Set(&v)
 }
 // SetScopeNil sets the value for Scope to be an explicit nil
-func (o *PaymentProcessorTokenResponseBody) SetScopeNil() {
+func (o *PartnerTokenResponseBody) SetScopeNil() {
 	o.Scope.Set(nil)
 }
 
 // UnsetScope ensures that no value is present for Scope, not even an explicit nil
-func (o *PaymentProcessorTokenResponseBody) UnsetScope() {
+func (o *PartnerTokenResponseBody) UnsetScope() {
 	o.Scope.Unset()
 }
 
 // GetTokenType returns the TokenType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentProcessorTokenResponseBody) GetTokenType() string {
+func (o *PartnerTokenResponseBody) GetTokenType() string {
 	if o == nil || o.TokenType.Get() == nil {
 		var ret string
 		return ret
@@ -134,7 +134,7 @@ func (o *PaymentProcessorTokenResponseBody) GetTokenType() string {
 // GetTokenTypeOk returns a tuple with the TokenType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentProcessorTokenResponseBody) GetTokenTypeOk() (*string, bool) {
+func (o *PartnerTokenResponseBody) GetTokenTypeOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -142,7 +142,7 @@ func (o *PaymentProcessorTokenResponseBody) GetTokenTypeOk() (*string, bool) {
 }
 
 // HasTokenType returns a boolean if a field has been set.
-func (o *PaymentProcessorTokenResponseBody) HasTokenType() bool {
+func (o *PartnerTokenResponseBody) HasTokenType() bool {
 	if o != nil && o.TokenType.IsSet() {
 		return true
 	}
@@ -151,20 +151,20 @@ func (o *PaymentProcessorTokenResponseBody) HasTokenType() bool {
 }
 
 // SetTokenType gets a reference to the given NullableString and assigns it to the TokenType field.
-func (o *PaymentProcessorTokenResponseBody) SetTokenType(v string) {
+func (o *PartnerTokenResponseBody) SetTokenType(v string) {
 	o.TokenType.Set(&v)
 }
 // SetTokenTypeNil sets the value for TokenType to be an explicit nil
-func (o *PaymentProcessorTokenResponseBody) SetTokenTypeNil() {
+func (o *PartnerTokenResponseBody) SetTokenTypeNil() {
 	o.TokenType.Set(nil)
 }
 
 // UnsetTokenType ensures that no value is present for TokenType, not even an explicit nil
-func (o *PaymentProcessorTokenResponseBody) UnsetTokenType() {
+func (o *PartnerTokenResponseBody) UnsetTokenType() {
 	o.TokenType.Unset()
 }
 
-func (o PaymentProcessorTokenResponseBody) MarshalJSON() ([]byte, error) {
+func (o PartnerTokenResponseBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessToken.IsSet() {
 		toSerialize["access_token"] = o.AccessToken.Get()
@@ -178,38 +178,38 @@ func (o PaymentProcessorTokenResponseBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullablePaymentProcessorTokenResponseBody struct {
-	value *PaymentProcessorTokenResponseBody
+type NullablePartnerTokenResponseBody struct {
+	value *PartnerTokenResponseBody
 	isSet bool
 }
 
-func (v NullablePaymentProcessorTokenResponseBody) Get() *PaymentProcessorTokenResponseBody {
+func (v NullablePartnerTokenResponseBody) Get() *PartnerTokenResponseBody {
 	return v.value
 }
 
-func (v *NullablePaymentProcessorTokenResponseBody) Set(val *PaymentProcessorTokenResponseBody) {
+func (v *NullablePartnerTokenResponseBody) Set(val *PartnerTokenResponseBody) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePaymentProcessorTokenResponseBody) IsSet() bool {
+func (v NullablePartnerTokenResponseBody) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePaymentProcessorTokenResponseBody) Unset() {
+func (v *NullablePartnerTokenResponseBody) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePaymentProcessorTokenResponseBody(val *PaymentProcessorTokenResponseBody) *NullablePaymentProcessorTokenResponseBody {
-	return &NullablePaymentProcessorTokenResponseBody{value: val, isSet: true}
+func NewNullablePartnerTokenResponseBody(val *PartnerTokenResponseBody) *NullablePartnerTokenResponseBody {
+	return &NullablePartnerTokenResponseBody{value: val, isSet: true}
 }
 
-func (v NullablePaymentProcessorTokenResponseBody) MarshalJSON() ([]byte, error) {
+func (v NullablePartnerTokenResponseBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePaymentProcessorTokenResponseBody) UnmarshalJSON(src []byte) error {
+func (v *NullablePartnerTokenResponseBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
