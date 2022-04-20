@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | Pointer to **NullableString** |  | [optional] 
+**InstructionalText** | Pointer to **NullableString** |  | [optional] 
 **MediumLogoUrl** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
 **SmallLogoUrl** | Pointer to **NullableString** |  | [optional] 
@@ -69,6 +70,41 @@ HasCode returns a boolean if a field has been set.
 `func (o *InstitutionResponse) UnsetCode()`
 
 UnsetCode ensures that no value is present for Code, not even an explicit nil
+### GetInstructionalText
+
+`func (o *InstitutionResponse) GetInstructionalText() string`
+
+GetInstructionalText returns the InstructionalText field if non-nil, zero value otherwise.
+
+### GetInstructionalTextOk
+
+`func (o *InstitutionResponse) GetInstructionalTextOk() (*string, bool)`
+
+GetInstructionalTextOk returns a tuple with the InstructionalText field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstructionalText
+
+`func (o *InstitutionResponse) SetInstructionalText(v string)`
+
+SetInstructionalText sets InstructionalText field to given value.
+
+### HasInstructionalText
+
+`func (o *InstitutionResponse) HasInstructionalText() bool`
+
+HasInstructionalText returns a boolean if a field has been set.
+
+### SetInstructionalTextNil
+
+`func (o *InstitutionResponse) SetInstructionalTextNil(b bool)`
+
+ SetInstructionalTextNil sets the value for InstructionalText to be an explicit nil
+
+### UnsetInstructionalText
+`func (o *InstitutionResponse) UnsetInstructionalText()`
+
+UnsetInstructionalText ensures that no value is present for InstructionalText, not even an explicit nil
 ### GetMediumLogoUrl
 
 `func (o *InstitutionResponse) GetMediumLogoUrl() string`

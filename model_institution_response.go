@@ -17,6 +17,7 @@ import (
 // InstitutionResponse struct for InstitutionResponse
 type InstitutionResponse struct {
 	Code NullableString `json:"code,omitempty"`
+	InstructionalText NullableString `json:"instructional_text,omitempty"`
 	MediumLogoUrl NullableString `json:"medium_logo_url,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	SmallLogoUrl NullableString `json:"small_logo_url,omitempty"`
@@ -85,6 +86,48 @@ func (o *InstitutionResponse) SetCodeNil() {
 // UnsetCode ensures that no value is present for Code, not even an explicit nil
 func (o *InstitutionResponse) UnsetCode() {
 	o.Code.Unset()
+}
+
+// GetInstructionalText returns the InstructionalText field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstitutionResponse) GetInstructionalText() string {
+	if o == nil || o.InstructionalText.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.InstructionalText.Get()
+}
+
+// GetInstructionalTextOk returns a tuple with the InstructionalText field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstitutionResponse) GetInstructionalTextOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.InstructionalText.Get(), o.InstructionalText.IsSet()
+}
+
+// HasInstructionalText returns a boolean if a field has been set.
+func (o *InstitutionResponse) HasInstructionalText() bool {
+	if o != nil && o.InstructionalText.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstructionalText gets a reference to the given NullableString and assigns it to the InstructionalText field.
+func (o *InstitutionResponse) SetInstructionalText(v string) {
+	o.InstructionalText.Set(&v)
+}
+// SetInstructionalTextNil sets the value for InstructionalText to be an explicit nil
+func (o *InstitutionResponse) SetInstructionalTextNil() {
+	o.InstructionalText.Set(nil)
+}
+
+// UnsetInstructionalText ensures that no value is present for InstructionalText, not even an explicit nil
+func (o *InstitutionResponse) UnsetInstructionalText() {
+	o.InstructionalText.Unset()
 }
 
 // GetMediumLogoUrl returns the MediumLogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -469,6 +512,9 @@ func (o InstitutionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Code.IsSet() {
 		toSerialize["code"] = o.Code.Get()
+	}
+	if o.InstructionalText.IsSet() {
+		toSerialize["instructional_text"] = o.InstructionalText.Get()
 	}
 	if o.MediumLogoUrl.IsSet() {
 		toSerialize["medium_logo_url"] = o.MediumLogoUrl.Get()
