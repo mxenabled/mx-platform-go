@@ -8638,11 +8638,17 @@ type ApiRequestOAuthWindowURIRequest struct {
 	ApiService *MxPlatformApiService
 	memberGuid string
 	userGuid string
+	clientRedirectUrl *string
 	referralSource *string
 	skipAggregation *bool
 	uiMessageWebviewUrlScheme *string
 }
 
+// A URL that MX will redirect to at the end of OAuth with additional query parameters. Only available with &#x60;referral_source&#x3D;APP&#x60;.
+func (r ApiRequestOAuthWindowURIRequest) ClientRedirectUrl(clientRedirectUrl string) ApiRequestOAuthWindowURIRequest {
+	r.clientRedirectUrl = &clientRedirectUrl
+	return r
+}
 // Must be either &#x60;BROWSER&#x60; or &#x60;APP&#x60; depending on the implementation. Defaults to &#x60;BROWSER&#x60;.
 func (r ApiRequestOAuthWindowURIRequest) ReferralSource(referralSource string) ApiRequestOAuthWindowURIRequest {
 	r.referralSource = &referralSource
@@ -8653,7 +8659,7 @@ func (r ApiRequestOAuthWindowURIRequest) SkipAggregation(skipAggregation bool) A
 	r.skipAggregation = &skipAggregation
 	return r
 }
-// A scheme for routing the user back to the application state they were previously in.
+// A scheme for routing the user back to the application state they were previously in. Only available with &#x60;referral_source&#x3D;APP&#x60;.
 func (r ApiRequestOAuthWindowURIRequest) UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme string) ApiRequestOAuthWindowURIRequest {
 	r.uiMessageWebviewUrlScheme = &uiMessageWebviewUrlScheme
 	return r
@@ -8705,6 +8711,9 @@ func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWin
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.clientRedirectUrl != nil {
+		localVarQueryParams.Add("client_redirect_url", parameterToString(*r.clientRedirectUrl, ""))
+	}
 	if r.referralSource != nil {
 		localVarQueryParams.Add("referral_source", parameterToString(*r.referralSource, ""))
 	}

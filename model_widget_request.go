@@ -16,6 +16,7 @@ import (
 
 // WidgetRequest struct for WidgetRequest
 type WidgetRequest struct {
+	ClientRedirectUrl *string `json:"client_redirect_url,omitempty"`
 	ColorScheme *string `json:"color_scheme,omitempty"`
 	CurrentInstitutionCode *string `json:"current_institution_code,omitempty"`
 	CurrentInstitutionGuid *string `json:"current_institution_guid,omitempty"`
@@ -27,7 +28,6 @@ type WidgetRequest struct {
 	UiMessageVersion *int32 `json:"ui_message_version,omitempty"`
 	UiMessageWebviewUrlScheme *string `json:"ui_message_webview_url_scheme,omitempty"`
 	UpdateCredentials *bool `json:"update_credentials,omitempty"`
-	WaitForFullAggregation *bool `json:"wait_for_full_aggregation,omitempty"`
 	WidgetType string `json:"widget_type"`
 }
 
@@ -47,6 +47,38 @@ func NewWidgetRequest(widgetType string) *WidgetRequest {
 func NewWidgetRequestWithDefaults() *WidgetRequest {
 	this := WidgetRequest{}
 	return &this
+}
+
+// GetClientRedirectUrl returns the ClientRedirectUrl field value if set, zero value otherwise.
+func (o *WidgetRequest) GetClientRedirectUrl() string {
+	if o == nil || o.ClientRedirectUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientRedirectUrl
+}
+
+// GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WidgetRequest) GetClientRedirectUrlOk() (*string, bool) {
+	if o == nil || o.ClientRedirectUrl == nil {
+		return nil, false
+	}
+	return o.ClientRedirectUrl, true
+}
+
+// HasClientRedirectUrl returns a boolean if a field has been set.
+func (o *WidgetRequest) HasClientRedirectUrl() bool {
+	if o != nil && o.ClientRedirectUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientRedirectUrl gets a reference to the given string and assigns it to the ClientRedirectUrl field.
+func (o *WidgetRequest) SetClientRedirectUrl(v string) {
+	o.ClientRedirectUrl = &v
 }
 
 // GetColorScheme returns the ColorScheme field value if set, zero value otherwise.
@@ -401,38 +433,6 @@ func (o *WidgetRequest) SetUpdateCredentials(v bool) {
 	o.UpdateCredentials = &v
 }
 
-// GetWaitForFullAggregation returns the WaitForFullAggregation field value if set, zero value otherwise.
-func (o *WidgetRequest) GetWaitForFullAggregation() bool {
-	if o == nil || o.WaitForFullAggregation == nil {
-		var ret bool
-		return ret
-	}
-	return *o.WaitForFullAggregation
-}
-
-// GetWaitForFullAggregationOk returns a tuple with the WaitForFullAggregation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WidgetRequest) GetWaitForFullAggregationOk() (*bool, bool) {
-	if o == nil || o.WaitForFullAggregation == nil {
-		return nil, false
-	}
-	return o.WaitForFullAggregation, true
-}
-
-// HasWaitForFullAggregation returns a boolean if a field has been set.
-func (o *WidgetRequest) HasWaitForFullAggregation() bool {
-	if o != nil && o.WaitForFullAggregation != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWaitForFullAggregation gets a reference to the given bool and assigns it to the WaitForFullAggregation field.
-func (o *WidgetRequest) SetWaitForFullAggregation(v bool) {
-	o.WaitForFullAggregation = &v
-}
-
 // GetWidgetType returns the WidgetType field value
 func (o *WidgetRequest) GetWidgetType() string {
 	if o == nil {
@@ -459,6 +459,9 @@ func (o *WidgetRequest) SetWidgetType(v string) {
 
 func (o WidgetRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ClientRedirectUrl != nil {
+		toSerialize["client_redirect_url"] = o.ClientRedirectUrl
+	}
 	if o.ColorScheme != nil {
 		toSerialize["color_scheme"] = o.ColorScheme
 	}
@@ -491,9 +494,6 @@ func (o WidgetRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdateCredentials != nil {
 		toSerialize["update_credentials"] = o.UpdateCredentials
-	}
-	if o.WaitForFullAggregation != nil {
-		toSerialize["wait_for_full_aggregation"] = o.WaitForFullAggregation
 	}
 	if true {
 		toSerialize["widget_type"] = o.WidgetType
