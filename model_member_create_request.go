@@ -17,6 +17,7 @@ import (
 // MemberCreateRequest struct for MemberCreateRequest
 type MemberCreateRequest struct {
 	BackgroundAggregationIsDisabled *bool `json:"background_aggregation_is_disabled,omitempty"`
+	ClientRedirectUrl *string `json:"client_redirect_url,omitempty"`
 	Credentials []CredentialRequest `json:"credentials"`
 	Id *string `json:"id,omitempty"`
 	InstitutionCode string `json:"institution_code"`
@@ -74,6 +75,38 @@ func (o *MemberCreateRequest) HasBackgroundAggregationIsDisabled() bool {
 // SetBackgroundAggregationIsDisabled gets a reference to the given bool and assigns it to the BackgroundAggregationIsDisabled field.
 func (o *MemberCreateRequest) SetBackgroundAggregationIsDisabled(v bool) {
 	o.BackgroundAggregationIsDisabled = &v
+}
+
+// GetClientRedirectUrl returns the ClientRedirectUrl field value if set, zero value otherwise.
+func (o *MemberCreateRequest) GetClientRedirectUrl() string {
+	if o == nil || o.ClientRedirectUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientRedirectUrl
+}
+
+// GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MemberCreateRequest) GetClientRedirectUrlOk() (*string, bool) {
+	if o == nil || o.ClientRedirectUrl == nil {
+		return nil, false
+	}
+	return o.ClientRedirectUrl, true
+}
+
+// HasClientRedirectUrl returns a boolean if a field has been set.
+func (o *MemberCreateRequest) HasClientRedirectUrl() bool {
+	if o != nil && o.ClientRedirectUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientRedirectUrl gets a reference to the given string and assigns it to the ClientRedirectUrl field.
+func (o *MemberCreateRequest) SetClientRedirectUrl(v string) {
+	o.ClientRedirectUrl = &v
 }
 
 // GetCredentials returns the Credentials field value
@@ -256,6 +289,9 @@ func (o MemberCreateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BackgroundAggregationIsDisabled != nil {
 		toSerialize["background_aggregation_is_disabled"] = o.BackgroundAggregationIsDisabled
+	}
+	if o.ClientRedirectUrl != nil {
+		toSerialize["client_redirect_url"] = o.ClientRedirectUrl
 	}
 	if true {
 		toSerialize["credentials"] = o.Credentials

@@ -25,6 +25,7 @@ type HoldingResponse struct {
 	Description NullableString `json:"description,omitempty"`
 	Guid NullableString `json:"guid,omitempty"`
 	HoldingType NullableString `json:"holding_type,omitempty"`
+	HoldingTypeId NullableInt32 `json:"holding_type_id,omitempty"`
 	Id NullableString `json:"id,omitempty"`
 	MarketValue NullableFloat32 `json:"market_value,omitempty"`
 	MemberGuid NullableString `json:"member_guid,omitempty"`
@@ -429,6 +430,48 @@ func (o *HoldingResponse) SetHoldingTypeNil() {
 // UnsetHoldingType ensures that no value is present for HoldingType, not even an explicit nil
 func (o *HoldingResponse) UnsetHoldingType() {
 	o.HoldingType.Unset()
+}
+
+// GetHoldingTypeId returns the HoldingTypeId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *HoldingResponse) GetHoldingTypeId() int32 {
+	if o == nil || o.HoldingTypeId.Get() == nil {
+		var ret int32
+		return ret
+	}
+	return *o.HoldingTypeId.Get()
+}
+
+// GetHoldingTypeIdOk returns a tuple with the HoldingTypeId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *HoldingResponse) GetHoldingTypeIdOk() (*int32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.HoldingTypeId.Get(), o.HoldingTypeId.IsSet()
+}
+
+// HasHoldingTypeId returns a boolean if a field has been set.
+func (o *HoldingResponse) HasHoldingTypeId() bool {
+	if o != nil && o.HoldingTypeId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHoldingTypeId gets a reference to the given NullableInt32 and assigns it to the HoldingTypeId field.
+func (o *HoldingResponse) SetHoldingTypeId(v int32) {
+	o.HoldingTypeId.Set(&v)
+}
+// SetHoldingTypeIdNil sets the value for HoldingTypeId to be an explicit nil
+func (o *HoldingResponse) SetHoldingTypeIdNil() {
+	o.HoldingTypeId.Set(nil)
+}
+
+// UnsetHoldingTypeId ensures that no value is present for HoldingTypeId, not even an explicit nil
+func (o *HoldingResponse) UnsetHoldingTypeId() {
+	o.HoldingTypeId.Unset()
 }
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -837,6 +880,9 @@ func (o HoldingResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.HoldingType.IsSet() {
 		toSerialize["holding_type"] = o.HoldingType.Get()
+	}
+	if o.HoldingTypeId.IsSet() {
+		toSerialize["holding_type_id"] = o.HoldingTypeId.Get()
 	}
 	if o.Id.IsSet() {
 		toSerialize["id"] = o.Id.Get()

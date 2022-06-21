@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **HoldingType** | Pointer to **NullableString** |  | [optional] 
+**HoldingTypeId** | Pointer to **NullableInt32** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
 **MarketValue** | Pointer to **NullableFloat32** |  | [optional] 
 **MemberGuid** | Pointer to **NullableString** |  | [optional] 
@@ -357,6 +358,41 @@ HasHoldingType returns a boolean if a field has been set.
 `func (o *HoldingResponse) UnsetHoldingType()`
 
 UnsetHoldingType ensures that no value is present for HoldingType, not even an explicit nil
+### GetHoldingTypeId
+
+`func (o *HoldingResponse) GetHoldingTypeId() int32`
+
+GetHoldingTypeId returns the HoldingTypeId field if non-nil, zero value otherwise.
+
+### GetHoldingTypeIdOk
+
+`func (o *HoldingResponse) GetHoldingTypeIdOk() (*int32, bool)`
+
+GetHoldingTypeIdOk returns a tuple with the HoldingTypeId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHoldingTypeId
+
+`func (o *HoldingResponse) SetHoldingTypeId(v int32)`
+
+SetHoldingTypeId sets HoldingTypeId field to given value.
+
+### HasHoldingTypeId
+
+`func (o *HoldingResponse) HasHoldingTypeId() bool`
+
+HasHoldingTypeId returns a boolean if a field has been set.
+
+### SetHoldingTypeIdNil
+
+`func (o *HoldingResponse) SetHoldingTypeIdNil(b bool)`
+
+ SetHoldingTypeIdNil sets the value for HoldingTypeId to be an explicit nil
+
+### UnsetHoldingTypeId
+`func (o *HoldingResponse) UnsetHoldingTypeId()`
+
+UnsetHoldingTypeId ensures that no value is present for HoldingTypeId, not even an explicit nil
 ### GetId
 
 `func (o *HoldingResponse) GetId() string`

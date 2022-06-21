@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClientRedirectUrl** | Pointer to **string** |  | [optional] 
 **ColorScheme** | Pointer to **string** |  | [optional] 
 **CurrentInstitutionCode** | Pointer to **string** |  | [optional] 
 **CurrentInstitutionGuid** | Pointer to **string** |  | [optional] 
@@ -15,7 +16,6 @@ Name | Type | Description | Notes
 **UiMessageVersion** | Pointer to **int32** |  | [optional] 
 **UiMessageWebviewUrlScheme** | Pointer to **string** |  | [optional] 
 **UpdateCredentials** | Pointer to **bool** |  | [optional] 
-**WaitForFullAggregation** | Pointer to **bool** |  | [optional] 
 **WidgetType** | **string** |  | 
 
 ## Methods
@@ -36,6 +36,31 @@ will change when the set of required properties is changed
 NewWidgetRequestWithDefaults instantiates a new WidgetRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClientRedirectUrl
+
+`func (o *WidgetRequest) GetClientRedirectUrl() string`
+
+GetClientRedirectUrl returns the ClientRedirectUrl field if non-nil, zero value otherwise.
+
+### GetClientRedirectUrlOk
+
+`func (o *WidgetRequest) GetClientRedirectUrlOk() (*string, bool)`
+
+GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientRedirectUrl
+
+`func (o *WidgetRequest) SetClientRedirectUrl(v string)`
+
+SetClientRedirectUrl sets ClientRedirectUrl field to given value.
+
+### HasClientRedirectUrl
+
+`func (o *WidgetRequest) HasClientRedirectUrl() bool`
+
+HasClientRedirectUrl returns a boolean if a field has been set.
 
 ### GetColorScheme
 
@@ -311,31 +336,6 @@ SetUpdateCredentials sets UpdateCredentials field to given value.
 `func (o *WidgetRequest) HasUpdateCredentials() bool`
 
 HasUpdateCredentials returns a boolean if a field has been set.
-
-### GetWaitForFullAggregation
-
-`func (o *WidgetRequest) GetWaitForFullAggregation() bool`
-
-GetWaitForFullAggregation returns the WaitForFullAggregation field if non-nil, zero value otherwise.
-
-### GetWaitForFullAggregationOk
-
-`func (o *WidgetRequest) GetWaitForFullAggregationOk() (*bool, bool)`
-
-GetWaitForFullAggregationOk returns a tuple with the WaitForFullAggregation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWaitForFullAggregation
-
-`func (o *WidgetRequest) SetWaitForFullAggregation(v bool)`
-
-SetWaitForFullAggregation sets WaitForFullAggregation field to given value.
-
-### HasWaitForFullAggregation
-
-`func (o *WidgetRequest) HasWaitForFullAggregation() bool`
-
-HasWaitForFullAggregation returns a boolean if a field has been set.
 
 ### GetWidgetType
 
