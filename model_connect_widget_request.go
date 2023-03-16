@@ -20,10 +20,13 @@ type ConnectWidgetRequest struct {
 	ColorScheme *string `json:"color_scheme,omitempty"`
 	CurrentInstitutionCode *string `json:"current_institution_code,omitempty"`
 	CurrentMemberGuid *string `json:"current_member_guid,omitempty"`
+	DisableBackgroundAgg *bool `json:"disable_background_agg,omitempty"`
 	DisableInstitutionSearch *bool `json:"disable_institution_search,omitempty"`
+	IncludeIdentity *bool `json:"include_identity,omitempty"`
 	IncludeTransactions *bool `json:"include_transactions,omitempty"`
 	IsMobileWebview *bool `json:"is_mobile_webview,omitempty"`
 	Mode *string `json:"mode,omitempty"`
+	OauthReferralSource *string `json:"oauth_referral_source,omitempty"`
 	UiMessageVersion *int32 `json:"ui_message_version,omitempty"`
 	UiMessageWebviewUrlScheme *string `json:"ui_message_webview_url_scheme,omitempty"`
 	UpdateCredentials *bool `json:"update_credentials,omitempty"`
@@ -174,6 +177,38 @@ func (o *ConnectWidgetRequest) SetCurrentMemberGuid(v string) {
 	o.CurrentMemberGuid = &v
 }
 
+// GetDisableBackgroundAgg returns the DisableBackgroundAgg field value if set, zero value otherwise.
+func (o *ConnectWidgetRequest) GetDisableBackgroundAgg() bool {
+	if o == nil || o.DisableBackgroundAgg == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DisableBackgroundAgg
+}
+
+// GetDisableBackgroundAggOk returns a tuple with the DisableBackgroundAgg field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectWidgetRequest) GetDisableBackgroundAggOk() (*bool, bool) {
+	if o == nil || o.DisableBackgroundAgg == nil {
+		return nil, false
+	}
+	return o.DisableBackgroundAgg, true
+}
+
+// HasDisableBackgroundAgg returns a boolean if a field has been set.
+func (o *ConnectWidgetRequest) HasDisableBackgroundAgg() bool {
+	if o != nil && o.DisableBackgroundAgg != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisableBackgroundAgg gets a reference to the given bool and assigns it to the DisableBackgroundAgg field.
+func (o *ConnectWidgetRequest) SetDisableBackgroundAgg(v bool) {
+	o.DisableBackgroundAgg = &v
+}
+
 // GetDisableInstitutionSearch returns the DisableInstitutionSearch field value if set, zero value otherwise.
 func (o *ConnectWidgetRequest) GetDisableInstitutionSearch() bool {
 	if o == nil || o.DisableInstitutionSearch == nil {
@@ -204,6 +239,38 @@ func (o *ConnectWidgetRequest) HasDisableInstitutionSearch() bool {
 // SetDisableInstitutionSearch gets a reference to the given bool and assigns it to the DisableInstitutionSearch field.
 func (o *ConnectWidgetRequest) SetDisableInstitutionSearch(v bool) {
 	o.DisableInstitutionSearch = &v
+}
+
+// GetIncludeIdentity returns the IncludeIdentity field value if set, zero value otherwise.
+func (o *ConnectWidgetRequest) GetIncludeIdentity() bool {
+	if o == nil || o.IncludeIdentity == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeIdentity
+}
+
+// GetIncludeIdentityOk returns a tuple with the IncludeIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectWidgetRequest) GetIncludeIdentityOk() (*bool, bool) {
+	if o == nil || o.IncludeIdentity == nil {
+		return nil, false
+	}
+	return o.IncludeIdentity, true
+}
+
+// HasIncludeIdentity returns a boolean if a field has been set.
+func (o *ConnectWidgetRequest) HasIncludeIdentity() bool {
+	if o != nil && o.IncludeIdentity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeIdentity gets a reference to the given bool and assigns it to the IncludeIdentity field.
+func (o *ConnectWidgetRequest) SetIncludeIdentity(v bool) {
+	o.IncludeIdentity = &v
 }
 
 // GetIncludeTransactions returns the IncludeTransactions field value if set, zero value otherwise.
@@ -300,6 +367,38 @@ func (o *ConnectWidgetRequest) HasMode() bool {
 // SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *ConnectWidgetRequest) SetMode(v string) {
 	o.Mode = &v
+}
+
+// GetOauthReferralSource returns the OauthReferralSource field value if set, zero value otherwise.
+func (o *ConnectWidgetRequest) GetOauthReferralSource() string {
+	if o == nil || o.OauthReferralSource == nil {
+		var ret string
+		return ret
+	}
+	return *o.OauthReferralSource
+}
+
+// GetOauthReferralSourceOk returns a tuple with the OauthReferralSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectWidgetRequest) GetOauthReferralSourceOk() (*string, bool) {
+	if o == nil || o.OauthReferralSource == nil {
+		return nil, false
+	}
+	return o.OauthReferralSource, true
+}
+
+// HasOauthReferralSource returns a boolean if a field has been set.
+func (o *ConnectWidgetRequest) HasOauthReferralSource() bool {
+	if o != nil && o.OauthReferralSource != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOauthReferralSource gets a reference to the given string and assigns it to the OauthReferralSource field.
+func (o *ConnectWidgetRequest) SetOauthReferralSource(v string) {
+	o.OauthReferralSource = &v
 }
 
 // GetUiMessageVersion returns the UiMessageVersion field value if set, zero value otherwise.
@@ -412,8 +511,14 @@ func (o ConnectWidgetRequest) MarshalJSON() ([]byte, error) {
 	if o.CurrentMemberGuid != nil {
 		toSerialize["current_member_guid"] = o.CurrentMemberGuid
 	}
+	if o.DisableBackgroundAgg != nil {
+		toSerialize["disable_background_agg"] = o.DisableBackgroundAgg
+	}
 	if o.DisableInstitutionSearch != nil {
 		toSerialize["disable_institution_search"] = o.DisableInstitutionSearch
+	}
+	if o.IncludeIdentity != nil {
+		toSerialize["include_identity"] = o.IncludeIdentity
 	}
 	if o.IncludeTransactions != nil {
 		toSerialize["include_transactions"] = o.IncludeTransactions
@@ -423,6 +528,9 @@ func (o ConnectWidgetRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode
+	}
+	if o.OauthReferralSource != nil {
+		toSerialize["oauth_referral_source"] = o.OauthReferralSource
 	}
 	if o.UiMessageVersion != nil {
 		toSerialize["ui_message_version"] = o.UiMessageVersion

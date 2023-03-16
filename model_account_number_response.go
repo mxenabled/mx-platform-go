@@ -21,6 +21,7 @@ type AccountNumberResponse struct {
 	Guid NullableString `json:"guid,omitempty"`
 	InstitutionNumber NullableString `json:"institution_number,omitempty"`
 	MemberGuid NullableString `json:"member_guid,omitempty"`
+	PassedValidation NullableBool `json:"passed_validation,omitempty"`
 	RoutingNumber NullableString `json:"routing_number,omitempty"`
 	TransitNumber NullableString `json:"transit_number,omitempty"`
 	UserGuid NullableString `json:"user_guid,omitempty"`
@@ -253,6 +254,48 @@ func (o *AccountNumberResponse) UnsetMemberGuid() {
 	o.MemberGuid.Unset()
 }
 
+// GetPassedValidation returns the PassedValidation field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountNumberResponse) GetPassedValidation() bool {
+	if o == nil || o.PassedValidation.Get() == nil {
+		var ret bool
+		return ret
+	}
+	return *o.PassedValidation.Get()
+}
+
+// GetPassedValidationOk returns a tuple with the PassedValidation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountNumberResponse) GetPassedValidationOk() (*bool, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.PassedValidation.Get(), o.PassedValidation.IsSet()
+}
+
+// HasPassedValidation returns a boolean if a field has been set.
+func (o *AccountNumberResponse) HasPassedValidation() bool {
+	if o != nil && o.PassedValidation.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPassedValidation gets a reference to the given NullableBool and assigns it to the PassedValidation field.
+func (o *AccountNumberResponse) SetPassedValidation(v bool) {
+	o.PassedValidation.Set(&v)
+}
+// SetPassedValidationNil sets the value for PassedValidation to be an explicit nil
+func (o *AccountNumberResponse) SetPassedValidationNil() {
+	o.PassedValidation.Set(nil)
+}
+
+// UnsetPassedValidation ensures that no value is present for PassedValidation, not even an explicit nil
+func (o *AccountNumberResponse) UnsetPassedValidation() {
+	o.PassedValidation.Unset()
+}
+
 // GetRoutingNumber returns the RoutingNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetRoutingNumber() string {
 	if o == nil || o.RoutingNumber.Get() == nil {
@@ -395,6 +438,9 @@ func (o AccountNumberResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.MemberGuid.IsSet() {
 		toSerialize["member_guid"] = o.MemberGuid.Get()
+	}
+	if o.PassedValidation.IsSet() {
+		toSerialize["passed_validation"] = o.PassedValidation.Get()
 	}
 	if o.RoutingNumber.IsSet() {
 		toSerialize["routing_number"] = o.RoutingNumber.Get()

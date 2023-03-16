@@ -8,10 +8,13 @@ Name | Type | Description | Notes
 **ColorScheme** | Pointer to **string** |  | [optional] 
 **CurrentInstitutionCode** | Pointer to **string** |  | [optional] 
 **CurrentMemberGuid** | Pointer to **string** |  | [optional] 
+**DisableBackgroundAgg** | Pointer to **bool** |  | [optional] 
 **DisableInstitutionSearch** | Pointer to **bool** |  | [optional] 
+**IncludeIdentity** | Pointer to **bool** |  | [optional] 
 **IncludeTransactions** | Pointer to **bool** |  | [optional] 
 **IsMobileWebview** | Pointer to **bool** |  | [optional] 
 **Mode** | Pointer to **string** |  | [optional] 
+**OauthReferralSource** | Pointer to **string** |  | [optional] 
 **UiMessageVersion** | Pointer to **int32** |  | [optional] 
 **UiMessageWebviewUrlScheme** | Pointer to **string** |  | [optional] 
 **UpdateCredentials** | Pointer to **bool** |  | [optional] 
@@ -135,6 +138,31 @@ SetCurrentMemberGuid sets CurrentMemberGuid field to given value.
 
 HasCurrentMemberGuid returns a boolean if a field has been set.
 
+### GetDisableBackgroundAgg
+
+`func (o *ConnectWidgetRequest) GetDisableBackgroundAgg() bool`
+
+GetDisableBackgroundAgg returns the DisableBackgroundAgg field if non-nil, zero value otherwise.
+
+### GetDisableBackgroundAggOk
+
+`func (o *ConnectWidgetRequest) GetDisableBackgroundAggOk() (*bool, bool)`
+
+GetDisableBackgroundAggOk returns a tuple with the DisableBackgroundAgg field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableBackgroundAgg
+
+`func (o *ConnectWidgetRequest) SetDisableBackgroundAgg(v bool)`
+
+SetDisableBackgroundAgg sets DisableBackgroundAgg field to given value.
+
+### HasDisableBackgroundAgg
+
+`func (o *ConnectWidgetRequest) HasDisableBackgroundAgg() bool`
+
+HasDisableBackgroundAgg returns a boolean if a field has been set.
+
 ### GetDisableInstitutionSearch
 
 `func (o *ConnectWidgetRequest) GetDisableInstitutionSearch() bool`
@@ -159,6 +187,31 @@ SetDisableInstitutionSearch sets DisableInstitutionSearch field to given value.
 `func (o *ConnectWidgetRequest) HasDisableInstitutionSearch() bool`
 
 HasDisableInstitutionSearch returns a boolean if a field has been set.
+
+### GetIncludeIdentity
+
+`func (o *ConnectWidgetRequest) GetIncludeIdentity() bool`
+
+GetIncludeIdentity returns the IncludeIdentity field if non-nil, zero value otherwise.
+
+### GetIncludeIdentityOk
+
+`func (o *ConnectWidgetRequest) GetIncludeIdentityOk() (*bool, bool)`
+
+GetIncludeIdentityOk returns a tuple with the IncludeIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeIdentity
+
+`func (o *ConnectWidgetRequest) SetIncludeIdentity(v bool)`
+
+SetIncludeIdentity sets IncludeIdentity field to given value.
+
+### HasIncludeIdentity
+
+`func (o *ConnectWidgetRequest) HasIncludeIdentity() bool`
+
+HasIncludeIdentity returns a boolean if a field has been set.
 
 ### GetIncludeTransactions
 
@@ -234,6 +287,31 @@ SetMode sets Mode field to given value.
 `func (o *ConnectWidgetRequest) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
+
+### GetOauthReferralSource
+
+`func (o *ConnectWidgetRequest) GetOauthReferralSource() string`
+
+GetOauthReferralSource returns the OauthReferralSource field if non-nil, zero value otherwise.
+
+### GetOauthReferralSourceOk
+
+`func (o *ConnectWidgetRequest) GetOauthReferralSourceOk() (*string, bool)`
+
+GetOauthReferralSourceOk returns a tuple with the OauthReferralSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOauthReferralSource
+
+`func (o *ConnectWidgetRequest) SetOauthReferralSource(v string)`
+
+SetOauthReferralSource sets OauthReferralSource field to given value.
+
+### HasOauthReferralSource
+
+`func (o *ConnectWidgetRequest) HasOauthReferralSource() bool`
+
+HasOauthReferralSource returns a boolean if a field has been set.
 
 ### GetUiMessageVersion
 

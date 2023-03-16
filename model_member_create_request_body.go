@@ -16,6 +16,7 @@ import (
 
 // MemberCreateRequestBody struct for MemberCreateRequestBody
 type MemberCreateRequestBody struct {
+	ClientRedirectUrl *string `json:"client_redirect_url,omitempty"`
 	Member *MemberCreateRequest `json:"member,omitempty"`
 	ReferralSource *string `json:"referral_source,omitempty"`
 	UiMessageWebviewUrlScheme *string `json:"ui_message_webview_url_scheme,omitempty"`
@@ -36,6 +37,38 @@ func NewMemberCreateRequestBody() *MemberCreateRequestBody {
 func NewMemberCreateRequestBodyWithDefaults() *MemberCreateRequestBody {
 	this := MemberCreateRequestBody{}
 	return &this
+}
+
+// GetClientRedirectUrl returns the ClientRedirectUrl field value if set, zero value otherwise.
+func (o *MemberCreateRequestBody) GetClientRedirectUrl() string {
+	if o == nil || o.ClientRedirectUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientRedirectUrl
+}
+
+// GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MemberCreateRequestBody) GetClientRedirectUrlOk() (*string, bool) {
+	if o == nil || o.ClientRedirectUrl == nil {
+		return nil, false
+	}
+	return o.ClientRedirectUrl, true
+}
+
+// HasClientRedirectUrl returns a boolean if a field has been set.
+func (o *MemberCreateRequestBody) HasClientRedirectUrl() bool {
+	if o != nil && o.ClientRedirectUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientRedirectUrl gets a reference to the given string and assigns it to the ClientRedirectUrl field.
+func (o *MemberCreateRequestBody) SetClientRedirectUrl(v string) {
+	o.ClientRedirectUrl = &v
 }
 
 // GetMember returns the Member field value if set, zero value otherwise.
@@ -136,6 +169,9 @@ func (o *MemberCreateRequestBody) SetUiMessageWebviewUrlScheme(v string) {
 
 func (o MemberCreateRequestBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ClientRedirectUrl != nil {
+		toSerialize["client_redirect_url"] = o.ClientRedirectUrl
+	}
 	if o.Member != nil {
 		toSerialize["member"] = o.Member
 	}

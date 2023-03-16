@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **InstitutionNumber** | Pointer to **NullableString** |  | [optional] 
 **MemberGuid** | Pointer to **NullableString** |  | [optional] 
+**PassedValidation** | Pointer to **NullableBool** |  | [optional] 
 **RoutingNumber** | Pointer to **NullableString** |  | [optional] 
 **TransitNumber** | Pointer to **NullableString** |  | [optional] 
 **UserGuid** | Pointer to **NullableString** |  | [optional] 
@@ -207,6 +208,41 @@ HasMemberGuid returns a boolean if a field has been set.
 `func (o *AccountNumberResponse) UnsetMemberGuid()`
 
 UnsetMemberGuid ensures that no value is present for MemberGuid, not even an explicit nil
+### GetPassedValidation
+
+`func (o *AccountNumberResponse) GetPassedValidation() bool`
+
+GetPassedValidation returns the PassedValidation field if non-nil, zero value otherwise.
+
+### GetPassedValidationOk
+
+`func (o *AccountNumberResponse) GetPassedValidationOk() (*bool, bool)`
+
+GetPassedValidationOk returns a tuple with the PassedValidation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassedValidation
+
+`func (o *AccountNumberResponse) SetPassedValidation(v bool)`
+
+SetPassedValidation sets PassedValidation field to given value.
+
+### HasPassedValidation
+
+`func (o *AccountNumberResponse) HasPassedValidation() bool`
+
+HasPassedValidation returns a boolean if a field has been set.
+
+### SetPassedValidationNil
+
+`func (o *AccountNumberResponse) SetPassedValidationNil(b bool)`
+
+ SetPassedValidationNil sets the value for PassedValidation to be an explicit nil
+
+### UnsetPassedValidation
+`func (o *AccountNumberResponse) UnsetPassedValidation()`
+
+UnsetPassedValidation ensures that no value is present for PassedValidation, not even an explicit nil
 ### GetRoutingNumber
 
 `func (o *AccountNumberResponse) GetRoutingNumber() string`

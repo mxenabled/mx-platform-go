@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClientRedirectUrl** | Pointer to **string** |  | [optional] 
 **Member** | Pointer to [**MemberCreateRequest**](MemberCreateRequest.md) |  | [optional] 
 **ReferralSource** | Pointer to **string** |  | [optional] 
 **UiMessageWebviewUrlScheme** | Pointer to **string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewMemberCreateRequestBodyWithDefaults instantiates a new MemberCreateRequestBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClientRedirectUrl
+
+`func (o *MemberCreateRequestBody) GetClientRedirectUrl() string`
+
+GetClientRedirectUrl returns the ClientRedirectUrl field if non-nil, zero value otherwise.
+
+### GetClientRedirectUrlOk
+
+`func (o *MemberCreateRequestBody) GetClientRedirectUrlOk() (*string, bool)`
+
+GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientRedirectUrl
+
+`func (o *MemberCreateRequestBody) SetClientRedirectUrl(v string)`
+
+SetClientRedirectUrl sets ClientRedirectUrl field to given value.
+
+### HasClientRedirectUrl
+
+`func (o *MemberCreateRequestBody) HasClientRedirectUrl() bool`
+
+HasClientRedirectUrl returns a boolean if a field has been set.
 
 ### GetMember
 

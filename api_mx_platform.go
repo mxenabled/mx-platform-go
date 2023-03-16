@@ -4782,6 +4782,141 @@ func (a *MxPlatformApiService) ListManagedTransactionsExecute(r ApiListManagedTr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListMemberAccountsRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	memberGuid string
+	memberIsManagedByUser *bool
+	page *int32
+	recordsPerPage *int32
+}
+
+// List only accounts whose member is managed by the user.
+func (r ApiListMemberAccountsRequest) MemberIsManagedByUser(memberIsManagedByUser bool) ApiListMemberAccountsRequest {
+	r.memberIsManagedByUser = &memberIsManagedByUser
+	return r
+}
+// Specify current page.
+func (r ApiListMemberAccountsRequest) Page(page int32) ApiListMemberAccountsRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiListMemberAccountsRequest) RecordsPerPage(recordsPerPage int32) ApiListMemberAccountsRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiListMemberAccountsRequest) Execute() (*AccountsResponseBody, *http.Response, error) {
+	return r.ApiService.ListMemberAccountsExecute(r)
+}
+
+/*
+ListMemberAccounts List accounts by member
+
+This endpoint returns a list of all the accounts associated with the specified `member`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param memberGuid The unique id for a `member`.
+ @return ApiListMemberAccountsRequest
+*/
+func (a *MxPlatformApiService) ListMemberAccounts(ctx context.Context, userGuid string, memberGuid string) ApiListMemberAccountsRequest {
+	return ApiListMemberAccountsRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		memberGuid: memberGuid,
+	}
+}
+
+// Execute executes the request
+//  @return AccountsResponseBody
+func (a *MxPlatformApiService) ListMemberAccountsExecute(r ApiListMemberAccountsRequest) (*AccountsResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AccountsResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListMemberAccounts")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.memberIsManagedByUser != nil {
+		localVarQueryParams.Add("member_is_managed_by_user", parameterToString(*r.memberIsManagedByUser, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListMemberChallengesRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
@@ -6342,10 +6477,16 @@ type ApiListUserAccountsRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
 	userGuid string
+	memberIsManagedByUser *bool
 	page *int32
 	recordsPerPage *int32
 }
 
+// List only accounts whose member is managed by the user.
+func (r ApiListUserAccountsRequest) MemberIsManagedByUser(memberIsManagedByUser bool) ApiListUserAccountsRequest {
+	r.memberIsManagedByUser = &memberIsManagedByUser
+	return r
+}
 // Specify current page.
 func (r ApiListUserAccountsRequest) Page(page int32) ApiListUserAccountsRequest {
 	r.page = &page
@@ -6400,6 +6541,9 @@ func (a *MxPlatformApiService) ListUserAccountsExecute(r ApiListUserAccountsRequ
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.memberIsManagedByUser != nil {
+		localVarQueryParams.Add("member_is_managed_by_user", parameterToString(*r.memberIsManagedByUser, ""))
+	}
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
@@ -6465,6 +6609,9 @@ type ApiListUsersRequest struct {
 	ApiService *MxPlatformApiService
 	page *int32
 	recordsPerPage *int32
+	id *string
+	email *string
+	isDisabled *bool
 }
 
 // Specify current page.
@@ -6475,6 +6622,21 @@ func (r ApiListUsersRequest) Page(page int32) ApiListUsersRequest {
 // Specify records per page.
 func (r ApiListUsersRequest) RecordsPerPage(recordsPerPage int32) ApiListUsersRequest {
 	r.recordsPerPage = &recordsPerPage
+	return r
+}
+// The user &#x60;id&#x60; to search for.
+func (r ApiListUsersRequest) Id(id string) ApiListUsersRequest {
+	r.id = &id
+	return r
+}
+// The user &#x60;email&#x60; to search for.
+func (r ApiListUsersRequest) Email(email string) ApiListUsersRequest {
+	r.email = &email
+	return r
+}
+// Search for users that are diabled.
+func (r ApiListUsersRequest) IsDisabled(isDisabled bool) ApiListUsersRequest {
+	r.isDisabled = &isDisabled
 	return r
 }
 
@@ -6523,6 +6685,15 @@ func (a *MxPlatformApiService) ListUsersExecute(r ApiListUsersRequest) (*UsersRe
 	}
 	if r.recordsPerPage != nil {
 		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	if r.id != nil {
+		localVarQueryParams.Add("id", parameterToString(*r.id, ""))
+	}
+	if r.email != nil {
+		localVarQueryParams.Add("email", parameterToString(*r.email, ""))
+	}
+	if r.isDisabled != nil {
+		localVarQueryParams.Add("is_disabled", parameterToString(*r.isDisabled, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6626,6 +6797,118 @@ func (a *MxPlatformApiService) ReadAccountExecute(r ApiReadAccountRequest) (*Acc
 
 	localVarPath := localBasePath + "/users/{user_guid}/accounts/{account_guid}"
 	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadAccountByMemberRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	accountGuid string
+	memberGuid string
+	userGuid string
+}
+
+
+func (r ApiReadAccountByMemberRequest) Execute() (*AccountResponseBody, *http.Response, error) {
+	return r.ApiService.ReadAccountByMemberExecute(r)
+}
+
+/*
+ReadAccountByMember Read account by member
+
+This endpoint allows you to read the attributes of an `account` resource.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountGuid The unique id for an `account`.
+ @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
+ @return ApiReadAccountByMemberRequest
+*/
+func (a *MxPlatformApiService) ReadAccountByMember(ctx context.Context, accountGuid string, memberGuid string, userGuid string) ApiReadAccountByMemberRequest {
+	return ApiReadAccountByMemberRequest{
+		ApiService: a,
+		ctx: ctx,
+		accountGuid: accountGuid,
+		memberGuid: memberGuid,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return AccountResponseBody
+func (a *MxPlatformApiService) ReadAccountByMemberExecute(r ApiReadAccountByMemberRequest) (*AccountResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AccountResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadAccountByMember")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
