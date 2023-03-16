@@ -17,6 +17,7 @@ import (
 // MemberResponse struct for MemberResponse
 type MemberResponse struct {
 	AggregatedAt NullableString `json:"aggregated_at,omitempty"`
+	BackgroundAggregationIsDisabled *bool `json:"background_aggregation_is_disabled,omitempty"`
 	ConnectionStatus NullableString `json:"connection_status,omitempty"`
 	Guid NullableString `json:"guid,omitempty"`
 	Id NullableString `json:"id,omitempty"`
@@ -89,6 +90,38 @@ func (o *MemberResponse) SetAggregatedAtNil() {
 // UnsetAggregatedAt ensures that no value is present for AggregatedAt, not even an explicit nil
 func (o *MemberResponse) UnsetAggregatedAt() {
 	o.AggregatedAt.Unset()
+}
+
+// GetBackgroundAggregationIsDisabled returns the BackgroundAggregationIsDisabled field value if set, zero value otherwise.
+func (o *MemberResponse) GetBackgroundAggregationIsDisabled() bool {
+	if o == nil || o.BackgroundAggregationIsDisabled == nil {
+		var ret bool
+		return ret
+	}
+	return *o.BackgroundAggregationIsDisabled
+}
+
+// GetBackgroundAggregationIsDisabledOk returns a tuple with the BackgroundAggregationIsDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MemberResponse) GetBackgroundAggregationIsDisabledOk() (*bool, bool) {
+	if o == nil || o.BackgroundAggregationIsDisabled == nil {
+		return nil, false
+	}
+	return o.BackgroundAggregationIsDisabled, true
+}
+
+// HasBackgroundAggregationIsDisabled returns a boolean if a field has been set.
+func (o *MemberResponse) HasBackgroundAggregationIsDisabled() bool {
+	if o != nil && o.BackgroundAggregationIsDisabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBackgroundAggregationIsDisabled gets a reference to the given bool and assigns it to the BackgroundAggregationIsDisabled field.
+func (o *MemberResponse) SetBackgroundAggregationIsDisabled(v bool) {
+	o.BackgroundAggregationIsDisabled = &v
 }
 
 // GetConnectionStatus returns the ConnectionStatus field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -641,6 +674,9 @@ func (o MemberResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AggregatedAt.IsSet() {
 		toSerialize["aggregated_at"] = o.AggregatedAt.Get()
+	}
+	if o.BackgroundAggregationIsDisabled != nil {
+		toSerialize["background_aggregation_is_disabled"] = o.BackgroundAggregationIsDisabled
 	}
 	if o.ConnectionStatus.IsSet() {
 		toSerialize["connection_status"] = o.ConnectionStatus.Get()

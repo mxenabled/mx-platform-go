@@ -22,9 +22,11 @@ type WidgetRequest struct {
 	CurrentInstitutionGuid *string `json:"current_institution_guid,omitempty"`
 	CurrentMemberGuid *string `json:"current_member_guid,omitempty"`
 	DisableInstitutionSearch *bool `json:"disable_institution_search,omitempty"`
+	IncludeIdentity *bool `json:"include_identity,omitempty"`
 	IncludeTransactions *bool `json:"include_transactions,omitempty"`
 	IsMobileWebview *bool `json:"is_mobile_webview,omitempty"`
 	Mode *string `json:"mode,omitempty"`
+	OauthReferralSource *string `json:"oauth_referral_source,omitempty"`
 	UiMessageVersion *int32 `json:"ui_message_version,omitempty"`
 	UiMessageWebviewUrlScheme *string `json:"ui_message_webview_url_scheme,omitempty"`
 	UpdateCredentials *bool `json:"update_credentials,omitempty"`
@@ -241,6 +243,38 @@ func (o *WidgetRequest) SetDisableInstitutionSearch(v bool) {
 	o.DisableInstitutionSearch = &v
 }
 
+// GetIncludeIdentity returns the IncludeIdentity field value if set, zero value otherwise.
+func (o *WidgetRequest) GetIncludeIdentity() bool {
+	if o == nil || o.IncludeIdentity == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeIdentity
+}
+
+// GetIncludeIdentityOk returns a tuple with the IncludeIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WidgetRequest) GetIncludeIdentityOk() (*bool, bool) {
+	if o == nil || o.IncludeIdentity == nil {
+		return nil, false
+	}
+	return o.IncludeIdentity, true
+}
+
+// HasIncludeIdentity returns a boolean if a field has been set.
+func (o *WidgetRequest) HasIncludeIdentity() bool {
+	if o != nil && o.IncludeIdentity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeIdentity gets a reference to the given bool and assigns it to the IncludeIdentity field.
+func (o *WidgetRequest) SetIncludeIdentity(v bool) {
+	o.IncludeIdentity = &v
+}
+
 // GetIncludeTransactions returns the IncludeTransactions field value if set, zero value otherwise.
 func (o *WidgetRequest) GetIncludeTransactions() bool {
 	if o == nil || o.IncludeTransactions == nil {
@@ -335,6 +369,38 @@ func (o *WidgetRequest) HasMode() bool {
 // SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *WidgetRequest) SetMode(v string) {
 	o.Mode = &v
+}
+
+// GetOauthReferralSource returns the OauthReferralSource field value if set, zero value otherwise.
+func (o *WidgetRequest) GetOauthReferralSource() string {
+	if o == nil || o.OauthReferralSource == nil {
+		var ret string
+		return ret
+	}
+	return *o.OauthReferralSource
+}
+
+// GetOauthReferralSourceOk returns a tuple with the OauthReferralSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WidgetRequest) GetOauthReferralSourceOk() (*string, bool) {
+	if o == nil || o.OauthReferralSource == nil {
+		return nil, false
+	}
+	return o.OauthReferralSource, true
+}
+
+// HasOauthReferralSource returns a boolean if a field has been set.
+func (o *WidgetRequest) HasOauthReferralSource() bool {
+	if o != nil && o.OauthReferralSource != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOauthReferralSource gets a reference to the given string and assigns it to the OauthReferralSource field.
+func (o *WidgetRequest) SetOauthReferralSource(v string) {
+	o.OauthReferralSource = &v
 }
 
 // GetUiMessageVersion returns the UiMessageVersion field value if set, zero value otherwise.
@@ -477,6 +543,9 @@ func (o WidgetRequest) MarshalJSON() ([]byte, error) {
 	if o.DisableInstitutionSearch != nil {
 		toSerialize["disable_institution_search"] = o.DisableInstitutionSearch
 	}
+	if o.IncludeIdentity != nil {
+		toSerialize["include_identity"] = o.IncludeIdentity
+	}
 	if o.IncludeTransactions != nil {
 		toSerialize["include_transactions"] = o.IncludeTransactions
 	}
@@ -485,6 +554,9 @@ func (o WidgetRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode
+	}
+	if o.OauthReferralSource != nil {
+		toSerialize["oauth_referral_source"] = o.OauthReferralSource
 	}
 	if o.UiMessageVersion != nil {
 		toSerialize["ui_message_version"] = o.UiMessageVersion

@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BackgroundAggregationIsDisabled** | Pointer to **bool** |  | [optional] 
-**ClientRedirectUrl** | Pointer to **string** |  | [optional] 
 **Credentials** | [**[]CredentialRequest**](CredentialRequest.md) |  | 
 **Id** | Pointer to **string** |  | [optional] 
 **InstitutionCode** | **string** |  | 
@@ -56,31 +55,6 @@ SetBackgroundAggregationIsDisabled sets BackgroundAggregationIsDisabled field to
 `func (o *MemberCreateRequest) HasBackgroundAggregationIsDisabled() bool`
 
 HasBackgroundAggregationIsDisabled returns a boolean if a field has been set.
-
-### GetClientRedirectUrl
-
-`func (o *MemberCreateRequest) GetClientRedirectUrl() string`
-
-GetClientRedirectUrl returns the ClientRedirectUrl field if non-nil, zero value otherwise.
-
-### GetClientRedirectUrlOk
-
-`func (o *MemberCreateRequest) GetClientRedirectUrlOk() (*string, bool)`
-
-GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientRedirectUrl
-
-`func (o *MemberCreateRequest) SetClientRedirectUrl(v string)`
-
-SetClientRedirectUrl sets ClientRedirectUrl field to given value.
-
-### HasClientRedirectUrl
-
-`func (o *MemberCreateRequest) HasClientRedirectUrl() bool`
-
-HasClientRedirectUrl returns a boolean if a field has been set.
 
 ### GetCredentials
 

@@ -10,9 +10,11 @@ Name | Type | Description | Notes
 **CurrentInstitutionGuid** | Pointer to **string** |  | [optional] 
 **CurrentMemberGuid** | Pointer to **string** |  | [optional] 
 **DisableInstitutionSearch** | Pointer to **bool** |  | [optional] 
+**IncludeIdentity** | Pointer to **bool** |  | [optional] 
 **IncludeTransactions** | Pointer to **bool** |  | [optional] 
 **IsMobileWebview** | Pointer to **bool** |  | [optional] 
 **Mode** | Pointer to **string** |  | [optional] 
+**OauthReferralSource** | Pointer to **string** |  | [optional] 
 **UiMessageVersion** | Pointer to **int32** |  | [optional] 
 **UiMessageWebviewUrlScheme** | Pointer to **string** |  | [optional] 
 **UpdateCredentials** | Pointer to **bool** |  | [optional] 
@@ -187,6 +189,31 @@ SetDisableInstitutionSearch sets DisableInstitutionSearch field to given value.
 
 HasDisableInstitutionSearch returns a boolean if a field has been set.
 
+### GetIncludeIdentity
+
+`func (o *WidgetRequest) GetIncludeIdentity() bool`
+
+GetIncludeIdentity returns the IncludeIdentity field if non-nil, zero value otherwise.
+
+### GetIncludeIdentityOk
+
+`func (o *WidgetRequest) GetIncludeIdentityOk() (*bool, bool)`
+
+GetIncludeIdentityOk returns a tuple with the IncludeIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeIdentity
+
+`func (o *WidgetRequest) SetIncludeIdentity(v bool)`
+
+SetIncludeIdentity sets IncludeIdentity field to given value.
+
+### HasIncludeIdentity
+
+`func (o *WidgetRequest) HasIncludeIdentity() bool`
+
+HasIncludeIdentity returns a boolean if a field has been set.
+
 ### GetIncludeTransactions
 
 `func (o *WidgetRequest) GetIncludeTransactions() bool`
@@ -261,6 +288,31 @@ SetMode sets Mode field to given value.
 `func (o *WidgetRequest) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
+
+### GetOauthReferralSource
+
+`func (o *WidgetRequest) GetOauthReferralSource() string`
+
+GetOauthReferralSource returns the OauthReferralSource field if non-nil, zero value otherwise.
+
+### GetOauthReferralSourceOk
+
+`func (o *WidgetRequest) GetOauthReferralSourceOk() (*string, bool)`
+
+GetOauthReferralSourceOk returns a tuple with the OauthReferralSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOauthReferralSource
+
+`func (o *WidgetRequest) SetOauthReferralSource(v string)`
+
+SetOauthReferralSource sets OauthReferralSource field to given value.
+
+### HasOauthReferralSource
+
+`func (o *WidgetRequest) HasOauthReferralSource() bool`
+
+HasOauthReferralSource returns a boolean if a field has been set.
 
 ### GetUiMessageVersion
 

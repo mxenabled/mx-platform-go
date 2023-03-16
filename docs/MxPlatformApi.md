@@ -45,6 +45,7 @@ Method | HTTP request | Description
 [**ListManagedInstitutions**](MxPlatformApi.md#ListManagedInstitutions) | **Get** /managed_institutions | List managed institutions
 [**ListManagedMembers**](MxPlatformApi.md#ListManagedMembers) | **Get** /users/{user_guid}/managed_members | List managed members
 [**ListManagedTransactions**](MxPlatformApi.md#ListManagedTransactions) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions | List managed transactions
+[**ListMemberAccounts**](MxPlatformApi.md#ListMemberAccounts) | **Get** /users/{user_guid}/members/{member_guid}/accounts | List accounts by member
 [**ListMemberChallenges**](MxPlatformApi.md#ListMemberChallenges) | **Get** /users/{user_guid}/members/{member_guid}/challenges | List member challenges
 [**ListMemberCredentials**](MxPlatformApi.md#ListMemberCredentials) | **Get** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
 [**ListMembers**](MxPlatformApi.md#ListMembers) | **Get** /users/{user_guid}/members | List members
@@ -60,6 +61,7 @@ Method | HTTP request | Description
 [**ListUserAccounts**](MxPlatformApi.md#ListUserAccounts) | **Get** /users/{user_guid}/accounts | List accounts
 [**ListUsers**](MxPlatformApi.md#ListUsers) | **Get** /users | List users
 [**ReadAccount**](MxPlatformApi.md#ReadAccount) | **Get** /users/{user_guid}/accounts/{account_guid} | Read account
+[**ReadAccountByMember**](MxPlatformApi.md#ReadAccountByMember) | **Get** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Read account by member
 [**ReadCategory**](MxPlatformApi.md#ReadCategory) | **Get** /users/{user_guid}/categories/{category_guid} | Read a custom category
 [**ReadDefaultCategory**](MxPlatformApi.md#ReadDefaultCategory) | **Get** /categories/{category_guid} | Read a default category
 [**ReadHolding**](MxPlatformApi.md#ReadHolding) | **Get** /users/{user_guid}/holdings/{holding_guid} | Read holding
@@ -3105,6 +3107,85 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListMemberAccounts
+
+> AccountsResponseBody ListMemberAccounts(ctx, userGuid, memberGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+List accounts by member
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    memberIsManagedByUser := true // bool | List only accounts whose member is managed by the user. (optional)
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListMemberAccounts(context.Background(), userGuid, memberGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMemberAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListMemberAccounts`: AccountsResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListMemberAccounts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListMemberAccountsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **memberIsManagedByUser** | **bool** | List only accounts whose member is managed by the user. | 
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**AccountsResponseBody**](AccountsResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListMemberChallenges
 
 > ChallengesResponseBody ListMemberChallenges(ctx, memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
@@ -4023,7 +4104,7 @@ Name | Type | Description  | Notes
 
 ## ListUserAccounts
 
-> AccountsResponseBody ListUserAccounts(ctx, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+> AccountsResponseBody ListUserAccounts(ctx, userGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).RecordsPerPage(recordsPerPage).Execute()
 
 List accounts
 
@@ -4043,12 +4124,13 @@ import (
 
 func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    memberIsManagedByUser := true // bool | List only accounts whose member is managed by the user. (optional)
     page := int32(1) // int32 | Specify current page. (optional)
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListUserAccounts(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformApi.ListUserAccounts(context.Background(), userGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListUserAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4074,6 +4156,7 @@ Other parameters are passed through a pointer to a apiListUserAccountsRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **memberIsManagedByUser** | **bool** | List only accounts whose member is managed by the user. | 
  **page** | **int32** | Specify current page. | 
  **recordsPerPage** | **int32** | Specify records per page. | 
 
@@ -4097,7 +4180,7 @@ Name | Type | Description  | Notes
 
 ## ListUsers
 
-> UsersResponseBody ListUsers(ctx).Page(page).RecordsPerPage(recordsPerPage).Execute()
+> UsersResponseBody ListUsers(ctx).Page(page).RecordsPerPage(recordsPerPage).Id(id).Email(email).IsDisabled(isDisabled).Execute()
 
 List users
 
@@ -4118,10 +4201,13 @@ import (
 func main() {
     page := int32(1) // int32 | Specify current page. (optional)
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    id := "u-12324-abdc" // string | The user `id` to search for. (optional)
+    email := "example@example.com" // string | The user `email` to search for. (optional)
+    isDisabled := true // bool | Search for users that are diabled. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListUsers(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformApi.ListUsers(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Id(id).Email(email).IsDisabled(isDisabled).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4144,6 +4230,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int32** | Specify current page. | 
  **recordsPerPage** | **int32** | Specify records per page. | 
+ **id** | **string** | The user &#x60;id&#x60; to search for. | 
+ **email** | **string** | The user &#x60;email&#x60; to search for. | 
+ **isDisabled** | **bool** | Search for users that are diabled. | 
 
 ### Return type
 
@@ -4215,6 +4304,82 @@ Other parameters are passed through a pointer to a apiReadAccountRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**AccountResponseBody**](AccountResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadAccountByMember
+
+> AccountResponseBody ReadAccountByMember(ctx, accountGuid, memberGuid, userGuid).Execute()
+
+Read account by member
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
+    memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadAccountByMember(context.Background(), accountGuid, memberGuid, userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadAccountByMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAccountByMember`: AccountResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadAccountByMember`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
+**memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAccountByMemberRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 
 

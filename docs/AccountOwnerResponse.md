@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **City** | Pointer to **NullableString** |  | [optional] 
 **Country** | Pointer to **NullableString** |  | [optional] 
 **Email** | Pointer to **NullableString** |  | [optional] 
+**FirstName** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
+**LastName** | Pointer to **NullableString** |  | [optional] 
 **MemberGuid** | Pointer to **NullableString** |  | [optional] 
 **OwnerName** | Pointer to **NullableString** |  | [optional] 
 **Phone** | Pointer to **NullableString** |  | [optional] 
@@ -211,6 +213,41 @@ HasEmail returns a boolean if a field has been set.
 `func (o *AccountOwnerResponse) UnsetEmail()`
 
 UnsetEmail ensures that no value is present for Email, not even an explicit nil
+### GetFirstName
+
+`func (o *AccountOwnerResponse) GetFirstName() string`
+
+GetFirstName returns the FirstName field if non-nil, zero value otherwise.
+
+### GetFirstNameOk
+
+`func (o *AccountOwnerResponse) GetFirstNameOk() (*string, bool)`
+
+GetFirstNameOk returns a tuple with the FirstName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFirstName
+
+`func (o *AccountOwnerResponse) SetFirstName(v string)`
+
+SetFirstName sets FirstName field to given value.
+
+### HasFirstName
+
+`func (o *AccountOwnerResponse) HasFirstName() bool`
+
+HasFirstName returns a boolean if a field has been set.
+
+### SetFirstNameNil
+
+`func (o *AccountOwnerResponse) SetFirstNameNil(b bool)`
+
+ SetFirstNameNil sets the value for FirstName to be an explicit nil
+
+### UnsetFirstName
+`func (o *AccountOwnerResponse) UnsetFirstName()`
+
+UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
 ### GetGuid
 
 `func (o *AccountOwnerResponse) GetGuid() string`
@@ -246,6 +283,41 @@ HasGuid returns a boolean if a field has been set.
 `func (o *AccountOwnerResponse) UnsetGuid()`
 
 UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+### GetLastName
+
+`func (o *AccountOwnerResponse) GetLastName() string`
+
+GetLastName returns the LastName field if non-nil, zero value otherwise.
+
+### GetLastNameOk
+
+`func (o *AccountOwnerResponse) GetLastNameOk() (*string, bool)`
+
+GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastName
+
+`func (o *AccountOwnerResponse) SetLastName(v string)`
+
+SetLastName sets LastName field to given value.
+
+### HasLastName
+
+`func (o *AccountOwnerResponse) HasLastName() bool`
+
+HasLastName returns a boolean if a field has been set.
+
+### SetLastNameNil
+
+`func (o *AccountOwnerResponse) SetLastNameNil(b bool)`
+
+ SetLastNameNil sets the value for LastName to be an explicit nil
+
+### UnsetLastName
+`func (o *AccountOwnerResponse) UnsetLastName()`
+
+UnsetLastName ensures that no value is present for LastName, not even an explicit nil
 ### GetMemberGuid
 
 `func (o *AccountOwnerResponse) GetMemberGuid() string`

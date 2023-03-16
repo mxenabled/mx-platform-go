@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AggregatedAt** | Pointer to **NullableString** |  | [optional] 
+**BackgroundAggregationIsDisabled** | Pointer to **bool** |  | [optional] 
 **ConnectionStatus** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
@@ -73,6 +74,31 @@ HasAggregatedAt returns a boolean if a field has been set.
 `func (o *MemberResponse) UnsetAggregatedAt()`
 
 UnsetAggregatedAt ensures that no value is present for AggregatedAt, not even an explicit nil
+### GetBackgroundAggregationIsDisabled
+
+`func (o *MemberResponse) GetBackgroundAggregationIsDisabled() bool`
+
+GetBackgroundAggregationIsDisabled returns the BackgroundAggregationIsDisabled field if non-nil, zero value otherwise.
+
+### GetBackgroundAggregationIsDisabledOk
+
+`func (o *MemberResponse) GetBackgroundAggregationIsDisabledOk() (*bool, bool)`
+
+GetBackgroundAggregationIsDisabledOk returns a tuple with the BackgroundAggregationIsDisabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackgroundAggregationIsDisabled
+
+`func (o *MemberResponse) SetBackgroundAggregationIsDisabled(v bool)`
+
+SetBackgroundAggregationIsDisabled sets BackgroundAggregationIsDisabled field to given value.
+
+### HasBackgroundAggregationIsDisabled
+
+`func (o *MemberResponse) HasBackgroundAggregationIsDisabled() bool`
+
+HasBackgroundAggregationIsDisabled returns a boolean if a field has been set.
+
 ### GetConnectionStatus
 
 `func (o *MemberResponse) GetConnectionStatus() string`
