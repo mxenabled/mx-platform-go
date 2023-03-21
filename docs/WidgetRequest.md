@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CurrentInstitutionCode** | Pointer to **string** |  | [optional] 
 **CurrentInstitutionGuid** | Pointer to **string** |  | [optional] 
 **CurrentMemberGuid** | Pointer to **string** |  | [optional] 
+**DisableBackgroundAgg** | Pointer to **bool** |  | [optional] 
 **DisableInstitutionSearch** | Pointer to **bool** |  | [optional] 
 **IncludeIdentity** | Pointer to **bool** |  | [optional] 
 **IncludeTransactions** | Pointer to **bool** |  | [optional] 
@@ -163,6 +164,31 @@ SetCurrentMemberGuid sets CurrentMemberGuid field to given value.
 `func (o *WidgetRequest) HasCurrentMemberGuid() bool`
 
 HasCurrentMemberGuid returns a boolean if a field has been set.
+
+### GetDisableBackgroundAgg
+
+`func (o *WidgetRequest) GetDisableBackgroundAgg() bool`
+
+GetDisableBackgroundAgg returns the DisableBackgroundAgg field if non-nil, zero value otherwise.
+
+### GetDisableBackgroundAggOk
+
+`func (o *WidgetRequest) GetDisableBackgroundAggOk() (*bool, bool)`
+
+GetDisableBackgroundAggOk returns a tuple with the DisableBackgroundAgg field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableBackgroundAgg
+
+`func (o *WidgetRequest) SetDisableBackgroundAgg(v bool)`
+
+SetDisableBackgroundAgg sets DisableBackgroundAgg field to given value.
+
+### HasDisableBackgroundAgg
+
+`func (o *WidgetRequest) HasDisableBackgroundAgg() bool`
+
+HasDisableBackgroundAgg returns a boolean if a field has been set.
 
 ### GetDisableInstitutionSearch
 
