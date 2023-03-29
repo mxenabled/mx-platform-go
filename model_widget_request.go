@@ -21,6 +21,7 @@ type WidgetRequest struct {
 	CurrentInstitutionCode *string `json:"current_institution_code,omitempty"`
 	CurrentInstitutionGuid *string `json:"current_institution_guid,omitempty"`
 	CurrentMemberGuid *string `json:"current_member_guid,omitempty"`
+	DisableBackgroundAgg *bool `json:"disable_background_agg,omitempty"`
 	DisableInstitutionSearch *bool `json:"disable_institution_search,omitempty"`
 	IncludeIdentity *bool `json:"include_identity,omitempty"`
 	IncludeTransactions *bool `json:"include_transactions,omitempty"`
@@ -209,6 +210,38 @@ func (o *WidgetRequest) HasCurrentMemberGuid() bool {
 // SetCurrentMemberGuid gets a reference to the given string and assigns it to the CurrentMemberGuid field.
 func (o *WidgetRequest) SetCurrentMemberGuid(v string) {
 	o.CurrentMemberGuid = &v
+}
+
+// GetDisableBackgroundAgg returns the DisableBackgroundAgg field value if set, zero value otherwise.
+func (o *WidgetRequest) GetDisableBackgroundAgg() bool {
+	if o == nil || o.DisableBackgroundAgg == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DisableBackgroundAgg
+}
+
+// GetDisableBackgroundAggOk returns a tuple with the DisableBackgroundAgg field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WidgetRequest) GetDisableBackgroundAggOk() (*bool, bool) {
+	if o == nil || o.DisableBackgroundAgg == nil {
+		return nil, false
+	}
+	return o.DisableBackgroundAgg, true
+}
+
+// HasDisableBackgroundAgg returns a boolean if a field has been set.
+func (o *WidgetRequest) HasDisableBackgroundAgg() bool {
+	if o != nil && o.DisableBackgroundAgg != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisableBackgroundAgg gets a reference to the given bool and assigns it to the DisableBackgroundAgg field.
+func (o *WidgetRequest) SetDisableBackgroundAgg(v bool) {
+	o.DisableBackgroundAgg = &v
 }
 
 // GetDisableInstitutionSearch returns the DisableInstitutionSearch field value if set, zero value otherwise.
@@ -539,6 +572,9 @@ func (o WidgetRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.CurrentMemberGuid != nil {
 		toSerialize["current_member_guid"] = o.CurrentMemberGuid
+	}
+	if o.DisableBackgroundAgg != nil {
+		toSerialize["disable_background_agg"] = o.DisableBackgroundAgg
 	}
 	if o.DisableInstitutionSearch != nil {
 		toSerialize["disable_institution_search"] = o.DisableInstitutionSearch
