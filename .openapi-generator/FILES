@@ -13,6 +13,10 @@ docs/AccountResponseBody.md
 docs/AccountUpdateRequest.md
 docs/AccountUpdateRequestBody.md
 docs/AccountsResponseBody.md
+docs/AuthorizationCodeRequest.md
+docs/AuthorizationCodeRequestBody.md
+docs/AuthorizationCodeResponse.md
+docs/AuthorizationCodeResponseBody.md
 docs/CategoriesResponseBody.md
 docs/CategoryCreateRequest.md
 docs/CategoryCreateRequestBody.md
@@ -73,6 +77,10 @@ docs/OAuthWindowResponse.md
 docs/OAuthWindowResponseBody.md
 docs/OptionResponse.md
 docs/PaginationResponse.md
+docs/PaymentProcessorAuthorizationCodeRequest.md
+docs/PaymentProcessorAuthorizationCodeRequestBody.md
+docs/PaymentProcessorAuthorizationCodeResponse.md
+docs/PaymentProcessorAuthorizationCodeResponseBody.md
 docs/StatementResponse.md
 docs/StatementResponseBody.md
 docs/StatementsResponseBody.md
@@ -124,6 +132,10 @@ model_account_response_body.go
 model_account_update_request.go
 model_account_update_request_body.go
 model_accounts_response_body.go
+model_authorization_code_request.go
+model_authorization_code_request_body.go
+model_authorization_code_response.go
+model_authorization_code_response_body.go
 model_categories_response_body.go
 model_category_create_request.go
 model_category_create_request_body.go
@@ -183,6 +195,10 @@ model_o_auth_window_response.go
 model_o_auth_window_response_body.go
 model_option_response.go
 model_pagination_response.go
+model_payment_processor_authorization_code_request.go
+model_payment_processor_authorization_code_request_body.go
+model_payment_processor_authorization_code_response.go
+model_payment_processor_authorization_code_response_body.go
 model_statement_response.go
 model_statement_response_body.go
 model_statements_response_body.go

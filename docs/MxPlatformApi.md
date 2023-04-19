@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**DeleteTagging**](MxPlatformApi.md#DeleteTagging) | **Delete** /users/{user_guid}/taggings/{tagging_guid} | Delete tagging
 [**DeleteTransactionRule**](MxPlatformApi.md#DeleteTransactionRule) | **Delete** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Delete transaction rule
 [**DeleteUser**](MxPlatformApi.md#DeleteUser) | **Delete** /users/{user_guid} | Delete user
+[**DeprecatedRequestPaymentProcessorAuthorizationCode**](MxPlatformApi.md#DeprecatedRequestPaymentProcessorAuthorizationCode) | **Post** /payment_processor_authorization_code | (Deprecated) Request an authorization code.
 [**DownloadStatementPDF**](MxPlatformApi.md#DownloadStatementPDF) | **Get** /users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf | Download statement pdf
 [**EnhanceTransactions**](MxPlatformApi.md#EnhanceTransactions) | **Post** /transactions/enhance | Enhance transactions
 [**ExtendHistory**](MxPlatformApi.md#ExtendHistory) | **Post** /users/{user_guid}/members/{member_guid}/extend_history | Extend history
@@ -79,6 +80,7 @@ Method | HTTP request | Description
 [**ReadTransaction**](MxPlatformApi.md#ReadTransaction) | **Get** /users/{user_guid}/transactions/{transaction_guid} | Read transaction
 [**ReadTransactionRule**](MxPlatformApi.md#ReadTransactionRule) | **Get** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Read transaction rule
 [**ReadUser**](MxPlatformApi.md#ReadUser) | **Get** /users/{user_guid} | Read user
+[**RequestAuthorizationCode**](MxPlatformApi.md#RequestAuthorizationCode) | **Post** /authorization_code | Request an authorization code.
 [**RequestConnectWidgetURL**](MxPlatformApi.md#RequestConnectWidgetURL) | **Post** /users/{user_guid}/connect_widget_url | Request connect widget url
 [**RequestOAuthWindowURI**](MxPlatformApi.md#RequestOAuthWindowURI) | **Get** /users/{user_guid}/members/{member_guid}/oauth_window_uri | Request oauth window uri
 [**RequestWidgetURL**](MxPlatformApi.md#RequestWidgetURL) | **Post** /users/{user_guid}/widget_urls | Request widget url
@@ -1534,6 +1536,72 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeprecatedRequestPaymentProcessorAuthorizationCode
+
+> PaymentProcessorAuthorizationCodeResponseBody DeprecatedRequestPaymentProcessorAuthorizationCode(ctx).PaymentProcessorAuthorizationCodeRequestBody(paymentProcessorAuthorizationCodeRequestBody).Execute()
+
+(Deprecated) Request an authorization code.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    paymentProcessorAuthorizationCodeRequestBody := *openapiclient.NewPaymentProcessorAuthorizationCodeRequestBody() // PaymentProcessorAuthorizationCodeRequestBody | The scope for the authorization code.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeprecatedRequestPaymentProcessorAuthorizationCode(context.Background()).PaymentProcessorAuthorizationCodeRequestBody(paymentProcessorAuthorizationCodeRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeprecatedRequestPaymentProcessorAuthorizationCode``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeprecatedRequestPaymentProcessorAuthorizationCode`: PaymentProcessorAuthorizationCodeResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.DeprecatedRequestPaymentProcessorAuthorizationCode`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeprecatedRequestPaymentProcessorAuthorizationCodeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **paymentProcessorAuthorizationCodeRequestBody** | [**PaymentProcessorAuthorizationCodeRequestBody**](PaymentProcessorAuthorizationCodeRequestBody.md) | The scope for the authorization code. | 
+
+### Return type
+
+[**PaymentProcessorAuthorizationCodeResponseBody**](PaymentProcessorAuthorizationCodeResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/vnd.mx.api.v1+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -5632,6 +5700,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RequestAuthorizationCode
+
+> AuthorizationCodeResponseBody RequestAuthorizationCode(ctx).AuthorizationCodeRequestBody(authorizationCodeRequestBody).Execute()
+
+Request an authorization code.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    authorizationCodeRequestBody := *openapiclient.NewAuthorizationCodeRequestBody() // AuthorizationCodeRequestBody | The scope for the authorization code.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.RequestAuthorizationCode(context.Background()).AuthorizationCodeRequestBody(authorizationCodeRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestAuthorizationCode``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RequestAuthorizationCode`: AuthorizationCodeResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.RequestAuthorizationCode`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRequestAuthorizationCodeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorizationCodeRequestBody** | [**AuthorizationCodeRequestBody**](AuthorizationCodeRequestBody.md) | The scope for the authorization code. | 
+
+### Return type
+
+[**AuthorizationCodeResponseBody**](AuthorizationCodeResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/vnd.mx.api.v1+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
