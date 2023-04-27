@@ -26,9 +26,11 @@ Method | HTTP request | Description
 [**DeleteUser**](MxPlatformApi.md#DeleteUser) | **Delete** /users/{user_guid} | Delete user
 [**DeprecatedRequestPaymentProcessorAuthorizationCode**](MxPlatformApi.md#DeprecatedRequestPaymentProcessorAuthorizationCode) | **Post** /payment_processor_authorization_code | (Deprecated) Request an authorization code.
 [**DownloadStatementPDF**](MxPlatformApi.md#DownloadStatementPDF) | **Get** /users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf | Download statement pdf
+[**DownloadTaxDocument**](MxPlatformApi.md#DownloadTaxDocument) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}.pdf | Download a Tax Document PDF
 [**EnhanceTransactions**](MxPlatformApi.md#EnhanceTransactions) | **Post** /transactions/enhance | Enhance transactions
 [**ExtendHistory**](MxPlatformApi.md#ExtendHistory) | **Post** /users/{user_guid}/members/{member_guid}/extend_history | Extend history
 [**FetchStatements**](MxPlatformApi.md#FetchStatements) | **Post** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
+[**FetchTaxDocuments**](MxPlatformApi.md#FetchTaxDocuments) | **Post** /users/{user_guid}/members/{member_guid}/fetch_tax_documents | Fetch Tax Documents
 [**IdentifyMember**](MxPlatformApi.md#IdentifyMember) | **Post** /users/{user_guid}/members/{member_guid}/identify | Identify member
 [**ListAccountNumbersByAccount**](MxPlatformApi.md#ListAccountNumbersByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/account_numbers | List account numbers by account
 [**ListAccountNumbersByMember**](MxPlatformApi.md#ListAccountNumbersByMember) | **Get** /users/{user_guid}/members/{member_guid}/account_numbers | List account numbers by member
@@ -54,6 +56,7 @@ Method | HTTP request | Description
 [**ListStatementsByMember**](MxPlatformApi.md#ListStatementsByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements | List statements by member
 [**ListTaggings**](MxPlatformApi.md#ListTaggings) | **Get** /users/{user_guid}/taggings | List taggings
 [**ListTags**](MxPlatformApi.md#ListTags) | **Get** /users/{user_guid}/tags | List tags
+[**ListTaxDocuments**](MxPlatformApi.md#ListTaxDocuments) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents | List Tax Documents
 [**ListTransactionRules**](MxPlatformApi.md#ListTransactionRules) | **Get** /users/{user_guid}/transaction_rules | List transaction rules
 [**ListTransactions**](MxPlatformApi.md#ListTransactions) | **Get** /users/{user_guid}/transactions | List transactions
 [**ListTransactionsByAccount**](MxPlatformApi.md#ListTransactionsByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/transactions | List transactions by account
@@ -77,6 +80,7 @@ Method | HTTP request | Description
 [**ReadStatementByMember**](MxPlatformApi.md#ReadStatementByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements/{statement_guid} | Read statement by member
 [**ReadTag**](MxPlatformApi.md#ReadTag) | **Get** /users/{user_guid}/tags/{tag_guid} | Read tag
 [**ReadTagging**](MxPlatformApi.md#ReadTagging) | **Get** /users/{user_guid}/taggings/{tagging_guid} | Read tagging
+[**ReadTaxDocument**](MxPlatformApi.md#ReadTaxDocument) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid} | Read a Tax Document
 [**ReadTransaction**](MxPlatformApi.md#ReadTransaction) | **Get** /users/{user_guid}/transactions/{transaction_guid} | Read transaction
 [**ReadTransactionRule**](MxPlatformApi.md#ReadTransactionRule) | **Get** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Read transaction rule
 [**ReadUser**](MxPlatformApi.md#ReadUser) | **Get** /users/{user_guid} | Read user
@@ -1684,6 +1688,82 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DownloadTaxDocument
+
+> *os.File DownloadTaxDocument(ctx, taxDocumentGuid, memberGuid, userGuid).Execute()
+
+Download a Tax Document PDF
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    taxDocumentGuid := "TAX-987dfds1b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `tax_document`.
+    memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DownloadTaxDocument(context.Background(), taxDocumentGuid, memberGuid, userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DownloadTaxDocument``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DownloadTaxDocument`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.DownloadTaxDocument`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**taxDocumentGuid** | **string** | The unique id for a &#x60;tax_document&#x60;. | 
+**memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDownloadTaxDocumentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+pdf
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EnhanceTransactions
 
 > EnhanceTransactionsResponseBody EnhanceTransactions(ctx).EnhanceTransactionsRequestBody(enhanceTransactionsRequestBody).Execute()
@@ -1871,6 +1951,79 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiFetchStatementsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**MemberResponseBody**](MemberResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FetchTaxDocuments
+
+> MemberResponseBody FetchTaxDocuments(ctx, memberGuid, userGuid).Execute()
+
+Fetch Tax Documents
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.FetchTaxDocuments(context.Background(), memberGuid, userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.FetchTaxDocuments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FetchTaxDocuments`: MemberResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.FetchTaxDocuments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFetchTaxDocumentsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3775,6 +3928,83 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListTaxDocuments
+
+> TaxDocumentsResponseBody ListTaxDocuments(ctx, memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+List Tax Documents
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListTaxDocuments(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTaxDocuments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListTaxDocuments`: TaxDocumentsResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListTaxDocuments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListTaxDocumentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**TaxDocumentsResponseBody**](TaxDocumentsResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListTransactionRules
 
 > TransactionRulesResponseBody ListTransactionRules(ctx, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
@@ -5476,6 +5706,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TaggingResponseBody**](TaggingResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadTaxDocument
+
+> TaxDocumentResponseBody ReadTaxDocument(ctx, taxDocumentGuid, memberGuid, userGuid).Execute()
+
+Read a Tax Document
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    taxDocumentGuid := "TAX-987dfds1b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `tax_document`.
+    memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadTaxDocument(context.Background(), taxDocumentGuid, memberGuid, userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTaxDocument``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadTaxDocument`: TaxDocumentResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadTaxDocument`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**taxDocumentGuid** | **string** | The unique id for a &#x60;tax_document&#x60;. | 
+**memberGuid** | **string** | The unique id for a &#x60;member&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadTaxDocumentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**TaxDocumentResponseBody**](TaxDocumentResponseBody.md)
 
 ### Authorization
 
