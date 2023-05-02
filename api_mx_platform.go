@@ -2391,6 +2391,118 @@ func (a *MxPlatformApiService) DownloadStatementPDFExecute(r ApiDownloadStatemen
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiDownloadTaxDocumentRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	taxDocumentGuid string
+	memberGuid string
+	userGuid string
+}
+
+
+func (r ApiDownloadTaxDocumentRequest) Execute() (**os.File, *http.Response, error) {
+	return r.ApiService.DownloadTaxDocumentExecute(r)
+}
+
+/*
+DownloadTaxDocument Download a Tax Document PDF
+
+Use this endpoint to download a PDF version of the specified tax document. The endpoint URL is the base URL appended with the uri of the tax_document.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param taxDocumentGuid The unique id for a `tax_document`.
+ @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
+ @return ApiDownloadTaxDocumentRequest
+*/
+func (a *MxPlatformApiService) DownloadTaxDocument(ctx context.Context, taxDocumentGuid string, memberGuid string, userGuid string) ApiDownloadTaxDocumentRequest {
+	return ApiDownloadTaxDocumentRequest{
+		ApiService: a,
+		ctx: ctx,
+		taxDocumentGuid: taxDocumentGuid,
+		memberGuid: memberGuid,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return *os.File
+func (a *MxPlatformApiService) DownloadTaxDocumentExecute(r ApiDownloadTaxDocumentRequest) (**os.File, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  **os.File
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DownloadTaxDocument")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}.pdf"
+	localVarPath = strings.Replace(localVarPath, "{"+"tax_document_guid"+"}", url.PathEscape(parameterToString(r.taxDocumentGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+pdf"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEnhanceTransactionsRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
@@ -2657,6 +2769,114 @@ func (a *MxPlatformApiService) FetchStatementsExecute(r ApiFetchStatementsReques
 	}
 
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/fetch_statements"
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiFetchTaxDocumentsRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	memberGuid string
+	userGuid string
+}
+
+
+func (r ApiFetchTaxDocumentsRequest) Execute() (*MemberResponseBody, *http.Response, error) {
+	return r.ApiService.FetchTaxDocumentsExecute(r)
+}
+
+/*
+FetchTaxDocuments Fetch Tax Documents
+
+Use this endpoint to fetch (aggregate) the tax documents associated with the specified member. This request **does not** return the latest tax documents. It just starts the document aggregation process and returns the initial state of the process. You must interact with the newly aggregated data using the other document endpoints in this reference. This request may also trigger multi-factor authentication which requires end-user input and a specific process for answering authentication challenges.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
+ @return ApiFetchTaxDocumentsRequest
+*/
+func (a *MxPlatformApiService) FetchTaxDocuments(ctx context.Context, memberGuid string, userGuid string) ApiFetchTaxDocumentsRequest {
+	return ApiFetchTaxDocumentsRequest{
+		ApiService: a,
+		ctx: ctx,
+		memberGuid: memberGuid,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return MemberResponseBody
+func (a *MxPlatformApiService) FetchTaxDocumentsExecute(r ApiFetchTaxDocumentsRequest) (*MemberResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MemberResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.FetchTaxDocuments")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/fetch_tax_documents"
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
@@ -5890,6 +6110,132 @@ func (a *MxPlatformApiService) ListTagsExecute(r ApiListTagsRequest) (*TagsRespo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListTaxDocumentsRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	memberGuid string
+	userGuid string
+	page *int32
+	recordsPerPage *int32
+}
+
+// Specify current page.
+func (r ApiListTaxDocumentsRequest) Page(page int32) ApiListTaxDocumentsRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiListTaxDocumentsRequest) RecordsPerPage(recordsPerPage int32) ApiListTaxDocumentsRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiListTaxDocumentsRequest) Execute() (*TaxDocumentsResponseBody, *http.Response, error) {
+	return r.ApiService.ListTaxDocumentsExecute(r)
+}
+
+/*
+ListTaxDocuments List Tax Documents
+
+Use this endpoint to get a paginated list of tax documents.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
+ @return ApiListTaxDocumentsRequest
+*/
+func (a *MxPlatformApiService) ListTaxDocuments(ctx context.Context, memberGuid string, userGuid string) ApiListTaxDocumentsRequest {
+	return ApiListTaxDocumentsRequest{
+		ApiService: a,
+		ctx: ctx,
+		memberGuid: memberGuid,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return TaxDocumentsResponseBody
+func (a *MxPlatformApiService) ListTaxDocumentsExecute(r ApiListTaxDocumentsRequest) (*TaxDocumentsResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TaxDocumentsResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListTaxDocuments")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/tax_documents"
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListTransactionRulesRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
@@ -8532,6 +8878,118 @@ func (a *MxPlatformApiService) ReadTaggingExecute(r ApiReadTaggingRequest) (*Tag
 
 	localVarPath := localBasePath + "/users/{user_guid}/taggings/{tagging_guid}"
 	localVarPath = strings.Replace(localVarPath, "{"+"tagging_guid"+"}", url.PathEscape(parameterToString(r.taggingGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadTaxDocumentRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	taxDocumentGuid string
+	memberGuid string
+	userGuid string
+}
+
+
+func (r ApiReadTaxDocumentRequest) Execute() (*TaxDocumentResponseBody, *http.Response, error) {
+	return r.ApiService.ReadTaxDocumentExecute(r)
+}
+
+/*
+ReadTaxDocument Read a Tax Document
+
+Use this endpoint to read the attributes of the specified tax document.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param taxDocumentGuid The unique id for a `tax_document`.
+ @param memberGuid The unique id for a `member`.
+ @param userGuid The unique id for a `user`.
+ @return ApiReadTaxDocumentRequest
+*/
+func (a *MxPlatformApiService) ReadTaxDocument(ctx context.Context, taxDocumentGuid string, memberGuid string, userGuid string) ApiReadTaxDocumentRequest {
+	return ApiReadTaxDocumentRequest{
+		ApiService: a,
+		ctx: ctx,
+		taxDocumentGuid: taxDocumentGuid,
+		memberGuid: memberGuid,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return TaxDocumentResponseBody
+func (a *MxPlatformApiService) ReadTaxDocumentExecute(r ApiReadTaxDocumentRequest) (*TaxDocumentResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TaxDocumentResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadTaxDocument")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"tax_document_guid"+"}", url.PathEscape(parameterToString(r.taxDocumentGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
