@@ -17,6 +17,8 @@ import (
 // InstitutionResponse struct for InstitutionResponse
 type InstitutionResponse struct {
 	Code NullableString `json:"code,omitempty"`
+	ForgotPasswordUrl NullableString `json:"forgot_password_url,omitempty"`
+	ForgotUsernameUrl NullableString `json:"forgot_username_url,omitempty"`
 	InstructionalText NullableString `json:"instructional_text,omitempty"`
 	MediumLogoUrl NullableString `json:"medium_logo_url,omitempty"`
 	Name NullableString `json:"name,omitempty"`
@@ -26,6 +28,7 @@ type InstitutionResponse struct {
 	SupportsAccountVerification NullableBool `json:"supports_account_verification,omitempty"`
 	SupportsOauth NullableBool `json:"supports_oauth,omitempty"`
 	SupportsTransactionHistory NullableBool `json:"supports_transaction_history,omitempty"`
+	TroubleSigningInUrl NullableString `json:"trouble_signing_in_url,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 }
 
@@ -86,6 +89,90 @@ func (o *InstitutionResponse) SetCodeNil() {
 // UnsetCode ensures that no value is present for Code, not even an explicit nil
 func (o *InstitutionResponse) UnsetCode() {
 	o.Code.Unset()
+}
+
+// GetForgotPasswordUrl returns the ForgotPasswordUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstitutionResponse) GetForgotPasswordUrl() string {
+	if o == nil || o.ForgotPasswordUrl.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.ForgotPasswordUrl.Get()
+}
+
+// GetForgotPasswordUrlOk returns a tuple with the ForgotPasswordUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstitutionResponse) GetForgotPasswordUrlOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.ForgotPasswordUrl.Get(), o.ForgotPasswordUrl.IsSet()
+}
+
+// HasForgotPasswordUrl returns a boolean if a field has been set.
+func (o *InstitutionResponse) HasForgotPasswordUrl() bool {
+	if o != nil && o.ForgotPasswordUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetForgotPasswordUrl gets a reference to the given NullableString and assigns it to the ForgotPasswordUrl field.
+func (o *InstitutionResponse) SetForgotPasswordUrl(v string) {
+	o.ForgotPasswordUrl.Set(&v)
+}
+// SetForgotPasswordUrlNil sets the value for ForgotPasswordUrl to be an explicit nil
+func (o *InstitutionResponse) SetForgotPasswordUrlNil() {
+	o.ForgotPasswordUrl.Set(nil)
+}
+
+// UnsetForgotPasswordUrl ensures that no value is present for ForgotPasswordUrl, not even an explicit nil
+func (o *InstitutionResponse) UnsetForgotPasswordUrl() {
+	o.ForgotPasswordUrl.Unset()
+}
+
+// GetForgotUsernameUrl returns the ForgotUsernameUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstitutionResponse) GetForgotUsernameUrl() string {
+	if o == nil || o.ForgotUsernameUrl.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.ForgotUsernameUrl.Get()
+}
+
+// GetForgotUsernameUrlOk returns a tuple with the ForgotUsernameUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstitutionResponse) GetForgotUsernameUrlOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.ForgotUsernameUrl.Get(), o.ForgotUsernameUrl.IsSet()
+}
+
+// HasForgotUsernameUrl returns a boolean if a field has been set.
+func (o *InstitutionResponse) HasForgotUsernameUrl() bool {
+	if o != nil && o.ForgotUsernameUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetForgotUsernameUrl gets a reference to the given NullableString and assigns it to the ForgotUsernameUrl field.
+func (o *InstitutionResponse) SetForgotUsernameUrl(v string) {
+	o.ForgotUsernameUrl.Set(&v)
+}
+// SetForgotUsernameUrlNil sets the value for ForgotUsernameUrl to be an explicit nil
+func (o *InstitutionResponse) SetForgotUsernameUrlNil() {
+	o.ForgotUsernameUrl.Set(nil)
+}
+
+// UnsetForgotUsernameUrl ensures that no value is present for ForgotUsernameUrl, not even an explicit nil
+func (o *InstitutionResponse) UnsetForgotUsernameUrl() {
+	o.ForgotUsernameUrl.Unset()
 }
 
 // GetInstructionalText returns the InstructionalText field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -466,6 +553,48 @@ func (o *InstitutionResponse) UnsetSupportsTransactionHistory() {
 	o.SupportsTransactionHistory.Unset()
 }
 
+// GetTroubleSigningInUrl returns the TroubleSigningInUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstitutionResponse) GetTroubleSigningInUrl() string {
+	if o == nil || o.TroubleSigningInUrl.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.TroubleSigningInUrl.Get()
+}
+
+// GetTroubleSigningInUrlOk returns a tuple with the TroubleSigningInUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstitutionResponse) GetTroubleSigningInUrlOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.TroubleSigningInUrl.Get(), o.TroubleSigningInUrl.IsSet()
+}
+
+// HasTroubleSigningInUrl returns a boolean if a field has been set.
+func (o *InstitutionResponse) HasTroubleSigningInUrl() bool {
+	if o != nil && o.TroubleSigningInUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTroubleSigningInUrl gets a reference to the given NullableString and assigns it to the TroubleSigningInUrl field.
+func (o *InstitutionResponse) SetTroubleSigningInUrl(v string) {
+	o.TroubleSigningInUrl.Set(&v)
+}
+// SetTroubleSigningInUrlNil sets the value for TroubleSigningInUrl to be an explicit nil
+func (o *InstitutionResponse) SetTroubleSigningInUrlNil() {
+	o.TroubleSigningInUrl.Set(nil)
+}
+
+// UnsetTroubleSigningInUrl ensures that no value is present for TroubleSigningInUrl, not even an explicit nil
+func (o *InstitutionResponse) UnsetTroubleSigningInUrl() {
+	o.TroubleSigningInUrl.Unset()
+}
+
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetUrl() string {
 	if o == nil || o.Url.Get() == nil {
@@ -513,6 +642,12 @@ func (o InstitutionResponse) MarshalJSON() ([]byte, error) {
 	if o.Code.IsSet() {
 		toSerialize["code"] = o.Code.Get()
 	}
+	if o.ForgotPasswordUrl.IsSet() {
+		toSerialize["forgot_password_url"] = o.ForgotPasswordUrl.Get()
+	}
+	if o.ForgotUsernameUrl.IsSet() {
+		toSerialize["forgot_username_url"] = o.ForgotUsernameUrl.Get()
+	}
 	if o.InstructionalText.IsSet() {
 		toSerialize["instructional_text"] = o.InstructionalText.Get()
 	}
@@ -539,6 +674,9 @@ func (o InstitutionResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.SupportsTransactionHistory.IsSet() {
 		toSerialize["supports_transaction_history"] = o.SupportsTransactionHistory.Get()
+	}
+	if o.TroubleSigningInUrl.IsSet() {
+		toSerialize["trouble_signing_in_url"] = o.TroubleSigningInUrl.Get()
 	}
 	if o.Url.IsSet() {
 		toSerialize["url"] = o.Url.Get()

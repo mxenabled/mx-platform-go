@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | Pointer to **NullableString** |  | [optional] 
+**ForgotPasswordUrl** | Pointer to **NullableString** |  | [optional] 
+**ForgotUsernameUrl** | Pointer to **NullableString** |  | [optional] 
 **InstructionalText** | Pointer to **NullableString** |  | [optional] 
 **MediumLogoUrl** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
@@ -14,6 +16,7 @@ Name | Type | Description | Notes
 **SupportsAccountVerification** | Pointer to **NullableBool** |  | [optional] 
 **SupportsOauth** | Pointer to **NullableBool** |  | [optional] 
 **SupportsTransactionHistory** | Pointer to **NullableBool** |  | [optional] 
+**TroubleSigningInUrl** | Pointer to **NullableString** |  | [optional] 
 **Url** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -70,6 +73,76 @@ HasCode returns a boolean if a field has been set.
 `func (o *InstitutionResponse) UnsetCode()`
 
 UnsetCode ensures that no value is present for Code, not even an explicit nil
+### GetForgotPasswordUrl
+
+`func (o *InstitutionResponse) GetForgotPasswordUrl() string`
+
+GetForgotPasswordUrl returns the ForgotPasswordUrl field if non-nil, zero value otherwise.
+
+### GetForgotPasswordUrlOk
+
+`func (o *InstitutionResponse) GetForgotPasswordUrlOk() (*string, bool)`
+
+GetForgotPasswordUrlOk returns a tuple with the ForgotPasswordUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForgotPasswordUrl
+
+`func (o *InstitutionResponse) SetForgotPasswordUrl(v string)`
+
+SetForgotPasswordUrl sets ForgotPasswordUrl field to given value.
+
+### HasForgotPasswordUrl
+
+`func (o *InstitutionResponse) HasForgotPasswordUrl() bool`
+
+HasForgotPasswordUrl returns a boolean if a field has been set.
+
+### SetForgotPasswordUrlNil
+
+`func (o *InstitutionResponse) SetForgotPasswordUrlNil(b bool)`
+
+ SetForgotPasswordUrlNil sets the value for ForgotPasswordUrl to be an explicit nil
+
+### UnsetForgotPasswordUrl
+`func (o *InstitutionResponse) UnsetForgotPasswordUrl()`
+
+UnsetForgotPasswordUrl ensures that no value is present for ForgotPasswordUrl, not even an explicit nil
+### GetForgotUsernameUrl
+
+`func (o *InstitutionResponse) GetForgotUsernameUrl() string`
+
+GetForgotUsernameUrl returns the ForgotUsernameUrl field if non-nil, zero value otherwise.
+
+### GetForgotUsernameUrlOk
+
+`func (o *InstitutionResponse) GetForgotUsernameUrlOk() (*string, bool)`
+
+GetForgotUsernameUrlOk returns a tuple with the ForgotUsernameUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForgotUsernameUrl
+
+`func (o *InstitutionResponse) SetForgotUsernameUrl(v string)`
+
+SetForgotUsernameUrl sets ForgotUsernameUrl field to given value.
+
+### HasForgotUsernameUrl
+
+`func (o *InstitutionResponse) HasForgotUsernameUrl() bool`
+
+HasForgotUsernameUrl returns a boolean if a field has been set.
+
+### SetForgotUsernameUrlNil
+
+`func (o *InstitutionResponse) SetForgotUsernameUrlNil(b bool)`
+
+ SetForgotUsernameUrlNil sets the value for ForgotUsernameUrl to be an explicit nil
+
+### UnsetForgotUsernameUrl
+`func (o *InstitutionResponse) UnsetForgotUsernameUrl()`
+
+UnsetForgotUsernameUrl ensures that no value is present for ForgotUsernameUrl, not even an explicit nil
 ### GetInstructionalText
 
 `func (o *InstitutionResponse) GetInstructionalText() string`
@@ -385,6 +458,41 @@ HasSupportsTransactionHistory returns a boolean if a field has been set.
 `func (o *InstitutionResponse) UnsetSupportsTransactionHistory()`
 
 UnsetSupportsTransactionHistory ensures that no value is present for SupportsTransactionHistory, not even an explicit nil
+### GetTroubleSigningInUrl
+
+`func (o *InstitutionResponse) GetTroubleSigningInUrl() string`
+
+GetTroubleSigningInUrl returns the TroubleSigningInUrl field if non-nil, zero value otherwise.
+
+### GetTroubleSigningInUrlOk
+
+`func (o *InstitutionResponse) GetTroubleSigningInUrlOk() (*string, bool)`
+
+GetTroubleSigningInUrlOk returns a tuple with the TroubleSigningInUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTroubleSigningInUrl
+
+`func (o *InstitutionResponse) SetTroubleSigningInUrl(v string)`
+
+SetTroubleSigningInUrl sets TroubleSigningInUrl field to given value.
+
+### HasTroubleSigningInUrl
+
+`func (o *InstitutionResponse) HasTroubleSigningInUrl() bool`
+
+HasTroubleSigningInUrl returns a boolean if a field has been set.
+
+### SetTroubleSigningInUrlNil
+
+`func (o *InstitutionResponse) SetTroubleSigningInUrlNil(b bool)`
+
+ SetTroubleSigningInUrlNil sets the value for TroubleSigningInUrl to be an explicit nil
+
+### UnsetTroubleSigningInUrl
+`func (o *InstitutionResponse) UnsetTroubleSigningInUrl()`
+
+UnsetTroubleSigningInUrl ensures that no value is present for TroubleSigningInUrl, not even an explicit nil
 ### GetUrl
 
 `func (o *InstitutionResponse) GetUrl() string`
