@@ -36,8 +36,10 @@ type AccountResponse struct {
 	InstitutionCode NullableString `json:"institution_code,omitempty"`
 	InsuredName NullableString `json:"insured_name,omitempty"`
 	InterestRate NullableFloat32 `json:"interest_rate,omitempty"`
+	IsBusiness NullableBool `json:"is_business,omitempty"`
 	IsClosed NullableBool `json:"is_closed,omitempty"`
 	IsHidden NullableBool `json:"is_hidden,omitempty"`
+	IsManual NullableBool `json:"is_manual,omitempty"`
 	LastPayment NullableFloat32 `json:"last_payment,omitempty"`
 	LastPaymentAt NullableString `json:"last_payment_at,omitempty"`
 	LoanAmount NullableFloat32 `json:"loan_amount,omitempty"`
@@ -55,6 +57,7 @@ type AccountResponse struct {
 	PaymentDueAt NullableString `json:"payment_due_at,omitempty"`
 	PayoffBalance NullableFloat32 `json:"payoff_balance,omitempty"`
 	PremiumAmount NullableFloat32 `json:"premium_amount,omitempty"`
+	PropertyType NullableString `json:"property_type,omitempty"`
 	RoutingNumber NullableString `json:"routing_number,omitempty"`
 	StartedOn NullableString `json:"started_on,omitempty"`
 	Subtype NullableString `json:"subtype,omitempty"`
@@ -922,6 +925,48 @@ func (o *AccountResponse) UnsetInterestRate() {
 	o.InterestRate.Unset()
 }
 
+// GetIsBusiness returns the IsBusiness field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetIsBusiness() bool {
+	if o == nil || o.IsBusiness.Get() == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsBusiness.Get()
+}
+
+// GetIsBusinessOk returns a tuple with the IsBusiness field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetIsBusinessOk() (*bool, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.IsBusiness.Get(), o.IsBusiness.IsSet()
+}
+
+// HasIsBusiness returns a boolean if a field has been set.
+func (o *AccountResponse) HasIsBusiness() bool {
+	if o != nil && o.IsBusiness.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsBusiness gets a reference to the given NullableBool and assigns it to the IsBusiness field.
+func (o *AccountResponse) SetIsBusiness(v bool) {
+	o.IsBusiness.Set(&v)
+}
+// SetIsBusinessNil sets the value for IsBusiness to be an explicit nil
+func (o *AccountResponse) SetIsBusinessNil() {
+	o.IsBusiness.Set(nil)
+}
+
+// UnsetIsBusiness ensures that no value is present for IsBusiness, not even an explicit nil
+func (o *AccountResponse) UnsetIsBusiness() {
+	o.IsBusiness.Unset()
+}
+
 // GetIsClosed returns the IsClosed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetIsClosed() bool {
 	if o == nil || o.IsClosed.Get() == nil {
@@ -1004,6 +1049,48 @@ func (o *AccountResponse) SetIsHiddenNil() {
 // UnsetIsHidden ensures that no value is present for IsHidden, not even an explicit nil
 func (o *AccountResponse) UnsetIsHidden() {
 	o.IsHidden.Unset()
+}
+
+// GetIsManual returns the IsManual field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetIsManual() bool {
+	if o == nil || o.IsManual.Get() == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsManual.Get()
+}
+
+// GetIsManualOk returns a tuple with the IsManual field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetIsManualOk() (*bool, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.IsManual.Get(), o.IsManual.IsSet()
+}
+
+// HasIsManual returns a boolean if a field has been set.
+func (o *AccountResponse) HasIsManual() bool {
+	if o != nil && o.IsManual.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsManual gets a reference to the given NullableBool and assigns it to the IsManual field.
+func (o *AccountResponse) SetIsManual(v bool) {
+	o.IsManual.Set(&v)
+}
+// SetIsManualNil sets the value for IsManual to be an explicit nil
+func (o *AccountResponse) SetIsManualNil() {
+	o.IsManual.Set(nil)
+}
+
+// UnsetIsManual ensures that no value is present for IsManual, not even an explicit nil
+func (o *AccountResponse) UnsetIsManual() {
+	o.IsManual.Unset()
 }
 
 // GetLastPayment returns the LastPayment field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1720,6 +1807,48 @@ func (o *AccountResponse) UnsetPremiumAmount() {
 	o.PremiumAmount.Unset()
 }
 
+// GetPropertyType returns the PropertyType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetPropertyType() string {
+	if o == nil || o.PropertyType.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.PropertyType.Get()
+}
+
+// GetPropertyTypeOk returns a tuple with the PropertyType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetPropertyTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.PropertyType.Get(), o.PropertyType.IsSet()
+}
+
+// HasPropertyType returns a boolean if a field has been set.
+func (o *AccountResponse) HasPropertyType() bool {
+	if o != nil && o.PropertyType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPropertyType gets a reference to the given NullableString and assigns it to the PropertyType field.
+func (o *AccountResponse) SetPropertyType(v string) {
+	o.PropertyType.Set(&v)
+}
+// SetPropertyTypeNil sets the value for PropertyType to be an explicit nil
+func (o *AccountResponse) SetPropertyTypeNil() {
+	o.PropertyType.Set(nil)
+}
+
+// UnsetPropertyType ensures that no value is present for PropertyType, not even an explicit nil
+func (o *AccountResponse) UnsetPropertyType() {
+	o.PropertyType.Unset()
+}
+
 // GetRoutingNumber returns the RoutingNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetRoutingNumber() string {
 	if o == nil || o.RoutingNumber.Get() == nil {
@@ -2118,11 +2247,17 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	if o.InterestRate.IsSet() {
 		toSerialize["interest_rate"] = o.InterestRate.Get()
 	}
+	if o.IsBusiness.IsSet() {
+		toSerialize["is_business"] = o.IsBusiness.Get()
+	}
 	if o.IsClosed.IsSet() {
 		toSerialize["is_closed"] = o.IsClosed.Get()
 	}
 	if o.IsHidden.IsSet() {
 		toSerialize["is_hidden"] = o.IsHidden.Get()
+	}
+	if o.IsManual.IsSet() {
+		toSerialize["is_manual"] = o.IsManual.Get()
 	}
 	if o.LastPayment.IsSet() {
 		toSerialize["last_payment"] = o.LastPayment.Get()
@@ -2174,6 +2309,9 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.PremiumAmount.IsSet() {
 		toSerialize["premium_amount"] = o.PremiumAmount.Get()
+	}
+	if o.PropertyType.IsSet() {
+		toSerialize["property_type"] = o.PropertyType.Get()
 	}
 	if o.RoutingNumber.IsSet() {
 		toSerialize["routing_number"] = o.RoutingNumber.Get()

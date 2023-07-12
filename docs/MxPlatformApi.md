@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**CreateManagedAccount**](MxPlatformApi.md#CreateManagedAccount) | **Post** /users/{user_guid}/managed_members/{member_guid}/accounts | Create managed account
 [**CreateManagedMember**](MxPlatformApi.md#CreateManagedMember) | **Post** /users/{user_guid}/managed_members | Create managed member
 [**CreateManagedTransaction**](MxPlatformApi.md#CreateManagedTransaction) | **Post** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions | Create managed transaction
+[**CreateManualAccount**](MxPlatformApi.md#CreateManualAccount) | **Post** /users/{user_guid}/accounts | Create manual account
 [**CreateMember**](MxPlatformApi.md#CreateMember) | **Post** /users/{user_guid}/members | Create member
 [**CreateTag**](MxPlatformApi.md#CreateTag) | **Post** /users/{user_guid}/tags | Create tag
 [**CreateTagging**](MxPlatformApi.md#CreateTagging) | **Post** /users/{user_guid}/taggings | Create tagging
@@ -19,6 +20,7 @@ Method | HTTP request | Description
 [**DeleteManagedAccount**](MxPlatformApi.md#DeleteManagedAccount) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Delete managed account
 [**DeleteManagedMember**](MxPlatformApi.md#DeleteManagedMember) | **Delete** /users/{user_guid}/managed_members/{member_guid} | Delete managed member
 [**DeleteManagedTransaction**](MxPlatformApi.md#DeleteManagedTransaction) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Delete managed transaction
+[**DeleteManualAccount**](MxPlatformApi.md#DeleteManualAccount) | **Delete** /users/{user_guid}/accounts/{account_guid} | Delete manual account
 [**DeleteMember**](MxPlatformApi.md#DeleteMember) | **Delete** /users/{user_guid}/members/{member_guid} | Delete member
 [**DeleteTag**](MxPlatformApi.md#DeleteTag) | **Delete** /users/{user_guid}/tags/{tag_guid} | Delete tag
 [**DeleteTagging**](MxPlatformApi.md#DeleteTagging) | **Delete** /users/{user_guid}/taggings/{tagging_guid} | Delete tagging
@@ -532,6 +534,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TransactionResponseBody**](TransactionResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateManualAccount
+
+> AccountResponseBody CreateManualAccount(ctx, userGuid).AccountCreateRequestBody(accountCreateRequestBody).Execute()
+
+Create manual account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    accountCreateRequestBody := *openapiclient.NewAccountCreateRequestBody() // AccountCreateRequestBody | Manual account object to be created.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateManualAccount(context.Background(), userGuid).AccountCreateRequestBody(accountCreateRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManualAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateManualAccount`: AccountResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateManualAccount`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateManualAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **accountCreateRequestBody** | [**AccountCreateRequestBody**](AccountCreateRequestBody.md) | Manual account object to be created. | 
+
+### Return type
+
+[**AccountResponseBody**](AccountResponseBody.md)
 
 ### Authorization
 
@@ -1173,6 +1247,77 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteManualAccount
+
+> DeleteManualAccount(ctx, accountGuid, userGuid).Execute()
+
+Delete manual account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteManualAccount(context.Background(), accountGuid, userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManualAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteManualAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 

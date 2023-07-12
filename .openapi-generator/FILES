@@ -4,6 +4,8 @@ README.md
 api_mx_platform.go
 client.go
 configuration.go
+docs/AccountCreateRequest.md
+docs/AccountCreateRequestBody.md
 docs/AccountNumberResponse.md
 docs/AccountNumbersResponseBody.md
 docs/AccountOwnerResponse.md
@@ -126,6 +128,8 @@ docs/WidgetResponse.md
 docs/WidgetResponseBody.md
 go.mod
 go.sum
+model_account_create_request.go
+model_account_create_request_body.go
 model_account_number_response.go
 model_account_numbers_response_body.go
 model_account_owner_response.go

@@ -24,8 +24,10 @@ Name | Type | Description | Notes
 **InstitutionCode** | Pointer to **NullableString** |  | [optional] 
 **InsuredName** | Pointer to **NullableString** |  | [optional] 
 **InterestRate** | Pointer to **NullableFloat32** |  | [optional] 
+**IsBusiness** | Pointer to **NullableBool** |  | [optional] 
 **IsClosed** | Pointer to **NullableBool** |  | [optional] 
 **IsHidden** | Pointer to **NullableBool** |  | [optional] 
+**IsManual** | Pointer to **NullableBool** |  | [optional] 
 **LastPayment** | Pointer to **NullableFloat32** |  | [optional] 
 **LastPaymentAt** | Pointer to **NullableString** |  | [optional] 
 **LoanAmount** | Pointer to **NullableFloat32** |  | [optional] 
@@ -43,6 +45,7 @@ Name | Type | Description | Notes
 **PaymentDueAt** | Pointer to **NullableString** |  | [optional] 
 **PayoffBalance** | Pointer to **NullableFloat32** |  | [optional] 
 **PremiumAmount** | Pointer to **NullableFloat32** |  | [optional] 
+**PropertyType** | Pointer to **NullableString** |  | [optional] 
 **RoutingNumber** | Pointer to **NullableString** |  | [optional] 
 **StartedOn** | Pointer to **NullableString** |  | [optional] 
 **Subtype** | Pointer to **NullableString** |  | [optional] 
@@ -771,6 +774,41 @@ HasInterestRate returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetInterestRate()`
 
 UnsetInterestRate ensures that no value is present for InterestRate, not even an explicit nil
+### GetIsBusiness
+
+`func (o *AccountResponse) GetIsBusiness() bool`
+
+GetIsBusiness returns the IsBusiness field if non-nil, zero value otherwise.
+
+### GetIsBusinessOk
+
+`func (o *AccountResponse) GetIsBusinessOk() (*bool, bool)`
+
+GetIsBusinessOk returns a tuple with the IsBusiness field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsBusiness
+
+`func (o *AccountResponse) SetIsBusiness(v bool)`
+
+SetIsBusiness sets IsBusiness field to given value.
+
+### HasIsBusiness
+
+`func (o *AccountResponse) HasIsBusiness() bool`
+
+HasIsBusiness returns a boolean if a field has been set.
+
+### SetIsBusinessNil
+
+`func (o *AccountResponse) SetIsBusinessNil(b bool)`
+
+ SetIsBusinessNil sets the value for IsBusiness to be an explicit nil
+
+### UnsetIsBusiness
+`func (o *AccountResponse) UnsetIsBusiness()`
+
+UnsetIsBusiness ensures that no value is present for IsBusiness, not even an explicit nil
 ### GetIsClosed
 
 `func (o *AccountResponse) GetIsClosed() bool`
@@ -841,6 +879,41 @@ HasIsHidden returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetIsHidden()`
 
 UnsetIsHidden ensures that no value is present for IsHidden, not even an explicit nil
+### GetIsManual
+
+`func (o *AccountResponse) GetIsManual() bool`
+
+GetIsManual returns the IsManual field if non-nil, zero value otherwise.
+
+### GetIsManualOk
+
+`func (o *AccountResponse) GetIsManualOk() (*bool, bool)`
+
+GetIsManualOk returns a tuple with the IsManual field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsManual
+
+`func (o *AccountResponse) SetIsManual(v bool)`
+
+SetIsManual sets IsManual field to given value.
+
+### HasIsManual
+
+`func (o *AccountResponse) HasIsManual() bool`
+
+HasIsManual returns a boolean if a field has been set.
+
+### SetIsManualNil
+
+`func (o *AccountResponse) SetIsManualNil(b bool)`
+
+ SetIsManualNil sets the value for IsManual to be an explicit nil
+
+### UnsetIsManual
+`func (o *AccountResponse) UnsetIsManual()`
+
+UnsetIsManual ensures that no value is present for IsManual, not even an explicit nil
 ### GetLastPayment
 
 `func (o *AccountResponse) GetLastPayment() float32`
@@ -1436,6 +1509,41 @@ HasPremiumAmount returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetPremiumAmount()`
 
 UnsetPremiumAmount ensures that no value is present for PremiumAmount, not even an explicit nil
+### GetPropertyType
+
+`func (o *AccountResponse) GetPropertyType() string`
+
+GetPropertyType returns the PropertyType field if non-nil, zero value otherwise.
+
+### GetPropertyTypeOk
+
+`func (o *AccountResponse) GetPropertyTypeOk() (*string, bool)`
+
+GetPropertyTypeOk returns a tuple with the PropertyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPropertyType
+
+`func (o *AccountResponse) SetPropertyType(v string)`
+
+SetPropertyType sets PropertyType field to given value.
+
+### HasPropertyType
+
+`func (o *AccountResponse) HasPropertyType() bool`
+
+HasPropertyType returns a boolean if a field has been set.
+
+### SetPropertyTypeNil
+
+`func (o *AccountResponse) SetPropertyTypeNil(b bool)`
+
+ SetPropertyTypeNil sets the value for PropertyType to be an explicit nil
+
+### UnsetPropertyType
+`func (o *AccountResponse) UnsetPropertyType()`
+
+UnsetPropertyType ensures that no value is present for PropertyType, not even an explicit nil
 ### GetRoutingNumber
 
 `func (o *AccountResponse) GetRoutingNumber() string`

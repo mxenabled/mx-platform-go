@@ -716,6 +716,121 @@ func (a *MxPlatformApiService) CreateManagedTransactionExecute(r ApiCreateManage
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateManualAccountRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	accountCreateRequestBody *AccountCreateRequestBody
+}
+
+// Manual account object to be created.
+func (r ApiCreateManualAccountRequest) AccountCreateRequestBody(accountCreateRequestBody AccountCreateRequestBody) ApiCreateManualAccountRequest {
+	r.accountCreateRequestBody = &accountCreateRequestBody
+	return r
+}
+
+func (r ApiCreateManualAccountRequest) Execute() (*AccountResponseBody, *http.Response, error) {
+	return r.ApiService.CreateManualAccountExecute(r)
+}
+
+/*
+CreateManualAccount Create manual account
+
+This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed..
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @return ApiCreateManualAccountRequest
+*/
+func (a *MxPlatformApiService) CreateManualAccount(ctx context.Context, userGuid string) ApiCreateManualAccountRequest {
+	return ApiCreateManualAccountRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return AccountResponseBody
+func (a *MxPlatformApiService) CreateManualAccountExecute(r ApiCreateManualAccountRequest) (*AccountResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AccountResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateManualAccount")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.accountCreateRequestBody == nil {
+		return localVarReturnValue, nil, reportError("accountCreateRequestBody is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.accountCreateRequestBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCreateMemberRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
@@ -1636,6 +1751,103 @@ func (a *MxPlatformApiService) DeleteManagedTransactionExecute(r ApiDeleteManage
 	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterToString(r.transactionGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteManualAccountRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	accountGuid string
+	userGuid string
+}
+
+
+func (r ApiDeleteManualAccountRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteManualAccountExecute(r)
+}
+
+/*
+DeleteManualAccount Delete manual account
+
+This endpoint deletes accounts that were manually created. The API will respond with an empty object and a status of `204 No Content`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountGuid The unique id for an `account`.
+ @param userGuid The unique id for a `user`.
+ @return ApiDeleteManualAccountRequest
+*/
+func (a *MxPlatformApiService) DeleteManualAccount(ctx context.Context, accountGuid string, userGuid string) ApiDeleteManualAccountRequest {
+	return ApiDeleteManualAccountRequest{
+		ApiService: a,
+		ctx: ctx,
+		accountGuid: accountGuid,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+func (a *MxPlatformApiService) DeleteManualAccountExecute(r ApiDeleteManualAccountRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteManualAccount")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/accounts/{account_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"account_guid"+"}", url.PathEscape(parameterToString(r.accountGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
