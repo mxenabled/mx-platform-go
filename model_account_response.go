@@ -17,6 +17,10 @@ import (
 // AccountResponse struct for AccountResponse
 type AccountResponse struct {
 	AccountNumber NullableString `json:"account_number,omitempty"`
+	AccountOwnership NullableString `json:"account_ownership,omitempty"`
+	AnnuityPolicyToDate NullableString `json:"annuity_policy_to_date,omitempty"`
+	AnnuityProvider NullableString `json:"annuity_provider,omitempty"`
+	AnnuityTermYear NullableFloat32 `json:"annuity_term_year,omitempty"`
 	Apr NullableFloat32 `json:"apr,omitempty"`
 	Apy NullableFloat32 `json:"apy,omitempty"`
 	AvailableBalance NullableFloat32 `json:"available_balance,omitempty"`
@@ -24,7 +28,7 @@ type AccountResponse struct {
 	Balance NullableFloat32 `json:"balance,omitempty"`
 	CashBalance NullableFloat32 `json:"cash_balance,omitempty"`
 	CashSurrenderValue NullableFloat32 `json:"cash_surrender_value,omitempty"`
-	CreatedAt NullableString `json:"created_at,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty"`
 	CreditLimit NullableFloat32 `json:"credit_limit,omitempty"`
 	CurrencyCode NullableString `json:"currency_code,omitempty"`
 	DayPaymentIsDue NullableInt32 `json:"day_payment_is_due,omitempty"`
@@ -33,16 +37,16 @@ type AccountResponse struct {
 	HoldingsValue NullableFloat32 `json:"holdings_value,omitempty"`
 	Id NullableString `json:"id,omitempty"`
 	ImportedAt NullableString `json:"imported_at,omitempty"`
+	InterestRate NullableFloat32 `json:"interest_rate,omitempty"`
 	InstitutionCode NullableString `json:"institution_code,omitempty"`
 	InsuredName NullableString `json:"insured_name,omitempty"`
-	InterestRate NullableFloat32 `json:"interest_rate,omitempty"`
-	IsBusiness NullableBool `json:"is_business,omitempty"`
 	IsClosed NullableBool `json:"is_closed,omitempty"`
 	IsHidden NullableBool `json:"is_hidden,omitempty"`
 	IsManual NullableBool `json:"is_manual,omitempty"`
 	LastPayment NullableFloat32 `json:"last_payment,omitempty"`
 	LastPaymentAt NullableString `json:"last_payment_at,omitempty"`
 	LoanAmount NullableFloat32 `json:"loan_amount,omitempty"`
+	MarginBalance NullableFloat32 `json:"margin_balance,omitempty"`
 	MaturesOn NullableString `json:"matures_on,omitempty"`
 	MemberGuid NullableString `json:"member_guid,omitempty"`
 	MemberId NullableString `json:"member_id,omitempty"`
@@ -57,10 +61,11 @@ type AccountResponse struct {
 	PaymentDueAt NullableString `json:"payment_due_at,omitempty"`
 	PayoffBalance NullableFloat32 `json:"payoff_balance,omitempty"`
 	PremiumAmount NullableFloat32 `json:"premium_amount,omitempty"`
-	PropertyType NullableString `json:"property_type,omitempty"`
 	RoutingNumber NullableString `json:"routing_number,omitempty"`
 	StartedOn NullableString `json:"started_on,omitempty"`
 	Subtype NullableString `json:"subtype,omitempty"`
+	TodayUglAmount NullableFloat32 `json:"today_ugl_amount,omitempty"`
+	TodayUglPercentage NullableFloat32 `json:"today_ugl_percentage,omitempty"`
 	TotalAccountValue NullableFloat32 `json:"total_account_value,omitempty"`
 	Type NullableString `json:"type,omitempty"`
 	UpdatedAt NullableString `json:"updated_at,omitempty"`
@@ -125,6 +130,174 @@ func (o *AccountResponse) SetAccountNumberNil() {
 // UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
 func (o *AccountResponse) UnsetAccountNumber() {
 	o.AccountNumber.Unset()
+}
+
+// GetAccountOwnership returns the AccountOwnership field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetAccountOwnership() string {
+	if o == nil || o.AccountOwnership.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccountOwnership.Get()
+}
+
+// GetAccountOwnershipOk returns a tuple with the AccountOwnership field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetAccountOwnershipOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.AccountOwnership.Get(), o.AccountOwnership.IsSet()
+}
+
+// HasAccountOwnership returns a boolean if a field has been set.
+func (o *AccountResponse) HasAccountOwnership() bool {
+	if o != nil && o.AccountOwnership.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountOwnership gets a reference to the given NullableString and assigns it to the AccountOwnership field.
+func (o *AccountResponse) SetAccountOwnership(v string) {
+	o.AccountOwnership.Set(&v)
+}
+// SetAccountOwnershipNil sets the value for AccountOwnership to be an explicit nil
+func (o *AccountResponse) SetAccountOwnershipNil() {
+	o.AccountOwnership.Set(nil)
+}
+
+// UnsetAccountOwnership ensures that no value is present for AccountOwnership, not even an explicit nil
+func (o *AccountResponse) UnsetAccountOwnership() {
+	o.AccountOwnership.Unset()
+}
+
+// GetAnnuityPolicyToDate returns the AnnuityPolicyToDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetAnnuityPolicyToDate() string {
+	if o == nil || o.AnnuityPolicyToDate.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AnnuityPolicyToDate.Get()
+}
+
+// GetAnnuityPolicyToDateOk returns a tuple with the AnnuityPolicyToDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetAnnuityPolicyToDateOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.AnnuityPolicyToDate.Get(), o.AnnuityPolicyToDate.IsSet()
+}
+
+// HasAnnuityPolicyToDate returns a boolean if a field has been set.
+func (o *AccountResponse) HasAnnuityPolicyToDate() bool {
+	if o != nil && o.AnnuityPolicyToDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnuityPolicyToDate gets a reference to the given NullableString and assigns it to the AnnuityPolicyToDate field.
+func (o *AccountResponse) SetAnnuityPolicyToDate(v string) {
+	o.AnnuityPolicyToDate.Set(&v)
+}
+// SetAnnuityPolicyToDateNil sets the value for AnnuityPolicyToDate to be an explicit nil
+func (o *AccountResponse) SetAnnuityPolicyToDateNil() {
+	o.AnnuityPolicyToDate.Set(nil)
+}
+
+// UnsetAnnuityPolicyToDate ensures that no value is present for AnnuityPolicyToDate, not even an explicit nil
+func (o *AccountResponse) UnsetAnnuityPolicyToDate() {
+	o.AnnuityPolicyToDate.Unset()
+}
+
+// GetAnnuityProvider returns the AnnuityProvider field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetAnnuityProvider() string {
+	if o == nil || o.AnnuityProvider.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AnnuityProvider.Get()
+}
+
+// GetAnnuityProviderOk returns a tuple with the AnnuityProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetAnnuityProviderOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.AnnuityProvider.Get(), o.AnnuityProvider.IsSet()
+}
+
+// HasAnnuityProvider returns a boolean if a field has been set.
+func (o *AccountResponse) HasAnnuityProvider() bool {
+	if o != nil && o.AnnuityProvider.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnuityProvider gets a reference to the given NullableString and assigns it to the AnnuityProvider field.
+func (o *AccountResponse) SetAnnuityProvider(v string) {
+	o.AnnuityProvider.Set(&v)
+}
+// SetAnnuityProviderNil sets the value for AnnuityProvider to be an explicit nil
+func (o *AccountResponse) SetAnnuityProviderNil() {
+	o.AnnuityProvider.Set(nil)
+}
+
+// UnsetAnnuityProvider ensures that no value is present for AnnuityProvider, not even an explicit nil
+func (o *AccountResponse) UnsetAnnuityProvider() {
+	o.AnnuityProvider.Unset()
+}
+
+// GetAnnuityTermYear returns the AnnuityTermYear field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetAnnuityTermYear() float32 {
+	if o == nil || o.AnnuityTermYear.Get() == nil {
+		var ret float32
+		return ret
+	}
+	return *o.AnnuityTermYear.Get()
+}
+
+// GetAnnuityTermYearOk returns a tuple with the AnnuityTermYear field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetAnnuityTermYearOk() (*float32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.AnnuityTermYear.Get(), o.AnnuityTermYear.IsSet()
+}
+
+// HasAnnuityTermYear returns a boolean if a field has been set.
+func (o *AccountResponse) HasAnnuityTermYear() bool {
+	if o != nil && o.AnnuityTermYear.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnuityTermYear gets a reference to the given NullableFloat32 and assigns it to the AnnuityTermYear field.
+func (o *AccountResponse) SetAnnuityTermYear(v float32) {
+	o.AnnuityTermYear.Set(&v)
+}
+// SetAnnuityTermYearNil sets the value for AnnuityTermYear to be an explicit nil
+func (o *AccountResponse) SetAnnuityTermYearNil() {
+	o.AnnuityTermYear.Set(nil)
+}
+
+// UnsetAnnuityTermYear ensures that no value is present for AnnuityTermYear, not even an explicit nil
+func (o *AccountResponse) UnsetAnnuityTermYear() {
+	o.AnnuityTermYear.Unset()
 }
 
 // GetApr returns the Apr field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -421,46 +594,36 @@ func (o *AccountResponse) UnsetCashSurrenderValue() {
 	o.CashSurrenderValue.Unset()
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *AccountResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || o.CreatedAt == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AccountResponse) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && o.CreatedAt != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *AccountResponse) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *AccountResponse) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *AccountResponse) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
+	o.CreatedAt = &v
 }
 
 // GetCreditLimit returns the CreditLimit field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -799,6 +962,48 @@ func (o *AccountResponse) UnsetImportedAt() {
 	o.ImportedAt.Unset()
 }
 
+// GetInterestRate returns the InterestRate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetInterestRate() float32 {
+	if o == nil || o.InterestRate.Get() == nil {
+		var ret float32
+		return ret
+	}
+	return *o.InterestRate.Get()
+}
+
+// GetInterestRateOk returns a tuple with the InterestRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetInterestRateOk() (*float32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.InterestRate.Get(), o.InterestRate.IsSet()
+}
+
+// HasInterestRate returns a boolean if a field has been set.
+func (o *AccountResponse) HasInterestRate() bool {
+	if o != nil && o.InterestRate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInterestRate gets a reference to the given NullableFloat32 and assigns it to the InterestRate field.
+func (o *AccountResponse) SetInterestRate(v float32) {
+	o.InterestRate.Set(&v)
+}
+// SetInterestRateNil sets the value for InterestRate to be an explicit nil
+func (o *AccountResponse) SetInterestRateNil() {
+	o.InterestRate.Set(nil)
+}
+
+// UnsetInterestRate ensures that no value is present for InterestRate, not even an explicit nil
+func (o *AccountResponse) UnsetInterestRate() {
+	o.InterestRate.Unset()
+}
+
 // GetInstitutionCode returns the InstitutionCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetInstitutionCode() string {
 	if o == nil || o.InstitutionCode.Get() == nil {
@@ -881,90 +1086,6 @@ func (o *AccountResponse) SetInsuredNameNil() {
 // UnsetInsuredName ensures that no value is present for InsuredName, not even an explicit nil
 func (o *AccountResponse) UnsetInsuredName() {
 	o.InsuredName.Unset()
-}
-
-// GetInterestRate returns the InterestRate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountResponse) GetInterestRate() float32 {
-	if o == nil || o.InterestRate.Get() == nil {
-		var ret float32
-		return ret
-	}
-	return *o.InterestRate.Get()
-}
-
-// GetInterestRateOk returns a tuple with the InterestRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountResponse) GetInterestRateOk() (*float32, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return o.InterestRate.Get(), o.InterestRate.IsSet()
-}
-
-// HasInterestRate returns a boolean if a field has been set.
-func (o *AccountResponse) HasInterestRate() bool {
-	if o != nil && o.InterestRate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetInterestRate gets a reference to the given NullableFloat32 and assigns it to the InterestRate field.
-func (o *AccountResponse) SetInterestRate(v float32) {
-	o.InterestRate.Set(&v)
-}
-// SetInterestRateNil sets the value for InterestRate to be an explicit nil
-func (o *AccountResponse) SetInterestRateNil() {
-	o.InterestRate.Set(nil)
-}
-
-// UnsetInterestRate ensures that no value is present for InterestRate, not even an explicit nil
-func (o *AccountResponse) UnsetInterestRate() {
-	o.InterestRate.Unset()
-}
-
-// GetIsBusiness returns the IsBusiness field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountResponse) GetIsBusiness() bool {
-	if o == nil || o.IsBusiness.Get() == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsBusiness.Get()
-}
-
-// GetIsBusinessOk returns a tuple with the IsBusiness field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountResponse) GetIsBusinessOk() (*bool, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return o.IsBusiness.Get(), o.IsBusiness.IsSet()
-}
-
-// HasIsBusiness returns a boolean if a field has been set.
-func (o *AccountResponse) HasIsBusiness() bool {
-	if o != nil && o.IsBusiness.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetIsBusiness gets a reference to the given NullableBool and assigns it to the IsBusiness field.
-func (o *AccountResponse) SetIsBusiness(v bool) {
-	o.IsBusiness.Set(&v)
-}
-// SetIsBusinessNil sets the value for IsBusiness to be an explicit nil
-func (o *AccountResponse) SetIsBusinessNil() {
-	o.IsBusiness.Set(nil)
-}
-
-// UnsetIsBusiness ensures that no value is present for IsBusiness, not even an explicit nil
-func (o *AccountResponse) UnsetIsBusiness() {
-	o.IsBusiness.Unset()
 }
 
 // GetIsClosed returns the IsClosed field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1217,6 +1338,48 @@ func (o *AccountResponse) SetLoanAmountNil() {
 // UnsetLoanAmount ensures that no value is present for LoanAmount, not even an explicit nil
 func (o *AccountResponse) UnsetLoanAmount() {
 	o.LoanAmount.Unset()
+}
+
+// GetMarginBalance returns the MarginBalance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetMarginBalance() float32 {
+	if o == nil || o.MarginBalance.Get() == nil {
+		var ret float32
+		return ret
+	}
+	return *o.MarginBalance.Get()
+}
+
+// GetMarginBalanceOk returns a tuple with the MarginBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetMarginBalanceOk() (*float32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.MarginBalance.Get(), o.MarginBalance.IsSet()
+}
+
+// HasMarginBalance returns a boolean if a field has been set.
+func (o *AccountResponse) HasMarginBalance() bool {
+	if o != nil && o.MarginBalance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMarginBalance gets a reference to the given NullableFloat32 and assigns it to the MarginBalance field.
+func (o *AccountResponse) SetMarginBalance(v float32) {
+	o.MarginBalance.Set(&v)
+}
+// SetMarginBalanceNil sets the value for MarginBalance to be an explicit nil
+func (o *AccountResponse) SetMarginBalanceNil() {
+	o.MarginBalance.Set(nil)
+}
+
+// UnsetMarginBalance ensures that no value is present for MarginBalance, not even an explicit nil
+func (o *AccountResponse) UnsetMarginBalance() {
+	o.MarginBalance.Unset()
 }
 
 // GetMaturesOn returns the MaturesOn field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1807,48 +1970,6 @@ func (o *AccountResponse) UnsetPremiumAmount() {
 	o.PremiumAmount.Unset()
 }
 
-// GetPropertyType returns the PropertyType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountResponse) GetPropertyType() string {
-	if o == nil || o.PropertyType.Get() == nil {
-		var ret string
-		return ret
-	}
-	return *o.PropertyType.Get()
-}
-
-// GetPropertyTypeOk returns a tuple with the PropertyType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountResponse) GetPropertyTypeOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return o.PropertyType.Get(), o.PropertyType.IsSet()
-}
-
-// HasPropertyType returns a boolean if a field has been set.
-func (o *AccountResponse) HasPropertyType() bool {
-	if o != nil && o.PropertyType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPropertyType gets a reference to the given NullableString and assigns it to the PropertyType field.
-func (o *AccountResponse) SetPropertyType(v string) {
-	o.PropertyType.Set(&v)
-}
-// SetPropertyTypeNil sets the value for PropertyType to be an explicit nil
-func (o *AccountResponse) SetPropertyTypeNil() {
-	o.PropertyType.Set(nil)
-}
-
-// UnsetPropertyType ensures that no value is present for PropertyType, not even an explicit nil
-func (o *AccountResponse) UnsetPropertyType() {
-	o.PropertyType.Unset()
-}
-
 // GetRoutingNumber returns the RoutingNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetRoutingNumber() string {
 	if o == nil || o.RoutingNumber.Get() == nil {
@@ -1973,6 +2094,90 @@ func (o *AccountResponse) SetSubtypeNil() {
 // UnsetSubtype ensures that no value is present for Subtype, not even an explicit nil
 func (o *AccountResponse) UnsetSubtype() {
 	o.Subtype.Unset()
+}
+
+// GetTodayUglAmount returns the TodayUglAmount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetTodayUglAmount() float32 {
+	if o == nil || o.TodayUglAmount.Get() == nil {
+		var ret float32
+		return ret
+	}
+	return *o.TodayUglAmount.Get()
+}
+
+// GetTodayUglAmountOk returns a tuple with the TodayUglAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetTodayUglAmountOk() (*float32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.TodayUglAmount.Get(), o.TodayUglAmount.IsSet()
+}
+
+// HasTodayUglAmount returns a boolean if a field has been set.
+func (o *AccountResponse) HasTodayUglAmount() bool {
+	if o != nil && o.TodayUglAmount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTodayUglAmount gets a reference to the given NullableFloat32 and assigns it to the TodayUglAmount field.
+func (o *AccountResponse) SetTodayUglAmount(v float32) {
+	o.TodayUglAmount.Set(&v)
+}
+// SetTodayUglAmountNil sets the value for TodayUglAmount to be an explicit nil
+func (o *AccountResponse) SetTodayUglAmountNil() {
+	o.TodayUglAmount.Set(nil)
+}
+
+// UnsetTodayUglAmount ensures that no value is present for TodayUglAmount, not even an explicit nil
+func (o *AccountResponse) UnsetTodayUglAmount() {
+	o.TodayUglAmount.Unset()
+}
+
+// GetTodayUglPercentage returns the TodayUglPercentage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetTodayUglPercentage() float32 {
+	if o == nil || o.TodayUglPercentage.Get() == nil {
+		var ret float32
+		return ret
+	}
+	return *o.TodayUglPercentage.Get()
+}
+
+// GetTodayUglPercentageOk returns a tuple with the TodayUglPercentage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetTodayUglPercentageOk() (*float32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.TodayUglPercentage.Get(), o.TodayUglPercentage.IsSet()
+}
+
+// HasTodayUglPercentage returns a boolean if a field has been set.
+func (o *AccountResponse) HasTodayUglPercentage() bool {
+	if o != nil && o.TodayUglPercentage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTodayUglPercentage gets a reference to the given NullableFloat32 and assigns it to the TodayUglPercentage field.
+func (o *AccountResponse) SetTodayUglPercentage(v float32) {
+	o.TodayUglPercentage.Set(&v)
+}
+// SetTodayUglPercentageNil sets the value for TodayUglPercentage to be an explicit nil
+func (o *AccountResponse) SetTodayUglPercentageNil() {
+	o.TodayUglPercentage.Set(nil)
+}
+
+// UnsetTodayUglPercentage ensures that no value is present for TodayUglPercentage, not even an explicit nil
+func (o *AccountResponse) UnsetTodayUglPercentage() {
+	o.TodayUglPercentage.Unset()
 }
 
 // GetTotalAccountValue returns the TotalAccountValue field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -2190,6 +2395,18 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	if o.AccountNumber.IsSet() {
 		toSerialize["account_number"] = o.AccountNumber.Get()
 	}
+	if o.AccountOwnership.IsSet() {
+		toSerialize["account_ownership"] = o.AccountOwnership.Get()
+	}
+	if o.AnnuityPolicyToDate.IsSet() {
+		toSerialize["annuity_policy_to_date"] = o.AnnuityPolicyToDate.Get()
+	}
+	if o.AnnuityProvider.IsSet() {
+		toSerialize["annuity_provider"] = o.AnnuityProvider.Get()
+	}
+	if o.AnnuityTermYear.IsSet() {
+		toSerialize["annuity_term_year"] = o.AnnuityTermYear.Get()
+	}
 	if o.Apr.IsSet() {
 		toSerialize["apr"] = o.Apr.Get()
 	}
@@ -2211,8 +2428,8 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	if o.CashSurrenderValue.IsSet() {
 		toSerialize["cash_surrender_value"] = o.CashSurrenderValue.Get()
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["created_at"] = o.CreatedAt.Get()
+	if o.CreatedAt != nil {
+		toSerialize["created_at"] = o.CreatedAt
 	}
 	if o.CreditLimit.IsSet() {
 		toSerialize["credit_limit"] = o.CreditLimit.Get()
@@ -2238,17 +2455,14 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	if o.ImportedAt.IsSet() {
 		toSerialize["imported_at"] = o.ImportedAt.Get()
 	}
+	if o.InterestRate.IsSet() {
+		toSerialize["interest_rate"] = o.InterestRate.Get()
+	}
 	if o.InstitutionCode.IsSet() {
 		toSerialize["institution_code"] = o.InstitutionCode.Get()
 	}
 	if o.InsuredName.IsSet() {
 		toSerialize["insured_name"] = o.InsuredName.Get()
-	}
-	if o.InterestRate.IsSet() {
-		toSerialize["interest_rate"] = o.InterestRate.Get()
-	}
-	if o.IsBusiness.IsSet() {
-		toSerialize["is_business"] = o.IsBusiness.Get()
 	}
 	if o.IsClosed.IsSet() {
 		toSerialize["is_closed"] = o.IsClosed.Get()
@@ -2267,6 +2481,9 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.LoanAmount.IsSet() {
 		toSerialize["loan_amount"] = o.LoanAmount.Get()
+	}
+	if o.MarginBalance.IsSet() {
+		toSerialize["margin_balance"] = o.MarginBalance.Get()
 	}
 	if o.MaturesOn.IsSet() {
 		toSerialize["matures_on"] = o.MaturesOn.Get()
@@ -2310,9 +2527,6 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	if o.PremiumAmount.IsSet() {
 		toSerialize["premium_amount"] = o.PremiumAmount.Get()
 	}
-	if o.PropertyType.IsSet() {
-		toSerialize["property_type"] = o.PropertyType.Get()
-	}
 	if o.RoutingNumber.IsSet() {
 		toSerialize["routing_number"] = o.RoutingNumber.Get()
 	}
@@ -2321,6 +2535,12 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.Subtype.IsSet() {
 		toSerialize["subtype"] = o.Subtype.Get()
+	}
+	if o.TodayUglAmount.IsSet() {
+		toSerialize["today_ugl_amount"] = o.TodayUglAmount.Get()
+	}
+	if o.TodayUglPercentage.IsSet() {
+		toSerialize["today_ugl_percentage"] = o.TodayUglPercentage.Get()
 	}
 	if o.TotalAccountValue.IsSet() {
 		toSerialize["total_account_value"] = o.TotalAccountValue.Get()

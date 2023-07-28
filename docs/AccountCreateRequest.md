@@ -4,43 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountNumber** | Pointer to **string** |  | [optional] 
+**AccountSubtypeName** | Pointer to **string** |  | [optional] 
+**AccountType** | **int32** |  | 
 **Apr** | Pointer to **float32** |  | [optional] 
 **Apy** | Pointer to **float32** |  | [optional] 
 **AvailableBalance** | Pointer to **float32** |  | [optional] 
-**AvailableCredit** | Pointer to **float32** |  | [optional] 
-**Balance** | **float32** |  | 
+**Balance** | Pointer to **float32** |  | [optional] 
 **CashSurrenderValue** | Pointer to **float32** |  | [optional] 
 **CreditLimit** | Pointer to **float32** |  | [optional] 
 **CurrencyCode** | Pointer to **string** |  | [optional] 
-**DayPaymentIsDue** | Pointer to **int32** |  | [optional] 
 **DeathBenefit** | Pointer to **int32** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
 **InterestRate** | Pointer to **float32** |  | [optional] 
+**IsBusiness** | Pointer to **bool** |  | [optional] 
 **IsClosed** | Pointer to **bool** |  | [optional] 
 **IsHidden** | Pointer to **bool** |  | [optional] 
-**LastPayment** | Pointer to **float32** |  | [optional] 
-**LastPaymentAt** | Pointer to **string** |  | [optional] 
 **LoanAmount** | Pointer to **float32** |  | [optional] 
-**MaturesOn** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **string** |  | [optional] 
-**MinimumBalance** | Pointer to **float32** |  | [optional] 
-**MinimumPayment** | Pointer to **float32** |  | [optional] 
 **Name** | **string** |  | 
 **Nickname** | Pointer to **string** |  | [optional] 
 **OriginalBalance** | Pointer to **float32** |  | [optional] 
-**PaymentDueAt** | Pointer to **string** |  | [optional] 
-**PayoffBalance** | Pointer to **float32** |  | [optional] 
-**RoutingNumber** | Pointer to **string** |  | [optional] 
-**StartedOn** | Pointer to **string** |  | [optional] 
-**Subtype** | Pointer to **string** |  | [optional] 
-**Type** | **string** |  | 
+**PropertyType** | Pointer to **int32** |  | [optional] 
+**PropertyTypeName** | Pointer to **string** |  | [optional] 
+**SkipWebhook** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
 ### NewAccountCreateRequest
 
-`func NewAccountCreateRequest(balance float32, name string, type_ string, ) *AccountCreateRequest`
+`func NewAccountCreateRequest(accountType int32, name string, ) *AccountCreateRequest`
 
 NewAccountCreateRequest instantiates a new AccountCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -55,30 +46,50 @@ NewAccountCreateRequestWithDefaults instantiates a new AccountCreateRequest obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAccountNumber
+### GetAccountSubtypeName
 
-`func (o *AccountCreateRequest) GetAccountNumber() string`
+`func (o *AccountCreateRequest) GetAccountSubtypeName() string`
 
-GetAccountNumber returns the AccountNumber field if non-nil, zero value otherwise.
+GetAccountSubtypeName returns the AccountSubtypeName field if non-nil, zero value otherwise.
 
-### GetAccountNumberOk
+### GetAccountSubtypeNameOk
 
-`func (o *AccountCreateRequest) GetAccountNumberOk() (*string, bool)`
+`func (o *AccountCreateRequest) GetAccountSubtypeNameOk() (*string, bool)`
 
-GetAccountNumberOk returns a tuple with the AccountNumber field if it's non-nil, zero value otherwise
+GetAccountSubtypeNameOk returns a tuple with the AccountSubtypeName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountNumber
+### SetAccountSubtypeName
 
-`func (o *AccountCreateRequest) SetAccountNumber(v string)`
+`func (o *AccountCreateRequest) SetAccountSubtypeName(v string)`
 
-SetAccountNumber sets AccountNumber field to given value.
+SetAccountSubtypeName sets AccountSubtypeName field to given value.
 
-### HasAccountNumber
+### HasAccountSubtypeName
 
-`func (o *AccountCreateRequest) HasAccountNumber() bool`
+`func (o *AccountCreateRequest) HasAccountSubtypeName() bool`
 
-HasAccountNumber returns a boolean if a field has been set.
+HasAccountSubtypeName returns a boolean if a field has been set.
+
+### GetAccountType
+
+`func (o *AccountCreateRequest) GetAccountType() int32`
+
+GetAccountType returns the AccountType field if non-nil, zero value otherwise.
+
+### GetAccountTypeOk
+
+`func (o *AccountCreateRequest) GetAccountTypeOk() (*int32, bool)`
+
+GetAccountTypeOk returns a tuple with the AccountType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountType
+
+`func (o *AccountCreateRequest) SetAccountType(v int32)`
+
+SetAccountType sets AccountType field to given value.
+
 
 ### GetApr
 
@@ -155,31 +166,6 @@ SetAvailableBalance sets AvailableBalance field to given value.
 
 HasAvailableBalance returns a boolean if a field has been set.
 
-### GetAvailableCredit
-
-`func (o *AccountCreateRequest) GetAvailableCredit() float32`
-
-GetAvailableCredit returns the AvailableCredit field if non-nil, zero value otherwise.
-
-### GetAvailableCreditOk
-
-`func (o *AccountCreateRequest) GetAvailableCreditOk() (*float32, bool)`
-
-GetAvailableCreditOk returns a tuple with the AvailableCredit field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAvailableCredit
-
-`func (o *AccountCreateRequest) SetAvailableCredit(v float32)`
-
-SetAvailableCredit sets AvailableCredit field to given value.
-
-### HasAvailableCredit
-
-`func (o *AccountCreateRequest) HasAvailableCredit() bool`
-
-HasAvailableCredit returns a boolean if a field has been set.
-
 ### GetBalance
 
 `func (o *AccountCreateRequest) GetBalance() float32`
@@ -199,6 +185,11 @@ and a boolean to check if the value has been set.
 
 SetBalance sets Balance field to given value.
 
+### HasBalance
+
+`func (o *AccountCreateRequest) HasBalance() bool`
+
+HasBalance returns a boolean if a field has been set.
 
 ### GetCashSurrenderValue
 
@@ -275,31 +266,6 @@ SetCurrencyCode sets CurrencyCode field to given value.
 
 HasCurrencyCode returns a boolean if a field has been set.
 
-### GetDayPaymentIsDue
-
-`func (o *AccountCreateRequest) GetDayPaymentIsDue() int32`
-
-GetDayPaymentIsDue returns the DayPaymentIsDue field if non-nil, zero value otherwise.
-
-### GetDayPaymentIsDueOk
-
-`func (o *AccountCreateRequest) GetDayPaymentIsDueOk() (*int32, bool)`
-
-GetDayPaymentIsDueOk returns a tuple with the DayPaymentIsDue field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDayPaymentIsDue
-
-`func (o *AccountCreateRequest) SetDayPaymentIsDue(v int32)`
-
-SetDayPaymentIsDue sets DayPaymentIsDue field to given value.
-
-### HasDayPaymentIsDue
-
-`func (o *AccountCreateRequest) HasDayPaymentIsDue() bool`
-
-HasDayPaymentIsDue returns a boolean if a field has been set.
-
 ### GetDeathBenefit
 
 `func (o *AccountCreateRequest) GetDeathBenefit() int32`
@@ -325,31 +291,6 @@ SetDeathBenefit sets DeathBenefit field to given value.
 
 HasDeathBenefit returns a boolean if a field has been set.
 
-### GetId
-
-`func (o *AccountCreateRequest) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *AccountCreateRequest) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *AccountCreateRequest) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *AccountCreateRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
 ### GetInterestRate
 
 `func (o *AccountCreateRequest) GetInterestRate() float32`
@@ -374,6 +315,31 @@ SetInterestRate sets InterestRate field to given value.
 `func (o *AccountCreateRequest) HasInterestRate() bool`
 
 HasInterestRate returns a boolean if a field has been set.
+
+### GetIsBusiness
+
+`func (o *AccountCreateRequest) GetIsBusiness() bool`
+
+GetIsBusiness returns the IsBusiness field if non-nil, zero value otherwise.
+
+### GetIsBusinessOk
+
+`func (o *AccountCreateRequest) GetIsBusinessOk() (*bool, bool)`
+
+GetIsBusinessOk returns a tuple with the IsBusiness field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsBusiness
+
+`func (o *AccountCreateRequest) SetIsBusiness(v bool)`
+
+SetIsBusiness sets IsBusiness field to given value.
+
+### HasIsBusiness
+
+`func (o *AccountCreateRequest) HasIsBusiness() bool`
+
+HasIsBusiness returns a boolean if a field has been set.
 
 ### GetIsClosed
 
@@ -425,56 +391,6 @@ SetIsHidden sets IsHidden field to given value.
 
 HasIsHidden returns a boolean if a field has been set.
 
-### GetLastPayment
-
-`func (o *AccountCreateRequest) GetLastPayment() float32`
-
-GetLastPayment returns the LastPayment field if non-nil, zero value otherwise.
-
-### GetLastPaymentOk
-
-`func (o *AccountCreateRequest) GetLastPaymentOk() (*float32, bool)`
-
-GetLastPaymentOk returns a tuple with the LastPayment field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastPayment
-
-`func (o *AccountCreateRequest) SetLastPayment(v float32)`
-
-SetLastPayment sets LastPayment field to given value.
-
-### HasLastPayment
-
-`func (o *AccountCreateRequest) HasLastPayment() bool`
-
-HasLastPayment returns a boolean if a field has been set.
-
-### GetLastPaymentAt
-
-`func (o *AccountCreateRequest) GetLastPaymentAt() string`
-
-GetLastPaymentAt returns the LastPaymentAt field if non-nil, zero value otherwise.
-
-### GetLastPaymentAtOk
-
-`func (o *AccountCreateRequest) GetLastPaymentAtOk() (*string, bool)`
-
-GetLastPaymentAtOk returns a tuple with the LastPaymentAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastPaymentAt
-
-`func (o *AccountCreateRequest) SetLastPaymentAt(v string)`
-
-SetLastPaymentAt sets LastPaymentAt field to given value.
-
-### HasLastPaymentAt
-
-`func (o *AccountCreateRequest) HasLastPaymentAt() bool`
-
-HasLastPaymentAt returns a boolean if a field has been set.
-
 ### GetLoanAmount
 
 `func (o *AccountCreateRequest) GetLoanAmount() float32`
@@ -500,31 +416,6 @@ SetLoanAmount sets LoanAmount field to given value.
 
 HasLoanAmount returns a boolean if a field has been set.
 
-### GetMaturesOn
-
-`func (o *AccountCreateRequest) GetMaturesOn() string`
-
-GetMaturesOn returns the MaturesOn field if non-nil, zero value otherwise.
-
-### GetMaturesOnOk
-
-`func (o *AccountCreateRequest) GetMaturesOnOk() (*string, bool)`
-
-GetMaturesOnOk returns a tuple with the MaturesOn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMaturesOn
-
-`func (o *AccountCreateRequest) SetMaturesOn(v string)`
-
-SetMaturesOn sets MaturesOn field to given value.
-
-### HasMaturesOn
-
-`func (o *AccountCreateRequest) HasMaturesOn() bool`
-
-HasMaturesOn returns a boolean if a field has been set.
-
 ### GetMetadata
 
 `func (o *AccountCreateRequest) GetMetadata() string`
@@ -549,56 +440,6 @@ SetMetadata sets Metadata field to given value.
 `func (o *AccountCreateRequest) HasMetadata() bool`
 
 HasMetadata returns a boolean if a field has been set.
-
-### GetMinimumBalance
-
-`func (o *AccountCreateRequest) GetMinimumBalance() float32`
-
-GetMinimumBalance returns the MinimumBalance field if non-nil, zero value otherwise.
-
-### GetMinimumBalanceOk
-
-`func (o *AccountCreateRequest) GetMinimumBalanceOk() (*float32, bool)`
-
-GetMinimumBalanceOk returns a tuple with the MinimumBalance field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMinimumBalance
-
-`func (o *AccountCreateRequest) SetMinimumBalance(v float32)`
-
-SetMinimumBalance sets MinimumBalance field to given value.
-
-### HasMinimumBalance
-
-`func (o *AccountCreateRequest) HasMinimumBalance() bool`
-
-HasMinimumBalance returns a boolean if a field has been set.
-
-### GetMinimumPayment
-
-`func (o *AccountCreateRequest) GetMinimumPayment() float32`
-
-GetMinimumPayment returns the MinimumPayment field if non-nil, zero value otherwise.
-
-### GetMinimumPaymentOk
-
-`func (o *AccountCreateRequest) GetMinimumPaymentOk() (*float32, bool)`
-
-GetMinimumPaymentOk returns a tuple with the MinimumPayment field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMinimumPayment
-
-`func (o *AccountCreateRequest) SetMinimumPayment(v float32)`
-
-SetMinimumPayment sets MinimumPayment field to given value.
-
-### HasMinimumPayment
-
-`func (o *AccountCreateRequest) HasMinimumPayment() bool`
-
-HasMinimumPayment returns a boolean if a field has been set.
 
 ### GetName
 
@@ -670,150 +511,80 @@ SetOriginalBalance sets OriginalBalance field to given value.
 
 HasOriginalBalance returns a boolean if a field has been set.
 
-### GetPaymentDueAt
+### GetPropertyType
 
-`func (o *AccountCreateRequest) GetPaymentDueAt() string`
+`func (o *AccountCreateRequest) GetPropertyType() int32`
 
-GetPaymentDueAt returns the PaymentDueAt field if non-nil, zero value otherwise.
+GetPropertyType returns the PropertyType field if non-nil, zero value otherwise.
 
-### GetPaymentDueAtOk
+### GetPropertyTypeOk
 
-`func (o *AccountCreateRequest) GetPaymentDueAtOk() (*string, bool)`
+`func (o *AccountCreateRequest) GetPropertyTypeOk() (*int32, bool)`
 
-GetPaymentDueAtOk returns a tuple with the PaymentDueAt field if it's non-nil, zero value otherwise
+GetPropertyTypeOk returns a tuple with the PropertyType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPaymentDueAt
+### SetPropertyType
 
-`func (o *AccountCreateRequest) SetPaymentDueAt(v string)`
+`func (o *AccountCreateRequest) SetPropertyType(v int32)`
 
-SetPaymentDueAt sets PaymentDueAt field to given value.
+SetPropertyType sets PropertyType field to given value.
 
-### HasPaymentDueAt
+### HasPropertyType
 
-`func (o *AccountCreateRequest) HasPaymentDueAt() bool`
+`func (o *AccountCreateRequest) HasPropertyType() bool`
 
-HasPaymentDueAt returns a boolean if a field has been set.
+HasPropertyType returns a boolean if a field has been set.
 
-### GetPayoffBalance
+### GetPropertyTypeName
 
-`func (o *AccountCreateRequest) GetPayoffBalance() float32`
+`func (o *AccountCreateRequest) GetPropertyTypeName() string`
 
-GetPayoffBalance returns the PayoffBalance field if non-nil, zero value otherwise.
+GetPropertyTypeName returns the PropertyTypeName field if non-nil, zero value otherwise.
 
-### GetPayoffBalanceOk
+### GetPropertyTypeNameOk
 
-`func (o *AccountCreateRequest) GetPayoffBalanceOk() (*float32, bool)`
+`func (o *AccountCreateRequest) GetPropertyTypeNameOk() (*string, bool)`
 
-GetPayoffBalanceOk returns a tuple with the PayoffBalance field if it's non-nil, zero value otherwise
+GetPropertyTypeNameOk returns a tuple with the PropertyTypeName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPayoffBalance
+### SetPropertyTypeName
 
-`func (o *AccountCreateRequest) SetPayoffBalance(v float32)`
+`func (o *AccountCreateRequest) SetPropertyTypeName(v string)`
 
-SetPayoffBalance sets PayoffBalance field to given value.
+SetPropertyTypeName sets PropertyTypeName field to given value.
 
-### HasPayoffBalance
+### HasPropertyTypeName
 
-`func (o *AccountCreateRequest) HasPayoffBalance() bool`
+`func (o *AccountCreateRequest) HasPropertyTypeName() bool`
 
-HasPayoffBalance returns a boolean if a field has been set.
+HasPropertyTypeName returns a boolean if a field has been set.
 
-### GetRoutingNumber
+### GetSkipWebhook
 
-`func (o *AccountCreateRequest) GetRoutingNumber() string`
+`func (o *AccountCreateRequest) GetSkipWebhook() bool`
 
-GetRoutingNumber returns the RoutingNumber field if non-nil, zero value otherwise.
+GetSkipWebhook returns the SkipWebhook field if non-nil, zero value otherwise.
 
-### GetRoutingNumberOk
+### GetSkipWebhookOk
 
-`func (o *AccountCreateRequest) GetRoutingNumberOk() (*string, bool)`
+`func (o *AccountCreateRequest) GetSkipWebhookOk() (*bool, bool)`
 
-GetRoutingNumberOk returns a tuple with the RoutingNumber field if it's non-nil, zero value otherwise
+GetSkipWebhookOk returns a tuple with the SkipWebhook field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRoutingNumber
+### SetSkipWebhook
 
-`func (o *AccountCreateRequest) SetRoutingNumber(v string)`
+`func (o *AccountCreateRequest) SetSkipWebhook(v bool)`
 
-SetRoutingNumber sets RoutingNumber field to given value.
+SetSkipWebhook sets SkipWebhook field to given value.
 
-### HasRoutingNumber
+### HasSkipWebhook
 
-`func (o *AccountCreateRequest) HasRoutingNumber() bool`
+`func (o *AccountCreateRequest) HasSkipWebhook() bool`
 
-HasRoutingNumber returns a boolean if a field has been set.
-
-### GetStartedOn
-
-`func (o *AccountCreateRequest) GetStartedOn() string`
-
-GetStartedOn returns the StartedOn field if non-nil, zero value otherwise.
-
-### GetStartedOnOk
-
-`func (o *AccountCreateRequest) GetStartedOnOk() (*string, bool)`
-
-GetStartedOnOk returns a tuple with the StartedOn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartedOn
-
-`func (o *AccountCreateRequest) SetStartedOn(v string)`
-
-SetStartedOn sets StartedOn field to given value.
-
-### HasStartedOn
-
-`func (o *AccountCreateRequest) HasStartedOn() bool`
-
-HasStartedOn returns a boolean if a field has been set.
-
-### GetSubtype
-
-`func (o *AccountCreateRequest) GetSubtype() string`
-
-GetSubtype returns the Subtype field if non-nil, zero value otherwise.
-
-### GetSubtypeOk
-
-`func (o *AccountCreateRequest) GetSubtypeOk() (*string, bool)`
-
-GetSubtypeOk returns a tuple with the Subtype field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSubtype
-
-`func (o *AccountCreateRequest) SetSubtype(v string)`
-
-SetSubtype sets Subtype field to given value.
-
-### HasSubtype
-
-`func (o *AccountCreateRequest) HasSubtype() bool`
-
-HasSubtype returns a boolean if a field has been set.
-
-### GetType
-
-`func (o *AccountCreateRequest) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *AccountCreateRequest) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *AccountCreateRequest) SetType(v string)`
-
-SetType sets Type field to given value.
-
+HasSkipWebhook returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

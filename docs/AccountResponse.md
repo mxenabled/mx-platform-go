@@ -5,6 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountNumber** | Pointer to **NullableString** |  | [optional] 
+**AccountOwnership** | Pointer to **NullableString** |  | [optional] 
+**AnnuityPolicyToDate** | Pointer to **NullableString** |  | [optional] 
+**AnnuityProvider** | Pointer to **NullableString** |  | [optional] 
+**AnnuityTermYear** | Pointer to **NullableFloat32** |  | [optional] 
 **Apr** | Pointer to **NullableFloat32** |  | [optional] 
 **Apy** | Pointer to **NullableFloat32** |  | [optional] 
 **AvailableBalance** | Pointer to **NullableFloat32** |  | [optional] 
@@ -12,7 +16,7 @@ Name | Type | Description | Notes
 **Balance** | Pointer to **NullableFloat32** |  | [optional] 
 **CashBalance** | Pointer to **NullableFloat32** |  | [optional] 
 **CashSurrenderValue** | Pointer to **NullableFloat32** |  | [optional] 
-**CreatedAt** | Pointer to **NullableString** |  | [optional] 
+**CreatedAt** | Pointer to **string** |  | [optional] 
 **CreditLimit** | Pointer to **NullableFloat32** |  | [optional] 
 **CurrencyCode** | Pointer to **NullableString** |  | [optional] 
 **DayPaymentIsDue** | Pointer to **NullableInt32** |  | [optional] 
@@ -21,16 +25,16 @@ Name | Type | Description | Notes
 **HoldingsValue** | Pointer to **NullableFloat32** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
 **ImportedAt** | Pointer to **NullableString** |  | [optional] 
+**InterestRate** | Pointer to **NullableFloat32** |  | [optional] 
 **InstitutionCode** | Pointer to **NullableString** |  | [optional] 
 **InsuredName** | Pointer to **NullableString** |  | [optional] 
-**InterestRate** | Pointer to **NullableFloat32** |  | [optional] 
-**IsBusiness** | Pointer to **NullableBool** |  | [optional] 
 **IsClosed** | Pointer to **NullableBool** |  | [optional] 
 **IsHidden** | Pointer to **NullableBool** |  | [optional] 
 **IsManual** | Pointer to **NullableBool** |  | [optional] 
 **LastPayment** | Pointer to **NullableFloat32** |  | [optional] 
 **LastPaymentAt** | Pointer to **NullableString** |  | [optional] 
 **LoanAmount** | Pointer to **NullableFloat32** |  | [optional] 
+**MarginBalance** | Pointer to **NullableFloat32** |  | [optional] 
 **MaturesOn** | Pointer to **NullableString** |  | [optional] 
 **MemberGuid** | Pointer to **NullableString** |  | [optional] 
 **MemberId** | Pointer to **NullableString** |  | [optional] 
@@ -45,10 +49,11 @@ Name | Type | Description | Notes
 **PaymentDueAt** | Pointer to **NullableString** |  | [optional] 
 **PayoffBalance** | Pointer to **NullableFloat32** |  | [optional] 
 **PremiumAmount** | Pointer to **NullableFloat32** |  | [optional] 
-**PropertyType** | Pointer to **NullableString** |  | [optional] 
 **RoutingNumber** | Pointer to **NullableString** |  | [optional] 
 **StartedOn** | Pointer to **NullableString** |  | [optional] 
 **Subtype** | Pointer to **NullableString** |  | [optional] 
+**TodayUglAmount** | Pointer to **NullableFloat32** |  | [optional] 
+**TodayUglPercentage** | Pointer to **NullableFloat32** |  | [optional] 
 **TotalAccountValue** | Pointer to **NullableFloat32** |  | [optional] 
 **Type** | Pointer to **NullableString** |  | [optional] 
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
@@ -109,6 +114,146 @@ HasAccountNumber returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetAccountNumber()`
 
 UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
+### GetAccountOwnership
+
+`func (o *AccountResponse) GetAccountOwnership() string`
+
+GetAccountOwnership returns the AccountOwnership field if non-nil, zero value otherwise.
+
+### GetAccountOwnershipOk
+
+`func (o *AccountResponse) GetAccountOwnershipOk() (*string, bool)`
+
+GetAccountOwnershipOk returns a tuple with the AccountOwnership field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountOwnership
+
+`func (o *AccountResponse) SetAccountOwnership(v string)`
+
+SetAccountOwnership sets AccountOwnership field to given value.
+
+### HasAccountOwnership
+
+`func (o *AccountResponse) HasAccountOwnership() bool`
+
+HasAccountOwnership returns a boolean if a field has been set.
+
+### SetAccountOwnershipNil
+
+`func (o *AccountResponse) SetAccountOwnershipNil(b bool)`
+
+ SetAccountOwnershipNil sets the value for AccountOwnership to be an explicit nil
+
+### UnsetAccountOwnership
+`func (o *AccountResponse) UnsetAccountOwnership()`
+
+UnsetAccountOwnership ensures that no value is present for AccountOwnership, not even an explicit nil
+### GetAnnuityPolicyToDate
+
+`func (o *AccountResponse) GetAnnuityPolicyToDate() string`
+
+GetAnnuityPolicyToDate returns the AnnuityPolicyToDate field if non-nil, zero value otherwise.
+
+### GetAnnuityPolicyToDateOk
+
+`func (o *AccountResponse) GetAnnuityPolicyToDateOk() (*string, bool)`
+
+GetAnnuityPolicyToDateOk returns a tuple with the AnnuityPolicyToDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnnuityPolicyToDate
+
+`func (o *AccountResponse) SetAnnuityPolicyToDate(v string)`
+
+SetAnnuityPolicyToDate sets AnnuityPolicyToDate field to given value.
+
+### HasAnnuityPolicyToDate
+
+`func (o *AccountResponse) HasAnnuityPolicyToDate() bool`
+
+HasAnnuityPolicyToDate returns a boolean if a field has been set.
+
+### SetAnnuityPolicyToDateNil
+
+`func (o *AccountResponse) SetAnnuityPolicyToDateNil(b bool)`
+
+ SetAnnuityPolicyToDateNil sets the value for AnnuityPolicyToDate to be an explicit nil
+
+### UnsetAnnuityPolicyToDate
+`func (o *AccountResponse) UnsetAnnuityPolicyToDate()`
+
+UnsetAnnuityPolicyToDate ensures that no value is present for AnnuityPolicyToDate, not even an explicit nil
+### GetAnnuityProvider
+
+`func (o *AccountResponse) GetAnnuityProvider() string`
+
+GetAnnuityProvider returns the AnnuityProvider field if non-nil, zero value otherwise.
+
+### GetAnnuityProviderOk
+
+`func (o *AccountResponse) GetAnnuityProviderOk() (*string, bool)`
+
+GetAnnuityProviderOk returns a tuple with the AnnuityProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnnuityProvider
+
+`func (o *AccountResponse) SetAnnuityProvider(v string)`
+
+SetAnnuityProvider sets AnnuityProvider field to given value.
+
+### HasAnnuityProvider
+
+`func (o *AccountResponse) HasAnnuityProvider() bool`
+
+HasAnnuityProvider returns a boolean if a field has been set.
+
+### SetAnnuityProviderNil
+
+`func (o *AccountResponse) SetAnnuityProviderNil(b bool)`
+
+ SetAnnuityProviderNil sets the value for AnnuityProvider to be an explicit nil
+
+### UnsetAnnuityProvider
+`func (o *AccountResponse) UnsetAnnuityProvider()`
+
+UnsetAnnuityProvider ensures that no value is present for AnnuityProvider, not even an explicit nil
+### GetAnnuityTermYear
+
+`func (o *AccountResponse) GetAnnuityTermYear() float32`
+
+GetAnnuityTermYear returns the AnnuityTermYear field if non-nil, zero value otherwise.
+
+### GetAnnuityTermYearOk
+
+`func (o *AccountResponse) GetAnnuityTermYearOk() (*float32, bool)`
+
+GetAnnuityTermYearOk returns a tuple with the AnnuityTermYear field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnnuityTermYear
+
+`func (o *AccountResponse) SetAnnuityTermYear(v float32)`
+
+SetAnnuityTermYear sets AnnuityTermYear field to given value.
+
+### HasAnnuityTermYear
+
+`func (o *AccountResponse) HasAnnuityTermYear() bool`
+
+HasAnnuityTermYear returns a boolean if a field has been set.
+
+### SetAnnuityTermYearNil
+
+`func (o *AccountResponse) SetAnnuityTermYearNil(b bool)`
+
+ SetAnnuityTermYearNil sets the value for AnnuityTermYear to be an explicit nil
+
+### UnsetAnnuityTermYear
+`func (o *AccountResponse) UnsetAnnuityTermYear()`
+
+UnsetAnnuityTermYear ensures that no value is present for AnnuityTermYear, not even an explicit nil
 ### GetApr
 
 `func (o *AccountResponse) GetApr() float32`
@@ -379,16 +524,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *AccountResponse) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *AccountResponse) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetCreditLimit
 
 `func (o *AccountResponse) GetCreditLimit() float32`
@@ -669,6 +804,41 @@ HasImportedAt returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetImportedAt()`
 
 UnsetImportedAt ensures that no value is present for ImportedAt, not even an explicit nil
+### GetInterestRate
+
+`func (o *AccountResponse) GetInterestRate() float32`
+
+GetInterestRate returns the InterestRate field if non-nil, zero value otherwise.
+
+### GetInterestRateOk
+
+`func (o *AccountResponse) GetInterestRateOk() (*float32, bool)`
+
+GetInterestRateOk returns a tuple with the InterestRate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterestRate
+
+`func (o *AccountResponse) SetInterestRate(v float32)`
+
+SetInterestRate sets InterestRate field to given value.
+
+### HasInterestRate
+
+`func (o *AccountResponse) HasInterestRate() bool`
+
+HasInterestRate returns a boolean if a field has been set.
+
+### SetInterestRateNil
+
+`func (o *AccountResponse) SetInterestRateNil(b bool)`
+
+ SetInterestRateNil sets the value for InterestRate to be an explicit nil
+
+### UnsetInterestRate
+`func (o *AccountResponse) UnsetInterestRate()`
+
+UnsetInterestRate ensures that no value is present for InterestRate, not even an explicit nil
 ### GetInstitutionCode
 
 `func (o *AccountResponse) GetInstitutionCode() string`
@@ -739,76 +909,6 @@ HasInsuredName returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetInsuredName()`
 
 UnsetInsuredName ensures that no value is present for InsuredName, not even an explicit nil
-### GetInterestRate
-
-`func (o *AccountResponse) GetInterestRate() float32`
-
-GetInterestRate returns the InterestRate field if non-nil, zero value otherwise.
-
-### GetInterestRateOk
-
-`func (o *AccountResponse) GetInterestRateOk() (*float32, bool)`
-
-GetInterestRateOk returns a tuple with the InterestRate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInterestRate
-
-`func (o *AccountResponse) SetInterestRate(v float32)`
-
-SetInterestRate sets InterestRate field to given value.
-
-### HasInterestRate
-
-`func (o *AccountResponse) HasInterestRate() bool`
-
-HasInterestRate returns a boolean if a field has been set.
-
-### SetInterestRateNil
-
-`func (o *AccountResponse) SetInterestRateNil(b bool)`
-
- SetInterestRateNil sets the value for InterestRate to be an explicit nil
-
-### UnsetInterestRate
-`func (o *AccountResponse) UnsetInterestRate()`
-
-UnsetInterestRate ensures that no value is present for InterestRate, not even an explicit nil
-### GetIsBusiness
-
-`func (o *AccountResponse) GetIsBusiness() bool`
-
-GetIsBusiness returns the IsBusiness field if non-nil, zero value otherwise.
-
-### GetIsBusinessOk
-
-`func (o *AccountResponse) GetIsBusinessOk() (*bool, bool)`
-
-GetIsBusinessOk returns a tuple with the IsBusiness field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsBusiness
-
-`func (o *AccountResponse) SetIsBusiness(v bool)`
-
-SetIsBusiness sets IsBusiness field to given value.
-
-### HasIsBusiness
-
-`func (o *AccountResponse) HasIsBusiness() bool`
-
-HasIsBusiness returns a boolean if a field has been set.
-
-### SetIsBusinessNil
-
-`func (o *AccountResponse) SetIsBusinessNil(b bool)`
-
- SetIsBusinessNil sets the value for IsBusiness to be an explicit nil
-
-### UnsetIsBusiness
-`func (o *AccountResponse) UnsetIsBusiness()`
-
-UnsetIsBusiness ensures that no value is present for IsBusiness, not even an explicit nil
 ### GetIsClosed
 
 `func (o *AccountResponse) GetIsClosed() bool`
@@ -1019,6 +1119,41 @@ HasLoanAmount returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetLoanAmount()`
 
 UnsetLoanAmount ensures that no value is present for LoanAmount, not even an explicit nil
+### GetMarginBalance
+
+`func (o *AccountResponse) GetMarginBalance() float32`
+
+GetMarginBalance returns the MarginBalance field if non-nil, zero value otherwise.
+
+### GetMarginBalanceOk
+
+`func (o *AccountResponse) GetMarginBalanceOk() (*float32, bool)`
+
+GetMarginBalanceOk returns a tuple with the MarginBalance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarginBalance
+
+`func (o *AccountResponse) SetMarginBalance(v float32)`
+
+SetMarginBalance sets MarginBalance field to given value.
+
+### HasMarginBalance
+
+`func (o *AccountResponse) HasMarginBalance() bool`
+
+HasMarginBalance returns a boolean if a field has been set.
+
+### SetMarginBalanceNil
+
+`func (o *AccountResponse) SetMarginBalanceNil(b bool)`
+
+ SetMarginBalanceNil sets the value for MarginBalance to be an explicit nil
+
+### UnsetMarginBalance
+`func (o *AccountResponse) UnsetMarginBalance()`
+
+UnsetMarginBalance ensures that no value is present for MarginBalance, not even an explicit nil
 ### GetMaturesOn
 
 `func (o *AccountResponse) GetMaturesOn() string`
@@ -1509,41 +1644,6 @@ HasPremiumAmount returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetPremiumAmount()`
 
 UnsetPremiumAmount ensures that no value is present for PremiumAmount, not even an explicit nil
-### GetPropertyType
-
-`func (o *AccountResponse) GetPropertyType() string`
-
-GetPropertyType returns the PropertyType field if non-nil, zero value otherwise.
-
-### GetPropertyTypeOk
-
-`func (o *AccountResponse) GetPropertyTypeOk() (*string, bool)`
-
-GetPropertyTypeOk returns a tuple with the PropertyType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPropertyType
-
-`func (o *AccountResponse) SetPropertyType(v string)`
-
-SetPropertyType sets PropertyType field to given value.
-
-### HasPropertyType
-
-`func (o *AccountResponse) HasPropertyType() bool`
-
-HasPropertyType returns a boolean if a field has been set.
-
-### SetPropertyTypeNil
-
-`func (o *AccountResponse) SetPropertyTypeNil(b bool)`
-
- SetPropertyTypeNil sets the value for PropertyType to be an explicit nil
-
-### UnsetPropertyType
-`func (o *AccountResponse) UnsetPropertyType()`
-
-UnsetPropertyType ensures that no value is present for PropertyType, not even an explicit nil
 ### GetRoutingNumber
 
 `func (o *AccountResponse) GetRoutingNumber() string`
@@ -1649,6 +1749,76 @@ HasSubtype returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetSubtype()`
 
 UnsetSubtype ensures that no value is present for Subtype, not even an explicit nil
+### GetTodayUglAmount
+
+`func (o *AccountResponse) GetTodayUglAmount() float32`
+
+GetTodayUglAmount returns the TodayUglAmount field if non-nil, zero value otherwise.
+
+### GetTodayUglAmountOk
+
+`func (o *AccountResponse) GetTodayUglAmountOk() (*float32, bool)`
+
+GetTodayUglAmountOk returns a tuple with the TodayUglAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTodayUglAmount
+
+`func (o *AccountResponse) SetTodayUglAmount(v float32)`
+
+SetTodayUglAmount sets TodayUglAmount field to given value.
+
+### HasTodayUglAmount
+
+`func (o *AccountResponse) HasTodayUglAmount() bool`
+
+HasTodayUglAmount returns a boolean if a field has been set.
+
+### SetTodayUglAmountNil
+
+`func (o *AccountResponse) SetTodayUglAmountNil(b bool)`
+
+ SetTodayUglAmountNil sets the value for TodayUglAmount to be an explicit nil
+
+### UnsetTodayUglAmount
+`func (o *AccountResponse) UnsetTodayUglAmount()`
+
+UnsetTodayUglAmount ensures that no value is present for TodayUglAmount, not even an explicit nil
+### GetTodayUglPercentage
+
+`func (o *AccountResponse) GetTodayUglPercentage() float32`
+
+GetTodayUglPercentage returns the TodayUglPercentage field if non-nil, zero value otherwise.
+
+### GetTodayUglPercentageOk
+
+`func (o *AccountResponse) GetTodayUglPercentageOk() (*float32, bool)`
+
+GetTodayUglPercentageOk returns a tuple with the TodayUglPercentage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTodayUglPercentage
+
+`func (o *AccountResponse) SetTodayUglPercentage(v float32)`
+
+SetTodayUglPercentage sets TodayUglPercentage field to given value.
+
+### HasTodayUglPercentage
+
+`func (o *AccountResponse) HasTodayUglPercentage() bool`
+
+HasTodayUglPercentage returns a boolean if a field has been set.
+
+### SetTodayUglPercentageNil
+
+`func (o *AccountResponse) SetTodayUglPercentageNil(b bool)`
+
+ SetTodayUglPercentageNil sets the value for TodayUglPercentage to be an explicit nil
+
+### UnsetTodayUglPercentage
+`func (o *AccountResponse) UnsetTodayUglPercentage()`
+
+UnsetTodayUglPercentage ensures that no value is present for TodayUglPercentage, not even an explicit nil
 ### GetTotalAccountValue
 
 `func (o *AccountResponse) GetTotalAccountValue() float32`
