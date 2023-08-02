@@ -61,6 +61,8 @@ type AccountResponse struct {
 	PaymentDueAt NullableString `json:"payment_due_at,omitempty"`
 	PayoffBalance NullableFloat32 `json:"payoff_balance,omitempty"`
 	PremiumAmount NullableFloat32 `json:"premium_amount,omitempty"`
+	PropertyType NullableInt32 `json:"property_type,omitempty"`
+	PropertyTypeName NullableString `json:"property_type_name,omitempty"`
 	RoutingNumber NullableString `json:"routing_number,omitempty"`
 	StartedOn NullableString `json:"started_on,omitempty"`
 	Subtype NullableString `json:"subtype,omitempty"`
@@ -1970,6 +1972,90 @@ func (o *AccountResponse) UnsetPremiumAmount() {
 	o.PremiumAmount.Unset()
 }
 
+// GetPropertyType returns the PropertyType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetPropertyType() int32 {
+	if o == nil || o.PropertyType.Get() == nil {
+		var ret int32
+		return ret
+	}
+	return *o.PropertyType.Get()
+}
+
+// GetPropertyTypeOk returns a tuple with the PropertyType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetPropertyTypeOk() (*int32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.PropertyType.Get(), o.PropertyType.IsSet()
+}
+
+// HasPropertyType returns a boolean if a field has been set.
+func (o *AccountResponse) HasPropertyType() bool {
+	if o != nil && o.PropertyType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPropertyType gets a reference to the given NullableInt32 and assigns it to the PropertyType field.
+func (o *AccountResponse) SetPropertyType(v int32) {
+	o.PropertyType.Set(&v)
+}
+// SetPropertyTypeNil sets the value for PropertyType to be an explicit nil
+func (o *AccountResponse) SetPropertyTypeNil() {
+	o.PropertyType.Set(nil)
+}
+
+// UnsetPropertyType ensures that no value is present for PropertyType, not even an explicit nil
+func (o *AccountResponse) UnsetPropertyType() {
+	o.PropertyType.Unset()
+}
+
+// GetPropertyTypeName returns the PropertyTypeName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetPropertyTypeName() string {
+	if o == nil || o.PropertyTypeName.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.PropertyTypeName.Get()
+}
+
+// GetPropertyTypeNameOk returns a tuple with the PropertyTypeName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetPropertyTypeNameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return o.PropertyTypeName.Get(), o.PropertyTypeName.IsSet()
+}
+
+// HasPropertyTypeName returns a boolean if a field has been set.
+func (o *AccountResponse) HasPropertyTypeName() bool {
+	if o != nil && o.PropertyTypeName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPropertyTypeName gets a reference to the given NullableString and assigns it to the PropertyTypeName field.
+func (o *AccountResponse) SetPropertyTypeName(v string) {
+	o.PropertyTypeName.Set(&v)
+}
+// SetPropertyTypeNameNil sets the value for PropertyTypeName to be an explicit nil
+func (o *AccountResponse) SetPropertyTypeNameNil() {
+	o.PropertyTypeName.Set(nil)
+}
+
+// UnsetPropertyTypeName ensures that no value is present for PropertyTypeName, not even an explicit nil
+func (o *AccountResponse) UnsetPropertyTypeName() {
+	o.PropertyTypeName.Unset()
+}
+
 // GetRoutingNumber returns the RoutingNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetRoutingNumber() string {
 	if o == nil || o.RoutingNumber.Get() == nil {
@@ -2526,6 +2612,12 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.PremiumAmount.IsSet() {
 		toSerialize["premium_amount"] = o.PremiumAmount.Get()
+	}
+	if o.PropertyType.IsSet() {
+		toSerialize["property_type"] = o.PropertyType.Get()
+	}
+	if o.PropertyTypeName.IsSet() {
+		toSerialize["property_type_name"] = o.PropertyTypeName.Get()
 	}
 	if o.RoutingNumber.IsSet() {
 		toSerialize["routing_number"] = o.RoutingNumber.Get()

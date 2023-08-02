@@ -16,7 +16,6 @@ import (
 
 // AccountCreateRequestBody struct for AccountCreateRequestBody
 type AccountCreateRequestBody struct {
-	SkipWebhook NullableBool `json:"skip_webhook,omitempty"`
 	Account *AccountCreateRequest `json:"account,omitempty"`
 }
 
@@ -35,48 +34,6 @@ func NewAccountCreateRequestBody() *AccountCreateRequestBody {
 func NewAccountCreateRequestBodyWithDefaults() *AccountCreateRequestBody {
 	this := AccountCreateRequestBody{}
 	return &this
-}
-
-// GetSkipWebhook returns the SkipWebhook field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountCreateRequestBody) GetSkipWebhook() bool {
-	if o == nil || o.SkipWebhook.Get() == nil {
-		var ret bool
-		return ret
-	}
-	return *o.SkipWebhook.Get()
-}
-
-// GetSkipWebhookOk returns a tuple with the SkipWebhook field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountCreateRequestBody) GetSkipWebhookOk() (*bool, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return o.SkipWebhook.Get(), o.SkipWebhook.IsSet()
-}
-
-// HasSkipWebhook returns a boolean if a field has been set.
-func (o *AccountCreateRequestBody) HasSkipWebhook() bool {
-	if o != nil && o.SkipWebhook.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSkipWebhook gets a reference to the given NullableBool and assigns it to the SkipWebhook field.
-func (o *AccountCreateRequestBody) SetSkipWebhook(v bool) {
-	o.SkipWebhook.Set(&v)
-}
-// SetSkipWebhookNil sets the value for SkipWebhook to be an explicit nil
-func (o *AccountCreateRequestBody) SetSkipWebhookNil() {
-	o.SkipWebhook.Set(nil)
-}
-
-// UnsetSkipWebhook ensures that no value is present for SkipWebhook, not even an explicit nil
-func (o *AccountCreateRequestBody) UnsetSkipWebhook() {
-	o.SkipWebhook.Unset()
 }
 
 // GetAccount returns the Account field value if set, zero value otherwise.
@@ -113,9 +70,6 @@ func (o *AccountCreateRequestBody) SetAccount(v AccountCreateRequest) {
 
 func (o AccountCreateRequestBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SkipWebhook.IsSet() {
-		toSerialize["skip_webhook"] = o.SkipWebhook.Get()
-	}
 	if o.Account != nil {
 		toSerialize["account"] = o.Account
 	}

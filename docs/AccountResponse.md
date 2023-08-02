@@ -49,6 +49,8 @@ Name | Type | Description | Notes
 **PaymentDueAt** | Pointer to **NullableString** |  | [optional] 
 **PayoffBalance** | Pointer to **NullableFloat32** |  | [optional] 
 **PremiumAmount** | Pointer to **NullableFloat32** |  | [optional] 
+**PropertyType** | Pointer to **NullableInt32** |  | [optional] 
+**PropertyTypeName** | Pointer to **NullableString** |  | [optional] 
 **RoutingNumber** | Pointer to **NullableString** |  | [optional] 
 **StartedOn** | Pointer to **NullableString** |  | [optional] 
 **Subtype** | Pointer to **NullableString** |  | [optional] 
@@ -1644,6 +1646,76 @@ HasPremiumAmount returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetPremiumAmount()`
 
 UnsetPremiumAmount ensures that no value is present for PremiumAmount, not even an explicit nil
+### GetPropertyType
+
+`func (o *AccountResponse) GetPropertyType() int32`
+
+GetPropertyType returns the PropertyType field if non-nil, zero value otherwise.
+
+### GetPropertyTypeOk
+
+`func (o *AccountResponse) GetPropertyTypeOk() (*int32, bool)`
+
+GetPropertyTypeOk returns a tuple with the PropertyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPropertyType
+
+`func (o *AccountResponse) SetPropertyType(v int32)`
+
+SetPropertyType sets PropertyType field to given value.
+
+### HasPropertyType
+
+`func (o *AccountResponse) HasPropertyType() bool`
+
+HasPropertyType returns a boolean if a field has been set.
+
+### SetPropertyTypeNil
+
+`func (o *AccountResponse) SetPropertyTypeNil(b bool)`
+
+ SetPropertyTypeNil sets the value for PropertyType to be an explicit nil
+
+### UnsetPropertyType
+`func (o *AccountResponse) UnsetPropertyType()`
+
+UnsetPropertyType ensures that no value is present for PropertyType, not even an explicit nil
+### GetPropertyTypeName
+
+`func (o *AccountResponse) GetPropertyTypeName() string`
+
+GetPropertyTypeName returns the PropertyTypeName field if non-nil, zero value otherwise.
+
+### GetPropertyTypeNameOk
+
+`func (o *AccountResponse) GetPropertyTypeNameOk() (*string, bool)`
+
+GetPropertyTypeNameOk returns a tuple with the PropertyTypeName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPropertyTypeName
+
+`func (o *AccountResponse) SetPropertyTypeName(v string)`
+
+SetPropertyTypeName sets PropertyTypeName field to given value.
+
+### HasPropertyTypeName
+
+`func (o *AccountResponse) HasPropertyTypeName() bool`
+
+HasPropertyTypeName returns a boolean if a field has been set.
+
+### SetPropertyTypeNameNil
+
+`func (o *AccountResponse) SetPropertyTypeNameNil(b bool)`
+
+ SetPropertyTypeNameNil sets the value for PropertyTypeName to be an explicit nil
+
+### UnsetPropertyTypeName
+`func (o *AccountResponse) UnsetPropertyTypeName()`
+
+UnsetPropertyTypeName ensures that no value is present for PropertyTypeName, not even an explicit nil
 ### GetRoutingNumber
 
 `func (o *AccountResponse) GetRoutingNumber() string`
