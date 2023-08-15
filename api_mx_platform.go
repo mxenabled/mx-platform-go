@@ -7148,6 +7148,7 @@ type ApiListUserAccountsRequest struct {
 	userGuid string
 	memberIsManagedByUser *bool
 	page *int32
+	isManual *bool
 	recordsPerPage *int32
 }
 
@@ -7159,6 +7160,11 @@ func (r ApiListUserAccountsRequest) MemberIsManagedByUser(memberIsManagedByUser 
 // Specify current page.
 func (r ApiListUserAccountsRequest) Page(page int32) ApiListUserAccountsRequest {
 	r.page = &page
+	return r
+}
+// List only accounts that were manually created.
+func (r ApiListUserAccountsRequest) IsManual(isManual bool) ApiListUserAccountsRequest {
+	r.isManual = &isManual
 	return r
 }
 // Specify records per page.
@@ -7215,6 +7221,9 @@ func (a *MxPlatformApiService) ListUserAccountsExecute(r ApiListUserAccountsRequ
 	}
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.isManual != nil {
+		localVarQueryParams.Add("is_manual", parameterToString(*r.isManual, ""))
 	}
 	if r.recordsPerPage != nil {
 		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))

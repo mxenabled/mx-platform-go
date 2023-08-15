@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountSubtypeName** | Pointer to **string** |  | [optional] 
-**AccountType** | **int32** |  | 
+**AccountSubtype** | Pointer to **string** |  | [optional] 
+**AccountType** | **string** |  | 
 **Apr** | Pointer to **float32** |  | [optional] 
 **Apy** | Pointer to **float32** |  | [optional] 
 **AvailableBalance** | Pointer to **float32** |  | [optional] 
@@ -23,15 +23,14 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Nickname** | Pointer to **string** |  | [optional] 
 **OriginalBalance** | Pointer to **float32** |  | [optional] 
-**PropertyType** | Pointer to **int32** |  | [optional] 
-**PropertyTypeName** | Pointer to **string** |  | [optional] 
+**PropertyType** | Pointer to **string** |  | [optional] 
 **SkipWebhook** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
 ### NewAccountCreateRequest
 
-`func NewAccountCreateRequest(accountType int32, name string, ) *AccountCreateRequest`
+`func NewAccountCreateRequest(accountType string, name string, ) *AccountCreateRequest`
 
 NewAccountCreateRequest instantiates a new AccountCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,47 +45,47 @@ NewAccountCreateRequestWithDefaults instantiates a new AccountCreateRequest obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAccountSubtypeName
+### GetAccountSubtype
 
-`func (o *AccountCreateRequest) GetAccountSubtypeName() string`
+`func (o *AccountCreateRequest) GetAccountSubtype() string`
 
-GetAccountSubtypeName returns the AccountSubtypeName field if non-nil, zero value otherwise.
+GetAccountSubtype returns the AccountSubtype field if non-nil, zero value otherwise.
 
-### GetAccountSubtypeNameOk
+### GetAccountSubtypeOk
 
-`func (o *AccountCreateRequest) GetAccountSubtypeNameOk() (*string, bool)`
+`func (o *AccountCreateRequest) GetAccountSubtypeOk() (*string, bool)`
 
-GetAccountSubtypeNameOk returns a tuple with the AccountSubtypeName field if it's non-nil, zero value otherwise
+GetAccountSubtypeOk returns a tuple with the AccountSubtype field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountSubtypeName
+### SetAccountSubtype
 
-`func (o *AccountCreateRequest) SetAccountSubtypeName(v string)`
+`func (o *AccountCreateRequest) SetAccountSubtype(v string)`
 
-SetAccountSubtypeName sets AccountSubtypeName field to given value.
+SetAccountSubtype sets AccountSubtype field to given value.
 
-### HasAccountSubtypeName
+### HasAccountSubtype
 
-`func (o *AccountCreateRequest) HasAccountSubtypeName() bool`
+`func (o *AccountCreateRequest) HasAccountSubtype() bool`
 
-HasAccountSubtypeName returns a boolean if a field has been set.
+HasAccountSubtype returns a boolean if a field has been set.
 
 ### GetAccountType
 
-`func (o *AccountCreateRequest) GetAccountType() int32`
+`func (o *AccountCreateRequest) GetAccountType() string`
 
 GetAccountType returns the AccountType field if non-nil, zero value otherwise.
 
 ### GetAccountTypeOk
 
-`func (o *AccountCreateRequest) GetAccountTypeOk() (*int32, bool)`
+`func (o *AccountCreateRequest) GetAccountTypeOk() (*string, bool)`
 
 GetAccountTypeOk returns a tuple with the AccountType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountType
 
-`func (o *AccountCreateRequest) SetAccountType(v int32)`
+`func (o *AccountCreateRequest) SetAccountType(v string)`
 
 SetAccountType sets AccountType field to given value.
 
@@ -513,20 +512,20 @@ HasOriginalBalance returns a boolean if a field has been set.
 
 ### GetPropertyType
 
-`func (o *AccountCreateRequest) GetPropertyType() int32`
+`func (o *AccountCreateRequest) GetPropertyType() string`
 
 GetPropertyType returns the PropertyType field if non-nil, zero value otherwise.
 
 ### GetPropertyTypeOk
 
-`func (o *AccountCreateRequest) GetPropertyTypeOk() (*int32, bool)`
+`func (o *AccountCreateRequest) GetPropertyTypeOk() (*string, bool)`
 
 GetPropertyTypeOk returns a tuple with the PropertyType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPropertyType
 
-`func (o *AccountCreateRequest) SetPropertyType(v int32)`
+`func (o *AccountCreateRequest) SetPropertyType(v string)`
 
 SetPropertyType sets PropertyType field to given value.
 
@@ -535,31 +534,6 @@ SetPropertyType sets PropertyType field to given value.
 `func (o *AccountCreateRequest) HasPropertyType() bool`
 
 HasPropertyType returns a boolean if a field has been set.
-
-### GetPropertyTypeName
-
-`func (o *AccountCreateRequest) GetPropertyTypeName() string`
-
-GetPropertyTypeName returns the PropertyTypeName field if non-nil, zero value otherwise.
-
-### GetPropertyTypeNameOk
-
-`func (o *AccountCreateRequest) GetPropertyTypeNameOk() (*string, bool)`
-
-GetPropertyTypeNameOk returns a tuple with the PropertyTypeName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPropertyTypeName
-
-`func (o *AccountCreateRequest) SetPropertyTypeName(v string)`
-
-SetPropertyTypeName sets PropertyTypeName field to given value.
-
-### HasPropertyTypeName
-
-`func (o *AccountCreateRequest) HasPropertyTypeName() bool`
-
-HasPropertyTypeName returns a boolean if a field has been set.
 
 ### GetSkipWebhook
 

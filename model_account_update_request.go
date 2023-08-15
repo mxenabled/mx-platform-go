@@ -16,7 +16,27 @@ import (
 
 // AccountUpdateRequest struct for AccountUpdateRequest
 type AccountUpdateRequest struct {
+	AccountSubtype *string `json:"account_subtype,omitempty"`
+	AccountType *string `json:"account_type,omitempty"`
+	Apr *float32 `json:"apr,omitempty"`
+	Apy *float32 `json:"apy,omitempty"`
+	AvailableBalance *float32 `json:"available_balance,omitempty"`
+	Balance *float32 `json:"balance,omitempty"`
+	CashSurrenderValue *float32 `json:"cash_surrender_value,omitempty"`
+	CreditLimit *float32 `json:"credit_limit,omitempty"`
+	CurrencyCode *string `json:"currency_code,omitempty"`
+	DeathBenefit *int32 `json:"death_benefit,omitempty"`
+	InterestRate *float32 `json:"interest_rate,omitempty"`
+	IsBusiness *bool `json:"is_business,omitempty"`
+	IsClosed *bool `json:"is_closed,omitempty"`
 	IsHidden *bool `json:"is_hidden,omitempty"`
+	LoanAmount *float32 `json:"loan_amount,omitempty"`
+	Metadata *string `json:"metadata,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Nickname *string `json:"nickname,omitempty"`
+	OriginalBalance *float32 `json:"original_balance,omitempty"`
+	PropertyType *string `json:"property_type,omitempty"`
+	SkipWebhook *bool `json:"skip_webhook,omitempty"`
 }
 
 // NewAccountUpdateRequest instantiates a new AccountUpdateRequest object
@@ -34,6 +54,422 @@ func NewAccountUpdateRequest() *AccountUpdateRequest {
 func NewAccountUpdateRequestWithDefaults() *AccountUpdateRequest {
 	this := AccountUpdateRequest{}
 	return &this
+}
+
+// GetAccountSubtype returns the AccountSubtype field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetAccountSubtype() string {
+	if o == nil || o.AccountSubtype == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccountSubtype
+}
+
+// GetAccountSubtypeOk returns a tuple with the AccountSubtype field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetAccountSubtypeOk() (*string, bool) {
+	if o == nil || o.AccountSubtype == nil {
+		return nil, false
+	}
+	return o.AccountSubtype, true
+}
+
+// HasAccountSubtype returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasAccountSubtype() bool {
+	if o != nil && o.AccountSubtype != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountSubtype gets a reference to the given string and assigns it to the AccountSubtype field.
+func (o *AccountUpdateRequest) SetAccountSubtype(v string) {
+	o.AccountSubtype = &v
+}
+
+// GetAccountType returns the AccountType field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetAccountType() string {
+	if o == nil || o.AccountType == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccountType
+}
+
+// GetAccountTypeOk returns a tuple with the AccountType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetAccountTypeOk() (*string, bool) {
+	if o == nil || o.AccountType == nil {
+		return nil, false
+	}
+	return o.AccountType, true
+}
+
+// HasAccountType returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasAccountType() bool {
+	if o != nil && o.AccountType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountType gets a reference to the given string and assigns it to the AccountType field.
+func (o *AccountUpdateRequest) SetAccountType(v string) {
+	o.AccountType = &v
+}
+
+// GetApr returns the Apr field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetApr() float32 {
+	if o == nil || o.Apr == nil {
+		var ret float32
+		return ret
+	}
+	return *o.Apr
+}
+
+// GetAprOk returns a tuple with the Apr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetAprOk() (*float32, bool) {
+	if o == nil || o.Apr == nil {
+		return nil, false
+	}
+	return o.Apr, true
+}
+
+// HasApr returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasApr() bool {
+	if o != nil && o.Apr != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApr gets a reference to the given float32 and assigns it to the Apr field.
+func (o *AccountUpdateRequest) SetApr(v float32) {
+	o.Apr = &v
+}
+
+// GetApy returns the Apy field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetApy() float32 {
+	if o == nil || o.Apy == nil {
+		var ret float32
+		return ret
+	}
+	return *o.Apy
+}
+
+// GetApyOk returns a tuple with the Apy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetApyOk() (*float32, bool) {
+	if o == nil || o.Apy == nil {
+		return nil, false
+	}
+	return o.Apy, true
+}
+
+// HasApy returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasApy() bool {
+	if o != nil && o.Apy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApy gets a reference to the given float32 and assigns it to the Apy field.
+func (o *AccountUpdateRequest) SetApy(v float32) {
+	o.Apy = &v
+}
+
+// GetAvailableBalance returns the AvailableBalance field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetAvailableBalance() float32 {
+	if o == nil || o.AvailableBalance == nil {
+		var ret float32
+		return ret
+	}
+	return *o.AvailableBalance
+}
+
+// GetAvailableBalanceOk returns a tuple with the AvailableBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetAvailableBalanceOk() (*float32, bool) {
+	if o == nil || o.AvailableBalance == nil {
+		return nil, false
+	}
+	return o.AvailableBalance, true
+}
+
+// HasAvailableBalance returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasAvailableBalance() bool {
+	if o != nil && o.AvailableBalance != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailableBalance gets a reference to the given float32 and assigns it to the AvailableBalance field.
+func (o *AccountUpdateRequest) SetAvailableBalance(v float32) {
+	o.AvailableBalance = &v
+}
+
+// GetBalance returns the Balance field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetBalance() float32 {
+	if o == nil || o.Balance == nil {
+		var ret float32
+		return ret
+	}
+	return *o.Balance
+}
+
+// GetBalanceOk returns a tuple with the Balance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetBalanceOk() (*float32, bool) {
+	if o == nil || o.Balance == nil {
+		return nil, false
+	}
+	return o.Balance, true
+}
+
+// HasBalance returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasBalance() bool {
+	if o != nil && o.Balance != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBalance gets a reference to the given float32 and assigns it to the Balance field.
+func (o *AccountUpdateRequest) SetBalance(v float32) {
+	o.Balance = &v
+}
+
+// GetCashSurrenderValue returns the CashSurrenderValue field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetCashSurrenderValue() float32 {
+	if o == nil || o.CashSurrenderValue == nil {
+		var ret float32
+		return ret
+	}
+	return *o.CashSurrenderValue
+}
+
+// GetCashSurrenderValueOk returns a tuple with the CashSurrenderValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetCashSurrenderValueOk() (*float32, bool) {
+	if o == nil || o.CashSurrenderValue == nil {
+		return nil, false
+	}
+	return o.CashSurrenderValue, true
+}
+
+// HasCashSurrenderValue returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasCashSurrenderValue() bool {
+	if o != nil && o.CashSurrenderValue != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCashSurrenderValue gets a reference to the given float32 and assigns it to the CashSurrenderValue field.
+func (o *AccountUpdateRequest) SetCashSurrenderValue(v float32) {
+	o.CashSurrenderValue = &v
+}
+
+// GetCreditLimit returns the CreditLimit field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetCreditLimit() float32 {
+	if o == nil || o.CreditLimit == nil {
+		var ret float32
+		return ret
+	}
+	return *o.CreditLimit
+}
+
+// GetCreditLimitOk returns a tuple with the CreditLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetCreditLimitOk() (*float32, bool) {
+	if o == nil || o.CreditLimit == nil {
+		return nil, false
+	}
+	return o.CreditLimit, true
+}
+
+// HasCreditLimit returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasCreditLimit() bool {
+	if o != nil && o.CreditLimit != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreditLimit gets a reference to the given float32 and assigns it to the CreditLimit field.
+func (o *AccountUpdateRequest) SetCreditLimit(v float32) {
+	o.CreditLimit = &v
+}
+
+// GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetCurrencyCode() string {
+	if o == nil || o.CurrencyCode == nil {
+		var ret string
+		return ret
+	}
+	return *o.CurrencyCode
+}
+
+// GetCurrencyCodeOk returns a tuple with the CurrencyCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetCurrencyCodeOk() (*string, bool) {
+	if o == nil || o.CurrencyCode == nil {
+		return nil, false
+	}
+	return o.CurrencyCode, true
+}
+
+// HasCurrencyCode returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasCurrencyCode() bool {
+	if o != nil && o.CurrencyCode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrencyCode gets a reference to the given string and assigns it to the CurrencyCode field.
+func (o *AccountUpdateRequest) SetCurrencyCode(v string) {
+	o.CurrencyCode = &v
+}
+
+// GetDeathBenefit returns the DeathBenefit field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetDeathBenefit() int32 {
+	if o == nil || o.DeathBenefit == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DeathBenefit
+}
+
+// GetDeathBenefitOk returns a tuple with the DeathBenefit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetDeathBenefitOk() (*int32, bool) {
+	if o == nil || o.DeathBenefit == nil {
+		return nil, false
+	}
+	return o.DeathBenefit, true
+}
+
+// HasDeathBenefit returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasDeathBenefit() bool {
+	if o != nil && o.DeathBenefit != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeathBenefit gets a reference to the given int32 and assigns it to the DeathBenefit field.
+func (o *AccountUpdateRequest) SetDeathBenefit(v int32) {
+	o.DeathBenefit = &v
+}
+
+// GetInterestRate returns the InterestRate field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetInterestRate() float32 {
+	if o == nil || o.InterestRate == nil {
+		var ret float32
+		return ret
+	}
+	return *o.InterestRate
+}
+
+// GetInterestRateOk returns a tuple with the InterestRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetInterestRateOk() (*float32, bool) {
+	if o == nil || o.InterestRate == nil {
+		return nil, false
+	}
+	return o.InterestRate, true
+}
+
+// HasInterestRate returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasInterestRate() bool {
+	if o != nil && o.InterestRate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInterestRate gets a reference to the given float32 and assigns it to the InterestRate field.
+func (o *AccountUpdateRequest) SetInterestRate(v float32) {
+	o.InterestRate = &v
+}
+
+// GetIsBusiness returns the IsBusiness field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetIsBusiness() bool {
+	if o == nil || o.IsBusiness == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsBusiness
+}
+
+// GetIsBusinessOk returns a tuple with the IsBusiness field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetIsBusinessOk() (*bool, bool) {
+	if o == nil || o.IsBusiness == nil {
+		return nil, false
+	}
+	return o.IsBusiness, true
+}
+
+// HasIsBusiness returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasIsBusiness() bool {
+	if o != nil && o.IsBusiness != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsBusiness gets a reference to the given bool and assigns it to the IsBusiness field.
+func (o *AccountUpdateRequest) SetIsBusiness(v bool) {
+	o.IsBusiness = &v
+}
+
+// GetIsClosed returns the IsClosed field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetIsClosed() bool {
+	if o == nil || o.IsClosed == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsClosed
+}
+
+// GetIsClosedOk returns a tuple with the IsClosed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetIsClosedOk() (*bool, bool) {
+	if o == nil || o.IsClosed == nil {
+		return nil, false
+	}
+	return o.IsClosed, true
+}
+
+// HasIsClosed returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasIsClosed() bool {
+	if o != nil && o.IsClosed != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsClosed gets a reference to the given bool and assigns it to the IsClosed field.
+func (o *AccountUpdateRequest) SetIsClosed(v bool) {
+	o.IsClosed = &v
 }
 
 // GetIsHidden returns the IsHidden field value if set, zero value otherwise.
@@ -68,10 +504,294 @@ func (o *AccountUpdateRequest) SetIsHidden(v bool) {
 	o.IsHidden = &v
 }
 
+// GetLoanAmount returns the LoanAmount field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetLoanAmount() float32 {
+	if o == nil || o.LoanAmount == nil {
+		var ret float32
+		return ret
+	}
+	return *o.LoanAmount
+}
+
+// GetLoanAmountOk returns a tuple with the LoanAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetLoanAmountOk() (*float32, bool) {
+	if o == nil || o.LoanAmount == nil {
+		return nil, false
+	}
+	return o.LoanAmount, true
+}
+
+// HasLoanAmount returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasLoanAmount() bool {
+	if o != nil && o.LoanAmount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLoanAmount gets a reference to the given float32 and assigns it to the LoanAmount field.
+func (o *AccountUpdateRequest) SetLoanAmount(v float32) {
+	o.LoanAmount = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetMetadata() string {
+	if o == nil || o.Metadata == nil {
+		var ret string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetMetadataOk() (*string, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
+func (o *AccountUpdateRequest) SetMetadata(v string) {
+	o.Metadata = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *AccountUpdateRequest) SetName(v string) {
+	o.Name = &v
+}
+
+// GetNickname returns the Nickname field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetNickname() string {
+	if o == nil || o.Nickname == nil {
+		var ret string
+		return ret
+	}
+	return *o.Nickname
+}
+
+// GetNicknameOk returns a tuple with the Nickname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetNicknameOk() (*string, bool) {
+	if o == nil || o.Nickname == nil {
+		return nil, false
+	}
+	return o.Nickname, true
+}
+
+// HasNickname returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasNickname() bool {
+	if o != nil && o.Nickname != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNickname gets a reference to the given string and assigns it to the Nickname field.
+func (o *AccountUpdateRequest) SetNickname(v string) {
+	o.Nickname = &v
+}
+
+// GetOriginalBalance returns the OriginalBalance field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetOriginalBalance() float32 {
+	if o == nil || o.OriginalBalance == nil {
+		var ret float32
+		return ret
+	}
+	return *o.OriginalBalance
+}
+
+// GetOriginalBalanceOk returns a tuple with the OriginalBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetOriginalBalanceOk() (*float32, bool) {
+	if o == nil || o.OriginalBalance == nil {
+		return nil, false
+	}
+	return o.OriginalBalance, true
+}
+
+// HasOriginalBalance returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasOriginalBalance() bool {
+	if o != nil && o.OriginalBalance != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginalBalance gets a reference to the given float32 and assigns it to the OriginalBalance field.
+func (o *AccountUpdateRequest) SetOriginalBalance(v float32) {
+	o.OriginalBalance = &v
+}
+
+// GetPropertyType returns the PropertyType field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetPropertyType() string {
+	if o == nil || o.PropertyType == nil {
+		var ret string
+		return ret
+	}
+	return *o.PropertyType
+}
+
+// GetPropertyTypeOk returns a tuple with the PropertyType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetPropertyTypeOk() (*string, bool) {
+	if o == nil || o.PropertyType == nil {
+		return nil, false
+	}
+	return o.PropertyType, true
+}
+
+// HasPropertyType returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasPropertyType() bool {
+	if o != nil && o.PropertyType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPropertyType gets a reference to the given string and assigns it to the PropertyType field.
+func (o *AccountUpdateRequest) SetPropertyType(v string) {
+	o.PropertyType = &v
+}
+
+// GetSkipWebhook returns the SkipWebhook field value if set, zero value otherwise.
+func (o *AccountUpdateRequest) GetSkipWebhook() bool {
+	if o == nil || o.SkipWebhook == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SkipWebhook
+}
+
+// GetSkipWebhookOk returns a tuple with the SkipWebhook field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountUpdateRequest) GetSkipWebhookOk() (*bool, bool) {
+	if o == nil || o.SkipWebhook == nil {
+		return nil, false
+	}
+	return o.SkipWebhook, true
+}
+
+// HasSkipWebhook returns a boolean if a field has been set.
+func (o *AccountUpdateRequest) HasSkipWebhook() bool {
+	if o != nil && o.SkipWebhook != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipWebhook gets a reference to the given bool and assigns it to the SkipWebhook field.
+func (o *AccountUpdateRequest) SetSkipWebhook(v bool) {
+	o.SkipWebhook = &v
+}
+
 func (o AccountUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccountSubtype != nil {
+		toSerialize["account_subtype"] = o.AccountSubtype
+	}
+	if o.AccountType != nil {
+		toSerialize["account_type"] = o.AccountType
+	}
+	if o.Apr != nil {
+		toSerialize["apr"] = o.Apr
+	}
+	if o.Apy != nil {
+		toSerialize["apy"] = o.Apy
+	}
+	if o.AvailableBalance != nil {
+		toSerialize["available_balance"] = o.AvailableBalance
+	}
+	if o.Balance != nil {
+		toSerialize["balance"] = o.Balance
+	}
+	if o.CashSurrenderValue != nil {
+		toSerialize["cash_surrender_value"] = o.CashSurrenderValue
+	}
+	if o.CreditLimit != nil {
+		toSerialize["credit_limit"] = o.CreditLimit
+	}
+	if o.CurrencyCode != nil {
+		toSerialize["currency_code"] = o.CurrencyCode
+	}
+	if o.DeathBenefit != nil {
+		toSerialize["death_benefit"] = o.DeathBenefit
+	}
+	if o.InterestRate != nil {
+		toSerialize["interest_rate"] = o.InterestRate
+	}
+	if o.IsBusiness != nil {
+		toSerialize["is_business"] = o.IsBusiness
+	}
+	if o.IsClosed != nil {
+		toSerialize["is_closed"] = o.IsClosed
+	}
 	if o.IsHidden != nil {
 		toSerialize["is_hidden"] = o.IsHidden
+	}
+	if o.LoanAmount != nil {
+		toSerialize["loan_amount"] = o.LoanAmount
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if o.Nickname != nil {
+		toSerialize["nickname"] = o.Nickname
+	}
+	if o.OriginalBalance != nil {
+		toSerialize["original_balance"] = o.OriginalBalance
+	}
+	if o.PropertyType != nil {
+		toSerialize["property_type"] = o.PropertyType
+	}
+	if o.SkipWebhook != nil {
+		toSerialize["skip_webhook"] = o.SkipWebhook
 	}
 	return json.Marshal(toSerialize)
 }

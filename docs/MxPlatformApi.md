@@ -4547,7 +4547,7 @@ Name | Type | Description  | Notes
 
 ## ListUserAccounts
 
-> AccountsResponseBody ListUserAccounts(ctx, userGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).RecordsPerPage(recordsPerPage).Execute()
+> AccountsResponseBody ListUserAccounts(ctx, userGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).IsManual(isManual).RecordsPerPage(recordsPerPage).Execute()
 
 List accounts
 
@@ -4569,11 +4569,12 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     memberIsManagedByUser := true // bool | List only accounts whose member is managed by the user. (optional)
     page := int32(1) // int32 | Specify current page. (optional)
+    isManual := true // bool | List only accounts that were manually created. (optional)
     recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListUserAccounts(context.Background(), userGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformApi.ListUserAccounts(context.Background(), userGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).IsManual(isManual).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListUserAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4601,6 +4602,7 @@ Name | Type | Description  | Notes
 
  **memberIsManagedByUser** | **bool** | List only accounts whose member is managed by the user. | 
  **page** | **int32** | Specify current page. | 
+ **isManual** | **bool** | List only accounts that were manually created. | 
  **recordsPerPage** | **int32** | Specify records per page. | 
 
 ### Return type

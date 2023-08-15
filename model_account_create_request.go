@@ -16,8 +16,8 @@ import (
 
 // AccountCreateRequest struct for AccountCreateRequest
 type AccountCreateRequest struct {
-	AccountSubtypeName *string `json:"account_subtype_name,omitempty"`
-	AccountType int32 `json:"account_type"`
+	AccountSubtype *string `json:"account_subtype,omitempty"`
+	AccountType string `json:"account_type"`
 	Apr *float32 `json:"apr,omitempty"`
 	Apy *float32 `json:"apy,omitempty"`
 	AvailableBalance *float32 `json:"available_balance,omitempty"`
@@ -35,8 +35,7 @@ type AccountCreateRequest struct {
 	Name string `json:"name"`
 	Nickname *string `json:"nickname,omitempty"`
 	OriginalBalance *float32 `json:"original_balance,omitempty"`
-	PropertyType *int32 `json:"property_type,omitempty"`
-	PropertyTypeName *string `json:"property_type_name,omitempty"`
+	PropertyType *string `json:"property_type,omitempty"`
 	SkipWebhook *bool `json:"skip_webhook,omitempty"`
 }
 
@@ -44,7 +43,7 @@ type AccountCreateRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountCreateRequest(accountType int32, name string) *AccountCreateRequest {
+func NewAccountCreateRequest(accountType string, name string) *AccountCreateRequest {
 	this := AccountCreateRequest{}
 	this.AccountType = accountType
 	this.Name = name
@@ -59,42 +58,42 @@ func NewAccountCreateRequestWithDefaults() *AccountCreateRequest {
 	return &this
 }
 
-// GetAccountSubtypeName returns the AccountSubtypeName field value if set, zero value otherwise.
-func (o *AccountCreateRequest) GetAccountSubtypeName() string {
-	if o == nil || o.AccountSubtypeName == nil {
+// GetAccountSubtype returns the AccountSubtype field value if set, zero value otherwise.
+func (o *AccountCreateRequest) GetAccountSubtype() string {
+	if o == nil || o.AccountSubtype == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccountSubtypeName
+	return *o.AccountSubtype
 }
 
-// GetAccountSubtypeNameOk returns a tuple with the AccountSubtypeName field value if set, nil otherwise
+// GetAccountSubtypeOk returns a tuple with the AccountSubtype field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreateRequest) GetAccountSubtypeNameOk() (*string, bool) {
-	if o == nil || o.AccountSubtypeName == nil {
+func (o *AccountCreateRequest) GetAccountSubtypeOk() (*string, bool) {
+	if o == nil || o.AccountSubtype == nil {
 		return nil, false
 	}
-	return o.AccountSubtypeName, true
+	return o.AccountSubtype, true
 }
 
-// HasAccountSubtypeName returns a boolean if a field has been set.
-func (o *AccountCreateRequest) HasAccountSubtypeName() bool {
-	if o != nil && o.AccountSubtypeName != nil {
+// HasAccountSubtype returns a boolean if a field has been set.
+func (o *AccountCreateRequest) HasAccountSubtype() bool {
+	if o != nil && o.AccountSubtype != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountSubtypeName gets a reference to the given string and assigns it to the AccountSubtypeName field.
-func (o *AccountCreateRequest) SetAccountSubtypeName(v string) {
-	o.AccountSubtypeName = &v
+// SetAccountSubtype gets a reference to the given string and assigns it to the AccountSubtype field.
+func (o *AccountCreateRequest) SetAccountSubtype(v string) {
+	o.AccountSubtype = &v
 }
 
 // GetAccountType returns the AccountType field value
-func (o *AccountCreateRequest) GetAccountType() int32 {
+func (o *AccountCreateRequest) GetAccountType() string {
 	if o == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 
@@ -103,7 +102,7 @@ func (o *AccountCreateRequest) GetAccountType() int32 {
 
 // GetAccountTypeOk returns a tuple with the AccountType field value
 // and a boolean to check if the value has been set.
-func (o *AccountCreateRequest) GetAccountTypeOk() (*int32, bool) {
+func (o *AccountCreateRequest) GetAccountTypeOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -111,7 +110,7 @@ func (o *AccountCreateRequest) GetAccountTypeOk() (*int32, bool) {
 }
 
 // SetAccountType sets field value
-func (o *AccountCreateRequest) SetAccountType(v int32) {
+func (o *AccountCreateRequest) SetAccountType(v string) {
 	o.AccountType = v
 }
 
@@ -652,9 +651,9 @@ func (o *AccountCreateRequest) SetOriginalBalance(v float32) {
 }
 
 // GetPropertyType returns the PropertyType field value if set, zero value otherwise.
-func (o *AccountCreateRequest) GetPropertyType() int32 {
+func (o *AccountCreateRequest) GetPropertyType() string {
 	if o == nil || o.PropertyType == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.PropertyType
@@ -662,7 +661,7 @@ func (o *AccountCreateRequest) GetPropertyType() int32 {
 
 // GetPropertyTypeOk returns a tuple with the PropertyType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreateRequest) GetPropertyTypeOk() (*int32, bool) {
+func (o *AccountCreateRequest) GetPropertyTypeOk() (*string, bool) {
 	if o == nil || o.PropertyType == nil {
 		return nil, false
 	}
@@ -678,41 +677,9 @@ func (o *AccountCreateRequest) HasPropertyType() bool {
 	return false
 }
 
-// SetPropertyType gets a reference to the given int32 and assigns it to the PropertyType field.
-func (o *AccountCreateRequest) SetPropertyType(v int32) {
+// SetPropertyType gets a reference to the given string and assigns it to the PropertyType field.
+func (o *AccountCreateRequest) SetPropertyType(v string) {
 	o.PropertyType = &v
-}
-
-// GetPropertyTypeName returns the PropertyTypeName field value if set, zero value otherwise.
-func (o *AccountCreateRequest) GetPropertyTypeName() string {
-	if o == nil || o.PropertyTypeName == nil {
-		var ret string
-		return ret
-	}
-	return *o.PropertyTypeName
-}
-
-// GetPropertyTypeNameOk returns a tuple with the PropertyTypeName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountCreateRequest) GetPropertyTypeNameOk() (*string, bool) {
-	if o == nil || o.PropertyTypeName == nil {
-		return nil, false
-	}
-	return o.PropertyTypeName, true
-}
-
-// HasPropertyTypeName returns a boolean if a field has been set.
-func (o *AccountCreateRequest) HasPropertyTypeName() bool {
-	if o != nil && o.PropertyTypeName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPropertyTypeName gets a reference to the given string and assigns it to the PropertyTypeName field.
-func (o *AccountCreateRequest) SetPropertyTypeName(v string) {
-	o.PropertyTypeName = &v
 }
 
 // GetSkipWebhook returns the SkipWebhook field value if set, zero value otherwise.
@@ -749,8 +716,8 @@ func (o *AccountCreateRequest) SetSkipWebhook(v bool) {
 
 func (o AccountCreateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccountSubtypeName != nil {
-		toSerialize["account_subtype_name"] = o.AccountSubtypeName
+	if o.AccountSubtype != nil {
+		toSerialize["account_subtype"] = o.AccountSubtype
 	}
 	if true {
 		toSerialize["account_type"] = o.AccountType
@@ -808,9 +775,6 @@ func (o AccountCreateRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.PropertyType != nil {
 		toSerialize["property_type"] = o.PropertyType
-	}
-	if o.PropertyTypeName != nil {
-		toSerialize["property_type_name"] = o.PropertyTypeName
 	}
 	if o.SkipWebhook != nil {
 		toSerialize["skip_webhook"] = o.SkipWebhook
