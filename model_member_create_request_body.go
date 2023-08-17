@@ -17,6 +17,7 @@ import (
 // MemberCreateRequestBody struct for MemberCreateRequestBody
 type MemberCreateRequestBody struct {
 	ClientRedirectUrl *string `json:"client_redirect_url,omitempty"`
+	EnableApp2app *bool `json:"enable_app2app,omitempty"`
 	Member *MemberCreateRequest `json:"member,omitempty"`
 	ReferralSource *string `json:"referral_source,omitempty"`
 	UiMessageWebviewUrlScheme *string `json:"ui_message_webview_url_scheme,omitempty"`
@@ -69,6 +70,38 @@ func (o *MemberCreateRequestBody) HasClientRedirectUrl() bool {
 // SetClientRedirectUrl gets a reference to the given string and assigns it to the ClientRedirectUrl field.
 func (o *MemberCreateRequestBody) SetClientRedirectUrl(v string) {
 	o.ClientRedirectUrl = &v
+}
+
+// GetEnableApp2app returns the EnableApp2app field value if set, zero value otherwise.
+func (o *MemberCreateRequestBody) GetEnableApp2app() bool {
+	if o == nil || o.EnableApp2app == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnableApp2app
+}
+
+// GetEnableApp2appOk returns a tuple with the EnableApp2app field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MemberCreateRequestBody) GetEnableApp2appOk() (*bool, bool) {
+	if o == nil || o.EnableApp2app == nil {
+		return nil, false
+	}
+	return o.EnableApp2app, true
+}
+
+// HasEnableApp2app returns a boolean if a field has been set.
+func (o *MemberCreateRequestBody) HasEnableApp2app() bool {
+	if o != nil && o.EnableApp2app != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableApp2app gets a reference to the given bool and assigns it to the EnableApp2app field.
+func (o *MemberCreateRequestBody) SetEnableApp2app(v bool) {
+	o.EnableApp2app = &v
 }
 
 // GetMember returns the Member field value if set, zero value otherwise.
@@ -171,6 +204,9 @@ func (o MemberCreateRequestBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClientRedirectUrl != nil {
 		toSerialize["client_redirect_url"] = o.ClientRedirectUrl
+	}
+	if o.EnableApp2app != nil {
+		toSerialize["enable_app2app"] = o.EnableApp2app
 	}
 	if o.Member != nil {
 		toSerialize["member"] = o.Member

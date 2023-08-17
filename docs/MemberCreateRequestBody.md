@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientRedirectUrl** | Pointer to **string** |  | [optional] 
+**EnableApp2app** | Pointer to **bool** |  | [optional] 
 **Member** | Pointer to [**MemberCreateRequest**](MemberCreateRequest.md) |  | [optional] 
 **ReferralSource** | Pointer to **string** |  | [optional] 
 **UiMessageWebviewUrlScheme** | Pointer to **string** |  | [optional] 
@@ -52,6 +53,31 @@ SetClientRedirectUrl sets ClientRedirectUrl field to given value.
 `func (o *MemberCreateRequestBody) HasClientRedirectUrl() bool`
 
 HasClientRedirectUrl returns a boolean if a field has been set.
+
+### GetEnableApp2app
+
+`func (o *MemberCreateRequestBody) GetEnableApp2app() bool`
+
+GetEnableApp2app returns the EnableApp2app field if non-nil, zero value otherwise.
+
+### GetEnableApp2appOk
+
+`func (o *MemberCreateRequestBody) GetEnableApp2appOk() (*bool, bool)`
+
+GetEnableApp2appOk returns a tuple with the EnableApp2app field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableApp2app
+
+`func (o *MemberCreateRequestBody) SetEnableApp2app(v bool)`
+
+SetEnableApp2app sets EnableApp2app field to given value.
+
+### HasEnableApp2app
+
+`func (o *MemberCreateRequestBody) HasEnableApp2app() bool`
+
+HasEnableApp2app returns a boolean if a field has been set.
 
 ### GetMember
 

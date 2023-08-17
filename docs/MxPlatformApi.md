@@ -6300,7 +6300,7 @@ Name | Type | Description  | Notes
 
 ## RequestOAuthWindowURI
 
-> OAuthWindowResponseBody RequestOAuthWindowURI(ctx, memberGuid, userGuid).ClientRedirectUrl(clientRedirectUrl).ReferralSource(referralSource).SkipAggregation(skipAggregation).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).Execute()
+> OAuthWindowResponseBody RequestOAuthWindowURI(ctx, memberGuid, userGuid).ClientRedirectUrl(clientRedirectUrl).EnableApp2app(enableApp2app).ReferralSource(referralSource).SkipAggregation(skipAggregation).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).Execute()
 
 Request oauth window uri
 
@@ -6322,13 +6322,14 @@ func main() {
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     clientRedirectUrl := "https://mx.com" // string | A URL that MX will redirect to at the end of OAuth with additional query parameters. Only available with `referral_source=APP`. (optional)
+    enableApp2app := "false" // string | This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. This setting is not persistent. (optional)
     referralSource := "APP" // string | Must be either `BROWSER` or `APP` depending on the implementation. Defaults to `BROWSER`. (optional)
     skipAggregation := false // bool | Setting this parameter to `true` will prevent the member from automatically aggregating after being redirected from the authorization page. (optional)
     uiMessageWebviewUrlScheme := "mx" // string | A scheme for routing the user back to the application state they were previously in. Only available with `referral_source=APP`. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.RequestOAuthWindowURI(context.Background(), memberGuid, userGuid).ClientRedirectUrl(clientRedirectUrl).ReferralSource(referralSource).SkipAggregation(skipAggregation).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).Execute()
+    resp, r, err := apiClient.MxPlatformApi.RequestOAuthWindowURI(context.Background(), memberGuid, userGuid).ClientRedirectUrl(clientRedirectUrl).EnableApp2app(enableApp2app).ReferralSource(referralSource).SkipAggregation(skipAggregation).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestOAuthWindowURI``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6357,6 +6358,7 @@ Name | Type | Description  | Notes
 
 
  **clientRedirectUrl** | **string** | A URL that MX will redirect to at the end of OAuth with additional query parameters. Only available with &#x60;referral_source&#x3D;APP&#x60;. | 
+ **enableApp2app** | **string** | This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to &#x60;true&#x60;. This setting is not persistent. | 
  **referralSource** | **string** | Must be either &#x60;BROWSER&#x60; or &#x60;APP&#x60; depending on the implementation. Defaults to &#x60;BROWSER&#x60;. | 
  **skipAggregation** | **bool** | Setting this parameter to &#x60;true&#x60; will prevent the member from automatically aggregating after being redirected from the authorization page. | 
  **uiMessageWebviewUrlScheme** | **string** | A scheme for routing the user back to the application state they were previously in. Only available with &#x60;referral_source&#x3D;APP&#x60;. | 

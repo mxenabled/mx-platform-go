@@ -9823,6 +9823,7 @@ type ApiRequestOAuthWindowURIRequest struct {
 	memberGuid string
 	userGuid string
 	clientRedirectUrl *string
+	enableApp2app *string
 	referralSource *string
 	skipAggregation *bool
 	uiMessageWebviewUrlScheme *string
@@ -9831,6 +9832,11 @@ type ApiRequestOAuthWindowURIRequest struct {
 // A URL that MX will redirect to at the end of OAuth with additional query parameters. Only available with &#x60;referral_source&#x3D;APP&#x60;.
 func (r ApiRequestOAuthWindowURIRequest) ClientRedirectUrl(clientRedirectUrl string) ApiRequestOAuthWindowURIRequest {
 	r.clientRedirectUrl = &clientRedirectUrl
+	return r
+}
+// This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to &#x60;true&#x60;. This setting is not persistent.
+func (r ApiRequestOAuthWindowURIRequest) EnableApp2app(enableApp2app string) ApiRequestOAuthWindowURIRequest {
+	r.enableApp2app = &enableApp2app
 	return r
 }
 // Must be either &#x60;BROWSER&#x60; or &#x60;APP&#x60; depending on the implementation. Defaults to &#x60;BROWSER&#x60;.
@@ -9897,6 +9903,9 @@ func (a *MxPlatformApiService) RequestOAuthWindowURIExecute(r ApiRequestOAuthWin
 
 	if r.clientRedirectUrl != nil {
 		localVarQueryParams.Add("client_redirect_url", parameterToString(*r.clientRedirectUrl, ""))
+	}
+	if r.enableApp2app != nil {
+		localVarQueryParams.Add("enable_app2app", parameterToString(*r.enableApp2app, ""))
 	}
 	if r.referralSource != nil {
 		localVarQueryParams.Add("referral_source", parameterToString(*r.referralSource, ""))
