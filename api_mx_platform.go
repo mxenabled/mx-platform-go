@@ -946,6 +946,229 @@ func (a *MxPlatformApiService) CreateMemberExecute(r ApiCreateMemberRequest) (*M
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateSpendingPlanRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+}
+
+
+func (r ApiCreateSpendingPlanRequest) Execute() (*SpendingPlanResponse, *http.Response, error) {
+	return r.ApiService.CreateSpendingPlanExecute(r)
+}
+
+/*
+CreateSpendingPlan Create spending plan
+
+This endpoint creates a new `spending_plan` for the user.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @return ApiCreateSpendingPlanRequest
+*/
+func (a *MxPlatformApiService) CreateSpendingPlan(ctx context.Context, userGuid string) ApiCreateSpendingPlanRequest {
+	return ApiCreateSpendingPlanRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanResponse
+func (a *MxPlatformApiService) CreateSpendingPlanExecute(r ApiCreateSpendingPlanRequest) (*SpendingPlanResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateSpendingPlan")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCreateSpendingPlanIterationItemRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	spendingPlanGuid string
+	userGuid string
+	spendingPlanIterationItemCreateRequestBody *SpendingPlanIterationItemCreateRequestBody
+}
+
+// Iteration item to be created with required parameters (planned_amount)
+func (r ApiCreateSpendingPlanIterationItemRequest) SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody SpendingPlanIterationItemCreateRequestBody) ApiCreateSpendingPlanIterationItemRequest {
+	r.spendingPlanIterationItemCreateRequestBody = &spendingPlanIterationItemCreateRequestBody
+	return r
+}
+
+func (r ApiCreateSpendingPlanIterationItemRequest) Execute() (*SpendingPlanIterationItemResponse, *http.Response, error) {
+	return r.ApiService.CreateSpendingPlanIterationItemExecute(r)
+}
+
+/*
+CreateSpendingPlanIterationItem Create spending plan iteration item
+
+This endpoint creates a new `spending_plan_iteration_item`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @param userGuid The unique id for a `user`.
+ @return ApiCreateSpendingPlanIterationItemRequest
+*/
+func (a *MxPlatformApiService) CreateSpendingPlanIterationItem(ctx context.Context, spendingPlanGuid string, userGuid string) ApiCreateSpendingPlanIterationItemRequest {
+	return ApiCreateSpendingPlanIterationItemRequest{
+		ApiService: a,
+		ctx: ctx,
+		spendingPlanGuid: spendingPlanGuid,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanIterationItemResponse
+func (a *MxPlatformApiService) CreateSpendingPlanIterationItemExecute(r ApiCreateSpendingPlanIterationItemRequest) (*SpendingPlanIterationItemResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanIterationItemResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.CreateSpendingPlanIterationItem")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items"
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.spendingPlanIterationItemCreateRequestBody == nil {
+		return localVarReturnValue, nil, reportError("spendingPlanIterationItemCreateRequestBody is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.spendingPlanIterationItemCreateRequestBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCreateTagRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
@@ -1946,6 +2169,305 @@ func (a *MxPlatformApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*h
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}"
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterToString(r.memberGuid, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteSpendingPlanRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+}
+
+
+func (r ApiDeleteSpendingPlanRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteSpendingPlanExecute(r)
+}
+
+/*
+DeleteSpendingPlan Delete spending plan
+
+Use this endpoint to delete a user's `spending_plan`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique ID for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @return ApiDeleteSpendingPlanRequest
+*/
+func (a *MxPlatformApiService) DeleteSpendingPlan(ctx context.Context, userGuid string, spendingPlanGuid string) ApiDeleteSpendingPlanRequest {
+	return ApiDeleteSpendingPlanRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+	}
+}
+
+// Execute executes the request
+func (a *MxPlatformApiService) DeleteSpendingPlanExecute(r ApiDeleteSpendingPlanRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteSpendingPlan")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteSpendingPlanAccountRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	spendingPlanAccountGuid string
+}
+
+
+func (r ApiDeleteSpendingPlanAccountRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteSpendingPlanAccountExecute(r)
+}
+
+/*
+DeleteSpendingPlanAccount Delete spending plan account
+
+Use this endpoint to delete a `spending_plan_account`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique ID for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @param spendingPlanAccountGuid The unique ID for the specified account.
+ @return ApiDeleteSpendingPlanAccountRequest
+*/
+func (a *MxPlatformApiService) DeleteSpendingPlanAccount(ctx context.Context, userGuid string, spendingPlanGuid string, spendingPlanAccountGuid string) ApiDeleteSpendingPlanAccountRequest {
+	return ApiDeleteSpendingPlanAccountRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+		spendingPlanAccountGuid: spendingPlanAccountGuid,
+	}
+}
+
+// Execute executes the request
+func (a *MxPlatformApiService) DeleteSpendingPlanAccountExecute(r ApiDeleteSpendingPlanAccountRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteSpendingPlanAccount")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_account_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanAccountGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteSpendingPlanIterationItemRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	iterationItemGuid string
+}
+
+
+func (r ApiDeleteSpendingPlanIterationItemRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteSpendingPlanIterationItemExecute(r)
+}
+
+/*
+DeleteSpendingPlanIterationItem Delete spending plan iteration item
+
+Use this endpoint to delete a spending plan `iteration_item`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique ID for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @param iterationItemGuid The unique ID for the `iteration_item`.
+ @return ApiDeleteSpendingPlanIterationItemRequest
+*/
+func (a *MxPlatformApiService) DeleteSpendingPlanIterationItem(ctx context.Context, userGuid string, spendingPlanGuid string, iterationItemGuid string) ApiDeleteSpendingPlanIterationItemRequest {
+	return ApiDeleteSpendingPlanIterationItemRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+		iterationItemGuid: iterationItemGuid,
+	}
+}
+
+// Execute executes the request
+func (a *MxPlatformApiService) DeleteSpendingPlanIterationItemExecute(r ApiDeleteSpendingPlanIterationItemRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.DeleteSpendingPlanIterationItem")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"iteration_item_guid"+"}", url.PathEscape(parameterToString(r.iterationItemGuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5952,6 +6474,506 @@ func (a *MxPlatformApiService) ListMerchantsExecute(r ApiListMerchantsRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListSpendingPlanAccountsRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	page *int32
+	recordsPerPage *int32
+}
+
+// Specify current page.
+func (r ApiListSpendingPlanAccountsRequest) Page(page int32) ApiListSpendingPlanAccountsRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiListSpendingPlanAccountsRequest) RecordsPerPage(recordsPerPage int32) ApiListSpendingPlanAccountsRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiListSpendingPlanAccountsRequest) Execute() (*SpendingPlanAccountsResponse, *http.Response, error) {
+	return r.ApiService.ListSpendingPlanAccountsExecute(r)
+}
+
+/*
+ListSpendingPlanAccounts List spending plan accounts
+
+Use this endpoint to list all the spending plan accounts associated with the spending plan.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @return ApiListSpendingPlanAccountsRequest
+*/
+func (a *MxPlatformApiService) ListSpendingPlanAccounts(ctx context.Context, userGuid string, spendingPlanGuid string) ApiListSpendingPlanAccountsRequest {
+	return ApiListSpendingPlanAccountsRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanAccountsResponse
+func (a *MxPlatformApiService) ListSpendingPlanAccountsExecute(r ApiListSpendingPlanAccountsRequest) (*SpendingPlanAccountsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanAccountsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListSpendingPlanAccounts")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListSpendingPlanIterationItemsRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	page *int32
+	recordsPerPage *int32
+}
+
+// Specify current page.
+func (r ApiListSpendingPlanIterationItemsRequest) Page(page int32) ApiListSpendingPlanIterationItemsRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiListSpendingPlanIterationItemsRequest) RecordsPerPage(recordsPerPage int32) ApiListSpendingPlanIterationItemsRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiListSpendingPlanIterationItemsRequest) Execute() (*SpendingPlanIterationItemsResponseBody, *http.Response, error) {
+	return r.ApiService.ListSpendingPlanIterationItemsExecute(r)
+}
+
+/*
+ListSpendingPlanIterationItems List spending plan iteration items
+
+Use this endpoint to list all the spending plan `iteration_items` associated with the `iteration`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @return ApiListSpendingPlanIterationItemsRequest
+*/
+func (a *MxPlatformApiService) ListSpendingPlanIterationItems(ctx context.Context, userGuid string, spendingPlanGuid string) ApiListSpendingPlanIterationItemsRequest {
+	return ApiListSpendingPlanIterationItemsRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanIterationItemsResponseBody
+func (a *MxPlatformApiService) ListSpendingPlanIterationItemsExecute(r ApiListSpendingPlanIterationItemsRequest) (*SpendingPlanIterationItemsResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanIterationItemsResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListSpendingPlanIterationItems")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListSpendingPlanIterationsRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	page *int32
+	recordsPerPage *int32
+}
+
+// Specify current page.
+func (r ApiListSpendingPlanIterationsRequest) Page(page int32) ApiListSpendingPlanIterationsRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiListSpendingPlanIterationsRequest) RecordsPerPage(recordsPerPage int32) ApiListSpendingPlanIterationsRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiListSpendingPlanIterationsRequest) Execute() (*SpendingPlanIterationsResponse, *http.Response, error) {
+	return r.ApiService.ListSpendingPlanIterationsExecute(r)
+}
+
+/*
+ListSpendingPlanIterations List spending plan iterations
+
+Use this endpoint to list all the spending plan `iterations` associated with the `spending_plan`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @return ApiListSpendingPlanIterationsRequest
+*/
+func (a *MxPlatformApiService) ListSpendingPlanIterations(ctx context.Context, userGuid string, spendingPlanGuid string) ApiListSpendingPlanIterationsRequest {
+	return ApiListSpendingPlanIterationsRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanIterationsResponse
+func (a *MxPlatformApiService) ListSpendingPlanIterationsExecute(r ApiListSpendingPlanIterationsRequest) (*SpendingPlanIterationsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanIterationsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListSpendingPlanIterations")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListSpendingPlansRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	page *int32
+	recordsPerPage *int32
+}
+
+// Specify current page.
+func (r ApiListSpendingPlansRequest) Page(page int32) ApiListSpendingPlansRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiListSpendingPlansRequest) RecordsPerPage(recordsPerPage int32) ApiListSpendingPlansRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiListSpendingPlansRequest) Execute() (*SpendingPlansResponseBody, *http.Response, error) {
+	return r.ApiService.ListSpendingPlansExecute(r)
+}
+
+/*
+ListSpendingPlans List spending plans
+
+Use this endpoint to list all the spending plans associated with the user.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @return ApiListSpendingPlansRequest
+*/
+func (a *MxPlatformApiService) ListSpendingPlans(ctx context.Context, userGuid string) ApiListSpendingPlansRequest {
+	return ApiListSpendingPlansRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlansResponseBody
+func (a *MxPlatformApiService) ListSpendingPlansExecute(r ApiListSpendingPlansRequest) (*SpendingPlansResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlansResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ListSpendingPlans")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListStatementsByMemberRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
@@ -8831,6 +9853,522 @@ func (a *MxPlatformApiService) ReadMerchantLocationExecute(r ApiReadMerchantLoca
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiReadSpendingPlanAccountRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	spendingPlanAccountGuid string
+	page *int32
+	recordsPerPage *int32
+}
+
+// Specify current page.
+func (r ApiReadSpendingPlanAccountRequest) Page(page int32) ApiReadSpendingPlanAccountRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiReadSpendingPlanAccountRequest) RecordsPerPage(recordsPerPage int32) ApiReadSpendingPlanAccountRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiReadSpendingPlanAccountRequest) Execute() (*SpendingPlanAccountResponse, *http.Response, error) {
+	return r.ApiService.ReadSpendingPlanAccountExecute(r)
+}
+
+/*
+ReadSpendingPlanAccount Read spending plan account
+
+Use this endpoint to read the attributes of a specific spending plan account according to its unique GUID.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @param spendingPlanAccountGuid The unique ID for the specified account.
+ @return ApiReadSpendingPlanAccountRequest
+*/
+func (a *MxPlatformApiService) ReadSpendingPlanAccount(ctx context.Context, userGuid string, spendingPlanGuid string, spendingPlanAccountGuid string) ApiReadSpendingPlanAccountRequest {
+	return ApiReadSpendingPlanAccountRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+		spendingPlanAccountGuid: spendingPlanAccountGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanAccountResponse
+func (a *MxPlatformApiService) ReadSpendingPlanAccountExecute(r ApiReadSpendingPlanAccountRequest) (*SpendingPlanAccountResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanAccountResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadSpendingPlanAccount")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_account_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanAccountGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadSpendingPlanIterationRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	iterationNumber int32
+	page *int32
+	recordsPerPage *int32
+}
+
+// Specify current page.
+func (r ApiReadSpendingPlanIterationRequest) Page(page int32) ApiReadSpendingPlanIterationRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiReadSpendingPlanIterationRequest) RecordsPerPage(recordsPerPage int32) ApiReadSpendingPlanIterationRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiReadSpendingPlanIterationRequest) Execute() (*SpendingPlanIterationResponse, *http.Response, error) {
+	return r.ApiService.ReadSpendingPlanIterationExecute(r)
+}
+
+/*
+ReadSpendingPlanIteration Read a spending plan iteration
+
+Use this endpoint to read the attributes of a specific spending plan `iteration` according to its `iteration_number`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @param iterationNumber The current iteration number for the spending plan `iteration``.
+ @return ApiReadSpendingPlanIterationRequest
+*/
+func (a *MxPlatformApiService) ReadSpendingPlanIteration(ctx context.Context, userGuid string, spendingPlanGuid string, iterationNumber int32) ApiReadSpendingPlanIterationRequest {
+	return ApiReadSpendingPlanIterationRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+		iterationNumber: iterationNumber,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanIterationResponse
+func (a *MxPlatformApiService) ReadSpendingPlanIterationExecute(r ApiReadSpendingPlanIterationRequest) (*SpendingPlanIterationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanIterationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadSpendingPlanIteration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/{iteration_number}"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"iteration_number"+"}", url.PathEscape(parameterToString(r.iterationNumber, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadSpendingPlanIterationItemRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	iterationItemGuid string
+	page *int32
+	recordsPerPage *int32
+}
+
+// Specify current page.
+func (r ApiReadSpendingPlanIterationItemRequest) Page(page int32) ApiReadSpendingPlanIterationItemRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiReadSpendingPlanIterationItemRequest) RecordsPerPage(recordsPerPage int32) ApiReadSpendingPlanIterationItemRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiReadSpendingPlanIterationItemRequest) Execute() (*SpendingPlanIterationItemResponse, *http.Response, error) {
+	return r.ApiService.ReadSpendingPlanIterationItemExecute(r)
+}
+
+/*
+ReadSpendingPlanIterationItem Read a spending plan iteration item
+
+Use this endpoint to read the attributes of a specific spending plan `iteration_item` according to its unique GUID.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @param iterationItemGuid The unique ID for the `iteration_item`.
+ @return ApiReadSpendingPlanIterationItemRequest
+*/
+func (a *MxPlatformApiService) ReadSpendingPlanIterationItem(ctx context.Context, userGuid string, spendingPlanGuid string, iterationItemGuid string) ApiReadSpendingPlanIterationItemRequest {
+	return ApiReadSpendingPlanIterationItemRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+		iterationItemGuid: iterationItemGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanIterationItemResponse
+func (a *MxPlatformApiService) ReadSpendingPlanIterationItemExecute(r ApiReadSpendingPlanIterationItemRequest) (*SpendingPlanIterationItemResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanIterationItemResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadSpendingPlanIterationItem")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"iteration_item_guid"+"}", url.PathEscape(parameterToString(r.iterationItemGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadSpendingPlanUserRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	page *int32
+	recordsPerPage *int32
+}
+
+// Specify current page.
+func (r ApiReadSpendingPlanUserRequest) Page(page int32) ApiReadSpendingPlanUserRequest {
+	r.page = &page
+	return r
+}
+// Specify records per page.
+func (r ApiReadSpendingPlanUserRequest) RecordsPerPage(recordsPerPage int32) ApiReadSpendingPlanUserRequest {
+	r.recordsPerPage = &recordsPerPage
+	return r
+}
+
+func (r ApiReadSpendingPlanUserRequest) Execute() (*SpendingPlanResponse, *http.Response, error) {
+	return r.ApiService.ReadSpendingPlanUserExecute(r)
+}
+
+/*
+ReadSpendingPlanUser Read a spending plan for a user
+
+Use this endpoint to read the attributes of a specific spending plan according to its unique GUID.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @return ApiReadSpendingPlanUserRequest
+*/
+func (a *MxPlatformApiService) ReadSpendingPlanUser(ctx context.Context, userGuid string, spendingPlanGuid string) ApiReadSpendingPlanUserRequest {
+	return ApiReadSpendingPlanUserRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanResponse
+func (a *MxPlatformApiService) ReadSpendingPlanUserExecute(r ApiReadSpendingPlanUserRequest) (*SpendingPlanResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.ReadSpendingPlanUser")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.recordsPerPage != nil {
+		localVarQueryParams.Add("records_per_page", parameterToString(*r.recordsPerPage, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiReadStatementByMemberRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformApiService
@@ -10906,6 +12444,129 @@ func (a *MxPlatformApiService) UpdateMemberExecute(r ApiUpdateMemberRequest) (*M
 	}
 	// body params
 	localVarPostBody = r.memberUpdateRequestBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateSpendingPlanIterationItemRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformApiService
+	userGuid string
+	spendingPlanGuid string
+	iterationItemGuid string
+	spendingPlanIterationItemCreateRequestBody *SpendingPlanIterationItemCreateRequestBody
+}
+
+// Iteration item object to be updated with required parameter (iteration_item_guid)
+func (r ApiUpdateSpendingPlanIterationItemRequest) SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody SpendingPlanIterationItemCreateRequestBody) ApiUpdateSpendingPlanIterationItemRequest {
+	r.spendingPlanIterationItemCreateRequestBody = &spendingPlanIterationItemCreateRequestBody
+	return r
+}
+
+func (r ApiUpdateSpendingPlanIterationItemRequest) Execute() (*SpendingPlanIterationItemResponse, *http.Response, error) {
+	return r.ApiService.UpdateSpendingPlanIterationItemExecute(r)
+}
+
+/*
+UpdateSpendingPlanIterationItem Update a spending plan iteration item
+
+Use this endpoint to update an existing `spending_plan_iteration_item`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param spendingPlanGuid The unique ID for the `spending_plan`.
+ @param iterationItemGuid The unique ID for the `iteration_item`.
+ @return ApiUpdateSpendingPlanIterationItemRequest
+*/
+func (a *MxPlatformApiService) UpdateSpendingPlanIterationItem(ctx context.Context, userGuid string, spendingPlanGuid string, iterationItemGuid string) ApiUpdateSpendingPlanIterationItemRequest {
+	return ApiUpdateSpendingPlanIterationItemRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		spendingPlanGuid: spendingPlanGuid,
+		iterationItemGuid: iterationItemGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SpendingPlanIterationItemResponse
+func (a *MxPlatformApiService) UpdateSpendingPlanIterationItemExecute(r ApiUpdateSpendingPlanIterationItemRequest) (*SpendingPlanIterationItemResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SpendingPlanIterationItemResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformApiService.UpdateSpendingPlanIterationItem")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterToString(r.userGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"spending_plan_guid"+"}", url.PathEscape(parameterToString(r.spendingPlanGuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"iteration_item_guid"+"}", url.PathEscape(parameterToString(r.iterationItemGuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.spendingPlanIterationItemCreateRequestBody == nil {
+		return localVarReturnValue, nil, reportError("spendingPlanIterationItemCreateRequestBody is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.spendingPlanIterationItemCreateRequestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

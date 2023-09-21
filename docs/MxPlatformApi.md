@@ -12,6 +12,8 @@ Method | HTTP request | Description
 [**CreateManagedTransaction**](MxPlatformApi.md#CreateManagedTransaction) | **Post** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions | Create managed transaction
 [**CreateManualAccount**](MxPlatformApi.md#CreateManualAccount) | **Post** /users/{user_guid}/accounts | Create manual account
 [**CreateMember**](MxPlatformApi.md#CreateMember) | **Post** /users/{user_guid}/members | Create member
+[**CreateSpendingPlan**](MxPlatformApi.md#CreateSpendingPlan) | **Post** /users/{user_guid}/spending_plans | Create spending plan
+[**CreateSpendingPlanIterationItem**](MxPlatformApi.md#CreateSpendingPlanIterationItem) | **Post** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items | Create spending plan iteration item
 [**CreateTag**](MxPlatformApi.md#CreateTag) | **Post** /users/{user_guid}/tags | Create tag
 [**CreateTagging**](MxPlatformApi.md#CreateTagging) | **Post** /users/{user_guid}/taggings | Create tagging
 [**CreateTransactionRule**](MxPlatformApi.md#CreateTransactionRule) | **Post** /users/{user_guid}/transaction_rules | Create transaction rule
@@ -22,6 +24,9 @@ Method | HTTP request | Description
 [**DeleteManagedTransaction**](MxPlatformApi.md#DeleteManagedTransaction) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Delete managed transaction
 [**DeleteManualAccount**](MxPlatformApi.md#DeleteManualAccount) | **Delete** /users/{user_guid}/accounts/{account_guid} | Delete manual account
 [**DeleteMember**](MxPlatformApi.md#DeleteMember) | **Delete** /users/{user_guid}/members/{member_guid} | Delete member
+[**DeleteSpendingPlan**](MxPlatformApi.md#DeleteSpendingPlan) | **Delete** /users/{user_guid}/spending_plans/{spending_plan_guid} | Delete spending plan
+[**DeleteSpendingPlanAccount**](MxPlatformApi.md#DeleteSpendingPlanAccount) | **Delete** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid} | Delete spending plan account
+[**DeleteSpendingPlanIterationItem**](MxPlatformApi.md#DeleteSpendingPlanIterationItem) | **Delete** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Delete spending plan iteration item
 [**DeleteTag**](MxPlatformApi.md#DeleteTag) | **Delete** /users/{user_guid}/tags/{tag_guid} | Delete tag
 [**DeleteTagging**](MxPlatformApi.md#DeleteTagging) | **Delete** /users/{user_guid}/taggings/{tagging_guid} | Delete tagging
 [**DeleteTransactionRule**](MxPlatformApi.md#DeleteTransactionRule) | **Delete** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Delete transaction rule
@@ -55,6 +60,10 @@ Method | HTTP request | Description
 [**ListMemberCredentials**](MxPlatformApi.md#ListMemberCredentials) | **Get** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
 [**ListMembers**](MxPlatformApi.md#ListMembers) | **Get** /users/{user_guid}/members | List members
 [**ListMerchants**](MxPlatformApi.md#ListMerchants) | **Get** /merchants | List merchants
+[**ListSpendingPlanAccounts**](MxPlatformApi.md#ListSpendingPlanAccounts) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts | List spending plan accounts
+[**ListSpendingPlanIterationItems**](MxPlatformApi.md#ListSpendingPlanIterationItems) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items | List spending plan iteration items
+[**ListSpendingPlanIterations**](MxPlatformApi.md#ListSpendingPlanIterations) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations | List spending plan iterations
+[**ListSpendingPlans**](MxPlatformApi.md#ListSpendingPlans) | **Get** /users/{user_guid}/spending_plans | List spending plans
 [**ListStatementsByMember**](MxPlatformApi.md#ListStatementsByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements | List statements by member
 [**ListTaggings**](MxPlatformApi.md#ListTaggings) | **Get** /users/{user_guid}/taggings | List taggings
 [**ListTags**](MxPlatformApi.md#ListTags) | **Get** /users/{user_guid}/tags | List tags
@@ -79,6 +88,10 @@ Method | HTTP request | Description
 [**ReadMemberStatus**](MxPlatformApi.md#ReadMemberStatus) | **Get** /users/{user_guid}/members/{member_guid}/status | Read member status
 [**ReadMerchant**](MxPlatformApi.md#ReadMerchant) | **Get** /merchants/{merchant_guid} | Read merchant
 [**ReadMerchantLocation**](MxPlatformApi.md#ReadMerchantLocation) | **Get** /merchant_locations/{merchant_location_guid} | Read merchant location
+[**ReadSpendingPlanAccount**](MxPlatformApi.md#ReadSpendingPlanAccount) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid} | Read spending plan account
+[**ReadSpendingPlanIteration**](MxPlatformApi.md#ReadSpendingPlanIteration) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/{iteration_number} | Read a spending plan iteration
+[**ReadSpendingPlanIterationItem**](MxPlatformApi.md#ReadSpendingPlanIterationItem) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Read a spending plan iteration item
+[**ReadSpendingPlanUser**](MxPlatformApi.md#ReadSpendingPlanUser) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid} | Read a spending plan for a user
 [**ReadStatementByMember**](MxPlatformApi.md#ReadStatementByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements/{statement_guid} | Read statement by member
 [**ReadTag**](MxPlatformApi.md#ReadTag) | **Get** /users/{user_guid}/tags/{tag_guid} | Read tag
 [**ReadTagging**](MxPlatformApi.md#ReadTagging) | **Get** /users/{user_guid}/taggings/{tagging_guid} | Read tagging
@@ -97,6 +110,7 @@ Method | HTTP request | Description
 [**UpdateManagedMember**](MxPlatformApi.md#UpdateManagedMember) | **Put** /users/{user_guid}/managed_members/{member_guid} | Update managed member
 [**UpdateManagedTransaction**](MxPlatformApi.md#UpdateManagedTransaction) | **Put** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Update managed transaction
 [**UpdateMember**](MxPlatformApi.md#UpdateMember) | **Put** /users/{user_guid}/members/{member_guid} | Update member
+[**UpdateSpendingPlanIterationItem**](MxPlatformApi.md#UpdateSpendingPlanIterationItem) | **Put** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Update a spending plan iteration item
 [**UpdateTag**](MxPlatformApi.md#UpdateTag) | **Put** /users/{user_guid}/tags/{tag_guid} | Update tag
 [**UpdateTagging**](MxPlatformApi.md#UpdateTagging) | **Put** /users/{user_guid}/taggings/{tagging_guid} | Update tagging
 [**UpdateTransaction**](MxPlatformApi.md#UpdateTransaction) | **Put** /users/{user_guid}/transactions/{transaction_guid} | Update transaction
@@ -678,6 +692,151 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MemberResponseBody**](MemberResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateSpendingPlan
+
+> SpendingPlanResponse CreateSpendingPlan(ctx, userGuid).Execute()
+
+Create spending plan
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateSpendingPlan(context.Background(), userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateSpendingPlan``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateSpendingPlan`: SpendingPlanResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateSpendingPlan`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSpendingPlanRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SpendingPlanResponse**](SpendingPlanResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateSpendingPlanIterationItem
+
+> SpendingPlanIterationItemResponse CreateSpendingPlanIterationItem(ctx, spendingPlanGuid, userGuid).SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody).Execute()
+
+Create spending plan iteration item
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    spendingPlanIterationItemCreateRequestBody := *openapiclient.NewSpendingPlanIterationItemCreateRequestBody(float32(110)) // SpendingPlanIterationItemCreateRequestBody | Iteration item to be created with required parameters (planned_amount)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.CreateSpendingPlanIterationItem(context.Background(), spendingPlanGuid, userGuid).SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateSpendingPlanIterationItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateSpendingPlanIterationItem`: SpendingPlanIterationItemResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateSpendingPlanIterationItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSpendingPlanIterationItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **spendingPlanIterationItemCreateRequestBody** | [**SpendingPlanIterationItemCreateRequestBody**](SpendingPlanIterationItemCreateRequestBody.md) | Iteration item to be created with required parameters (planned_amount) | 
+
+### Return type
+
+[**SpendingPlanIterationItemResponse**](SpendingPlanIterationItemResponse.md)
 
 ### Authorization
 
@@ -1389,6 +1548,225 @@ Other parameters are passed through a pointer to a apiDeleteMemberRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteSpendingPlan
+
+> DeleteSpendingPlan(ctx, userGuid, spendingPlanGuid).Execute()
+
+Delete spending plan
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique ID for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteSpendingPlan(context.Background(), userGuid, spendingPlanGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteSpendingPlan``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique ID for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSpendingPlanRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteSpendingPlanAccount
+
+> DeleteSpendingPlanAccount(ctx, userGuid, spendingPlanGuid, spendingPlanAccountGuid).Execute()
+
+Delete spending plan account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique ID for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    spendingPlanAccountGuid := "ACT-e9f80fee-84da-7s7r-9a5e-0346g4279b4c" // string | The unique ID for the specified account.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteSpendingPlanAccount(context.Background(), userGuid, spendingPlanGuid, spendingPlanAccountGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteSpendingPlanAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique ID for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+**spendingPlanAccountGuid** | **string** | The unique ID for the specified account. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSpendingPlanAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteSpendingPlanIterationItem
+
+> DeleteSpendingPlanIterationItem(ctx, userGuid, spendingPlanGuid, iterationItemGuid).Execute()
+
+Delete spending plan iteration item
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique ID for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    iterationItemGuid := "SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3" // string | The unique ID for the `iteration_item`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.DeleteSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteSpendingPlanIterationItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique ID for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+**iterationItemGuid** | **string** | The unique ID for the &#x60;iteration_item&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSpendingPlanIterationItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 
 
@@ -3848,6 +4226,311 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListSpendingPlanAccounts
+
+> SpendingPlanAccountsResponse ListSpendingPlanAccounts(ctx, userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+List spending plan accounts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListSpendingPlanAccounts(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListSpendingPlanAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSpendingPlanAccounts`: SpendingPlanAccountsResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListSpendingPlanAccounts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSpendingPlanAccountsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**SpendingPlanAccountsResponse**](SpendingPlanAccountsResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSpendingPlanIterationItems
+
+> SpendingPlanIterationItemsResponseBody ListSpendingPlanIterationItems(ctx, userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+List spending plan iteration items
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListSpendingPlanIterationItems(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListSpendingPlanIterationItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSpendingPlanIterationItems`: SpendingPlanIterationItemsResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListSpendingPlanIterationItems`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSpendingPlanIterationItemsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**SpendingPlanIterationItemsResponseBody**](SpendingPlanIterationItemsResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSpendingPlanIterations
+
+> SpendingPlanIterationsResponse ListSpendingPlanIterations(ctx, userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+List spending plan iterations
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListSpendingPlanIterations(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListSpendingPlanIterations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSpendingPlanIterations`: SpendingPlanIterationsResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListSpendingPlanIterations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSpendingPlanIterationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**SpendingPlanIterationsResponse**](SpendingPlanIterationsResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSpendingPlans
+
+> SpendingPlansResponseBody ListSpendingPlans(ctx, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+List spending plans
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ListSpendingPlans(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListSpendingPlans``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSpendingPlans`: SpendingPlansResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListSpendingPlans`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSpendingPlansRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**SpendingPlansResponseBody**](SpendingPlansResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListStatementsByMember
 
 > StatementsResponseBody ListStatementsByMember(ctx, memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
@@ -5646,6 +6329,323 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ReadSpendingPlanAccount
+
+> SpendingPlanAccountResponse ReadSpendingPlanAccount(ctx, userGuid, spendingPlanGuid, spendingPlanAccountGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+Read spending plan account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    spendingPlanAccountGuid := "ACT-e9f80fee-84da-7s7r-9a5e-0346g4279b4c" // string | The unique ID for the specified account.
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadSpendingPlanAccount(context.Background(), userGuid, spendingPlanGuid, spendingPlanAccountGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadSpendingPlanAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadSpendingPlanAccount`: SpendingPlanAccountResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadSpendingPlanAccount`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+**spendingPlanAccountGuid** | **string** | The unique ID for the specified account. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadSpendingPlanAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**SpendingPlanAccountResponse**](SpendingPlanAccountResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadSpendingPlanIteration
+
+> SpendingPlanIterationResponse ReadSpendingPlanIteration(ctx, userGuid, spendingPlanGuid, iterationNumber).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+Read a spending plan iteration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    iterationNumber := int32(1) // int32 | The current iteration number for the spending plan `iteration``.
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadSpendingPlanIteration(context.Background(), userGuid, spendingPlanGuid, iterationNumber).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadSpendingPlanIteration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadSpendingPlanIteration`: SpendingPlanIterationResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadSpendingPlanIteration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+**iterationNumber** | **int32** | The current iteration number for the spending plan &#x60;iteration&#x60;&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadSpendingPlanIterationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**SpendingPlanIterationResponse**](SpendingPlanIterationResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadSpendingPlanIterationItem
+
+> SpendingPlanIterationItemResponse ReadSpendingPlanIterationItem(ctx, userGuid, spendingPlanGuid, iterationItemGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+Read a spending plan iteration item
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    iterationItemGuid := "SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3" // string | The unique ID for the `iteration_item`.
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadSpendingPlanIterationItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadSpendingPlanIterationItem`: SpendingPlanIterationItemResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadSpendingPlanIterationItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+**iterationItemGuid** | **string** | The unique ID for the &#x60;iteration_item&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadSpendingPlanIterationItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**SpendingPlanIterationItemResponse**](SpendingPlanIterationItemResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadSpendingPlanUser
+
+> SpendingPlanResponse ReadSpendingPlanUser(ctx, userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+Read a spending plan for a user
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    page := int32(1) // int32 | Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.ReadSpendingPlanUser(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadSpendingPlanUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadSpendingPlanUser`: SpendingPlanResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadSpendingPlanUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadSpendingPlanUserRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **page** | **int32** | Specify current page. | 
+ **recordsPerPage** | **int32** | Specify records per page. | 
+
+### Return type
+
+[**SpendingPlanResponse**](SpendingPlanResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ReadStatementByMember
 
 > StatementResponseBody ReadStatementByMember(ctx, memberGuid, statementGuid, userGuid).Execute()
@@ -6977,6 +7977,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MemberResponseBody**](MemberResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateSpendingPlanIterationItem
+
+> SpendingPlanIterationItemResponse UpdateSpendingPlanIterationItem(ctx, userGuid, spendingPlanGuid, iterationItemGuid).SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody).Execute()
+
+Update a spending plan iteration item
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    iterationItemGuid := "SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3" // string | The unique ID for the `iteration_item`.
+    spendingPlanIterationItemCreateRequestBody := *openapiclient.NewSpendingPlanIterationItemCreateRequestBody(float32(110)) // SpendingPlanIterationItemCreateRequestBody | Iteration item object to be updated with required parameter (iteration_item_guid)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformApi.UpdateSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateSpendingPlanIterationItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSpendingPlanIterationItem`: SpendingPlanIterationItemResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateSpendingPlanIterationItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+**iterationItemGuid** | **string** | The unique ID for the &#x60;iteration_item&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSpendingPlanIterationItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **spendingPlanIterationItemCreateRequestBody** | [**SpendingPlanIterationItemCreateRequestBody**](SpendingPlanIterationItemCreateRequestBody.md) | Iteration item object to be updated with required parameter (iteration_item_guid) | 
+
+### Return type
+
+[**SpendingPlanIterationItemResponse**](SpendingPlanIterationItemResponse.md)
 
 ### Authorization
 
