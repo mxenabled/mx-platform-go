@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaggingResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaggingResponseBody{}
+
 // TaggingResponseBody struct for TaggingResponseBody
 type TaggingResponseBody struct {
 	Tagging *TaggingResponse `json:"tagging,omitempty"`
@@ -38,7 +41,7 @@ func NewTaggingResponseBodyWithDefaults() *TaggingResponseBody {
 
 // GetTagging returns the Tagging field value if set, zero value otherwise.
 func (o *TaggingResponseBody) GetTagging() TaggingResponse {
-	if o == nil || o.Tagging == nil {
+	if o == nil || IsNil(o.Tagging) {
 		var ret TaggingResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *TaggingResponseBody) GetTagging() TaggingResponse {
 // GetTaggingOk returns a tuple with the Tagging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaggingResponseBody) GetTaggingOk() (*TaggingResponse, bool) {
-	if o == nil || o.Tagging == nil {
+	if o == nil || IsNil(o.Tagging) {
 		return nil, false
 	}
 	return o.Tagging, true
@@ -56,7 +59,7 @@ func (o *TaggingResponseBody) GetTaggingOk() (*TaggingResponse, bool) {
 
 // HasTagging returns a boolean if a field has been set.
 func (o *TaggingResponseBody) HasTagging() bool {
-	if o != nil && o.Tagging != nil {
+	if o != nil && !IsNil(o.Tagging) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *TaggingResponseBody) SetTagging(v TaggingResponse) {
 }
 
 func (o TaggingResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Tagging != nil {
-		toSerialize["tagging"] = o.Tagging
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TaggingResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Tagging) {
+		toSerialize["tagging"] = o.Tagging
+	}
+	return toSerialize, nil
 }
 
 type NullableTaggingResponseBody struct {

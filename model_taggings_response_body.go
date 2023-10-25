@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaggingsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaggingsResponseBody{}
+
 // TaggingsResponseBody struct for TaggingsResponseBody
 type TaggingsResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
@@ -39,7 +42,7 @@ func NewTaggingsResponseBodyWithDefaults() *TaggingsResponseBody {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *TaggingsResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *TaggingsResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaggingsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -57,7 +60,7 @@ func (o *TaggingsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
 
 // HasPagination returns a boolean if a field has been set.
 func (o *TaggingsResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *TaggingsResponseBody) SetPagination(v PaginationResponse) {
 
 // GetTaggings returns the Taggings field value if set, zero value otherwise.
 func (o *TaggingsResponseBody) GetTaggings() []TaggingResponse {
-	if o == nil || o.Taggings == nil {
+	if o == nil || IsNil(o.Taggings) {
 		var ret []TaggingResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *TaggingsResponseBody) GetTaggings() []TaggingResponse {
 // GetTaggingsOk returns a tuple with the Taggings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaggingsResponseBody) GetTaggingsOk() ([]TaggingResponse, bool) {
-	if o == nil || o.Taggings == nil {
+	if o == nil || IsNil(o.Taggings) {
 		return nil, false
 	}
 	return o.Taggings, true
@@ -89,7 +92,7 @@ func (o *TaggingsResponseBody) GetTaggingsOk() ([]TaggingResponse, bool) {
 
 // HasTaggings returns a boolean if a field has been set.
 func (o *TaggingsResponseBody) HasTaggings() bool {
-	if o != nil && o.Taggings != nil {
+	if o != nil && !IsNil(o.Taggings) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *TaggingsResponseBody) SetTaggings(v []TaggingResponse) {
 }
 
 func (o TaggingsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if o.Taggings != nil {
-		toSerialize["taggings"] = o.Taggings
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TaggingsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if !IsNil(o.Taggings) {
+		toSerialize["taggings"] = o.Taggings
+	}
+	return toSerialize, nil
 }
 
 type NullableTaggingsResponseBody struct {

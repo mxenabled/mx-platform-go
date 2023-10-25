@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnhanceTransactionsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnhanceTransactionsRequest{}
+
 // EnhanceTransactionsRequest struct for EnhanceTransactionsRequest
 type EnhanceTransactionsRequest struct {
 	Amount *float32 `json:"amount,omitempty"`
@@ -46,7 +49,7 @@ func NewEnhanceTransactionsRequestWithDefaults() *EnhanceTransactionsRequest {
 
 // GetAmount returns the Amount field value if set, zero value otherwise.
 func (o *EnhanceTransactionsRequest) GetAmount() float32 {
-	if o == nil || o.Amount == nil {
+	if o == nil || IsNil(o.Amount) {
 		var ret float32
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *EnhanceTransactionsRequest) GetAmount() float32 {
 // GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnhanceTransactionsRequest) GetAmountOk() (*float32, bool) {
-	if o == nil || o.Amount == nil {
+	if o == nil || IsNil(o.Amount) {
 		return nil, false
 	}
 	return o.Amount, true
@@ -64,7 +67,7 @@ func (o *EnhanceTransactionsRequest) GetAmountOk() (*float32, bool) {
 
 // HasAmount returns a boolean if a field has been set.
 func (o *EnhanceTransactionsRequest) HasAmount() bool {
-	if o != nil && o.Amount != nil {
+	if o != nil && !IsNil(o.Amount) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *EnhanceTransactionsRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *EnhanceTransactionsRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Description, true
@@ -102,7 +105,7 @@ func (o *EnhanceTransactionsRequest) SetDescription(v string) {
 
 // GetExtendedTransactionType returns the ExtendedTransactionType field value if set, zero value otherwise.
 func (o *EnhanceTransactionsRequest) GetExtendedTransactionType() string {
-	if o == nil || o.ExtendedTransactionType == nil {
+	if o == nil || IsNil(o.ExtendedTransactionType) {
 		var ret string
 		return ret
 	}
@@ -112,7 +115,7 @@ func (o *EnhanceTransactionsRequest) GetExtendedTransactionType() string {
 // GetExtendedTransactionTypeOk returns a tuple with the ExtendedTransactionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnhanceTransactionsRequest) GetExtendedTransactionTypeOk() (*string, bool) {
-	if o == nil || o.ExtendedTransactionType == nil {
+	if o == nil || IsNil(o.ExtendedTransactionType) {
 		return nil, false
 	}
 	return o.ExtendedTransactionType, true
@@ -120,7 +123,7 @@ func (o *EnhanceTransactionsRequest) GetExtendedTransactionTypeOk() (*string, bo
 
 // HasExtendedTransactionType returns a boolean if a field has been set.
 func (o *EnhanceTransactionsRequest) HasExtendedTransactionType() bool {
-	if o != nil && o.ExtendedTransactionType != nil {
+	if o != nil && !IsNil(o.ExtendedTransactionType) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *EnhanceTransactionsRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *EnhanceTransactionsRequest) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -158,7 +161,7 @@ func (o *EnhanceTransactionsRequest) SetId(v string) {
 
 // GetMemo returns the Memo field value if set, zero value otherwise.
 func (o *EnhanceTransactionsRequest) GetMemo() string {
-	if o == nil || o.Memo == nil {
+	if o == nil || IsNil(o.Memo) {
 		var ret string
 		return ret
 	}
@@ -168,7 +171,7 @@ func (o *EnhanceTransactionsRequest) GetMemo() string {
 // GetMemoOk returns a tuple with the Memo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnhanceTransactionsRequest) GetMemoOk() (*string, bool) {
-	if o == nil || o.Memo == nil {
+	if o == nil || IsNil(o.Memo) {
 		return nil, false
 	}
 	return o.Memo, true
@@ -176,7 +179,7 @@ func (o *EnhanceTransactionsRequest) GetMemoOk() (*string, bool) {
 
 // HasMemo returns a boolean if a field has been set.
 func (o *EnhanceTransactionsRequest) HasMemo() bool {
-	if o != nil && o.Memo != nil {
+	if o != nil && !IsNil(o.Memo) {
 		return true
 	}
 
@@ -190,7 +193,7 @@ func (o *EnhanceTransactionsRequest) SetMemo(v string) {
 
 // GetMerchantCategoryCode returns the MerchantCategoryCode field value if set, zero value otherwise.
 func (o *EnhanceTransactionsRequest) GetMerchantCategoryCode() int32 {
-	if o == nil || o.MerchantCategoryCode == nil {
+	if o == nil || IsNil(o.MerchantCategoryCode) {
 		var ret int32
 		return ret
 	}
@@ -200,7 +203,7 @@ func (o *EnhanceTransactionsRequest) GetMerchantCategoryCode() int32 {
 // GetMerchantCategoryCodeOk returns a tuple with the MerchantCategoryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnhanceTransactionsRequest) GetMerchantCategoryCodeOk() (*int32, bool) {
-	if o == nil || o.MerchantCategoryCode == nil {
+	if o == nil || IsNil(o.MerchantCategoryCode) {
 		return nil, false
 	}
 	return o.MerchantCategoryCode, true
@@ -208,7 +211,7 @@ func (o *EnhanceTransactionsRequest) GetMerchantCategoryCodeOk() (*int32, bool) 
 
 // HasMerchantCategoryCode returns a boolean if a field has been set.
 func (o *EnhanceTransactionsRequest) HasMerchantCategoryCode() bool {
-	if o != nil && o.MerchantCategoryCode != nil {
+	if o != nil && !IsNil(o.MerchantCategoryCode) {
 		return true
 	}
 
@@ -222,7 +225,7 @@ func (o *EnhanceTransactionsRequest) SetMerchantCategoryCode(v int32) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *EnhanceTransactionsRequest) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -232,7 +235,7 @@ func (o *EnhanceTransactionsRequest) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnhanceTransactionsRequest) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -240,7 +243,7 @@ func (o *EnhanceTransactionsRequest) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *EnhanceTransactionsRequest) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -253,29 +256,33 @@ func (o *EnhanceTransactionsRequest) SetType(v string) {
 }
 
 func (o EnhanceTransactionsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Amount != nil {
-		toSerialize["amount"] = o.Amount
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if o.ExtendedTransactionType != nil {
-		toSerialize["extended_transaction_type"] = o.ExtendedTransactionType
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if o.Memo != nil {
-		toSerialize["memo"] = o.Memo
-	}
-	if o.MerchantCategoryCode != nil {
-		toSerialize["merchant_category_code"] = o.MerchantCategoryCode
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnhanceTransactionsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Amount) {
+		toSerialize["amount"] = o.Amount
+	}
+	toSerialize["description"] = o.Description
+	if !IsNil(o.ExtendedTransactionType) {
+		toSerialize["extended_transaction_type"] = o.ExtendedTransactionType
+	}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.Memo) {
+		toSerialize["memo"] = o.Memo
+	}
+	if !IsNil(o.MerchantCategoryCode) {
+		toSerialize["merchant_category_code"] = o.MerchantCategoryCode
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableEnhanceTransactionsRequest struct {

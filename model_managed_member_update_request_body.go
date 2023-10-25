@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedMemberUpdateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedMemberUpdateRequestBody{}
+
 // ManagedMemberUpdateRequestBody struct for ManagedMemberUpdateRequestBody
 type ManagedMemberUpdateRequestBody struct {
 	Member *ManagedMemberUpdateRequest `json:"member,omitempty"`
@@ -38,7 +41,7 @@ func NewManagedMemberUpdateRequestBodyWithDefaults() *ManagedMemberUpdateRequest
 
 // GetMember returns the Member field value if set, zero value otherwise.
 func (o *ManagedMemberUpdateRequestBody) GetMember() ManagedMemberUpdateRequest {
-	if o == nil || o.Member == nil {
+	if o == nil || IsNil(o.Member) {
 		var ret ManagedMemberUpdateRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ManagedMemberUpdateRequestBody) GetMember() ManagedMemberUpdateRequest 
 // GetMemberOk returns a tuple with the Member field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedMemberUpdateRequestBody) GetMemberOk() (*ManagedMemberUpdateRequest, bool) {
-	if o == nil || o.Member == nil {
+	if o == nil || IsNil(o.Member) {
 		return nil, false
 	}
 	return o.Member, true
@@ -56,7 +59,7 @@ func (o *ManagedMemberUpdateRequestBody) GetMemberOk() (*ManagedMemberUpdateRequ
 
 // HasMember returns a boolean if a field has been set.
 func (o *ManagedMemberUpdateRequestBody) HasMember() bool {
-	if o != nil && o.Member != nil {
+	if o != nil && !IsNil(o.Member) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ManagedMemberUpdateRequestBody) SetMember(v ManagedMemberUpdateRequest)
 }
 
 func (o ManagedMemberUpdateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Member != nil {
-		toSerialize["member"] = o.Member
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ManagedMemberUpdateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Member) {
+		toSerialize["member"] = o.Member
+	}
+	return toSerialize, nil
 }
 
 type NullableManagedMemberUpdateRequestBody struct {

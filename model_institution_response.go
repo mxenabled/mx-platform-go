@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InstitutionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InstitutionResponse{}
+
 // InstitutionResponse struct for InstitutionResponse
 type InstitutionResponse struct {
 	Code NullableString `json:"code,omitempty"`
@@ -51,7 +54,7 @@ func NewInstitutionResponseWithDefaults() *InstitutionResponse {
 
 // GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetCode() string {
-	if o == nil || o.Code.Get() == nil {
+	if o == nil || IsNil(o.Code.Get()) {
 		var ret string
 		return ret
 	}
@@ -62,7 +65,7 @@ func (o *InstitutionResponse) GetCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Code.Get(), o.Code.IsSet()
@@ -93,7 +96,7 @@ func (o *InstitutionResponse) UnsetCode() {
 
 // GetForgotPasswordUrl returns the ForgotPasswordUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetForgotPasswordUrl() string {
-	if o == nil || o.ForgotPasswordUrl.Get() == nil {
+	if o == nil || IsNil(o.ForgotPasswordUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -104,7 +107,7 @@ func (o *InstitutionResponse) GetForgotPasswordUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetForgotPasswordUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ForgotPasswordUrl.Get(), o.ForgotPasswordUrl.IsSet()
@@ -135,7 +138,7 @@ func (o *InstitutionResponse) UnsetForgotPasswordUrl() {
 
 // GetForgotUsernameUrl returns the ForgotUsernameUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetForgotUsernameUrl() string {
-	if o == nil || o.ForgotUsernameUrl.Get() == nil {
+	if o == nil || IsNil(o.ForgotUsernameUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *InstitutionResponse) GetForgotUsernameUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetForgotUsernameUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ForgotUsernameUrl.Get(), o.ForgotUsernameUrl.IsSet()
@@ -177,7 +180,7 @@ func (o *InstitutionResponse) UnsetForgotUsernameUrl() {
 
 // GetInstructionalText returns the InstructionalText field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetInstructionalText() string {
-	if o == nil || o.InstructionalText.Get() == nil {
+	if o == nil || IsNil(o.InstructionalText.Get()) {
 		var ret string
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *InstitutionResponse) GetInstructionalText() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetInstructionalTextOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.InstructionalText.Get(), o.InstructionalText.IsSet()
@@ -219,7 +222,7 @@ func (o *InstitutionResponse) UnsetInstructionalText() {
 
 // GetMediumLogoUrl returns the MediumLogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetMediumLogoUrl() string {
-	if o == nil || o.MediumLogoUrl.Get() == nil {
+	if o == nil || IsNil(o.MediumLogoUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -230,7 +233,7 @@ func (o *InstitutionResponse) GetMediumLogoUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetMediumLogoUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MediumLogoUrl.Get(), o.MediumLogoUrl.IsSet()
@@ -261,7 +264,7 @@ func (o *InstitutionResponse) UnsetMediumLogoUrl() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -272,7 +275,7 @@ func (o *InstitutionResponse) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -303,7 +306,7 @@ func (o *InstitutionResponse) UnsetName() {
 
 // GetSmallLogoUrl returns the SmallLogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetSmallLogoUrl() string {
-	if o == nil || o.SmallLogoUrl.Get() == nil {
+	if o == nil || IsNil(o.SmallLogoUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *InstitutionResponse) GetSmallLogoUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetSmallLogoUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SmallLogoUrl.Get(), o.SmallLogoUrl.IsSet()
@@ -345,7 +348,7 @@ func (o *InstitutionResponse) UnsetSmallLogoUrl() {
 
 // GetSupportsAccountIdentification returns the SupportsAccountIdentification field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetSupportsAccountIdentification() bool {
-	if o == nil || o.SupportsAccountIdentification.Get() == nil {
+	if o == nil || IsNil(o.SupportsAccountIdentification.Get()) {
 		var ret bool
 		return ret
 	}
@@ -356,7 +359,7 @@ func (o *InstitutionResponse) GetSupportsAccountIdentification() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetSupportsAccountIdentificationOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SupportsAccountIdentification.Get(), o.SupportsAccountIdentification.IsSet()
@@ -387,7 +390,7 @@ func (o *InstitutionResponse) UnsetSupportsAccountIdentification() {
 
 // GetSupportsAccountStatement returns the SupportsAccountStatement field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetSupportsAccountStatement() bool {
-	if o == nil || o.SupportsAccountStatement.Get() == nil {
+	if o == nil || IsNil(o.SupportsAccountStatement.Get()) {
 		var ret bool
 		return ret
 	}
@@ -398,7 +401,7 @@ func (o *InstitutionResponse) GetSupportsAccountStatement() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetSupportsAccountStatementOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SupportsAccountStatement.Get(), o.SupportsAccountStatement.IsSet()
@@ -429,7 +432,7 @@ func (o *InstitutionResponse) UnsetSupportsAccountStatement() {
 
 // GetSupportsAccountVerification returns the SupportsAccountVerification field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetSupportsAccountVerification() bool {
-	if o == nil || o.SupportsAccountVerification.Get() == nil {
+	if o == nil || IsNil(o.SupportsAccountVerification.Get()) {
 		var ret bool
 		return ret
 	}
@@ -440,7 +443,7 @@ func (o *InstitutionResponse) GetSupportsAccountVerification() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetSupportsAccountVerificationOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SupportsAccountVerification.Get(), o.SupportsAccountVerification.IsSet()
@@ -471,7 +474,7 @@ func (o *InstitutionResponse) UnsetSupportsAccountVerification() {
 
 // GetSupportsOauth returns the SupportsOauth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetSupportsOauth() bool {
-	if o == nil || o.SupportsOauth.Get() == nil {
+	if o == nil || IsNil(o.SupportsOauth.Get()) {
 		var ret bool
 		return ret
 	}
@@ -482,7 +485,7 @@ func (o *InstitutionResponse) GetSupportsOauth() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetSupportsOauthOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SupportsOauth.Get(), o.SupportsOauth.IsSet()
@@ -513,7 +516,7 @@ func (o *InstitutionResponse) UnsetSupportsOauth() {
 
 // GetSupportsTransactionHistory returns the SupportsTransactionHistory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetSupportsTransactionHistory() bool {
-	if o == nil || o.SupportsTransactionHistory.Get() == nil {
+	if o == nil || IsNil(o.SupportsTransactionHistory.Get()) {
 		var ret bool
 		return ret
 	}
@@ -524,7 +527,7 @@ func (o *InstitutionResponse) GetSupportsTransactionHistory() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetSupportsTransactionHistoryOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SupportsTransactionHistory.Get(), o.SupportsTransactionHistory.IsSet()
@@ -555,7 +558,7 @@ func (o *InstitutionResponse) UnsetSupportsTransactionHistory() {
 
 // GetTroubleSigningInUrl returns the TroubleSigningInUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetTroubleSigningInUrl() string {
-	if o == nil || o.TroubleSigningInUrl.Get() == nil {
+	if o == nil || IsNil(o.TroubleSigningInUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -566,7 +569,7 @@ func (o *InstitutionResponse) GetTroubleSigningInUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetTroubleSigningInUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TroubleSigningInUrl.Get(), o.TroubleSigningInUrl.IsSet()
@@ -597,7 +600,7 @@ func (o *InstitutionResponse) UnsetTroubleSigningInUrl() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetUrl() string {
-	if o == nil || o.Url.Get() == nil {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -608,7 +611,7 @@ func (o *InstitutionResponse) GetUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstitutionResponse) GetUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Url.Get(), o.Url.IsSet()
@@ -638,6 +641,14 @@ func (o *InstitutionResponse) UnsetUrl() {
 }
 
 func (o InstitutionResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o InstitutionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Code.IsSet() {
 		toSerialize["code"] = o.Code.Get()
@@ -681,7 +692,7 @@ func (o InstitutionResponse) MarshalJSON() ([]byte, error) {
 	if o.Url.IsSet() {
 		toSerialize["url"] = o.Url.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableInstitutionResponse struct {

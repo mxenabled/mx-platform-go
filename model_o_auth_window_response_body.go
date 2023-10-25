@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OAuthWindowResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OAuthWindowResponseBody{}
+
 // OAuthWindowResponseBody struct for OAuthWindowResponseBody
 type OAuthWindowResponseBody struct {
 	Member *OAuthWindowResponse `json:"member,omitempty"`
@@ -38,7 +41,7 @@ func NewOAuthWindowResponseBodyWithDefaults() *OAuthWindowResponseBody {
 
 // GetMember returns the Member field value if set, zero value otherwise.
 func (o *OAuthWindowResponseBody) GetMember() OAuthWindowResponse {
-	if o == nil || o.Member == nil {
+	if o == nil || IsNil(o.Member) {
 		var ret OAuthWindowResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *OAuthWindowResponseBody) GetMember() OAuthWindowResponse {
 // GetMemberOk returns a tuple with the Member field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthWindowResponseBody) GetMemberOk() (*OAuthWindowResponse, bool) {
-	if o == nil || o.Member == nil {
+	if o == nil || IsNil(o.Member) {
 		return nil, false
 	}
 	return o.Member, true
@@ -56,7 +59,7 @@ func (o *OAuthWindowResponseBody) GetMemberOk() (*OAuthWindowResponse, bool) {
 
 // HasMember returns a boolean if a field has been set.
 func (o *OAuthWindowResponseBody) HasMember() bool {
-	if o != nil && o.Member != nil {
+	if o != nil && !IsNil(o.Member) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *OAuthWindowResponseBody) SetMember(v OAuthWindowResponse) {
 }
 
 func (o OAuthWindowResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Member != nil {
-		toSerialize["member"] = o.Member
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OAuthWindowResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Member) {
+		toSerialize["member"] = o.Member
+	}
+	return toSerialize, nil
 }
 
 type NullableOAuthWindowResponseBody struct {

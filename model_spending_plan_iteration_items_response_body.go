@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpendingPlanIterationItemsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpendingPlanIterationItemsResponseBody{}
+
 // SpendingPlanIterationItemsResponseBody struct for SpendingPlanIterationItemsResponseBody
 type SpendingPlanIterationItemsResponseBody struct {
 	IterationItems []SpendingPlanIterationItemResponse `json:"iteration_items,omitempty"`
@@ -39,7 +42,7 @@ func NewSpendingPlanIterationItemsResponseBodyWithDefaults() *SpendingPlanIterat
 
 // GetIterationItems returns the IterationItems field value if set, zero value otherwise.
 func (o *SpendingPlanIterationItemsResponseBody) GetIterationItems() []SpendingPlanIterationItemResponse {
-	if o == nil || o.IterationItems == nil {
+	if o == nil || IsNil(o.IterationItems) {
 		var ret []SpendingPlanIterationItemResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *SpendingPlanIterationItemsResponseBody) GetIterationItems() []SpendingP
 // GetIterationItemsOk returns a tuple with the IterationItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanIterationItemsResponseBody) GetIterationItemsOk() ([]SpendingPlanIterationItemResponse, bool) {
-	if o == nil || o.IterationItems == nil {
+	if o == nil || IsNil(o.IterationItems) {
 		return nil, false
 	}
 	return o.IterationItems, true
@@ -57,7 +60,7 @@ func (o *SpendingPlanIterationItemsResponseBody) GetIterationItemsOk() ([]Spendi
 
 // HasIterationItems returns a boolean if a field has been set.
 func (o *SpendingPlanIterationItemsResponseBody) HasIterationItems() bool {
-	if o != nil && o.IterationItems != nil {
+	if o != nil && !IsNil(o.IterationItems) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *SpendingPlanIterationItemsResponseBody) SetIterationItems(v []SpendingP
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *SpendingPlanIterationItemsResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *SpendingPlanIterationItemsResponseBody) GetPagination() PaginationRespo
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanIterationItemsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *SpendingPlanIterationItemsResponseBody) GetPaginationOk() (*PaginationR
 
 // HasPagination returns a boolean if a field has been set.
 func (o *SpendingPlanIterationItemsResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *SpendingPlanIterationItemsResponseBody) SetPagination(v PaginationRespo
 }
 
 func (o SpendingPlanIterationItemsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IterationItems != nil {
-		toSerialize["iteration_items"] = o.IterationItems
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SpendingPlanIterationItemsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IterationItems) {
+		toSerialize["iteration_items"] = o.IterationItems
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableSpendingPlanIterationItemsResponseBody struct {

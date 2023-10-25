@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedTransactionCreateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedTransactionCreateRequestBody{}
+
 // ManagedTransactionCreateRequestBody struct for ManagedTransactionCreateRequestBody
 type ManagedTransactionCreateRequestBody struct {
 	Transaction *ManagedTransactionCreateRequest `json:"transaction,omitempty"`
@@ -38,7 +41,7 @@ func NewManagedTransactionCreateRequestBodyWithDefaults() *ManagedTransactionCre
 
 // GetTransaction returns the Transaction field value if set, zero value otherwise.
 func (o *ManagedTransactionCreateRequestBody) GetTransaction() ManagedTransactionCreateRequest {
-	if o == nil || o.Transaction == nil {
+	if o == nil || IsNil(o.Transaction) {
 		var ret ManagedTransactionCreateRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ManagedTransactionCreateRequestBody) GetTransaction() ManagedTransactio
 // GetTransactionOk returns a tuple with the Transaction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionCreateRequestBody) GetTransactionOk() (*ManagedTransactionCreateRequest, bool) {
-	if o == nil || o.Transaction == nil {
+	if o == nil || IsNil(o.Transaction) {
 		return nil, false
 	}
 	return o.Transaction, true
@@ -56,7 +59,7 @@ func (o *ManagedTransactionCreateRequestBody) GetTransactionOk() (*ManagedTransa
 
 // HasTransaction returns a boolean if a field has been set.
 func (o *ManagedTransactionCreateRequestBody) HasTransaction() bool {
-	if o != nil && o.Transaction != nil {
+	if o != nil && !IsNil(o.Transaction) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ManagedTransactionCreateRequestBody) SetTransaction(v ManagedTransactio
 }
 
 func (o ManagedTransactionCreateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Transaction != nil {
-		toSerialize["transaction"] = o.Transaction
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ManagedTransactionCreateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Transaction) {
+		toSerialize["transaction"] = o.Transaction
+	}
+	return toSerialize, nil
 }
 
 type NullableManagedTransactionCreateRequestBody struct {

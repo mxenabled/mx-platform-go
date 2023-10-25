@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountNumberResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountNumberResponse{}
+
 // AccountNumberResponse struct for AccountNumberResponse
 type AccountNumberResponse struct {
 	AccountGuid NullableString `json:"account_guid,omitempty"`
@@ -46,7 +49,7 @@ func NewAccountNumberResponseWithDefaults() *AccountNumberResponse {
 
 // GetAccountGuid returns the AccountGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetAccountGuid() string {
-	if o == nil || o.AccountGuid.Get() == nil {
+	if o == nil || IsNil(o.AccountGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *AccountNumberResponse) GetAccountGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountNumberResponse) GetAccountGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccountGuid.Get(), o.AccountGuid.IsSet()
@@ -88,7 +91,7 @@ func (o *AccountNumberResponse) UnsetAccountGuid() {
 
 // GetAccountNumber returns the AccountNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetAccountNumber() string {
-	if o == nil || o.AccountNumber.Get() == nil {
+	if o == nil || IsNil(o.AccountNumber.Get()) {
 		var ret string
 		return ret
 	}
@@ -99,7 +102,7 @@ func (o *AccountNumberResponse) GetAccountNumber() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountNumberResponse) GetAccountNumberOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccountNumber.Get(), o.AccountNumber.IsSet()
@@ -130,7 +133,7 @@ func (o *AccountNumberResponse) UnsetAccountNumber() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -141,7 +144,7 @@ func (o *AccountNumberResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountNumberResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -172,7 +175,7 @@ func (o *AccountNumberResponse) UnsetGuid() {
 
 // GetInstitutionNumber returns the InstitutionNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetInstitutionNumber() string {
-	if o == nil || o.InstitutionNumber.Get() == nil {
+	if o == nil || IsNil(o.InstitutionNumber.Get()) {
 		var ret string
 		return ret
 	}
@@ -183,7 +186,7 @@ func (o *AccountNumberResponse) GetInstitutionNumber() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountNumberResponse) GetInstitutionNumberOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.InstitutionNumber.Get(), o.InstitutionNumber.IsSet()
@@ -214,7 +217,7 @@ func (o *AccountNumberResponse) UnsetInstitutionNumber() {
 
 // GetMemberGuid returns the MemberGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetMemberGuid() string {
-	if o == nil || o.MemberGuid.Get() == nil {
+	if o == nil || IsNil(o.MemberGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -225,7 +228,7 @@ func (o *AccountNumberResponse) GetMemberGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountNumberResponse) GetMemberGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberGuid.Get(), o.MemberGuid.IsSet()
@@ -256,7 +259,7 @@ func (o *AccountNumberResponse) UnsetMemberGuid() {
 
 // GetPassedValidation returns the PassedValidation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetPassedValidation() bool {
-	if o == nil || o.PassedValidation.Get() == nil {
+	if o == nil || IsNil(o.PassedValidation.Get()) {
 		var ret bool
 		return ret
 	}
@@ -267,7 +270,7 @@ func (o *AccountNumberResponse) GetPassedValidation() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountNumberResponse) GetPassedValidationOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PassedValidation.Get(), o.PassedValidation.IsSet()
@@ -298,7 +301,7 @@ func (o *AccountNumberResponse) UnsetPassedValidation() {
 
 // GetRoutingNumber returns the RoutingNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetRoutingNumber() string {
-	if o == nil || o.RoutingNumber.Get() == nil {
+	if o == nil || IsNil(o.RoutingNumber.Get()) {
 		var ret string
 		return ret
 	}
@@ -309,7 +312,7 @@ func (o *AccountNumberResponse) GetRoutingNumber() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountNumberResponse) GetRoutingNumberOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.RoutingNumber.Get(), o.RoutingNumber.IsSet()
@@ -340,7 +343,7 @@ func (o *AccountNumberResponse) UnsetRoutingNumber() {
 
 // GetTransitNumber returns the TransitNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetTransitNumber() string {
-	if o == nil || o.TransitNumber.Get() == nil {
+	if o == nil || IsNil(o.TransitNumber.Get()) {
 		var ret string
 		return ret
 	}
@@ -351,7 +354,7 @@ func (o *AccountNumberResponse) GetTransitNumber() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountNumberResponse) GetTransitNumberOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TransitNumber.Get(), o.TransitNumber.IsSet()
@@ -382,7 +385,7 @@ func (o *AccountNumberResponse) UnsetTransitNumber() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -393,7 +396,7 @@ func (o *AccountNumberResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountNumberResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -423,6 +426,14 @@ func (o *AccountNumberResponse) UnsetUserGuid() {
 }
 
 func (o AccountNumberResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountNumberResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountGuid.IsSet() {
 		toSerialize["account_guid"] = o.AccountGuid.Get()
@@ -451,7 +462,7 @@ func (o AccountNumberResponse) MarshalJSON() ([]byte, error) {
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableAccountNumberResponse struct {

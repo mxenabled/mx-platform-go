@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CredentialsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CredentialsResponseBody{}
+
 // CredentialsResponseBody struct for CredentialsResponseBody
 type CredentialsResponseBody struct {
 	Credentials []CredentialResponse `json:"credentials,omitempty"`
@@ -39,7 +42,7 @@ func NewCredentialsResponseBodyWithDefaults() *CredentialsResponseBody {
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
 func (o *CredentialsResponseBody) GetCredentials() []CredentialResponse {
-	if o == nil || o.Credentials == nil {
+	if o == nil || IsNil(o.Credentials) {
 		var ret []CredentialResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CredentialsResponseBody) GetCredentials() []CredentialResponse {
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialsResponseBody) GetCredentialsOk() ([]CredentialResponse, bool) {
-	if o == nil || o.Credentials == nil {
+	if o == nil || IsNil(o.Credentials) {
 		return nil, false
 	}
 	return o.Credentials, true
@@ -57,7 +60,7 @@ func (o *CredentialsResponseBody) GetCredentialsOk() ([]CredentialResponse, bool
 
 // HasCredentials returns a boolean if a field has been set.
 func (o *CredentialsResponseBody) HasCredentials() bool {
-	if o != nil && o.Credentials != nil {
+	if o != nil && !IsNil(o.Credentials) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *CredentialsResponseBody) SetCredentials(v []CredentialResponse) {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *CredentialsResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *CredentialsResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *CredentialsResponseBody) GetPaginationOk() (*PaginationResponse, bool) 
 
 // HasPagination returns a boolean if a field has been set.
 func (o *CredentialsResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *CredentialsResponseBody) SetPagination(v PaginationResponse) {
 }
 
 func (o CredentialsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Credentials != nil {
-		toSerialize["credentials"] = o.Credentials
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CredentialsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Credentials) {
+		toSerialize["credentials"] = o.Credentials
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableCredentialsResponseBody struct {

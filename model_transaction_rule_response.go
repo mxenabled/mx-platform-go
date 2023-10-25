@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransactionRuleResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransactionRuleResponse{}
+
 // TransactionRuleResponse struct for TransactionRuleResponse
 type TransactionRuleResponse struct {
 	CategoryGuid NullableString `json:"category_guid,omitempty"`
@@ -44,7 +47,7 @@ func NewTransactionRuleResponseWithDefaults() *TransactionRuleResponse {
 
 // GetCategoryGuid returns the CategoryGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionRuleResponse) GetCategoryGuid() string {
-	if o == nil || o.CategoryGuid.Get() == nil {
+	if o == nil || IsNil(o.CategoryGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *TransactionRuleResponse) GetCategoryGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionRuleResponse) GetCategoryGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CategoryGuid.Get(), o.CategoryGuid.IsSet()
@@ -86,7 +89,7 @@ func (o *TransactionRuleResponse) UnsetCategoryGuid() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionRuleResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -97,7 +100,7 @@ func (o *TransactionRuleResponse) GetCreatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionRuleResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
@@ -128,7 +131,7 @@ func (o *TransactionRuleResponse) UnsetCreatedAt() {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionRuleResponse) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -139,7 +142,7 @@ func (o *TransactionRuleResponse) GetDescription() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionRuleResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Description.Get(), o.Description.IsSet()
@@ -170,7 +173,7 @@ func (o *TransactionRuleResponse) UnsetDescription() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionRuleResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *TransactionRuleResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionRuleResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -212,7 +215,7 @@ func (o *TransactionRuleResponse) UnsetGuid() {
 
 // GetMatchDescription returns the MatchDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionRuleResponse) GetMatchDescription() string {
-	if o == nil || o.MatchDescription.Get() == nil {
+	if o == nil || IsNil(o.MatchDescription.Get()) {
 		var ret string
 		return ret
 	}
@@ -223,7 +226,7 @@ func (o *TransactionRuleResponse) GetMatchDescription() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionRuleResponse) GetMatchDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MatchDescription.Get(), o.MatchDescription.IsSet()
@@ -254,7 +257,7 @@ func (o *TransactionRuleResponse) UnsetMatchDescription() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionRuleResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -265,7 +268,7 @@ func (o *TransactionRuleResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionRuleResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -296,7 +299,7 @@ func (o *TransactionRuleResponse) UnsetUpdatedAt() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionRuleResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -307,7 +310,7 @@ func (o *TransactionRuleResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionRuleResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -337,6 +340,14 @@ func (o *TransactionRuleResponse) UnsetUserGuid() {
 }
 
 func (o TransactionRuleResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TransactionRuleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CategoryGuid.IsSet() {
 		toSerialize["category_guid"] = o.CategoryGuid.Get()
@@ -359,7 +370,7 @@ func (o TransactionRuleResponse) MarshalJSON() ([]byte, error) {
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTransactionRuleResponse struct {

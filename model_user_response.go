@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserResponse{}
+
 // UserResponse struct for UserResponse
 type UserResponse struct {
 	Email NullableString `json:"email,omitempty"`
@@ -42,7 +45,7 @@ func NewUserResponseWithDefaults() *UserResponse {
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserResponse) GetEmail() string {
-	if o == nil || o.Email.Get() == nil {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *UserResponse) GetEmail() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserResponse) GetEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Email.Get(), o.Email.IsSet()
@@ -84,7 +87,7 @@ func (o *UserResponse) UnsetEmail() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *UserResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -126,7 +129,7 @@ func (o *UserResponse) UnsetGuid() {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserResponse) GetId() string {
-	if o == nil || o.Id.Get() == nil {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -137,7 +140,7 @@ func (o *UserResponse) GetId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
@@ -168,7 +171,7 @@ func (o *UserResponse) UnsetId() {
 
 // GetIsDisabled returns the IsDisabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserResponse) GetIsDisabled() bool {
-	if o == nil || o.IsDisabled.Get() == nil {
+	if o == nil || IsNil(o.IsDisabled.Get()) {
 		var ret bool
 		return ret
 	}
@@ -179,7 +182,7 @@ func (o *UserResponse) GetIsDisabled() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserResponse) GetIsDisabledOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsDisabled.Get(), o.IsDisabled.IsSet()
@@ -210,7 +213,7 @@ func (o *UserResponse) UnsetIsDisabled() {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserResponse) GetMetadata() string {
-	if o == nil || o.Metadata.Get() == nil {
+	if o == nil || IsNil(o.Metadata.Get()) {
 		var ret string
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *UserResponse) GetMetadata() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserResponse) GetMetadataOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Metadata.Get(), o.Metadata.IsSet()
@@ -251,6 +254,14 @@ func (o *UserResponse) UnsetMetadata() {
 }
 
 func (o UserResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UserResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
@@ -267,7 +278,7 @@ func (o UserResponse) MarshalJSON() ([]byte, error) {
 	if o.Metadata.IsSet() {
 		toSerialize["metadata"] = o.Metadata.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableUserResponse struct {

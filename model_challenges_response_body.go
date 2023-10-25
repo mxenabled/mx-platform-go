@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ChallengesResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ChallengesResponseBody{}
+
 // ChallengesResponseBody struct for ChallengesResponseBody
 type ChallengesResponseBody struct {
 	Challenges []ChallengeResponse `json:"challenges,omitempty"`
@@ -39,7 +42,7 @@ func NewChallengesResponseBodyWithDefaults() *ChallengesResponseBody {
 
 // GetChallenges returns the Challenges field value if set, zero value otherwise.
 func (o *ChallengesResponseBody) GetChallenges() []ChallengeResponse {
-	if o == nil || o.Challenges == nil {
+	if o == nil || IsNil(o.Challenges) {
 		var ret []ChallengeResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ChallengesResponseBody) GetChallenges() []ChallengeResponse {
 // GetChallengesOk returns a tuple with the Challenges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChallengesResponseBody) GetChallengesOk() ([]ChallengeResponse, bool) {
-	if o == nil || o.Challenges == nil {
+	if o == nil || IsNil(o.Challenges) {
 		return nil, false
 	}
 	return o.Challenges, true
@@ -57,7 +60,7 @@ func (o *ChallengesResponseBody) GetChallengesOk() ([]ChallengeResponse, bool) {
 
 // HasChallenges returns a boolean if a field has been set.
 func (o *ChallengesResponseBody) HasChallenges() bool {
-	if o != nil && o.Challenges != nil {
+	if o != nil && !IsNil(o.Challenges) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ChallengesResponseBody) SetChallenges(v []ChallengeResponse) {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *ChallengesResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *ChallengesResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChallengesResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *ChallengesResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
 
 // HasPagination returns a boolean if a field has been set.
 func (o *ChallengesResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ChallengesResponseBody) SetPagination(v PaginationResponse) {
 }
 
 func (o ChallengesResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Challenges != nil {
-		toSerialize["challenges"] = o.Challenges
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ChallengesResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Challenges) {
+		toSerialize["challenges"] = o.Challenges
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableChallengesResponseBody struct {

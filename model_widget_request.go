@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WidgetRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WidgetRequest{}
+
 // WidgetRequest struct for WidgetRequest
 type WidgetRequest struct {
 	ClientRedirectUrl *string `json:"client_redirect_url,omitempty"`
@@ -54,7 +57,7 @@ func NewWidgetRequestWithDefaults() *WidgetRequest {
 
 // GetClientRedirectUrl returns the ClientRedirectUrl field value if set, zero value otherwise.
 func (o *WidgetRequest) GetClientRedirectUrl() string {
-	if o == nil || o.ClientRedirectUrl == nil {
+	if o == nil || IsNil(o.ClientRedirectUrl) {
 		var ret string
 		return ret
 	}
@@ -64,7 +67,7 @@ func (o *WidgetRequest) GetClientRedirectUrl() string {
 // GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetClientRedirectUrlOk() (*string, bool) {
-	if o == nil || o.ClientRedirectUrl == nil {
+	if o == nil || IsNil(o.ClientRedirectUrl) {
 		return nil, false
 	}
 	return o.ClientRedirectUrl, true
@@ -72,7 +75,7 @@ func (o *WidgetRequest) GetClientRedirectUrlOk() (*string, bool) {
 
 // HasClientRedirectUrl returns a boolean if a field has been set.
 func (o *WidgetRequest) HasClientRedirectUrl() bool {
-	if o != nil && o.ClientRedirectUrl != nil {
+	if o != nil && !IsNil(o.ClientRedirectUrl) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *WidgetRequest) SetClientRedirectUrl(v string) {
 
 // GetColorScheme returns the ColorScheme field value if set, zero value otherwise.
 func (o *WidgetRequest) GetColorScheme() string {
-	if o == nil || o.ColorScheme == nil {
+	if o == nil || IsNil(o.ColorScheme) {
 		var ret string
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *WidgetRequest) GetColorScheme() string {
 // GetColorSchemeOk returns a tuple with the ColorScheme field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetColorSchemeOk() (*string, bool) {
-	if o == nil || o.ColorScheme == nil {
+	if o == nil || IsNil(o.ColorScheme) {
 		return nil, false
 	}
 	return o.ColorScheme, true
@@ -104,7 +107,7 @@ func (o *WidgetRequest) GetColorSchemeOk() (*string, bool) {
 
 // HasColorScheme returns a boolean if a field has been set.
 func (o *WidgetRequest) HasColorScheme() bool {
-	if o != nil && o.ColorScheme != nil {
+	if o != nil && !IsNil(o.ColorScheme) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *WidgetRequest) SetColorScheme(v string) {
 
 // GetCurrentInstitutionCode returns the CurrentInstitutionCode field value if set, zero value otherwise.
 func (o *WidgetRequest) GetCurrentInstitutionCode() string {
-	if o == nil || o.CurrentInstitutionCode == nil {
+	if o == nil || IsNil(o.CurrentInstitutionCode) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *WidgetRequest) GetCurrentInstitutionCode() string {
 // GetCurrentInstitutionCodeOk returns a tuple with the CurrentInstitutionCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetCurrentInstitutionCodeOk() (*string, bool) {
-	if o == nil || o.CurrentInstitutionCode == nil {
+	if o == nil || IsNil(o.CurrentInstitutionCode) {
 		return nil, false
 	}
 	return o.CurrentInstitutionCode, true
@@ -136,7 +139,7 @@ func (o *WidgetRequest) GetCurrentInstitutionCodeOk() (*string, bool) {
 
 // HasCurrentInstitutionCode returns a boolean if a field has been set.
 func (o *WidgetRequest) HasCurrentInstitutionCode() bool {
-	if o != nil && o.CurrentInstitutionCode != nil {
+	if o != nil && !IsNil(o.CurrentInstitutionCode) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *WidgetRequest) SetCurrentInstitutionCode(v string) {
 
 // GetCurrentInstitutionGuid returns the CurrentInstitutionGuid field value if set, zero value otherwise.
 func (o *WidgetRequest) GetCurrentInstitutionGuid() string {
-	if o == nil || o.CurrentInstitutionGuid == nil {
+	if o == nil || IsNil(o.CurrentInstitutionGuid) {
 		var ret string
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *WidgetRequest) GetCurrentInstitutionGuid() string {
 // GetCurrentInstitutionGuidOk returns a tuple with the CurrentInstitutionGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetCurrentInstitutionGuidOk() (*string, bool) {
-	if o == nil || o.CurrentInstitutionGuid == nil {
+	if o == nil || IsNil(o.CurrentInstitutionGuid) {
 		return nil, false
 	}
 	return o.CurrentInstitutionGuid, true
@@ -168,7 +171,7 @@ func (o *WidgetRequest) GetCurrentInstitutionGuidOk() (*string, bool) {
 
 // HasCurrentInstitutionGuid returns a boolean if a field has been set.
 func (o *WidgetRequest) HasCurrentInstitutionGuid() bool {
-	if o != nil && o.CurrentInstitutionGuid != nil {
+	if o != nil && !IsNil(o.CurrentInstitutionGuid) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *WidgetRequest) SetCurrentInstitutionGuid(v string) {
 
 // GetCurrentMemberGuid returns the CurrentMemberGuid field value if set, zero value otherwise.
 func (o *WidgetRequest) GetCurrentMemberGuid() string {
-	if o == nil || o.CurrentMemberGuid == nil {
+	if o == nil || IsNil(o.CurrentMemberGuid) {
 		var ret string
 		return ret
 	}
@@ -192,7 +195,7 @@ func (o *WidgetRequest) GetCurrentMemberGuid() string {
 // GetCurrentMemberGuidOk returns a tuple with the CurrentMemberGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetCurrentMemberGuidOk() (*string, bool) {
-	if o == nil || o.CurrentMemberGuid == nil {
+	if o == nil || IsNil(o.CurrentMemberGuid) {
 		return nil, false
 	}
 	return o.CurrentMemberGuid, true
@@ -200,7 +203,7 @@ func (o *WidgetRequest) GetCurrentMemberGuidOk() (*string, bool) {
 
 // HasCurrentMemberGuid returns a boolean if a field has been set.
 func (o *WidgetRequest) HasCurrentMemberGuid() bool {
-	if o != nil && o.CurrentMemberGuid != nil {
+	if o != nil && !IsNil(o.CurrentMemberGuid) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *WidgetRequest) SetCurrentMemberGuid(v string) {
 
 // GetDisableBackgroundAgg returns the DisableBackgroundAgg field value if set, zero value otherwise.
 func (o *WidgetRequest) GetDisableBackgroundAgg() bool {
-	if o == nil || o.DisableBackgroundAgg == nil {
+	if o == nil || IsNil(o.DisableBackgroundAgg) {
 		var ret bool
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *WidgetRequest) GetDisableBackgroundAgg() bool {
 // GetDisableBackgroundAggOk returns a tuple with the DisableBackgroundAgg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetDisableBackgroundAggOk() (*bool, bool) {
-	if o == nil || o.DisableBackgroundAgg == nil {
+	if o == nil || IsNil(o.DisableBackgroundAgg) {
 		return nil, false
 	}
 	return o.DisableBackgroundAgg, true
@@ -232,7 +235,7 @@ func (o *WidgetRequest) GetDisableBackgroundAggOk() (*bool, bool) {
 
 // HasDisableBackgroundAgg returns a boolean if a field has been set.
 func (o *WidgetRequest) HasDisableBackgroundAgg() bool {
-	if o != nil && o.DisableBackgroundAgg != nil {
+	if o != nil && !IsNil(o.DisableBackgroundAgg) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *WidgetRequest) SetDisableBackgroundAgg(v bool) {
 
 // GetDisableInstitutionSearch returns the DisableInstitutionSearch field value if set, zero value otherwise.
 func (o *WidgetRequest) GetDisableInstitutionSearch() bool {
-	if o == nil || o.DisableInstitutionSearch == nil {
+	if o == nil || IsNil(o.DisableInstitutionSearch) {
 		var ret bool
 		return ret
 	}
@@ -256,7 +259,7 @@ func (o *WidgetRequest) GetDisableInstitutionSearch() bool {
 // GetDisableInstitutionSearchOk returns a tuple with the DisableInstitutionSearch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetDisableInstitutionSearchOk() (*bool, bool) {
-	if o == nil || o.DisableInstitutionSearch == nil {
+	if o == nil || IsNil(o.DisableInstitutionSearch) {
 		return nil, false
 	}
 	return o.DisableInstitutionSearch, true
@@ -264,7 +267,7 @@ func (o *WidgetRequest) GetDisableInstitutionSearchOk() (*bool, bool) {
 
 // HasDisableInstitutionSearch returns a boolean if a field has been set.
 func (o *WidgetRequest) HasDisableInstitutionSearch() bool {
-	if o != nil && o.DisableInstitutionSearch != nil {
+	if o != nil && !IsNil(o.DisableInstitutionSearch) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *WidgetRequest) SetDisableInstitutionSearch(v bool) {
 
 // GetIncludeIdentity returns the IncludeIdentity field value if set, zero value otherwise.
 func (o *WidgetRequest) GetIncludeIdentity() bool {
-	if o == nil || o.IncludeIdentity == nil {
+	if o == nil || IsNil(o.IncludeIdentity) {
 		var ret bool
 		return ret
 	}
@@ -288,7 +291,7 @@ func (o *WidgetRequest) GetIncludeIdentity() bool {
 // GetIncludeIdentityOk returns a tuple with the IncludeIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetIncludeIdentityOk() (*bool, bool) {
-	if o == nil || o.IncludeIdentity == nil {
+	if o == nil || IsNil(o.IncludeIdentity) {
 		return nil, false
 	}
 	return o.IncludeIdentity, true
@@ -296,7 +299,7 @@ func (o *WidgetRequest) GetIncludeIdentityOk() (*bool, bool) {
 
 // HasIncludeIdentity returns a boolean if a field has been set.
 func (o *WidgetRequest) HasIncludeIdentity() bool {
-	if o != nil && o.IncludeIdentity != nil {
+	if o != nil && !IsNil(o.IncludeIdentity) {
 		return true
 	}
 
@@ -310,7 +313,7 @@ func (o *WidgetRequest) SetIncludeIdentity(v bool) {
 
 // GetIncludeTransactions returns the IncludeTransactions field value if set, zero value otherwise.
 func (o *WidgetRequest) GetIncludeTransactions() bool {
-	if o == nil || o.IncludeTransactions == nil {
+	if o == nil || IsNil(o.IncludeTransactions) {
 		var ret bool
 		return ret
 	}
@@ -320,7 +323,7 @@ func (o *WidgetRequest) GetIncludeTransactions() bool {
 // GetIncludeTransactionsOk returns a tuple with the IncludeTransactions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetIncludeTransactionsOk() (*bool, bool) {
-	if o == nil || o.IncludeTransactions == nil {
+	if o == nil || IsNil(o.IncludeTransactions) {
 		return nil, false
 	}
 	return o.IncludeTransactions, true
@@ -328,7 +331,7 @@ func (o *WidgetRequest) GetIncludeTransactionsOk() (*bool, bool) {
 
 // HasIncludeTransactions returns a boolean if a field has been set.
 func (o *WidgetRequest) HasIncludeTransactions() bool {
-	if o != nil && o.IncludeTransactions != nil {
+	if o != nil && !IsNil(o.IncludeTransactions) {
 		return true
 	}
 
@@ -342,7 +345,7 @@ func (o *WidgetRequest) SetIncludeTransactions(v bool) {
 
 // GetIsMobileWebview returns the IsMobileWebview field value if set, zero value otherwise.
 func (o *WidgetRequest) GetIsMobileWebview() bool {
-	if o == nil || o.IsMobileWebview == nil {
+	if o == nil || IsNil(o.IsMobileWebview) {
 		var ret bool
 		return ret
 	}
@@ -352,7 +355,7 @@ func (o *WidgetRequest) GetIsMobileWebview() bool {
 // GetIsMobileWebviewOk returns a tuple with the IsMobileWebview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetIsMobileWebviewOk() (*bool, bool) {
-	if o == nil || o.IsMobileWebview == nil {
+	if o == nil || IsNil(o.IsMobileWebview) {
 		return nil, false
 	}
 	return o.IsMobileWebview, true
@@ -360,7 +363,7 @@ func (o *WidgetRequest) GetIsMobileWebviewOk() (*bool, bool) {
 
 // HasIsMobileWebview returns a boolean if a field has been set.
 func (o *WidgetRequest) HasIsMobileWebview() bool {
-	if o != nil && o.IsMobileWebview != nil {
+	if o != nil && !IsNil(o.IsMobileWebview) {
 		return true
 	}
 
@@ -374,7 +377,7 @@ func (o *WidgetRequest) SetIsMobileWebview(v bool) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *WidgetRequest) GetMode() string {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret string
 		return ret
 	}
@@ -384,7 +387,7 @@ func (o *WidgetRequest) GetMode() string {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetModeOk() (*string, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -392,7 +395,7 @@ func (o *WidgetRequest) GetModeOk() (*string, bool) {
 
 // HasMode returns a boolean if a field has been set.
 func (o *WidgetRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -406,7 +409,7 @@ func (o *WidgetRequest) SetMode(v string) {
 
 // GetOauthReferralSource returns the OauthReferralSource field value if set, zero value otherwise.
 func (o *WidgetRequest) GetOauthReferralSource() string {
-	if o == nil || o.OauthReferralSource == nil {
+	if o == nil || IsNil(o.OauthReferralSource) {
 		var ret string
 		return ret
 	}
@@ -416,7 +419,7 @@ func (o *WidgetRequest) GetOauthReferralSource() string {
 // GetOauthReferralSourceOk returns a tuple with the OauthReferralSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetOauthReferralSourceOk() (*string, bool) {
-	if o == nil || o.OauthReferralSource == nil {
+	if o == nil || IsNil(o.OauthReferralSource) {
 		return nil, false
 	}
 	return o.OauthReferralSource, true
@@ -424,7 +427,7 @@ func (o *WidgetRequest) GetOauthReferralSourceOk() (*string, bool) {
 
 // HasOauthReferralSource returns a boolean if a field has been set.
 func (o *WidgetRequest) HasOauthReferralSource() bool {
-	if o != nil && o.OauthReferralSource != nil {
+	if o != nil && !IsNil(o.OauthReferralSource) {
 		return true
 	}
 
@@ -438,7 +441,7 @@ func (o *WidgetRequest) SetOauthReferralSource(v string) {
 
 // GetUiMessageVersion returns the UiMessageVersion field value if set, zero value otherwise.
 func (o *WidgetRequest) GetUiMessageVersion() int32 {
-	if o == nil || o.UiMessageVersion == nil {
+	if o == nil || IsNil(o.UiMessageVersion) {
 		var ret int32
 		return ret
 	}
@@ -448,7 +451,7 @@ func (o *WidgetRequest) GetUiMessageVersion() int32 {
 // GetUiMessageVersionOk returns a tuple with the UiMessageVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetUiMessageVersionOk() (*int32, bool) {
-	if o == nil || o.UiMessageVersion == nil {
+	if o == nil || IsNil(o.UiMessageVersion) {
 		return nil, false
 	}
 	return o.UiMessageVersion, true
@@ -456,7 +459,7 @@ func (o *WidgetRequest) GetUiMessageVersionOk() (*int32, bool) {
 
 // HasUiMessageVersion returns a boolean if a field has been set.
 func (o *WidgetRequest) HasUiMessageVersion() bool {
-	if o != nil && o.UiMessageVersion != nil {
+	if o != nil && !IsNil(o.UiMessageVersion) {
 		return true
 	}
 
@@ -470,7 +473,7 @@ func (o *WidgetRequest) SetUiMessageVersion(v int32) {
 
 // GetUiMessageWebviewUrlScheme returns the UiMessageWebviewUrlScheme field value if set, zero value otherwise.
 func (o *WidgetRequest) GetUiMessageWebviewUrlScheme() string {
-	if o == nil || o.UiMessageWebviewUrlScheme == nil {
+	if o == nil || IsNil(o.UiMessageWebviewUrlScheme) {
 		var ret string
 		return ret
 	}
@@ -480,7 +483,7 @@ func (o *WidgetRequest) GetUiMessageWebviewUrlScheme() string {
 // GetUiMessageWebviewUrlSchemeOk returns a tuple with the UiMessageWebviewUrlScheme field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetUiMessageWebviewUrlSchemeOk() (*string, bool) {
-	if o == nil || o.UiMessageWebviewUrlScheme == nil {
+	if o == nil || IsNil(o.UiMessageWebviewUrlScheme) {
 		return nil, false
 	}
 	return o.UiMessageWebviewUrlScheme, true
@@ -488,7 +491,7 @@ func (o *WidgetRequest) GetUiMessageWebviewUrlSchemeOk() (*string, bool) {
 
 // HasUiMessageWebviewUrlScheme returns a boolean if a field has been set.
 func (o *WidgetRequest) HasUiMessageWebviewUrlScheme() bool {
-	if o != nil && o.UiMessageWebviewUrlScheme != nil {
+	if o != nil && !IsNil(o.UiMessageWebviewUrlScheme) {
 		return true
 	}
 
@@ -502,7 +505,7 @@ func (o *WidgetRequest) SetUiMessageWebviewUrlScheme(v string) {
 
 // GetUpdateCredentials returns the UpdateCredentials field value if set, zero value otherwise.
 func (o *WidgetRequest) GetUpdateCredentials() bool {
-	if o == nil || o.UpdateCredentials == nil {
+	if o == nil || IsNil(o.UpdateCredentials) {
 		var ret bool
 		return ret
 	}
@@ -512,7 +515,7 @@ func (o *WidgetRequest) GetUpdateCredentials() bool {
 // GetUpdateCredentialsOk returns a tuple with the UpdateCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetUpdateCredentialsOk() (*bool, bool) {
-	if o == nil || o.UpdateCredentials == nil {
+	if o == nil || IsNil(o.UpdateCredentials) {
 		return nil, false
 	}
 	return o.UpdateCredentials, true
@@ -520,7 +523,7 @@ func (o *WidgetRequest) GetUpdateCredentialsOk() (*bool, bool) {
 
 // HasUpdateCredentials returns a boolean if a field has been set.
 func (o *WidgetRequest) HasUpdateCredentials() bool {
-	if o != nil && o.UpdateCredentials != nil {
+	if o != nil && !IsNil(o.UpdateCredentials) {
 		return true
 	}
 
@@ -545,7 +548,7 @@ func (o *WidgetRequest) GetWidgetType() string {
 // GetWidgetTypeOk returns a tuple with the WidgetType field value
 // and a boolean to check if the value has been set.
 func (o *WidgetRequest) GetWidgetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.WidgetType, true
@@ -557,56 +560,62 @@ func (o *WidgetRequest) SetWidgetType(v string) {
 }
 
 func (o WidgetRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClientRedirectUrl != nil {
-		toSerialize["client_redirect_url"] = o.ClientRedirectUrl
-	}
-	if o.ColorScheme != nil {
-		toSerialize["color_scheme"] = o.ColorScheme
-	}
-	if o.CurrentInstitutionCode != nil {
-		toSerialize["current_institution_code"] = o.CurrentInstitutionCode
-	}
-	if o.CurrentInstitutionGuid != nil {
-		toSerialize["current_institution_guid"] = o.CurrentInstitutionGuid
-	}
-	if o.CurrentMemberGuid != nil {
-		toSerialize["current_member_guid"] = o.CurrentMemberGuid
-	}
-	if o.DisableBackgroundAgg != nil {
-		toSerialize["disable_background_agg"] = o.DisableBackgroundAgg
-	}
-	if o.DisableInstitutionSearch != nil {
-		toSerialize["disable_institution_search"] = o.DisableInstitutionSearch
-	}
-	if o.IncludeIdentity != nil {
-		toSerialize["include_identity"] = o.IncludeIdentity
-	}
-	if o.IncludeTransactions != nil {
-		toSerialize["include_transactions"] = o.IncludeTransactions
-	}
-	if o.IsMobileWebview != nil {
-		toSerialize["is_mobile_webview"] = o.IsMobileWebview
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
-	}
-	if o.OauthReferralSource != nil {
-		toSerialize["oauth_referral_source"] = o.OauthReferralSource
-	}
-	if o.UiMessageVersion != nil {
-		toSerialize["ui_message_version"] = o.UiMessageVersion
-	}
-	if o.UiMessageWebviewUrlScheme != nil {
-		toSerialize["ui_message_webview_url_scheme"] = o.UiMessageWebviewUrlScheme
-	}
-	if o.UpdateCredentials != nil {
-		toSerialize["update_credentials"] = o.UpdateCredentials
-	}
-	if true {
-		toSerialize["widget_type"] = o.WidgetType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o WidgetRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClientRedirectUrl) {
+		toSerialize["client_redirect_url"] = o.ClientRedirectUrl
+	}
+	if !IsNil(o.ColorScheme) {
+		toSerialize["color_scheme"] = o.ColorScheme
+	}
+	if !IsNil(o.CurrentInstitutionCode) {
+		toSerialize["current_institution_code"] = o.CurrentInstitutionCode
+	}
+	if !IsNil(o.CurrentInstitutionGuid) {
+		toSerialize["current_institution_guid"] = o.CurrentInstitutionGuid
+	}
+	if !IsNil(o.CurrentMemberGuid) {
+		toSerialize["current_member_guid"] = o.CurrentMemberGuid
+	}
+	if !IsNil(o.DisableBackgroundAgg) {
+		toSerialize["disable_background_agg"] = o.DisableBackgroundAgg
+	}
+	if !IsNil(o.DisableInstitutionSearch) {
+		toSerialize["disable_institution_search"] = o.DisableInstitutionSearch
+	}
+	if !IsNil(o.IncludeIdentity) {
+		toSerialize["include_identity"] = o.IncludeIdentity
+	}
+	if !IsNil(o.IncludeTransactions) {
+		toSerialize["include_transactions"] = o.IncludeTransactions
+	}
+	if !IsNil(o.IsMobileWebview) {
+		toSerialize["is_mobile_webview"] = o.IsMobileWebview
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	if !IsNil(o.OauthReferralSource) {
+		toSerialize["oauth_referral_source"] = o.OauthReferralSource
+	}
+	if !IsNil(o.UiMessageVersion) {
+		toSerialize["ui_message_version"] = o.UiMessageVersion
+	}
+	if !IsNil(o.UiMessageWebviewUrlScheme) {
+		toSerialize["ui_message_webview_url_scheme"] = o.UiMessageWebviewUrlScheme
+	}
+	if !IsNil(o.UpdateCredentials) {
+		toSerialize["update_credentials"] = o.UpdateCredentials
+	}
+	toSerialize["widget_type"] = o.WidgetType
+	return toSerialize, nil
 }
 
 type NullableWidgetRequest struct {

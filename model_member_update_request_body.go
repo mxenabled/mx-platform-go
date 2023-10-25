@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MemberUpdateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MemberUpdateRequestBody{}
+
 // MemberUpdateRequestBody struct for MemberUpdateRequestBody
 type MemberUpdateRequestBody struct {
 	Member *MemberUpdateRequest `json:"member,omitempty"`
@@ -38,7 +41,7 @@ func NewMemberUpdateRequestBodyWithDefaults() *MemberUpdateRequestBody {
 
 // GetMember returns the Member field value if set, zero value otherwise.
 func (o *MemberUpdateRequestBody) GetMember() MemberUpdateRequest {
-	if o == nil || o.Member == nil {
+	if o == nil || IsNil(o.Member) {
 		var ret MemberUpdateRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *MemberUpdateRequestBody) GetMember() MemberUpdateRequest {
 // GetMemberOk returns a tuple with the Member field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberUpdateRequestBody) GetMemberOk() (*MemberUpdateRequest, bool) {
-	if o == nil || o.Member == nil {
+	if o == nil || IsNil(o.Member) {
 		return nil, false
 	}
 	return o.Member, true
@@ -56,7 +59,7 @@ func (o *MemberUpdateRequestBody) GetMemberOk() (*MemberUpdateRequest, bool) {
 
 // HasMember returns a boolean if a field has been set.
 func (o *MemberUpdateRequestBody) HasMember() bool {
-	if o != nil && o.Member != nil {
+	if o != nil && !IsNil(o.Member) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *MemberUpdateRequestBody) SetMember(v MemberUpdateRequest) {
 }
 
 func (o MemberUpdateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Member != nil {
-		toSerialize["member"] = o.Member
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MemberUpdateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Member) {
+		toSerialize["member"] = o.Member
+	}
+	return toSerialize, nil
 }
 
 type NullableMemberUpdateRequestBody struct {

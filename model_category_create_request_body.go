@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CategoryCreateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CategoryCreateRequestBody{}
+
 // CategoryCreateRequestBody struct for CategoryCreateRequestBody
 type CategoryCreateRequestBody struct {
 	Category *CategoryCreateRequest `json:"category,omitempty"`
@@ -38,7 +41,7 @@ func NewCategoryCreateRequestBodyWithDefaults() *CategoryCreateRequestBody {
 
 // GetCategory returns the Category field value if set, zero value otherwise.
 func (o *CategoryCreateRequestBody) GetCategory() CategoryCreateRequest {
-	if o == nil || o.Category == nil {
+	if o == nil || IsNil(o.Category) {
 		var ret CategoryCreateRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *CategoryCreateRequestBody) GetCategory() CategoryCreateRequest {
 // GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CategoryCreateRequestBody) GetCategoryOk() (*CategoryCreateRequest, bool) {
-	if o == nil || o.Category == nil {
+	if o == nil || IsNil(o.Category) {
 		return nil, false
 	}
 	return o.Category, true
@@ -56,7 +59,7 @@ func (o *CategoryCreateRequestBody) GetCategoryOk() (*CategoryCreateRequest, boo
 
 // HasCategory returns a boolean if a field has been set.
 func (o *CategoryCreateRequestBody) HasCategory() bool {
-	if o != nil && o.Category != nil {
+	if o != nil && !IsNil(o.Category) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *CategoryCreateRequestBody) SetCategory(v CategoryCreateRequest) {
 }
 
 func (o CategoryCreateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Category != nil {
-		toSerialize["category"] = o.Category
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CategoryCreateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Category) {
+		toSerialize["category"] = o.Category
+	}
+	return toSerialize, nil
 }
 
 type NullableCategoryCreateRequestBody struct {

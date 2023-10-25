@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StatementResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StatementResponseBody{}
+
 // StatementResponseBody struct for StatementResponseBody
 type StatementResponseBody struct {
 	Statement *StatementResponse `json:"statement,omitempty"`
@@ -38,7 +41,7 @@ func NewStatementResponseBodyWithDefaults() *StatementResponseBody {
 
 // GetStatement returns the Statement field value if set, zero value otherwise.
 func (o *StatementResponseBody) GetStatement() StatementResponse {
-	if o == nil || o.Statement == nil {
+	if o == nil || IsNil(o.Statement) {
 		var ret StatementResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *StatementResponseBody) GetStatement() StatementResponse {
 // GetStatementOk returns a tuple with the Statement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatementResponseBody) GetStatementOk() (*StatementResponse, bool) {
-	if o == nil || o.Statement == nil {
+	if o == nil || IsNil(o.Statement) {
 		return nil, false
 	}
 	return o.Statement, true
@@ -56,7 +59,7 @@ func (o *StatementResponseBody) GetStatementOk() (*StatementResponse, bool) {
 
 // HasStatement returns a boolean if a field has been set.
 func (o *StatementResponseBody) HasStatement() bool {
-	if o != nil && o.Statement != nil {
+	if o != nil && !IsNil(o.Statement) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *StatementResponseBody) SetStatement(v StatementResponse) {
 }
 
 func (o StatementResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Statement != nil {
-		toSerialize["statement"] = o.Statement
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StatementResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Statement) {
+		toSerialize["statement"] = o.Statement
+	}
+	return toSerialize, nil
 }
 
 type NullableStatementResponseBody struct {

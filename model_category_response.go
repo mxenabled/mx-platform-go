@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CategoryResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CategoryResponse{}
+
 // CategoryResponse struct for CategoryResponse
 type CategoryResponse struct {
 	CreatedAt NullableString `json:"created_at,omitempty"`
@@ -45,7 +48,7 @@ func NewCategoryResponseWithDefaults() *CategoryResponse {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *CategoryResponse) GetCreatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
@@ -87,7 +90,7 @@ func (o *CategoryResponse) UnsetCreatedAt() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -98,7 +101,7 @@ func (o *CategoryResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -129,7 +132,7 @@ func (o *CategoryResponse) UnsetGuid() {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetIsDefault() bool {
-	if o == nil || o.IsDefault.Get() == nil {
+	if o == nil || IsNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *CategoryResponse) GetIsDefault() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetIsDefaultOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsDefault.Get(), o.IsDefault.IsSet()
@@ -171,7 +174,7 @@ func (o *CategoryResponse) UnsetIsDefault() {
 
 // GetIsIncome returns the IsIncome field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetIsIncome() bool {
-	if o == nil || o.IsIncome.Get() == nil {
+	if o == nil || IsNil(o.IsIncome.Get()) {
 		var ret bool
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *CategoryResponse) GetIsIncome() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetIsIncomeOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsIncome.Get(), o.IsIncome.IsSet()
@@ -213,7 +216,7 @@ func (o *CategoryResponse) UnsetIsIncome() {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetMetadata() string {
-	if o == nil || o.Metadata.Get() == nil {
+	if o == nil || IsNil(o.Metadata.Get()) {
 		var ret string
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *CategoryResponse) GetMetadata() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetMetadataOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Metadata.Get(), o.Metadata.IsSet()
@@ -255,7 +258,7 @@ func (o *CategoryResponse) UnsetMetadata() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -266,7 +269,7 @@ func (o *CategoryResponse) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -297,7 +300,7 @@ func (o *CategoryResponse) UnsetName() {
 
 // GetParentGuid returns the ParentGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetParentGuid() string {
-	if o == nil || o.ParentGuid.Get() == nil {
+	if o == nil || IsNil(o.ParentGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -308,7 +311,7 @@ func (o *CategoryResponse) GetParentGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetParentGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ParentGuid.Get(), o.ParentGuid.IsSet()
@@ -339,7 +342,7 @@ func (o *CategoryResponse) UnsetParentGuid() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CategoryResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -350,7 +353,7 @@ func (o *CategoryResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CategoryResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -380,6 +383,14 @@ func (o *CategoryResponse) UnsetUpdatedAt() {
 }
 
 func (o CategoryResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CategoryResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CreatedAt.IsSet() {
 		toSerialize["created_at"] = o.CreatedAt.Get()
@@ -405,7 +416,7 @@ func (o CategoryResponse) MarshalJSON() ([]byte, error) {
 	if o.UpdatedAt.IsSet() {
 		toSerialize["updated_at"] = o.UpdatedAt.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableCategoryResponse struct {

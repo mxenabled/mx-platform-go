@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaymentProcessorAuthorizationCodeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaymentProcessorAuthorizationCodeRequest{}
+
 // PaymentProcessorAuthorizationCodeRequest struct for PaymentProcessorAuthorizationCodeRequest
 type PaymentProcessorAuthorizationCodeRequest struct {
 	AccountGuid NullableString `json:"account_guid,omitempty"`
@@ -40,7 +43,7 @@ func NewPaymentProcessorAuthorizationCodeRequestWithDefaults() *PaymentProcessor
 
 // GetAccountGuid returns the AccountGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PaymentProcessorAuthorizationCodeRequest) GetAccountGuid() string {
-	if o == nil || o.AccountGuid.Get() == nil {
+	if o == nil || IsNil(o.AccountGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) GetAccountGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PaymentProcessorAuthorizationCodeRequest) GetAccountGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccountGuid.Get(), o.AccountGuid.IsSet()
@@ -82,7 +85,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) UnsetAccountGuid() {
 
 // GetMemberGuid returns the MemberGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuid() string {
-	if o == nil || o.MemberGuid.Get() == nil {
+	if o == nil || IsNil(o.MemberGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberGuid.Get(), o.MemberGuid.IsSet()
@@ -124,7 +127,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) UnsetMemberGuid() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -135,7 +138,7 @@ func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -165,6 +168,14 @@ func (o *PaymentProcessorAuthorizationCodeRequest) UnsetUserGuid() {
 }
 
 func (o PaymentProcessorAuthorizationCodeRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PaymentProcessorAuthorizationCodeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountGuid.IsSet() {
 		toSerialize["account_guid"] = o.AccountGuid.Get()
@@ -175,7 +186,7 @@ func (o PaymentProcessorAuthorizationCodeRequest) MarshalJSON() ([]byte, error) 
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePaymentProcessorAuthorizationCodeRequest struct {

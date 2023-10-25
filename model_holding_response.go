@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the HoldingResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HoldingResponse{}
+
 // HoldingResponse struct for HoldingResponse
 type HoldingResponse struct {
 	AccountGuid NullableString `json:"account_guid,omitempty"`
@@ -56,7 +59,7 @@ func NewHoldingResponseWithDefaults() *HoldingResponse {
 
 // GetAccountGuid returns the AccountGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetAccountGuid() string {
-	if o == nil || o.AccountGuid.Get() == nil {
+	if o == nil || IsNil(o.AccountGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -67,7 +70,7 @@ func (o *HoldingResponse) GetAccountGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetAccountGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccountGuid.Get(), o.AccountGuid.IsSet()
@@ -98,7 +101,7 @@ func (o *HoldingResponse) UnsetAccountGuid() {
 
 // GetCostBasis returns the CostBasis field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetCostBasis() float32 {
-	if o == nil || o.CostBasis.Get() == nil {
+	if o == nil || IsNil(o.CostBasis.Get()) {
 		var ret float32
 		return ret
 	}
@@ -109,7 +112,7 @@ func (o *HoldingResponse) GetCostBasis() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetCostBasisOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CostBasis.Get(), o.CostBasis.IsSet()
@@ -140,7 +143,7 @@ func (o *HoldingResponse) UnsetCostBasis() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *HoldingResponse) GetCreatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
@@ -182,7 +185,7 @@ func (o *HoldingResponse) UnsetCreatedAt() {
 
 // GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetCurrencyCode() string {
-	if o == nil || o.CurrencyCode.Get() == nil {
+	if o == nil || IsNil(o.CurrencyCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -193,7 +196,7 @@ func (o *HoldingResponse) GetCurrencyCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CurrencyCode.Get(), o.CurrencyCode.IsSet()
@@ -224,7 +227,7 @@ func (o *HoldingResponse) UnsetCurrencyCode() {
 
 // GetCusip returns the Cusip field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetCusip() string {
-	if o == nil || o.Cusip.Get() == nil {
+	if o == nil || IsNil(o.Cusip.Get()) {
 		var ret string
 		return ret
 	}
@@ -235,7 +238,7 @@ func (o *HoldingResponse) GetCusip() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetCusipOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Cusip.Get(), o.Cusip.IsSet()
@@ -266,7 +269,7 @@ func (o *HoldingResponse) UnsetCusip() {
 
 // GetDailyChange returns the DailyChange field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetDailyChange() float32 {
-	if o == nil || o.DailyChange.Get() == nil {
+	if o == nil || IsNil(o.DailyChange.Get()) {
 		var ret float32
 		return ret
 	}
@@ -277,7 +280,7 @@ func (o *HoldingResponse) GetDailyChange() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetDailyChangeOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.DailyChange.Get(), o.DailyChange.IsSet()
@@ -308,7 +311,7 @@ func (o *HoldingResponse) UnsetDailyChange() {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -319,7 +322,7 @@ func (o *HoldingResponse) GetDescription() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Description.Get(), o.Description.IsSet()
@@ -350,7 +353,7 @@ func (o *HoldingResponse) UnsetDescription() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -361,7 +364,7 @@ func (o *HoldingResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -392,7 +395,7 @@ func (o *HoldingResponse) UnsetGuid() {
 
 // GetHoldingType returns the HoldingType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetHoldingType() string {
-	if o == nil || o.HoldingType.Get() == nil {
+	if o == nil || IsNil(o.HoldingType.Get()) {
 		var ret string
 		return ret
 	}
@@ -403,7 +406,7 @@ func (o *HoldingResponse) GetHoldingType() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetHoldingTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.HoldingType.Get(), o.HoldingType.IsSet()
@@ -434,7 +437,7 @@ func (o *HoldingResponse) UnsetHoldingType() {
 
 // GetHoldingTypeId returns the HoldingTypeId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetHoldingTypeId() int32 {
-	if o == nil || o.HoldingTypeId.Get() == nil {
+	if o == nil || IsNil(o.HoldingTypeId.Get()) {
 		var ret int32
 		return ret
 	}
@@ -445,7 +448,7 @@ func (o *HoldingResponse) GetHoldingTypeId() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetHoldingTypeIdOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.HoldingTypeId.Get(), o.HoldingTypeId.IsSet()
@@ -476,7 +479,7 @@ func (o *HoldingResponse) UnsetHoldingTypeId() {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetId() string {
-	if o == nil || o.Id.Get() == nil {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -487,7 +490,7 @@ func (o *HoldingResponse) GetId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
@@ -518,7 +521,7 @@ func (o *HoldingResponse) UnsetId() {
 
 // GetMarketValue returns the MarketValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetMarketValue() float32 {
-	if o == nil || o.MarketValue.Get() == nil {
+	if o == nil || IsNil(o.MarketValue.Get()) {
 		var ret float32
 		return ret
 	}
@@ -529,7 +532,7 @@ func (o *HoldingResponse) GetMarketValue() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetMarketValueOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MarketValue.Get(), o.MarketValue.IsSet()
@@ -560,7 +563,7 @@ func (o *HoldingResponse) UnsetMarketValue() {
 
 // GetMemberGuid returns the MemberGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetMemberGuid() string {
-	if o == nil || o.MemberGuid.Get() == nil {
+	if o == nil || IsNil(o.MemberGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -571,7 +574,7 @@ func (o *HoldingResponse) GetMemberGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetMemberGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberGuid.Get(), o.MemberGuid.IsSet()
@@ -602,7 +605,7 @@ func (o *HoldingResponse) UnsetMemberGuid() {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetMetadata() string {
-	if o == nil || o.Metadata.Get() == nil {
+	if o == nil || IsNil(o.Metadata.Get()) {
 		var ret string
 		return ret
 	}
@@ -613,7 +616,7 @@ func (o *HoldingResponse) GetMetadata() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetMetadataOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Metadata.Get(), o.Metadata.IsSet()
@@ -644,7 +647,7 @@ func (o *HoldingResponse) UnsetMetadata() {
 
 // GetPurchasePrice returns the PurchasePrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetPurchasePrice() float32 {
-	if o == nil || o.PurchasePrice.Get() == nil {
+	if o == nil || IsNil(o.PurchasePrice.Get()) {
 		var ret float32
 		return ret
 	}
@@ -655,7 +658,7 @@ func (o *HoldingResponse) GetPurchasePrice() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetPurchasePriceOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PurchasePrice.Get(), o.PurchasePrice.IsSet()
@@ -686,7 +689,7 @@ func (o *HoldingResponse) UnsetPurchasePrice() {
 
 // GetShares returns the Shares field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetShares() float32 {
-	if o == nil || o.Shares.Get() == nil {
+	if o == nil || IsNil(o.Shares.Get()) {
 		var ret float32
 		return ret
 	}
@@ -697,7 +700,7 @@ func (o *HoldingResponse) GetShares() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetSharesOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Shares.Get(), o.Shares.IsSet()
@@ -728,7 +731,7 @@ func (o *HoldingResponse) UnsetShares() {
 
 // GetSymbol returns the Symbol field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetSymbol() string {
-	if o == nil || o.Symbol.Get() == nil {
+	if o == nil || IsNil(o.Symbol.Get()) {
 		var ret string
 		return ret
 	}
@@ -739,7 +742,7 @@ func (o *HoldingResponse) GetSymbol() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetSymbolOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Symbol.Get(), o.Symbol.IsSet()
@@ -770,7 +773,7 @@ func (o *HoldingResponse) UnsetSymbol() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -781,7 +784,7 @@ func (o *HoldingResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -812,7 +815,7 @@ func (o *HoldingResponse) UnsetUpdatedAt() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HoldingResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -823,7 +826,7 @@ func (o *HoldingResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HoldingResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -853,6 +856,14 @@ func (o *HoldingResponse) UnsetUserGuid() {
 }
 
 func (o HoldingResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o HoldingResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountGuid.IsSet() {
 		toSerialize["account_guid"] = o.AccountGuid.Get()
@@ -911,7 +922,7 @@ func (o HoldingResponse) MarshalJSON() ([]byte, error) {
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableHoldingResponse struct {

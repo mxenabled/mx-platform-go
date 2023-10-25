@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CategoriesResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CategoriesResponseBody{}
+
 // CategoriesResponseBody struct for CategoriesResponseBody
 type CategoriesResponseBody struct {
 	Categories []CategoryResponse `json:"categories,omitempty"`
@@ -39,7 +42,7 @@ func NewCategoriesResponseBodyWithDefaults() *CategoriesResponseBody {
 
 // GetCategories returns the Categories field value if set, zero value otherwise.
 func (o *CategoriesResponseBody) GetCategories() []CategoryResponse {
-	if o == nil || o.Categories == nil {
+	if o == nil || IsNil(o.Categories) {
 		var ret []CategoryResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CategoriesResponseBody) GetCategories() []CategoryResponse {
 // GetCategoriesOk returns a tuple with the Categories field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CategoriesResponseBody) GetCategoriesOk() ([]CategoryResponse, bool) {
-	if o == nil || o.Categories == nil {
+	if o == nil || IsNil(o.Categories) {
 		return nil, false
 	}
 	return o.Categories, true
@@ -57,7 +60,7 @@ func (o *CategoriesResponseBody) GetCategoriesOk() ([]CategoryResponse, bool) {
 
 // HasCategories returns a boolean if a field has been set.
 func (o *CategoriesResponseBody) HasCategories() bool {
-	if o != nil && o.Categories != nil {
+	if o != nil && !IsNil(o.Categories) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *CategoriesResponseBody) SetCategories(v []CategoryResponse) {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *CategoriesResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *CategoriesResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CategoriesResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *CategoriesResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
 
 // HasPagination returns a boolean if a field has been set.
 func (o *CategoriesResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *CategoriesResponseBody) SetPagination(v PaginationResponse) {
 }
 
 func (o CategoriesResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Categories != nil {
-		toSerialize["categories"] = o.Categories
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CategoriesResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Categories) {
+		toSerialize["categories"] = o.Categories
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableCategoriesResponseBody struct {

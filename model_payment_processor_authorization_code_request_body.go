@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaymentProcessorAuthorizationCodeRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaymentProcessorAuthorizationCodeRequestBody{}
+
 // PaymentProcessorAuthorizationCodeRequestBody struct for PaymentProcessorAuthorizationCodeRequestBody
 type PaymentProcessorAuthorizationCodeRequestBody struct {
 	PaymentProcessorAuthorizationCode *PaymentProcessorAuthorizationCodeRequest `json:"payment_processor_authorization_code,omitempty"`
@@ -38,7 +41,7 @@ func NewPaymentProcessorAuthorizationCodeRequestBodyWithDefaults() *PaymentProce
 
 // GetPaymentProcessorAuthorizationCode returns the PaymentProcessorAuthorizationCode field value if set, zero value otherwise.
 func (o *PaymentProcessorAuthorizationCodeRequestBody) GetPaymentProcessorAuthorizationCode() PaymentProcessorAuthorizationCodeRequest {
-	if o == nil || o.PaymentProcessorAuthorizationCode == nil {
+	if o == nil || IsNil(o.PaymentProcessorAuthorizationCode) {
 		var ret PaymentProcessorAuthorizationCodeRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *PaymentProcessorAuthorizationCodeRequestBody) GetPaymentProcessorAuthor
 // GetPaymentProcessorAuthorizationCodeOk returns a tuple with the PaymentProcessorAuthorizationCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentProcessorAuthorizationCodeRequestBody) GetPaymentProcessorAuthorizationCodeOk() (*PaymentProcessorAuthorizationCodeRequest, bool) {
-	if o == nil || o.PaymentProcessorAuthorizationCode == nil {
+	if o == nil || IsNil(o.PaymentProcessorAuthorizationCode) {
 		return nil, false
 	}
 	return o.PaymentProcessorAuthorizationCode, true
@@ -56,7 +59,7 @@ func (o *PaymentProcessorAuthorizationCodeRequestBody) GetPaymentProcessorAuthor
 
 // HasPaymentProcessorAuthorizationCode returns a boolean if a field has been set.
 func (o *PaymentProcessorAuthorizationCodeRequestBody) HasPaymentProcessorAuthorizationCode() bool {
-	if o != nil && o.PaymentProcessorAuthorizationCode != nil {
+	if o != nil && !IsNil(o.PaymentProcessorAuthorizationCode) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *PaymentProcessorAuthorizationCodeRequestBody) SetPaymentProcessorAuthor
 }
 
 func (o PaymentProcessorAuthorizationCodeRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.PaymentProcessorAuthorizationCode != nil {
-		toSerialize["payment_processor_authorization_code"] = o.PaymentProcessorAuthorizationCode
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaymentProcessorAuthorizationCodeRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PaymentProcessorAuthorizationCode) {
+		toSerialize["payment_processor_authorization_code"] = o.PaymentProcessorAuthorizationCode
+	}
+	return toSerialize, nil
 }
 
 type NullablePaymentProcessorAuthorizationCodeRequestBody struct {

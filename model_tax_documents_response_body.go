@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaxDocumentsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaxDocumentsResponseBody{}
+
 // TaxDocumentsResponseBody struct for TaxDocumentsResponseBody
 type TaxDocumentsResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
@@ -39,7 +42,7 @@ func NewTaxDocumentsResponseBodyWithDefaults() *TaxDocumentsResponseBody {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *TaxDocumentsResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *TaxDocumentsResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaxDocumentsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -57,7 +60,7 @@ func (o *TaxDocumentsResponseBody) GetPaginationOk() (*PaginationResponse, bool)
 
 // HasPagination returns a boolean if a field has been set.
 func (o *TaxDocumentsResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *TaxDocumentsResponseBody) SetPagination(v PaginationResponse) {
 
 // GetTaxDocuments returns the TaxDocuments field value if set, zero value otherwise.
 func (o *TaxDocumentsResponseBody) GetTaxDocuments() []TaxDocumentResponse {
-	if o == nil || o.TaxDocuments == nil {
+	if o == nil || IsNil(o.TaxDocuments) {
 		var ret []TaxDocumentResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *TaxDocumentsResponseBody) GetTaxDocuments() []TaxDocumentResponse {
 // GetTaxDocumentsOk returns a tuple with the TaxDocuments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaxDocumentsResponseBody) GetTaxDocumentsOk() ([]TaxDocumentResponse, bool) {
-	if o == nil || o.TaxDocuments == nil {
+	if o == nil || IsNil(o.TaxDocuments) {
 		return nil, false
 	}
 	return o.TaxDocuments, true
@@ -89,7 +92,7 @@ func (o *TaxDocumentsResponseBody) GetTaxDocumentsOk() ([]TaxDocumentResponse, b
 
 // HasTaxDocuments returns a boolean if a field has been set.
 func (o *TaxDocumentsResponseBody) HasTaxDocuments() bool {
-	if o != nil && o.TaxDocuments != nil {
+	if o != nil && !IsNil(o.TaxDocuments) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *TaxDocumentsResponseBody) SetTaxDocuments(v []TaxDocumentResponse) {
 }
 
 func (o TaxDocumentsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if o.TaxDocuments != nil {
-		toSerialize["tax_documents"] = o.TaxDocuments
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TaxDocumentsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if !IsNil(o.TaxDocuments) {
+		toSerialize["tax_documents"] = o.TaxDocuments
+	}
+	return toSerialize, nil
 }
 
 type NullableTaxDocumentsResponseBody struct {

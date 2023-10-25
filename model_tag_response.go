@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TagResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TagResponse{}
+
 // TagResponse struct for TagResponse
 type TagResponse struct {
 	Guid NullableString `json:"guid,omitempty"`
@@ -40,7 +43,7 @@ func NewTagResponseWithDefaults() *TagResponse {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TagResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *TagResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TagResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -82,7 +85,7 @@ func (o *TagResponse) UnsetGuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TagResponse) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *TagResponse) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TagResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -124,7 +127,7 @@ func (o *TagResponse) UnsetName() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TagResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -135,7 +138,7 @@ func (o *TagResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TagResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -165,6 +168,14 @@ func (o *TagResponse) UnsetUserGuid() {
 }
 
 func (o TagResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TagResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Guid.IsSet() {
 		toSerialize["guid"] = o.Guid.Get()
@@ -175,7 +186,7 @@ func (o TagResponse) MarshalJSON() ([]byte, error) {
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTagResponse struct {

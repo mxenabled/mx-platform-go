@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpendingPlanIterationItemCreateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpendingPlanIterationItemCreateRequestBody{}
+
 // SpendingPlanIterationItemCreateRequestBody struct for SpendingPlanIterationItemCreateRequestBody
 type SpendingPlanIterationItemCreateRequestBody struct {
 	CategoryGuid *string `json:"category_guid,omitempty"`
@@ -43,7 +46,7 @@ func NewSpendingPlanIterationItemCreateRequestBodyWithDefaults() *SpendingPlanIt
 
 // GetCategoryGuid returns the CategoryGuid field value if set, zero value otherwise.
 func (o *SpendingPlanIterationItemCreateRequestBody) GetCategoryGuid() string {
-	if o == nil || o.CategoryGuid == nil {
+	if o == nil || IsNil(o.CategoryGuid) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) GetCategoryGuid() string {
 // GetCategoryGuidOk returns a tuple with the CategoryGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanIterationItemCreateRequestBody) GetCategoryGuidOk() (*string, bool) {
-	if o == nil || o.CategoryGuid == nil {
+	if o == nil || IsNil(o.CategoryGuid) {
 		return nil, false
 	}
 	return o.CategoryGuid, true
@@ -61,7 +64,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) GetCategoryGuidOk() (*strin
 
 // HasCategoryGuid returns a boolean if a field has been set.
 func (o *SpendingPlanIterationItemCreateRequestBody) HasCategoryGuid() bool {
-	if o != nil && o.CategoryGuid != nil {
+	if o != nil && !IsNil(o.CategoryGuid) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) SetCategoryGuid(v string) {
 
 // GetItemType returns the ItemType field value if set, zero value otherwise.
 func (o *SpendingPlanIterationItemCreateRequestBody) GetItemType() float32 {
-	if o == nil || o.ItemType == nil {
+	if o == nil || IsNil(o.ItemType) {
 		var ret float32
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) GetItemType() float32 {
 // GetItemTypeOk returns a tuple with the ItemType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanIterationItemCreateRequestBody) GetItemTypeOk() (*float32, bool) {
-	if o == nil || o.ItemType == nil {
+	if o == nil || IsNil(o.ItemType) {
 		return nil, false
 	}
 	return o.ItemType, true
@@ -93,7 +96,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) GetItemTypeOk() (*float32, 
 
 // HasItemType returns a boolean if a field has been set.
 func (o *SpendingPlanIterationItemCreateRequestBody) HasItemType() bool {
-	if o != nil && o.ItemType != nil {
+	if o != nil && !IsNil(o.ItemType) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) GetPlannedAmount() float32 
 // GetPlannedAmountOk returns a tuple with the PlannedAmount field value
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanIterationItemCreateRequestBody) GetPlannedAmountOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PlannedAmount, true
@@ -131,7 +134,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) SetPlannedAmount(v float32)
 
 // GetScheduledPaymentGuid returns the ScheduledPaymentGuid field value if set, zero value otherwise.
 func (o *SpendingPlanIterationItemCreateRequestBody) GetScheduledPaymentGuid() string {
-	if o == nil || o.ScheduledPaymentGuid == nil {
+	if o == nil || IsNil(o.ScheduledPaymentGuid) {
 		var ret string
 		return ret
 	}
@@ -141,7 +144,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) GetScheduledPaymentGuid() s
 // GetScheduledPaymentGuidOk returns a tuple with the ScheduledPaymentGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanIterationItemCreateRequestBody) GetScheduledPaymentGuidOk() (*string, bool) {
-	if o == nil || o.ScheduledPaymentGuid == nil {
+	if o == nil || IsNil(o.ScheduledPaymentGuid) {
 		return nil, false
 	}
 	return o.ScheduledPaymentGuid, true
@@ -149,7 +152,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) GetScheduledPaymentGuidOk()
 
 // HasScheduledPaymentGuid returns a boolean if a field has been set.
 func (o *SpendingPlanIterationItemCreateRequestBody) HasScheduledPaymentGuid() bool {
-	if o != nil && o.ScheduledPaymentGuid != nil {
+	if o != nil && !IsNil(o.ScheduledPaymentGuid) {
 		return true
 	}
 
@@ -163,7 +166,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) SetScheduledPaymentGuid(v s
 
 // GetTopLevelCategoryGuid returns the TopLevelCategoryGuid field value if set, zero value otherwise.
 func (o *SpendingPlanIterationItemCreateRequestBody) GetTopLevelCategoryGuid() string {
-	if o == nil || o.TopLevelCategoryGuid == nil {
+	if o == nil || IsNil(o.TopLevelCategoryGuid) {
 		var ret string
 		return ret
 	}
@@ -173,7 +176,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) GetTopLevelCategoryGuid() s
 // GetTopLevelCategoryGuidOk returns a tuple with the TopLevelCategoryGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanIterationItemCreateRequestBody) GetTopLevelCategoryGuidOk() (*string, bool) {
-	if o == nil || o.TopLevelCategoryGuid == nil {
+	if o == nil || IsNil(o.TopLevelCategoryGuid) {
 		return nil, false
 	}
 	return o.TopLevelCategoryGuid, true
@@ -181,7 +184,7 @@ func (o *SpendingPlanIterationItemCreateRequestBody) GetTopLevelCategoryGuidOk()
 
 // HasTopLevelCategoryGuid returns a boolean if a field has been set.
 func (o *SpendingPlanIterationItemCreateRequestBody) HasTopLevelCategoryGuid() bool {
-	if o != nil && o.TopLevelCategoryGuid != nil {
+	if o != nil && !IsNil(o.TopLevelCategoryGuid) {
 		return true
 	}
 
@@ -194,23 +197,29 @@ func (o *SpendingPlanIterationItemCreateRequestBody) SetTopLevelCategoryGuid(v s
 }
 
 func (o SpendingPlanIterationItemCreateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CategoryGuid != nil {
-		toSerialize["category_guid"] = o.CategoryGuid
-	}
-	if o.ItemType != nil {
-		toSerialize["item_type"] = o.ItemType
-	}
-	if true {
-		toSerialize["planned_amount"] = o.PlannedAmount
-	}
-	if o.ScheduledPaymentGuid != nil {
-		toSerialize["scheduled_payment_guid"] = o.ScheduledPaymentGuid
-	}
-	if o.TopLevelCategoryGuid != nil {
-		toSerialize["top_level_category_guid"] = o.TopLevelCategoryGuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SpendingPlanIterationItemCreateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CategoryGuid) {
+		toSerialize["category_guid"] = o.CategoryGuid
+	}
+	if !IsNil(o.ItemType) {
+		toSerialize["item_type"] = o.ItemType
+	}
+	toSerialize["planned_amount"] = o.PlannedAmount
+	if !IsNil(o.ScheduledPaymentGuid) {
+		toSerialize["scheduled_payment_guid"] = o.ScheduledPaymentGuid
+	}
+	if !IsNil(o.TopLevelCategoryGuid) {
+		toSerialize["top_level_category_guid"] = o.TopLevelCategoryGuid
+	}
+	return toSerialize, nil
 }
 
 type NullableSpendingPlanIterationItemCreateRequestBody struct {

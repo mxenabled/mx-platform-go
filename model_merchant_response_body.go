@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MerchantResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MerchantResponseBody{}
+
 // MerchantResponseBody struct for MerchantResponseBody
 type MerchantResponseBody struct {
 	Merchant *MerchantResponse `json:"merchant,omitempty"`
@@ -38,7 +41,7 @@ func NewMerchantResponseBodyWithDefaults() *MerchantResponseBody {
 
 // GetMerchant returns the Merchant field value if set, zero value otherwise.
 func (o *MerchantResponseBody) GetMerchant() MerchantResponse {
-	if o == nil || o.Merchant == nil {
+	if o == nil || IsNil(o.Merchant) {
 		var ret MerchantResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *MerchantResponseBody) GetMerchant() MerchantResponse {
 // GetMerchantOk returns a tuple with the Merchant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MerchantResponseBody) GetMerchantOk() (*MerchantResponse, bool) {
-	if o == nil || o.Merchant == nil {
+	if o == nil || IsNil(o.Merchant) {
 		return nil, false
 	}
 	return o.Merchant, true
@@ -56,7 +59,7 @@ func (o *MerchantResponseBody) GetMerchantOk() (*MerchantResponse, bool) {
 
 // HasMerchant returns a boolean if a field has been set.
 func (o *MerchantResponseBody) HasMerchant() bool {
-	if o != nil && o.Merchant != nil {
+	if o != nil && !IsNil(o.Merchant) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *MerchantResponseBody) SetMerchant(v MerchantResponse) {
 }
 
 func (o MerchantResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Merchant != nil {
-		toSerialize["merchant"] = o.Merchant
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MerchantResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Merchant) {
+		toSerialize["merchant"] = o.Merchant
+	}
+	return toSerialize, nil
 }
 
 type NullableMerchantResponseBody struct {

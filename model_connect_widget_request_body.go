@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectWidgetRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectWidgetRequestBody{}
+
 // ConnectWidgetRequestBody struct for ConnectWidgetRequestBody
 type ConnectWidgetRequestBody struct {
 	Config *ConnectWidgetRequest `json:"config,omitempty"`
@@ -38,7 +41,7 @@ func NewConnectWidgetRequestBodyWithDefaults() *ConnectWidgetRequestBody {
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *ConnectWidgetRequestBody) GetConfig() ConnectWidgetRequest {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		var ret ConnectWidgetRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ConnectWidgetRequestBody) GetConfig() ConnectWidgetRequest {
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectWidgetRequestBody) GetConfigOk() (*ConnectWidgetRequest, bool) {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
 	return o.Config, true
@@ -56,7 +59,7 @@ func (o *ConnectWidgetRequestBody) GetConfigOk() (*ConnectWidgetRequest, bool) {
 
 // HasConfig returns a boolean if a field has been set.
 func (o *ConnectWidgetRequestBody) HasConfig() bool {
-	if o != nil && o.Config != nil {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ConnectWidgetRequestBody) SetConfig(v ConnectWidgetRequest) {
 }
 
 func (o ConnectWidgetRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConnectWidgetRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Config) {
+		toSerialize["config"] = o.Config
+	}
+	return toSerialize, nil
 }
 
 type NullableConnectWidgetRequestBody struct {

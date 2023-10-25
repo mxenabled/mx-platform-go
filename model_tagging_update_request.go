@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaggingUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaggingUpdateRequest{}
+
 // TaggingUpdateRequest struct for TaggingUpdateRequest
 type TaggingUpdateRequest struct {
 	TagGuid string `json:"tag_guid"`
@@ -50,7 +53,7 @@ func (o *TaggingUpdateRequest) GetTagGuid() string {
 // GetTagGuidOk returns a tuple with the TagGuid field value
 // and a boolean to check if the value has been set.
 func (o *TaggingUpdateRequest) GetTagGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TagGuid, true
@@ -62,11 +65,17 @@ func (o *TaggingUpdateRequest) SetTagGuid(v string) {
 }
 
 func (o TaggingUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["tag_guid"] = o.TagGuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TaggingUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["tag_guid"] = o.TagGuid
+	return toSerialize, nil
 }
 
 type NullableTaggingUpdateRequest struct {

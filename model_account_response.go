@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountResponse{}
+
 // AccountResponse struct for AccountResponse
 type AccountResponse struct {
 	AccountNumber NullableString `json:"account_number,omitempty"`
@@ -93,7 +96,7 @@ func NewAccountResponseWithDefaults() *AccountResponse {
 
 // GetAccountNumber returns the AccountNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetAccountNumber() string {
-	if o == nil || o.AccountNumber.Get() == nil {
+	if o == nil || IsNil(o.AccountNumber.Get()) {
 		var ret string
 		return ret
 	}
@@ -104,7 +107,7 @@ func (o *AccountResponse) GetAccountNumber() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetAccountNumberOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccountNumber.Get(), o.AccountNumber.IsSet()
@@ -135,7 +138,7 @@ func (o *AccountResponse) UnsetAccountNumber() {
 
 // GetAccountOwnership returns the AccountOwnership field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetAccountOwnership() string {
-	if o == nil || o.AccountOwnership.Get() == nil {
+	if o == nil || IsNil(o.AccountOwnership.Get()) {
 		var ret string
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *AccountResponse) GetAccountOwnership() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetAccountOwnershipOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccountOwnership.Get(), o.AccountOwnership.IsSet()
@@ -177,7 +180,7 @@ func (o *AccountResponse) UnsetAccountOwnership() {
 
 // GetAnnuityPolicyToDate returns the AnnuityPolicyToDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetAnnuityPolicyToDate() string {
-	if o == nil || o.AnnuityPolicyToDate.Get() == nil {
+	if o == nil || IsNil(o.AnnuityPolicyToDate.Get()) {
 		var ret string
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *AccountResponse) GetAnnuityPolicyToDate() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetAnnuityPolicyToDateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AnnuityPolicyToDate.Get(), o.AnnuityPolicyToDate.IsSet()
@@ -219,7 +222,7 @@ func (o *AccountResponse) UnsetAnnuityPolicyToDate() {
 
 // GetAnnuityProvider returns the AnnuityProvider field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetAnnuityProvider() string {
-	if o == nil || o.AnnuityProvider.Get() == nil {
+	if o == nil || IsNil(o.AnnuityProvider.Get()) {
 		var ret string
 		return ret
 	}
@@ -230,7 +233,7 @@ func (o *AccountResponse) GetAnnuityProvider() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetAnnuityProviderOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AnnuityProvider.Get(), o.AnnuityProvider.IsSet()
@@ -261,7 +264,7 @@ func (o *AccountResponse) UnsetAnnuityProvider() {
 
 // GetAnnuityTermYear returns the AnnuityTermYear field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetAnnuityTermYear() float32 {
-	if o == nil || o.AnnuityTermYear.Get() == nil {
+	if o == nil || IsNil(o.AnnuityTermYear.Get()) {
 		var ret float32
 		return ret
 	}
@@ -272,7 +275,7 @@ func (o *AccountResponse) GetAnnuityTermYear() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetAnnuityTermYearOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AnnuityTermYear.Get(), o.AnnuityTermYear.IsSet()
@@ -303,7 +306,7 @@ func (o *AccountResponse) UnsetAnnuityTermYear() {
 
 // GetApr returns the Apr field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetApr() float32 {
-	if o == nil || o.Apr.Get() == nil {
+	if o == nil || IsNil(o.Apr.Get()) {
 		var ret float32
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *AccountResponse) GetApr() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetAprOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Apr.Get(), o.Apr.IsSet()
@@ -345,7 +348,7 @@ func (o *AccountResponse) UnsetApr() {
 
 // GetApy returns the Apy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetApy() float32 {
-	if o == nil || o.Apy.Get() == nil {
+	if o == nil || IsNil(o.Apy.Get()) {
 		var ret float32
 		return ret
 	}
@@ -356,7 +359,7 @@ func (o *AccountResponse) GetApy() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetApyOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Apy.Get(), o.Apy.IsSet()
@@ -387,7 +390,7 @@ func (o *AccountResponse) UnsetApy() {
 
 // GetAvailableBalance returns the AvailableBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetAvailableBalance() float32 {
-	if o == nil || o.AvailableBalance.Get() == nil {
+	if o == nil || IsNil(o.AvailableBalance.Get()) {
 		var ret float32
 		return ret
 	}
@@ -398,7 +401,7 @@ func (o *AccountResponse) GetAvailableBalance() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetAvailableBalanceOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AvailableBalance.Get(), o.AvailableBalance.IsSet()
@@ -429,7 +432,7 @@ func (o *AccountResponse) UnsetAvailableBalance() {
 
 // GetAvailableCredit returns the AvailableCredit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetAvailableCredit() float32 {
-	if o == nil || o.AvailableCredit.Get() == nil {
+	if o == nil || IsNil(o.AvailableCredit.Get()) {
 		var ret float32
 		return ret
 	}
@@ -440,7 +443,7 @@ func (o *AccountResponse) GetAvailableCredit() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetAvailableCreditOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AvailableCredit.Get(), o.AvailableCredit.IsSet()
@@ -471,7 +474,7 @@ func (o *AccountResponse) UnsetAvailableCredit() {
 
 // GetBalance returns the Balance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetBalance() float32 {
-	if o == nil || o.Balance.Get() == nil {
+	if o == nil || IsNil(o.Balance.Get()) {
 		var ret float32
 		return ret
 	}
@@ -482,7 +485,7 @@ func (o *AccountResponse) GetBalance() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetBalanceOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Balance.Get(), o.Balance.IsSet()
@@ -513,7 +516,7 @@ func (o *AccountResponse) UnsetBalance() {
 
 // GetCashBalance returns the CashBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetCashBalance() float32 {
-	if o == nil || o.CashBalance.Get() == nil {
+	if o == nil || IsNil(o.CashBalance.Get()) {
 		var ret float32
 		return ret
 	}
@@ -524,7 +527,7 @@ func (o *AccountResponse) GetCashBalance() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetCashBalanceOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CashBalance.Get(), o.CashBalance.IsSet()
@@ -555,7 +558,7 @@ func (o *AccountResponse) UnsetCashBalance() {
 
 // GetCashSurrenderValue returns the CashSurrenderValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetCashSurrenderValue() float32 {
-	if o == nil || o.CashSurrenderValue.Get() == nil {
+	if o == nil || IsNil(o.CashSurrenderValue.Get()) {
 		var ret float32
 		return ret
 	}
@@ -566,7 +569,7 @@ func (o *AccountResponse) GetCashSurrenderValue() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetCashSurrenderValueOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CashSurrenderValue.Get(), o.CashSurrenderValue.IsSet()
@@ -597,7 +600,7 @@ func (o *AccountResponse) UnsetCashSurrenderValue() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *AccountResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -607,7 +610,7 @@ func (o *AccountResponse) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -615,7 +618,7 @@ func (o *AccountResponse) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AccountResponse) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -629,7 +632,7 @@ func (o *AccountResponse) SetCreatedAt(v string) {
 
 // GetCreditLimit returns the CreditLimit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetCreditLimit() float32 {
-	if o == nil || o.CreditLimit.Get() == nil {
+	if o == nil || IsNil(o.CreditLimit.Get()) {
 		var ret float32
 		return ret
 	}
@@ -640,7 +643,7 @@ func (o *AccountResponse) GetCreditLimit() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetCreditLimitOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreditLimit.Get(), o.CreditLimit.IsSet()
@@ -671,7 +674,7 @@ func (o *AccountResponse) UnsetCreditLimit() {
 
 // GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetCurrencyCode() string {
-	if o == nil || o.CurrencyCode.Get() == nil {
+	if o == nil || IsNil(o.CurrencyCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -682,7 +685,7 @@ func (o *AccountResponse) GetCurrencyCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CurrencyCode.Get(), o.CurrencyCode.IsSet()
@@ -713,7 +716,7 @@ func (o *AccountResponse) UnsetCurrencyCode() {
 
 // GetDayPaymentIsDue returns the DayPaymentIsDue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetDayPaymentIsDue() int32 {
-	if o == nil || o.DayPaymentIsDue.Get() == nil {
+	if o == nil || IsNil(o.DayPaymentIsDue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -724,7 +727,7 @@ func (o *AccountResponse) GetDayPaymentIsDue() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetDayPaymentIsDueOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.DayPaymentIsDue.Get(), o.DayPaymentIsDue.IsSet()
@@ -755,7 +758,7 @@ func (o *AccountResponse) UnsetDayPaymentIsDue() {
 
 // GetDeathBenefit returns the DeathBenefit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetDeathBenefit() int32 {
-	if o == nil || o.DeathBenefit.Get() == nil {
+	if o == nil || IsNil(o.DeathBenefit.Get()) {
 		var ret int32
 		return ret
 	}
@@ -766,7 +769,7 @@ func (o *AccountResponse) GetDeathBenefit() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetDeathBenefitOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.DeathBenefit.Get(), o.DeathBenefit.IsSet()
@@ -797,7 +800,7 @@ func (o *AccountResponse) UnsetDeathBenefit() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -808,7 +811,7 @@ func (o *AccountResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -839,7 +842,7 @@ func (o *AccountResponse) UnsetGuid() {
 
 // GetHoldingsValue returns the HoldingsValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetHoldingsValue() float32 {
-	if o == nil || o.HoldingsValue.Get() == nil {
+	if o == nil || IsNil(o.HoldingsValue.Get()) {
 		var ret float32
 		return ret
 	}
@@ -850,7 +853,7 @@ func (o *AccountResponse) GetHoldingsValue() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetHoldingsValueOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.HoldingsValue.Get(), o.HoldingsValue.IsSet()
@@ -881,7 +884,7 @@ func (o *AccountResponse) UnsetHoldingsValue() {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetId() string {
-	if o == nil || o.Id.Get() == nil {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -892,7 +895,7 @@ func (o *AccountResponse) GetId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
@@ -923,7 +926,7 @@ func (o *AccountResponse) UnsetId() {
 
 // GetImportedAt returns the ImportedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetImportedAt() string {
-	if o == nil || o.ImportedAt.Get() == nil {
+	if o == nil || IsNil(o.ImportedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -934,7 +937,7 @@ func (o *AccountResponse) GetImportedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetImportedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ImportedAt.Get(), o.ImportedAt.IsSet()
@@ -965,7 +968,7 @@ func (o *AccountResponse) UnsetImportedAt() {
 
 // GetInterestRate returns the InterestRate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetInterestRate() float32 {
-	if o == nil || o.InterestRate.Get() == nil {
+	if o == nil || IsNil(o.InterestRate.Get()) {
 		var ret float32
 		return ret
 	}
@@ -976,7 +979,7 @@ func (o *AccountResponse) GetInterestRate() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetInterestRateOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.InterestRate.Get(), o.InterestRate.IsSet()
@@ -1007,7 +1010,7 @@ func (o *AccountResponse) UnsetInterestRate() {
 
 // GetInstitutionCode returns the InstitutionCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetInstitutionCode() string {
-	if o == nil || o.InstitutionCode.Get() == nil {
+	if o == nil || IsNil(o.InstitutionCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -1018,7 +1021,7 @@ func (o *AccountResponse) GetInstitutionCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetInstitutionCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.InstitutionCode.Get(), o.InstitutionCode.IsSet()
@@ -1049,7 +1052,7 @@ func (o *AccountResponse) UnsetInstitutionCode() {
 
 // GetInsuredName returns the InsuredName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetInsuredName() string {
-	if o == nil || o.InsuredName.Get() == nil {
+	if o == nil || IsNil(o.InsuredName.Get()) {
 		var ret string
 		return ret
 	}
@@ -1060,7 +1063,7 @@ func (o *AccountResponse) GetInsuredName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetInsuredNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.InsuredName.Get(), o.InsuredName.IsSet()
@@ -1091,7 +1094,7 @@ func (o *AccountResponse) UnsetInsuredName() {
 
 // GetIsClosed returns the IsClosed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetIsClosed() bool {
-	if o == nil || o.IsClosed.Get() == nil {
+	if o == nil || IsNil(o.IsClosed.Get()) {
 		var ret bool
 		return ret
 	}
@@ -1102,7 +1105,7 @@ func (o *AccountResponse) GetIsClosed() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetIsClosedOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsClosed.Get(), o.IsClosed.IsSet()
@@ -1133,7 +1136,7 @@ func (o *AccountResponse) UnsetIsClosed() {
 
 // GetIsHidden returns the IsHidden field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetIsHidden() bool {
-	if o == nil || o.IsHidden.Get() == nil {
+	if o == nil || IsNil(o.IsHidden.Get()) {
 		var ret bool
 		return ret
 	}
@@ -1144,7 +1147,7 @@ func (o *AccountResponse) GetIsHidden() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetIsHiddenOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsHidden.Get(), o.IsHidden.IsSet()
@@ -1175,7 +1178,7 @@ func (o *AccountResponse) UnsetIsHidden() {
 
 // GetIsManual returns the IsManual field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetIsManual() bool {
-	if o == nil || o.IsManual.Get() == nil {
+	if o == nil || IsNil(o.IsManual.Get()) {
 		var ret bool
 		return ret
 	}
@@ -1186,7 +1189,7 @@ func (o *AccountResponse) GetIsManual() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetIsManualOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsManual.Get(), o.IsManual.IsSet()
@@ -1217,7 +1220,7 @@ func (o *AccountResponse) UnsetIsManual() {
 
 // GetLastPayment returns the LastPayment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetLastPayment() float32 {
-	if o == nil || o.LastPayment.Get() == nil {
+	if o == nil || IsNil(o.LastPayment.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1228,7 +1231,7 @@ func (o *AccountResponse) GetLastPayment() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetLastPaymentOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LastPayment.Get(), o.LastPayment.IsSet()
@@ -1259,7 +1262,7 @@ func (o *AccountResponse) UnsetLastPayment() {
 
 // GetLastPaymentAt returns the LastPaymentAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetLastPaymentAt() string {
-	if o == nil || o.LastPaymentAt.Get() == nil {
+	if o == nil || IsNil(o.LastPaymentAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -1270,7 +1273,7 @@ func (o *AccountResponse) GetLastPaymentAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetLastPaymentAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LastPaymentAt.Get(), o.LastPaymentAt.IsSet()
@@ -1301,7 +1304,7 @@ func (o *AccountResponse) UnsetLastPaymentAt() {
 
 // GetLoanAmount returns the LoanAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetLoanAmount() float32 {
-	if o == nil || o.LoanAmount.Get() == nil {
+	if o == nil || IsNil(o.LoanAmount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1312,7 +1315,7 @@ func (o *AccountResponse) GetLoanAmount() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetLoanAmountOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LoanAmount.Get(), o.LoanAmount.IsSet()
@@ -1343,7 +1346,7 @@ func (o *AccountResponse) UnsetLoanAmount() {
 
 // GetMarginBalance returns the MarginBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetMarginBalance() float32 {
-	if o == nil || o.MarginBalance.Get() == nil {
+	if o == nil || IsNil(o.MarginBalance.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1354,7 +1357,7 @@ func (o *AccountResponse) GetMarginBalance() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetMarginBalanceOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MarginBalance.Get(), o.MarginBalance.IsSet()
@@ -1385,7 +1388,7 @@ func (o *AccountResponse) UnsetMarginBalance() {
 
 // GetMaturesOn returns the MaturesOn field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetMaturesOn() string {
-	if o == nil || o.MaturesOn.Get() == nil {
+	if o == nil || IsNil(o.MaturesOn.Get()) {
 		var ret string
 		return ret
 	}
@@ -1396,7 +1399,7 @@ func (o *AccountResponse) GetMaturesOn() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetMaturesOnOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MaturesOn.Get(), o.MaturesOn.IsSet()
@@ -1427,7 +1430,7 @@ func (o *AccountResponse) UnsetMaturesOn() {
 
 // GetMemberGuid returns the MemberGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetMemberGuid() string {
-	if o == nil || o.MemberGuid.Get() == nil {
+	if o == nil || IsNil(o.MemberGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -1438,7 +1441,7 @@ func (o *AccountResponse) GetMemberGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetMemberGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberGuid.Get(), o.MemberGuid.IsSet()
@@ -1469,7 +1472,7 @@ func (o *AccountResponse) UnsetMemberGuid() {
 
 // GetMemberId returns the MemberId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetMemberId() string {
-	if o == nil || o.MemberId.Get() == nil {
+	if o == nil || IsNil(o.MemberId.Get()) {
 		var ret string
 		return ret
 	}
@@ -1480,7 +1483,7 @@ func (o *AccountResponse) GetMemberId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetMemberIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberId.Get(), o.MemberId.IsSet()
@@ -1511,7 +1514,7 @@ func (o *AccountResponse) UnsetMemberId() {
 
 // GetMemberIsManagedByUser returns the MemberIsManagedByUser field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetMemberIsManagedByUser() bool {
-	if o == nil || o.MemberIsManagedByUser.Get() == nil {
+	if o == nil || IsNil(o.MemberIsManagedByUser.Get()) {
 		var ret bool
 		return ret
 	}
@@ -1522,7 +1525,7 @@ func (o *AccountResponse) GetMemberIsManagedByUser() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetMemberIsManagedByUserOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberIsManagedByUser.Get(), o.MemberIsManagedByUser.IsSet()
@@ -1553,7 +1556,7 @@ func (o *AccountResponse) UnsetMemberIsManagedByUser() {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetMetadata() string {
-	if o == nil || o.Metadata.Get() == nil {
+	if o == nil || IsNil(o.Metadata.Get()) {
 		var ret string
 		return ret
 	}
@@ -1564,7 +1567,7 @@ func (o *AccountResponse) GetMetadata() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetMetadataOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Metadata.Get(), o.Metadata.IsSet()
@@ -1595,7 +1598,7 @@ func (o *AccountResponse) UnsetMetadata() {
 
 // GetMinimumBalance returns the MinimumBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetMinimumBalance() float32 {
-	if o == nil || o.MinimumBalance.Get() == nil {
+	if o == nil || IsNil(o.MinimumBalance.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1606,7 +1609,7 @@ func (o *AccountResponse) GetMinimumBalance() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetMinimumBalanceOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MinimumBalance.Get(), o.MinimumBalance.IsSet()
@@ -1637,7 +1640,7 @@ func (o *AccountResponse) UnsetMinimumBalance() {
 
 // GetMinimumPayment returns the MinimumPayment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetMinimumPayment() float32 {
-	if o == nil || o.MinimumPayment.Get() == nil {
+	if o == nil || IsNil(o.MinimumPayment.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1648,7 +1651,7 @@ func (o *AccountResponse) GetMinimumPayment() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetMinimumPaymentOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MinimumPayment.Get(), o.MinimumPayment.IsSet()
@@ -1679,7 +1682,7 @@ func (o *AccountResponse) UnsetMinimumPayment() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -1690,7 +1693,7 @@ func (o *AccountResponse) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -1721,7 +1724,7 @@ func (o *AccountResponse) UnsetName() {
 
 // GetNickname returns the Nickname field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetNickname() string {
-	if o == nil || o.Nickname.Get() == nil {
+	if o == nil || IsNil(o.Nickname.Get()) {
 		var ret string
 		return ret
 	}
@@ -1732,7 +1735,7 @@ func (o *AccountResponse) GetNickname() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetNicknameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Nickname.Get(), o.Nickname.IsSet()
@@ -1763,7 +1766,7 @@ func (o *AccountResponse) UnsetNickname() {
 
 // GetOriginalBalance returns the OriginalBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetOriginalBalance() float32 {
-	if o == nil || o.OriginalBalance.Get() == nil {
+	if o == nil || IsNil(o.OriginalBalance.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1774,7 +1777,7 @@ func (o *AccountResponse) GetOriginalBalance() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetOriginalBalanceOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.OriginalBalance.Get(), o.OriginalBalance.IsSet()
@@ -1805,7 +1808,7 @@ func (o *AccountResponse) UnsetOriginalBalance() {
 
 // GetPayOutAmount returns the PayOutAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetPayOutAmount() float32 {
-	if o == nil || o.PayOutAmount.Get() == nil {
+	if o == nil || IsNil(o.PayOutAmount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1816,7 +1819,7 @@ func (o *AccountResponse) GetPayOutAmount() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetPayOutAmountOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PayOutAmount.Get(), o.PayOutAmount.IsSet()
@@ -1847,7 +1850,7 @@ func (o *AccountResponse) UnsetPayOutAmount() {
 
 // GetPaymentDueAt returns the PaymentDueAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetPaymentDueAt() string {
-	if o == nil || o.PaymentDueAt.Get() == nil {
+	if o == nil || IsNil(o.PaymentDueAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -1858,7 +1861,7 @@ func (o *AccountResponse) GetPaymentDueAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetPaymentDueAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PaymentDueAt.Get(), o.PaymentDueAt.IsSet()
@@ -1889,7 +1892,7 @@ func (o *AccountResponse) UnsetPaymentDueAt() {
 
 // GetPayoffBalance returns the PayoffBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetPayoffBalance() float32 {
-	if o == nil || o.PayoffBalance.Get() == nil {
+	if o == nil || IsNil(o.PayoffBalance.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1900,7 +1903,7 @@ func (o *AccountResponse) GetPayoffBalance() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetPayoffBalanceOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PayoffBalance.Get(), o.PayoffBalance.IsSet()
@@ -1931,7 +1934,7 @@ func (o *AccountResponse) UnsetPayoffBalance() {
 
 // GetPremiumAmount returns the PremiumAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetPremiumAmount() float32 {
-	if o == nil || o.PremiumAmount.Get() == nil {
+	if o == nil || IsNil(o.PremiumAmount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1942,7 +1945,7 @@ func (o *AccountResponse) GetPremiumAmount() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetPremiumAmountOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PremiumAmount.Get(), o.PremiumAmount.IsSet()
@@ -1973,7 +1976,7 @@ func (o *AccountResponse) UnsetPremiumAmount() {
 
 // GetPropertyType returns the PropertyType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetPropertyType() string {
-	if o == nil || o.PropertyType.Get() == nil {
+	if o == nil || IsNil(o.PropertyType.Get()) {
 		var ret string
 		return ret
 	}
@@ -1984,7 +1987,7 @@ func (o *AccountResponse) GetPropertyType() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetPropertyTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PropertyType.Get(), o.PropertyType.IsSet()
@@ -2015,7 +2018,7 @@ func (o *AccountResponse) UnsetPropertyType() {
 
 // GetRoutingNumber returns the RoutingNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetRoutingNumber() string {
-	if o == nil || o.RoutingNumber.Get() == nil {
+	if o == nil || IsNil(o.RoutingNumber.Get()) {
 		var ret string
 		return ret
 	}
@@ -2026,7 +2029,7 @@ func (o *AccountResponse) GetRoutingNumber() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetRoutingNumberOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.RoutingNumber.Get(), o.RoutingNumber.IsSet()
@@ -2057,7 +2060,7 @@ func (o *AccountResponse) UnsetRoutingNumber() {
 
 // GetStartedOn returns the StartedOn field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetStartedOn() string {
-	if o == nil || o.StartedOn.Get() == nil {
+	if o == nil || IsNil(o.StartedOn.Get()) {
 		var ret string
 		return ret
 	}
@@ -2068,7 +2071,7 @@ func (o *AccountResponse) GetStartedOn() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetStartedOnOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.StartedOn.Get(), o.StartedOn.IsSet()
@@ -2099,7 +2102,7 @@ func (o *AccountResponse) UnsetStartedOn() {
 
 // GetSubtype returns the Subtype field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetSubtype() string {
-	if o == nil || o.Subtype.Get() == nil {
+	if o == nil || IsNil(o.Subtype.Get()) {
 		var ret string
 		return ret
 	}
@@ -2110,7 +2113,7 @@ func (o *AccountResponse) GetSubtype() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetSubtypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Subtype.Get(), o.Subtype.IsSet()
@@ -2141,7 +2144,7 @@ func (o *AccountResponse) UnsetSubtype() {
 
 // GetTodayUglAmount returns the TodayUglAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetTodayUglAmount() float32 {
-	if o == nil || o.TodayUglAmount.Get() == nil {
+	if o == nil || IsNil(o.TodayUglAmount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -2152,7 +2155,7 @@ func (o *AccountResponse) GetTodayUglAmount() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetTodayUglAmountOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TodayUglAmount.Get(), o.TodayUglAmount.IsSet()
@@ -2183,7 +2186,7 @@ func (o *AccountResponse) UnsetTodayUglAmount() {
 
 // GetTodayUglPercentage returns the TodayUglPercentage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetTodayUglPercentage() float32 {
-	if o == nil || o.TodayUglPercentage.Get() == nil {
+	if o == nil || IsNil(o.TodayUglPercentage.Get()) {
 		var ret float32
 		return ret
 	}
@@ -2194,7 +2197,7 @@ func (o *AccountResponse) GetTodayUglPercentage() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetTodayUglPercentageOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TodayUglPercentage.Get(), o.TodayUglPercentage.IsSet()
@@ -2225,7 +2228,7 @@ func (o *AccountResponse) UnsetTodayUglPercentage() {
 
 // GetTotalAccountValue returns the TotalAccountValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetTotalAccountValue() float32 {
-	if o == nil || o.TotalAccountValue.Get() == nil {
+	if o == nil || IsNil(o.TotalAccountValue.Get()) {
 		var ret float32
 		return ret
 	}
@@ -2236,7 +2239,7 @@ func (o *AccountResponse) GetTotalAccountValue() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetTotalAccountValueOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TotalAccountValue.Get(), o.TotalAccountValue.IsSet()
@@ -2267,7 +2270,7 @@ func (o *AccountResponse) UnsetTotalAccountValue() {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetType() string {
-	if o == nil || o.Type.Get() == nil {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -2278,7 +2281,7 @@ func (o *AccountResponse) GetType() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Type.Get(), o.Type.IsSet()
@@ -2309,7 +2312,7 @@ func (o *AccountResponse) UnsetType() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -2320,7 +2323,7 @@ func (o *AccountResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -2351,7 +2354,7 @@ func (o *AccountResponse) UnsetUpdatedAt() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -2362,7 +2365,7 @@ func (o *AccountResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -2393,7 +2396,7 @@ func (o *AccountResponse) UnsetUserGuid() {
 
 // GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetUserId() string {
-	if o == nil || o.UserId.Get() == nil {
+	if o == nil || IsNil(o.UserId.Get()) {
 		var ret string
 		return ret
 	}
@@ -2404,7 +2407,7 @@ func (o *AccountResponse) GetUserId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountResponse) GetUserIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserId.Get(), o.UserId.IsSet()
@@ -2434,6 +2437,14 @@ func (o *AccountResponse) UnsetUserId() {
 }
 
 func (o AccountResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountNumber.IsSet() {
 		toSerialize["account_number"] = o.AccountNumber.Get()
@@ -2471,7 +2482,7 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	if o.CashSurrenderValue.IsSet() {
 		toSerialize["cash_surrender_value"] = o.CashSurrenderValue.Get()
 	}
-	if o.CreatedAt != nil {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
 	if o.CreditLimit.IsSet() {
@@ -2603,7 +2614,7 @@ func (o AccountResponse) MarshalJSON() ([]byte, error) {
 	if o.UserId.IsSet() {
 		toSerialize["user_id"] = o.UserId.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableAccountResponse struct {

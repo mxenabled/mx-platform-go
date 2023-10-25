@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MerchantResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MerchantResponse{}
+
 // MerchantResponse struct for MerchantResponse
 type MerchantResponse struct {
 	CreatedAt NullableString `json:"created_at,omitempty"`
@@ -43,7 +46,7 @@ func NewMerchantResponseWithDefaults() *MerchantResponse {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *MerchantResponse) GetCreatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
@@ -85,7 +88,7 @@ func (o *MerchantResponse) UnsetCreatedAt() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *MerchantResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -127,7 +130,7 @@ func (o *MerchantResponse) UnsetGuid() {
 
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantResponse) GetLogoUrl() string {
-	if o == nil || o.LogoUrl.Get() == nil {
+	if o == nil || IsNil(o.LogoUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *MerchantResponse) GetLogoUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantResponse) GetLogoUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LogoUrl.Get(), o.LogoUrl.IsSet()
@@ -169,7 +172,7 @@ func (o *MerchantResponse) UnsetLogoUrl() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantResponse) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *MerchantResponse) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -211,7 +214,7 @@ func (o *MerchantResponse) UnsetName() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *MerchantResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -253,7 +256,7 @@ func (o *MerchantResponse) UnsetUpdatedAt() {
 
 // GetWebsiteUrl returns the WebsiteUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantResponse) GetWebsiteUrl() string {
-	if o == nil || o.WebsiteUrl.Get() == nil {
+	if o == nil || IsNil(o.WebsiteUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -264,7 +267,7 @@ func (o *MerchantResponse) GetWebsiteUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantResponse) GetWebsiteUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.WebsiteUrl.Get(), o.WebsiteUrl.IsSet()
@@ -294,6 +297,14 @@ func (o *MerchantResponse) UnsetWebsiteUrl() {
 }
 
 func (o MerchantResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o MerchantResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CreatedAt.IsSet() {
 		toSerialize["created_at"] = o.CreatedAt.Get()
@@ -313,7 +324,7 @@ func (o MerchantResponse) MarshalJSON() ([]byte, error) {
 	if o.WebsiteUrl.IsSet() {
 		toSerialize["website_url"] = o.WebsiteUrl.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableMerchantResponse struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountCreateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountCreateRequestBody{}
+
 // AccountCreateRequestBody struct for AccountCreateRequestBody
 type AccountCreateRequestBody struct {
 	Account *AccountCreateRequest `json:"account,omitempty"`
@@ -38,7 +41,7 @@ func NewAccountCreateRequestBodyWithDefaults() *AccountCreateRequestBody {
 
 // GetAccount returns the Account field value if set, zero value otherwise.
 func (o *AccountCreateRequestBody) GetAccount() AccountCreateRequest {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		var ret AccountCreateRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *AccountCreateRequestBody) GetAccount() AccountCreateRequest {
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequestBody) GetAccountOk() (*AccountCreateRequest, bool) {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		return nil, false
 	}
 	return o.Account, true
@@ -56,7 +59,7 @@ func (o *AccountCreateRequestBody) GetAccountOk() (*AccountCreateRequest, bool) 
 
 // HasAccount returns a boolean if a field has been set.
 func (o *AccountCreateRequestBody) HasAccount() bool {
-	if o != nil && o.Account != nil {
+	if o != nil && !IsNil(o.Account) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *AccountCreateRequestBody) SetAccount(v AccountCreateRequest) {
 }
 
 func (o AccountCreateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Account != nil {
-		toSerialize["account"] = o.Account
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AccountCreateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
+	}
+	return toSerialize, nil
 }
 
 type NullableAccountCreateRequestBody struct {

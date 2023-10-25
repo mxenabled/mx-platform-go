@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ChallengeResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ChallengeResponse{}
+
 // ChallengeResponse struct for ChallengeResponse
 type ChallengeResponse struct {
 	FieldName NullableString `json:"field_name,omitempty"`
@@ -44,7 +47,7 @@ func NewChallengeResponseWithDefaults() *ChallengeResponse {
 
 // GetFieldName returns the FieldName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChallengeResponse) GetFieldName() string {
-	if o == nil || o.FieldName.Get() == nil {
+	if o == nil || IsNil(o.FieldName.Get()) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *ChallengeResponse) GetFieldName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChallengeResponse) GetFieldNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.FieldName.Get(), o.FieldName.IsSet()
@@ -86,7 +89,7 @@ func (o *ChallengeResponse) UnsetFieldName() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChallengeResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -97,7 +100,7 @@ func (o *ChallengeResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChallengeResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -128,7 +131,7 @@ func (o *ChallengeResponse) UnsetGuid() {
 
 // GetImageData returns the ImageData field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChallengeResponse) GetImageData() string {
-	if o == nil || o.ImageData.Get() == nil {
+	if o == nil || IsNil(o.ImageData.Get()) {
 		var ret string
 		return ret
 	}
@@ -139,7 +142,7 @@ func (o *ChallengeResponse) GetImageData() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChallengeResponse) GetImageDataOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ImageData.Get(), o.ImageData.IsSet()
@@ -170,7 +173,7 @@ func (o *ChallengeResponse) UnsetImageData() {
 
 // GetImageOptions returns the ImageOptions field value if set, zero value otherwise.
 func (o *ChallengeResponse) GetImageOptions() []ImageOptionResponse {
-	if o == nil || o.ImageOptions == nil {
+	if o == nil || IsNil(o.ImageOptions) {
 		var ret []ImageOptionResponse
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *ChallengeResponse) GetImageOptions() []ImageOptionResponse {
 // GetImageOptionsOk returns a tuple with the ImageOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChallengeResponse) GetImageOptionsOk() ([]ImageOptionResponse, bool) {
-	if o == nil || o.ImageOptions == nil {
+	if o == nil || IsNil(o.ImageOptions) {
 		return nil, false
 	}
 	return o.ImageOptions, true
@@ -188,7 +191,7 @@ func (o *ChallengeResponse) GetImageOptionsOk() ([]ImageOptionResponse, bool) {
 
 // HasImageOptions returns a boolean if a field has been set.
 func (o *ChallengeResponse) HasImageOptions() bool {
-	if o != nil && o.ImageOptions != nil {
+	if o != nil && !IsNil(o.ImageOptions) {
 		return true
 	}
 
@@ -202,7 +205,7 @@ func (o *ChallengeResponse) SetImageOptions(v []ImageOptionResponse) {
 
 // GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChallengeResponse) GetLabel() string {
-	if o == nil || o.Label.Get() == nil {
+	if o == nil || IsNil(o.Label.Get()) {
 		var ret string
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *ChallengeResponse) GetLabel() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChallengeResponse) GetLabelOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Label.Get(), o.Label.IsSet()
@@ -244,7 +247,7 @@ func (o *ChallengeResponse) UnsetLabel() {
 
 // GetOptions returns the Options field value if set, zero value otherwise.
 func (o *ChallengeResponse) GetOptions() []OptionResponse {
-	if o == nil || o.Options == nil {
+	if o == nil || IsNil(o.Options) {
 		var ret []OptionResponse
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *ChallengeResponse) GetOptions() []OptionResponse {
 // GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChallengeResponse) GetOptionsOk() ([]OptionResponse, bool) {
-	if o == nil || o.Options == nil {
+	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
 	return o.Options, true
@@ -262,7 +265,7 @@ func (o *ChallengeResponse) GetOptionsOk() ([]OptionResponse, bool) {
 
 // HasOptions returns a boolean if a field has been set.
 func (o *ChallengeResponse) HasOptions() bool {
-	if o != nil && o.Options != nil {
+	if o != nil && !IsNil(o.Options) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *ChallengeResponse) SetOptions(v []OptionResponse) {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChallengeResponse) GetType() string {
-	if o == nil || o.Type.Get() == nil {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -287,7 +290,7 @@ func (o *ChallengeResponse) GetType() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChallengeResponse) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Type.Get(), o.Type.IsSet()
@@ -317,6 +320,14 @@ func (o *ChallengeResponse) UnsetType() {
 }
 
 func (o ChallengeResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ChallengeResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FieldName.IsSet() {
 		toSerialize["field_name"] = o.FieldName.Get()
@@ -327,19 +338,19 @@ func (o ChallengeResponse) MarshalJSON() ([]byte, error) {
 	if o.ImageData.IsSet() {
 		toSerialize["image_data"] = o.ImageData.Get()
 	}
-	if o.ImageOptions != nil {
+	if !IsNil(o.ImageOptions) {
 		toSerialize["image_options"] = o.ImageOptions
 	}
 	if o.Label.IsSet() {
 		toSerialize["label"] = o.Label.Get()
 	}
-	if o.Options != nil {
+	if !IsNil(o.Options) {
 		toSerialize["options"] = o.Options
 	}
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableChallengeResponse struct {

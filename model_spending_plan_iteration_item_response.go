@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpendingPlanIterationItemResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpendingPlanIterationItemResponse{}
+
 // SpendingPlanIterationItemResponse struct for SpendingPlanIterationItemResponse
 type SpendingPlanIterationItemResponse struct {
 	ActualAmount NullableFloat32 `json:"actual_amount,omitempty"`
@@ -49,7 +52,7 @@ func NewSpendingPlanIterationItemResponseWithDefaults() *SpendingPlanIterationIt
 
 // GetActualAmount returns the ActualAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetActualAmount() float32 {
-	if o == nil || o.ActualAmount.Get() == nil {
+	if o == nil || IsNil(o.ActualAmount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -60,7 +63,7 @@ func (o *SpendingPlanIterationItemResponse) GetActualAmount() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetActualAmountOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ActualAmount.Get(), o.ActualAmount.IsSet()
@@ -91,7 +94,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetActualAmount() {
 
 // GetCategoryGuid returns the CategoryGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetCategoryGuid() string {
-	if o == nil || o.CategoryGuid.Get() == nil {
+	if o == nil || IsNil(o.CategoryGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -102,7 +105,7 @@ func (o *SpendingPlanIterationItemResponse) GetCategoryGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetCategoryGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CategoryGuid.Get(), o.CategoryGuid.IsSet()
@@ -133,7 +136,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetCategoryGuid() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -144,7 +147,7 @@ func (o *SpendingPlanIterationItemResponse) GetCreatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
@@ -175,7 +178,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetCreatedAt() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *SpendingPlanIterationItemResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -217,7 +220,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetGuid() {
 
 // GetItemType returns the ItemType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetItemType() string {
-	if o == nil || o.ItemType.Get() == nil {
+	if o == nil || IsNil(o.ItemType.Get()) {
 		var ret string
 		return ret
 	}
@@ -228,7 +231,7 @@ func (o *SpendingPlanIterationItemResponse) GetItemType() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetItemTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ItemType.Get(), o.ItemType.IsSet()
@@ -259,7 +262,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetItemType() {
 
 // GetPlannedAmount returns the PlannedAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetPlannedAmount() float32 {
-	if o == nil || o.PlannedAmount.Get() == nil {
+	if o == nil || IsNil(o.PlannedAmount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -270,7 +273,7 @@ func (o *SpendingPlanIterationItemResponse) GetPlannedAmount() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetPlannedAmountOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PlannedAmount.Get(), o.PlannedAmount.IsSet()
@@ -301,7 +304,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetPlannedAmount() {
 
 // GetScheduledPaymentGuid returns the ScheduledPaymentGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetScheduledPaymentGuid() string {
-	if o == nil || o.ScheduledPaymentGuid.Get() == nil {
+	if o == nil || IsNil(o.ScheduledPaymentGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -312,7 +315,7 @@ func (o *SpendingPlanIterationItemResponse) GetScheduledPaymentGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetScheduledPaymentGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ScheduledPaymentGuid.Get(), o.ScheduledPaymentGuid.IsSet()
@@ -343,7 +346,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetScheduledPaymentGuid() {
 
 // GetSpendingPlanIterationGuid returns the SpendingPlanIterationGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetSpendingPlanIterationGuid() string {
-	if o == nil || o.SpendingPlanIterationGuid.Get() == nil {
+	if o == nil || IsNil(o.SpendingPlanIterationGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -354,7 +357,7 @@ func (o *SpendingPlanIterationItemResponse) GetSpendingPlanIterationGuid() strin
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetSpendingPlanIterationGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SpendingPlanIterationGuid.Get(), o.SpendingPlanIterationGuid.IsSet()
@@ -385,7 +388,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetSpendingPlanIterationGuid() {
 
 // GetTopLevelCategoryGuid returns the TopLevelCategoryGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetTopLevelCategoryGuid() string {
-	if o == nil || o.TopLevelCategoryGuid.Get() == nil {
+	if o == nil || IsNil(o.TopLevelCategoryGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -396,7 +399,7 @@ func (o *SpendingPlanIterationItemResponse) GetTopLevelCategoryGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetTopLevelCategoryGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TopLevelCategoryGuid.Get(), o.TopLevelCategoryGuid.IsSet()
@@ -427,7 +430,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetTopLevelCategoryGuid() {
 
 // GetTransactionGuids returns the TransactionGuids field value if set, zero value otherwise.
 func (o *SpendingPlanIterationItemResponse) GetTransactionGuids() []*string {
-	if o == nil || o.TransactionGuids == nil {
+	if o == nil || IsNil(o.TransactionGuids) {
 		var ret []*string
 		return ret
 	}
@@ -437,7 +440,7 @@ func (o *SpendingPlanIterationItemResponse) GetTransactionGuids() []*string {
 // GetTransactionGuidsOk returns a tuple with the TransactionGuids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanIterationItemResponse) GetTransactionGuidsOk() ([]*string, bool) {
-	if o == nil || o.TransactionGuids == nil {
+	if o == nil || IsNil(o.TransactionGuids) {
 		return nil, false
 	}
 	return o.TransactionGuids, true
@@ -445,7 +448,7 @@ func (o *SpendingPlanIterationItemResponse) GetTransactionGuidsOk() ([]*string, 
 
 // HasTransactionGuids returns a boolean if a field has been set.
 func (o *SpendingPlanIterationItemResponse) HasTransactionGuids() bool {
-	if o != nil && o.TransactionGuids != nil {
+	if o != nil && !IsNil(o.TransactionGuids) {
 		return true
 	}
 
@@ -459,7 +462,7 @@ func (o *SpendingPlanIterationItemResponse) SetTransactionGuids(v []*string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -470,7 +473,7 @@ func (o *SpendingPlanIterationItemResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -501,7 +504,7 @@ func (o *SpendingPlanIterationItemResponse) UnsetUpdatedAt() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationItemResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -512,7 +515,7 @@ func (o *SpendingPlanIterationItemResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationItemResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -542,6 +545,14 @@ func (o *SpendingPlanIterationItemResponse) UnsetUserGuid() {
 }
 
 func (o SpendingPlanIterationItemResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SpendingPlanIterationItemResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ActualAmount.IsSet() {
 		toSerialize["actual_amount"] = o.ActualAmount.Get()
@@ -570,7 +581,7 @@ func (o SpendingPlanIterationItemResponse) MarshalJSON() ([]byte, error) {
 	if o.TopLevelCategoryGuid.IsSet() {
 		toSerialize["top_level_category_guid"] = o.TopLevelCategoryGuid.Get()
 	}
-	if o.TransactionGuids != nil {
+	if !IsNil(o.TransactionGuids) {
 		toSerialize["transaction_guids"] = o.TransactionGuids
 	}
 	if o.UpdatedAt.IsSet() {
@@ -579,7 +590,7 @@ func (o SpendingPlanIterationItemResponse) MarshalJSON() ([]byte, error) {
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableSpendingPlanIterationItemResponse struct {

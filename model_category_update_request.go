@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CategoryUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CategoryUpdateRequest{}
+
 // CategoryUpdateRequest struct for CategoryUpdateRequest
 type CategoryUpdateRequest struct {
 	Metadata *string `json:"metadata,omitempty"`
@@ -39,7 +42,7 @@ func NewCategoryUpdateRequestWithDefaults() *CategoryUpdateRequest {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *CategoryUpdateRequest) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CategoryUpdateRequest) GetMetadata() string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CategoryUpdateRequest) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -57,7 +60,7 @@ func (o *CategoryUpdateRequest) GetMetadataOk() (*string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *CategoryUpdateRequest) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *CategoryUpdateRequest) SetMetadata(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CategoryUpdateRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *CategoryUpdateRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CategoryUpdateRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -89,7 +92,7 @@ func (o *CategoryUpdateRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CategoryUpdateRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *CategoryUpdateRequest) SetName(v string) {
 }
 
 func (o CategoryUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CategoryUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableCategoryUpdateRequest struct {

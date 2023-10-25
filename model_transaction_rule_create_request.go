@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransactionRuleCreateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransactionRuleCreateRequest{}
+
 // TransactionRuleCreateRequest struct for TransactionRuleCreateRequest
 type TransactionRuleCreateRequest struct {
 	CategoryGuid string `json:"category_guid"`
@@ -53,7 +56,7 @@ func (o *TransactionRuleCreateRequest) GetCategoryGuid() string {
 // GetCategoryGuidOk returns a tuple with the CategoryGuid field value
 // and a boolean to check if the value has been set.
 func (o *TransactionRuleCreateRequest) GetCategoryGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CategoryGuid, true
@@ -66,7 +69,7 @@ func (o *TransactionRuleCreateRequest) SetCategoryGuid(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TransactionRuleCreateRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -76,7 +79,7 @@ func (o *TransactionRuleCreateRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionRuleCreateRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -84,7 +87,7 @@ func (o *TransactionRuleCreateRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *TransactionRuleCreateRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *TransactionRuleCreateRequest) GetMatchDescription() string {
 // GetMatchDescriptionOk returns a tuple with the MatchDescription field value
 // and a boolean to check if the value has been set.
 func (o *TransactionRuleCreateRequest) GetMatchDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.MatchDescription, true
@@ -121,17 +124,21 @@ func (o *TransactionRuleCreateRequest) SetMatchDescription(v string) {
 }
 
 func (o TransactionRuleCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["category_guid"] = o.CategoryGuid
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["match_description"] = o.MatchDescription
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TransactionRuleCreateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["category_guid"] = o.CategoryGuid
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["match_description"] = o.MatchDescription
+	return toSerialize, nil
 }
 
 type NullableTransactionRuleCreateRequest struct {

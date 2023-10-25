@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MerchantsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MerchantsResponseBody{}
+
 // MerchantsResponseBody struct for MerchantsResponseBody
 type MerchantsResponseBody struct {
 	Merchants []MerchantResponse `json:"merchants,omitempty"`
@@ -39,7 +42,7 @@ func NewMerchantsResponseBodyWithDefaults() *MerchantsResponseBody {
 
 // GetMerchants returns the Merchants field value if set, zero value otherwise.
 func (o *MerchantsResponseBody) GetMerchants() []MerchantResponse {
-	if o == nil || o.Merchants == nil {
+	if o == nil || IsNil(o.Merchants) {
 		var ret []MerchantResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *MerchantsResponseBody) GetMerchants() []MerchantResponse {
 // GetMerchantsOk returns a tuple with the Merchants field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MerchantsResponseBody) GetMerchantsOk() ([]MerchantResponse, bool) {
-	if o == nil || o.Merchants == nil {
+	if o == nil || IsNil(o.Merchants) {
 		return nil, false
 	}
 	return o.Merchants, true
@@ -57,7 +60,7 @@ func (o *MerchantsResponseBody) GetMerchantsOk() ([]MerchantResponse, bool) {
 
 // HasMerchants returns a boolean if a field has been set.
 func (o *MerchantsResponseBody) HasMerchants() bool {
-	if o != nil && o.Merchants != nil {
+	if o != nil && !IsNil(o.Merchants) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *MerchantsResponseBody) SetMerchants(v []MerchantResponse) {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *MerchantsResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *MerchantsResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MerchantsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *MerchantsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
 
 // HasPagination returns a boolean if a field has been set.
 func (o *MerchantsResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *MerchantsResponseBody) SetPagination(v PaginationResponse) {
 }
 
 func (o MerchantsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Merchants != nil {
-		toSerialize["merchants"] = o.Merchants
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MerchantsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Merchants) {
+		toSerialize["merchants"] = o.Merchants
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableMerchantsResponseBody struct {

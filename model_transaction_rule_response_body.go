@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransactionRuleResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransactionRuleResponseBody{}
+
 // TransactionRuleResponseBody struct for TransactionRuleResponseBody
 type TransactionRuleResponseBody struct {
 	TransactionRule *TransactionRuleResponse `json:"transaction_rule,omitempty"`
@@ -38,7 +41,7 @@ func NewTransactionRuleResponseBodyWithDefaults() *TransactionRuleResponseBody {
 
 // GetTransactionRule returns the TransactionRule field value if set, zero value otherwise.
 func (o *TransactionRuleResponseBody) GetTransactionRule() TransactionRuleResponse {
-	if o == nil || o.TransactionRule == nil {
+	if o == nil || IsNil(o.TransactionRule) {
 		var ret TransactionRuleResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *TransactionRuleResponseBody) GetTransactionRule() TransactionRuleRespon
 // GetTransactionRuleOk returns a tuple with the TransactionRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionRuleResponseBody) GetTransactionRuleOk() (*TransactionRuleResponse, bool) {
-	if o == nil || o.TransactionRule == nil {
+	if o == nil || IsNil(o.TransactionRule) {
 		return nil, false
 	}
 	return o.TransactionRule, true
@@ -56,7 +59,7 @@ func (o *TransactionRuleResponseBody) GetTransactionRuleOk() (*TransactionRuleRe
 
 // HasTransactionRule returns a boolean if a field has been set.
 func (o *TransactionRuleResponseBody) HasTransactionRule() bool {
-	if o != nil && o.TransactionRule != nil {
+	if o != nil && !IsNil(o.TransactionRule) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *TransactionRuleResponseBody) SetTransactionRule(v TransactionRuleRespon
 }
 
 func (o TransactionRuleResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TransactionRule != nil {
-		toSerialize["transaction_rule"] = o.TransactionRule
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TransactionRuleResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TransactionRule) {
+		toSerialize["transaction_rule"] = o.TransactionRule
+	}
+	return toSerialize, nil
 }
 
 type NullableTransactionRuleResponseBody struct {

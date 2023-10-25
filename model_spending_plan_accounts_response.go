@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpendingPlanAccountsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpendingPlanAccountsResponse{}
+
 // SpendingPlanAccountsResponse struct for SpendingPlanAccountsResponse
 type SpendingPlanAccountsResponse struct {
 	SpendingPlanAccounts []SpendingPlanAccountResponse `json:"spending_plan_accounts,omitempty"`
@@ -39,7 +42,7 @@ func NewSpendingPlanAccountsResponseWithDefaults() *SpendingPlanAccountsResponse
 
 // GetSpendingPlanAccounts returns the SpendingPlanAccounts field value if set, zero value otherwise.
 func (o *SpendingPlanAccountsResponse) GetSpendingPlanAccounts() []SpendingPlanAccountResponse {
-	if o == nil || o.SpendingPlanAccounts == nil {
+	if o == nil || IsNil(o.SpendingPlanAccounts) {
 		var ret []SpendingPlanAccountResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *SpendingPlanAccountsResponse) GetSpendingPlanAccounts() []SpendingPlanA
 // GetSpendingPlanAccountsOk returns a tuple with the SpendingPlanAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanAccountsResponse) GetSpendingPlanAccountsOk() ([]SpendingPlanAccountResponse, bool) {
-	if o == nil || o.SpendingPlanAccounts == nil {
+	if o == nil || IsNil(o.SpendingPlanAccounts) {
 		return nil, false
 	}
 	return o.SpendingPlanAccounts, true
@@ -57,7 +60,7 @@ func (o *SpendingPlanAccountsResponse) GetSpendingPlanAccountsOk() ([]SpendingPl
 
 // HasSpendingPlanAccounts returns a boolean if a field has been set.
 func (o *SpendingPlanAccountsResponse) HasSpendingPlanAccounts() bool {
-	if o != nil && o.SpendingPlanAccounts != nil {
+	if o != nil && !IsNil(o.SpendingPlanAccounts) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *SpendingPlanAccountsResponse) SetSpendingPlanAccounts(v []SpendingPlanA
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *SpendingPlanAccountsResponse) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *SpendingPlanAccountsResponse) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanAccountsResponse) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *SpendingPlanAccountsResponse) GetPaginationOk() (*PaginationResponse, b
 
 // HasPagination returns a boolean if a field has been set.
 func (o *SpendingPlanAccountsResponse) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *SpendingPlanAccountsResponse) SetPagination(v PaginationResponse) {
 }
 
 func (o SpendingPlanAccountsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SpendingPlanAccounts != nil {
-		toSerialize["spending_plan_accounts"] = o.SpendingPlanAccounts
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SpendingPlanAccountsResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SpendingPlanAccounts) {
+		toSerialize["spending_plan_accounts"] = o.SpendingPlanAccounts
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableSpendingPlanAccountsResponse struct {

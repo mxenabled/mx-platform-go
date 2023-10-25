@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedTransactionUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedTransactionUpdateRequest{}
+
 // ManagedTransactionUpdateRequest struct for ManagedTransactionUpdateRequest
 type ManagedTransactionUpdateRequest struct {
 	Amount *string `json:"amount,omitempty"`
@@ -57,7 +60,7 @@ func NewManagedTransactionUpdateRequestWithDefaults() *ManagedTransactionUpdateR
 
 // GetAmount returns the Amount field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetAmount() string {
-	if o == nil || o.Amount == nil {
+	if o == nil || IsNil(o.Amount) {
 		var ret string
 		return ret
 	}
@@ -67,7 +70,7 @@ func (o *ManagedTransactionUpdateRequest) GetAmount() string {
 // GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetAmountOk() (*string, bool) {
-	if o == nil || o.Amount == nil {
+	if o == nil || IsNil(o.Amount) {
 		return nil, false
 	}
 	return o.Amount, true
@@ -75,7 +78,7 @@ func (o *ManagedTransactionUpdateRequest) GetAmountOk() (*string, bool) {
 
 // HasAmount returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasAmount() bool {
-	if o != nil && o.Amount != nil {
+	if o != nil && !IsNil(o.Amount) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *ManagedTransactionUpdateRequest) SetAmount(v string) {
 
 // GetCategory returns the Category field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetCategory() string {
-	if o == nil || o.Category == nil {
+	if o == nil || IsNil(o.Category) {
 		var ret string
 		return ret
 	}
@@ -99,7 +102,7 @@ func (o *ManagedTransactionUpdateRequest) GetCategory() string {
 // GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetCategoryOk() (*string, bool) {
-	if o == nil || o.Category == nil {
+	if o == nil || IsNil(o.Category) {
 		return nil, false
 	}
 	return o.Category, true
@@ -107,7 +110,7 @@ func (o *ManagedTransactionUpdateRequest) GetCategoryOk() (*string, bool) {
 
 // HasCategory returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasCategory() bool {
-	if o != nil && o.Category != nil {
+	if o != nil && !IsNil(o.Category) {
 		return true
 	}
 
@@ -121,7 +124,7 @@ func (o *ManagedTransactionUpdateRequest) SetCategory(v string) {
 
 // GetCheckNumberString returns the CheckNumberString field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetCheckNumberString() string {
-	if o == nil || o.CheckNumberString == nil {
+	if o == nil || IsNil(o.CheckNumberString) {
 		var ret string
 		return ret
 	}
@@ -131,7 +134,7 @@ func (o *ManagedTransactionUpdateRequest) GetCheckNumberString() string {
 // GetCheckNumberStringOk returns a tuple with the CheckNumberString field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetCheckNumberStringOk() (*string, bool) {
-	if o == nil || o.CheckNumberString == nil {
+	if o == nil || IsNil(o.CheckNumberString) {
 		return nil, false
 	}
 	return o.CheckNumberString, true
@@ -139,7 +142,7 @@ func (o *ManagedTransactionUpdateRequest) GetCheckNumberStringOk() (*string, boo
 
 // HasCheckNumberString returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasCheckNumberString() bool {
-	if o != nil && o.CheckNumberString != nil {
+	if o != nil && !IsNil(o.CheckNumberString) {
 		return true
 	}
 
@@ -153,7 +156,7 @@ func (o *ManagedTransactionUpdateRequest) SetCheckNumberString(v string) {
 
 // GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetCurrencyCode() string {
-	if o == nil || o.CurrencyCode == nil {
+	if o == nil || IsNil(o.CurrencyCode) {
 		var ret string
 		return ret
 	}
@@ -163,7 +166,7 @@ func (o *ManagedTransactionUpdateRequest) GetCurrencyCode() string {
 // GetCurrencyCodeOk returns a tuple with the CurrencyCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil || o.CurrencyCode == nil {
+	if o == nil || IsNil(o.CurrencyCode) {
 		return nil, false
 	}
 	return o.CurrencyCode, true
@@ -171,7 +174,7 @@ func (o *ManagedTransactionUpdateRequest) GetCurrencyCodeOk() (*string, bool) {
 
 // HasCurrencyCode returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasCurrencyCode() bool {
-	if o != nil && o.CurrencyCode != nil {
+	if o != nil && !IsNil(o.CurrencyCode) {
 		return true
 	}
 
@@ -185,7 +188,7 @@ func (o *ManagedTransactionUpdateRequest) SetCurrencyCode(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -195,7 +198,7 @@ func (o *ManagedTransactionUpdateRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -203,7 +206,7 @@ func (o *ManagedTransactionUpdateRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -217,7 +220,7 @@ func (o *ManagedTransactionUpdateRequest) SetDescription(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -227,7 +230,7 @@ func (o *ManagedTransactionUpdateRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -235,7 +238,7 @@ func (o *ManagedTransactionUpdateRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -249,7 +252,7 @@ func (o *ManagedTransactionUpdateRequest) SetId(v string) {
 
 // GetIsInternational returns the IsInternational field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetIsInternational() bool {
-	if o == nil || o.IsInternational == nil {
+	if o == nil || IsNil(o.IsInternational) {
 		var ret bool
 		return ret
 	}
@@ -259,7 +262,7 @@ func (o *ManagedTransactionUpdateRequest) GetIsInternational() bool {
 // GetIsInternationalOk returns a tuple with the IsInternational field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetIsInternationalOk() (*bool, bool) {
-	if o == nil || o.IsInternational == nil {
+	if o == nil || IsNil(o.IsInternational) {
 		return nil, false
 	}
 	return o.IsInternational, true
@@ -267,7 +270,7 @@ func (o *ManagedTransactionUpdateRequest) GetIsInternationalOk() (*bool, bool) {
 
 // HasIsInternational returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasIsInternational() bool {
-	if o != nil && o.IsInternational != nil {
+	if o != nil && !IsNil(o.IsInternational) {
 		return true
 	}
 
@@ -281,7 +284,7 @@ func (o *ManagedTransactionUpdateRequest) SetIsInternational(v bool) {
 
 // GetLatitude returns the Latitude field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetLatitude() float32 {
-	if o == nil || o.Latitude == nil {
+	if o == nil || IsNil(o.Latitude) {
 		var ret float32
 		return ret
 	}
@@ -291,7 +294,7 @@ func (o *ManagedTransactionUpdateRequest) GetLatitude() float32 {
 // GetLatitudeOk returns a tuple with the Latitude field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetLatitudeOk() (*float32, bool) {
-	if o == nil || o.Latitude == nil {
+	if o == nil || IsNil(o.Latitude) {
 		return nil, false
 	}
 	return o.Latitude, true
@@ -299,7 +302,7 @@ func (o *ManagedTransactionUpdateRequest) GetLatitudeOk() (*float32, bool) {
 
 // HasLatitude returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasLatitude() bool {
-	if o != nil && o.Latitude != nil {
+	if o != nil && !IsNil(o.Latitude) {
 		return true
 	}
 
@@ -313,7 +316,7 @@ func (o *ManagedTransactionUpdateRequest) SetLatitude(v float32) {
 
 // GetLocalizedDescription returns the LocalizedDescription field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetLocalizedDescription() string {
-	if o == nil || o.LocalizedDescription == nil {
+	if o == nil || IsNil(o.LocalizedDescription) {
 		var ret string
 		return ret
 	}
@@ -323,7 +326,7 @@ func (o *ManagedTransactionUpdateRequest) GetLocalizedDescription() string {
 // GetLocalizedDescriptionOk returns a tuple with the LocalizedDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetLocalizedDescriptionOk() (*string, bool) {
-	if o == nil || o.LocalizedDescription == nil {
+	if o == nil || IsNil(o.LocalizedDescription) {
 		return nil, false
 	}
 	return o.LocalizedDescription, true
@@ -331,7 +334,7 @@ func (o *ManagedTransactionUpdateRequest) GetLocalizedDescriptionOk() (*string, 
 
 // HasLocalizedDescription returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasLocalizedDescription() bool {
-	if o != nil && o.LocalizedDescription != nil {
+	if o != nil && !IsNil(o.LocalizedDescription) {
 		return true
 	}
 
@@ -345,7 +348,7 @@ func (o *ManagedTransactionUpdateRequest) SetLocalizedDescription(v string) {
 
 // GetLocalizedMemo returns the LocalizedMemo field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetLocalizedMemo() string {
-	if o == nil || o.LocalizedMemo == nil {
+	if o == nil || IsNil(o.LocalizedMemo) {
 		var ret string
 		return ret
 	}
@@ -355,7 +358,7 @@ func (o *ManagedTransactionUpdateRequest) GetLocalizedMemo() string {
 // GetLocalizedMemoOk returns a tuple with the LocalizedMemo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetLocalizedMemoOk() (*string, bool) {
-	if o == nil || o.LocalizedMemo == nil {
+	if o == nil || IsNil(o.LocalizedMemo) {
 		return nil, false
 	}
 	return o.LocalizedMemo, true
@@ -363,7 +366,7 @@ func (o *ManagedTransactionUpdateRequest) GetLocalizedMemoOk() (*string, bool) {
 
 // HasLocalizedMemo returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasLocalizedMemo() bool {
-	if o != nil && o.LocalizedMemo != nil {
+	if o != nil && !IsNil(o.LocalizedMemo) {
 		return true
 	}
 
@@ -377,7 +380,7 @@ func (o *ManagedTransactionUpdateRequest) SetLocalizedMemo(v string) {
 
 // GetLongitude returns the Longitude field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetLongitude() float32 {
-	if o == nil || o.Longitude == nil {
+	if o == nil || IsNil(o.Longitude) {
 		var ret float32
 		return ret
 	}
@@ -387,7 +390,7 @@ func (o *ManagedTransactionUpdateRequest) GetLongitude() float32 {
 // GetLongitudeOk returns a tuple with the Longitude field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetLongitudeOk() (*float32, bool) {
-	if o == nil || o.Longitude == nil {
+	if o == nil || IsNil(o.Longitude) {
 		return nil, false
 	}
 	return o.Longitude, true
@@ -395,7 +398,7 @@ func (o *ManagedTransactionUpdateRequest) GetLongitudeOk() (*float32, bool) {
 
 // HasLongitude returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasLongitude() bool {
-	if o != nil && o.Longitude != nil {
+	if o != nil && !IsNil(o.Longitude) {
 		return true
 	}
 
@@ -409,7 +412,7 @@ func (o *ManagedTransactionUpdateRequest) SetLongitude(v float32) {
 
 // GetMemo returns the Memo field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetMemo() string {
-	if o == nil || o.Memo == nil {
+	if o == nil || IsNil(o.Memo) {
 		var ret string
 		return ret
 	}
@@ -419,7 +422,7 @@ func (o *ManagedTransactionUpdateRequest) GetMemo() string {
 // GetMemoOk returns a tuple with the Memo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetMemoOk() (*string, bool) {
-	if o == nil || o.Memo == nil {
+	if o == nil || IsNil(o.Memo) {
 		return nil, false
 	}
 	return o.Memo, true
@@ -427,7 +430,7 @@ func (o *ManagedTransactionUpdateRequest) GetMemoOk() (*string, bool) {
 
 // HasMemo returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasMemo() bool {
-	if o != nil && o.Memo != nil {
+	if o != nil && !IsNil(o.Memo) {
 		return true
 	}
 
@@ -441,7 +444,7 @@ func (o *ManagedTransactionUpdateRequest) SetMemo(v string) {
 
 // GetMerchantCategoryCode returns the MerchantCategoryCode field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetMerchantCategoryCode() int32 {
-	if o == nil || o.MerchantCategoryCode == nil {
+	if o == nil || IsNil(o.MerchantCategoryCode) {
 		var ret int32
 		return ret
 	}
@@ -451,7 +454,7 @@ func (o *ManagedTransactionUpdateRequest) GetMerchantCategoryCode() int32 {
 // GetMerchantCategoryCodeOk returns a tuple with the MerchantCategoryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetMerchantCategoryCodeOk() (*int32, bool) {
-	if o == nil || o.MerchantCategoryCode == nil {
+	if o == nil || IsNil(o.MerchantCategoryCode) {
 		return nil, false
 	}
 	return o.MerchantCategoryCode, true
@@ -459,7 +462,7 @@ func (o *ManagedTransactionUpdateRequest) GetMerchantCategoryCodeOk() (*int32, b
 
 // HasMerchantCategoryCode returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasMerchantCategoryCode() bool {
-	if o != nil && o.MerchantCategoryCode != nil {
+	if o != nil && !IsNil(o.MerchantCategoryCode) {
 		return true
 	}
 
@@ -473,7 +476,7 @@ func (o *ManagedTransactionUpdateRequest) SetMerchantCategoryCode(v int32) {
 
 // GetMerchantGuid returns the MerchantGuid field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetMerchantGuid() string {
-	if o == nil || o.MerchantGuid == nil {
+	if o == nil || IsNil(o.MerchantGuid) {
 		var ret string
 		return ret
 	}
@@ -483,7 +486,7 @@ func (o *ManagedTransactionUpdateRequest) GetMerchantGuid() string {
 // GetMerchantGuidOk returns a tuple with the MerchantGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetMerchantGuidOk() (*string, bool) {
-	if o == nil || o.MerchantGuid == nil {
+	if o == nil || IsNil(o.MerchantGuid) {
 		return nil, false
 	}
 	return o.MerchantGuid, true
@@ -491,7 +494,7 @@ func (o *ManagedTransactionUpdateRequest) GetMerchantGuidOk() (*string, bool) {
 
 // HasMerchantGuid returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasMerchantGuid() bool {
-	if o != nil && o.MerchantGuid != nil {
+	if o != nil && !IsNil(o.MerchantGuid) {
 		return true
 	}
 
@@ -505,7 +508,7 @@ func (o *ManagedTransactionUpdateRequest) SetMerchantGuid(v string) {
 
 // GetMerchantLocationGuid returns the MerchantLocationGuid field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetMerchantLocationGuid() string {
-	if o == nil || o.MerchantLocationGuid == nil {
+	if o == nil || IsNil(o.MerchantLocationGuid) {
 		var ret string
 		return ret
 	}
@@ -515,7 +518,7 @@ func (o *ManagedTransactionUpdateRequest) GetMerchantLocationGuid() string {
 // GetMerchantLocationGuidOk returns a tuple with the MerchantLocationGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetMerchantLocationGuidOk() (*string, bool) {
-	if o == nil || o.MerchantLocationGuid == nil {
+	if o == nil || IsNil(o.MerchantLocationGuid) {
 		return nil, false
 	}
 	return o.MerchantLocationGuid, true
@@ -523,7 +526,7 @@ func (o *ManagedTransactionUpdateRequest) GetMerchantLocationGuidOk() (*string, 
 
 // HasMerchantLocationGuid returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasMerchantLocationGuid() bool {
-	if o != nil && o.MerchantLocationGuid != nil {
+	if o != nil && !IsNil(o.MerchantLocationGuid) {
 		return true
 	}
 
@@ -537,7 +540,7 @@ func (o *ManagedTransactionUpdateRequest) SetMerchantLocationGuid(v string) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret string
 		return ret
 	}
@@ -547,7 +550,7 @@ func (o *ManagedTransactionUpdateRequest) GetMetadata() string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -555,7 +558,7 @@ func (o *ManagedTransactionUpdateRequest) GetMetadataOk() (*string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -569,7 +572,7 @@ func (o *ManagedTransactionUpdateRequest) SetMetadata(v string) {
 
 // GetPostedAt returns the PostedAt field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetPostedAt() string {
-	if o == nil || o.PostedAt == nil {
+	if o == nil || IsNil(o.PostedAt) {
 		var ret string
 		return ret
 	}
@@ -579,7 +582,7 @@ func (o *ManagedTransactionUpdateRequest) GetPostedAt() string {
 // GetPostedAtOk returns a tuple with the PostedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetPostedAtOk() (*string, bool) {
-	if o == nil || o.PostedAt == nil {
+	if o == nil || IsNil(o.PostedAt) {
 		return nil, false
 	}
 	return o.PostedAt, true
@@ -587,7 +590,7 @@ func (o *ManagedTransactionUpdateRequest) GetPostedAtOk() (*string, bool) {
 
 // HasPostedAt returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasPostedAt() bool {
-	if o != nil && o.PostedAt != nil {
+	if o != nil && !IsNil(o.PostedAt) {
 		return true
 	}
 
@@ -601,7 +604,7 @@ func (o *ManagedTransactionUpdateRequest) SetPostedAt(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -611,7 +614,7 @@ func (o *ManagedTransactionUpdateRequest) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -619,7 +622,7 @@ func (o *ManagedTransactionUpdateRequest) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -633,7 +636,7 @@ func (o *ManagedTransactionUpdateRequest) SetStatus(v string) {
 
 // GetTransactedAt returns the TransactedAt field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetTransactedAt() string {
-	if o == nil || o.TransactedAt == nil {
+	if o == nil || IsNil(o.TransactedAt) {
 		var ret string
 		return ret
 	}
@@ -643,7 +646,7 @@ func (o *ManagedTransactionUpdateRequest) GetTransactedAt() string {
 // GetTransactedAtOk returns a tuple with the TransactedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetTransactedAtOk() (*string, bool) {
-	if o == nil || o.TransactedAt == nil {
+	if o == nil || IsNil(o.TransactedAt) {
 		return nil, false
 	}
 	return o.TransactedAt, true
@@ -651,7 +654,7 @@ func (o *ManagedTransactionUpdateRequest) GetTransactedAtOk() (*string, bool) {
 
 // HasTransactedAt returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasTransactedAt() bool {
-	if o != nil && o.TransactedAt != nil {
+	if o != nil && !IsNil(o.TransactedAt) {
 		return true
 	}
 
@@ -665,7 +668,7 @@ func (o *ManagedTransactionUpdateRequest) SetTransactedAt(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ManagedTransactionUpdateRequest) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -675,7 +678,7 @@ func (o *ManagedTransactionUpdateRequest) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedTransactionUpdateRequest) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -683,7 +686,7 @@ func (o *ManagedTransactionUpdateRequest) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ManagedTransactionUpdateRequest) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -696,68 +699,76 @@ func (o *ManagedTransactionUpdateRequest) SetType(v string) {
 }
 
 func (o ManagedTransactionUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Amount != nil {
-		toSerialize["amount"] = o.Amount
-	}
-	if o.Category != nil {
-		toSerialize["category"] = o.Category
-	}
-	if o.CheckNumberString != nil {
-		toSerialize["check_number_string"] = o.CheckNumberString
-	}
-	if o.CurrencyCode != nil {
-		toSerialize["currency_code"] = o.CurrencyCode
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.IsInternational != nil {
-		toSerialize["is_international"] = o.IsInternational
-	}
-	if o.Latitude != nil {
-		toSerialize["latitude"] = o.Latitude
-	}
-	if o.LocalizedDescription != nil {
-		toSerialize["localized_description"] = o.LocalizedDescription
-	}
-	if o.LocalizedMemo != nil {
-		toSerialize["localized_memo"] = o.LocalizedMemo
-	}
-	if o.Longitude != nil {
-		toSerialize["longitude"] = o.Longitude
-	}
-	if o.Memo != nil {
-		toSerialize["memo"] = o.Memo
-	}
-	if o.MerchantCategoryCode != nil {
-		toSerialize["merchant_category_code"] = o.MerchantCategoryCode
-	}
-	if o.MerchantGuid != nil {
-		toSerialize["merchant_guid"] = o.MerchantGuid
-	}
-	if o.MerchantLocationGuid != nil {
-		toSerialize["merchant_location_guid"] = o.MerchantLocationGuid
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if o.PostedAt != nil {
-		toSerialize["posted_at"] = o.PostedAt
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.TransactedAt != nil {
-		toSerialize["transacted_at"] = o.TransactedAt
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ManagedTransactionUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Amount) {
+		toSerialize["amount"] = o.Amount
+	}
+	if !IsNil(o.Category) {
+		toSerialize["category"] = o.Category
+	}
+	if !IsNil(o.CheckNumberString) {
+		toSerialize["check_number_string"] = o.CheckNumberString
+	}
+	if !IsNil(o.CurrencyCode) {
+		toSerialize["currency_code"] = o.CurrencyCode
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.IsInternational) {
+		toSerialize["is_international"] = o.IsInternational
+	}
+	if !IsNil(o.Latitude) {
+		toSerialize["latitude"] = o.Latitude
+	}
+	if !IsNil(o.LocalizedDescription) {
+		toSerialize["localized_description"] = o.LocalizedDescription
+	}
+	if !IsNil(o.LocalizedMemo) {
+		toSerialize["localized_memo"] = o.LocalizedMemo
+	}
+	if !IsNil(o.Longitude) {
+		toSerialize["longitude"] = o.Longitude
+	}
+	if !IsNil(o.Memo) {
+		toSerialize["memo"] = o.Memo
+	}
+	if !IsNil(o.MerchantCategoryCode) {
+		toSerialize["merchant_category_code"] = o.MerchantCategoryCode
+	}
+	if !IsNil(o.MerchantGuid) {
+		toSerialize["merchant_guid"] = o.MerchantGuid
+	}
+	if !IsNil(o.MerchantLocationGuid) {
+		toSerialize["merchant_location_guid"] = o.MerchantLocationGuid
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.PostedAt) {
+		toSerialize["posted_at"] = o.PostedAt
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.TransactedAt) {
+		toSerialize["transacted_at"] = o.TransactedAt
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableManagedTransactionUpdateRequest struct {

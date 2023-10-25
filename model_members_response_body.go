@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MembersResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MembersResponseBody{}
+
 // MembersResponseBody struct for MembersResponseBody
 type MembersResponseBody struct {
 	Members []MemberResponse `json:"members,omitempty"`
@@ -39,7 +42,7 @@ func NewMembersResponseBodyWithDefaults() *MembersResponseBody {
 
 // GetMembers returns the Members field value if set, zero value otherwise.
 func (o *MembersResponseBody) GetMembers() []MemberResponse {
-	if o == nil || o.Members == nil {
+	if o == nil || IsNil(o.Members) {
 		var ret []MemberResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *MembersResponseBody) GetMembers() []MemberResponse {
 // GetMembersOk returns a tuple with the Members field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MembersResponseBody) GetMembersOk() ([]MemberResponse, bool) {
-	if o == nil || o.Members == nil {
+	if o == nil || IsNil(o.Members) {
 		return nil, false
 	}
 	return o.Members, true
@@ -57,7 +60,7 @@ func (o *MembersResponseBody) GetMembersOk() ([]MemberResponse, bool) {
 
 // HasMembers returns a boolean if a field has been set.
 func (o *MembersResponseBody) HasMembers() bool {
-	if o != nil && o.Members != nil {
+	if o != nil && !IsNil(o.Members) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *MembersResponseBody) SetMembers(v []MemberResponse) {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *MembersResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *MembersResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MembersResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *MembersResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
 
 // HasPagination returns a boolean if a field has been set.
 func (o *MembersResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *MembersResponseBody) SetPagination(v PaginationResponse) {
 }
 
 func (o MembersResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Members != nil {
-		toSerialize["members"] = o.Members
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MembersResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Members) {
+		toSerialize["members"] = o.Members
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableMembersResponseBody struct {

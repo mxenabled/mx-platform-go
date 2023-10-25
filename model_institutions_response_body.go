@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InstitutionsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InstitutionsResponseBody{}
+
 // InstitutionsResponseBody struct for InstitutionsResponseBody
 type InstitutionsResponseBody struct {
 	Institutions []InstitutionResponse `json:"institutions,omitempty"`
@@ -39,7 +42,7 @@ func NewInstitutionsResponseBodyWithDefaults() *InstitutionsResponseBody {
 
 // GetInstitutions returns the Institutions field value if set, zero value otherwise.
 func (o *InstitutionsResponseBody) GetInstitutions() []InstitutionResponse {
-	if o == nil || o.Institutions == nil {
+	if o == nil || IsNil(o.Institutions) {
 		var ret []InstitutionResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *InstitutionsResponseBody) GetInstitutions() []InstitutionResponse {
 // GetInstitutionsOk returns a tuple with the Institutions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InstitutionsResponseBody) GetInstitutionsOk() ([]InstitutionResponse, bool) {
-	if o == nil || o.Institutions == nil {
+	if o == nil || IsNil(o.Institutions) {
 		return nil, false
 	}
 	return o.Institutions, true
@@ -57,7 +60,7 @@ func (o *InstitutionsResponseBody) GetInstitutionsOk() ([]InstitutionResponse, b
 
 // HasInstitutions returns a boolean if a field has been set.
 func (o *InstitutionsResponseBody) HasInstitutions() bool {
-	if o != nil && o.Institutions != nil {
+	if o != nil && !IsNil(o.Institutions) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *InstitutionsResponseBody) SetInstitutions(v []InstitutionResponse) {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *InstitutionsResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *InstitutionsResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InstitutionsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *InstitutionsResponseBody) GetPaginationOk() (*PaginationResponse, bool)
 
 // HasPagination returns a boolean if a field has been set.
 func (o *InstitutionsResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *InstitutionsResponseBody) SetPagination(v PaginationResponse) {
 }
 
 func (o InstitutionsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Institutions != nil {
-		toSerialize["institutions"] = o.Institutions
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InstitutionsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Institutions) {
+		toSerialize["institutions"] = o.Institutions
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableInstitutionsResponseBody struct {

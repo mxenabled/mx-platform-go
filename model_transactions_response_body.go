@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransactionsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransactionsResponseBody{}
+
 // TransactionsResponseBody struct for TransactionsResponseBody
 type TransactionsResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
@@ -39,7 +42,7 @@ func NewTransactionsResponseBodyWithDefaults() *TransactionsResponseBody {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *TransactionsResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *TransactionsResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -57,7 +60,7 @@ func (o *TransactionsResponseBody) GetPaginationOk() (*PaginationResponse, bool)
 
 // HasPagination returns a boolean if a field has been set.
 func (o *TransactionsResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *TransactionsResponseBody) SetPagination(v PaginationResponse) {
 
 // GetTransactions returns the Transactions field value if set, zero value otherwise.
 func (o *TransactionsResponseBody) GetTransactions() []TransactionResponse {
-	if o == nil || o.Transactions == nil {
+	if o == nil || IsNil(o.Transactions) {
 		var ret []TransactionResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *TransactionsResponseBody) GetTransactions() []TransactionResponse {
 // GetTransactionsOk returns a tuple with the Transactions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionsResponseBody) GetTransactionsOk() ([]TransactionResponse, bool) {
-	if o == nil || o.Transactions == nil {
+	if o == nil || IsNil(o.Transactions) {
 		return nil, false
 	}
 	return o.Transactions, true
@@ -89,7 +92,7 @@ func (o *TransactionsResponseBody) GetTransactionsOk() ([]TransactionResponse, b
 
 // HasTransactions returns a boolean if a field has been set.
 func (o *TransactionsResponseBody) HasTransactions() bool {
-	if o != nil && o.Transactions != nil {
+	if o != nil && !IsNil(o.Transactions) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *TransactionsResponseBody) SetTransactions(v []TransactionResponse) {
 }
 
 func (o TransactionsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if o.Transactions != nil {
-		toSerialize["transactions"] = o.Transactions
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TransactionsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if !IsNil(o.Transactions) {
+		toSerialize["transactions"] = o.Transactions
+	}
+	return toSerialize, nil
 }
 
 type NullableTransactionsResponseBody struct {

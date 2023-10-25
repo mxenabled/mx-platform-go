@@ -51,7 +51,7 @@ type APIClient struct {
 
 	// API Services
 
-	MxPlatformApi *MxPlatformApiService
+	MxPlatformAPI *MxPlatformAPIService
 }
 
 type service struct {
@@ -85,7 +85,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.MxPlatformApi = (*MxPlatformApiService)(&c.common)
+	c.MxPlatformAPI = (*MxPlatformAPIService)(&c.common)
 
 	return c
 }

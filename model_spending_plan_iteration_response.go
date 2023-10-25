@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpendingPlanIterationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpendingPlanIterationResponse{}
+
 // SpendingPlanIterationResponse struct for SpendingPlanIterationResponse
 type SpendingPlanIterationResponse struct {
 	CreatedAt NullableString `json:"created_at,omitempty"`
@@ -45,7 +48,7 @@ func NewSpendingPlanIterationResponseWithDefaults() *SpendingPlanIterationRespon
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *SpendingPlanIterationResponse) GetCreatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
@@ -87,7 +90,7 @@ func (o *SpendingPlanIterationResponse) UnsetCreatedAt() {
 
 // GetEndOn returns the EndOn field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationResponse) GetEndOn() string {
-	if o == nil || o.EndOn.Get() == nil {
+	if o == nil || IsNil(o.EndOn.Get()) {
 		var ret string
 		return ret
 	}
@@ -98,7 +101,7 @@ func (o *SpendingPlanIterationResponse) GetEndOn() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationResponse) GetEndOnOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EndOn.Get(), o.EndOn.IsSet()
@@ -129,7 +132,7 @@ func (o *SpendingPlanIterationResponse) UnsetEndOn() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *SpendingPlanIterationResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -171,7 +174,7 @@ func (o *SpendingPlanIterationResponse) UnsetGuid() {
 
 // GetIterationNumber returns the IterationNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationResponse) GetIterationNumber() int32 {
-	if o == nil || o.IterationNumber.Get() == nil {
+	if o == nil || IsNil(o.IterationNumber.Get()) {
 		var ret int32
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *SpendingPlanIterationResponse) GetIterationNumber() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationResponse) GetIterationNumberOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IterationNumber.Get(), o.IterationNumber.IsSet()
@@ -213,7 +216,7 @@ func (o *SpendingPlanIterationResponse) UnsetIterationNumber() {
 
 // GetSpendingPlanGuid returns the SpendingPlanGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationResponse) GetSpendingPlanGuid() string {
-	if o == nil || o.SpendingPlanGuid.Get() == nil {
+	if o == nil || IsNil(o.SpendingPlanGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *SpendingPlanIterationResponse) GetSpendingPlanGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationResponse) GetSpendingPlanGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SpendingPlanGuid.Get(), o.SpendingPlanGuid.IsSet()
@@ -255,7 +258,7 @@ func (o *SpendingPlanIterationResponse) UnsetSpendingPlanGuid() {
 
 // GetStartOn returns the StartOn field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationResponse) GetStartOn() string {
-	if o == nil || o.StartOn.Get() == nil {
+	if o == nil || IsNil(o.StartOn.Get()) {
 		var ret string
 		return ret
 	}
@@ -266,7 +269,7 @@ func (o *SpendingPlanIterationResponse) GetStartOn() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationResponse) GetStartOnOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.StartOn.Get(), o.StartOn.IsSet()
@@ -297,7 +300,7 @@ func (o *SpendingPlanIterationResponse) UnsetStartOn() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -308,7 +311,7 @@ func (o *SpendingPlanIterationResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -339,7 +342,7 @@ func (o *SpendingPlanIterationResponse) UnsetUpdatedAt() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpendingPlanIterationResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -350,7 +353,7 @@ func (o *SpendingPlanIterationResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpendingPlanIterationResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -380,6 +383,14 @@ func (o *SpendingPlanIterationResponse) UnsetUserGuid() {
 }
 
 func (o SpendingPlanIterationResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SpendingPlanIterationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CreatedAt.IsSet() {
 		toSerialize["created_at"] = o.CreatedAt.Get()
@@ -405,7 +416,7 @@ func (o SpendingPlanIterationResponse) MarshalJSON() ([]byte, error) {
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableSpendingPlanIterationResponse struct {

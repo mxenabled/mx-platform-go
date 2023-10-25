@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransactionUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransactionUpdateRequest{}
+
 // TransactionUpdateRequest struct for TransactionUpdateRequest
 type TransactionUpdateRequest struct {
 	Description string `json:"description"`
@@ -50,7 +53,7 @@ func (o *TransactionUpdateRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *TransactionUpdateRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Description, true
@@ -62,11 +65,17 @@ func (o *TransactionUpdateRequest) SetDescription(v string) {
 }
 
 func (o TransactionUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["description"] = o.Description
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TransactionUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["description"] = o.Description
+	return toSerialize, nil
 }
 
 type NullableTransactionUpdateRequest struct {

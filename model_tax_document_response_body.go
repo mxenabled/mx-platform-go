@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaxDocumentResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaxDocumentResponseBody{}
+
 // TaxDocumentResponseBody struct for TaxDocumentResponseBody
 type TaxDocumentResponseBody struct {
 	TaxDocument *TaxDocumentResponse `json:"tax_document,omitempty"`
@@ -38,7 +41,7 @@ func NewTaxDocumentResponseBodyWithDefaults() *TaxDocumentResponseBody {
 
 // GetTaxDocument returns the TaxDocument field value if set, zero value otherwise.
 func (o *TaxDocumentResponseBody) GetTaxDocument() TaxDocumentResponse {
-	if o == nil || o.TaxDocument == nil {
+	if o == nil || IsNil(o.TaxDocument) {
 		var ret TaxDocumentResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *TaxDocumentResponseBody) GetTaxDocument() TaxDocumentResponse {
 // GetTaxDocumentOk returns a tuple with the TaxDocument field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaxDocumentResponseBody) GetTaxDocumentOk() (*TaxDocumentResponse, bool) {
-	if o == nil || o.TaxDocument == nil {
+	if o == nil || IsNil(o.TaxDocument) {
 		return nil, false
 	}
 	return o.TaxDocument, true
@@ -56,7 +59,7 @@ func (o *TaxDocumentResponseBody) GetTaxDocumentOk() (*TaxDocumentResponse, bool
 
 // HasTaxDocument returns a boolean if a field has been set.
 func (o *TaxDocumentResponseBody) HasTaxDocument() bool {
-	if o != nil && o.TaxDocument != nil {
+	if o != nil && !IsNil(o.TaxDocument) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *TaxDocumentResponseBody) SetTaxDocument(v TaxDocumentResponse) {
 }
 
 func (o TaxDocumentResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TaxDocument != nil {
-		toSerialize["tax_document"] = o.TaxDocument
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TaxDocumentResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TaxDocument) {
+		toSerialize["tax_document"] = o.TaxDocument
+	}
+	return toSerialize, nil
 }
 
 type NullableTaxDocumentResponseBody struct {

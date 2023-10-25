@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountCreateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountCreateRequest{}
+
 // AccountCreateRequest struct for AccountCreateRequest
 type AccountCreateRequest struct {
 	AccountSubtype *string `json:"account_subtype,omitempty"`
@@ -60,7 +63,7 @@ func NewAccountCreateRequestWithDefaults() *AccountCreateRequest {
 
 // GetAccountSubtype returns the AccountSubtype field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetAccountSubtype() string {
-	if o == nil || o.AccountSubtype == nil {
+	if o == nil || IsNil(o.AccountSubtype) {
 		var ret string
 		return ret
 	}
@@ -70,7 +73,7 @@ func (o *AccountCreateRequest) GetAccountSubtype() string {
 // GetAccountSubtypeOk returns a tuple with the AccountSubtype field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetAccountSubtypeOk() (*string, bool) {
-	if o == nil || o.AccountSubtype == nil {
+	if o == nil || IsNil(o.AccountSubtype) {
 		return nil, false
 	}
 	return o.AccountSubtype, true
@@ -78,7 +81,7 @@ func (o *AccountCreateRequest) GetAccountSubtypeOk() (*string, bool) {
 
 // HasAccountSubtype returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasAccountSubtype() bool {
-	if o != nil && o.AccountSubtype != nil {
+	if o != nil && !IsNil(o.AccountSubtype) {
 		return true
 	}
 
@@ -103,7 +106,7 @@ func (o *AccountCreateRequest) GetAccountType() string {
 // GetAccountTypeOk returns a tuple with the AccountType field value
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetAccountTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AccountType, true
@@ -116,7 +119,7 @@ func (o *AccountCreateRequest) SetAccountType(v string) {
 
 // GetApr returns the Apr field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetApr() float32 {
-	if o == nil || o.Apr == nil {
+	if o == nil || IsNil(o.Apr) {
 		var ret float32
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *AccountCreateRequest) GetApr() float32 {
 // GetAprOk returns a tuple with the Apr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetAprOk() (*float32, bool) {
-	if o == nil || o.Apr == nil {
+	if o == nil || IsNil(o.Apr) {
 		return nil, false
 	}
 	return o.Apr, true
@@ -134,7 +137,7 @@ func (o *AccountCreateRequest) GetAprOk() (*float32, bool) {
 
 // HasApr returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasApr() bool {
-	if o != nil && o.Apr != nil {
+	if o != nil && !IsNil(o.Apr) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *AccountCreateRequest) SetApr(v float32) {
 
 // GetApy returns the Apy field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetApy() float32 {
-	if o == nil || o.Apy == nil {
+	if o == nil || IsNil(o.Apy) {
 		var ret float32
 		return ret
 	}
@@ -158,7 +161,7 @@ func (o *AccountCreateRequest) GetApy() float32 {
 // GetApyOk returns a tuple with the Apy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetApyOk() (*float32, bool) {
-	if o == nil || o.Apy == nil {
+	if o == nil || IsNil(o.Apy) {
 		return nil, false
 	}
 	return o.Apy, true
@@ -166,7 +169,7 @@ func (o *AccountCreateRequest) GetApyOk() (*float32, bool) {
 
 // HasApy returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasApy() bool {
-	if o != nil && o.Apy != nil {
+	if o != nil && !IsNil(o.Apy) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *AccountCreateRequest) SetApy(v float32) {
 
 // GetAvailableBalance returns the AvailableBalance field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetAvailableBalance() float32 {
-	if o == nil || o.AvailableBalance == nil {
+	if o == nil || IsNil(o.AvailableBalance) {
 		var ret float32
 		return ret
 	}
@@ -190,7 +193,7 @@ func (o *AccountCreateRequest) GetAvailableBalance() float32 {
 // GetAvailableBalanceOk returns a tuple with the AvailableBalance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetAvailableBalanceOk() (*float32, bool) {
-	if o == nil || o.AvailableBalance == nil {
+	if o == nil || IsNil(o.AvailableBalance) {
 		return nil, false
 	}
 	return o.AvailableBalance, true
@@ -198,7 +201,7 @@ func (o *AccountCreateRequest) GetAvailableBalanceOk() (*float32, bool) {
 
 // HasAvailableBalance returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasAvailableBalance() bool {
-	if o != nil && o.AvailableBalance != nil {
+	if o != nil && !IsNil(o.AvailableBalance) {
 		return true
 	}
 
@@ -212,7 +215,7 @@ func (o *AccountCreateRequest) SetAvailableBalance(v float32) {
 
 // GetBalance returns the Balance field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetBalance() float32 {
-	if o == nil || o.Balance == nil {
+	if o == nil || IsNil(o.Balance) {
 		var ret float32
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *AccountCreateRequest) GetBalance() float32 {
 // GetBalanceOk returns a tuple with the Balance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetBalanceOk() (*float32, bool) {
-	if o == nil || o.Balance == nil {
+	if o == nil || IsNil(o.Balance) {
 		return nil, false
 	}
 	return o.Balance, true
@@ -230,7 +233,7 @@ func (o *AccountCreateRequest) GetBalanceOk() (*float32, bool) {
 
 // HasBalance returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasBalance() bool {
-	if o != nil && o.Balance != nil {
+	if o != nil && !IsNil(o.Balance) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *AccountCreateRequest) SetBalance(v float32) {
 
 // GetCashSurrenderValue returns the CashSurrenderValue field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetCashSurrenderValue() float32 {
-	if o == nil || o.CashSurrenderValue == nil {
+	if o == nil || IsNil(o.CashSurrenderValue) {
 		var ret float32
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *AccountCreateRequest) GetCashSurrenderValue() float32 {
 // GetCashSurrenderValueOk returns a tuple with the CashSurrenderValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetCashSurrenderValueOk() (*float32, bool) {
-	if o == nil || o.CashSurrenderValue == nil {
+	if o == nil || IsNil(o.CashSurrenderValue) {
 		return nil, false
 	}
 	return o.CashSurrenderValue, true
@@ -262,7 +265,7 @@ func (o *AccountCreateRequest) GetCashSurrenderValueOk() (*float32, bool) {
 
 // HasCashSurrenderValue returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasCashSurrenderValue() bool {
-	if o != nil && o.CashSurrenderValue != nil {
+	if o != nil && !IsNil(o.CashSurrenderValue) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *AccountCreateRequest) SetCashSurrenderValue(v float32) {
 
 // GetCreditLimit returns the CreditLimit field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetCreditLimit() float32 {
-	if o == nil || o.CreditLimit == nil {
+	if o == nil || IsNil(o.CreditLimit) {
 		var ret float32
 		return ret
 	}
@@ -286,7 +289,7 @@ func (o *AccountCreateRequest) GetCreditLimit() float32 {
 // GetCreditLimitOk returns a tuple with the CreditLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetCreditLimitOk() (*float32, bool) {
-	if o == nil || o.CreditLimit == nil {
+	if o == nil || IsNil(o.CreditLimit) {
 		return nil, false
 	}
 	return o.CreditLimit, true
@@ -294,7 +297,7 @@ func (o *AccountCreateRequest) GetCreditLimitOk() (*float32, bool) {
 
 // HasCreditLimit returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasCreditLimit() bool {
-	if o != nil && o.CreditLimit != nil {
+	if o != nil && !IsNil(o.CreditLimit) {
 		return true
 	}
 
@@ -308,7 +311,7 @@ func (o *AccountCreateRequest) SetCreditLimit(v float32) {
 
 // GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetCurrencyCode() string {
-	if o == nil || o.CurrencyCode == nil {
+	if o == nil || IsNil(o.CurrencyCode) {
 		var ret string
 		return ret
 	}
@@ -318,7 +321,7 @@ func (o *AccountCreateRequest) GetCurrencyCode() string {
 // GetCurrencyCodeOk returns a tuple with the CurrencyCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil || o.CurrencyCode == nil {
+	if o == nil || IsNil(o.CurrencyCode) {
 		return nil, false
 	}
 	return o.CurrencyCode, true
@@ -326,7 +329,7 @@ func (o *AccountCreateRequest) GetCurrencyCodeOk() (*string, bool) {
 
 // HasCurrencyCode returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasCurrencyCode() bool {
-	if o != nil && o.CurrencyCode != nil {
+	if o != nil && !IsNil(o.CurrencyCode) {
 		return true
 	}
 
@@ -340,7 +343,7 @@ func (o *AccountCreateRequest) SetCurrencyCode(v string) {
 
 // GetDeathBenefit returns the DeathBenefit field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetDeathBenefit() int32 {
-	if o == nil || o.DeathBenefit == nil {
+	if o == nil || IsNil(o.DeathBenefit) {
 		var ret int32
 		return ret
 	}
@@ -350,7 +353,7 @@ func (o *AccountCreateRequest) GetDeathBenefit() int32 {
 // GetDeathBenefitOk returns a tuple with the DeathBenefit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetDeathBenefitOk() (*int32, bool) {
-	if o == nil || o.DeathBenefit == nil {
+	if o == nil || IsNil(o.DeathBenefit) {
 		return nil, false
 	}
 	return o.DeathBenefit, true
@@ -358,7 +361,7 @@ func (o *AccountCreateRequest) GetDeathBenefitOk() (*int32, bool) {
 
 // HasDeathBenefit returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasDeathBenefit() bool {
-	if o != nil && o.DeathBenefit != nil {
+	if o != nil && !IsNil(o.DeathBenefit) {
 		return true
 	}
 
@@ -372,7 +375,7 @@ func (o *AccountCreateRequest) SetDeathBenefit(v int32) {
 
 // GetInterestRate returns the InterestRate field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetInterestRate() float32 {
-	if o == nil || o.InterestRate == nil {
+	if o == nil || IsNil(o.InterestRate) {
 		var ret float32
 		return ret
 	}
@@ -382,7 +385,7 @@ func (o *AccountCreateRequest) GetInterestRate() float32 {
 // GetInterestRateOk returns a tuple with the InterestRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetInterestRateOk() (*float32, bool) {
-	if o == nil || o.InterestRate == nil {
+	if o == nil || IsNil(o.InterestRate) {
 		return nil, false
 	}
 	return o.InterestRate, true
@@ -390,7 +393,7 @@ func (o *AccountCreateRequest) GetInterestRateOk() (*float32, bool) {
 
 // HasInterestRate returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasInterestRate() bool {
-	if o != nil && o.InterestRate != nil {
+	if o != nil && !IsNil(o.InterestRate) {
 		return true
 	}
 
@@ -404,7 +407,7 @@ func (o *AccountCreateRequest) SetInterestRate(v float32) {
 
 // GetIsBusiness returns the IsBusiness field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetIsBusiness() bool {
-	if o == nil || o.IsBusiness == nil {
+	if o == nil || IsNil(o.IsBusiness) {
 		var ret bool
 		return ret
 	}
@@ -414,7 +417,7 @@ func (o *AccountCreateRequest) GetIsBusiness() bool {
 // GetIsBusinessOk returns a tuple with the IsBusiness field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetIsBusinessOk() (*bool, bool) {
-	if o == nil || o.IsBusiness == nil {
+	if o == nil || IsNil(o.IsBusiness) {
 		return nil, false
 	}
 	return o.IsBusiness, true
@@ -422,7 +425,7 @@ func (o *AccountCreateRequest) GetIsBusinessOk() (*bool, bool) {
 
 // HasIsBusiness returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasIsBusiness() bool {
-	if o != nil && o.IsBusiness != nil {
+	if o != nil && !IsNil(o.IsBusiness) {
 		return true
 	}
 
@@ -436,7 +439,7 @@ func (o *AccountCreateRequest) SetIsBusiness(v bool) {
 
 // GetIsClosed returns the IsClosed field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetIsClosed() bool {
-	if o == nil || o.IsClosed == nil {
+	if o == nil || IsNil(o.IsClosed) {
 		var ret bool
 		return ret
 	}
@@ -446,7 +449,7 @@ func (o *AccountCreateRequest) GetIsClosed() bool {
 // GetIsClosedOk returns a tuple with the IsClosed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetIsClosedOk() (*bool, bool) {
-	if o == nil || o.IsClosed == nil {
+	if o == nil || IsNil(o.IsClosed) {
 		return nil, false
 	}
 	return o.IsClosed, true
@@ -454,7 +457,7 @@ func (o *AccountCreateRequest) GetIsClosedOk() (*bool, bool) {
 
 // HasIsClosed returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasIsClosed() bool {
-	if o != nil && o.IsClosed != nil {
+	if o != nil && !IsNil(o.IsClosed) {
 		return true
 	}
 
@@ -468,7 +471,7 @@ func (o *AccountCreateRequest) SetIsClosed(v bool) {
 
 // GetIsHidden returns the IsHidden field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetIsHidden() bool {
-	if o == nil || o.IsHidden == nil {
+	if o == nil || IsNil(o.IsHidden) {
 		var ret bool
 		return ret
 	}
@@ -478,7 +481,7 @@ func (o *AccountCreateRequest) GetIsHidden() bool {
 // GetIsHiddenOk returns a tuple with the IsHidden field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetIsHiddenOk() (*bool, bool) {
-	if o == nil || o.IsHidden == nil {
+	if o == nil || IsNil(o.IsHidden) {
 		return nil, false
 	}
 	return o.IsHidden, true
@@ -486,7 +489,7 @@ func (o *AccountCreateRequest) GetIsHiddenOk() (*bool, bool) {
 
 // HasIsHidden returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasIsHidden() bool {
-	if o != nil && o.IsHidden != nil {
+	if o != nil && !IsNil(o.IsHidden) {
 		return true
 	}
 
@@ -500,7 +503,7 @@ func (o *AccountCreateRequest) SetIsHidden(v bool) {
 
 // GetLoanAmount returns the LoanAmount field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetLoanAmount() float32 {
-	if o == nil || o.LoanAmount == nil {
+	if o == nil || IsNil(o.LoanAmount) {
 		var ret float32
 		return ret
 	}
@@ -510,7 +513,7 @@ func (o *AccountCreateRequest) GetLoanAmount() float32 {
 // GetLoanAmountOk returns a tuple with the LoanAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetLoanAmountOk() (*float32, bool) {
-	if o == nil || o.LoanAmount == nil {
+	if o == nil || IsNil(o.LoanAmount) {
 		return nil, false
 	}
 	return o.LoanAmount, true
@@ -518,7 +521,7 @@ func (o *AccountCreateRequest) GetLoanAmountOk() (*float32, bool) {
 
 // HasLoanAmount returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasLoanAmount() bool {
-	if o != nil && o.LoanAmount != nil {
+	if o != nil && !IsNil(o.LoanAmount) {
 		return true
 	}
 
@@ -532,7 +535,7 @@ func (o *AccountCreateRequest) SetLoanAmount(v float32) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret string
 		return ret
 	}
@@ -542,7 +545,7 @@ func (o *AccountCreateRequest) GetMetadata() string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -550,7 +553,7 @@ func (o *AccountCreateRequest) GetMetadataOk() (*string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -575,7 +578,7 @@ func (o *AccountCreateRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -588,7 +591,7 @@ func (o *AccountCreateRequest) SetName(v string) {
 
 // GetNickname returns the Nickname field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetNickname() string {
-	if o == nil || o.Nickname == nil {
+	if o == nil || IsNil(o.Nickname) {
 		var ret string
 		return ret
 	}
@@ -598,7 +601,7 @@ func (o *AccountCreateRequest) GetNickname() string {
 // GetNicknameOk returns a tuple with the Nickname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetNicknameOk() (*string, bool) {
-	if o == nil || o.Nickname == nil {
+	if o == nil || IsNil(o.Nickname) {
 		return nil, false
 	}
 	return o.Nickname, true
@@ -606,7 +609,7 @@ func (o *AccountCreateRequest) GetNicknameOk() (*string, bool) {
 
 // HasNickname returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasNickname() bool {
-	if o != nil && o.Nickname != nil {
+	if o != nil && !IsNil(o.Nickname) {
 		return true
 	}
 
@@ -620,7 +623,7 @@ func (o *AccountCreateRequest) SetNickname(v string) {
 
 // GetOriginalBalance returns the OriginalBalance field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetOriginalBalance() float32 {
-	if o == nil || o.OriginalBalance == nil {
+	if o == nil || IsNil(o.OriginalBalance) {
 		var ret float32
 		return ret
 	}
@@ -630,7 +633,7 @@ func (o *AccountCreateRequest) GetOriginalBalance() float32 {
 // GetOriginalBalanceOk returns a tuple with the OriginalBalance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetOriginalBalanceOk() (*float32, bool) {
-	if o == nil || o.OriginalBalance == nil {
+	if o == nil || IsNil(o.OriginalBalance) {
 		return nil, false
 	}
 	return o.OriginalBalance, true
@@ -638,7 +641,7 @@ func (o *AccountCreateRequest) GetOriginalBalanceOk() (*float32, bool) {
 
 // HasOriginalBalance returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasOriginalBalance() bool {
-	if o != nil && o.OriginalBalance != nil {
+	if o != nil && !IsNil(o.OriginalBalance) {
 		return true
 	}
 
@@ -652,7 +655,7 @@ func (o *AccountCreateRequest) SetOriginalBalance(v float32) {
 
 // GetPropertyType returns the PropertyType field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetPropertyType() string {
-	if o == nil || o.PropertyType == nil {
+	if o == nil || IsNil(o.PropertyType) {
 		var ret string
 		return ret
 	}
@@ -662,7 +665,7 @@ func (o *AccountCreateRequest) GetPropertyType() string {
 // GetPropertyTypeOk returns a tuple with the PropertyType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetPropertyTypeOk() (*string, bool) {
-	if o == nil || o.PropertyType == nil {
+	if o == nil || IsNil(o.PropertyType) {
 		return nil, false
 	}
 	return o.PropertyType, true
@@ -670,7 +673,7 @@ func (o *AccountCreateRequest) GetPropertyTypeOk() (*string, bool) {
 
 // HasPropertyType returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasPropertyType() bool {
-	if o != nil && o.PropertyType != nil {
+	if o != nil && !IsNil(o.PropertyType) {
 		return true
 	}
 
@@ -684,7 +687,7 @@ func (o *AccountCreateRequest) SetPropertyType(v string) {
 
 // GetSkipWebhook returns the SkipWebhook field value if set, zero value otherwise.
 func (o *AccountCreateRequest) GetSkipWebhook() bool {
-	if o == nil || o.SkipWebhook == nil {
+	if o == nil || IsNil(o.SkipWebhook) {
 		var ret bool
 		return ret
 	}
@@ -694,7 +697,7 @@ func (o *AccountCreateRequest) GetSkipWebhook() bool {
 // GetSkipWebhookOk returns a tuple with the SkipWebhook field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCreateRequest) GetSkipWebhookOk() (*bool, bool) {
-	if o == nil || o.SkipWebhook == nil {
+	if o == nil || IsNil(o.SkipWebhook) {
 		return nil, false
 	}
 	return o.SkipWebhook, true
@@ -702,7 +705,7 @@ func (o *AccountCreateRequest) GetSkipWebhookOk() (*bool, bool) {
 
 // HasSkipWebhook returns a boolean if a field has been set.
 func (o *AccountCreateRequest) HasSkipWebhook() bool {
-	if o != nil && o.SkipWebhook != nil {
+	if o != nil && !IsNil(o.SkipWebhook) {
 		return true
 	}
 
@@ -715,71 +718,75 @@ func (o *AccountCreateRequest) SetSkipWebhook(v bool) {
 }
 
 func (o AccountCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountSubtype != nil {
-		toSerialize["account_subtype"] = o.AccountSubtype
-	}
-	if true {
-		toSerialize["account_type"] = o.AccountType
-	}
-	if o.Apr != nil {
-		toSerialize["apr"] = o.Apr
-	}
-	if o.Apy != nil {
-		toSerialize["apy"] = o.Apy
-	}
-	if o.AvailableBalance != nil {
-		toSerialize["available_balance"] = o.AvailableBalance
-	}
-	if o.Balance != nil {
-		toSerialize["balance"] = o.Balance
-	}
-	if o.CashSurrenderValue != nil {
-		toSerialize["cash_surrender_value"] = o.CashSurrenderValue
-	}
-	if o.CreditLimit != nil {
-		toSerialize["credit_limit"] = o.CreditLimit
-	}
-	if o.CurrencyCode != nil {
-		toSerialize["currency_code"] = o.CurrencyCode
-	}
-	if o.DeathBenefit != nil {
-		toSerialize["death_benefit"] = o.DeathBenefit
-	}
-	if o.InterestRate != nil {
-		toSerialize["interest_rate"] = o.InterestRate
-	}
-	if o.IsBusiness != nil {
-		toSerialize["is_business"] = o.IsBusiness
-	}
-	if o.IsClosed != nil {
-		toSerialize["is_closed"] = o.IsClosed
-	}
-	if o.IsHidden != nil {
-		toSerialize["is_hidden"] = o.IsHidden
-	}
-	if o.LoanAmount != nil {
-		toSerialize["loan_amount"] = o.LoanAmount
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Nickname != nil {
-		toSerialize["nickname"] = o.Nickname
-	}
-	if o.OriginalBalance != nil {
-		toSerialize["original_balance"] = o.OriginalBalance
-	}
-	if o.PropertyType != nil {
-		toSerialize["property_type"] = o.PropertyType
-	}
-	if o.SkipWebhook != nil {
-		toSerialize["skip_webhook"] = o.SkipWebhook
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AccountCreateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountSubtype) {
+		toSerialize["account_subtype"] = o.AccountSubtype
+	}
+	toSerialize["account_type"] = o.AccountType
+	if !IsNil(o.Apr) {
+		toSerialize["apr"] = o.Apr
+	}
+	if !IsNil(o.Apy) {
+		toSerialize["apy"] = o.Apy
+	}
+	if !IsNil(o.AvailableBalance) {
+		toSerialize["available_balance"] = o.AvailableBalance
+	}
+	if !IsNil(o.Balance) {
+		toSerialize["balance"] = o.Balance
+	}
+	if !IsNil(o.CashSurrenderValue) {
+		toSerialize["cash_surrender_value"] = o.CashSurrenderValue
+	}
+	if !IsNil(o.CreditLimit) {
+		toSerialize["credit_limit"] = o.CreditLimit
+	}
+	if !IsNil(o.CurrencyCode) {
+		toSerialize["currency_code"] = o.CurrencyCode
+	}
+	if !IsNil(o.DeathBenefit) {
+		toSerialize["death_benefit"] = o.DeathBenefit
+	}
+	if !IsNil(o.InterestRate) {
+		toSerialize["interest_rate"] = o.InterestRate
+	}
+	if !IsNil(o.IsBusiness) {
+		toSerialize["is_business"] = o.IsBusiness
+	}
+	if !IsNil(o.IsClosed) {
+		toSerialize["is_closed"] = o.IsClosed
+	}
+	if !IsNil(o.IsHidden) {
+		toSerialize["is_hidden"] = o.IsHidden
+	}
+	if !IsNil(o.LoanAmount) {
+		toSerialize["loan_amount"] = o.LoanAmount
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Nickname) {
+		toSerialize["nickname"] = o.Nickname
+	}
+	if !IsNil(o.OriginalBalance) {
+		toSerialize["original_balance"] = o.OriginalBalance
+	}
+	if !IsNil(o.PropertyType) {
+		toSerialize["property_type"] = o.PropertyType
+	}
+	if !IsNil(o.SkipWebhook) {
+		toSerialize["skip_webhook"] = o.SkipWebhook
+	}
+	return toSerialize, nil
 }
 
 type NullableAccountCreateRequest struct {

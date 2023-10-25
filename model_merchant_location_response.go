@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MerchantLocationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MerchantLocationResponse{}
+
 // MerchantLocationResponse struct for MerchantLocationResponse
 type MerchantLocationResponse struct {
 	City NullableString `json:"city,omitempty"`
@@ -49,7 +52,7 @@ func NewMerchantLocationResponseWithDefaults() *MerchantLocationResponse {
 
 // GetCity returns the City field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetCity() string {
-	if o == nil || o.City.Get() == nil {
+	if o == nil || IsNil(o.City.Get()) {
 		var ret string
 		return ret
 	}
@@ -60,7 +63,7 @@ func (o *MerchantLocationResponse) GetCity() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetCityOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.City.Get(), o.City.IsSet()
@@ -91,7 +94,7 @@ func (o *MerchantLocationResponse) UnsetCity() {
 
 // GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetCountry() string {
-	if o == nil || o.Country.Get() == nil {
+	if o == nil || IsNil(o.Country.Get()) {
 		var ret string
 		return ret
 	}
@@ -102,7 +105,7 @@ func (o *MerchantLocationResponse) GetCountry() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetCountryOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Country.Get(), o.Country.IsSet()
@@ -133,7 +136,7 @@ func (o *MerchantLocationResponse) UnsetCountry() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -144,7 +147,7 @@ func (o *MerchantLocationResponse) GetCreatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
@@ -175,7 +178,7 @@ func (o *MerchantLocationResponse) UnsetCreatedAt() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *MerchantLocationResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -217,7 +220,7 @@ func (o *MerchantLocationResponse) UnsetGuid() {
 
 // GetLatitude returns the Latitude field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetLatitude() float32 {
-	if o == nil || o.Latitude.Get() == nil {
+	if o == nil || IsNil(o.Latitude.Get()) {
 		var ret float32
 		return ret
 	}
@@ -228,7 +231,7 @@ func (o *MerchantLocationResponse) GetLatitude() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetLatitudeOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Latitude.Get(), o.Latitude.IsSet()
@@ -259,7 +262,7 @@ func (o *MerchantLocationResponse) UnsetLatitude() {
 
 // GetLongitude returns the Longitude field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetLongitude() float32 {
-	if o == nil || o.Longitude.Get() == nil {
+	if o == nil || IsNil(o.Longitude.Get()) {
 		var ret float32
 		return ret
 	}
@@ -270,7 +273,7 @@ func (o *MerchantLocationResponse) GetLongitude() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetLongitudeOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Longitude.Get(), o.Longitude.IsSet()
@@ -301,7 +304,7 @@ func (o *MerchantLocationResponse) UnsetLongitude() {
 
 // GetMerchantGuid returns the MerchantGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetMerchantGuid() string {
-	if o == nil || o.MerchantGuid.Get() == nil {
+	if o == nil || IsNil(o.MerchantGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -312,7 +315,7 @@ func (o *MerchantLocationResponse) GetMerchantGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetMerchantGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MerchantGuid.Get(), o.MerchantGuid.IsSet()
@@ -343,7 +346,7 @@ func (o *MerchantLocationResponse) UnsetMerchantGuid() {
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetPhoneNumber() string {
-	if o == nil || o.PhoneNumber.Get() == nil {
+	if o == nil || IsNil(o.PhoneNumber.Get()) {
 		var ret string
 		return ret
 	}
@@ -354,7 +357,7 @@ func (o *MerchantLocationResponse) GetPhoneNumber() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetPhoneNumberOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PhoneNumber.Get(), o.PhoneNumber.IsSet()
@@ -385,7 +388,7 @@ func (o *MerchantLocationResponse) UnsetPhoneNumber() {
 
 // GetPostalCode returns the PostalCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetPostalCode() string {
-	if o == nil || o.PostalCode.Get() == nil {
+	if o == nil || IsNil(o.PostalCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -396,7 +399,7 @@ func (o *MerchantLocationResponse) GetPostalCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetPostalCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PostalCode.Get(), o.PostalCode.IsSet()
@@ -427,7 +430,7 @@ func (o *MerchantLocationResponse) UnsetPostalCode() {
 
 // GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetState() string {
-	if o == nil || o.State.Get() == nil {
+	if o == nil || IsNil(o.State.Get()) {
 		var ret string
 		return ret
 	}
@@ -438,7 +441,7 @@ func (o *MerchantLocationResponse) GetState() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetStateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.State.Get(), o.State.IsSet()
@@ -469,7 +472,7 @@ func (o *MerchantLocationResponse) UnsetState() {
 
 // GetStreetAddress returns the StreetAddress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetStreetAddress() string {
-	if o == nil || o.StreetAddress.Get() == nil {
+	if o == nil || IsNil(o.StreetAddress.Get()) {
 		var ret string
 		return ret
 	}
@@ -480,7 +483,7 @@ func (o *MerchantLocationResponse) GetStreetAddress() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetStreetAddressOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.StreetAddress.Get(), o.StreetAddress.IsSet()
@@ -511,7 +514,7 @@ func (o *MerchantLocationResponse) UnsetStreetAddress() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MerchantLocationResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -522,7 +525,7 @@ func (o *MerchantLocationResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MerchantLocationResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -552,6 +555,14 @@ func (o *MerchantLocationResponse) UnsetUpdatedAt() {
 }
 
 func (o MerchantLocationResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o MerchantLocationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.City.IsSet() {
 		toSerialize["city"] = o.City.Get()
@@ -589,7 +600,7 @@ func (o MerchantLocationResponse) MarshalJSON() ([]byte, error) {
 	if o.UpdatedAt.IsSet() {
 		toSerialize["updated_at"] = o.UpdatedAt.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableMerchantLocationResponse struct {

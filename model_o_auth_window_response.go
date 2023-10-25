@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OAuthWindowResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OAuthWindowResponse{}
+
 // OAuthWindowResponse struct for OAuthWindowResponse
 type OAuthWindowResponse struct {
 	Guid NullableString `json:"guid,omitempty"`
@@ -39,7 +42,7 @@ func NewOAuthWindowResponseWithDefaults() *OAuthWindowResponse {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthWindowResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *OAuthWindowResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuthWindowResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -81,7 +84,7 @@ func (o *OAuthWindowResponse) UnsetGuid() {
 
 // GetOauthWindowUri returns the OauthWindowUri field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthWindowResponse) GetOauthWindowUri() string {
-	if o == nil || o.OauthWindowUri.Get() == nil {
+	if o == nil || IsNil(o.OauthWindowUri.Get()) {
 		var ret string
 		return ret
 	}
@@ -92,7 +95,7 @@ func (o *OAuthWindowResponse) GetOauthWindowUri() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuthWindowResponse) GetOauthWindowUriOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.OauthWindowUri.Get(), o.OauthWindowUri.IsSet()
@@ -122,6 +125,14 @@ func (o *OAuthWindowResponse) UnsetOauthWindowUri() {
 }
 
 func (o OAuthWindowResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OAuthWindowResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Guid.IsSet() {
 		toSerialize["guid"] = o.Guid.Get()
@@ -129,7 +140,7 @@ func (o OAuthWindowResponse) MarshalJSON() ([]byte, error) {
 	if o.OauthWindowUri.IsSet() {
 		toSerialize["oauth_window_uri"] = o.OauthWindowUri.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableOAuthWindowResponse struct {

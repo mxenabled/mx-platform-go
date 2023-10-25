@@ -74,7 +74,7 @@ docs/MerchantLocationResponseBody.md
 docs/MerchantResponse.md
 docs/MerchantResponseBody.md
 docs/MerchantsResponseBody.md
-docs/MxPlatformApi.md
+docs/MxPlatformAPI.md
 docs/OAuthWindowResponse.md
 docs/OAuthWindowResponseBody.md
 docs/OptionResponse.md
@@ -268,4 +268,5 @@ model_widget_request_body.go
 model_widget_response.go
 model_widget_response_body.go
 response.go
+test/api_mx_platform_test.go
 utils.go

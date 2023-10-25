@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MemberCreateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MemberCreateRequest{}
+
 // MemberCreateRequest struct for MemberCreateRequest
 type MemberCreateRequest struct {
 	BackgroundAggregationIsDisabled *bool `json:"background_aggregation_is_disabled,omitempty"`
@@ -46,7 +49,7 @@ func NewMemberCreateRequestWithDefaults() *MemberCreateRequest {
 
 // GetBackgroundAggregationIsDisabled returns the BackgroundAggregationIsDisabled field value if set, zero value otherwise.
 func (o *MemberCreateRequest) GetBackgroundAggregationIsDisabled() bool {
-	if o == nil || o.BackgroundAggregationIsDisabled == nil {
+	if o == nil || IsNil(o.BackgroundAggregationIsDisabled) {
 		var ret bool
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *MemberCreateRequest) GetBackgroundAggregationIsDisabled() bool {
 // GetBackgroundAggregationIsDisabledOk returns a tuple with the BackgroundAggregationIsDisabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequest) GetBackgroundAggregationIsDisabledOk() (*bool, bool) {
-	if o == nil || o.BackgroundAggregationIsDisabled == nil {
+	if o == nil || IsNil(o.BackgroundAggregationIsDisabled) {
 		return nil, false
 	}
 	return o.BackgroundAggregationIsDisabled, true
@@ -64,7 +67,7 @@ func (o *MemberCreateRequest) GetBackgroundAggregationIsDisabledOk() (*bool, boo
 
 // HasBackgroundAggregationIsDisabled returns a boolean if a field has been set.
 func (o *MemberCreateRequest) HasBackgroundAggregationIsDisabled() bool {
-	if o != nil && o.BackgroundAggregationIsDisabled != nil {
+	if o != nil && !IsNil(o.BackgroundAggregationIsDisabled) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *MemberCreateRequest) GetCredentials() []CredentialRequest {
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequest) GetCredentialsOk() ([]CredentialRequest, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Credentials, true
@@ -102,7 +105,7 @@ func (o *MemberCreateRequest) SetCredentials(v []CredentialRequest) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *MemberCreateRequest) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -112,7 +115,7 @@ func (o *MemberCreateRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequest) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -120,7 +123,7 @@ func (o *MemberCreateRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *MemberCreateRequest) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *MemberCreateRequest) GetInstitutionCode() string {
 // GetInstitutionCodeOk returns a tuple with the InstitutionCode field value
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequest) GetInstitutionCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.InstitutionCode, true
@@ -158,7 +161,7 @@ func (o *MemberCreateRequest) SetInstitutionCode(v string) {
 
 // GetIsOauth returns the IsOauth field value if set, zero value otherwise.
 func (o *MemberCreateRequest) GetIsOauth() bool {
-	if o == nil || o.IsOauth == nil {
+	if o == nil || IsNil(o.IsOauth) {
 		var ret bool
 		return ret
 	}
@@ -168,7 +171,7 @@ func (o *MemberCreateRequest) GetIsOauth() bool {
 // GetIsOauthOk returns a tuple with the IsOauth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequest) GetIsOauthOk() (*bool, bool) {
-	if o == nil || o.IsOauth == nil {
+	if o == nil || IsNil(o.IsOauth) {
 		return nil, false
 	}
 	return o.IsOauth, true
@@ -176,7 +179,7 @@ func (o *MemberCreateRequest) GetIsOauthOk() (*bool, bool) {
 
 // HasIsOauth returns a boolean if a field has been set.
 func (o *MemberCreateRequest) HasIsOauth() bool {
-	if o != nil && o.IsOauth != nil {
+	if o != nil && !IsNil(o.IsOauth) {
 		return true
 	}
 
@@ -190,7 +193,7 @@ func (o *MemberCreateRequest) SetIsOauth(v bool) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *MemberCreateRequest) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret string
 		return ret
 	}
@@ -200,7 +203,7 @@ func (o *MemberCreateRequest) GetMetadata() string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequest) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -208,7 +211,7 @@ func (o *MemberCreateRequest) GetMetadataOk() (*string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *MemberCreateRequest) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -222,7 +225,7 @@ func (o *MemberCreateRequest) SetMetadata(v string) {
 
 // GetSkipAggregation returns the SkipAggregation field value if set, zero value otherwise.
 func (o *MemberCreateRequest) GetSkipAggregation() bool {
-	if o == nil || o.SkipAggregation == nil {
+	if o == nil || IsNil(o.SkipAggregation) {
 		var ret bool
 		return ret
 	}
@@ -232,7 +235,7 @@ func (o *MemberCreateRequest) GetSkipAggregation() bool {
 // GetSkipAggregationOk returns a tuple with the SkipAggregation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequest) GetSkipAggregationOk() (*bool, bool) {
-	if o == nil || o.SkipAggregation == nil {
+	if o == nil || IsNil(o.SkipAggregation) {
 		return nil, false
 	}
 	return o.SkipAggregation, true
@@ -240,7 +243,7 @@ func (o *MemberCreateRequest) GetSkipAggregationOk() (*bool, bool) {
 
 // HasSkipAggregation returns a boolean if a field has been set.
 func (o *MemberCreateRequest) HasSkipAggregation() bool {
-	if o != nil && o.SkipAggregation != nil {
+	if o != nil && !IsNil(o.SkipAggregation) {
 		return true
 	}
 
@@ -253,29 +256,33 @@ func (o *MemberCreateRequest) SetSkipAggregation(v bool) {
 }
 
 func (o MemberCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BackgroundAggregationIsDisabled != nil {
-		toSerialize["background_aggregation_is_disabled"] = o.BackgroundAggregationIsDisabled
-	}
-	if true {
-		toSerialize["credentials"] = o.Credentials
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["institution_code"] = o.InstitutionCode
-	}
-	if o.IsOauth != nil {
-		toSerialize["is_oauth"] = o.IsOauth
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if o.SkipAggregation != nil {
-		toSerialize["skip_aggregation"] = o.SkipAggregation
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MemberCreateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BackgroundAggregationIsDisabled) {
+		toSerialize["background_aggregation_is_disabled"] = o.BackgroundAggregationIsDisabled
+	}
+	toSerialize["credentials"] = o.Credentials
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["institution_code"] = o.InstitutionCode
+	if !IsNil(o.IsOauth) {
+		toSerialize["is_oauth"] = o.IsOauth
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.SkipAggregation) {
+		toSerialize["skip_aggregation"] = o.SkipAggregation
+	}
+	return toSerialize, nil
 }
 
 type NullableMemberCreateRequest struct {

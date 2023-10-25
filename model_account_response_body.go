@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountResponseBody{}
+
 // AccountResponseBody struct for AccountResponseBody
 type AccountResponseBody struct {
 	Account *AccountResponse `json:"account,omitempty"`
@@ -38,7 +41,7 @@ func NewAccountResponseBodyWithDefaults() *AccountResponseBody {
 
 // GetAccount returns the Account field value if set, zero value otherwise.
 func (o *AccountResponseBody) GetAccount() AccountResponse {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		var ret AccountResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *AccountResponseBody) GetAccount() AccountResponse {
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountResponseBody) GetAccountOk() (*AccountResponse, bool) {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		return nil, false
 	}
 	return o.Account, true
@@ -56,7 +59,7 @@ func (o *AccountResponseBody) GetAccountOk() (*AccountResponse, bool) {
 
 // HasAccount returns a boolean if a field has been set.
 func (o *AccountResponseBody) HasAccount() bool {
-	if o != nil && o.Account != nil {
+	if o != nil && !IsNil(o.Account) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *AccountResponseBody) SetAccount(v AccountResponse) {
 }
 
 func (o AccountResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Account != nil {
-		toSerialize["account"] = o.Account
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AccountResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
+	}
+	return toSerialize, nil
 }
 
 type NullableAccountResponseBody struct {

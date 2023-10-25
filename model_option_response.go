@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OptionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OptionResponse{}
+
 // OptionResponse struct for OptionResponse
 type OptionResponse struct {
 	Label NullableString `json:"label,omitempty"`
@@ -39,7 +42,7 @@ func NewOptionResponseWithDefaults() *OptionResponse {
 
 // GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OptionResponse) GetLabel() string {
-	if o == nil || o.Label.Get() == nil {
+	if o == nil || IsNil(o.Label.Get()) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *OptionResponse) GetLabel() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OptionResponse) GetLabelOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Label.Get(), o.Label.IsSet()
@@ -81,7 +84,7 @@ func (o *OptionResponse) UnsetLabel() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OptionResponse) GetValue() string {
-	if o == nil || o.Value.Get() == nil {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -92,7 +95,7 @@ func (o *OptionResponse) GetValue() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OptionResponse) GetValueOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Value.Get(), o.Value.IsSet()
@@ -122,6 +125,14 @@ func (o *OptionResponse) UnsetValue() {
 }
 
 func (o OptionResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OptionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Label.IsSet() {
 		toSerialize["label"] = o.Label.Get()
@@ -129,7 +140,7 @@ func (o OptionResponse) MarshalJSON() ([]byte, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableOptionResponse struct {

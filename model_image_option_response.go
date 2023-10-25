@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ImageOptionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ImageOptionResponse{}
+
 // ImageOptionResponse struct for ImageOptionResponse
 type ImageOptionResponse struct {
 	DataUri NullableString `json:"data_uri,omitempty"`
@@ -40,7 +43,7 @@ func NewImageOptionResponseWithDefaults() *ImageOptionResponse {
 
 // GetDataUri returns the DataUri field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImageOptionResponse) GetDataUri() string {
-	if o == nil || o.DataUri.Get() == nil {
+	if o == nil || IsNil(o.DataUri.Get()) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ImageOptionResponse) GetDataUri() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImageOptionResponse) GetDataUriOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.DataUri.Get(), o.DataUri.IsSet()
@@ -82,7 +85,7 @@ func (o *ImageOptionResponse) UnsetDataUri() {
 
 // GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImageOptionResponse) GetLabel() string {
-	if o == nil || o.Label.Get() == nil {
+	if o == nil || IsNil(o.Label.Get()) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *ImageOptionResponse) GetLabel() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImageOptionResponse) GetLabelOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Label.Get(), o.Label.IsSet()
@@ -124,7 +127,7 @@ func (o *ImageOptionResponse) UnsetLabel() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImageOptionResponse) GetValue() string {
-	if o == nil || o.Value.Get() == nil {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -135,7 +138,7 @@ func (o *ImageOptionResponse) GetValue() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImageOptionResponse) GetValueOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Value.Get(), o.Value.IsSet()
@@ -165,6 +168,14 @@ func (o *ImageOptionResponse) UnsetValue() {
 }
 
 func (o ImageOptionResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ImageOptionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DataUri.IsSet() {
 		toSerialize["data_uri"] = o.DataUri.Get()
@@ -175,7 +186,7 @@ func (o ImageOptionResponse) MarshalJSON() ([]byte, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableImageOptionResponse struct {

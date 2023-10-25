@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectWidgetResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectWidgetResponseBody{}
+
 // ConnectWidgetResponseBody struct for ConnectWidgetResponseBody
 type ConnectWidgetResponseBody struct {
 	User *ConnectWidgetResponse `json:"user,omitempty"`
@@ -38,7 +41,7 @@ func NewConnectWidgetResponseBodyWithDefaults() *ConnectWidgetResponseBody {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *ConnectWidgetResponseBody) GetUser() ConnectWidgetResponse {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret ConnectWidgetResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ConnectWidgetResponseBody) GetUser() ConnectWidgetResponse {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectWidgetResponseBody) GetUserOk() (*ConnectWidgetResponse, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -56,7 +59,7 @@ func (o *ConnectWidgetResponseBody) GetUserOk() (*ConnectWidgetResponse, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *ConnectWidgetResponseBody) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ConnectWidgetResponseBody) SetUser(v ConnectWidgetResponse) {
 }
 
 func (o ConnectWidgetResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.User != nil {
-		toSerialize["user"] = o.User
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConnectWidgetResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.User) {
+		toSerialize["user"] = o.User
+	}
+	return toSerialize, nil
 }
 
 type NullableConnectWidgetResponseBody struct {

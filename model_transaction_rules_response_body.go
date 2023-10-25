@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransactionRulesResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransactionRulesResponseBody{}
+
 // TransactionRulesResponseBody struct for TransactionRulesResponseBody
 type TransactionRulesResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
@@ -39,7 +42,7 @@ func NewTransactionRulesResponseBodyWithDefaults() *TransactionRulesResponseBody
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *TransactionRulesResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *TransactionRulesResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionRulesResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -57,7 +60,7 @@ func (o *TransactionRulesResponseBody) GetPaginationOk() (*PaginationResponse, b
 
 // HasPagination returns a boolean if a field has been set.
 func (o *TransactionRulesResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *TransactionRulesResponseBody) SetPagination(v PaginationResponse) {
 
 // GetTransactionRules returns the TransactionRules field value if set, zero value otherwise.
 func (o *TransactionRulesResponseBody) GetTransactionRules() []TransactionRuleResponse {
-	if o == nil || o.TransactionRules == nil {
+	if o == nil || IsNil(o.TransactionRules) {
 		var ret []TransactionRuleResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *TransactionRulesResponseBody) GetTransactionRules() []TransactionRuleRe
 // GetTransactionRulesOk returns a tuple with the TransactionRules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionRulesResponseBody) GetTransactionRulesOk() ([]TransactionRuleResponse, bool) {
-	if o == nil || o.TransactionRules == nil {
+	if o == nil || IsNil(o.TransactionRules) {
 		return nil, false
 	}
 	return o.TransactionRules, true
@@ -89,7 +92,7 @@ func (o *TransactionRulesResponseBody) GetTransactionRulesOk() ([]TransactionRul
 
 // HasTransactionRules returns a boolean if a field has been set.
 func (o *TransactionRulesResponseBody) HasTransactionRules() bool {
-	if o != nil && o.TransactionRules != nil {
+	if o != nil && !IsNil(o.TransactionRules) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *TransactionRulesResponseBody) SetTransactionRules(v []TransactionRuleRe
 }
 
 func (o TransactionRulesResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if o.TransactionRules != nil {
-		toSerialize["transaction_rules"] = o.TransactionRules
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TransactionRulesResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if !IsNil(o.TransactionRules) {
+		toSerialize["transaction_rules"] = o.TransactionRules
+	}
+	return toSerialize, nil
 }
 
 type NullableTransactionRulesResponseBody struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the HoldingsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HoldingsResponseBody{}
+
 // HoldingsResponseBody struct for HoldingsResponseBody
 type HoldingsResponseBody struct {
 	Holdings []HoldingResponse `json:"holdings,omitempty"`
@@ -39,7 +42,7 @@ func NewHoldingsResponseBodyWithDefaults() *HoldingsResponseBody {
 
 // GetHoldings returns the Holdings field value if set, zero value otherwise.
 func (o *HoldingsResponseBody) GetHoldings() []HoldingResponse {
-	if o == nil || o.Holdings == nil {
+	if o == nil || IsNil(o.Holdings) {
 		var ret []HoldingResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *HoldingsResponseBody) GetHoldings() []HoldingResponse {
 // GetHoldingsOk returns a tuple with the Holdings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HoldingsResponseBody) GetHoldingsOk() ([]HoldingResponse, bool) {
-	if o == nil || o.Holdings == nil {
+	if o == nil || IsNil(o.Holdings) {
 		return nil, false
 	}
 	return o.Holdings, true
@@ -57,7 +60,7 @@ func (o *HoldingsResponseBody) GetHoldingsOk() ([]HoldingResponse, bool) {
 
 // HasHoldings returns a boolean if a field has been set.
 func (o *HoldingsResponseBody) HasHoldings() bool {
-	if o != nil && o.Holdings != nil {
+	if o != nil && !IsNil(o.Holdings) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *HoldingsResponseBody) SetHoldings(v []HoldingResponse) {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *HoldingsResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *HoldingsResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HoldingsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *HoldingsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
 
 // HasPagination returns a boolean if a field has been set.
 func (o *HoldingsResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *HoldingsResponseBody) SetPagination(v PaginationResponse) {
 }
 
 func (o HoldingsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Holdings != nil {
-		toSerialize["holdings"] = o.Holdings
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o HoldingsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Holdings) {
+		toSerialize["holdings"] = o.Holdings
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableHoldingsResponseBody struct {

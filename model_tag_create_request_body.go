@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TagCreateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TagCreateRequestBody{}
+
 // TagCreateRequestBody struct for TagCreateRequestBody
 type TagCreateRequestBody struct {
 	Tag *TagCreateRequest `json:"tag,omitempty"`
@@ -38,7 +41,7 @@ func NewTagCreateRequestBodyWithDefaults() *TagCreateRequestBody {
 
 // GetTag returns the Tag field value if set, zero value otherwise.
 func (o *TagCreateRequestBody) GetTag() TagCreateRequest {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		var ret TagCreateRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *TagCreateRequestBody) GetTag() TagCreateRequest {
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TagCreateRequestBody) GetTagOk() (*TagCreateRequest, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		return nil, false
 	}
 	return o.Tag, true
@@ -56,7 +59,7 @@ func (o *TagCreateRequestBody) GetTagOk() (*TagCreateRequest, bool) {
 
 // HasTag returns a boolean if a field has been set.
 func (o *TagCreateRequestBody) HasTag() bool {
-	if o != nil && o.Tag != nil {
+	if o != nil && !IsNil(o.Tag) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *TagCreateRequestBody) SetTag(v TagCreateRequest) {
 }
 
 func (o TagCreateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Tag != nil {
-		toSerialize["tag"] = o.Tag
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TagCreateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Tag) {
+		toSerialize["tag"] = o.Tag
+	}
+	return toSerialize, nil
 }
 
 type NullableTagCreateRequestBody struct {

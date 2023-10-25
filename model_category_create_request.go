@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CategoryCreateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CategoryCreateRequest{}
+
 // CategoryCreateRequest struct for CategoryCreateRequest
 type CategoryCreateRequest struct {
 	Metadata *string `json:"metadata,omitempty"`
@@ -41,7 +44,7 @@ func NewCategoryCreateRequestWithDefaults() *CategoryCreateRequest {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *CategoryCreateRequest) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *CategoryCreateRequest) GetMetadata() string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CategoryCreateRequest) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -59,7 +62,7 @@ func (o *CategoryCreateRequest) GetMetadataOk() (*string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *CategoryCreateRequest) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *CategoryCreateRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *CategoryCreateRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -97,7 +100,7 @@ func (o *CategoryCreateRequest) SetName(v string) {
 
 // GetParentGuid returns the ParentGuid field value if set, zero value otherwise.
 func (o *CategoryCreateRequest) GetParentGuid() string {
-	if o == nil || o.ParentGuid == nil {
+	if o == nil || IsNil(o.ParentGuid) {
 		var ret string
 		return ret
 	}
@@ -107,7 +110,7 @@ func (o *CategoryCreateRequest) GetParentGuid() string {
 // GetParentGuidOk returns a tuple with the ParentGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CategoryCreateRequest) GetParentGuidOk() (*string, bool) {
-	if o == nil || o.ParentGuid == nil {
+	if o == nil || IsNil(o.ParentGuid) {
 		return nil, false
 	}
 	return o.ParentGuid, true
@@ -115,7 +118,7 @@ func (o *CategoryCreateRequest) GetParentGuidOk() (*string, bool) {
 
 // HasParentGuid returns a boolean if a field has been set.
 func (o *CategoryCreateRequest) HasParentGuid() bool {
-	if o != nil && o.ParentGuid != nil {
+	if o != nil && !IsNil(o.ParentGuid) {
 		return true
 	}
 
@@ -128,17 +131,23 @@ func (o *CategoryCreateRequest) SetParentGuid(v string) {
 }
 
 func (o CategoryCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.ParentGuid != nil {
-		toSerialize["parent_guid"] = o.ParentGuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CategoryCreateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ParentGuid) {
+		toSerialize["parent_guid"] = o.ParentGuid
+	}
+	return toSerialize, nil
 }
 
 type NullableCategoryCreateRequest struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpendingPlanAccountResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpendingPlanAccountResponse{}
+
 // SpendingPlanAccountResponse struct for SpendingPlanAccountResponse
 type SpendingPlanAccountResponse struct {
 	AccountGuid *string `json:"account_guid,omitempty"`
@@ -44,7 +47,7 @@ func NewSpendingPlanAccountResponseWithDefaults() *SpendingPlanAccountResponse {
 
 // GetAccountGuid returns the AccountGuid field value if set, zero value otherwise.
 func (o *SpendingPlanAccountResponse) GetAccountGuid() string {
-	if o == nil || o.AccountGuid == nil {
+	if o == nil || IsNil(o.AccountGuid) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *SpendingPlanAccountResponse) GetAccountGuid() string {
 // GetAccountGuidOk returns a tuple with the AccountGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanAccountResponse) GetAccountGuidOk() (*string, bool) {
-	if o == nil || o.AccountGuid == nil {
+	if o == nil || IsNil(o.AccountGuid) {
 		return nil, false
 	}
 	return o.AccountGuid, true
@@ -62,7 +65,7 @@ func (o *SpendingPlanAccountResponse) GetAccountGuidOk() (*string, bool) {
 
 // HasAccountGuid returns a boolean if a field has been set.
 func (o *SpendingPlanAccountResponse) HasAccountGuid() bool {
-	if o != nil && o.AccountGuid != nil {
+	if o != nil && !IsNil(o.AccountGuid) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *SpendingPlanAccountResponse) SetAccountGuid(v string) {
 
 // GetClientGuid returns the ClientGuid field value if set, zero value otherwise.
 func (o *SpendingPlanAccountResponse) GetClientGuid() string {
-	if o == nil || o.ClientGuid == nil {
+	if o == nil || IsNil(o.ClientGuid) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *SpendingPlanAccountResponse) GetClientGuid() string {
 // GetClientGuidOk returns a tuple with the ClientGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanAccountResponse) GetClientGuidOk() (*string, bool) {
-	if o == nil || o.ClientGuid == nil {
+	if o == nil || IsNil(o.ClientGuid) {
 		return nil, false
 	}
 	return o.ClientGuid, true
@@ -94,7 +97,7 @@ func (o *SpendingPlanAccountResponse) GetClientGuidOk() (*string, bool) {
 
 // HasClientGuid returns a boolean if a field has been set.
 func (o *SpendingPlanAccountResponse) HasClientGuid() bool {
-	if o != nil && o.ClientGuid != nil {
+	if o != nil && !IsNil(o.ClientGuid) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *SpendingPlanAccountResponse) SetClientGuid(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *SpendingPlanAccountResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *SpendingPlanAccountResponse) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanAccountResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -126,7 +129,7 @@ func (o *SpendingPlanAccountResponse) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *SpendingPlanAccountResponse) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *SpendingPlanAccountResponse) SetCreatedAt(v string) {
 
 // GetGuid returns the Guid field value if set, zero value otherwise.
 func (o *SpendingPlanAccountResponse) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || IsNil(o.Guid) {
 		var ret string
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *SpendingPlanAccountResponse) GetGuid() string {
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanAccountResponse) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil || IsNil(o.Guid) {
 		return nil, false
 	}
 	return o.Guid, true
@@ -158,7 +161,7 @@ func (o *SpendingPlanAccountResponse) GetGuidOk() (*string, bool) {
 
 // HasGuid returns a boolean if a field has been set.
 func (o *SpendingPlanAccountResponse) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && !IsNil(o.Guid) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *SpendingPlanAccountResponse) SetGuid(v string) {
 
 // GetSpendingPlanGuid returns the SpendingPlanGuid field value if set, zero value otherwise.
 func (o *SpendingPlanAccountResponse) GetSpendingPlanGuid() string {
-	if o == nil || o.SpendingPlanGuid == nil {
+	if o == nil || IsNil(o.SpendingPlanGuid) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *SpendingPlanAccountResponse) GetSpendingPlanGuid() string {
 // GetSpendingPlanGuidOk returns a tuple with the SpendingPlanGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanAccountResponse) GetSpendingPlanGuidOk() (*string, bool) {
-	if o == nil || o.SpendingPlanGuid == nil {
+	if o == nil || IsNil(o.SpendingPlanGuid) {
 		return nil, false
 	}
 	return o.SpendingPlanGuid, true
@@ -190,7 +193,7 @@ func (o *SpendingPlanAccountResponse) GetSpendingPlanGuidOk() (*string, bool) {
 
 // HasSpendingPlanGuid returns a boolean if a field has been set.
 func (o *SpendingPlanAccountResponse) HasSpendingPlanGuid() bool {
-	if o != nil && o.SpendingPlanGuid != nil {
+	if o != nil && !IsNil(o.SpendingPlanGuid) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *SpendingPlanAccountResponse) SetSpendingPlanGuid(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *SpendingPlanAccountResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *SpendingPlanAccountResponse) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanAccountResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -222,7 +225,7 @@ func (o *SpendingPlanAccountResponse) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *SpendingPlanAccountResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *SpendingPlanAccountResponse) SetUpdatedAt(v string) {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise.
 func (o *SpendingPlanAccountResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid == nil {
+	if o == nil || IsNil(o.UserGuid) {
 		var ret string
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *SpendingPlanAccountResponse) GetUserGuid() string {
 // GetUserGuidOk returns a tuple with the UserGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpendingPlanAccountResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil || o.UserGuid == nil {
+	if o == nil || IsNil(o.UserGuid) {
 		return nil, false
 	}
 	return o.UserGuid, true
@@ -254,7 +257,7 @@ func (o *SpendingPlanAccountResponse) GetUserGuidOk() (*string, bool) {
 
 // HasUserGuid returns a boolean if a field has been set.
 func (o *SpendingPlanAccountResponse) HasUserGuid() bool {
-	if o != nil && o.UserGuid != nil {
+	if o != nil && !IsNil(o.UserGuid) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *SpendingPlanAccountResponse) SetUserGuid(v string) {
 }
 
 func (o SpendingPlanAccountResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountGuid != nil {
-		toSerialize["account_guid"] = o.AccountGuid
-	}
-	if o.ClientGuid != nil {
-		toSerialize["client_guid"] = o.ClientGuid
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
-	}
-	if o.SpendingPlanGuid != nil {
-		toSerialize["spending_plan_guid"] = o.SpendingPlanGuid
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.UserGuid != nil {
-		toSerialize["user_guid"] = o.UserGuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SpendingPlanAccountResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountGuid) {
+		toSerialize["account_guid"] = o.AccountGuid
+	}
+	if !IsNil(o.ClientGuid) {
+		toSerialize["client_guid"] = o.ClientGuid
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.Guid) {
+		toSerialize["guid"] = o.Guid
+	}
+	if !IsNil(o.SpendingPlanGuid) {
+		toSerialize["spending_plan_guid"] = o.SpendingPlanGuid
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.UserGuid) {
+		toSerialize["user_guid"] = o.UserGuid
+	}
+	return toSerialize, nil
 }
 
 type NullableSpendingPlanAccountResponse struct {

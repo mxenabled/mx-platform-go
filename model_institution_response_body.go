@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InstitutionResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InstitutionResponseBody{}
+
 // InstitutionResponseBody struct for InstitutionResponseBody
 type InstitutionResponseBody struct {
 	Institution *InstitutionResponse `json:"institution,omitempty"`
@@ -38,7 +41,7 @@ func NewInstitutionResponseBodyWithDefaults() *InstitutionResponseBody {
 
 // GetInstitution returns the Institution field value if set, zero value otherwise.
 func (o *InstitutionResponseBody) GetInstitution() InstitutionResponse {
-	if o == nil || o.Institution == nil {
+	if o == nil || IsNil(o.Institution) {
 		var ret InstitutionResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *InstitutionResponseBody) GetInstitution() InstitutionResponse {
 // GetInstitutionOk returns a tuple with the Institution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InstitutionResponseBody) GetInstitutionOk() (*InstitutionResponse, bool) {
-	if o == nil || o.Institution == nil {
+	if o == nil || IsNil(o.Institution) {
 		return nil, false
 	}
 	return o.Institution, true
@@ -56,7 +59,7 @@ func (o *InstitutionResponseBody) GetInstitutionOk() (*InstitutionResponse, bool
 
 // HasInstitution returns a boolean if a field has been set.
 func (o *InstitutionResponseBody) HasInstitution() bool {
-	if o != nil && o.Institution != nil {
+	if o != nil && !IsNil(o.Institution) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *InstitutionResponseBody) SetInstitution(v InstitutionResponse) {
 }
 
 func (o InstitutionResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Institution != nil {
-		toSerialize["institution"] = o.Institution
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InstitutionResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Institution) {
+		toSerialize["institution"] = o.Institution
+	}
+	return toSerialize, nil
 }
 
 type NullableInstitutionResponseBody struct {

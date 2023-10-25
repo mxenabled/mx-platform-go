@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaggingResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaggingResponse{}
+
 // TaggingResponse struct for TaggingResponse
 type TaggingResponse struct {
 	Guid NullableString `json:"guid,omitempty"`
@@ -42,7 +45,7 @@ func NewTaggingResponseWithDefaults() *TaggingResponse {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaggingResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *TaggingResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaggingResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -84,7 +87,7 @@ func (o *TaggingResponse) UnsetGuid() {
 
 // GetMemberIsManagedByUser returns the MemberIsManagedByUser field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaggingResponse) GetMemberIsManagedByUser() bool {
-	if o == nil || o.MemberIsManagedByUser.Get() == nil {
+	if o == nil || IsNil(o.MemberIsManagedByUser.Get()) {
 		var ret bool
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *TaggingResponse) GetMemberIsManagedByUser() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaggingResponse) GetMemberIsManagedByUserOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberIsManagedByUser.Get(), o.MemberIsManagedByUser.IsSet()
@@ -126,7 +129,7 @@ func (o *TaggingResponse) UnsetMemberIsManagedByUser() {
 
 // GetTagGuid returns the TagGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaggingResponse) GetTagGuid() string {
-	if o == nil || o.TagGuid.Get() == nil {
+	if o == nil || IsNil(o.TagGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -137,7 +140,7 @@ func (o *TaggingResponse) GetTagGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaggingResponse) GetTagGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TagGuid.Get(), o.TagGuid.IsSet()
@@ -168,7 +171,7 @@ func (o *TaggingResponse) UnsetTagGuid() {
 
 // GetTransactionGuid returns the TransactionGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaggingResponse) GetTransactionGuid() string {
-	if o == nil || o.TransactionGuid.Get() == nil {
+	if o == nil || IsNil(o.TransactionGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -179,7 +182,7 @@ func (o *TaggingResponse) GetTransactionGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaggingResponse) GetTransactionGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TransactionGuid.Get(), o.TransactionGuid.IsSet()
@@ -210,7 +213,7 @@ func (o *TaggingResponse) UnsetTransactionGuid() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaggingResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *TaggingResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaggingResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -251,6 +254,14 @@ func (o *TaggingResponse) UnsetUserGuid() {
 }
 
 func (o TaggingResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TaggingResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Guid.IsSet() {
 		toSerialize["guid"] = o.Guid.Get()
@@ -267,7 +278,7 @@ func (o TaggingResponse) MarshalJSON() ([]byte, error) {
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTaggingResponse struct {

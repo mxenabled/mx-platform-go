@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaxDocumentResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaxDocumentResponse{}
+
 // TaxDocumentResponse struct for TaxDocumentResponse
 type TaxDocumentResponse struct {
 	ContentHash NullableString `json:"content_hash,omitempty"`
@@ -47,7 +50,7 @@ func NewTaxDocumentResponseWithDefaults() *TaxDocumentResponse {
 
 // GetContentHash returns the ContentHash field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetContentHash() string {
-	if o == nil || o.ContentHash.Get() == nil {
+	if o == nil || IsNil(o.ContentHash.Get()) {
 		var ret string
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *TaxDocumentResponse) GetContentHash() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetContentHashOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ContentHash.Get(), o.ContentHash.IsSet()
@@ -89,7 +92,7 @@ func (o *TaxDocumentResponse) UnsetContentHash() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -100,7 +103,7 @@ func (o *TaxDocumentResponse) GetCreatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
@@ -131,7 +134,7 @@ func (o *TaxDocumentResponse) UnsetCreatedAt() {
 
 // GetDocumentType returns the DocumentType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetDocumentType() string {
-	if o == nil || o.DocumentType.Get() == nil {
+	if o == nil || IsNil(o.DocumentType.Get()) {
 		var ret string
 		return ret
 	}
@@ -142,7 +145,7 @@ func (o *TaxDocumentResponse) GetDocumentType() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetDocumentTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.DocumentType.Get(), o.DocumentType.IsSet()
@@ -173,7 +176,7 @@ func (o *TaxDocumentResponse) UnsetDocumentType() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *TaxDocumentResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -215,7 +218,7 @@ func (o *TaxDocumentResponse) UnsetGuid() {
 
 // GetIssuedOn returns the IssuedOn field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetIssuedOn() string {
-	if o == nil || o.IssuedOn.Get() == nil {
+	if o == nil || IsNil(o.IssuedOn.Get()) {
 		var ret string
 		return ret
 	}
@@ -226,7 +229,7 @@ func (o *TaxDocumentResponse) GetIssuedOn() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetIssuedOnOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IssuedOn.Get(), o.IssuedOn.IsSet()
@@ -257,7 +260,7 @@ func (o *TaxDocumentResponse) UnsetIssuedOn() {
 
 // GetMemberGuid returns the MemberGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetMemberGuid() string {
-	if o == nil || o.MemberGuid.Get() == nil {
+	if o == nil || IsNil(o.MemberGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -268,7 +271,7 @@ func (o *TaxDocumentResponse) GetMemberGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetMemberGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberGuid.Get(), o.MemberGuid.IsSet()
@@ -299,7 +302,7 @@ func (o *TaxDocumentResponse) UnsetMemberGuid() {
 
 // GetTaxYear returns the TaxYear field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetTaxYear() string {
-	if o == nil || o.TaxYear.Get() == nil {
+	if o == nil || IsNil(o.TaxYear.Get()) {
 		var ret string
 		return ret
 	}
@@ -310,7 +313,7 @@ func (o *TaxDocumentResponse) GetTaxYear() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetTaxYearOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TaxYear.Get(), o.TaxYear.IsSet()
@@ -341,7 +344,7 @@ func (o *TaxDocumentResponse) UnsetTaxYear() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -352,7 +355,7 @@ func (o *TaxDocumentResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -383,7 +386,7 @@ func (o *TaxDocumentResponse) UnsetUpdatedAt() {
 
 // GetUri returns the Uri field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetUri() string {
-	if o == nil || o.Uri.Get() == nil {
+	if o == nil || IsNil(o.Uri.Get()) {
 		var ret string
 		return ret
 	}
@@ -394,7 +397,7 @@ func (o *TaxDocumentResponse) GetUri() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetUriOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Uri.Get(), o.Uri.IsSet()
@@ -425,7 +428,7 @@ func (o *TaxDocumentResponse) UnsetUri() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxDocumentResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -436,7 +439,7 @@ func (o *TaxDocumentResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxDocumentResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -466,6 +469,14 @@ func (o *TaxDocumentResponse) UnsetUserGuid() {
 }
 
 func (o TaxDocumentResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TaxDocumentResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ContentHash.IsSet() {
 		toSerialize["content_hash"] = o.ContentHash.Get()
@@ -497,7 +508,7 @@ func (o TaxDocumentResponse) MarshalJSON() ([]byte, error) {
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTaxDocumentResponse struct {

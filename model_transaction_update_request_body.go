@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransactionUpdateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransactionUpdateRequestBody{}
+
 // TransactionUpdateRequestBody struct for TransactionUpdateRequestBody
 type TransactionUpdateRequestBody struct {
 	Transaction *TransactionUpdateRequest `json:"transaction,omitempty"`
@@ -38,7 +41,7 @@ func NewTransactionUpdateRequestBodyWithDefaults() *TransactionUpdateRequestBody
 
 // GetTransaction returns the Transaction field value if set, zero value otherwise.
 func (o *TransactionUpdateRequestBody) GetTransaction() TransactionUpdateRequest {
-	if o == nil || o.Transaction == nil {
+	if o == nil || IsNil(o.Transaction) {
 		var ret TransactionUpdateRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *TransactionUpdateRequestBody) GetTransaction() TransactionUpdateRequest
 // GetTransactionOk returns a tuple with the Transaction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionUpdateRequestBody) GetTransactionOk() (*TransactionUpdateRequest, bool) {
-	if o == nil || o.Transaction == nil {
+	if o == nil || IsNil(o.Transaction) {
 		return nil, false
 	}
 	return o.Transaction, true
@@ -56,7 +59,7 @@ func (o *TransactionUpdateRequestBody) GetTransactionOk() (*TransactionUpdateReq
 
 // HasTransaction returns a boolean if a field has been set.
 func (o *TransactionUpdateRequestBody) HasTransaction() bool {
-	if o != nil && o.Transaction != nil {
+	if o != nil && !IsNil(o.Transaction) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *TransactionUpdateRequestBody) SetTransaction(v TransactionUpdateRequest
 }
 
 func (o TransactionUpdateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Transaction != nil {
-		toSerialize["transaction"] = o.Transaction
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TransactionUpdateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Transaction) {
+		toSerialize["transaction"] = o.Transaction
+	}
+	return toSerialize, nil
 }
 
 type NullableTransactionUpdateRequestBody struct {

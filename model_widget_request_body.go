@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WidgetRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WidgetRequestBody{}
+
 // WidgetRequestBody struct for WidgetRequestBody
 type WidgetRequestBody struct {
 	WidgetUrl *WidgetRequest `json:"widget_url,omitempty"`
@@ -38,7 +41,7 @@ func NewWidgetRequestBodyWithDefaults() *WidgetRequestBody {
 
 // GetWidgetUrl returns the WidgetUrl field value if set, zero value otherwise.
 func (o *WidgetRequestBody) GetWidgetUrl() WidgetRequest {
-	if o == nil || o.WidgetUrl == nil {
+	if o == nil || IsNil(o.WidgetUrl) {
 		var ret WidgetRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *WidgetRequestBody) GetWidgetUrl() WidgetRequest {
 // GetWidgetUrlOk returns a tuple with the WidgetUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WidgetRequestBody) GetWidgetUrlOk() (*WidgetRequest, bool) {
-	if o == nil || o.WidgetUrl == nil {
+	if o == nil || IsNil(o.WidgetUrl) {
 		return nil, false
 	}
 	return o.WidgetUrl, true
@@ -56,7 +59,7 @@ func (o *WidgetRequestBody) GetWidgetUrlOk() (*WidgetRequest, bool) {
 
 // HasWidgetUrl returns a boolean if a field has been set.
 func (o *WidgetRequestBody) HasWidgetUrl() bool {
-	if o != nil && o.WidgetUrl != nil {
+	if o != nil && !IsNil(o.WidgetUrl) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *WidgetRequestBody) SetWidgetUrl(v WidgetRequest) {
 }
 
 func (o WidgetRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.WidgetUrl != nil {
-		toSerialize["widget_url"] = o.WidgetUrl
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o WidgetRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.WidgetUrl) {
+		toSerialize["widget_url"] = o.WidgetUrl
+	}
+	return toSerialize, nil
 }
 
 type NullableWidgetRequestBody struct {

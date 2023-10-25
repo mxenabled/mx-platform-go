@@ -1,122 +1,122 @@
-# \MxPlatformApi
+# \MxPlatformAPI
 
 All URIs are relative to *https://api.mx.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AggregateMember**](MxPlatformApi.md#AggregateMember) | **Post** /users/{user_guid}/members/{member_guid}/aggregate | Aggregate member
-[**CheckBalances**](MxPlatformApi.md#CheckBalances) | **Post** /users/{user_guid}/members/{member_guid}/check_balance | Check balances
-[**CreateCategory**](MxPlatformApi.md#CreateCategory) | **Post** /users/{user_guid}/categories | Create category
-[**CreateManagedAccount**](MxPlatformApi.md#CreateManagedAccount) | **Post** /users/{user_guid}/managed_members/{member_guid}/accounts | Create managed account
-[**CreateManagedMember**](MxPlatformApi.md#CreateManagedMember) | **Post** /users/{user_guid}/managed_members | Create managed member
-[**CreateManagedTransaction**](MxPlatformApi.md#CreateManagedTransaction) | **Post** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions | Create managed transaction
-[**CreateManualAccount**](MxPlatformApi.md#CreateManualAccount) | **Post** /users/{user_guid}/accounts | Create manual account
-[**CreateMember**](MxPlatformApi.md#CreateMember) | **Post** /users/{user_guid}/members | Create member
-[**CreateSpendingPlan**](MxPlatformApi.md#CreateSpendingPlan) | **Post** /users/{user_guid}/spending_plans | Create spending plan
-[**CreateSpendingPlanIterationItem**](MxPlatformApi.md#CreateSpendingPlanIterationItem) | **Post** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items | Create spending plan iteration item
-[**CreateTag**](MxPlatformApi.md#CreateTag) | **Post** /users/{user_guid}/tags | Create tag
-[**CreateTagging**](MxPlatformApi.md#CreateTagging) | **Post** /users/{user_guid}/taggings | Create tagging
-[**CreateTransactionRule**](MxPlatformApi.md#CreateTransactionRule) | **Post** /users/{user_guid}/transaction_rules | Create transaction rule
-[**CreateUser**](MxPlatformApi.md#CreateUser) | **Post** /users | Create user
-[**DeleteCategory**](MxPlatformApi.md#DeleteCategory) | **Delete** /users/{user_guid}/categories/{category_guid} | Delete category
-[**DeleteManagedAccount**](MxPlatformApi.md#DeleteManagedAccount) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Delete managed account
-[**DeleteManagedMember**](MxPlatformApi.md#DeleteManagedMember) | **Delete** /users/{user_guid}/managed_members/{member_guid} | Delete managed member
-[**DeleteManagedTransaction**](MxPlatformApi.md#DeleteManagedTransaction) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Delete managed transaction
-[**DeleteManualAccount**](MxPlatformApi.md#DeleteManualAccount) | **Delete** /users/{user_guid}/accounts/{account_guid} | Delete manual account
-[**DeleteMember**](MxPlatformApi.md#DeleteMember) | **Delete** /users/{user_guid}/members/{member_guid} | Delete member
-[**DeleteSpendingPlan**](MxPlatformApi.md#DeleteSpendingPlan) | **Delete** /users/{user_guid}/spending_plans/{spending_plan_guid} | Delete spending plan
-[**DeleteSpendingPlanAccount**](MxPlatformApi.md#DeleteSpendingPlanAccount) | **Delete** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid} | Delete spending plan account
-[**DeleteSpendingPlanIterationItem**](MxPlatformApi.md#DeleteSpendingPlanIterationItem) | **Delete** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Delete spending plan iteration item
-[**DeleteTag**](MxPlatformApi.md#DeleteTag) | **Delete** /users/{user_guid}/tags/{tag_guid} | Delete tag
-[**DeleteTagging**](MxPlatformApi.md#DeleteTagging) | **Delete** /users/{user_guid}/taggings/{tagging_guid} | Delete tagging
-[**DeleteTransactionRule**](MxPlatformApi.md#DeleteTransactionRule) | **Delete** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Delete transaction rule
-[**DeleteUser**](MxPlatformApi.md#DeleteUser) | **Delete** /users/{user_guid} | Delete user
-[**DeprecatedRequestPaymentProcessorAuthorizationCode**](MxPlatformApi.md#DeprecatedRequestPaymentProcessorAuthorizationCode) | **Post** /payment_processor_authorization_code | (Deprecated) Request an authorization code.
-[**DownloadStatementPDF**](MxPlatformApi.md#DownloadStatementPDF) | **Get** /users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf | Download statement pdf
-[**DownloadTaxDocument**](MxPlatformApi.md#DownloadTaxDocument) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}.pdf | Download a Tax Document PDF
-[**EnhanceTransactions**](MxPlatformApi.md#EnhanceTransactions) | **Post** /transactions/enhance | Enhance transactions
-[**ExtendHistory**](MxPlatformApi.md#ExtendHistory) | **Post** /users/{user_guid}/members/{member_guid}/extend_history | Extend history
-[**FetchStatements**](MxPlatformApi.md#FetchStatements) | **Post** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
-[**FetchTaxDocuments**](MxPlatformApi.md#FetchTaxDocuments) | **Post** /users/{user_guid}/members/{member_guid}/fetch_tax_documents | Fetch Tax Documents
-[**IdentifyMember**](MxPlatformApi.md#IdentifyMember) | **Post** /users/{user_guid}/members/{member_guid}/identify | Identify member
-[**ListAccountNumbersByAccount**](MxPlatformApi.md#ListAccountNumbersByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/account_numbers | List account numbers by account
-[**ListAccountNumbersByMember**](MxPlatformApi.md#ListAccountNumbersByMember) | **Get** /users/{user_guid}/members/{member_guid}/account_numbers | List account numbers by member
-[**ListAccountOwnersByMember**](MxPlatformApi.md#ListAccountOwnersByMember) | **Get** /users/{user_guid}/members/{member_guid}/account_owners | List account owners by member
-[**ListCategories**](MxPlatformApi.md#ListCategories) | **Get** /users/{user_guid}/categories | List categories
-[**ListDefaultCategories**](MxPlatformApi.md#ListDefaultCategories) | **Get** /categories/default | List default categories
-[**ListDefaultCategoriesByUser**](MxPlatformApi.md#ListDefaultCategoriesByUser) | **Get** /users/{user_guid}/categories/default | List default categories by user
-[**ListFavoriteInstitutions**](MxPlatformApi.md#ListFavoriteInstitutions) | **Get** /institutions/favorites | List favorite institutions
-[**ListHoldings**](MxPlatformApi.md#ListHoldings) | **Get** /users/{user_guid}/holdings | List holdings
-[**ListHoldingsByAccount**](MxPlatformApi.md#ListHoldingsByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/holdings | List holdings by account
-[**ListHoldingsByMember**](MxPlatformApi.md#ListHoldingsByMember) | **Get** /users/{user_guid}/members/{member_guid}/holdings | List holdings by member
-[**ListInstitutionCredentials**](MxPlatformApi.md#ListInstitutionCredentials) | **Get** /institutions/{institution_code}/credentials | List institution credentials
-[**ListInstitutions**](MxPlatformApi.md#ListInstitutions) | **Get** /institutions | List institutions
-[**ListManagedAccounts**](MxPlatformApi.md#ListManagedAccounts) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts | List managed accounts
-[**ListManagedInstitutions**](MxPlatformApi.md#ListManagedInstitutions) | **Get** /managed_institutions | List managed institutions
-[**ListManagedMembers**](MxPlatformApi.md#ListManagedMembers) | **Get** /users/{user_guid}/managed_members | List managed members
-[**ListManagedTransactions**](MxPlatformApi.md#ListManagedTransactions) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions | List managed transactions
-[**ListMemberAccounts**](MxPlatformApi.md#ListMemberAccounts) | **Get** /users/{user_guid}/members/{member_guid}/accounts | List accounts by member
-[**ListMemberChallenges**](MxPlatformApi.md#ListMemberChallenges) | **Get** /users/{user_guid}/members/{member_guid}/challenges | List member challenges
-[**ListMemberCredentials**](MxPlatformApi.md#ListMemberCredentials) | **Get** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
-[**ListMembers**](MxPlatformApi.md#ListMembers) | **Get** /users/{user_guid}/members | List members
-[**ListMerchants**](MxPlatformApi.md#ListMerchants) | **Get** /merchants | List merchants
-[**ListSpendingPlanAccounts**](MxPlatformApi.md#ListSpendingPlanAccounts) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts | List spending plan accounts
-[**ListSpendingPlanIterationItems**](MxPlatformApi.md#ListSpendingPlanIterationItems) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items | List spending plan iteration items
-[**ListSpendingPlanIterations**](MxPlatformApi.md#ListSpendingPlanIterations) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations | List spending plan iterations
-[**ListSpendingPlans**](MxPlatformApi.md#ListSpendingPlans) | **Get** /users/{user_guid}/spending_plans | List spending plans
-[**ListStatementsByMember**](MxPlatformApi.md#ListStatementsByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements | List statements by member
-[**ListTaggings**](MxPlatformApi.md#ListTaggings) | **Get** /users/{user_guid}/taggings | List taggings
-[**ListTags**](MxPlatformApi.md#ListTags) | **Get** /users/{user_guid}/tags | List tags
-[**ListTaxDocuments**](MxPlatformApi.md#ListTaxDocuments) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents | List Tax Documents
-[**ListTransactionRules**](MxPlatformApi.md#ListTransactionRules) | **Get** /users/{user_guid}/transaction_rules | List transaction rules
-[**ListTransactions**](MxPlatformApi.md#ListTransactions) | **Get** /users/{user_guid}/transactions | List transactions
-[**ListTransactionsByAccount**](MxPlatformApi.md#ListTransactionsByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/transactions | List transactions by account
-[**ListTransactionsByMember**](MxPlatformApi.md#ListTransactionsByMember) | **Get** /users/{user_guid}/members/{member_guid}/transactions | List transactions by member
-[**ListTransactionsByTag**](MxPlatformApi.md#ListTransactionsByTag) | **Get** /users/{user_guid}/tags/{tag_guid}/transactions | List transactions by tag
-[**ListUserAccounts**](MxPlatformApi.md#ListUserAccounts) | **Get** /users/{user_guid}/accounts | List accounts
-[**ListUsers**](MxPlatformApi.md#ListUsers) | **Get** /users | List users
-[**ReadAccount**](MxPlatformApi.md#ReadAccount) | **Get** /users/{user_guid}/accounts/{account_guid} | Read account
-[**ReadAccountByMember**](MxPlatformApi.md#ReadAccountByMember) | **Get** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Read account by member
-[**ReadCategory**](MxPlatformApi.md#ReadCategory) | **Get** /users/{user_guid}/categories/{category_guid} | Read a custom category
-[**ReadDefaultCategory**](MxPlatformApi.md#ReadDefaultCategory) | **Get** /categories/{category_guid} | Read a default category
-[**ReadHolding**](MxPlatformApi.md#ReadHolding) | **Get** /users/{user_guid}/holdings/{holding_guid} | Read holding
-[**ReadInstitution**](MxPlatformApi.md#ReadInstitution) | **Get** /institutions/{institution_code} | Read institution
-[**ReadManagedAccount**](MxPlatformApi.md#ReadManagedAccount) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Read managed account
-[**ReadManagedMember**](MxPlatformApi.md#ReadManagedMember) | **Get** /users/{user_guid}/managed_members/{member_guid} | Read managed member
-[**ReadManagedTransaction**](MxPlatformApi.md#ReadManagedTransaction) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Read managed transaction
-[**ReadMember**](MxPlatformApi.md#ReadMember) | **Get** /users/{user_guid}/members/{member_guid} | Read member
-[**ReadMemberStatus**](MxPlatformApi.md#ReadMemberStatus) | **Get** /users/{user_guid}/members/{member_guid}/status | Read member status
-[**ReadMerchant**](MxPlatformApi.md#ReadMerchant) | **Get** /merchants/{merchant_guid} | Read merchant
-[**ReadMerchantLocation**](MxPlatformApi.md#ReadMerchantLocation) | **Get** /merchant_locations/{merchant_location_guid} | Read merchant location
-[**ReadSpendingPlanAccount**](MxPlatformApi.md#ReadSpendingPlanAccount) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid} | Read spending plan account
-[**ReadSpendingPlanIteration**](MxPlatformApi.md#ReadSpendingPlanIteration) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/{iteration_number} | Read a spending plan iteration
-[**ReadSpendingPlanIterationItem**](MxPlatformApi.md#ReadSpendingPlanIterationItem) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Read a spending plan iteration item
-[**ReadSpendingPlanUser**](MxPlatformApi.md#ReadSpendingPlanUser) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid} | Read a spending plan for a user
-[**ReadStatementByMember**](MxPlatformApi.md#ReadStatementByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements/{statement_guid} | Read statement by member
-[**ReadTag**](MxPlatformApi.md#ReadTag) | **Get** /users/{user_guid}/tags/{tag_guid} | Read tag
-[**ReadTagging**](MxPlatformApi.md#ReadTagging) | **Get** /users/{user_guid}/taggings/{tagging_guid} | Read tagging
-[**ReadTaxDocument**](MxPlatformApi.md#ReadTaxDocument) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid} | Read a Tax Document
-[**ReadTransaction**](MxPlatformApi.md#ReadTransaction) | **Get** /users/{user_guid}/transactions/{transaction_guid} | Read transaction
-[**ReadTransactionRule**](MxPlatformApi.md#ReadTransactionRule) | **Get** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Read transaction rule
-[**ReadUser**](MxPlatformApi.md#ReadUser) | **Get** /users/{user_guid} | Read user
-[**RequestAuthorizationCode**](MxPlatformApi.md#RequestAuthorizationCode) | **Post** /authorization_code | Request an authorization code.
-[**RequestConnectWidgetURL**](MxPlatformApi.md#RequestConnectWidgetURL) | **Post** /users/{user_guid}/connect_widget_url | Request connect widget url
-[**RequestOAuthWindowURI**](MxPlatformApi.md#RequestOAuthWindowURI) | **Get** /users/{user_guid}/members/{member_guid}/oauth_window_uri | Request oauth window uri
-[**RequestWidgetURL**](MxPlatformApi.md#RequestWidgetURL) | **Post** /users/{user_guid}/widget_urls | Request widget url
-[**ResumeAggregation**](MxPlatformApi.md#ResumeAggregation) | **Put** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation
-[**UpdateAccountByMember**](MxPlatformApi.md#UpdateAccountByMember) | **Put** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Update account by member
-[**UpdateCategory**](MxPlatformApi.md#UpdateCategory) | **Put** /users/{user_guid}/categories/{category_guid} | Update category
-[**UpdateManagedAccount**](MxPlatformApi.md#UpdateManagedAccount) | **Put** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Update managed account
-[**UpdateManagedMember**](MxPlatformApi.md#UpdateManagedMember) | **Put** /users/{user_guid}/managed_members/{member_guid} | Update managed member
-[**UpdateManagedTransaction**](MxPlatformApi.md#UpdateManagedTransaction) | **Put** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Update managed transaction
-[**UpdateMember**](MxPlatformApi.md#UpdateMember) | **Put** /users/{user_guid}/members/{member_guid} | Update member
-[**UpdateSpendingPlanIterationItem**](MxPlatformApi.md#UpdateSpendingPlanIterationItem) | **Put** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Update a spending plan iteration item
-[**UpdateTag**](MxPlatformApi.md#UpdateTag) | **Put** /users/{user_guid}/tags/{tag_guid} | Update tag
-[**UpdateTagging**](MxPlatformApi.md#UpdateTagging) | **Put** /users/{user_guid}/taggings/{tagging_guid} | Update tagging
-[**UpdateTransaction**](MxPlatformApi.md#UpdateTransaction) | **Put** /users/{user_guid}/transactions/{transaction_guid} | Update transaction
-[**UpdateTransactionRule**](MxPlatformApi.md#UpdateTransactionRule) | **Put** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Update transaction_rule
-[**UpdateUser**](MxPlatformApi.md#UpdateUser) | **Put** /users/{user_guid} | Update user
-[**VerifyMember**](MxPlatformApi.md#VerifyMember) | **Post** /users/{user_guid}/members/{member_guid}/verify | Verify member
+[**AggregateMember**](MxPlatformAPI.md#AggregateMember) | **Post** /users/{user_guid}/members/{member_guid}/aggregate | Aggregate member
+[**CheckBalances**](MxPlatformAPI.md#CheckBalances) | **Post** /users/{user_guid}/members/{member_guid}/check_balance | Check balances
+[**CreateCategory**](MxPlatformAPI.md#CreateCategory) | **Post** /users/{user_guid}/categories | Create category
+[**CreateManagedAccount**](MxPlatformAPI.md#CreateManagedAccount) | **Post** /users/{user_guid}/managed_members/{member_guid}/accounts | Create managed account
+[**CreateManagedMember**](MxPlatformAPI.md#CreateManagedMember) | **Post** /users/{user_guid}/managed_members | Create managed member
+[**CreateManagedTransaction**](MxPlatformAPI.md#CreateManagedTransaction) | **Post** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions | Create managed transaction
+[**CreateManualAccount**](MxPlatformAPI.md#CreateManualAccount) | **Post** /users/{user_guid}/accounts | Create manual account
+[**CreateMember**](MxPlatformAPI.md#CreateMember) | **Post** /users/{user_guid}/members | Create member
+[**CreateSpendingPlan**](MxPlatformAPI.md#CreateSpendingPlan) | **Post** /users/{user_guid}/spending_plans | Create spending plan
+[**CreateSpendingPlanIterationItem**](MxPlatformAPI.md#CreateSpendingPlanIterationItem) | **Post** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items | Create spending plan iteration item
+[**CreateTag**](MxPlatformAPI.md#CreateTag) | **Post** /users/{user_guid}/tags | Create tag
+[**CreateTagging**](MxPlatformAPI.md#CreateTagging) | **Post** /users/{user_guid}/taggings | Create tagging
+[**CreateTransactionRule**](MxPlatformAPI.md#CreateTransactionRule) | **Post** /users/{user_guid}/transaction_rules | Create transaction rule
+[**CreateUser**](MxPlatformAPI.md#CreateUser) | **Post** /users | Create user
+[**DeleteCategory**](MxPlatformAPI.md#DeleteCategory) | **Delete** /users/{user_guid}/categories/{category_guid} | Delete category
+[**DeleteManagedAccount**](MxPlatformAPI.md#DeleteManagedAccount) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Delete managed account
+[**DeleteManagedMember**](MxPlatformAPI.md#DeleteManagedMember) | **Delete** /users/{user_guid}/managed_members/{member_guid} | Delete managed member
+[**DeleteManagedTransaction**](MxPlatformAPI.md#DeleteManagedTransaction) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Delete managed transaction
+[**DeleteManualAccount**](MxPlatformAPI.md#DeleteManualAccount) | **Delete** /users/{user_guid}/accounts/{account_guid} | Delete manual account
+[**DeleteMember**](MxPlatformAPI.md#DeleteMember) | **Delete** /users/{user_guid}/members/{member_guid} | Delete member
+[**DeleteSpendingPlan**](MxPlatformAPI.md#DeleteSpendingPlan) | **Delete** /users/{user_guid}/spending_plans/{spending_plan_guid} | Delete spending plan
+[**DeleteSpendingPlanAccount**](MxPlatformAPI.md#DeleteSpendingPlanAccount) | **Delete** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid} | Delete spending plan account
+[**DeleteSpendingPlanIterationItem**](MxPlatformAPI.md#DeleteSpendingPlanIterationItem) | **Delete** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Delete spending plan iteration item
+[**DeleteTag**](MxPlatformAPI.md#DeleteTag) | **Delete** /users/{user_guid}/tags/{tag_guid} | Delete tag
+[**DeleteTagging**](MxPlatformAPI.md#DeleteTagging) | **Delete** /users/{user_guid}/taggings/{tagging_guid} | Delete tagging
+[**DeleteTransactionRule**](MxPlatformAPI.md#DeleteTransactionRule) | **Delete** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Delete transaction rule
+[**DeleteUser**](MxPlatformAPI.md#DeleteUser) | **Delete** /users/{user_guid} | Delete user
+[**DeprecatedRequestPaymentProcessorAuthorizationCode**](MxPlatformAPI.md#DeprecatedRequestPaymentProcessorAuthorizationCode) | **Post** /payment_processor_authorization_code | (Deprecated) Request an authorization code.
+[**DownloadStatementPDF**](MxPlatformAPI.md#DownloadStatementPDF) | **Get** /users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf | Download statement pdf
+[**DownloadTaxDocument**](MxPlatformAPI.md#DownloadTaxDocument) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}.pdf | Download a Tax Document PDF
+[**EnhanceTransactions**](MxPlatformAPI.md#EnhanceTransactions) | **Post** /transactions/enhance | Enhance transactions
+[**ExtendHistory**](MxPlatformAPI.md#ExtendHistory) | **Post** /users/{user_guid}/members/{member_guid}/extend_history | Extend history
+[**FetchStatements**](MxPlatformAPI.md#FetchStatements) | **Post** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
+[**FetchTaxDocuments**](MxPlatformAPI.md#FetchTaxDocuments) | **Post** /users/{user_guid}/members/{member_guid}/fetch_tax_documents | Fetch Tax Documents
+[**IdentifyMember**](MxPlatformAPI.md#IdentifyMember) | **Post** /users/{user_guid}/members/{member_guid}/identify | Identify member
+[**ListAccountNumbersByAccount**](MxPlatformAPI.md#ListAccountNumbersByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/account_numbers | List account numbers by account
+[**ListAccountNumbersByMember**](MxPlatformAPI.md#ListAccountNumbersByMember) | **Get** /users/{user_guid}/members/{member_guid}/account_numbers | List account numbers by member
+[**ListAccountOwnersByMember**](MxPlatformAPI.md#ListAccountOwnersByMember) | **Get** /users/{user_guid}/members/{member_guid}/account_owners | List account owners by member
+[**ListCategories**](MxPlatformAPI.md#ListCategories) | **Get** /users/{user_guid}/categories | List categories
+[**ListDefaultCategories**](MxPlatformAPI.md#ListDefaultCategories) | **Get** /categories/default | List default categories
+[**ListDefaultCategoriesByUser**](MxPlatformAPI.md#ListDefaultCategoriesByUser) | **Get** /users/{user_guid}/categories/default | List default categories by user
+[**ListFavoriteInstitutions**](MxPlatformAPI.md#ListFavoriteInstitutions) | **Get** /institutions/favorites | List favorite institutions
+[**ListHoldings**](MxPlatformAPI.md#ListHoldings) | **Get** /users/{user_guid}/holdings | List holdings
+[**ListHoldingsByAccount**](MxPlatformAPI.md#ListHoldingsByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/holdings | List holdings by account
+[**ListHoldingsByMember**](MxPlatformAPI.md#ListHoldingsByMember) | **Get** /users/{user_guid}/members/{member_guid}/holdings | List holdings by member
+[**ListInstitutionCredentials**](MxPlatformAPI.md#ListInstitutionCredentials) | **Get** /institutions/{institution_code}/credentials | List institution credentials
+[**ListInstitutions**](MxPlatformAPI.md#ListInstitutions) | **Get** /institutions | List institutions
+[**ListManagedAccounts**](MxPlatformAPI.md#ListManagedAccounts) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts | List managed accounts
+[**ListManagedInstitutions**](MxPlatformAPI.md#ListManagedInstitutions) | **Get** /managed_institutions | List managed institutions
+[**ListManagedMembers**](MxPlatformAPI.md#ListManagedMembers) | **Get** /users/{user_guid}/managed_members | List managed members
+[**ListManagedTransactions**](MxPlatformAPI.md#ListManagedTransactions) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions | List managed transactions
+[**ListMemberAccounts**](MxPlatformAPI.md#ListMemberAccounts) | **Get** /users/{user_guid}/members/{member_guid}/accounts | List accounts by member
+[**ListMemberChallenges**](MxPlatformAPI.md#ListMemberChallenges) | **Get** /users/{user_guid}/members/{member_guid}/challenges | List member challenges
+[**ListMemberCredentials**](MxPlatformAPI.md#ListMemberCredentials) | **Get** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
+[**ListMembers**](MxPlatformAPI.md#ListMembers) | **Get** /users/{user_guid}/members | List members
+[**ListMerchants**](MxPlatformAPI.md#ListMerchants) | **Get** /merchants | List merchants
+[**ListSpendingPlanAccounts**](MxPlatformAPI.md#ListSpendingPlanAccounts) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts | List spending plan accounts
+[**ListSpendingPlanIterationItems**](MxPlatformAPI.md#ListSpendingPlanIterationItems) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items | List spending plan iteration items
+[**ListSpendingPlanIterations**](MxPlatformAPI.md#ListSpendingPlanIterations) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations | List spending plan iterations
+[**ListSpendingPlans**](MxPlatformAPI.md#ListSpendingPlans) | **Get** /users/{user_guid}/spending_plans | List spending plans
+[**ListStatementsByMember**](MxPlatformAPI.md#ListStatementsByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements | List statements by member
+[**ListTaggings**](MxPlatformAPI.md#ListTaggings) | **Get** /users/{user_guid}/taggings | List taggings
+[**ListTags**](MxPlatformAPI.md#ListTags) | **Get** /users/{user_guid}/tags | List tags
+[**ListTaxDocuments**](MxPlatformAPI.md#ListTaxDocuments) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents | List Tax Documents
+[**ListTransactionRules**](MxPlatformAPI.md#ListTransactionRules) | **Get** /users/{user_guid}/transaction_rules | List transaction rules
+[**ListTransactions**](MxPlatformAPI.md#ListTransactions) | **Get** /users/{user_guid}/transactions | List transactions
+[**ListTransactionsByAccount**](MxPlatformAPI.md#ListTransactionsByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/transactions | List transactions by account
+[**ListTransactionsByMember**](MxPlatformAPI.md#ListTransactionsByMember) | **Get** /users/{user_guid}/members/{member_guid}/transactions | List transactions by member
+[**ListTransactionsByTag**](MxPlatformAPI.md#ListTransactionsByTag) | **Get** /users/{user_guid}/tags/{tag_guid}/transactions | List transactions by tag
+[**ListUserAccounts**](MxPlatformAPI.md#ListUserAccounts) | **Get** /users/{user_guid}/accounts | List accounts
+[**ListUsers**](MxPlatformAPI.md#ListUsers) | **Get** /users | List users
+[**ReadAccount**](MxPlatformAPI.md#ReadAccount) | **Get** /users/{user_guid}/accounts/{account_guid} | Read account
+[**ReadAccountByMember**](MxPlatformAPI.md#ReadAccountByMember) | **Get** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Read account by member
+[**ReadCategory**](MxPlatformAPI.md#ReadCategory) | **Get** /users/{user_guid}/categories/{category_guid} | Read a custom category
+[**ReadDefaultCategory**](MxPlatformAPI.md#ReadDefaultCategory) | **Get** /categories/{category_guid} | Read a default category
+[**ReadHolding**](MxPlatformAPI.md#ReadHolding) | **Get** /users/{user_guid}/holdings/{holding_guid} | Read holding
+[**ReadInstitution**](MxPlatformAPI.md#ReadInstitution) | **Get** /institutions/{institution_code} | Read institution
+[**ReadManagedAccount**](MxPlatformAPI.md#ReadManagedAccount) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Read managed account
+[**ReadManagedMember**](MxPlatformAPI.md#ReadManagedMember) | **Get** /users/{user_guid}/managed_members/{member_guid} | Read managed member
+[**ReadManagedTransaction**](MxPlatformAPI.md#ReadManagedTransaction) | **Get** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Read managed transaction
+[**ReadMember**](MxPlatformAPI.md#ReadMember) | **Get** /users/{user_guid}/members/{member_guid} | Read member
+[**ReadMemberStatus**](MxPlatformAPI.md#ReadMemberStatus) | **Get** /users/{user_guid}/members/{member_guid}/status | Read member status
+[**ReadMerchant**](MxPlatformAPI.md#ReadMerchant) | **Get** /merchants/{merchant_guid} | Read merchant
+[**ReadMerchantLocation**](MxPlatformAPI.md#ReadMerchantLocation) | **Get** /merchant_locations/{merchant_location_guid} | Read merchant location
+[**ReadSpendingPlanAccount**](MxPlatformAPI.md#ReadSpendingPlanAccount) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid} | Read spending plan account
+[**ReadSpendingPlanIteration**](MxPlatformAPI.md#ReadSpendingPlanIteration) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/{iteration_number} | Read a spending plan iteration
+[**ReadSpendingPlanIterationItem**](MxPlatformAPI.md#ReadSpendingPlanIterationItem) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Read a spending plan iteration item
+[**ReadSpendingPlanUser**](MxPlatformAPI.md#ReadSpendingPlanUser) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid} | Read a spending plan for a user
+[**ReadStatementByMember**](MxPlatformAPI.md#ReadStatementByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements/{statement_guid} | Read statement by member
+[**ReadTag**](MxPlatformAPI.md#ReadTag) | **Get** /users/{user_guid}/tags/{tag_guid} | Read tag
+[**ReadTagging**](MxPlatformAPI.md#ReadTagging) | **Get** /users/{user_guid}/taggings/{tagging_guid} | Read tagging
+[**ReadTaxDocument**](MxPlatformAPI.md#ReadTaxDocument) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid} | Read a Tax Document
+[**ReadTransaction**](MxPlatformAPI.md#ReadTransaction) | **Get** /users/{user_guid}/transactions/{transaction_guid} | Read transaction
+[**ReadTransactionRule**](MxPlatformAPI.md#ReadTransactionRule) | **Get** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Read transaction rule
+[**ReadUser**](MxPlatformAPI.md#ReadUser) | **Get** /users/{user_guid} | Read user
+[**RequestAuthorizationCode**](MxPlatformAPI.md#RequestAuthorizationCode) | **Post** /authorization_code | Request an authorization code.
+[**RequestConnectWidgetURL**](MxPlatformAPI.md#RequestConnectWidgetURL) | **Post** /users/{user_guid}/connect_widget_url | Request connect widget url
+[**RequestOAuthWindowURI**](MxPlatformAPI.md#RequestOAuthWindowURI) | **Get** /users/{user_guid}/members/{member_guid}/oauth_window_uri | Request oauth window uri
+[**RequestWidgetURL**](MxPlatformAPI.md#RequestWidgetURL) | **Post** /users/{user_guid}/widget_urls | Request widget url
+[**ResumeAggregation**](MxPlatformAPI.md#ResumeAggregation) | **Put** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation
+[**UpdateAccountByMember**](MxPlatformAPI.md#UpdateAccountByMember) | **Put** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Update account by member
+[**UpdateCategory**](MxPlatformAPI.md#UpdateCategory) | **Put** /users/{user_guid}/categories/{category_guid} | Update category
+[**UpdateManagedAccount**](MxPlatformAPI.md#UpdateManagedAccount) | **Put** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Update managed account
+[**UpdateManagedMember**](MxPlatformAPI.md#UpdateManagedMember) | **Put** /users/{user_guid}/managed_members/{member_guid} | Update managed member
+[**UpdateManagedTransaction**](MxPlatformAPI.md#UpdateManagedTransaction) | **Put** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid} | Update managed transaction
+[**UpdateMember**](MxPlatformAPI.md#UpdateMember) | **Put** /users/{user_guid}/members/{member_guid} | Update member
+[**UpdateSpendingPlanIterationItem**](MxPlatformAPI.md#UpdateSpendingPlanIterationItem) | **Put** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Update a spending plan iteration item
+[**UpdateTag**](MxPlatformAPI.md#UpdateTag) | **Put** /users/{user_guid}/tags/{tag_guid} | Update tag
+[**UpdateTagging**](MxPlatformAPI.md#UpdateTagging) | **Put** /users/{user_guid}/taggings/{tagging_guid} | Update tagging
+[**UpdateTransaction**](MxPlatformAPI.md#UpdateTransaction) | **Put** /users/{user_guid}/transactions/{transaction_guid} | Update transaction
+[**UpdateTransactionRule**](MxPlatformAPI.md#UpdateTransactionRule) | **Put** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Update transaction_rule
+[**UpdateUser**](MxPlatformAPI.md#UpdateUser) | **Put** /users/{user_guid} | Update user
+[**VerifyMember**](MxPlatformAPI.md#VerifyMember) | **Post** /users/{user_guid}/members/{member_guid}/verify | Verify member
 
 
 
@@ -137,7 +137,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -146,13 +146,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.AggregateMember(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.AggregateMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.AggregateMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.AggregateMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `AggregateMember`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.AggregateMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.AggregateMember`: %v\n", resp)
 }
 ```
 
@@ -210,7 +210,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -219,13 +219,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CheckBalances(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CheckBalances(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CheckBalances``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CheckBalances``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CheckBalances`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CheckBalances`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CheckBalances`: %v\n", resp)
 }
 ```
 
@@ -283,7 +283,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -292,13 +292,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateCategory(context.Background(), userGuid).CategoryCreateRequestBody(categoryCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateCategory(context.Background(), userGuid).CategoryCreateRequestBody(categoryCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateCategory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateCategory`: CategoryResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateCategory`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateCategory`: %v\n", resp)
 }
 ```
 
@@ -355,7 +355,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -365,13 +365,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateManagedAccount(context.Background(), memberGuid, userGuid).ManagedAccountCreateRequestBody(managedAccountCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateManagedAccount(context.Background(), memberGuid, userGuid).ManagedAccountCreateRequestBody(managedAccountCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManagedAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateManagedAccount`: AccountResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateManagedAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateManagedAccount`: %v\n", resp)
 }
 ```
 
@@ -430,7 +430,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -439,13 +439,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateManagedMember(context.Background(), userGuid).ManagedMemberCreateRequestBody(managedMemberCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateManagedMember(context.Background(), userGuid).ManagedMemberCreateRequestBody(managedMemberCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManagedMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateManagedMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateManagedMember`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateManagedMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateManagedMember`: %v\n", resp)
 }
 ```
 
@@ -502,7 +502,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -513,13 +513,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateManagedTransaction(context.Background(), accountGuid, memberGuid, userGuid).ManagedTransactionCreateRequestBody(managedTransactionCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateManagedTransaction(context.Background(), accountGuid, memberGuid, userGuid).ManagedTransactionCreateRequestBody(managedTransactionCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManagedTransaction``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateManagedTransaction`: TransactionResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateManagedTransaction`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateManagedTransaction`: %v\n", resp)
 }
 ```
 
@@ -580,7 +580,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -589,13 +589,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateManualAccount(context.Background(), userGuid).AccountCreateRequestBody(accountCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateManualAccount(context.Background(), userGuid).AccountCreateRequestBody(accountCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateManualAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateManualAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateManualAccount`: AccountResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateManualAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateManualAccount`: %v\n", resp)
 }
 ```
 
@@ -652,7 +652,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -661,13 +661,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateMember(context.Background(), userGuid).MemberCreateRequestBody(memberCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateMember(context.Background(), userGuid).MemberCreateRequestBody(memberCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateMember`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateMember`: %v\n", resp)
 }
 ```
 
@@ -724,7 +724,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -732,13 +732,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateSpendingPlan(context.Background(), userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateSpendingPlan(context.Background(), userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateSpendingPlan``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateSpendingPlan``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateSpendingPlan`: SpendingPlanResponse
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateSpendingPlan`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateSpendingPlan`: %v\n", resp)
 }
 ```
 
@@ -794,7 +794,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -804,13 +804,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateSpendingPlanIterationItem(context.Background(), spendingPlanGuid, userGuid).SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateSpendingPlanIterationItem(context.Background(), spendingPlanGuid, userGuid).SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateSpendingPlanIterationItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateSpendingPlanIterationItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateSpendingPlanIterationItem`: SpendingPlanIterationItemResponse
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateSpendingPlanIterationItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateSpendingPlanIterationItem`: %v\n", resp)
 }
 ```
 
@@ -869,7 +869,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -878,13 +878,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateTag(context.Background(), userGuid).TagCreateRequestBody(tagCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateTag(context.Background(), userGuid).TagCreateRequestBody(tagCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateTag``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateTag`: TagResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateTag`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateTag`: %v\n", resp)
 }
 ```
 
@@ -941,7 +941,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -950,13 +950,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateTagging(context.Background(), userGuid).TaggingCreateRequestBody(taggingCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateTagging(context.Background(), userGuid).TaggingCreateRequestBody(taggingCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateTagging``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateTagging``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateTagging`: TaggingResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateTagging`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateTagging`: %v\n", resp)
 }
 ```
 
@@ -1013,7 +1013,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1022,13 +1022,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateTransactionRule(context.Background(), userGuid).TransactionRuleCreateRequestBody(transactionRuleCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateTransactionRule(context.Background(), userGuid).TransactionRuleCreateRequestBody(transactionRuleCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateTransactionRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateTransactionRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateTransactionRule`: TransactionRuleResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateTransactionRule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateTransactionRule`: %v\n", resp)
 }
 ```
 
@@ -1085,7 +1085,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1093,13 +1093,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.CreateUser(context.Background()).UserCreateRequestBody(userCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.CreateUser(context.Background()).UserCreateRequestBody(userCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.CreateUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreateUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateUser`: UserResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.CreateUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreateUser`: %v\n", resp)
 }
 ```
 
@@ -1151,7 +1151,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1160,9 +1160,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteCategory(context.Background(), categoryGuid, userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteCategory(context.Background(), categoryGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteCategory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1222,7 +1222,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1232,9 +1232,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteManagedAccount(context.Background(), accountGuid, memberGuid, userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteManagedAccount(context.Background(), accountGuid, memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManagedAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1296,7 +1296,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1305,9 +1305,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteManagedMember(context.Background(), memberGuid, userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteManagedMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManagedMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteManagedMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1367,7 +1367,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1378,9 +1378,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteManagedTransaction(context.Background(), accountGuid, memberGuid, transactionGuid, userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteManagedTransaction(context.Background(), accountGuid, memberGuid, transactionGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManagedTransaction``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1444,7 +1444,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1453,9 +1453,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteManualAccount(context.Background(), accountGuid, userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteManualAccount(context.Background(), accountGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteManualAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteManualAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1515,7 +1515,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1524,9 +1524,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteMember(context.Background(), memberGuid, userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1586,7 +1586,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1595,9 +1595,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteSpendingPlan(context.Background(), userGuid, spendingPlanGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteSpendingPlan(context.Background(), userGuid, spendingPlanGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteSpendingPlan``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteSpendingPlan``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1657,7 +1657,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1667,9 +1667,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteSpendingPlanAccount(context.Background(), userGuid, spendingPlanGuid, spendingPlanAccountGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteSpendingPlanAccount(context.Background(), userGuid, spendingPlanGuid, spendingPlanAccountGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteSpendingPlanAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteSpendingPlanAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1731,7 +1731,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1741,9 +1741,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteSpendingPlanIterationItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteSpendingPlanIterationItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1805,7 +1805,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1814,9 +1814,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteTag(context.Background(), tagGuid, userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteTag(context.Background(), tagGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteTag``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1876,7 +1876,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1885,9 +1885,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteTagging(context.Background(), taggingGuid, userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteTagging(context.Background(), taggingGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteTagging``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteTagging``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1947,7 +1947,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -1956,9 +1956,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteTransactionRule(context.Background(), transactionRuleGuid, userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteTransactionRule(context.Background(), transactionRuleGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteTransactionRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteTransactionRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -2018,7 +2018,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2026,9 +2026,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeleteUser(context.Background(), userGuid).Execute()
+    r, err := apiClient.MxPlatformAPI.DeleteUser(context.Background(), userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeleteUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeleteUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -2086,7 +2086,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2094,13 +2094,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DeprecatedRequestPaymentProcessorAuthorizationCode(context.Background()).PaymentProcessorAuthorizationCodeRequestBody(paymentProcessorAuthorizationCodeRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.DeprecatedRequestPaymentProcessorAuthorizationCode(context.Background()).PaymentProcessorAuthorizationCodeRequestBody(paymentProcessorAuthorizationCodeRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DeprecatedRequestPaymentProcessorAuthorizationCode``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DeprecatedRequestPaymentProcessorAuthorizationCode``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeprecatedRequestPaymentProcessorAuthorizationCode`: PaymentProcessorAuthorizationCodeResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.DeprecatedRequestPaymentProcessorAuthorizationCode`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.DeprecatedRequestPaymentProcessorAuthorizationCode`: %v\n", resp)
 }
 ```
 
@@ -2152,7 +2152,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2162,13 +2162,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DownloadStatementPDF(context.Background(), memberGuid, statementGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.DownloadStatementPDF(context.Background(), memberGuid, statementGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DownloadStatementPDF``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DownloadStatementPDF``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DownloadStatementPDF`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.DownloadStatementPDF`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.DownloadStatementPDF`: %v\n", resp)
 }
 ```
 
@@ -2228,7 +2228,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2238,13 +2238,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.DownloadTaxDocument(context.Background(), taxDocumentGuid, memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.DownloadTaxDocument(context.Background(), taxDocumentGuid, memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.DownloadTaxDocument``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.DownloadTaxDocument``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DownloadTaxDocument`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.DownloadTaxDocument`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.DownloadTaxDocument`: %v\n", resp)
 }
 ```
 
@@ -2304,7 +2304,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2312,13 +2312,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.EnhanceTransactions(context.Background()).EnhanceTransactionsRequestBody(enhanceTransactionsRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.EnhanceTransactions(context.Background()).EnhanceTransactionsRequestBody(enhanceTransactionsRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.EnhanceTransactions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.EnhanceTransactions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `EnhanceTransactions`: EnhanceTransactionsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.EnhanceTransactions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.EnhanceTransactions`: %v\n", resp)
 }
 ```
 
@@ -2370,7 +2370,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2379,13 +2379,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ExtendHistory(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ExtendHistory(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ExtendHistory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ExtendHistory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ExtendHistory`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ExtendHistory`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ExtendHistory`: %v\n", resp)
 }
 ```
 
@@ -2443,7 +2443,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2452,13 +2452,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.FetchStatements(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.FetchStatements(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.FetchStatements``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.FetchStatements``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `FetchStatements`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.FetchStatements`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.FetchStatements`: %v\n", resp)
 }
 ```
 
@@ -2516,7 +2516,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2525,13 +2525,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.FetchTaxDocuments(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.FetchTaxDocuments(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.FetchTaxDocuments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.FetchTaxDocuments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `FetchTaxDocuments`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.FetchTaxDocuments`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.FetchTaxDocuments`: %v\n", resp)
 }
 ```
 
@@ -2589,7 +2589,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2598,13 +2598,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.IdentifyMember(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.IdentifyMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.IdentifyMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.IdentifyMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `IdentifyMember`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.IdentifyMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.IdentifyMember`: %v\n", resp)
 }
 ```
 
@@ -2662,7 +2662,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2673,13 +2673,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListAccountNumbersByAccount(context.Background(), accountGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListAccountNumbersByAccount(context.Background(), accountGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListAccountNumbersByAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListAccountNumbersByAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListAccountNumbersByAccount`: AccountNumbersResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListAccountNumbersByAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListAccountNumbersByAccount`: %v\n", resp)
 }
 ```
 
@@ -2739,7 +2739,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2750,13 +2750,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListAccountNumbersByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListAccountNumbersByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListAccountNumbersByMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListAccountNumbersByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListAccountNumbersByMember`: AccountNumbersResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListAccountNumbersByMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListAccountNumbersByMember`: %v\n", resp)
 }
 ```
 
@@ -2816,7 +2816,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2827,13 +2827,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListAccountOwnersByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListAccountOwnersByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListAccountOwnersByMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListAccountOwnersByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListAccountOwnersByMember`: AccountOwnersResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListAccountOwnersByMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListAccountOwnersByMember`: %v\n", resp)
 }
 ```
 
@@ -2893,7 +2893,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2903,13 +2903,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListCategories(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListCategories(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListCategories``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListCategories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListCategories`: CategoriesResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListCategories`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListCategories`: %v\n", resp)
 }
 ```
 
@@ -2967,7 +2967,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -2976,13 +2976,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListDefaultCategories(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListDefaultCategories(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListDefaultCategories``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListDefaultCategories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListDefaultCategories`: CategoriesResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListDefaultCategories`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListDefaultCategories`: %v\n", resp)
 }
 ```
 
@@ -3035,7 +3035,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3045,13 +3045,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListDefaultCategoriesByUser(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListDefaultCategoriesByUser(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListDefaultCategoriesByUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListDefaultCategoriesByUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListDefaultCategoriesByUser`: CategoriesResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListDefaultCategoriesByUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListDefaultCategoriesByUser`: %v\n", resp)
 }
 ```
 
@@ -3109,7 +3109,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3118,13 +3118,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListFavoriteInstitutions(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListFavoriteInstitutions(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListFavoriteInstitutions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListFavoriteInstitutions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListFavoriteInstitutions`: InstitutionsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListFavoriteInstitutions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListFavoriteInstitutions`: %v\n", resp)
 }
 ```
 
@@ -3177,7 +3177,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3189,13 +3189,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListHoldings(context.Background(), userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListHoldings(context.Background(), userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListHoldings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListHoldings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListHoldings`: HoldingsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListHoldings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListHoldings`: %v\n", resp)
 }
 ```
 
@@ -3255,7 +3255,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3268,13 +3268,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListHoldingsByAccount(context.Background(), accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListHoldingsByAccount(context.Background(), accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListHoldingsByAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListHoldingsByAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListHoldingsByAccount`: HoldingsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListHoldingsByAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListHoldingsByAccount`: %v\n", resp)
 }
 ```
 
@@ -3336,7 +3336,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3349,13 +3349,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListHoldingsByMember(context.Background(), memberGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListHoldingsByMember(context.Background(), memberGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListHoldingsByMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListHoldingsByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListHoldingsByMember`: HoldingsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListHoldingsByMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListHoldingsByMember`: %v\n", resp)
 }
 ```
 
@@ -3417,7 +3417,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3427,13 +3427,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListInstitutionCredentials(context.Background(), institutionCode).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListInstitutionCredentials(context.Background(), institutionCode).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListInstitutionCredentials``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListInstitutionCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListInstitutionCredentials`: CredentialsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListInstitutionCredentials`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListInstitutionCredentials`: %v\n", resp)
 }
 ```
 
@@ -3491,7 +3491,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3505,13 +3505,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListInstitutions(context.Background()).Name(name).Page(page).RecordsPerPage(recordsPerPage).SupportsAccountIdentification(supportsAccountIdentification).SupportsAccountStatement(supportsAccountStatement).SupportsAccountVerification(supportsAccountVerification).SupportsTransactionHistory(supportsTransactionHistory).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListInstitutions(context.Background()).Name(name).Page(page).RecordsPerPage(recordsPerPage).SupportsAccountIdentification(supportsAccountIdentification).SupportsAccountStatement(supportsAccountStatement).SupportsAccountVerification(supportsAccountVerification).SupportsTransactionHistory(supportsTransactionHistory).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListInstitutions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListInstitutions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListInstitutions`: InstitutionsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListInstitutions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListInstitutions`: %v\n", resp)
 }
 ```
 
@@ -3569,7 +3569,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3580,13 +3580,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListManagedAccounts(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListManagedAccounts(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListManagedAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListManagedAccounts`: AccountsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListManagedAccounts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListManagedAccounts`: %v\n", resp)
 }
 ```
 
@@ -3646,7 +3646,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3655,13 +3655,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListManagedInstitutions(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListManagedInstitutions(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedInstitutions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListManagedInstitutions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListManagedInstitutions`: InstitutionsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListManagedInstitutions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListManagedInstitutions`: %v\n", resp)
 }
 ```
 
@@ -3714,7 +3714,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3724,13 +3724,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListManagedMembers(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListManagedMembers(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedMembers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListManagedMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListManagedMembers`: MembersResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListManagedMembers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListManagedMembers`: %v\n", resp)
 }
 ```
 
@@ -3788,7 +3788,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3800,13 +3800,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListManagedTransactions(context.Background(), accountGuid, memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListManagedTransactions(context.Background(), accountGuid, memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListManagedTransactions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListManagedTransactions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListManagedTransactions`: TransactionsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListManagedTransactions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListManagedTransactions`: %v\n", resp)
 }
 ```
 
@@ -3868,7 +3868,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3880,13 +3880,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListMemberAccounts(context.Background(), userGuid, memberGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListMemberAccounts(context.Background(), userGuid, memberGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMemberAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListMemberAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListMemberAccounts`: AccountsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListMemberAccounts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListMemberAccounts`: %v\n", resp)
 }
 ```
 
@@ -3947,7 +3947,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -3958,13 +3958,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListMemberChallenges(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListMemberChallenges(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMemberChallenges``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListMemberChallenges``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListMemberChallenges`: ChallengesResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListMemberChallenges`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListMemberChallenges`: %v\n", resp)
 }
 ```
 
@@ -4024,7 +4024,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4035,13 +4035,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListMemberCredentials(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListMemberCredentials(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMemberCredentials``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListMemberCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListMemberCredentials`: CredentialsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListMemberCredentials`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListMemberCredentials`: %v\n", resp)
 }
 ```
 
@@ -4101,7 +4101,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4111,13 +4111,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListMembers(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListMembers(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMembers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListMembers`: MembersResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListMembers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListMembers`: %v\n", resp)
 }
 ```
 
@@ -4175,7 +4175,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4184,13 +4184,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListMerchants(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListMerchants(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListMerchants``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListMerchants``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListMerchants`: MerchantsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListMerchants`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListMerchants`: %v\n", resp)
 }
 ```
 
@@ -4243,7 +4243,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4254,13 +4254,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListSpendingPlanAccounts(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListSpendingPlanAccounts(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListSpendingPlanAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListSpendingPlanAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListSpendingPlanAccounts`: SpendingPlanAccountsResponse
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListSpendingPlanAccounts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListSpendingPlanAccounts`: %v\n", resp)
 }
 ```
 
@@ -4320,7 +4320,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4331,13 +4331,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListSpendingPlanIterationItems(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListSpendingPlanIterationItems(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListSpendingPlanIterationItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListSpendingPlanIterationItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListSpendingPlanIterationItems`: SpendingPlanIterationItemsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListSpendingPlanIterationItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListSpendingPlanIterationItems`: %v\n", resp)
 }
 ```
 
@@ -4397,7 +4397,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4408,13 +4408,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListSpendingPlanIterations(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListSpendingPlanIterations(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListSpendingPlanIterations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListSpendingPlanIterations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListSpendingPlanIterations`: SpendingPlanIterationsResponse
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListSpendingPlanIterations`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListSpendingPlanIterations`: %v\n", resp)
 }
 ```
 
@@ -4474,7 +4474,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4484,13 +4484,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListSpendingPlans(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListSpendingPlans(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListSpendingPlans``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListSpendingPlans``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListSpendingPlans`: SpendingPlansResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListSpendingPlans`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListSpendingPlans`: %v\n", resp)
 }
 ```
 
@@ -4548,7 +4548,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4559,13 +4559,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListStatementsByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListStatementsByMember(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListStatementsByMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListStatementsByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListStatementsByMember`: StatementsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListStatementsByMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListStatementsByMember`: %v\n", resp)
 }
 ```
 
@@ -4625,7 +4625,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4635,13 +4635,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListTaggings(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListTaggings(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTaggings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListTaggings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTaggings`: TaggingsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListTaggings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListTaggings`: %v\n", resp)
 }
 ```
 
@@ -4699,7 +4699,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4709,13 +4709,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListTags(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListTags(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTags``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListTags``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTags`: TagsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListTags`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListTags`: %v\n", resp)
 }
 ```
 
@@ -4773,7 +4773,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4784,13 +4784,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListTaxDocuments(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListTaxDocuments(context.Background(), memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTaxDocuments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListTaxDocuments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTaxDocuments`: TaxDocumentsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListTaxDocuments`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListTaxDocuments`: %v\n", resp)
 }
 ```
 
@@ -4850,7 +4850,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4860,13 +4860,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListTransactionRules(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListTransactionRules(context.Background(), userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactionRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListTransactionRules``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTransactionRules`: TransactionRulesResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListTransactionRules`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListTransactionRules`: %v\n", resp)
 }
 ```
 
@@ -4924,7 +4924,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -4936,13 +4936,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListTransactions(context.Background(), userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListTransactions(context.Background(), userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListTransactions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTransactions`: TransactionsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListTransactions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListTransactions`: %v\n", resp)
 }
 ```
 
@@ -5002,7 +5002,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5015,13 +5015,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListTransactionsByAccount(context.Background(), accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListTransactionsByAccount(context.Background(), accountGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactionsByAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListTransactionsByAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTransactionsByAccount`: TransactionsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListTransactionsByAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListTransactionsByAccount`: %v\n", resp)
 }
 ```
 
@@ -5083,7 +5083,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5096,13 +5096,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListTransactionsByMember(context.Background(), memberGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListTransactionsByMember(context.Background(), memberGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactionsByMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListTransactionsByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTransactionsByMember`: TransactionsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListTransactionsByMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListTransactionsByMember`: %v\n", resp)
 }
 ```
 
@@ -5164,7 +5164,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5177,13 +5177,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListTransactionsByTag(context.Background(), tagGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListTransactionsByTag(context.Background(), tagGuid, userGuid).FromDate(fromDate).Page(page).RecordsPerPage(recordsPerPage).ToDate(toDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListTransactionsByTag``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListTransactionsByTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTransactionsByTag`: TransactionsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListTransactionsByTag`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListTransactionsByTag`: %v\n", resp)
 }
 ```
 
@@ -5245,7 +5245,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5257,13 +5257,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListUserAccounts(context.Background(), userGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).IsManual(isManual).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListUserAccounts(context.Background(), userGuid).MemberIsManagedByUser(memberIsManagedByUser).Page(page).IsManual(isManual).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListUserAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListUserAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListUserAccounts`: AccountsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListUserAccounts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListUserAccounts`: %v\n", resp)
 }
 ```
 
@@ -5323,7 +5323,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5335,13 +5335,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ListUsers(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Id(id).Email(email).IsDisabled(isDisabled).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ListUsers(context.Background()).Page(page).RecordsPerPage(recordsPerPage).Id(id).Email(email).IsDisabled(isDisabled).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ListUsers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListUsers`: UsersResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ListUsers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListUsers`: %v\n", resp)
 }
 ```
 
@@ -5397,7 +5397,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5406,13 +5406,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadAccount(context.Background(), accountGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadAccount(context.Background(), accountGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadAccount`: AccountResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadAccount`: %v\n", resp)
 }
 ```
 
@@ -5470,7 +5470,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5480,13 +5480,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadAccountByMember(context.Background(), accountGuid, memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadAccountByMember(context.Background(), accountGuid, memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadAccountByMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadAccountByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadAccountByMember`: AccountResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadAccountByMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadAccountByMember`: %v\n", resp)
 }
 ```
 
@@ -5546,7 +5546,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5555,13 +5555,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadCategory(context.Background(), categoryGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadCategory(context.Background(), categoryGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadCategory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadCategory`: CategoryResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadCategory`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadCategory`: %v\n", resp)
 }
 ```
 
@@ -5619,7 +5619,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5627,13 +5627,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadDefaultCategory(context.Background(), categoryGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadDefaultCategory(context.Background(), categoryGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadDefaultCategory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadDefaultCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadDefaultCategory`: CategoryResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadDefaultCategory`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadDefaultCategory`: %v\n", resp)
 }
 ```
 
@@ -5689,7 +5689,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5698,13 +5698,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadHolding(context.Background(), holdingGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadHolding(context.Background(), holdingGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadHolding``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadHolding``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadHolding`: HoldingResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadHolding`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadHolding`: %v\n", resp)
 }
 ```
 
@@ -5762,7 +5762,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5770,13 +5770,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadInstitution(context.Background(), institutionCode).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadInstitution(context.Background(), institutionCode).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadInstitution``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadInstitution``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadInstitution`: InstitutionResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadInstitution`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadInstitution`: %v\n", resp)
 }
 ```
 
@@ -5832,7 +5832,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5842,13 +5842,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadManagedAccount(context.Background(), accountGuid, memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadManagedAccount(context.Background(), accountGuid, memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadManagedAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadManagedAccount`: AccountResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadManagedAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadManagedAccount`: %v\n", resp)
 }
 ```
 
@@ -5908,7 +5908,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5917,13 +5917,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadManagedMember(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadManagedMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadManagedMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadManagedMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadManagedMember`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadManagedMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadManagedMember`: %v\n", resp)
 }
 ```
 
@@ -5981,7 +5981,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -5992,13 +5992,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadManagedTransaction(context.Background(), accountGuid, memberGuid, transactionGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadManagedTransaction(context.Background(), accountGuid, memberGuid, transactionGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadManagedTransaction``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadManagedTransaction`: TransactionResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadManagedTransaction`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadManagedTransaction`: %v\n", resp)
 }
 ```
 
@@ -6060,7 +6060,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6069,13 +6069,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadMember(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadMember`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadMember`: %v\n", resp)
 }
 ```
 
@@ -6133,7 +6133,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6142,13 +6142,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadMemberStatus(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadMemberStatus(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadMemberStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadMemberStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadMemberStatus`: MemberStatusResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadMemberStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadMemberStatus`: %v\n", resp)
 }
 ```
 
@@ -6206,7 +6206,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6214,13 +6214,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadMerchant(context.Background(), merchantGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadMerchant(context.Background(), merchantGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadMerchant``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadMerchant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadMerchant`: MerchantResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadMerchant`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadMerchant`: %v\n", resp)
 }
 ```
 
@@ -6276,7 +6276,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6284,13 +6284,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadMerchantLocation(context.Background(), merchantLocationGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadMerchantLocation(context.Background(), merchantLocationGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadMerchantLocation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadMerchantLocation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadMerchantLocation`: MerchantLocationResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadMerchantLocation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadMerchantLocation`: %v\n", resp)
 }
 ```
 
@@ -6346,7 +6346,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6358,13 +6358,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadSpendingPlanAccount(context.Background(), userGuid, spendingPlanGuid, spendingPlanAccountGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadSpendingPlanAccount(context.Background(), userGuid, spendingPlanGuid, spendingPlanAccountGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadSpendingPlanAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadSpendingPlanAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadSpendingPlanAccount`: SpendingPlanAccountResponse
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadSpendingPlanAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadSpendingPlanAccount`: %v\n", resp)
 }
 ```
 
@@ -6426,7 +6426,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6438,13 +6438,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadSpendingPlanIteration(context.Background(), userGuid, spendingPlanGuid, iterationNumber).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadSpendingPlanIteration(context.Background(), userGuid, spendingPlanGuid, iterationNumber).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadSpendingPlanIteration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadSpendingPlanIteration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadSpendingPlanIteration`: SpendingPlanIterationResponse
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadSpendingPlanIteration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadSpendingPlanIteration`: %v\n", resp)
 }
 ```
 
@@ -6506,7 +6506,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6518,13 +6518,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadSpendingPlanIterationItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadSpendingPlanIterationItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadSpendingPlanIterationItem`: SpendingPlanIterationItemResponse
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadSpendingPlanIterationItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadSpendingPlanIterationItem`: %v\n", resp)
 }
 ```
 
@@ -6586,7 +6586,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6597,13 +6597,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadSpendingPlanUser(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadSpendingPlanUser(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadSpendingPlanUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadSpendingPlanUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadSpendingPlanUser`: SpendingPlanResponse
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadSpendingPlanUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadSpendingPlanUser`: %v\n", resp)
 }
 ```
 
@@ -6663,7 +6663,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6673,13 +6673,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadStatementByMember(context.Background(), memberGuid, statementGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadStatementByMember(context.Background(), memberGuid, statementGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadStatementByMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadStatementByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadStatementByMember`: StatementResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadStatementByMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadStatementByMember`: %v\n", resp)
 }
 ```
 
@@ -6739,7 +6739,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6748,13 +6748,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadTag(context.Background(), tagGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadTag(context.Background(), tagGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTag``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadTag`: TagResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadTag`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadTag`: %v\n", resp)
 }
 ```
 
@@ -6812,7 +6812,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6821,13 +6821,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadTagging(context.Background(), taggingGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadTagging(context.Background(), taggingGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTagging``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadTagging``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadTagging`: TaggingResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadTagging`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadTagging`: %v\n", resp)
 }
 ```
 
@@ -6885,7 +6885,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6895,13 +6895,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadTaxDocument(context.Background(), taxDocumentGuid, memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadTaxDocument(context.Background(), taxDocumentGuid, memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTaxDocument``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadTaxDocument``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadTaxDocument`: TaxDocumentResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadTaxDocument`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadTaxDocument`: %v\n", resp)
 }
 ```
 
@@ -6961,7 +6961,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -6970,13 +6970,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadTransaction(context.Background(), transactionGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadTransaction(context.Background(), transactionGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTransaction``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadTransaction`: TransactionResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadTransaction`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadTransaction`: %v\n", resp)
 }
 ```
 
@@ -7034,7 +7034,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7043,13 +7043,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadTransactionRule(context.Background(), transactionRuleGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadTransactionRule(context.Background(), transactionRuleGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadTransactionRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadTransactionRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadTransactionRule`: TransactionRuleResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadTransactionRule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadTransactionRule`: %v\n", resp)
 }
 ```
 
@@ -7107,7 +7107,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7115,13 +7115,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ReadUser(context.Background(), userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ReadUser(context.Background(), userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ReadUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReadUser`: UserResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ReadUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadUser`: %v\n", resp)
 }
 ```
 
@@ -7177,7 +7177,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7185,13 +7185,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.RequestAuthorizationCode(context.Background()).AuthorizationCodeRequestBody(authorizationCodeRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.RequestAuthorizationCode(context.Background()).AuthorizationCodeRequestBody(authorizationCodeRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestAuthorizationCode``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.RequestAuthorizationCode``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RequestAuthorizationCode`: AuthorizationCodeResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.RequestAuthorizationCode`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.RequestAuthorizationCode`: %v\n", resp)
 }
 ```
 
@@ -7243,7 +7243,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7252,13 +7252,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.RequestConnectWidgetURL(context.Background(), userGuid).ConnectWidgetRequestBody(connectWidgetRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.RequestConnectWidgetURL(context.Background(), userGuid).ConnectWidgetRequestBody(connectWidgetRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestConnectWidgetURL``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.RequestConnectWidgetURL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RequestConnectWidgetURL`: ConnectWidgetResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.RequestConnectWidgetURL`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.RequestConnectWidgetURL`: %v\n", resp)
 }
 ```
 
@@ -7315,7 +7315,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7329,13 +7329,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.RequestOAuthWindowURI(context.Background(), memberGuid, userGuid).ClientRedirectUrl(clientRedirectUrl).EnableApp2app(enableApp2app).ReferralSource(referralSource).SkipAggregation(skipAggregation).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.RequestOAuthWindowURI(context.Background(), memberGuid, userGuid).ClientRedirectUrl(clientRedirectUrl).EnableApp2app(enableApp2app).ReferralSource(referralSource).SkipAggregation(skipAggregation).UiMessageWebviewUrlScheme(uiMessageWebviewUrlScheme).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestOAuthWindowURI``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.RequestOAuthWindowURI``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RequestOAuthWindowURI`: OAuthWindowResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.RequestOAuthWindowURI`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.RequestOAuthWindowURI`: %v\n", resp)
 }
 ```
 
@@ -7398,7 +7398,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7408,13 +7408,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.RequestWidgetURL(context.Background(), userGuid).WidgetRequestBody(widgetRequestBody).AcceptLanguage(acceptLanguage).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.RequestWidgetURL(context.Background(), userGuid).WidgetRequestBody(widgetRequestBody).AcceptLanguage(acceptLanguage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.RequestWidgetURL``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.RequestWidgetURL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RequestWidgetURL`: WidgetResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.RequestWidgetURL`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.RequestWidgetURL`: %v\n", resp)
 }
 ```
 
@@ -7472,7 +7472,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7482,13 +7482,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.ResumeAggregation(context.Background(), memberGuid, userGuid).MemberResumeRequestBody(memberResumeRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.ResumeAggregation(context.Background(), memberGuid, userGuid).MemberResumeRequestBody(memberResumeRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.ResumeAggregation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ResumeAggregation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ResumeAggregation`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.ResumeAggregation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ResumeAggregation`: %v\n", resp)
 }
 ```
 
@@ -7547,7 +7547,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7558,13 +7558,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateAccountByMember(context.Background(), accountGuid, memberGuid, userGuid).AccountUpdateRequestBody(accountUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateAccountByMember(context.Background(), accountGuid, memberGuid, userGuid).AccountUpdateRequestBody(accountUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateAccountByMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateAccountByMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateAccountByMember`: AccountResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateAccountByMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateAccountByMember`: %v\n", resp)
 }
 ```
 
@@ -7625,7 +7625,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7635,13 +7635,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateCategory(context.Background(), categoryGuid, userGuid).CategoryUpdateRequestBody(categoryUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateCategory(context.Background(), categoryGuid, userGuid).CategoryUpdateRequestBody(categoryUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateCategory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateCategory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateCategory`: CategoryResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateCategory`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateCategory`: %v\n", resp)
 }
 ```
 
@@ -7700,7 +7700,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7711,13 +7711,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateManagedAccount(context.Background(), accountGuid, memberGuid, userGuid).ManagedAccountUpdateRequestBody(managedAccountUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateManagedAccount(context.Background(), accountGuid, memberGuid, userGuid).ManagedAccountUpdateRequestBody(managedAccountUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateManagedAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateManagedAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateManagedAccount`: AccountResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateManagedAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateManagedAccount`: %v\n", resp)
 }
 ```
 
@@ -7778,7 +7778,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7788,13 +7788,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateManagedMember(context.Background(), memberGuid, userGuid).ManagedMemberUpdateRequestBody(managedMemberUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateManagedMember(context.Background(), memberGuid, userGuid).ManagedMemberUpdateRequestBody(managedMemberUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateManagedMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateManagedMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateManagedMember`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateManagedMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateManagedMember`: %v\n", resp)
 }
 ```
 
@@ -7853,7 +7853,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7865,13 +7865,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateManagedTransaction(context.Background(), accountGuid, memberGuid, transactionGuid, userGuid).ManagedTransactionUpdateRequestBody(managedTransactionUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateManagedTransaction(context.Background(), accountGuid, memberGuid, transactionGuid, userGuid).ManagedTransactionUpdateRequestBody(managedTransactionUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateManagedTransaction``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateManagedTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateManagedTransaction`: TransactionResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateManagedTransaction`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateManagedTransaction`: %v\n", resp)
 }
 ```
 
@@ -7934,7 +7934,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -7944,13 +7944,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateMember(context.Background(), memberGuid, userGuid).MemberUpdateRequestBody(memberUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateMember(context.Background(), memberGuid, userGuid).MemberUpdateRequestBody(memberUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateMember`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateMember`: %v\n", resp)
 }
 ```
 
@@ -8009,7 +8009,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -8020,13 +8020,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateSpendingPlanIterationItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateSpendingPlanIterationItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateSpendingPlanIterationItem`: SpendingPlanIterationItemResponse
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateSpendingPlanIterationItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateSpendingPlanIterationItem`: %v\n", resp)
 }
 ```
 
@@ -8087,7 +8087,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -8097,13 +8097,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateTag(context.Background(), tagGuid, userGuid).TagUpdateRequestBody(tagUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateTag(context.Background(), tagGuid, userGuid).TagUpdateRequestBody(tagUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateTag``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateTag`: TagResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateTag`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateTag`: %v\n", resp)
 }
 ```
 
@@ -8162,7 +8162,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -8172,13 +8172,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateTagging(context.Background(), taggingGuid, userGuid).TaggingUpdateRequestBody(taggingUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateTagging(context.Background(), taggingGuid, userGuid).TaggingUpdateRequestBody(taggingUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateTagging``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateTagging``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateTagging`: TaggingResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateTagging`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateTagging`: %v\n", resp)
 }
 ```
 
@@ -8237,7 +8237,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -8247,13 +8247,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateTransaction(context.Background(), transactionGuid, userGuid).TransactionUpdateRequestBody(transactionUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateTransaction(context.Background(), transactionGuid, userGuid).TransactionUpdateRequestBody(transactionUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateTransaction``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateTransaction`: TransactionResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateTransaction`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateTransaction`: %v\n", resp)
 }
 ```
 
@@ -8312,7 +8312,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -8322,13 +8322,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateTransactionRule(context.Background(), transactionRuleGuid, userGuid).TransactionRuleUpdateRequestBody(transactionRuleUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateTransactionRule(context.Background(), transactionRuleGuid, userGuid).TransactionRuleUpdateRequestBody(transactionRuleUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateTransactionRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateTransactionRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateTransactionRule`: TransactionRuleResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateTransactionRule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateTransactionRule`: %v\n", resp)
 }
 ```
 
@@ -8387,7 +8387,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -8396,13 +8396,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.UpdateUser(context.Background(), userGuid).UserUpdateRequestBody(userUpdateRequestBody).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.UpdateUser(context.Background(), userGuid).UserUpdateRequestBody(userUpdateRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.UpdateUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UpdateUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateUser`: UserResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.UpdateUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UpdateUser`: %v\n", resp)
 }
 ```
 
@@ -8459,7 +8459,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/mxenabled/mx-platform-go"
 )
 
 func main() {
@@ -8468,13 +8468,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformApi.VerifyMember(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.VerifyMember(context.Background(), memberGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformApi.VerifyMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.VerifyMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `VerifyMember`: MemberResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MxPlatformApi.VerifyMember`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.VerifyMember`: %v\n", resp)
 }
 ```
 

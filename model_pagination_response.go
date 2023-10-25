@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaginationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginationResponse{}
+
 // PaginationResponse struct for PaginationResponse
 type PaginationResponse struct {
 	CurrentPage *int32 `json:"current_page,omitempty"`
@@ -41,7 +44,7 @@ func NewPaginationResponseWithDefaults() *PaginationResponse {
 
 // GetCurrentPage returns the CurrentPage field value if set, zero value otherwise.
 func (o *PaginationResponse) GetCurrentPage() int32 {
-	if o == nil || o.CurrentPage == nil {
+	if o == nil || IsNil(o.CurrentPage) {
 		var ret int32
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PaginationResponse) GetCurrentPage() int32 {
 // GetCurrentPageOk returns a tuple with the CurrentPage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaginationResponse) GetCurrentPageOk() (*int32, bool) {
-	if o == nil || o.CurrentPage == nil {
+	if o == nil || IsNil(o.CurrentPage) {
 		return nil, false
 	}
 	return o.CurrentPage, true
@@ -59,7 +62,7 @@ func (o *PaginationResponse) GetCurrentPageOk() (*int32, bool) {
 
 // HasCurrentPage returns a boolean if a field has been set.
 func (o *PaginationResponse) HasCurrentPage() bool {
-	if o != nil && o.CurrentPage != nil {
+	if o != nil && !IsNil(o.CurrentPage) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PaginationResponse) SetCurrentPage(v int32) {
 
 // GetPerPage returns the PerPage field value if set, zero value otherwise.
 func (o *PaginationResponse) GetPerPage() int32 {
-	if o == nil || o.PerPage == nil {
+	if o == nil || IsNil(o.PerPage) {
 		var ret int32
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PaginationResponse) GetPerPage() int32 {
 // GetPerPageOk returns a tuple with the PerPage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaginationResponse) GetPerPageOk() (*int32, bool) {
-	if o == nil || o.PerPage == nil {
+	if o == nil || IsNil(o.PerPage) {
 		return nil, false
 	}
 	return o.PerPage, true
@@ -91,7 +94,7 @@ func (o *PaginationResponse) GetPerPageOk() (*int32, bool) {
 
 // HasPerPage returns a boolean if a field has been set.
 func (o *PaginationResponse) HasPerPage() bool {
-	if o != nil && o.PerPage != nil {
+	if o != nil && !IsNil(o.PerPage) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PaginationResponse) SetPerPage(v int32) {
 
 // GetTotalEntries returns the TotalEntries field value if set, zero value otherwise.
 func (o *PaginationResponse) GetTotalEntries() int32 {
-	if o == nil || o.TotalEntries == nil {
+	if o == nil || IsNil(o.TotalEntries) {
 		var ret int32
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PaginationResponse) GetTotalEntries() int32 {
 // GetTotalEntriesOk returns a tuple with the TotalEntries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaginationResponse) GetTotalEntriesOk() (*int32, bool) {
-	if o == nil || o.TotalEntries == nil {
+	if o == nil || IsNil(o.TotalEntries) {
 		return nil, false
 	}
 	return o.TotalEntries, true
@@ -123,7 +126,7 @@ func (o *PaginationResponse) GetTotalEntriesOk() (*int32, bool) {
 
 // HasTotalEntries returns a boolean if a field has been set.
 func (o *PaginationResponse) HasTotalEntries() bool {
-	if o != nil && o.TotalEntries != nil {
+	if o != nil && !IsNil(o.TotalEntries) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *PaginationResponse) SetTotalEntries(v int32) {
 
 // GetTotalPages returns the TotalPages field value if set, zero value otherwise.
 func (o *PaginationResponse) GetTotalPages() int32 {
-	if o == nil || o.TotalPages == nil {
+	if o == nil || IsNil(o.TotalPages) {
 		var ret int32
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *PaginationResponse) GetTotalPages() int32 {
 // GetTotalPagesOk returns a tuple with the TotalPages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaginationResponse) GetTotalPagesOk() (*int32, bool) {
-	if o == nil || o.TotalPages == nil {
+	if o == nil || IsNil(o.TotalPages) {
 		return nil, false
 	}
 	return o.TotalPages, true
@@ -155,7 +158,7 @@ func (o *PaginationResponse) GetTotalPagesOk() (*int32, bool) {
 
 // HasTotalPages returns a boolean if a field has been set.
 func (o *PaginationResponse) HasTotalPages() bool {
-	if o != nil && o.TotalPages != nil {
+	if o != nil && !IsNil(o.TotalPages) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *PaginationResponse) SetTotalPages(v int32) {
 }
 
 func (o PaginationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CurrentPage != nil {
-		toSerialize["current_page"] = o.CurrentPage
-	}
-	if o.PerPage != nil {
-		toSerialize["per_page"] = o.PerPage
-	}
-	if o.TotalEntries != nil {
-		toSerialize["total_entries"] = o.TotalEntries
-	}
-	if o.TotalPages != nil {
-		toSerialize["total_pages"] = o.TotalPages
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginationResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CurrentPage) {
+		toSerialize["current_page"] = o.CurrentPage
+	}
+	if !IsNil(o.PerPage) {
+		toSerialize["per_page"] = o.PerPage
+	}
+	if !IsNil(o.TotalEntries) {
+		toSerialize["total_entries"] = o.TotalEntries
+	}
+	if !IsNil(o.TotalPages) {
+		toSerialize["total_pages"] = o.TotalPages
+	}
+	return toSerialize, nil
 }
 
 type NullablePaginationResponse struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MemberCreateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MemberCreateRequestBody{}
+
 // MemberCreateRequestBody struct for MemberCreateRequestBody
 type MemberCreateRequestBody struct {
 	ClientRedirectUrl *string `json:"client_redirect_url,omitempty"`
@@ -42,7 +45,7 @@ func NewMemberCreateRequestBodyWithDefaults() *MemberCreateRequestBody {
 
 // GetClientRedirectUrl returns the ClientRedirectUrl field value if set, zero value otherwise.
 func (o *MemberCreateRequestBody) GetClientRedirectUrl() string {
-	if o == nil || o.ClientRedirectUrl == nil {
+	if o == nil || IsNil(o.ClientRedirectUrl) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *MemberCreateRequestBody) GetClientRedirectUrl() string {
 // GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequestBody) GetClientRedirectUrlOk() (*string, bool) {
-	if o == nil || o.ClientRedirectUrl == nil {
+	if o == nil || IsNil(o.ClientRedirectUrl) {
 		return nil, false
 	}
 	return o.ClientRedirectUrl, true
@@ -60,7 +63,7 @@ func (o *MemberCreateRequestBody) GetClientRedirectUrlOk() (*string, bool) {
 
 // HasClientRedirectUrl returns a boolean if a field has been set.
 func (o *MemberCreateRequestBody) HasClientRedirectUrl() bool {
-	if o != nil && o.ClientRedirectUrl != nil {
+	if o != nil && !IsNil(o.ClientRedirectUrl) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *MemberCreateRequestBody) SetClientRedirectUrl(v string) {
 
 // GetEnableApp2app returns the EnableApp2app field value if set, zero value otherwise.
 func (o *MemberCreateRequestBody) GetEnableApp2app() bool {
-	if o == nil || o.EnableApp2app == nil {
+	if o == nil || IsNil(o.EnableApp2app) {
 		var ret bool
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *MemberCreateRequestBody) GetEnableApp2app() bool {
 // GetEnableApp2appOk returns a tuple with the EnableApp2app field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequestBody) GetEnableApp2appOk() (*bool, bool) {
-	if o == nil || o.EnableApp2app == nil {
+	if o == nil || IsNil(o.EnableApp2app) {
 		return nil, false
 	}
 	return o.EnableApp2app, true
@@ -92,7 +95,7 @@ func (o *MemberCreateRequestBody) GetEnableApp2appOk() (*bool, bool) {
 
 // HasEnableApp2app returns a boolean if a field has been set.
 func (o *MemberCreateRequestBody) HasEnableApp2app() bool {
-	if o != nil && o.EnableApp2app != nil {
+	if o != nil && !IsNil(o.EnableApp2app) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *MemberCreateRequestBody) SetEnableApp2app(v bool) {
 
 // GetMember returns the Member field value if set, zero value otherwise.
 func (o *MemberCreateRequestBody) GetMember() MemberCreateRequest {
-	if o == nil || o.Member == nil {
+	if o == nil || IsNil(o.Member) {
 		var ret MemberCreateRequest
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *MemberCreateRequestBody) GetMember() MemberCreateRequest {
 // GetMemberOk returns a tuple with the Member field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequestBody) GetMemberOk() (*MemberCreateRequest, bool) {
-	if o == nil || o.Member == nil {
+	if o == nil || IsNil(o.Member) {
 		return nil, false
 	}
 	return o.Member, true
@@ -124,7 +127,7 @@ func (o *MemberCreateRequestBody) GetMemberOk() (*MemberCreateRequest, bool) {
 
 // HasMember returns a boolean if a field has been set.
 func (o *MemberCreateRequestBody) HasMember() bool {
-	if o != nil && o.Member != nil {
+	if o != nil && !IsNil(o.Member) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *MemberCreateRequestBody) SetMember(v MemberCreateRequest) {
 
 // GetReferralSource returns the ReferralSource field value if set, zero value otherwise.
 func (o *MemberCreateRequestBody) GetReferralSource() string {
-	if o == nil || o.ReferralSource == nil {
+	if o == nil || IsNil(o.ReferralSource) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *MemberCreateRequestBody) GetReferralSource() string {
 // GetReferralSourceOk returns a tuple with the ReferralSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequestBody) GetReferralSourceOk() (*string, bool) {
-	if o == nil || o.ReferralSource == nil {
+	if o == nil || IsNil(o.ReferralSource) {
 		return nil, false
 	}
 	return o.ReferralSource, true
@@ -156,7 +159,7 @@ func (o *MemberCreateRequestBody) GetReferralSourceOk() (*string, bool) {
 
 // HasReferralSource returns a boolean if a field has been set.
 func (o *MemberCreateRequestBody) HasReferralSource() bool {
-	if o != nil && o.ReferralSource != nil {
+	if o != nil && !IsNil(o.ReferralSource) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *MemberCreateRequestBody) SetReferralSource(v string) {
 
 // GetUiMessageWebviewUrlScheme returns the UiMessageWebviewUrlScheme field value if set, zero value otherwise.
 func (o *MemberCreateRequestBody) GetUiMessageWebviewUrlScheme() string {
-	if o == nil || o.UiMessageWebviewUrlScheme == nil {
+	if o == nil || IsNil(o.UiMessageWebviewUrlScheme) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *MemberCreateRequestBody) GetUiMessageWebviewUrlScheme() string {
 // GetUiMessageWebviewUrlSchemeOk returns a tuple with the UiMessageWebviewUrlScheme field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberCreateRequestBody) GetUiMessageWebviewUrlSchemeOk() (*string, bool) {
-	if o == nil || o.UiMessageWebviewUrlScheme == nil {
+	if o == nil || IsNil(o.UiMessageWebviewUrlScheme) {
 		return nil, false
 	}
 	return o.UiMessageWebviewUrlScheme, true
@@ -188,7 +191,7 @@ func (o *MemberCreateRequestBody) GetUiMessageWebviewUrlSchemeOk() (*string, boo
 
 // HasUiMessageWebviewUrlScheme returns a boolean if a field has been set.
 func (o *MemberCreateRequestBody) HasUiMessageWebviewUrlScheme() bool {
-	if o != nil && o.UiMessageWebviewUrlScheme != nil {
+	if o != nil && !IsNil(o.UiMessageWebviewUrlScheme) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *MemberCreateRequestBody) SetUiMessageWebviewUrlScheme(v string) {
 }
 
 func (o MemberCreateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClientRedirectUrl != nil {
-		toSerialize["client_redirect_url"] = o.ClientRedirectUrl
-	}
-	if o.EnableApp2app != nil {
-		toSerialize["enable_app2app"] = o.EnableApp2app
-	}
-	if o.Member != nil {
-		toSerialize["member"] = o.Member
-	}
-	if o.ReferralSource != nil {
-		toSerialize["referral_source"] = o.ReferralSource
-	}
-	if o.UiMessageWebviewUrlScheme != nil {
-		toSerialize["ui_message_webview_url_scheme"] = o.UiMessageWebviewUrlScheme
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MemberCreateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClientRedirectUrl) {
+		toSerialize["client_redirect_url"] = o.ClientRedirectUrl
+	}
+	if !IsNil(o.EnableApp2app) {
+		toSerialize["enable_app2app"] = o.EnableApp2app
+	}
+	if !IsNil(o.Member) {
+		toSerialize["member"] = o.Member
+	}
+	if !IsNil(o.ReferralSource) {
+		toSerialize["referral_source"] = o.ReferralSource
+	}
+	if !IsNil(o.UiMessageWebviewUrlScheme) {
+		toSerialize["ui_message_webview_url_scheme"] = o.UiMessageWebviewUrlScheme
+	}
+	return toSerialize, nil
 }
 
 type NullableMemberCreateRequestBody struct {

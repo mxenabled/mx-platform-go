@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserUpdateRequest{}
+
 // UserUpdateRequest struct for UserUpdateRequest
 type UserUpdateRequest struct {
 	Email *string `json:"email,omitempty"`
@@ -41,7 +44,7 @@ func NewUserUpdateRequestWithDefaults() *UserUpdateRequest {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UserUpdateRequest) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *UserUpdateRequest) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserUpdateRequest) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -59,7 +62,7 @@ func (o *UserUpdateRequest) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *UserUpdateRequest) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *UserUpdateRequest) SetEmail(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *UserUpdateRequest) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *UserUpdateRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserUpdateRequest) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -91,7 +94,7 @@ func (o *UserUpdateRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *UserUpdateRequest) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *UserUpdateRequest) SetId(v string) {
 
 // GetIsDisabled returns the IsDisabled field value if set, zero value otherwise.
 func (o *UserUpdateRequest) GetIsDisabled() bool {
-	if o == nil || o.IsDisabled == nil {
+	if o == nil || IsNil(o.IsDisabled) {
 		var ret bool
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *UserUpdateRequest) GetIsDisabled() bool {
 // GetIsDisabledOk returns a tuple with the IsDisabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserUpdateRequest) GetIsDisabledOk() (*bool, bool) {
-	if o == nil || o.IsDisabled == nil {
+	if o == nil || IsNil(o.IsDisabled) {
 		return nil, false
 	}
 	return o.IsDisabled, true
@@ -123,7 +126,7 @@ func (o *UserUpdateRequest) GetIsDisabledOk() (*bool, bool) {
 
 // HasIsDisabled returns a boolean if a field has been set.
 func (o *UserUpdateRequest) HasIsDisabled() bool {
-	if o != nil && o.IsDisabled != nil {
+	if o != nil && !IsNil(o.IsDisabled) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *UserUpdateRequest) SetIsDisabled(v bool) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *UserUpdateRequest) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *UserUpdateRequest) GetMetadata() string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserUpdateRequest) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -155,7 +158,7 @@ func (o *UserUpdateRequest) GetMetadataOk() (*string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *UserUpdateRequest) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *UserUpdateRequest) SetMetadata(v string) {
 }
 
 func (o UserUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Email != nil {
-		toSerialize["email"] = o.Email
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.IsDisabled != nil {
-		toSerialize["is_disabled"] = o.IsDisabled
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.IsDisabled) {
+		toSerialize["is_disabled"] = o.IsDisabled
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	return toSerialize, nil
 }
 
 type NullableUserUpdateRequest struct {

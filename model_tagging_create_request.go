@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaggingCreateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaggingCreateRequest{}
+
 // TaggingCreateRequest struct for TaggingCreateRequest
 type TaggingCreateRequest struct {
 	TagGuid string `json:"tag_guid"`
@@ -52,7 +55,7 @@ func (o *TaggingCreateRequest) GetTagGuid() string {
 // GetTagGuidOk returns a tuple with the TagGuid field value
 // and a boolean to check if the value has been set.
 func (o *TaggingCreateRequest) GetTagGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TagGuid, true
@@ -76,7 +79,7 @@ func (o *TaggingCreateRequest) GetTransactionGuid() string {
 // GetTransactionGuidOk returns a tuple with the TransactionGuid field value
 // and a boolean to check if the value has been set.
 func (o *TaggingCreateRequest) GetTransactionGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TransactionGuid, true
@@ -88,14 +91,18 @@ func (o *TaggingCreateRequest) SetTransactionGuid(v string) {
 }
 
 func (o TaggingCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["tag_guid"] = o.TagGuid
-	}
-	if true {
-		toSerialize["transaction_guid"] = o.TransactionGuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TaggingCreateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["tag_guid"] = o.TagGuid
+	toSerialize["transaction_guid"] = o.TransactionGuid
+	return toSerialize, nil
 }
 
 type NullableTaggingCreateRequest struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransactionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransactionResponse{}
+
 // TransactionResponse struct for TransactionResponse
 type TransactionResponse struct {
 	AccountGuid NullableString `json:"account_guid,omitempty"`
@@ -80,7 +83,7 @@ func NewTransactionResponseWithDefaults() *TransactionResponse {
 
 // GetAccountGuid returns the AccountGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetAccountGuid() string {
-	if o == nil || o.AccountGuid.Get() == nil {
+	if o == nil || IsNil(o.AccountGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *TransactionResponse) GetAccountGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetAccountGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccountGuid.Get(), o.AccountGuid.IsSet()
@@ -122,7 +125,7 @@ func (o *TransactionResponse) UnsetAccountGuid() {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetAccountId() string {
-	if o == nil || o.AccountId.Get() == nil {
+	if o == nil || IsNil(o.AccountId.Get()) {
 		var ret string
 		return ret
 	}
@@ -133,7 +136,7 @@ func (o *TransactionResponse) GetAccountId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetAccountIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccountId.Get(), o.AccountId.IsSet()
@@ -164,7 +167,7 @@ func (o *TransactionResponse) UnsetAccountId() {
 
 // GetAmount returns the Amount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetAmount() float32 {
-	if o == nil || o.Amount.Get() == nil {
+	if o == nil || IsNil(o.Amount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -175,7 +178,7 @@ func (o *TransactionResponse) GetAmount() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetAmountOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Amount.Get(), o.Amount.IsSet()
@@ -206,7 +209,7 @@ func (o *TransactionResponse) UnsetAmount() {
 
 // GetCategory returns the Category field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetCategory() string {
-	if o == nil || o.Category.Get() == nil {
+	if o == nil || IsNil(o.Category.Get()) {
 		var ret string
 		return ret
 	}
@@ -217,7 +220,7 @@ func (o *TransactionResponse) GetCategory() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetCategoryOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Category.Get(), o.Category.IsSet()
@@ -248,7 +251,7 @@ func (o *TransactionResponse) UnsetCategory() {
 
 // GetCategoryGuid returns the CategoryGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetCategoryGuid() string {
-	if o == nil || o.CategoryGuid.Get() == nil {
+	if o == nil || IsNil(o.CategoryGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -259,7 +262,7 @@ func (o *TransactionResponse) GetCategoryGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetCategoryGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CategoryGuid.Get(), o.CategoryGuid.IsSet()
@@ -290,7 +293,7 @@ func (o *TransactionResponse) UnsetCategoryGuid() {
 
 // GetCheckNumberString returns the CheckNumberString field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetCheckNumberString() string {
-	if o == nil || o.CheckNumberString.Get() == nil {
+	if o == nil || IsNil(o.CheckNumberString.Get()) {
 		var ret string
 		return ret
 	}
@@ -301,7 +304,7 @@ func (o *TransactionResponse) GetCheckNumberString() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetCheckNumberStringOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CheckNumberString.Get(), o.CheckNumberString.IsSet()
@@ -332,7 +335,7 @@ func (o *TransactionResponse) UnsetCheckNumberString() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -343,7 +346,7 @@ func (o *TransactionResponse) GetCreatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetCreatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
@@ -374,7 +377,7 @@ func (o *TransactionResponse) UnsetCreatedAt() {
 
 // GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetCurrencyCode() string {
-	if o == nil || o.CurrencyCode.Get() == nil {
+	if o == nil || IsNil(o.CurrencyCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -385,7 +388,7 @@ func (o *TransactionResponse) GetCurrencyCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CurrencyCode.Get(), o.CurrencyCode.IsSet()
@@ -416,7 +419,7 @@ func (o *TransactionResponse) UnsetCurrencyCode() {
 
 // GetDate returns the Date field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetDate() string {
-	if o == nil || o.Date.Get() == nil {
+	if o == nil || IsNil(o.Date.Get()) {
 		var ret string
 		return ret
 	}
@@ -427,7 +430,7 @@ func (o *TransactionResponse) GetDate() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetDateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Date.Get(), o.Date.IsSet()
@@ -458,7 +461,7 @@ func (o *TransactionResponse) UnsetDate() {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -469,7 +472,7 @@ func (o *TransactionResponse) GetDescription() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Description.Get(), o.Description.IsSet()
@@ -500,7 +503,7 @@ func (o *TransactionResponse) UnsetDescription() {
 
 // GetExtendedTransactionType returns the ExtendedTransactionType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetExtendedTransactionType() string {
-	if o == nil || o.ExtendedTransactionType.Get() == nil {
+	if o == nil || IsNil(o.ExtendedTransactionType.Get()) {
 		var ret string
 		return ret
 	}
@@ -511,7 +514,7 @@ func (o *TransactionResponse) GetExtendedTransactionType() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetExtendedTransactionTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ExtendedTransactionType.Get(), o.ExtendedTransactionType.IsSet()
@@ -542,7 +545,7 @@ func (o *TransactionResponse) UnsetExtendedTransactionType() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -553,7 +556,7 @@ func (o *TransactionResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -584,7 +587,7 @@ func (o *TransactionResponse) UnsetGuid() {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetId() string {
-	if o == nil || o.Id.Get() == nil {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -595,7 +598,7 @@ func (o *TransactionResponse) GetId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
@@ -626,7 +629,7 @@ func (o *TransactionResponse) UnsetId() {
 
 // GetIsBillPay returns the IsBillPay field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsBillPay() bool {
-	if o == nil || o.IsBillPay.Get() == nil {
+	if o == nil || IsNil(o.IsBillPay.Get()) {
 		var ret bool
 		return ret
 	}
@@ -637,7 +640,7 @@ func (o *TransactionResponse) GetIsBillPay() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsBillPayOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsBillPay.Get(), o.IsBillPay.IsSet()
@@ -668,7 +671,7 @@ func (o *TransactionResponse) UnsetIsBillPay() {
 
 // GetIsDirectDeposit returns the IsDirectDeposit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsDirectDeposit() bool {
-	if o == nil || o.IsDirectDeposit.Get() == nil {
+	if o == nil || IsNil(o.IsDirectDeposit.Get()) {
 		var ret bool
 		return ret
 	}
@@ -679,7 +682,7 @@ func (o *TransactionResponse) GetIsDirectDeposit() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsDirectDepositOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsDirectDeposit.Get(), o.IsDirectDeposit.IsSet()
@@ -710,7 +713,7 @@ func (o *TransactionResponse) UnsetIsDirectDeposit() {
 
 // GetIsExpense returns the IsExpense field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsExpense() bool {
-	if o == nil || o.IsExpense.Get() == nil {
+	if o == nil || IsNil(o.IsExpense.Get()) {
 		var ret bool
 		return ret
 	}
@@ -721,7 +724,7 @@ func (o *TransactionResponse) GetIsExpense() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsExpenseOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsExpense.Get(), o.IsExpense.IsSet()
@@ -752,7 +755,7 @@ func (o *TransactionResponse) UnsetIsExpense() {
 
 // GetIsFee returns the IsFee field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsFee() bool {
-	if o == nil || o.IsFee.Get() == nil {
+	if o == nil || IsNil(o.IsFee.Get()) {
 		var ret bool
 		return ret
 	}
@@ -763,7 +766,7 @@ func (o *TransactionResponse) GetIsFee() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsFeeOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsFee.Get(), o.IsFee.IsSet()
@@ -794,7 +797,7 @@ func (o *TransactionResponse) UnsetIsFee() {
 
 // GetIsIncome returns the IsIncome field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsIncome() bool {
-	if o == nil || o.IsIncome.Get() == nil {
+	if o == nil || IsNil(o.IsIncome.Get()) {
 		var ret bool
 		return ret
 	}
@@ -805,7 +808,7 @@ func (o *TransactionResponse) GetIsIncome() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsIncomeOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsIncome.Get(), o.IsIncome.IsSet()
@@ -836,7 +839,7 @@ func (o *TransactionResponse) UnsetIsIncome() {
 
 // GetIsInternational returns the IsInternational field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsInternational() bool {
-	if o == nil || o.IsInternational.Get() == nil {
+	if o == nil || IsNil(o.IsInternational.Get()) {
 		var ret bool
 		return ret
 	}
@@ -847,7 +850,7 @@ func (o *TransactionResponse) GetIsInternational() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsInternationalOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsInternational.Get(), o.IsInternational.IsSet()
@@ -878,7 +881,7 @@ func (o *TransactionResponse) UnsetIsInternational() {
 
 // GetIsOverdraftFee returns the IsOverdraftFee field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsOverdraftFee() bool {
-	if o == nil || o.IsOverdraftFee.Get() == nil {
+	if o == nil || IsNil(o.IsOverdraftFee.Get()) {
 		var ret bool
 		return ret
 	}
@@ -889,7 +892,7 @@ func (o *TransactionResponse) GetIsOverdraftFee() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsOverdraftFeeOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsOverdraftFee.Get(), o.IsOverdraftFee.IsSet()
@@ -920,7 +923,7 @@ func (o *TransactionResponse) UnsetIsOverdraftFee() {
 
 // GetIsPayrollAdvance returns the IsPayrollAdvance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsPayrollAdvance() bool {
-	if o == nil || o.IsPayrollAdvance.Get() == nil {
+	if o == nil || IsNil(o.IsPayrollAdvance.Get()) {
 		var ret bool
 		return ret
 	}
@@ -931,7 +934,7 @@ func (o *TransactionResponse) GetIsPayrollAdvance() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsPayrollAdvanceOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsPayrollAdvance.Get(), o.IsPayrollAdvance.IsSet()
@@ -962,7 +965,7 @@ func (o *TransactionResponse) UnsetIsPayrollAdvance() {
 
 // GetIsRecurring returns the IsRecurring field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsRecurring() bool {
-	if o == nil || o.IsRecurring.Get() == nil {
+	if o == nil || IsNil(o.IsRecurring.Get()) {
 		var ret bool
 		return ret
 	}
@@ -973,7 +976,7 @@ func (o *TransactionResponse) GetIsRecurring() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsRecurringOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsRecurring.Get(), o.IsRecurring.IsSet()
@@ -1004,7 +1007,7 @@ func (o *TransactionResponse) UnsetIsRecurring() {
 
 // GetIsSubscription returns the IsSubscription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetIsSubscription() bool {
-	if o == nil || o.IsSubscription.Get() == nil {
+	if o == nil || IsNil(o.IsSubscription.Get()) {
 		var ret bool
 		return ret
 	}
@@ -1015,7 +1018,7 @@ func (o *TransactionResponse) GetIsSubscription() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetIsSubscriptionOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsSubscription.Get(), o.IsSubscription.IsSet()
@@ -1046,7 +1049,7 @@ func (o *TransactionResponse) UnsetIsSubscription() {
 
 // GetLatitude returns the Latitude field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetLatitude() float32 {
-	if o == nil || o.Latitude.Get() == nil {
+	if o == nil || IsNil(o.Latitude.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1057,7 +1060,7 @@ func (o *TransactionResponse) GetLatitude() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetLatitudeOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Latitude.Get(), o.Latitude.IsSet()
@@ -1088,7 +1091,7 @@ func (o *TransactionResponse) UnsetLatitude() {
 
 // GetLocalizedDescription returns the LocalizedDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetLocalizedDescription() string {
-	if o == nil || o.LocalizedDescription.Get() == nil {
+	if o == nil || IsNil(o.LocalizedDescription.Get()) {
 		var ret string
 		return ret
 	}
@@ -1099,7 +1102,7 @@ func (o *TransactionResponse) GetLocalizedDescription() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetLocalizedDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LocalizedDescription.Get(), o.LocalizedDescription.IsSet()
@@ -1130,7 +1133,7 @@ func (o *TransactionResponse) UnsetLocalizedDescription() {
 
 // GetLocalizedMemo returns the LocalizedMemo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetLocalizedMemo() string {
-	if o == nil || o.LocalizedMemo.Get() == nil {
+	if o == nil || IsNil(o.LocalizedMemo.Get()) {
 		var ret string
 		return ret
 	}
@@ -1141,7 +1144,7 @@ func (o *TransactionResponse) GetLocalizedMemo() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetLocalizedMemoOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LocalizedMemo.Get(), o.LocalizedMemo.IsSet()
@@ -1172,7 +1175,7 @@ func (o *TransactionResponse) UnsetLocalizedMemo() {
 
 // GetLongitude returns the Longitude field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetLongitude() float32 {
-	if o == nil || o.Longitude.Get() == nil {
+	if o == nil || IsNil(o.Longitude.Get()) {
 		var ret float32
 		return ret
 	}
@@ -1183,7 +1186,7 @@ func (o *TransactionResponse) GetLongitude() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetLongitudeOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Longitude.Get(), o.Longitude.IsSet()
@@ -1214,7 +1217,7 @@ func (o *TransactionResponse) UnsetLongitude() {
 
 // GetMemberGuid returns the MemberGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMemberGuid() string {
-	if o == nil || o.MemberGuid.Get() == nil {
+	if o == nil || IsNil(o.MemberGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -1225,7 +1228,7 @@ func (o *TransactionResponse) GetMemberGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMemberGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberGuid.Get(), o.MemberGuid.IsSet()
@@ -1256,7 +1259,7 @@ func (o *TransactionResponse) UnsetMemberGuid() {
 
 // GetMemberIsManagedByUser returns the MemberIsManagedByUser field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMemberIsManagedByUser() bool {
-	if o == nil || o.MemberIsManagedByUser.Get() == nil {
+	if o == nil || IsNil(o.MemberIsManagedByUser.Get()) {
 		var ret bool
 		return ret
 	}
@@ -1267,7 +1270,7 @@ func (o *TransactionResponse) GetMemberIsManagedByUser() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMemberIsManagedByUserOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MemberIsManagedByUser.Get(), o.MemberIsManagedByUser.IsSet()
@@ -1298,7 +1301,7 @@ func (o *TransactionResponse) UnsetMemberIsManagedByUser() {
 
 // GetMemo returns the Memo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMemo() string {
-	if o == nil || o.Memo.Get() == nil {
+	if o == nil || IsNil(o.Memo.Get()) {
 		var ret string
 		return ret
 	}
@@ -1309,7 +1312,7 @@ func (o *TransactionResponse) GetMemo() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMemoOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Memo.Get(), o.Memo.IsSet()
@@ -1340,7 +1343,7 @@ func (o *TransactionResponse) UnsetMemo() {
 
 // GetMerchantCategoryCode returns the MerchantCategoryCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMerchantCategoryCode() int32 {
-	if o == nil || o.MerchantCategoryCode.Get() == nil {
+	if o == nil || IsNil(o.MerchantCategoryCode.Get()) {
 		var ret int32
 		return ret
 	}
@@ -1351,7 +1354,7 @@ func (o *TransactionResponse) GetMerchantCategoryCode() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMerchantCategoryCodeOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MerchantCategoryCode.Get(), o.MerchantCategoryCode.IsSet()
@@ -1382,7 +1385,7 @@ func (o *TransactionResponse) UnsetMerchantCategoryCode() {
 
 // GetMerchantGuid returns the MerchantGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMerchantGuid() string {
-	if o == nil || o.MerchantGuid.Get() == nil {
+	if o == nil || IsNil(o.MerchantGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -1393,7 +1396,7 @@ func (o *TransactionResponse) GetMerchantGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMerchantGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MerchantGuid.Get(), o.MerchantGuid.IsSet()
@@ -1424,7 +1427,7 @@ func (o *TransactionResponse) UnsetMerchantGuid() {
 
 // GetMerchantLocationGuid returns the MerchantLocationGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMerchantLocationGuid() string {
-	if o == nil || o.MerchantLocationGuid.Get() == nil {
+	if o == nil || IsNil(o.MerchantLocationGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -1435,7 +1438,7 @@ func (o *TransactionResponse) GetMerchantLocationGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMerchantLocationGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MerchantLocationGuid.Get(), o.MerchantLocationGuid.IsSet()
@@ -1466,7 +1469,7 @@ func (o *TransactionResponse) UnsetMerchantLocationGuid() {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetMetadata() string {
-	if o == nil || o.Metadata.Get() == nil {
+	if o == nil || IsNil(o.Metadata.Get()) {
 		var ret string
 		return ret
 	}
@@ -1477,7 +1480,7 @@ func (o *TransactionResponse) GetMetadata() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetMetadataOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Metadata.Get(), o.Metadata.IsSet()
@@ -1508,7 +1511,7 @@ func (o *TransactionResponse) UnsetMetadata() {
 
 // GetOriginalDescription returns the OriginalDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetOriginalDescription() string {
-	if o == nil || o.OriginalDescription.Get() == nil {
+	if o == nil || IsNil(o.OriginalDescription.Get()) {
 		var ret string
 		return ret
 	}
@@ -1519,7 +1522,7 @@ func (o *TransactionResponse) GetOriginalDescription() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetOriginalDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.OriginalDescription.Get(), o.OriginalDescription.IsSet()
@@ -1550,7 +1553,7 @@ func (o *TransactionResponse) UnsetOriginalDescription() {
 
 // GetPostedAt returns the PostedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetPostedAt() string {
-	if o == nil || o.PostedAt.Get() == nil {
+	if o == nil || IsNil(o.PostedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -1561,7 +1564,7 @@ func (o *TransactionResponse) GetPostedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetPostedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PostedAt.Get(), o.PostedAt.IsSet()
@@ -1592,7 +1595,7 @@ func (o *TransactionResponse) UnsetPostedAt() {
 
 // GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetStatus() string {
-	if o == nil || o.Status.Get() == nil {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
@@ -1603,7 +1606,7 @@ func (o *TransactionResponse) GetStatus() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetStatusOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Status.Get(), o.Status.IsSet()
@@ -1634,7 +1637,7 @@ func (o *TransactionResponse) UnsetStatus() {
 
 // GetTopLevelCategory returns the TopLevelCategory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetTopLevelCategory() string {
-	if o == nil || o.TopLevelCategory.Get() == nil {
+	if o == nil || IsNil(o.TopLevelCategory.Get()) {
 		var ret string
 		return ret
 	}
@@ -1645,7 +1648,7 @@ func (o *TransactionResponse) GetTopLevelCategory() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetTopLevelCategoryOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TopLevelCategory.Get(), o.TopLevelCategory.IsSet()
@@ -1676,7 +1679,7 @@ func (o *TransactionResponse) UnsetTopLevelCategory() {
 
 // GetTransactedAt returns the TransactedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetTransactedAt() string {
-	if o == nil || o.TransactedAt.Get() == nil {
+	if o == nil || IsNil(o.TransactedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -1687,7 +1690,7 @@ func (o *TransactionResponse) GetTransactedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetTransactedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TransactedAt.Get(), o.TransactedAt.IsSet()
@@ -1718,7 +1721,7 @@ func (o *TransactionResponse) UnsetTransactedAt() {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetType() string {
-	if o == nil || o.Type.Get() == nil {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -1729,7 +1732,7 @@ func (o *TransactionResponse) GetType() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Type.Get(), o.Type.IsSet()
@@ -1760,7 +1763,7 @@ func (o *TransactionResponse) UnsetType() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt.Get() == nil {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -1771,7 +1774,7 @@ func (o *TransactionResponse) GetUpdatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetUpdatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
@@ -1802,7 +1805,7 @@ func (o *TransactionResponse) UnsetUpdatedAt() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -1813,7 +1816,7 @@ func (o *TransactionResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -1844,7 +1847,7 @@ func (o *TransactionResponse) UnsetUserGuid() {
 
 // GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionResponse) GetUserId() string {
-	if o == nil || o.UserId.Get() == nil {
+	if o == nil || IsNil(o.UserId.Get()) {
 		var ret string
 		return ret
 	}
@@ -1855,7 +1858,7 @@ func (o *TransactionResponse) GetUserId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionResponse) GetUserIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserId.Get(), o.UserId.IsSet()
@@ -1885,6 +1888,14 @@ func (o *TransactionResponse) UnsetUserId() {
 }
 
 func (o TransactionResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TransactionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountGuid.IsSet() {
 		toSerialize["account_guid"] = o.AccountGuid.Get()
@@ -2015,7 +2026,7 @@ func (o TransactionResponse) MarshalJSON() ([]byte, error) {
 	if o.UserId.IsSet() {
 		toSerialize["user_id"] = o.UserId.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTransactionResponse struct {

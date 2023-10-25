@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnhanceTransactionsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnhanceTransactionsResponseBody{}
+
 // EnhanceTransactionsResponseBody struct for EnhanceTransactionsResponseBody
 type EnhanceTransactionsResponseBody struct {
 	Transactions []EnhanceTransactionResponse `json:"transactions,omitempty"`
@@ -38,7 +41,7 @@ func NewEnhanceTransactionsResponseBodyWithDefaults() *EnhanceTransactionsRespon
 
 // GetTransactions returns the Transactions field value if set, zero value otherwise.
 func (o *EnhanceTransactionsResponseBody) GetTransactions() []EnhanceTransactionResponse {
-	if o == nil || o.Transactions == nil {
+	if o == nil || IsNil(o.Transactions) {
 		var ret []EnhanceTransactionResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *EnhanceTransactionsResponseBody) GetTransactions() []EnhanceTransaction
 // GetTransactionsOk returns a tuple with the Transactions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnhanceTransactionsResponseBody) GetTransactionsOk() ([]EnhanceTransactionResponse, bool) {
-	if o == nil || o.Transactions == nil {
+	if o == nil || IsNil(o.Transactions) {
 		return nil, false
 	}
 	return o.Transactions, true
@@ -56,7 +59,7 @@ func (o *EnhanceTransactionsResponseBody) GetTransactionsOk() ([]EnhanceTransact
 
 // HasTransactions returns a boolean if a field has been set.
 func (o *EnhanceTransactionsResponseBody) HasTransactions() bool {
-	if o != nil && o.Transactions != nil {
+	if o != nil && !IsNil(o.Transactions) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *EnhanceTransactionsResponseBody) SetTransactions(v []EnhanceTransaction
 }
 
 func (o EnhanceTransactionsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Transactions != nil {
-		toSerialize["transactions"] = o.Transactions
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnhanceTransactionsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Transactions) {
+		toSerialize["transactions"] = o.Transactions
+	}
+	return toSerialize, nil
 }
 
 type NullableEnhanceTransactionsResponseBody struct {

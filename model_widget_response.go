@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WidgetResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WidgetResponse{}
+
 // WidgetResponse struct for WidgetResponse
 type WidgetResponse struct {
 	Type NullableString `json:"type,omitempty"`
@@ -40,7 +43,7 @@ func NewWidgetResponseWithDefaults() *WidgetResponse {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WidgetResponse) GetType() string {
-	if o == nil || o.Type.Get() == nil {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *WidgetResponse) GetType() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WidgetResponse) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Type.Get(), o.Type.IsSet()
@@ -82,7 +85,7 @@ func (o *WidgetResponse) UnsetType() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WidgetResponse) GetUrl() string {
-	if o == nil || o.Url.Get() == nil {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *WidgetResponse) GetUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WidgetResponse) GetUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Url.Get(), o.Url.IsSet()
@@ -124,7 +127,7 @@ func (o *WidgetResponse) UnsetUrl() {
 
 // GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WidgetResponse) GetUserId() string {
-	if o == nil || o.UserId.Get() == nil {
+	if o == nil || IsNil(o.UserId.Get()) {
 		var ret string
 		return ret
 	}
@@ -135,7 +138,7 @@ func (o *WidgetResponse) GetUserId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WidgetResponse) GetUserIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserId.Get(), o.UserId.IsSet()
@@ -165,6 +168,14 @@ func (o *WidgetResponse) UnsetUserId() {
 }
 
 func (o WidgetResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WidgetResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
@@ -175,7 +186,7 @@ func (o WidgetResponse) MarshalJSON() ([]byte, error) {
 	if o.UserId.IsSet() {
 		toSerialize["user_id"] = o.UserId.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableWidgetResponse struct {

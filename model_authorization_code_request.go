@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthorizationCodeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthorizationCodeRequest{}
+
 // AuthorizationCodeRequest struct for AuthorizationCodeRequest
 type AuthorizationCodeRequest struct {
 	Scope NullableString `json:"scope,omitempty"`
@@ -38,7 +41,7 @@ func NewAuthorizationCodeRequestWithDefaults() *AuthorizationCodeRequest {
 
 // GetScope returns the Scope field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthorizationCodeRequest) GetScope() string {
-	if o == nil || o.Scope.Get() == nil {
+	if o == nil || IsNil(o.Scope.Get()) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *AuthorizationCodeRequest) GetScope() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthorizationCodeRequest) GetScopeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Scope.Get(), o.Scope.IsSet()
@@ -79,11 +82,19 @@ func (o *AuthorizationCodeRequest) UnsetScope() {
 }
 
 func (o AuthorizationCodeRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AuthorizationCodeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Scope.IsSet() {
 		toSerialize["scope"] = o.Scope.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableAuthorizationCodeRequest struct {

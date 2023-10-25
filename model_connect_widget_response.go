@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectWidgetResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectWidgetResponse{}
+
 // ConnectWidgetResponse struct for ConnectWidgetResponse
 type ConnectWidgetResponse struct {
 	ConnectWidgetUrl NullableString `json:"connect_widget_url,omitempty"`
@@ -39,7 +42,7 @@ func NewConnectWidgetResponseWithDefaults() *ConnectWidgetResponse {
 
 // GetConnectWidgetUrl returns the ConnectWidgetUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectWidgetResponse) GetConnectWidgetUrl() string {
-	if o == nil || o.ConnectWidgetUrl.Get() == nil {
+	if o == nil || IsNil(o.ConnectWidgetUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ConnectWidgetResponse) GetConnectWidgetUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectWidgetResponse) GetConnectWidgetUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConnectWidgetUrl.Get(), o.ConnectWidgetUrl.IsSet()
@@ -81,7 +84,7 @@ func (o *ConnectWidgetResponse) UnsetConnectWidgetUrl() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectWidgetResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -92,7 +95,7 @@ func (o *ConnectWidgetResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectWidgetResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -122,6 +125,14 @@ func (o *ConnectWidgetResponse) UnsetGuid() {
 }
 
 func (o ConnectWidgetResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ConnectWidgetResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ConnectWidgetUrl.IsSet() {
 		toSerialize["connect_widget_url"] = o.ConnectWidgetUrl.Get()
@@ -129,7 +140,7 @@ func (o ConnectWidgetResponse) MarshalJSON() ([]byte, error) {
 	if o.Guid.IsSet() {
 		toSerialize["guid"] = o.Guid.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableConnectWidgetResponse struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StatementsResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StatementsResponseBody{}
+
 // StatementsResponseBody struct for StatementsResponseBody
 type StatementsResponseBody struct {
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
@@ -39,7 +42,7 @@ func NewStatementsResponseBodyWithDefaults() *StatementsResponseBody {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *StatementsResponseBody) GetPagination() PaginationResponse {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret PaginationResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *StatementsResponseBody) GetPagination() PaginationResponse {
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatementsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -57,7 +60,7 @@ func (o *StatementsResponseBody) GetPaginationOk() (*PaginationResponse, bool) {
 
 // HasPagination returns a boolean if a field has been set.
 func (o *StatementsResponseBody) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *StatementsResponseBody) SetPagination(v PaginationResponse) {
 
 // GetStatements returns the Statements field value if set, zero value otherwise.
 func (o *StatementsResponseBody) GetStatements() []StatementResponse {
-	if o == nil || o.Statements == nil {
+	if o == nil || IsNil(o.Statements) {
 		var ret []StatementResponse
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *StatementsResponseBody) GetStatements() []StatementResponse {
 // GetStatementsOk returns a tuple with the Statements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatementsResponseBody) GetStatementsOk() ([]StatementResponse, bool) {
-	if o == nil || o.Statements == nil {
+	if o == nil || IsNil(o.Statements) {
 		return nil, false
 	}
 	return o.Statements, true
@@ -89,7 +92,7 @@ func (o *StatementsResponseBody) GetStatementsOk() ([]StatementResponse, bool) {
 
 // HasStatements returns a boolean if a field has been set.
 func (o *StatementsResponseBody) HasStatements() bool {
-	if o != nil && o.Statements != nil {
+	if o != nil && !IsNil(o.Statements) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *StatementsResponseBody) SetStatements(v []StatementResponse) {
 }
 
 func (o StatementsResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if o.Statements != nil {
-		toSerialize["statements"] = o.Statements
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StatementsResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if !IsNil(o.Statements) {
+		toSerialize["statements"] = o.Statements
+	}
+	return toSerialize, nil
 }
 
 type NullableStatementsResponseBody struct {

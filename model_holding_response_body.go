@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the HoldingResponseBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HoldingResponseBody{}
+
 // HoldingResponseBody struct for HoldingResponseBody
 type HoldingResponseBody struct {
 	Holding *HoldingResponse `json:"holding,omitempty"`
@@ -38,7 +41,7 @@ func NewHoldingResponseBodyWithDefaults() *HoldingResponseBody {
 
 // GetHolding returns the Holding field value if set, zero value otherwise.
 func (o *HoldingResponseBody) GetHolding() HoldingResponse {
-	if o == nil || o.Holding == nil {
+	if o == nil || IsNil(o.Holding) {
 		var ret HoldingResponse
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *HoldingResponseBody) GetHolding() HoldingResponse {
 // GetHoldingOk returns a tuple with the Holding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HoldingResponseBody) GetHoldingOk() (*HoldingResponse, bool) {
-	if o == nil || o.Holding == nil {
+	if o == nil || IsNil(o.Holding) {
 		return nil, false
 	}
 	return o.Holding, true
@@ -56,7 +59,7 @@ func (o *HoldingResponseBody) GetHoldingOk() (*HoldingResponse, bool) {
 
 // HasHolding returns a boolean if a field has been set.
 func (o *HoldingResponseBody) HasHolding() bool {
-	if o != nil && o.Holding != nil {
+	if o != nil && !IsNil(o.Holding) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *HoldingResponseBody) SetHolding(v HoldingResponse) {
 }
 
 func (o HoldingResponseBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Holding != nil {
-		toSerialize["holding"] = o.Holding
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o HoldingResponseBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Holding) {
+		toSerialize["holding"] = o.Holding
+	}
+	return toSerialize, nil
 }
 
 type NullableHoldingResponseBody struct {

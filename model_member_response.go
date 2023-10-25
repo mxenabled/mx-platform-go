@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MemberResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MemberResponse{}
+
 // MemberResponse struct for MemberResponse
 type MemberResponse struct {
 	AggregatedAt NullableString `json:"aggregated_at,omitempty"`
@@ -52,7 +55,7 @@ func NewMemberResponseWithDefaults() *MemberResponse {
 
 // GetAggregatedAt returns the AggregatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetAggregatedAt() string {
-	if o == nil || o.AggregatedAt.Get() == nil {
+	if o == nil || IsNil(o.AggregatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -63,7 +66,7 @@ func (o *MemberResponse) GetAggregatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetAggregatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AggregatedAt.Get(), o.AggregatedAt.IsSet()
@@ -94,7 +97,7 @@ func (o *MemberResponse) UnsetAggregatedAt() {
 
 // GetBackgroundAggregationIsDisabled returns the BackgroundAggregationIsDisabled field value if set, zero value otherwise.
 func (o *MemberResponse) GetBackgroundAggregationIsDisabled() bool {
-	if o == nil || o.BackgroundAggregationIsDisabled == nil {
+	if o == nil || IsNil(o.BackgroundAggregationIsDisabled) {
 		var ret bool
 		return ret
 	}
@@ -104,7 +107,7 @@ func (o *MemberResponse) GetBackgroundAggregationIsDisabled() bool {
 // GetBackgroundAggregationIsDisabledOk returns a tuple with the BackgroundAggregationIsDisabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberResponse) GetBackgroundAggregationIsDisabledOk() (*bool, bool) {
-	if o == nil || o.BackgroundAggregationIsDisabled == nil {
+	if o == nil || IsNil(o.BackgroundAggregationIsDisabled) {
 		return nil, false
 	}
 	return o.BackgroundAggregationIsDisabled, true
@@ -112,7 +115,7 @@ func (o *MemberResponse) GetBackgroundAggregationIsDisabledOk() (*bool, bool) {
 
 // HasBackgroundAggregationIsDisabled returns a boolean if a field has been set.
 func (o *MemberResponse) HasBackgroundAggregationIsDisabled() bool {
-	if o != nil && o.BackgroundAggregationIsDisabled != nil {
+	if o != nil && !IsNil(o.BackgroundAggregationIsDisabled) {
 		return true
 	}
 
@@ -126,7 +129,7 @@ func (o *MemberResponse) SetBackgroundAggregationIsDisabled(v bool) {
 
 // GetConnectionStatus returns the ConnectionStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetConnectionStatus() string {
-	if o == nil || o.ConnectionStatus.Get() == nil {
+	if o == nil || IsNil(o.ConnectionStatus.Get()) {
 		var ret string
 		return ret
 	}
@@ -137,7 +140,7 @@ func (o *MemberResponse) GetConnectionStatus() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetConnectionStatusOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConnectionStatus.Get(), o.ConnectionStatus.IsSet()
@@ -168,7 +171,7 @@ func (o *MemberResponse) UnsetConnectionStatus() {
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetGuid() string {
-	if o == nil || o.Guid.Get() == nil {
+	if o == nil || IsNil(o.Guid.Get()) {
 		var ret string
 		return ret
 	}
@@ -179,7 +182,7 @@ func (o *MemberResponse) GetGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Guid.Get(), o.Guid.IsSet()
@@ -210,7 +213,7 @@ func (o *MemberResponse) UnsetGuid() {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetId() string {
-	if o == nil || o.Id.Get() == nil {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *MemberResponse) GetId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
@@ -252,7 +255,7 @@ func (o *MemberResponse) UnsetId() {
 
 // GetInstitutionCode returns the InstitutionCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetInstitutionCode() string {
-	if o == nil || o.InstitutionCode.Get() == nil {
+	if o == nil || IsNil(o.InstitutionCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -263,7 +266,7 @@ func (o *MemberResponse) GetInstitutionCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetInstitutionCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.InstitutionCode.Get(), o.InstitutionCode.IsSet()
@@ -294,7 +297,7 @@ func (o *MemberResponse) UnsetInstitutionCode() {
 
 // GetIsBeingAggregated returns the IsBeingAggregated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetIsBeingAggregated() bool {
-	if o == nil || o.IsBeingAggregated.Get() == nil {
+	if o == nil || IsNil(o.IsBeingAggregated.Get()) {
 		var ret bool
 		return ret
 	}
@@ -305,7 +308,7 @@ func (o *MemberResponse) GetIsBeingAggregated() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetIsBeingAggregatedOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsBeingAggregated.Get(), o.IsBeingAggregated.IsSet()
@@ -336,7 +339,7 @@ func (o *MemberResponse) UnsetIsBeingAggregated() {
 
 // GetIsManagedByUser returns the IsManagedByUser field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetIsManagedByUser() bool {
-	if o == nil || o.IsManagedByUser.Get() == nil {
+	if o == nil || IsNil(o.IsManagedByUser.Get()) {
 		var ret bool
 		return ret
 	}
@@ -347,7 +350,7 @@ func (o *MemberResponse) GetIsManagedByUser() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetIsManagedByUserOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsManagedByUser.Get(), o.IsManagedByUser.IsSet()
@@ -378,7 +381,7 @@ func (o *MemberResponse) UnsetIsManagedByUser() {
 
 // GetIsOauth returns the IsOauth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetIsOauth() bool {
-	if o == nil || o.IsOauth.Get() == nil {
+	if o == nil || IsNil(o.IsOauth.Get()) {
 		var ret bool
 		return ret
 	}
@@ -389,7 +392,7 @@ func (o *MemberResponse) GetIsOauth() bool {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetIsOauthOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IsOauth.Get(), o.IsOauth.IsSet()
@@ -420,7 +423,7 @@ func (o *MemberResponse) UnsetIsOauth() {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetMetadata() string {
-	if o == nil || o.Metadata.Get() == nil {
+	if o == nil || IsNil(o.Metadata.Get()) {
 		var ret string
 		return ret
 	}
@@ -431,7 +434,7 @@ func (o *MemberResponse) GetMetadata() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetMetadataOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Metadata.Get(), o.Metadata.IsSet()
@@ -462,7 +465,7 @@ func (o *MemberResponse) UnsetMetadata() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -473,7 +476,7 @@ func (o *MemberResponse) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -504,7 +507,7 @@ func (o *MemberResponse) UnsetName() {
 
 // GetOauthWindowUri returns the OauthWindowUri field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetOauthWindowUri() string {
-	if o == nil || o.OauthWindowUri.Get() == nil {
+	if o == nil || IsNil(o.OauthWindowUri.Get()) {
 		var ret string
 		return ret
 	}
@@ -515,7 +518,7 @@ func (o *MemberResponse) GetOauthWindowUri() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetOauthWindowUriOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.OauthWindowUri.Get(), o.OauthWindowUri.IsSet()
@@ -546,7 +549,7 @@ func (o *MemberResponse) UnsetOauthWindowUri() {
 
 // GetSuccessfullyAggregatedAt returns the SuccessfullyAggregatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetSuccessfullyAggregatedAt() string {
-	if o == nil || o.SuccessfullyAggregatedAt.Get() == nil {
+	if o == nil || IsNil(o.SuccessfullyAggregatedAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -557,7 +560,7 @@ func (o *MemberResponse) GetSuccessfullyAggregatedAt() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetSuccessfullyAggregatedAtOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SuccessfullyAggregatedAt.Get(), o.SuccessfullyAggregatedAt.IsSet()
@@ -588,7 +591,7 @@ func (o *MemberResponse) UnsetSuccessfullyAggregatedAt() {
 
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetUserGuid() string {
-	if o == nil || o.UserGuid.Get() == nil {
+	if o == nil || IsNil(o.UserGuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -599,7 +602,7 @@ func (o *MemberResponse) GetUserGuid() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetUserGuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserGuid.Get(), o.UserGuid.IsSet()
@@ -630,7 +633,7 @@ func (o *MemberResponse) UnsetUserGuid() {
 
 // GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetUserId() string {
-	if o == nil || o.UserId.Get() == nil {
+	if o == nil || IsNil(o.UserId.Get()) {
 		var ret string
 		return ret
 	}
@@ -641,7 +644,7 @@ func (o *MemberResponse) GetUserId() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetUserIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.UserId.Get(), o.UserId.IsSet()
@@ -671,11 +674,19 @@ func (o *MemberResponse) UnsetUserId() {
 }
 
 func (o MemberResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o MemberResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AggregatedAt.IsSet() {
 		toSerialize["aggregated_at"] = o.AggregatedAt.Get()
 	}
-	if o.BackgroundAggregationIsDisabled != nil {
+	if !IsNil(o.BackgroundAggregationIsDisabled) {
 		toSerialize["background_aggregation_is_disabled"] = o.BackgroundAggregationIsDisabled
 	}
 	if o.ConnectionStatus.IsSet() {
@@ -717,7 +728,7 @@ func (o MemberResponse) MarshalJSON() ([]byte, error) {
 	if o.UserId.IsSet() {
 		toSerialize["user_id"] = o.UserId.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableMemberResponse struct {

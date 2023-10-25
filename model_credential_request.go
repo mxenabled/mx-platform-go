@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CredentialRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CredentialRequest{}
+
 // CredentialRequest struct for CredentialRequest
 type CredentialRequest struct {
 	Guid *string `json:"guid,omitempty"`
@@ -39,7 +42,7 @@ func NewCredentialRequestWithDefaults() *CredentialRequest {
 
 // GetGuid returns the Guid field value if set, zero value otherwise.
 func (o *CredentialRequest) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || IsNil(o.Guid) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CredentialRequest) GetGuid() string {
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialRequest) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil || IsNil(o.Guid) {
 		return nil, false
 	}
 	return o.Guid, true
@@ -57,7 +60,7 @@ func (o *CredentialRequest) GetGuidOk() (*string, bool) {
 
 // HasGuid returns a boolean if a field has been set.
 func (o *CredentialRequest) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && !IsNil(o.Guid) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *CredentialRequest) SetGuid(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *CredentialRequest) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *CredentialRequest) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialRequest) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -89,7 +92,7 @@ func (o *CredentialRequest) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *CredentialRequest) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *CredentialRequest) SetValue(v string) {
 }
 
 func (o CredentialRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CredentialRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Guid) {
+		toSerialize["guid"] = o.Guid
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableCredentialRequest struct {

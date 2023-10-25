@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedMemberUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedMemberUpdateRequest{}
+
 // ManagedMemberUpdateRequest struct for ManagedMemberUpdateRequest
 type ManagedMemberUpdateRequest struct {
 	Id *string `json:"id,omitempty"`
@@ -40,7 +43,7 @@ func NewManagedMemberUpdateRequestWithDefaults() *ManagedMemberUpdateRequest {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ManagedMemberUpdateRequest) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ManagedMemberUpdateRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedMemberUpdateRequest) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -58,7 +61,7 @@ func (o *ManagedMemberUpdateRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ManagedMemberUpdateRequest) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ManagedMemberUpdateRequest) SetId(v string) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *ManagedMemberUpdateRequest) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ManagedMemberUpdateRequest) GetMetadata() string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedMemberUpdateRequest) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -90,7 +93,7 @@ func (o *ManagedMemberUpdateRequest) GetMetadataOk() (*string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *ManagedMemberUpdateRequest) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ManagedMemberUpdateRequest) SetMetadata(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ManagedMemberUpdateRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ManagedMemberUpdateRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedMemberUpdateRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -122,7 +125,7 @@ func (o *ManagedMemberUpdateRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ManagedMemberUpdateRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ManagedMemberUpdateRequest) SetName(v string) {
 }
 
 func (o ManagedMemberUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ManagedMemberUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableManagedMemberUpdateRequest struct {

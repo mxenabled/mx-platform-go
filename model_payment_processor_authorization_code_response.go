@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaymentProcessorAuthorizationCodeResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaymentProcessorAuthorizationCodeResponse{}
+
 // PaymentProcessorAuthorizationCodeResponse struct for PaymentProcessorAuthorizationCodeResponse
 type PaymentProcessorAuthorizationCodeResponse struct {
 	AuthorizationCode NullableString `json:"authorization_code,omitempty"`
@@ -38,7 +41,7 @@ func NewPaymentProcessorAuthorizationCodeResponseWithDefaults() *PaymentProcesso
 
 // GetAuthorizationCode returns the AuthorizationCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PaymentProcessorAuthorizationCodeResponse) GetAuthorizationCode() string {
-	if o == nil || o.AuthorizationCode.Get() == nil {
+	if o == nil || IsNil(o.AuthorizationCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *PaymentProcessorAuthorizationCodeResponse) GetAuthorizationCode() strin
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PaymentProcessorAuthorizationCodeResponse) GetAuthorizationCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthorizationCode.Get(), o.AuthorizationCode.IsSet()
@@ -79,11 +82,19 @@ func (o *PaymentProcessorAuthorizationCodeResponse) UnsetAuthorizationCode() {
 }
 
 func (o PaymentProcessorAuthorizationCodeResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PaymentProcessorAuthorizationCodeResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AuthorizationCode.IsSet() {
 		toSerialize["authorization_code"] = o.AuthorizationCode.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePaymentProcessorAuthorizationCodeResponse struct {

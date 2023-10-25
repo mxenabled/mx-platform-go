@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedAccountUpdateRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedAccountUpdateRequestBody{}
+
 // ManagedAccountUpdateRequestBody struct for ManagedAccountUpdateRequestBody
 type ManagedAccountUpdateRequestBody struct {
 	Account *ManagedAccountUpdateRequest `json:"account,omitempty"`
@@ -38,7 +41,7 @@ func NewManagedAccountUpdateRequestBodyWithDefaults() *ManagedAccountUpdateReque
 
 // GetAccount returns the Account field value if set, zero value otherwise.
 func (o *ManagedAccountUpdateRequestBody) GetAccount() ManagedAccountUpdateRequest {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		var ret ManagedAccountUpdateRequest
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ManagedAccountUpdateRequestBody) GetAccount() ManagedAccountUpdateReque
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedAccountUpdateRequestBody) GetAccountOk() (*ManagedAccountUpdateRequest, bool) {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		return nil, false
 	}
 	return o.Account, true
@@ -56,7 +59,7 @@ func (o *ManagedAccountUpdateRequestBody) GetAccountOk() (*ManagedAccountUpdateR
 
 // HasAccount returns a boolean if a field has been set.
 func (o *ManagedAccountUpdateRequestBody) HasAccount() bool {
-	if o != nil && o.Account != nil {
+	if o != nil && !IsNil(o.Account) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ManagedAccountUpdateRequestBody) SetAccount(v ManagedAccountUpdateReque
 }
 
 func (o ManagedAccountUpdateRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Account != nil {
-		toSerialize["account"] = o.Account
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ManagedAccountUpdateRequestBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
+	}
+	return toSerialize, nil
 }
 
 type NullableManagedAccountUpdateRequestBody struct {
