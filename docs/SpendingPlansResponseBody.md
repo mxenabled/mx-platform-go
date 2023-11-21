@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IterationItems** | Pointer to [**[]SpendingPlanResponse**](SpendingPlanResponse.md) |  | [optional] 
+**SpendingPlans** | Pointer to [**[]SpendingPlanResponse**](SpendingPlanResponse.md) |  | [optional] 
 **Pagination** | Pointer to [**PaginationResponse**](PaginationResponse.md) |  | [optional] 
 
 ## Methods
@@ -26,30 +26,30 @@ NewSpendingPlansResponseBodyWithDefaults instantiates a new SpendingPlansRespons
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetIterationItems
+### GetSpendingPlans
 
-`func (o *SpendingPlansResponseBody) GetIterationItems() []SpendingPlanResponse`
+`func (o *SpendingPlansResponseBody) GetSpendingPlans() []SpendingPlanResponse`
 
-GetIterationItems returns the IterationItems field if non-nil, zero value otherwise.
+GetSpendingPlans returns the SpendingPlans field if non-nil, zero value otherwise.
 
-### GetIterationItemsOk
+### GetSpendingPlansOk
 
-`func (o *SpendingPlansResponseBody) GetIterationItemsOk() (*[]SpendingPlanResponse, bool)`
+`func (o *SpendingPlansResponseBody) GetSpendingPlansOk() (*[]SpendingPlanResponse, bool)`
 
-GetIterationItemsOk returns a tuple with the IterationItems field if it's non-nil, zero value otherwise
+GetSpendingPlansOk returns a tuple with the SpendingPlans field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIterationItems
+### SetSpendingPlans
 
-`func (o *SpendingPlansResponseBody) SetIterationItems(v []SpendingPlanResponse)`
+`func (o *SpendingPlansResponseBody) SetSpendingPlans(v []SpendingPlanResponse)`
 
-SetIterationItems sets IterationItems field to given value.
+SetSpendingPlans sets SpendingPlans field to given value.
 
-### HasIterationItems
+### HasSpendingPlans
 
-`func (o *SpendingPlansResponseBody) HasIterationItems() bool`
+`func (o *SpendingPlansResponseBody) HasSpendingPlans() bool`
 
-HasIterationItems returns a boolean if a field has been set.
+HasSpendingPlans returns a boolean if a field has been set.
 
 ### GetPagination
 

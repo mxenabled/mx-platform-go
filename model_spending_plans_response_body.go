@@ -19,7 +19,7 @@ var _ MappedNullable = &SpendingPlansResponseBody{}
 
 // SpendingPlansResponseBody struct for SpendingPlansResponseBody
 type SpendingPlansResponseBody struct {
-	IterationItems []SpendingPlanResponse `json:"iteration_items,omitempty"`
+	SpendingPlans []SpendingPlanResponse `json:"spending_plans,omitempty"`
 	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
@@ -40,36 +40,36 @@ func NewSpendingPlansResponseBodyWithDefaults() *SpendingPlansResponseBody {
 	return &this
 }
 
-// GetIterationItems returns the IterationItems field value if set, zero value otherwise.
-func (o *SpendingPlansResponseBody) GetIterationItems() []SpendingPlanResponse {
-	if o == nil || IsNil(o.IterationItems) {
+// GetSpendingPlans returns the SpendingPlans field value if set, zero value otherwise.
+func (o *SpendingPlansResponseBody) GetSpendingPlans() []SpendingPlanResponse {
+	if o == nil || IsNil(o.SpendingPlans) {
 		var ret []SpendingPlanResponse
 		return ret
 	}
-	return o.IterationItems
+	return o.SpendingPlans
 }
 
-// GetIterationItemsOk returns a tuple with the IterationItems field value if set, nil otherwise
+// GetSpendingPlansOk returns a tuple with the SpendingPlans field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpendingPlansResponseBody) GetIterationItemsOk() ([]SpendingPlanResponse, bool) {
-	if o == nil || IsNil(o.IterationItems) {
+func (o *SpendingPlansResponseBody) GetSpendingPlansOk() ([]SpendingPlanResponse, bool) {
+	if o == nil || IsNil(o.SpendingPlans) {
 		return nil, false
 	}
-	return o.IterationItems, true
+	return o.SpendingPlans, true
 }
 
-// HasIterationItems returns a boolean if a field has been set.
-func (o *SpendingPlansResponseBody) HasIterationItems() bool {
-	if o != nil && !IsNil(o.IterationItems) {
+// HasSpendingPlans returns a boolean if a field has been set.
+func (o *SpendingPlansResponseBody) HasSpendingPlans() bool {
+	if o != nil && !IsNil(o.SpendingPlans) {
 		return true
 	}
 
 	return false
 }
 
-// SetIterationItems gets a reference to the given []SpendingPlanResponse and assigns it to the IterationItems field.
-func (o *SpendingPlansResponseBody) SetIterationItems(v []SpendingPlanResponse) {
-	o.IterationItems = v
+// SetSpendingPlans gets a reference to the given []SpendingPlanResponse and assigns it to the SpendingPlans field.
+func (o *SpendingPlansResponseBody) SetSpendingPlans(v []SpendingPlanResponse) {
+	o.SpendingPlans = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
@@ -114,8 +114,8 @@ func (o SpendingPlansResponseBody) MarshalJSON() ([]byte, error) {
 
 func (o SpendingPlansResponseBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.IterationItems) {
-		toSerialize["iteration_items"] = o.IterationItems
+	if !IsNil(o.SpendingPlans) {
+		toSerialize["spending_plans"] = o.SpendingPlans
 	}
 	if !IsNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination
