@@ -139,35 +139,6 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MxPlatformAPIService CreateSpendingPlan", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.CreateSpendingPlan(context.Background(), userGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService CreateSpendingPlanIterationItem", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var spendingPlanGuid string
-		var userGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.CreateSpendingPlanIterationItem(context.Background(), spendingPlanGuid, userGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test MxPlatformAPIService CreateTag", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -303,50 +274,6 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 		var userGuid string
 
 		httpRes, err := apiClient.MxPlatformAPI.DeleteMember(context.Background(), memberGuid, userGuid).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService DeleteSpendingPlan", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-
-		httpRes, err := apiClient.MxPlatformAPI.DeleteSpendingPlan(context.Background(), userGuid, spendingPlanGuid).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService DeleteSpendingPlanAccount", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-		var spendingPlanAccountGuid string
-
-		httpRes, err := apiClient.MxPlatformAPI.DeleteSpendingPlanAccount(context.Background(), userGuid, spendingPlanGuid, spendingPlanAccountGuid).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService DeleteSpendingPlanIterationItem", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-		var iterationItemGuid string
-
-		httpRes, err := apiClient.MxPlatformAPI.DeleteSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -819,65 +746,6 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MxPlatformAPIService ListSpendingPlanAccounts", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.ListSpendingPlanAccounts(context.Background(), userGuid, spendingPlanGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService ListSpendingPlanIterationItems", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.ListSpendingPlanIterationItems(context.Background(), userGuid, spendingPlanGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService ListSpendingPlanIterations", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.ListSpendingPlanIterations(context.Background(), userGuid, spendingPlanGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService ListSpendingPlans", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.ListSpendingPlans(context.Background(), userGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test MxPlatformAPIService ListStatementsByMember", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -1230,69 +1098,6 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MxPlatformAPIService ReadSpendingPlanAccount", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-		var spendingPlanAccountGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.ReadSpendingPlanAccount(context.Background(), userGuid, spendingPlanGuid, spendingPlanAccountGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService ReadSpendingPlanIteration", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-		var iterationNumber int32
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.ReadSpendingPlanIteration(context.Background(), userGuid, spendingPlanGuid, iterationNumber).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService ReadSpendingPlanIterationItem", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-		var iterationItemGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.ReadSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService ReadSpendingPlanUser", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.ReadSpendingPlanUser(context.Background(), userGuid, spendingPlanGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test MxPlatformAPIService ReadStatementByMember", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -1556,22 +1361,6 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 		var userGuid string
 
 		resp, httpRes, err := apiClient.MxPlatformAPI.UpdateMember(context.Background(), memberGuid, userGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MxPlatformAPIService UpdateSpendingPlanIterationItem", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-		var spendingPlanGuid string
-		var iterationItemGuid string
-
-		resp, httpRes, err := apiClient.MxPlatformAPI.UpdateSpendingPlanIterationItem(context.Background(), userGuid, spendingPlanGuid, iterationItemGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

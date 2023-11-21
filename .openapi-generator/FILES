@@ -2,6 +2,7 @@
 .travis.yml
 README.md
 api_mx_platform.go
+api_spending_plan.go
 client.go
 configuration.go
 docs/AccountCreateRequest.md
@@ -83,6 +84,7 @@ docs/PaymentProcessorAuthorizationCodeRequest.md
 docs/PaymentProcessorAuthorizationCodeRequestBody.md
 docs/PaymentProcessorAuthorizationCodeResponse.md
 docs/PaymentProcessorAuthorizationCodeResponseBody.md
+docs/SpendingPlanAPI.md
 docs/SpendingPlanAccountResponse.md
 docs/SpendingPlanAccountsResponse.md
 docs/SpendingPlanIterationItemCreateRequestBody.md
@@ -269,4 +271,5 @@ model_widget_response.go
 model_widget_response_body.go
 response.go
 test/api_mx_platform_test.go
+test/api_spending_plan_test.go
 utils.go
