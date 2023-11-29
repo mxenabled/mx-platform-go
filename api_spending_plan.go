@@ -134,7 +134,7 @@ type ApiCreateSpendingPlanIterationItemRequest struct {
 	spendingPlanIterationItemCreateRequestBody *SpendingPlanIterationItemCreateRequestBody
 }
 
-// Iteration item to be created with required parameters (planned_amount)
+// Iteration item to be created with required parameter (planned_amount)
 func (r ApiCreateSpendingPlanIterationItemRequest) SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody SpendingPlanIterationItemCreateRequestBody) ApiCreateSpendingPlanIterationItemRequest {
 	r.spendingPlanIterationItemCreateRequestBody = &spendingPlanIterationItemCreateRequestBody
 	return r
@@ -1574,7 +1574,7 @@ type ApiUpdateSpendingPlanIterationItemRequest struct {
 	spendingPlanIterationItemCreateRequestBody *SpendingPlanIterationItemCreateRequestBody
 }
 
-// Iteration item object to be updated with required parameter (iteration_item_guid)
+// Iteration item to be updated with required parameter (planned_amount)
 func (r ApiUpdateSpendingPlanIterationItemRequest) SpendingPlanIterationItemCreateRequestBody(spendingPlanIterationItemCreateRequestBody SpendingPlanIterationItemCreateRequestBody) ApiUpdateSpendingPlanIterationItemRequest {
 	r.spendingPlanIterationItemCreateRequestBody = &spendingPlanIterationItemCreateRequestBody
 	return r

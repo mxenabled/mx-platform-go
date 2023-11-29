@@ -114,7 +114,7 @@ import (
 func main() {
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
-    spendingPlanIterationItemCreateRequestBody := *openapiclient.NewSpendingPlanIterationItemCreateRequestBody(float32(110)) // SpendingPlanIterationItemCreateRequestBody | Iteration item to be created with required parameters (planned_amount)
+    spendingPlanIterationItemCreateRequestBody := *openapiclient.NewSpendingPlanIterationItemCreateRequestBody(float32(110)) // SpendingPlanIterationItemCreateRequestBody | Iteration item to be created with required parameter (planned_amount)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **spendingPlanIterationItemCreateRequestBody** | [**SpendingPlanIterationItemCreateRequestBody**](SpendingPlanIterationItemCreateRequestBody.md) | Iteration item to be created with required parameters (planned_amount) | 
+ **spendingPlanIterationItemCreateRequestBody** | [**SpendingPlanIterationItemCreateRequestBody**](SpendingPlanIterationItemCreateRequestBody.md) | Iteration item to be created with required parameter (planned_amount) | 
 
 ### Return type
 
@@ -1031,7 +1031,7 @@ func main() {
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
     iterationItemGuid := "SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3" // string | The unique ID for the `iteration_item`.
-    spendingPlanIterationItemCreateRequestBody := *openapiclient.NewSpendingPlanIterationItemCreateRequestBody(float32(110)) // SpendingPlanIterationItemCreateRequestBody | Iteration item object to be updated with required parameter (iteration_item_guid)
+    spendingPlanIterationItemCreateRequestBody := *openapiclient.NewSpendingPlanIterationItemCreateRequestBody(float32(110)) // SpendingPlanIterationItemCreateRequestBody | Iteration item to be updated with required parameter (planned_amount)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1065,7 +1065,7 @@ Name | Type | Description  | Notes
 
 
 
- **spendingPlanIterationItemCreateRequestBody** | [**SpendingPlanIterationItemCreateRequestBody**](SpendingPlanIterationItemCreateRequestBody.md) | Iteration item object to be updated with required parameter (iteration_item_guid) | 
+ **spendingPlanIterationItemCreateRequestBody** | [**SpendingPlanIterationItemCreateRequestBody**](SpendingPlanIterationItemCreateRequestBody.md) | Iteration item to be updated with required parameter (planned_amount) | 
 
 ### Return type
 
