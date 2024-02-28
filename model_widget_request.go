@@ -29,6 +29,7 @@ type WidgetRequest struct {
 	IncludeIdentity *bool `json:"include_identity,omitempty"`
 	IncludeTransactions *bool `json:"include_transactions,omitempty"`
 	IsMobileWebview *bool `json:"is_mobile_webview,omitempty"`
+	MicrowidgetInstanceId *string `json:"microwidget_instance_id,omitempty"`
 	Mode *string `json:"mode,omitempty"`
 	OauthReferralSource *string `json:"oauth_referral_source,omitempty"`
 	UiMessageVersion *int32 `json:"ui_message_version,omitempty"`
@@ -375,6 +376,38 @@ func (o *WidgetRequest) SetIsMobileWebview(v bool) {
 	o.IsMobileWebview = &v
 }
 
+// GetMicrowidgetInstanceId returns the MicrowidgetInstanceId field value if set, zero value otherwise.
+func (o *WidgetRequest) GetMicrowidgetInstanceId() string {
+	if o == nil || IsNil(o.MicrowidgetInstanceId) {
+		var ret string
+		return ret
+	}
+	return *o.MicrowidgetInstanceId
+}
+
+// GetMicrowidgetInstanceIdOk returns a tuple with the MicrowidgetInstanceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WidgetRequest) GetMicrowidgetInstanceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.MicrowidgetInstanceId) {
+		return nil, false
+	}
+	return o.MicrowidgetInstanceId, true
+}
+
+// HasMicrowidgetInstanceId returns a boolean if a field has been set.
+func (o *WidgetRequest) HasMicrowidgetInstanceId() bool {
+	if o != nil && !IsNil(o.MicrowidgetInstanceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetMicrowidgetInstanceId gets a reference to the given string and assigns it to the MicrowidgetInstanceId field.
+func (o *WidgetRequest) SetMicrowidgetInstanceId(v string) {
+	o.MicrowidgetInstanceId = &v
+}
+
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *WidgetRequest) GetMode() string {
 	if o == nil || IsNil(o.Mode) {
@@ -598,6 +631,9 @@ func (o WidgetRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsMobileWebview) {
 		toSerialize["is_mobile_webview"] = o.IsMobileWebview
+	}
+	if !IsNil(o.MicrowidgetInstanceId) {
+		toSerialize["microwidget_instance_id"] = o.MicrowidgetInstanceId
 	}
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode

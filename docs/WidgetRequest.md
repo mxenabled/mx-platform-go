@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **IncludeIdentity** | Pointer to **bool** |  | [optional] 
 **IncludeTransactions** | Pointer to **bool** |  | [optional] 
 **IsMobileWebview** | Pointer to **bool** |  | [optional] 
+**MicrowidgetInstanceId** | Pointer to **string** |  | [optional] 
 **Mode** | Pointer to **string** |  | [optional] 
 **OauthReferralSource** | Pointer to **string** |  | [optional] 
 **UiMessageVersion** | Pointer to **int32** |  | [optional] 
@@ -289,6 +290,31 @@ SetIsMobileWebview sets IsMobileWebview field to given value.
 `func (o *WidgetRequest) HasIsMobileWebview() bool`
 
 HasIsMobileWebview returns a boolean if a field has been set.
+
+### GetMicrowidgetInstanceId
+
+`func (o *WidgetRequest) GetMicrowidgetInstanceId() string`
+
+GetMicrowidgetInstanceId returns the MicrowidgetInstanceId field if non-nil, zero value otherwise.
+
+### GetMicrowidgetInstanceIdOk
+
+`func (o *WidgetRequest) GetMicrowidgetInstanceIdOk() (*string, bool)`
+
+GetMicrowidgetInstanceIdOk returns a tuple with the MicrowidgetInstanceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMicrowidgetInstanceId
+
+`func (o *WidgetRequest) SetMicrowidgetInstanceId(v string)`
+
+SetMicrowidgetInstanceId sets MicrowidgetInstanceId field to given value.
+
+### HasMicrowidgetInstanceId
+
+`func (o *WidgetRequest) HasMicrowidgetInstanceId() bool`
+
+HasMicrowidgetInstanceId returns a boolean if a field has been set.
 
 ### GetMode
 
