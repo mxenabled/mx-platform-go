@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **DisableInstitutionSearch** | Pointer to **bool** |  | [optional] 
 **IncludeIdentity** | Pointer to **bool** |  | [optional] 
 **IncludeTransactions** | Pointer to **bool** |  | [optional] 
+**InsightGuid** | Pointer to **string** |  | [optional] 
 **IsMobileWebview** | Pointer to **bool** |  | [optional] 
 **MicrowidgetInstanceId** | Pointer to **string** |  | [optional] 
 **Mode** | Pointer to **string** |  | [optional] 
@@ -265,6 +266,31 @@ SetIncludeTransactions sets IncludeTransactions field to given value.
 `func (o *WidgetRequest) HasIncludeTransactions() bool`
 
 HasIncludeTransactions returns a boolean if a field has been set.
+
+### GetInsightGuid
+
+`func (o *WidgetRequest) GetInsightGuid() string`
+
+GetInsightGuid returns the InsightGuid field if non-nil, zero value otherwise.
+
+### GetInsightGuidOk
+
+`func (o *WidgetRequest) GetInsightGuidOk() (*string, bool)`
+
+GetInsightGuidOk returns a tuple with the InsightGuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInsightGuid
+
+`func (o *WidgetRequest) SetInsightGuid(v string)`
+
+SetInsightGuid sets InsightGuid field to given value.
+
+### HasInsightGuid
+
+`func (o *WidgetRequest) HasInsightGuid() bool`
+
+HasInsightGuid returns a boolean if a field has been set.
 
 ### GetIsMobileWebview
 

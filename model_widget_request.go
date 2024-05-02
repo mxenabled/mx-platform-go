@@ -28,6 +28,7 @@ type WidgetRequest struct {
 	DisableInstitutionSearch *bool `json:"disable_institution_search,omitempty"`
 	IncludeIdentity *bool `json:"include_identity,omitempty"`
 	IncludeTransactions *bool `json:"include_transactions,omitempty"`
+	InsightGuid *string `json:"insight_guid,omitempty"`
 	IsMobileWebview *bool `json:"is_mobile_webview,omitempty"`
 	MicrowidgetInstanceId *string `json:"microwidget_instance_id,omitempty"`
 	Mode *string `json:"mode,omitempty"`
@@ -344,6 +345,38 @@ func (o *WidgetRequest) SetIncludeTransactions(v bool) {
 	o.IncludeTransactions = &v
 }
 
+// GetInsightGuid returns the InsightGuid field value if set, zero value otherwise.
+func (o *WidgetRequest) GetInsightGuid() string {
+	if o == nil || IsNil(o.InsightGuid) {
+		var ret string
+		return ret
+	}
+	return *o.InsightGuid
+}
+
+// GetInsightGuidOk returns a tuple with the InsightGuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WidgetRequest) GetInsightGuidOk() (*string, bool) {
+	if o == nil || IsNil(o.InsightGuid) {
+		return nil, false
+	}
+	return o.InsightGuid, true
+}
+
+// HasInsightGuid returns a boolean if a field has been set.
+func (o *WidgetRequest) HasInsightGuid() bool {
+	if o != nil && !IsNil(o.InsightGuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetInsightGuid gets a reference to the given string and assigns it to the InsightGuid field.
+func (o *WidgetRequest) SetInsightGuid(v string) {
+	o.InsightGuid = &v
+}
+
 // GetIsMobileWebview returns the IsMobileWebview field value if set, zero value otherwise.
 func (o *WidgetRequest) GetIsMobileWebview() bool {
 	if o == nil || IsNil(o.IsMobileWebview) {
@@ -628,6 +661,9 @@ func (o WidgetRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IncludeTransactions) {
 		toSerialize["include_transactions"] = o.IncludeTransactions
+	}
+	if !IsNil(o.InsightGuid) {
+		toSerialize["insight_guid"] = o.InsightGuid
 	}
 	if !IsNil(o.IsMobileWebview) {
 		toSerialize["is_mobile_webview"] = o.IsMobileWebview
