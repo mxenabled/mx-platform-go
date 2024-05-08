@@ -25,9 +25,9 @@ Name | Type | Description | Notes
 **HoldingsValue** | Pointer to **NullableFloat32** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
 **ImportedAt** | Pointer to **NullableString** |  | [optional] 
-**InterestRate** | Pointer to **NullableFloat32** |  | [optional] 
 **InstitutionCode** | Pointer to **NullableString** |  | [optional] 
 **InsuredName** | Pointer to **NullableString** |  | [optional] 
+**InterestRate** | Pointer to **NullableFloat32** |  | [optional] 
 **IsClosed** | Pointer to **NullableBool** |  | [optional] 
 **IsHidden** | Pointer to **NullableBool** |  | [optional] 
 **IsManual** | Pointer to **NullableBool** |  | [optional] 
@@ -805,41 +805,6 @@ HasImportedAt returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetImportedAt()`
 
 UnsetImportedAt ensures that no value is present for ImportedAt, not even an explicit nil
-### GetInterestRate
-
-`func (o *AccountResponse) GetInterestRate() float32`
-
-GetInterestRate returns the InterestRate field if non-nil, zero value otherwise.
-
-### GetInterestRateOk
-
-`func (o *AccountResponse) GetInterestRateOk() (*float32, bool)`
-
-GetInterestRateOk returns a tuple with the InterestRate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInterestRate
-
-`func (o *AccountResponse) SetInterestRate(v float32)`
-
-SetInterestRate sets InterestRate field to given value.
-
-### HasInterestRate
-
-`func (o *AccountResponse) HasInterestRate() bool`
-
-HasInterestRate returns a boolean if a field has been set.
-
-### SetInterestRateNil
-
-`func (o *AccountResponse) SetInterestRateNil(b bool)`
-
- SetInterestRateNil sets the value for InterestRate to be an explicit nil
-
-### UnsetInterestRate
-`func (o *AccountResponse) UnsetInterestRate()`
-
-UnsetInterestRate ensures that no value is present for InterestRate, not even an explicit nil
 ### GetInstitutionCode
 
 `func (o *AccountResponse) GetInstitutionCode() string`
@@ -910,6 +875,41 @@ HasInsuredName returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetInsuredName()`
 
 UnsetInsuredName ensures that no value is present for InsuredName, not even an explicit nil
+### GetInterestRate
+
+`func (o *AccountResponse) GetInterestRate() float32`
+
+GetInterestRate returns the InterestRate field if non-nil, zero value otherwise.
+
+### GetInterestRateOk
+
+`func (o *AccountResponse) GetInterestRateOk() (*float32, bool)`
+
+GetInterestRateOk returns a tuple with the InterestRate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterestRate
+
+`func (o *AccountResponse) SetInterestRate(v float32)`
+
+SetInterestRate sets InterestRate field to given value.
+
+### HasInterestRate
+
+`func (o *AccountResponse) HasInterestRate() bool`
+
+HasInterestRate returns a boolean if a field has been set.
+
+### SetInterestRateNil
+
+`func (o *AccountResponse) SetInterestRateNil(b bool)`
+
+ SetInterestRateNil sets the value for InterestRate to be an explicit nil
+
+### UnsetInterestRate
+`func (o *AccountResponse) UnsetInterestRate()`
+
+UnsetInterestRate ensures that no value is present for InterestRate, not even an explicit nil
 ### GetIsClosed
 
 `func (o *AccountResponse) GetIsClosed() bool`

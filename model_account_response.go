@@ -40,9 +40,9 @@ type AccountResponse struct {
 	HoldingsValue NullableFloat32 `json:"holdings_value,omitempty"`
 	Id NullableString `json:"id,omitempty"`
 	ImportedAt NullableString `json:"imported_at,omitempty"`
-	InterestRate NullableFloat32 `json:"interest_rate,omitempty"`
 	InstitutionCode NullableString `json:"institution_code,omitempty"`
 	InsuredName NullableString `json:"insured_name,omitempty"`
+	InterestRate NullableFloat32 `json:"interest_rate,omitempty"`
 	IsClosed NullableBool `json:"is_closed,omitempty"`
 	IsHidden NullableBool `json:"is_hidden,omitempty"`
 	IsManual NullableBool `json:"is_manual,omitempty"`
@@ -966,48 +966,6 @@ func (o *AccountResponse) UnsetImportedAt() {
 	o.ImportedAt.Unset()
 }
 
-// GetInterestRate returns the InterestRate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountResponse) GetInterestRate() float32 {
-	if o == nil || IsNil(o.InterestRate.Get()) {
-		var ret float32
-		return ret
-	}
-	return *o.InterestRate.Get()
-}
-
-// GetInterestRateOk returns a tuple with the InterestRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountResponse) GetInterestRateOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.InterestRate.Get(), o.InterestRate.IsSet()
-}
-
-// HasInterestRate returns a boolean if a field has been set.
-func (o *AccountResponse) HasInterestRate() bool {
-	if o != nil && o.InterestRate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetInterestRate gets a reference to the given NullableFloat32 and assigns it to the InterestRate field.
-func (o *AccountResponse) SetInterestRate(v float32) {
-	o.InterestRate.Set(&v)
-}
-// SetInterestRateNil sets the value for InterestRate to be an explicit nil
-func (o *AccountResponse) SetInterestRateNil() {
-	o.InterestRate.Set(nil)
-}
-
-// UnsetInterestRate ensures that no value is present for InterestRate, not even an explicit nil
-func (o *AccountResponse) UnsetInterestRate() {
-	o.InterestRate.Unset()
-}
-
 // GetInstitutionCode returns the InstitutionCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetInstitutionCode() string {
 	if o == nil || IsNil(o.InstitutionCode.Get()) {
@@ -1090,6 +1048,48 @@ func (o *AccountResponse) SetInsuredNameNil() {
 // UnsetInsuredName ensures that no value is present for InsuredName, not even an explicit nil
 func (o *AccountResponse) UnsetInsuredName() {
 	o.InsuredName.Unset()
+}
+
+// GetInterestRate returns the InterestRate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetInterestRate() float32 {
+	if o == nil || IsNil(o.InterestRate.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.InterestRate.Get()
+}
+
+// GetInterestRateOk returns a tuple with the InterestRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetInterestRateOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InterestRate.Get(), o.InterestRate.IsSet()
+}
+
+// HasInterestRate returns a boolean if a field has been set.
+func (o *AccountResponse) HasInterestRate() bool {
+	if o != nil && o.InterestRate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInterestRate gets a reference to the given NullableFloat32 and assigns it to the InterestRate field.
+func (o *AccountResponse) SetInterestRate(v float32) {
+	o.InterestRate.Set(&v)
+}
+// SetInterestRateNil sets the value for InterestRate to be an explicit nil
+func (o *AccountResponse) SetInterestRateNil() {
+	o.InterestRate.Set(nil)
+}
+
+// UnsetInterestRate ensures that no value is present for InterestRate, not even an explicit nil
+func (o *AccountResponse) UnsetInterestRate() {
+	o.InterestRate.Unset()
 }
 
 // GetIsClosed returns the IsClosed field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -2509,14 +2509,14 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.ImportedAt.IsSet() {
 		toSerialize["imported_at"] = o.ImportedAt.Get()
 	}
-	if o.InterestRate.IsSet() {
-		toSerialize["interest_rate"] = o.InterestRate.Get()
-	}
 	if o.InstitutionCode.IsSet() {
 		toSerialize["institution_code"] = o.InstitutionCode.Get()
 	}
 	if o.InsuredName.IsSet() {
 		toSerialize["insured_name"] = o.InsuredName.Get()
+	}
+	if o.InterestRate.IsSet() {
+		toSerialize["interest_rate"] = o.InterestRate.Get()
 	}
 	if o.IsClosed.IsSet() {
 		toSerialize["is_closed"] = o.IsClosed.Get()

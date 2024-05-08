@@ -730,7 +730,7 @@ func (r ApiCreateManualAccountRequest) Execute() (*AccountResponseBody, *http.Re
 /*
 CreateManualAccount Create manual account
 
-This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed..
+This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userGuid The unique id for a `user`.

@@ -1,6 +1,7 @@
 .gitignore
 .travis.yml
 README.md
+api_insights.go
 api_mx_platform.go
 api_spending_plan.go
 client.go
@@ -44,6 +45,11 @@ docs/HoldingResponse.md
 docs/HoldingResponseBody.md
 docs/HoldingsResponseBody.md
 docs/ImageOptionResponse.md
+docs/InsightResponse.md
+docs/InsightResponseBody.md
+docs/InsightUpdateRequest.md
+docs/InsightsAPI.md
+docs/InsightsResponseBody.md
 docs/InstitutionResponse.md
 docs/InstitutionResponseBody.md
 docs/InstitutionsResponseBody.md
@@ -84,6 +90,8 @@ docs/PaymentProcessorAuthorizationCodeRequest.md
 docs/PaymentProcessorAuthorizationCodeRequestBody.md
 docs/PaymentProcessorAuthorizationCodeResponse.md
 docs/PaymentProcessorAuthorizationCodeResponseBody.md
+docs/ScheduledPaymentResponse.md
+docs/ScheduledPaymentsResponseBody.md
 docs/SpendingPlanAPI.md
 docs/SpendingPlanAccountResponse.md
 docs/SpendingPlanAccountsResponse.md
@@ -178,6 +186,10 @@ model_holding_response.go
 model_holding_response_body.go
 model_holdings_response_body.go
 model_image_option_response.go
+model_insight_response.go
+model_insight_response_body.go
+model_insight_update_request.go
+model_insights_response_body.go
 model_institution_response.go
 model_institution_response_body.go
 model_institutions_response_body.go
@@ -217,6 +229,8 @@ model_payment_processor_authorization_code_request.go
 model_payment_processor_authorization_code_request_body.go
 model_payment_processor_authorization_code_response.go
 model_payment_processor_authorization_code_response_body.go
+model_scheduled_payment_response.go
+model_scheduled_payments_response_body.go
 model_spending_plan_account_response.go
 model_spending_plan_accounts_response.go
 model_spending_plan_iteration_item_create_request_body.go
@@ -270,6 +284,7 @@ model_widget_request_body.go
 model_widget_response.go
 model_widget_response_body.go
 response.go
+test/api_insights_test.go
 test/api_mx_platform_test.go
 test/api_spending_plan_test.go
 utils.go
