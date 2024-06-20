@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ConnectionStatus** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **HasProcessedAccounts** | Pointer to **NullableBool** |  | [optional] 
+**HasProcessedAccountNumbers** | Pointer to **NullableBool** |  | [optional] 
 **HasProcessedTransactions** | Pointer to **NullableBool** |  | [optional] 
 **IsAuthenticated** | Pointer to **NullableBool** |  | [optional] 
 **IsBeingAggregated** | Pointer to **NullableBool** |  | [optional] 
@@ -198,6 +199,41 @@ HasHasProcessedAccounts returns a boolean if a field has been set.
 `func (o *MemberStatusResponse) UnsetHasProcessedAccounts()`
 
 UnsetHasProcessedAccounts ensures that no value is present for HasProcessedAccounts, not even an explicit nil
+### GetHasProcessedAccountNumbers
+
+`func (o *MemberStatusResponse) GetHasProcessedAccountNumbers() bool`
+
+GetHasProcessedAccountNumbers returns the HasProcessedAccountNumbers field if non-nil, zero value otherwise.
+
+### GetHasProcessedAccountNumbersOk
+
+`func (o *MemberStatusResponse) GetHasProcessedAccountNumbersOk() (*bool, bool)`
+
+GetHasProcessedAccountNumbersOk returns a tuple with the HasProcessedAccountNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasProcessedAccountNumbers
+
+`func (o *MemberStatusResponse) SetHasProcessedAccountNumbers(v bool)`
+
+SetHasProcessedAccountNumbers sets HasProcessedAccountNumbers field to given value.
+
+### HasHasProcessedAccountNumbers
+
+`func (o *MemberStatusResponse) HasHasProcessedAccountNumbers() bool`
+
+HasHasProcessedAccountNumbers returns a boolean if a field has been set.
+
+### SetHasProcessedAccountNumbersNil
+
+`func (o *MemberStatusResponse) SetHasProcessedAccountNumbersNil(b bool)`
+
+ SetHasProcessedAccountNumbersNil sets the value for HasProcessedAccountNumbers to be an explicit nil
+
+### UnsetHasProcessedAccountNumbers
+`func (o *MemberStatusResponse) UnsetHasProcessedAccountNumbers()`
+
+UnsetHasProcessedAccountNumbers ensures that no value is present for HasProcessedAccountNumbers, not even an explicit nil
 ### GetHasProcessedTransactions
 
 `func (o *MemberStatusResponse) GetHasProcessedTransactions() bool`
