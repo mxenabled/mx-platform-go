@@ -24,6 +24,7 @@ type MemberStatusResponse struct {
 	ConnectionStatus NullableString `json:"connection_status,omitempty"`
 	Guid NullableString `json:"guid,omitempty"`
 	HasProcessedAccounts NullableBool `json:"has_processed_accounts,omitempty"`
+	HasProcessedAccountNumbers NullableBool `json:"has_processed_account_numbers,omitempty"`
 	HasProcessedTransactions NullableBool `json:"has_processed_transactions,omitempty"`
 	IsAuthenticated NullableBool `json:"is_authenticated,omitempty"`
 	IsBeingAggregated NullableBool `json:"is_being_aggregated,omitempty"`
@@ -247,6 +248,48 @@ func (o *MemberStatusResponse) UnsetHasProcessedAccounts() {
 	o.HasProcessedAccounts.Unset()
 }
 
+// GetHasProcessedAccountNumbers returns the HasProcessedAccountNumbers field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberStatusResponse) GetHasProcessedAccountNumbers() bool {
+	if o == nil || IsNil(o.HasProcessedAccountNumbers.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.HasProcessedAccountNumbers.Get()
+}
+
+// GetHasProcessedAccountNumbersOk returns a tuple with the HasProcessedAccountNumbers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberStatusResponse) GetHasProcessedAccountNumbersOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HasProcessedAccountNumbers.Get(), o.HasProcessedAccountNumbers.IsSet()
+}
+
+// HasHasProcessedAccountNumbers returns a boolean if a field has been set.
+func (o *MemberStatusResponse) HasHasProcessedAccountNumbers() bool {
+	if o != nil && o.HasProcessedAccountNumbers.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHasProcessedAccountNumbers gets a reference to the given NullableBool and assigns it to the HasProcessedAccountNumbers field.
+func (o *MemberStatusResponse) SetHasProcessedAccountNumbers(v bool) {
+	o.HasProcessedAccountNumbers.Set(&v)
+}
+// SetHasProcessedAccountNumbersNil sets the value for HasProcessedAccountNumbers to be an explicit nil
+func (o *MemberStatusResponse) SetHasProcessedAccountNumbersNil() {
+	o.HasProcessedAccountNumbers.Set(nil)
+}
+
+// UnsetHasProcessedAccountNumbers ensures that no value is present for HasProcessedAccountNumbers, not even an explicit nil
+func (o *MemberStatusResponse) UnsetHasProcessedAccountNumbers() {
+	o.HasProcessedAccountNumbers.Unset()
+}
+
 // GetHasProcessedTransactions returns the HasProcessedTransactions field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberStatusResponse) GetHasProcessedTransactions() bool {
 	if o == nil || IsNil(o.HasProcessedTransactions.Get()) {
@@ -439,6 +482,9 @@ func (o MemberStatusResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.HasProcessedAccounts.IsSet() {
 		toSerialize["has_processed_accounts"] = o.HasProcessedAccounts.Get()
+	}
+	if o.HasProcessedAccountNumbers.IsSet() {
+		toSerialize["has_processed_account_numbers"] = o.HasProcessedAccountNumbers.Get()
 	}
 	if o.HasProcessedTransactions.IsSet() {
 		toSerialize["has_processed_transactions"] = o.HasProcessedTransactions.Get()
