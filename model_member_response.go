@@ -27,8 +27,11 @@ type MemberResponse struct {
 	InstitutionCode NullableString `json:"institution_code,omitempty"`
 	IsBeingAggregated NullableBool `json:"is_being_aggregated,omitempty"`
 	IsManagedByUser NullableBool `json:"is_managed_by_user,omitempty"`
+	IsManual NullableBool `json:"is_manual,omitempty"`
 	IsOauth NullableBool `json:"is_oauth,omitempty"`
 	Metadata NullableString `json:"metadata,omitempty"`
+	MostRecentJobDetailCode NullableString `json:"most_recent_job_detail_code,omitempty"`
+	MostRecentJobDetailText NullableString `json:"most_recent_job_detail_text,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	OauthWindowUri NullableString `json:"oauth_window_uri,omitempty"`
 	SuccessfullyAggregatedAt NullableString `json:"successfully_aggregated_at,omitempty"`
@@ -379,6 +382,48 @@ func (o *MemberResponse) UnsetIsManagedByUser() {
 	o.IsManagedByUser.Unset()
 }
 
+// GetIsManual returns the IsManual field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberResponse) GetIsManual() bool {
+	if o == nil || IsNil(o.IsManual.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsManual.Get()
+}
+
+// GetIsManualOk returns a tuple with the IsManual field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberResponse) GetIsManualOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsManual.Get(), o.IsManual.IsSet()
+}
+
+// HasIsManual returns a boolean if a field has been set.
+func (o *MemberResponse) HasIsManual() bool {
+	if o != nil && o.IsManual.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsManual gets a reference to the given NullableBool and assigns it to the IsManual field.
+func (o *MemberResponse) SetIsManual(v bool) {
+	o.IsManual.Set(&v)
+}
+// SetIsManualNil sets the value for IsManual to be an explicit nil
+func (o *MemberResponse) SetIsManualNil() {
+	o.IsManual.Set(nil)
+}
+
+// UnsetIsManual ensures that no value is present for IsManual, not even an explicit nil
+func (o *MemberResponse) UnsetIsManual() {
+	o.IsManual.Unset()
+}
+
 // GetIsOauth returns the IsOauth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetIsOauth() bool {
 	if o == nil || IsNil(o.IsOauth.Get()) {
@@ -461,6 +506,90 @@ func (o *MemberResponse) SetMetadataNil() {
 // UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 func (o *MemberResponse) UnsetMetadata() {
 	o.Metadata.Unset()
+}
+
+// GetMostRecentJobDetailCode returns the MostRecentJobDetailCode field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberResponse) GetMostRecentJobDetailCode() string {
+	if o == nil || IsNil(o.MostRecentJobDetailCode.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MostRecentJobDetailCode.Get()
+}
+
+// GetMostRecentJobDetailCodeOk returns a tuple with the MostRecentJobDetailCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberResponse) GetMostRecentJobDetailCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MostRecentJobDetailCode.Get(), o.MostRecentJobDetailCode.IsSet()
+}
+
+// HasMostRecentJobDetailCode returns a boolean if a field has been set.
+func (o *MemberResponse) HasMostRecentJobDetailCode() bool {
+	if o != nil && o.MostRecentJobDetailCode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMostRecentJobDetailCode gets a reference to the given NullableString and assigns it to the MostRecentJobDetailCode field.
+func (o *MemberResponse) SetMostRecentJobDetailCode(v string) {
+	o.MostRecentJobDetailCode.Set(&v)
+}
+// SetMostRecentJobDetailCodeNil sets the value for MostRecentJobDetailCode to be an explicit nil
+func (o *MemberResponse) SetMostRecentJobDetailCodeNil() {
+	o.MostRecentJobDetailCode.Set(nil)
+}
+
+// UnsetMostRecentJobDetailCode ensures that no value is present for MostRecentJobDetailCode, not even an explicit nil
+func (o *MemberResponse) UnsetMostRecentJobDetailCode() {
+	o.MostRecentJobDetailCode.Unset()
+}
+
+// GetMostRecentJobDetailText returns the MostRecentJobDetailText field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberResponse) GetMostRecentJobDetailText() string {
+	if o == nil || IsNil(o.MostRecentJobDetailText.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MostRecentJobDetailText.Get()
+}
+
+// GetMostRecentJobDetailTextOk returns a tuple with the MostRecentJobDetailText field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberResponse) GetMostRecentJobDetailTextOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MostRecentJobDetailText.Get(), o.MostRecentJobDetailText.IsSet()
+}
+
+// HasMostRecentJobDetailText returns a boolean if a field has been set.
+func (o *MemberResponse) HasMostRecentJobDetailText() bool {
+	if o != nil && o.MostRecentJobDetailText.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMostRecentJobDetailText gets a reference to the given NullableString and assigns it to the MostRecentJobDetailText field.
+func (o *MemberResponse) SetMostRecentJobDetailText(v string) {
+	o.MostRecentJobDetailText.Set(&v)
+}
+// SetMostRecentJobDetailTextNil sets the value for MostRecentJobDetailText to be an explicit nil
+func (o *MemberResponse) SetMostRecentJobDetailTextNil() {
+	o.MostRecentJobDetailText.Set(nil)
+}
+
+// UnsetMostRecentJobDetailText ensures that no value is present for MostRecentJobDetailText, not even an explicit nil
+func (o *MemberResponse) UnsetMostRecentJobDetailText() {
+	o.MostRecentJobDetailText.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -707,11 +836,20 @@ func (o MemberResponse) ToMap() (map[string]interface{}, error) {
 	if o.IsManagedByUser.IsSet() {
 		toSerialize["is_managed_by_user"] = o.IsManagedByUser.Get()
 	}
+	if o.IsManual.IsSet() {
+		toSerialize["is_manual"] = o.IsManual.Get()
+	}
 	if o.IsOauth.IsSet() {
 		toSerialize["is_oauth"] = o.IsOauth.Get()
 	}
 	if o.Metadata.IsSet() {
 		toSerialize["metadata"] = o.Metadata.Get()
+	}
+	if o.MostRecentJobDetailCode.IsSet() {
+		toSerialize["most_recent_job_detail_code"] = o.MostRecentJobDetailCode.Get()
+	}
+	if o.MostRecentJobDetailText.IsSet() {
+		toSerialize["most_recent_job_detail_text"] = o.MostRecentJobDetailText.Get()
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()

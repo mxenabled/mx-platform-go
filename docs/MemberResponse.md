@@ -12,8 +12,11 @@ Name | Type | Description | Notes
 **InstitutionCode** | Pointer to **NullableString** |  | [optional] 
 **IsBeingAggregated** | Pointer to **NullableBool** |  | [optional] 
 **IsManagedByUser** | Pointer to **NullableBool** |  | [optional] 
+**IsManual** | Pointer to **NullableBool** |  | [optional] 
 **IsOauth** | Pointer to **NullableBool** |  | [optional] 
 **Metadata** | Pointer to **NullableString** |  | [optional] 
+**MostRecentJobDetailCode** | Pointer to **NullableString** |  | [optional] 
+**MostRecentJobDetailText** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
 **OauthWindowUri** | Pointer to **NullableString** |  | [optional] 
 **SuccessfullyAggregatedAt** | Pointer to **NullableString** |  | [optional] 
@@ -309,6 +312,41 @@ HasIsManagedByUser returns a boolean if a field has been set.
 `func (o *MemberResponse) UnsetIsManagedByUser()`
 
 UnsetIsManagedByUser ensures that no value is present for IsManagedByUser, not even an explicit nil
+### GetIsManual
+
+`func (o *MemberResponse) GetIsManual() bool`
+
+GetIsManual returns the IsManual field if non-nil, zero value otherwise.
+
+### GetIsManualOk
+
+`func (o *MemberResponse) GetIsManualOk() (*bool, bool)`
+
+GetIsManualOk returns a tuple with the IsManual field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsManual
+
+`func (o *MemberResponse) SetIsManual(v bool)`
+
+SetIsManual sets IsManual field to given value.
+
+### HasIsManual
+
+`func (o *MemberResponse) HasIsManual() bool`
+
+HasIsManual returns a boolean if a field has been set.
+
+### SetIsManualNil
+
+`func (o *MemberResponse) SetIsManualNil(b bool)`
+
+ SetIsManualNil sets the value for IsManual to be an explicit nil
+
+### UnsetIsManual
+`func (o *MemberResponse) UnsetIsManual()`
+
+UnsetIsManual ensures that no value is present for IsManual, not even an explicit nil
 ### GetIsOauth
 
 `func (o *MemberResponse) GetIsOauth() bool`
@@ -379,6 +417,76 @@ HasMetadata returns a boolean if a field has been set.
 `func (o *MemberResponse) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+### GetMostRecentJobDetailCode
+
+`func (o *MemberResponse) GetMostRecentJobDetailCode() string`
+
+GetMostRecentJobDetailCode returns the MostRecentJobDetailCode field if non-nil, zero value otherwise.
+
+### GetMostRecentJobDetailCodeOk
+
+`func (o *MemberResponse) GetMostRecentJobDetailCodeOk() (*string, bool)`
+
+GetMostRecentJobDetailCodeOk returns a tuple with the MostRecentJobDetailCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMostRecentJobDetailCode
+
+`func (o *MemberResponse) SetMostRecentJobDetailCode(v string)`
+
+SetMostRecentJobDetailCode sets MostRecentJobDetailCode field to given value.
+
+### HasMostRecentJobDetailCode
+
+`func (o *MemberResponse) HasMostRecentJobDetailCode() bool`
+
+HasMostRecentJobDetailCode returns a boolean if a field has been set.
+
+### SetMostRecentJobDetailCodeNil
+
+`func (o *MemberResponse) SetMostRecentJobDetailCodeNil(b bool)`
+
+ SetMostRecentJobDetailCodeNil sets the value for MostRecentJobDetailCode to be an explicit nil
+
+### UnsetMostRecentJobDetailCode
+`func (o *MemberResponse) UnsetMostRecentJobDetailCode()`
+
+UnsetMostRecentJobDetailCode ensures that no value is present for MostRecentJobDetailCode, not even an explicit nil
+### GetMostRecentJobDetailText
+
+`func (o *MemberResponse) GetMostRecentJobDetailText() string`
+
+GetMostRecentJobDetailText returns the MostRecentJobDetailText field if non-nil, zero value otherwise.
+
+### GetMostRecentJobDetailTextOk
+
+`func (o *MemberResponse) GetMostRecentJobDetailTextOk() (*string, bool)`
+
+GetMostRecentJobDetailTextOk returns a tuple with the MostRecentJobDetailText field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMostRecentJobDetailText
+
+`func (o *MemberResponse) SetMostRecentJobDetailText(v string)`
+
+SetMostRecentJobDetailText sets MostRecentJobDetailText field to given value.
+
+### HasMostRecentJobDetailText
+
+`func (o *MemberResponse) HasMostRecentJobDetailText() bool`
+
+HasMostRecentJobDetailText returns a boolean if a field has been set.
+
+### SetMostRecentJobDetailTextNil
+
+`func (o *MemberResponse) SetMostRecentJobDetailTextNil(b bool)`
+
+ SetMostRecentJobDetailTextNil sets the value for MostRecentJobDetailText to be an explicit nil
+
+### UnsetMostRecentJobDetailText
+`func (o *MemberResponse) UnsetMostRecentJobDetailText()`
+
+UnsetMostRecentJobDetailText ensures that no value is present for MostRecentJobDetailText, not even an explicit nil
 ### GetName
 
 `func (o *MemberResponse) GetName() string`
