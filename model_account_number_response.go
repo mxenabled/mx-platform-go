@@ -22,6 +22,7 @@ type AccountNumberResponse struct {
 	AccountGuid NullableString `json:"account_guid,omitempty"`
 	AccountNumber NullableString `json:"account_number,omitempty"`
 	Guid NullableString `json:"guid,omitempty"`
+	LoanGuarantor NullableString `json:"loan_guarantor,omitempty"`
 	InstitutionNumber NullableString `json:"institution_number,omitempty"`
 	MemberGuid NullableString `json:"member_guid,omitempty"`
 	PassedValidation NullableBool `json:"passed_validation,omitempty"`
@@ -171,6 +172,48 @@ func (o *AccountNumberResponse) SetGuidNil() {
 // UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 func (o *AccountNumberResponse) UnsetGuid() {
 	o.Guid.Unset()
+}
+
+// GetLoanGuarantor returns the LoanGuarantor field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountNumberResponse) GetLoanGuarantor() string {
+	if o == nil || IsNil(o.LoanGuarantor.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LoanGuarantor.Get()
+}
+
+// GetLoanGuarantorOk returns a tuple with the LoanGuarantor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountNumberResponse) GetLoanGuarantorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LoanGuarantor.Get(), o.LoanGuarantor.IsSet()
+}
+
+// HasLoanGuarantor returns a boolean if a field has been set.
+func (o *AccountNumberResponse) HasLoanGuarantor() bool {
+	if o != nil && o.LoanGuarantor.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLoanGuarantor gets a reference to the given NullableString and assigns it to the LoanGuarantor field.
+func (o *AccountNumberResponse) SetLoanGuarantor(v string) {
+	o.LoanGuarantor.Set(&v)
+}
+// SetLoanGuarantorNil sets the value for LoanGuarantor to be an explicit nil
+func (o *AccountNumberResponse) SetLoanGuarantorNil() {
+	o.LoanGuarantor.Set(nil)
+}
+
+// UnsetLoanGuarantor ensures that no value is present for LoanGuarantor, not even an explicit nil
+func (o *AccountNumberResponse) UnsetLoanGuarantor() {
+	o.LoanGuarantor.Unset()
 }
 
 // GetInstitutionNumber returns the InstitutionNumber field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -443,6 +486,9 @@ func (o AccountNumberResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Guid.IsSet() {
 		toSerialize["guid"] = o.Guid.Get()
+	}
+	if o.LoanGuarantor.IsSet() {
+		toSerialize["loan_guarantor"] = o.LoanGuarantor.Get()
 	}
 	if o.InstitutionNumber.IsSet() {
 		toSerialize["institution_number"] = o.InstitutionNumber.Get()

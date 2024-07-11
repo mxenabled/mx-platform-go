@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccountGuid** | Pointer to **NullableString** |  | [optional] 
 **AccountNumber** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
+**LoanGuarantor** | Pointer to **NullableString** |  | [optional] 
 **InstitutionNumber** | Pointer to **NullableString** |  | [optional] 
 **MemberGuid** | Pointer to **NullableString** |  | [optional] 
 **PassedValidation** | Pointer to **NullableBool** |  | [optional] 
@@ -138,6 +139,41 @@ HasGuid returns a boolean if a field has been set.
 `func (o *AccountNumberResponse) UnsetGuid()`
 
 UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+### GetLoanGuarantor
+
+`func (o *AccountNumberResponse) GetLoanGuarantor() string`
+
+GetLoanGuarantor returns the LoanGuarantor field if non-nil, zero value otherwise.
+
+### GetLoanGuarantorOk
+
+`func (o *AccountNumberResponse) GetLoanGuarantorOk() (*string, bool)`
+
+GetLoanGuarantorOk returns a tuple with the LoanGuarantor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLoanGuarantor
+
+`func (o *AccountNumberResponse) SetLoanGuarantor(v string)`
+
+SetLoanGuarantor sets LoanGuarantor field to given value.
+
+### HasLoanGuarantor
+
+`func (o *AccountNumberResponse) HasLoanGuarantor() bool`
+
+HasLoanGuarantor returns a boolean if a field has been set.
+
+### SetLoanGuarantorNil
+
+`func (o *AccountNumberResponse) SetLoanGuarantorNil(b bool)`
+
+ SetLoanGuarantorNil sets the value for LoanGuarantor to be an explicit nil
+
+### UnsetLoanGuarantor
+`func (o *AccountNumberResponse) UnsetLoanGuarantor()`
+
+UnsetLoanGuarantor ensures that no value is present for LoanGuarantor, not even an explicit nil
 ### GetInstitutionNumber
 
 `func (o *AccountNumberResponse) GetInstitutionNumber() string`
