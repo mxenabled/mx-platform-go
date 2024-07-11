@@ -71,6 +71,7 @@ type AccountResponse struct {
 	TodayUglAmount NullableFloat32 `json:"today_ugl_amount,omitempty"`
 	TodayUglPercentage NullableFloat32 `json:"today_ugl_percentage,omitempty"`
 	TotalAccountValue NullableFloat32 `json:"total_account_value,omitempty"`
+	TotalAccountValueUgl NullableFloat32 `json:"total_account_value_ugl,omitempty"`
 	Type NullableString `json:"type,omitempty"`
 	UpdatedAt NullableString `json:"updated_at,omitempty"`
 	UserGuid NullableString `json:"user_guid,omitempty"`
@@ -2268,6 +2269,48 @@ func (o *AccountResponse) UnsetTotalAccountValue() {
 	o.TotalAccountValue.Unset()
 }
 
+// GetTotalAccountValueUgl returns the TotalAccountValueUgl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetTotalAccountValueUgl() float32 {
+	if o == nil || IsNil(o.TotalAccountValueUgl.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.TotalAccountValueUgl.Get()
+}
+
+// GetTotalAccountValueUglOk returns a tuple with the TotalAccountValueUgl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetTotalAccountValueUglOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TotalAccountValueUgl.Get(), o.TotalAccountValueUgl.IsSet()
+}
+
+// HasTotalAccountValueUgl returns a boolean if a field has been set.
+func (o *AccountResponse) HasTotalAccountValueUgl() bool {
+	if o != nil && o.TotalAccountValueUgl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalAccountValueUgl gets a reference to the given NullableFloat32 and assigns it to the TotalAccountValueUgl field.
+func (o *AccountResponse) SetTotalAccountValueUgl(v float32) {
+	o.TotalAccountValueUgl.Set(&v)
+}
+// SetTotalAccountValueUglNil sets the value for TotalAccountValueUgl to be an explicit nil
+func (o *AccountResponse) SetTotalAccountValueUglNil() {
+	o.TotalAccountValueUgl.Set(nil)
+}
+
+// UnsetTotalAccountValueUgl ensures that no value is present for TotalAccountValueUgl, not even an explicit nil
+func (o *AccountResponse) UnsetTotalAccountValueUgl() {
+	o.TotalAccountValueUgl.Unset()
+}
+
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetType() string {
 	if o == nil || IsNil(o.Type.Get()) {
@@ -2601,6 +2644,9 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.TotalAccountValue.IsSet() {
 		toSerialize["total_account_value"] = o.TotalAccountValue.Get()
+	}
+	if o.TotalAccountValueUgl.IsSet() {
+		toSerialize["total_account_value_ugl"] = o.TotalAccountValueUgl.Get()
 	}
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()

@@ -56,6 +56,7 @@ Name | Type | Description | Notes
 **TodayUglAmount** | Pointer to **NullableFloat32** |  | [optional] 
 **TodayUglPercentage** | Pointer to **NullableFloat32** |  | [optional] 
 **TotalAccountValue** | Pointer to **NullableFloat32** |  | [optional] 
+**TotalAccountValueUgl** | Pointer to **NullableFloat32** |  | [optional] 
 **Type** | Pointer to **NullableString** |  | [optional] 
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
 **UserGuid** | Pointer to **NullableString** |  | [optional] 
@@ -1890,6 +1891,41 @@ HasTotalAccountValue returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetTotalAccountValue()`
 
 UnsetTotalAccountValue ensures that no value is present for TotalAccountValue, not even an explicit nil
+### GetTotalAccountValueUgl
+
+`func (o *AccountResponse) GetTotalAccountValueUgl() float32`
+
+GetTotalAccountValueUgl returns the TotalAccountValueUgl field if non-nil, zero value otherwise.
+
+### GetTotalAccountValueUglOk
+
+`func (o *AccountResponse) GetTotalAccountValueUglOk() (*float32, bool)`
+
+GetTotalAccountValueUglOk returns a tuple with the TotalAccountValueUgl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalAccountValueUgl
+
+`func (o *AccountResponse) SetTotalAccountValueUgl(v float32)`
+
+SetTotalAccountValueUgl sets TotalAccountValueUgl field to given value.
+
+### HasTotalAccountValueUgl
+
+`func (o *AccountResponse) HasTotalAccountValueUgl() bool`
+
+HasTotalAccountValueUgl returns a boolean if a field has been set.
+
+### SetTotalAccountValueUglNil
+
+`func (o *AccountResponse) SetTotalAccountValueUglNil(b bool)`
+
+ SetTotalAccountValueUglNil sets the value for TotalAccountValueUgl to be an explicit nil
+
+### UnsetTotalAccountValueUgl
+`func (o *AccountResponse) UnsetTotalAccountValueUgl()`
+
+UnsetTotalAccountValueUgl ensures that no value is present for TotalAccountValueUgl, not even an explicit nil
 ### GetType
 
 `func (o *AccountResponse) GetType() string`
