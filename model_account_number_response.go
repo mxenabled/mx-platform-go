@@ -23,10 +23,12 @@ type AccountNumberResponse struct {
 	AccountNumber NullableString `json:"account_number,omitempty"`
 	Guid NullableString `json:"guid,omitempty"`
 	LoanGuarantor NullableString `json:"loan_guarantor,omitempty"`
+	LoanReferenceNumber NullableString `json:"loan_reference_number,omitempty"`
 	InstitutionNumber NullableString `json:"institution_number,omitempty"`
 	MemberGuid NullableString `json:"member_guid,omitempty"`
 	PassedValidation NullableBool `json:"passed_validation,omitempty"`
 	RoutingNumber NullableString `json:"routing_number,omitempty"`
+	SequenceNumber NullableString `json:"sequence_number,omitempty"`
 	TransitNumber NullableString `json:"transit_number,omitempty"`
 	UserGuid NullableString `json:"user_guid,omitempty"`
 }
@@ -216,6 +218,48 @@ func (o *AccountNumberResponse) UnsetLoanGuarantor() {
 	o.LoanGuarantor.Unset()
 }
 
+// GetLoanReferenceNumber returns the LoanReferenceNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountNumberResponse) GetLoanReferenceNumber() string {
+	if o == nil || IsNil(o.LoanReferenceNumber.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LoanReferenceNumber.Get()
+}
+
+// GetLoanReferenceNumberOk returns a tuple with the LoanReferenceNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountNumberResponse) GetLoanReferenceNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LoanReferenceNumber.Get(), o.LoanReferenceNumber.IsSet()
+}
+
+// HasLoanReferenceNumber returns a boolean if a field has been set.
+func (o *AccountNumberResponse) HasLoanReferenceNumber() bool {
+	if o != nil && o.LoanReferenceNumber.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLoanReferenceNumber gets a reference to the given NullableString and assigns it to the LoanReferenceNumber field.
+func (o *AccountNumberResponse) SetLoanReferenceNumber(v string) {
+	o.LoanReferenceNumber.Set(&v)
+}
+// SetLoanReferenceNumberNil sets the value for LoanReferenceNumber to be an explicit nil
+func (o *AccountNumberResponse) SetLoanReferenceNumberNil() {
+	o.LoanReferenceNumber.Set(nil)
+}
+
+// UnsetLoanReferenceNumber ensures that no value is present for LoanReferenceNumber, not even an explicit nil
+func (o *AccountNumberResponse) UnsetLoanReferenceNumber() {
+	o.LoanReferenceNumber.Unset()
+}
+
 // GetInstitutionNumber returns the InstitutionNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetInstitutionNumber() string {
 	if o == nil || IsNil(o.InstitutionNumber.Get()) {
@@ -384,6 +428,48 @@ func (o *AccountNumberResponse) UnsetRoutingNumber() {
 	o.RoutingNumber.Unset()
 }
 
+// GetSequenceNumber returns the SequenceNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountNumberResponse) GetSequenceNumber() string {
+	if o == nil || IsNil(o.SequenceNumber.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SequenceNumber.Get()
+}
+
+// GetSequenceNumberOk returns a tuple with the SequenceNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountNumberResponse) GetSequenceNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SequenceNumber.Get(), o.SequenceNumber.IsSet()
+}
+
+// HasSequenceNumber returns a boolean if a field has been set.
+func (o *AccountNumberResponse) HasSequenceNumber() bool {
+	if o != nil && o.SequenceNumber.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSequenceNumber gets a reference to the given NullableString and assigns it to the SequenceNumber field.
+func (o *AccountNumberResponse) SetSequenceNumber(v string) {
+	o.SequenceNumber.Set(&v)
+}
+// SetSequenceNumberNil sets the value for SequenceNumber to be an explicit nil
+func (o *AccountNumberResponse) SetSequenceNumberNil() {
+	o.SequenceNumber.Set(nil)
+}
+
+// UnsetSequenceNumber ensures that no value is present for SequenceNumber, not even an explicit nil
+func (o *AccountNumberResponse) UnsetSequenceNumber() {
+	o.SequenceNumber.Unset()
+}
+
 // GetTransitNumber returns the TransitNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountNumberResponse) GetTransitNumber() string {
 	if o == nil || IsNil(o.TransitNumber.Get()) {
@@ -490,6 +576,9 @@ func (o AccountNumberResponse) ToMap() (map[string]interface{}, error) {
 	if o.LoanGuarantor.IsSet() {
 		toSerialize["loan_guarantor"] = o.LoanGuarantor.Get()
 	}
+	if o.LoanReferenceNumber.IsSet() {
+		toSerialize["loan_reference_number"] = o.LoanReferenceNumber.Get()
+	}
 	if o.InstitutionNumber.IsSet() {
 		toSerialize["institution_number"] = o.InstitutionNumber.Get()
 	}
@@ -501,6 +590,9 @@ func (o AccountNumberResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.RoutingNumber.IsSet() {
 		toSerialize["routing_number"] = o.RoutingNumber.Get()
+	}
+	if o.SequenceNumber.IsSet() {
+		toSerialize["sequence_number"] = o.SequenceNumber.Get()
 	}
 	if o.TransitNumber.IsSet() {
 		toSerialize["transit_number"] = o.TransitNumber.Get()

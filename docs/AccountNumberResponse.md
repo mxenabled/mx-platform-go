@@ -8,10 +8,12 @@ Name | Type | Description | Notes
 **AccountNumber** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **LoanGuarantor** | Pointer to **NullableString** |  | [optional] 
+**LoanReferenceNumber** | Pointer to **NullableString** |  | [optional] 
 **InstitutionNumber** | Pointer to **NullableString** |  | [optional] 
 **MemberGuid** | Pointer to **NullableString** |  | [optional] 
 **PassedValidation** | Pointer to **NullableBool** |  | [optional] 
 **RoutingNumber** | Pointer to **NullableString** |  | [optional] 
+**SequenceNumber** | Pointer to **NullableString** |  | [optional] 
 **TransitNumber** | Pointer to **NullableString** |  | [optional] 
 **UserGuid** | Pointer to **NullableString** |  | [optional] 
 
@@ -174,6 +176,41 @@ HasLoanGuarantor returns a boolean if a field has been set.
 `func (o *AccountNumberResponse) UnsetLoanGuarantor()`
 
 UnsetLoanGuarantor ensures that no value is present for LoanGuarantor, not even an explicit nil
+### GetLoanReferenceNumber
+
+`func (o *AccountNumberResponse) GetLoanReferenceNumber() string`
+
+GetLoanReferenceNumber returns the LoanReferenceNumber field if non-nil, zero value otherwise.
+
+### GetLoanReferenceNumberOk
+
+`func (o *AccountNumberResponse) GetLoanReferenceNumberOk() (*string, bool)`
+
+GetLoanReferenceNumberOk returns a tuple with the LoanReferenceNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLoanReferenceNumber
+
+`func (o *AccountNumberResponse) SetLoanReferenceNumber(v string)`
+
+SetLoanReferenceNumber sets LoanReferenceNumber field to given value.
+
+### HasLoanReferenceNumber
+
+`func (o *AccountNumberResponse) HasLoanReferenceNumber() bool`
+
+HasLoanReferenceNumber returns a boolean if a field has been set.
+
+### SetLoanReferenceNumberNil
+
+`func (o *AccountNumberResponse) SetLoanReferenceNumberNil(b bool)`
+
+ SetLoanReferenceNumberNil sets the value for LoanReferenceNumber to be an explicit nil
+
+### UnsetLoanReferenceNumber
+`func (o *AccountNumberResponse) UnsetLoanReferenceNumber()`
+
+UnsetLoanReferenceNumber ensures that no value is present for LoanReferenceNumber, not even an explicit nil
 ### GetInstitutionNumber
 
 `func (o *AccountNumberResponse) GetInstitutionNumber() string`
@@ -314,6 +351,41 @@ HasRoutingNumber returns a boolean if a field has been set.
 `func (o *AccountNumberResponse) UnsetRoutingNumber()`
 
 UnsetRoutingNumber ensures that no value is present for RoutingNumber, not even an explicit nil
+### GetSequenceNumber
+
+`func (o *AccountNumberResponse) GetSequenceNumber() string`
+
+GetSequenceNumber returns the SequenceNumber field if non-nil, zero value otherwise.
+
+### GetSequenceNumberOk
+
+`func (o *AccountNumberResponse) GetSequenceNumberOk() (*string, bool)`
+
+GetSequenceNumberOk returns a tuple with the SequenceNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSequenceNumber
+
+`func (o *AccountNumberResponse) SetSequenceNumber(v string)`
+
+SetSequenceNumber sets SequenceNumber field to given value.
+
+### HasSequenceNumber
+
+`func (o *AccountNumberResponse) HasSequenceNumber() bool`
+
+HasSequenceNumber returns a boolean if a field has been set.
+
+### SetSequenceNumberNil
+
+`func (o *AccountNumberResponse) SetSequenceNumberNil(b bool)`
+
+ SetSequenceNumberNil sets the value for SequenceNumber to be an explicit nil
+
+### UnsetSequenceNumber
+`func (o *AccountNumberResponse) UnsetSequenceNumber()`
+
+UnsetSequenceNumber ensures that no value is present for SequenceNumber, not even an explicit nil
 ### GetTransitNumber
 
 `func (o *AccountNumberResponse) GetTransitNumber() string`
