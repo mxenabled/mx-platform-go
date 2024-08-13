@@ -1396,6 +1396,109 @@ func (a *MxPlatformAPIService) CreateUserExecute(r ApiCreateUserRequest) (*UserR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreditCardRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformAPIService
+	creditCardProductGuid string
+}
+
+func (r ApiCreditCardRequest) Execute() (*CreditCardProductResponse, *http.Response, error) {
+	return r.ApiService.CreditCardExecute(r)
+}
+
+/*
+CreditCard Read a Credit Card Product
+
+This endpoint returns the specified `credit_card_product` according to the unique GUID.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param creditCardProductGuid The required `credit_card_product_guid` can be found on the `account` object.
+ @return ApiCreditCardRequest
+*/
+func (a *MxPlatformAPIService) CreditCard(ctx context.Context, creditCardProductGuid string) ApiCreditCardRequest {
+	return ApiCreditCardRequest{
+		ApiService: a,
+		ctx: ctx,
+		creditCardProductGuid: creditCardProductGuid,
+	}
+}
+
+// Execute executes the request
+//  @return CreditCardProductResponse
+func (a *MxPlatformAPIService) CreditCardExecute(r ApiCreditCardRequest) (*CreditCardProductResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CreditCardProductResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformAPIService.CreditCard")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/credit_card_products/{credit_card_product_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"credit_card_product_guid"+"}", url.PathEscape(parameterValueToString(r.creditCardProductGuid, "creditCardProductGuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDeleteCategoryRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformAPIService
@@ -2856,6 +2959,113 @@ func (a *MxPlatformAPIService) ExtendHistoryExecute(r ApiExtendHistoryRequest) (
 	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/extend_history"
 	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterValueToString(r.memberGuid, "memberGuid")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterValueToString(r.userGuid, "userGuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiFetchRewardsRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformAPIService
+	userGuid string
+	memberGuid string
+}
+
+func (r ApiFetchRewardsRequest) Execute() (*MemberResponseBody, *http.Response, error) {
+	return r.ApiService.FetchRewardsExecute(r)
+}
+
+/*
+FetchRewards Fetch Rewards
+
+Calling this endpoint initiates an aggregation-type event which will gather the member's rewards information, as well as account and transaction information. Rewards data is also gathered with daily background aggregations.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param memberGuid The unique identifier for the member. Defined by MX.
+ @return ApiFetchRewardsRequest
+*/
+func (a *MxPlatformAPIService) FetchRewards(ctx context.Context, userGuid string, memberGuid string) ApiFetchRewardsRequest {
+	return ApiFetchRewardsRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		memberGuid: memberGuid,
+	}
+}
+
+// Execute executes the request
+//  @return MemberResponseBody
+func (a *MxPlatformAPIService) FetchRewardsExecute(r ApiFetchRewardsRequest) (*MemberResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MemberResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformAPIService.FetchRewards")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/fetch_rewards"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterValueToString(r.userGuid, "userGuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterValueToString(r.memberGuid, "memberGuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5963,6 +6173,113 @@ func (a *MxPlatformAPIService) ListMerchantsExecute(r ApiListMerchantsRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListRewardsRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformAPIService
+	userGuid string
+	memberGuid string
+}
+
+func (r ApiListRewardsRequest) Execute() (*RewardsResponseBody, *http.Response, error) {
+	return r.ApiService.ListRewardsExecute(r)
+}
+
+/*
+ListRewards List Rewards
+
+Use this endpoint to list all the `rewards` associated with a specified `member`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param memberGuid The unique identifier for the member. Defined by MX.
+ @return ApiListRewardsRequest
+*/
+func (a *MxPlatformAPIService) ListRewards(ctx context.Context, userGuid string, memberGuid string) ApiListRewardsRequest {
+	return ApiListRewardsRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		memberGuid: memberGuid,
+	}
+}
+
+// Execute executes the request
+//  @return RewardsResponseBody
+func (a *MxPlatformAPIService) ListRewardsExecute(r ApiListRewardsRequest) (*RewardsResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RewardsResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformAPIService.ListRewards")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/rewards"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterValueToString(r.userGuid, "userGuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterValueToString(r.memberGuid, "memberGuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListStatementsByMemberRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformAPIService
@@ -8794,6 +9111,117 @@ func (a *MxPlatformAPIService) ReadMerchantLocationExecute(r ApiReadMerchantLoca
 
 	localVarPath := localBasePath + "/merchant_locations/{merchant_location_guid}"
 	localVarPath = strings.Replace(localVarPath, "{"+"merchant_location_guid"+"}", url.PathEscape(parameterValueToString(r.merchantLocationGuid, "merchantLocationGuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadRewardsRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformAPIService
+	userGuid string
+	memberGuid string
+	rewardGuid string
+}
+
+func (r ApiReadRewardsRequest) Execute() (*RewardResponseBody, *http.Response, error) {
+	return r.ApiService.ReadRewardsExecute(r)
+}
+
+/*
+ReadRewards Read Reward
+
+Use this endpoint to read a specific `reward` based on its unique GUID..
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique id for a `user`.
+ @param memberGuid The unique identifier for the member. Defined by MX.
+ @param rewardGuid The unique identifier for the rewards. Defined by MX.
+ @return ApiReadRewardsRequest
+*/
+func (a *MxPlatformAPIService) ReadRewards(ctx context.Context, userGuid string, memberGuid string, rewardGuid string) ApiReadRewardsRequest {
+	return ApiReadRewardsRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		memberGuid: memberGuid,
+		rewardGuid: rewardGuid,
+	}
+}
+
+// Execute executes the request
+//  @return RewardResponseBody
+func (a *MxPlatformAPIService) ReadRewardsExecute(r ApiReadRewardsRequest) (*RewardResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RewardResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformAPIService.ReadRewards")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/members/{member_guid}/rewards/{reward_guid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterValueToString(r.userGuid, "userGuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"member_guid"+"}", url.PathEscape(parameterValueToString(r.memberGuid, "memberGuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"reward_guid"+"}", url.PathEscape(parameterValueToString(r.rewardGuid, "rewardGuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -193,6 +193,20 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MxPlatformAPIService CreditCard", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var creditCardProductGuid string
+
+		resp, httpRes, err := apiClient.MxPlatformAPI.CreditCard(context.Background(), creditCardProductGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MxPlatformAPIService DeleteCategory", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -399,6 +413,21 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 		var userGuid string
 
 		resp, httpRes, err := apiClient.MxPlatformAPI.ExtendHistory(context.Background(), memberGuid, userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MxPlatformAPIService FetchRewards", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var memberGuid string
+
+		resp, httpRes, err := apiClient.MxPlatformAPI.FetchRewards(context.Background(), userGuid, memberGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -739,6 +768,21 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.MxPlatformAPI.ListMerchants(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MxPlatformAPIService ListRewards", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var memberGuid string
+
+		resp, httpRes, err := apiClient.MxPlatformAPI.ListRewards(context.Background(), userGuid, memberGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -1091,6 +1135,22 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 		var merchantLocationGuid string
 
 		resp, httpRes, err := apiClient.MxPlatformAPI.ReadMerchantLocation(context.Background(), merchantLocationGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MxPlatformAPIService ReadRewards", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var memberGuid string
+		var rewardGuid string
+
+		resp, httpRes, err := apiClient.MxPlatformAPI.ReadRewards(context.Background(), userGuid, memberGuid, rewardGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
