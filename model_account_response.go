@@ -67,6 +67,7 @@ type AccountResponse struct {
 	PropertyType NullableString `json:"property_type,omitempty"`
 	RoutingNumber NullableString `json:"routing_number,omitempty"`
 	StartedOn NullableString `json:"started_on,omitempty"`
+	StatementBalance NullableFloat32 `json:"statement_balance,omitempty"`
 	Subtype NullableString `json:"subtype,omitempty"`
 	TodayUglAmount NullableFloat32 `json:"today_ugl_amount,omitempty"`
 	TodayUglPercentage NullableFloat32 `json:"today_ugl_percentage,omitempty"`
@@ -2101,6 +2102,48 @@ func (o *AccountResponse) UnsetStartedOn() {
 	o.StartedOn.Unset()
 }
 
+// GetStatementBalance returns the StatementBalance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetStatementBalance() float32 {
+	if o == nil || IsNil(o.StatementBalance.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.StatementBalance.Get()
+}
+
+// GetStatementBalanceOk returns a tuple with the StatementBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetStatementBalanceOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StatementBalance.Get(), o.StatementBalance.IsSet()
+}
+
+// HasStatementBalance returns a boolean if a field has been set.
+func (o *AccountResponse) HasStatementBalance() bool {
+	if o != nil && o.StatementBalance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStatementBalance gets a reference to the given NullableFloat32 and assigns it to the StatementBalance field.
+func (o *AccountResponse) SetStatementBalance(v float32) {
+	o.StatementBalance.Set(&v)
+}
+// SetStatementBalanceNil sets the value for StatementBalance to be an explicit nil
+func (o *AccountResponse) SetStatementBalanceNil() {
+	o.StatementBalance.Set(nil)
+}
+
+// UnsetStatementBalance ensures that no value is present for StatementBalance, not even an explicit nil
+func (o *AccountResponse) UnsetStatementBalance() {
+	o.StatementBalance.Unset()
+}
+
 // GetSubtype returns the Subtype field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetSubtype() string {
 	if o == nil || IsNil(o.Subtype.Get()) {
@@ -2632,6 +2675,9 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.StartedOn.IsSet() {
 		toSerialize["started_on"] = o.StartedOn.Get()
+	}
+	if o.StatementBalance.IsSet() {
+		toSerialize["statement_balance"] = o.StatementBalance.Get()
 	}
 	if o.Subtype.IsSet() {
 		toSerialize["subtype"] = o.Subtype.Get()

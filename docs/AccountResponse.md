@@ -52,6 +52,7 @@ Name | Type | Description | Notes
 **PropertyType** | Pointer to **NullableString** |  | [optional] 
 **RoutingNumber** | Pointer to **NullableString** |  | [optional] 
 **StartedOn** | Pointer to **NullableString** |  | [optional] 
+**StatementBalance** | Pointer to **NullableFloat32** |  | [optional] 
 **Subtype** | Pointer to **NullableString** |  | [optional] 
 **TodayUglAmount** | Pointer to **NullableFloat32** |  | [optional] 
 **TodayUglPercentage** | Pointer to **NullableFloat32** |  | [optional] 
@@ -1751,6 +1752,41 @@ HasStartedOn returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetStartedOn()`
 
 UnsetStartedOn ensures that no value is present for StartedOn, not even an explicit nil
+### GetStatementBalance
+
+`func (o *AccountResponse) GetStatementBalance() float32`
+
+GetStatementBalance returns the StatementBalance field if non-nil, zero value otherwise.
+
+### GetStatementBalanceOk
+
+`func (o *AccountResponse) GetStatementBalanceOk() (*float32, bool)`
+
+GetStatementBalanceOk returns a tuple with the StatementBalance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatementBalance
+
+`func (o *AccountResponse) SetStatementBalance(v float32)`
+
+SetStatementBalance sets StatementBalance field to given value.
+
+### HasStatementBalance
+
+`func (o *AccountResponse) HasStatementBalance() bool`
+
+HasStatementBalance returns a boolean if a field has been set.
+
+### SetStatementBalanceNil
+
+`func (o *AccountResponse) SetStatementBalanceNil(b bool)`
+
+ SetStatementBalanceNil sets the value for StatementBalance to be an explicit nil
+
+### UnsetStatementBalance
+`func (o *AccountResponse) UnsetStatementBalance()`
+
+UnsetStatementBalance ensures that no value is present for StatementBalance, not even an explicit nil
 ### GetSubtype
 
 `func (o *AccountResponse) GetSubtype() string`
