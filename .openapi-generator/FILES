@@ -37,6 +37,8 @@ docs/ConnectWidgetResponseBody.md
 docs/CredentialRequest.md
 docs/CredentialResponse.md
 docs/CredentialsResponseBody.md
+docs/CreditCardProduct.md
+docs/CreditCardProductResponse.md
 docs/EnhanceTransactionResponse.md
 docs/EnhanceTransactionsRequest.md
 docs/EnhanceTransactionsRequestBody.md
@@ -90,6 +92,10 @@ docs/PaymentProcessorAuthorizationCodeRequest.md
 docs/PaymentProcessorAuthorizationCodeRequestBody.md
 docs/PaymentProcessorAuthorizationCodeResponse.md
 docs/PaymentProcessorAuthorizationCodeResponseBody.md
+docs/RewardResponse.md
+docs/RewardResponseBody.md
+docs/RewardsResponse.md
+docs/RewardsResponseBody.md
 docs/ScheduledPaymentResponse.md
 docs/ScheduledPaymentsResponseBody.md
 docs/SpendingPlanAPI.md
@@ -178,6 +184,8 @@ model_connect_widget_response_body.go
 model_credential_request.go
 model_credential_response.go
 model_credentials_response_body.go
+model_credit_card_product.go
+model_credit_card_product_response.go
 model_enhance_transaction_response.go
 model_enhance_transactions_request.go
 model_enhance_transactions_request_body.go
@@ -229,6 +237,10 @@ model_payment_processor_authorization_code_request.go
 model_payment_processor_authorization_code_request_body.go
 model_payment_processor_authorization_code_response.go
 model_payment_processor_authorization_code_response_body.go
+model_reward_response.go
+model_reward_response_body.go
+model_rewards_response.go
+model_rewards_response_body.go
 model_scheduled_payment_response.go
 model_scheduled_payments_response_body.go
 model_spending_plan_account_response.go

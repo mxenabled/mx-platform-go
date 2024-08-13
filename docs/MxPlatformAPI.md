@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**CreateTagging**](MxPlatformAPI.md#CreateTagging) | **Post** /users/{user_guid}/taggings | Create tagging
 [**CreateTransactionRule**](MxPlatformAPI.md#CreateTransactionRule) | **Post** /users/{user_guid}/transaction_rules | Create transaction rule
 [**CreateUser**](MxPlatformAPI.md#CreateUser) | **Post** /users | Create user
+[**CreditCard**](MxPlatformAPI.md#CreditCard) | **Get** /credit_card_products/{credit_card_product_guid} | Read a Credit Card Product
 [**DeleteCategory**](MxPlatformAPI.md#DeleteCategory) | **Delete** /users/{user_guid}/categories/{category_guid} | Delete category
 [**DeleteManagedAccount**](MxPlatformAPI.md#DeleteManagedAccount) | **Delete** /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid} | Delete managed account
 [**DeleteManagedMember**](MxPlatformAPI.md#DeleteManagedMember) | **Delete** /users/{user_guid}/managed_members/{member_guid} | Delete managed member
@@ -31,6 +32,7 @@ Method | HTTP request | Description
 [**DownloadTaxDocument**](MxPlatformAPI.md#DownloadTaxDocument) | **Get** /users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}.pdf | Download a Tax Document PDF
 [**EnhanceTransactions**](MxPlatformAPI.md#EnhanceTransactions) | **Post** /transactions/enhance | Enhance transactions
 [**ExtendHistory**](MxPlatformAPI.md#ExtendHistory) | **Post** /users/{user_guid}/members/{member_guid}/extend_history | Extend history
+[**FetchRewards**](MxPlatformAPI.md#FetchRewards) | **Post** /users/{user_guid}/members/{member_guid}/fetch_rewards | Fetch Rewards
 [**FetchStatements**](MxPlatformAPI.md#FetchStatements) | **Post** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
 [**FetchTaxDocuments**](MxPlatformAPI.md#FetchTaxDocuments) | **Post** /users/{user_guid}/members/{member_guid}/fetch_tax_documents | Fetch Tax Documents
 [**IdentifyMember**](MxPlatformAPI.md#IdentifyMember) | **Post** /users/{user_guid}/members/{member_guid}/identify | Identify member
@@ -55,6 +57,7 @@ Method | HTTP request | Description
 [**ListMemberCredentials**](MxPlatformAPI.md#ListMemberCredentials) | **Get** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
 [**ListMembers**](MxPlatformAPI.md#ListMembers) | **Get** /users/{user_guid}/members | List members
 [**ListMerchants**](MxPlatformAPI.md#ListMerchants) | **Get** /merchants | List merchants
+[**ListRewards**](MxPlatformAPI.md#ListRewards) | **Get** /users/{user_guid}/members/{member_guid}/rewards | List Rewards
 [**ListStatementsByMember**](MxPlatformAPI.md#ListStatementsByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements | List statements by member
 [**ListTaggings**](MxPlatformAPI.md#ListTaggings) | **Get** /users/{user_guid}/taggings | List taggings
 [**ListTags**](MxPlatformAPI.md#ListTags) | **Get** /users/{user_guid}/tags | List tags
@@ -79,6 +82,7 @@ Method | HTTP request | Description
 [**ReadMemberStatus**](MxPlatformAPI.md#ReadMemberStatus) | **Get** /users/{user_guid}/members/{member_guid}/status | Read member status
 [**ReadMerchant**](MxPlatformAPI.md#ReadMerchant) | **Get** /merchants/{merchant_guid} | Read merchant
 [**ReadMerchantLocation**](MxPlatformAPI.md#ReadMerchantLocation) | **Get** /merchant_locations/{merchant_location_guid} | Read merchant location
+[**ReadRewards**](MxPlatformAPI.md#ReadRewards) | **Get** /users/{user_guid}/members/{member_guid}/rewards/{reward_guid} | Read Reward
 [**ReadStatementByMember**](MxPlatformAPI.md#ReadStatementByMember) | **Get** /users/{user_guid}/members/{member_guid}/statements/{statement_guid} | Read statement by member
 [**ReadTag**](MxPlatformAPI.md#ReadTag) | **Get** /users/{user_guid}/tags/{tag_guid} | Read tag
 [**ReadTagging**](MxPlatformAPI.md#ReadTagging) | **Get** /users/{user_guid}/taggings/{tagging_guid} | Read tagging
@@ -968,6 +972,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreditCard
+
+> CreditCardProductResponse CreditCard(ctx, creditCardProductGuid).Execute()
+
+Read a Credit Card Product
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    creditCardProductGuid := "credit_card_product_guid" // string | The required `credit_card_product_guid` can be found on the `account` object.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformAPI.CreditCard(context.Background(), creditCardProductGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.CreditCard``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreditCard`: CreditCardProductResponse
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.CreditCard`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**creditCardProductGuid** | **string** | The required &#x60;credit_card_product_guid&#x60; can be found on the &#x60;account&#x60; object. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreditCardRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CreditCardProductResponse**](CreditCardProductResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/vnd.mx.api.v1+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2023,6 +2097,79 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiExtendHistoryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**MemberResponseBody**](MemberResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FetchRewards
+
+> MemberResponseBody FetchRewards(ctx, userGuid, memberGuid).Execute()
+
+Fetch Rewards
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    memberGuid := "MBR-fa7537f3-48aa-a683-a02a-b18345562f54" // string | The unique identifier for the member. Defined by MX.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformAPI.FetchRewards(context.Background(), userGuid, memberGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.FetchRewards``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FetchRewards`: MemberResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.FetchRewards`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**memberGuid** | **string** | The unique identifier for the member. Defined by MX. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFetchRewardsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3848,6 +3995,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListRewards
+
+> RewardsResponseBody ListRewards(ctx, userGuid, memberGuid).Execute()
+
+List Rewards
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    memberGuid := "MBR-fa7537f3-48aa-a683-a02a-b18345562f54" // string | The unique identifier for the member. Defined by MX.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformAPI.ListRewards(context.Background(), userGuid, memberGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ListRewards``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListRewards`: RewardsResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ListRewards`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**memberGuid** | **string** | The unique identifier for the member. Defined by MX. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListRewardsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**RewardsResponseBody**](RewardsResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListStatementsByMember
 
 > StatementsResponseBody ListStatementsByMember(ctx, memberGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
@@ -5631,6 +5851,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MerchantLocationResponseBody**](MerchantLocationResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadRewards
+
+> RewardResponseBody ReadRewards(ctx, userGuid, memberGuid, rewardGuid).Execute()
+
+Read Reward
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    memberGuid := "MBR-fa7537f3-48aa-a683-a02a-b18345562f54" // string | The unique identifier for the member. Defined by MX.
+    rewardGuid := "RWD-fa7537f3-48aa-a683-a02a-b324322f54" // string | The unique identifier for the rewards. Defined by MX.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformAPI.ReadRewards(context.Background(), userGuid, memberGuid, rewardGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.ReadRewards``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadRewards`: RewardResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.ReadRewards`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**memberGuid** | **string** | The unique identifier for the member. Defined by MX. | 
+**rewardGuid** | **string** | The unique identifier for the rewards. Defined by MX. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadRewardsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**RewardResponseBody**](RewardResponseBody.md)
 
 ### Authorization
 
