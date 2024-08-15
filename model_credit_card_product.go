@@ -19,18 +19,18 @@ var _ MappedNullable = &CreditCardProduct{}
 
 // CreditCardProduct struct for CreditCardProduct
 type CreditCardProduct struct {
-	AnnualFee interface{} `json:"annual_fee,omitempty"`
-	DurationOfIntroductoryRateOnBalanceTransfer interface{} `json:"duration_of_introductory_rate_on_balance_transfer,omitempty"`
-	DurationOfIntroductoryRateOnPurchases interface{} `json:"duration_of_introductory_rate_on_purchases,omitempty"`
-	Guid interface{} `json:"guid,omitempty"`
+	AnnualFee *float32 `json:"annual_fee,omitempty"`
+	DurationOfIntroductoryRateOnBalanceTransfer *int32 `json:"duration_of_introductory_rate_on_balance_transfer,omitempty"`
+	DurationOfIntroductoryRateOnPurchases *int32 `json:"duration_of_introductory_rate_on_purchases,omitempty"`
+	Guid *string `json:"guid,omitempty"`
 	HasCashbackRewards *bool `json:"has_cashback_rewards,omitempty"`
 	HasOtherRewards *bool `json:"has_other_rewards,omitempty"`
 	HasTravelRewards *bool `json:"has_travel_rewards,omitempty"`
 	HasZeroIntroductoryAnnualFee *bool `json:"has_zero_introductory_annual_fee,omitempty"`
 	HasZeroPercentIntroductoryRate *bool `json:"has_zero_percent_introductory_rate,omitempty"`
 	HasZeroPercentIntroductoryRateOnBalanceTransfer *bool `json:"has_zero_percent_introductory_rate_on_balance_transfer,omitempty"`
-	FinancialInstitution *bool `json:"financial_institution,omitempty"`
-	IsAcceptingApplications *bool `json:"is_accepting_applications,omitempty"`
+	IsAcceptingApplicants *bool `json:"is_accepting_applicants,omitempty"`
+	IsActiveCreditCardProduct *bool `json:"is_active_credit_card_product,omitempty"`
 	IsSmallBusinessCard *bool `json:"is_small_business_card,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -52,136 +52,132 @@ func NewCreditCardProductWithDefaults() *CreditCardProduct {
 	return &this
 }
 
-// GetAnnualFee returns the AnnualFee field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreditCardProduct) GetAnnualFee() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetAnnualFee returns the AnnualFee field value if set, zero value otherwise.
+func (o *CreditCardProduct) GetAnnualFee() float32 {
+	if o == nil || IsNil(o.AnnualFee) {
+		var ret float32
 		return ret
 	}
-	return o.AnnualFee
+	return *o.AnnualFee
 }
 
 // GetAnnualFeeOk returns a tuple with the AnnualFee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreditCardProduct) GetAnnualFeeOk() (*interface{}, bool) {
+func (o *CreditCardProduct) GetAnnualFeeOk() (*float32, bool) {
 	if o == nil || IsNil(o.AnnualFee) {
 		return nil, false
 	}
-	return &o.AnnualFee, true
+	return o.AnnualFee, true
 }
 
 // HasAnnualFee returns a boolean if a field has been set.
 func (o *CreditCardProduct) HasAnnualFee() bool {
-	if o != nil && IsNil(o.AnnualFee) {
+	if o != nil && !IsNil(o.AnnualFee) {
 		return true
 	}
 
 	return false
 }
 
-// SetAnnualFee gets a reference to the given interface{} and assigns it to the AnnualFee field.
-func (o *CreditCardProduct) SetAnnualFee(v interface{}) {
-	o.AnnualFee = v
+// SetAnnualFee gets a reference to the given float32 and assigns it to the AnnualFee field.
+func (o *CreditCardProduct) SetAnnualFee(v float32) {
+	o.AnnualFee = &v
 }
 
-// GetDurationOfIntroductoryRateOnBalanceTransfer returns the DurationOfIntroductoryRateOnBalanceTransfer field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnBalanceTransfer() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetDurationOfIntroductoryRateOnBalanceTransfer returns the DurationOfIntroductoryRateOnBalanceTransfer field value if set, zero value otherwise.
+func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnBalanceTransfer() int32 {
+	if o == nil || IsNil(o.DurationOfIntroductoryRateOnBalanceTransfer) {
+		var ret int32
 		return ret
 	}
-	return o.DurationOfIntroductoryRateOnBalanceTransfer
+	return *o.DurationOfIntroductoryRateOnBalanceTransfer
 }
 
 // GetDurationOfIntroductoryRateOnBalanceTransferOk returns a tuple with the DurationOfIntroductoryRateOnBalanceTransfer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnBalanceTransferOk() (*interface{}, bool) {
+func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnBalanceTransferOk() (*int32, bool) {
 	if o == nil || IsNil(o.DurationOfIntroductoryRateOnBalanceTransfer) {
 		return nil, false
 	}
-	return &o.DurationOfIntroductoryRateOnBalanceTransfer, true
+	return o.DurationOfIntroductoryRateOnBalanceTransfer, true
 }
 
 // HasDurationOfIntroductoryRateOnBalanceTransfer returns a boolean if a field has been set.
 func (o *CreditCardProduct) HasDurationOfIntroductoryRateOnBalanceTransfer() bool {
-	if o != nil && IsNil(o.DurationOfIntroductoryRateOnBalanceTransfer) {
+	if o != nil && !IsNil(o.DurationOfIntroductoryRateOnBalanceTransfer) {
 		return true
 	}
 
 	return false
 }
 
-// SetDurationOfIntroductoryRateOnBalanceTransfer gets a reference to the given interface{} and assigns it to the DurationOfIntroductoryRateOnBalanceTransfer field.
-func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnBalanceTransfer(v interface{}) {
-	o.DurationOfIntroductoryRateOnBalanceTransfer = v
+// SetDurationOfIntroductoryRateOnBalanceTransfer gets a reference to the given int32 and assigns it to the DurationOfIntroductoryRateOnBalanceTransfer field.
+func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnBalanceTransfer(v int32) {
+	o.DurationOfIntroductoryRateOnBalanceTransfer = &v
 }
 
-// GetDurationOfIntroductoryRateOnPurchases returns the DurationOfIntroductoryRateOnPurchases field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnPurchases() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetDurationOfIntroductoryRateOnPurchases returns the DurationOfIntroductoryRateOnPurchases field value if set, zero value otherwise.
+func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnPurchases() int32 {
+	if o == nil || IsNil(o.DurationOfIntroductoryRateOnPurchases) {
+		var ret int32
 		return ret
 	}
-	return o.DurationOfIntroductoryRateOnPurchases
+	return *o.DurationOfIntroductoryRateOnPurchases
 }
 
 // GetDurationOfIntroductoryRateOnPurchasesOk returns a tuple with the DurationOfIntroductoryRateOnPurchases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnPurchasesOk() (*interface{}, bool) {
+func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnPurchasesOk() (*int32, bool) {
 	if o == nil || IsNil(o.DurationOfIntroductoryRateOnPurchases) {
 		return nil, false
 	}
-	return &o.DurationOfIntroductoryRateOnPurchases, true
+	return o.DurationOfIntroductoryRateOnPurchases, true
 }
 
 // HasDurationOfIntroductoryRateOnPurchases returns a boolean if a field has been set.
 func (o *CreditCardProduct) HasDurationOfIntroductoryRateOnPurchases() bool {
-	if o != nil && IsNil(o.DurationOfIntroductoryRateOnPurchases) {
+	if o != nil && !IsNil(o.DurationOfIntroductoryRateOnPurchases) {
 		return true
 	}
 
 	return false
 }
 
-// SetDurationOfIntroductoryRateOnPurchases gets a reference to the given interface{} and assigns it to the DurationOfIntroductoryRateOnPurchases field.
-func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnPurchases(v interface{}) {
-	o.DurationOfIntroductoryRateOnPurchases = v
+// SetDurationOfIntroductoryRateOnPurchases gets a reference to the given int32 and assigns it to the DurationOfIntroductoryRateOnPurchases field.
+func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnPurchases(v int32) {
+	o.DurationOfIntroductoryRateOnPurchases = &v
 }
 
-// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreditCardProduct) GetGuid() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetGuid returns the Guid field value if set, zero value otherwise.
+func (o *CreditCardProduct) GetGuid() string {
+	if o == nil || IsNil(o.Guid) {
+		var ret string
 		return ret
 	}
-	return o.Guid
+	return *o.Guid
 }
 
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreditCardProduct) GetGuidOk() (*interface{}, bool) {
+func (o *CreditCardProduct) GetGuidOk() (*string, bool) {
 	if o == nil || IsNil(o.Guid) {
 		return nil, false
 	}
-	return &o.Guid, true
+	return o.Guid, true
 }
 
 // HasGuid returns a boolean if a field has been set.
 func (o *CreditCardProduct) HasGuid() bool {
-	if o != nil && IsNil(o.Guid) {
+	if o != nil && !IsNil(o.Guid) {
 		return true
 	}
 
 	return false
 }
 
-// SetGuid gets a reference to the given interface{} and assigns it to the Guid field.
-func (o *CreditCardProduct) SetGuid(v interface{}) {
-	o.Guid = v
+// SetGuid gets a reference to the given string and assigns it to the Guid field.
+func (o *CreditCardProduct) SetGuid(v string) {
+	o.Guid = &v
 }
 
 // GetHasCashbackRewards returns the HasCashbackRewards field value if set, zero value otherwise.
@@ -376,68 +372,68 @@ func (o *CreditCardProduct) SetHasZeroPercentIntroductoryRateOnBalanceTransfer(v
 	o.HasZeroPercentIntroductoryRateOnBalanceTransfer = &v
 }
 
-// GetFinancialInstitution returns the FinancialInstitution field value if set, zero value otherwise.
-func (o *CreditCardProduct) GetFinancialInstitution() bool {
-	if o == nil || IsNil(o.FinancialInstitution) {
+// GetIsAcceptingApplicants returns the IsAcceptingApplicants field value if set, zero value otherwise.
+func (o *CreditCardProduct) GetIsAcceptingApplicants() bool {
+	if o == nil || IsNil(o.IsAcceptingApplicants) {
 		var ret bool
 		return ret
 	}
-	return *o.FinancialInstitution
+	return *o.IsAcceptingApplicants
 }
 
-// GetFinancialInstitutionOk returns a tuple with the FinancialInstitution field value if set, nil otherwise
+// GetIsAcceptingApplicantsOk returns a tuple with the IsAcceptingApplicants field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreditCardProduct) GetFinancialInstitutionOk() (*bool, bool) {
-	if o == nil || IsNil(o.FinancialInstitution) {
+func (o *CreditCardProduct) GetIsAcceptingApplicantsOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAcceptingApplicants) {
 		return nil, false
 	}
-	return o.FinancialInstitution, true
+	return o.IsAcceptingApplicants, true
 }
 
-// HasFinancialInstitution returns a boolean if a field has been set.
-func (o *CreditCardProduct) HasFinancialInstitution() bool {
-	if o != nil && !IsNil(o.FinancialInstitution) {
+// HasIsAcceptingApplicants returns a boolean if a field has been set.
+func (o *CreditCardProduct) HasIsAcceptingApplicants() bool {
+	if o != nil && !IsNil(o.IsAcceptingApplicants) {
 		return true
 	}
 
 	return false
 }
 
-// SetFinancialInstitution gets a reference to the given bool and assigns it to the FinancialInstitution field.
-func (o *CreditCardProduct) SetFinancialInstitution(v bool) {
-	o.FinancialInstitution = &v
+// SetIsAcceptingApplicants gets a reference to the given bool and assigns it to the IsAcceptingApplicants field.
+func (o *CreditCardProduct) SetIsAcceptingApplicants(v bool) {
+	o.IsAcceptingApplicants = &v
 }
 
-// GetIsAcceptingApplications returns the IsAcceptingApplications field value if set, zero value otherwise.
-func (o *CreditCardProduct) GetIsAcceptingApplications() bool {
-	if o == nil || IsNil(o.IsAcceptingApplications) {
+// GetIsActiveCreditCardProduct returns the IsActiveCreditCardProduct field value if set, zero value otherwise.
+func (o *CreditCardProduct) GetIsActiveCreditCardProduct() bool {
+	if o == nil || IsNil(o.IsActiveCreditCardProduct) {
 		var ret bool
 		return ret
 	}
-	return *o.IsAcceptingApplications
+	return *o.IsActiveCreditCardProduct
 }
 
-// GetIsAcceptingApplicationsOk returns a tuple with the IsAcceptingApplications field value if set, nil otherwise
+// GetIsActiveCreditCardProductOk returns a tuple with the IsActiveCreditCardProduct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreditCardProduct) GetIsAcceptingApplicationsOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsAcceptingApplications) {
+func (o *CreditCardProduct) GetIsActiveCreditCardProductOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsActiveCreditCardProduct) {
 		return nil, false
 	}
-	return o.IsAcceptingApplications, true
+	return o.IsActiveCreditCardProduct, true
 }
 
-// HasIsAcceptingApplications returns a boolean if a field has been set.
-func (o *CreditCardProduct) HasIsAcceptingApplications() bool {
-	if o != nil && !IsNil(o.IsAcceptingApplications) {
+// HasIsActiveCreditCardProduct returns a boolean if a field has been set.
+func (o *CreditCardProduct) HasIsActiveCreditCardProduct() bool {
+	if o != nil && !IsNil(o.IsActiveCreditCardProduct) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsAcceptingApplications gets a reference to the given bool and assigns it to the IsAcceptingApplications field.
-func (o *CreditCardProduct) SetIsAcceptingApplications(v bool) {
-	o.IsAcceptingApplications = &v
+// SetIsActiveCreditCardProduct gets a reference to the given bool and assigns it to the IsActiveCreditCardProduct field.
+func (o *CreditCardProduct) SetIsActiveCreditCardProduct(v bool) {
+	o.IsActiveCreditCardProduct = &v
 }
 
 // GetIsSmallBusinessCard returns the IsSmallBusinessCard field value if set, zero value otherwise.
@@ -514,16 +510,16 @@ func (o CreditCardProduct) MarshalJSON() ([]byte, error) {
 
 func (o CreditCardProduct) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AnnualFee != nil {
+	if !IsNil(o.AnnualFee) {
 		toSerialize["annual_fee"] = o.AnnualFee
 	}
-	if o.DurationOfIntroductoryRateOnBalanceTransfer != nil {
+	if !IsNil(o.DurationOfIntroductoryRateOnBalanceTransfer) {
 		toSerialize["duration_of_introductory_rate_on_balance_transfer"] = o.DurationOfIntroductoryRateOnBalanceTransfer
 	}
-	if o.DurationOfIntroductoryRateOnPurchases != nil {
+	if !IsNil(o.DurationOfIntroductoryRateOnPurchases) {
 		toSerialize["duration_of_introductory_rate_on_purchases"] = o.DurationOfIntroductoryRateOnPurchases
 	}
-	if o.Guid != nil {
+	if !IsNil(o.Guid) {
 		toSerialize["guid"] = o.Guid
 	}
 	if !IsNil(o.HasCashbackRewards) {
@@ -544,11 +540,11 @@ func (o CreditCardProduct) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasZeroPercentIntroductoryRateOnBalanceTransfer) {
 		toSerialize["has_zero_percent_introductory_rate_on_balance_transfer"] = o.HasZeroPercentIntroductoryRateOnBalanceTransfer
 	}
-	if !IsNil(o.FinancialInstitution) {
-		toSerialize["financial_institution"] = o.FinancialInstitution
+	if !IsNil(o.IsAcceptingApplicants) {
+		toSerialize["is_accepting_applicants"] = o.IsAcceptingApplicants
 	}
-	if !IsNil(o.IsAcceptingApplications) {
-		toSerialize["is_accepting_applications"] = o.IsAcceptingApplications
+	if !IsNil(o.IsActiveCreditCardProduct) {
+		toSerialize["is_active_credit_card_product"] = o.IsActiveCreditCardProduct
 	}
 	if !IsNil(o.IsSmallBusinessCard) {
 		toSerialize["is_small_business_card"] = o.IsSmallBusinessCard

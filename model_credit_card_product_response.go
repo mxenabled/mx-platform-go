@@ -19,7 +19,7 @@ var _ MappedNullable = &CreditCardProductResponse{}
 
 // CreditCardProductResponse struct for CreditCardProductResponse
 type CreditCardProductResponse struct {
-	Reward *CreditCardProduct `json:"reward,omitempty"`
+	CreditCardProduct *CreditCardProduct `json:"credit_card_product,omitempty"`
 }
 
 // NewCreditCardProductResponse instantiates a new CreditCardProductResponse object
@@ -39,36 +39,36 @@ func NewCreditCardProductResponseWithDefaults() *CreditCardProductResponse {
 	return &this
 }
 
-// GetReward returns the Reward field value if set, zero value otherwise.
-func (o *CreditCardProductResponse) GetReward() CreditCardProduct {
-	if o == nil || IsNil(o.Reward) {
+// GetCreditCardProduct returns the CreditCardProduct field value if set, zero value otherwise.
+func (o *CreditCardProductResponse) GetCreditCardProduct() CreditCardProduct {
+	if o == nil || IsNil(o.CreditCardProduct) {
 		var ret CreditCardProduct
 		return ret
 	}
-	return *o.Reward
+	return *o.CreditCardProduct
 }
 
-// GetRewardOk returns a tuple with the Reward field value if set, nil otherwise
+// GetCreditCardProductOk returns a tuple with the CreditCardProduct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreditCardProductResponse) GetRewardOk() (*CreditCardProduct, bool) {
-	if o == nil || IsNil(o.Reward) {
+func (o *CreditCardProductResponse) GetCreditCardProductOk() (*CreditCardProduct, bool) {
+	if o == nil || IsNil(o.CreditCardProduct) {
 		return nil, false
 	}
-	return o.Reward, true
+	return o.CreditCardProduct, true
 }
 
-// HasReward returns a boolean if a field has been set.
-func (o *CreditCardProductResponse) HasReward() bool {
-	if o != nil && !IsNil(o.Reward) {
+// HasCreditCardProduct returns a boolean if a field has been set.
+func (o *CreditCardProductResponse) HasCreditCardProduct() bool {
+	if o != nil && !IsNil(o.CreditCardProduct) {
 		return true
 	}
 
 	return false
 }
 
-// SetReward gets a reference to the given CreditCardProduct and assigns it to the Reward field.
-func (o *CreditCardProductResponse) SetReward(v CreditCardProduct) {
-	o.Reward = &v
+// SetCreditCardProduct gets a reference to the given CreditCardProduct and assigns it to the CreditCardProduct field.
+func (o *CreditCardProductResponse) SetCreditCardProduct(v CreditCardProduct) {
+	o.CreditCardProduct = &v
 }
 
 func (o CreditCardProductResponse) MarshalJSON() ([]byte, error) {
@@ -81,8 +81,8 @@ func (o CreditCardProductResponse) MarshalJSON() ([]byte, error) {
 
 func (o CreditCardProductResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Reward) {
-		toSerialize["reward"] = o.Reward
+	if !IsNil(o.CreditCardProduct) {
+		toSerialize["credit_card_product"] = o.CreditCardProduct
 	}
 	return toSerialize, nil
 }

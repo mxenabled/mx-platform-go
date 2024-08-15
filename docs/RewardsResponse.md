@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Guid** | Pointer to **string** |  | [optional] 
 **MemberGuid** | Pointer to **string** |  | [optional] 
 **UnitType** | Pointer to **string** |  | [optional] 
+**UpdatedAt** | Pointer to **string** |  | [optional] 
 **UserGuid** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -258,6 +259,31 @@ SetUnitType sets UnitType field to given value.
 `func (o *RewardsResponse) HasUnitType() bool`
 
 HasUnitType returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *RewardsResponse) GetUpdatedAt() string`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *RewardsResponse) GetUpdatedAtOk() (*string, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *RewardsResponse) SetUpdatedAt(v string)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *RewardsResponse) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetUserGuid
 

@@ -106,6 +106,10 @@ Method | HTTP request | Description
 [**UpdateTransaction**](MxPlatformAPI.md#UpdateTransaction) | **Put** /users/{user_guid}/transactions/{transaction_guid} | Update transaction
 [**UpdateTransactionRule**](MxPlatformAPI.md#UpdateTransactionRule) | **Put** /users/{user_guid}/transaction_rules/{transaction_rule_guid} | Update transaction_rule
 [**UpdateUser**](MxPlatformAPI.md#UpdateUser) | **Put** /users/{user_guid} | Update user
+[**UsersUserGuidMonthlyCashFlowProfileGet**](MxPlatformAPI.md#UsersUserGuidMonthlyCashFlowProfileGet) | **Get** /users/{user_guid}/monthly_cash_flow_profile | Read monthly cash flow profile
+[**UsersUserGuidMonthlyCashFlowProfilePut**](MxPlatformAPI.md#UsersUserGuidMonthlyCashFlowProfilePut) | **Put** /users/{user_guid}/monthly_cash_flow_profile | Update monthly cash flow profile
+[**UsersUserGuidTransactionsTransactionGuidSplitDelete**](MxPlatformAPI.md#UsersUserGuidTransactionsTransactionGuidSplitDelete) | **Delete** /users/{user_guid}/transactions/{transaction_guid}/split | Delete split transactions
+[**UsersUserGuidTransactionsTransactionGuidSplitPost**](MxPlatformAPI.md#UsersUserGuidTransactionsTransactionGuidSplitPost) | **Post** /users/{user_guid}/transactions/{transaction_guid}/split | Create split transactions
 [**VerifyMember**](MxPlatformAPI.md#VerifyMember) | **Post** /users/{user_guid}/members/{member_guid}/verify | Verify member
 
 
@@ -7645,6 +7649,292 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UserResponseBody**](UserResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UsersUserGuidMonthlyCashFlowProfileGet
+
+> MonthlyCashFlowResponseBody UsersUserGuidMonthlyCashFlowProfileGet(ctx, userGuid).Execute()
+
+Read monthly cash flow profile
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "userGuid_example" // string | The unique identifier for the user.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformAPI.UsersUserGuidMonthlyCashFlowProfileGet(context.Background(), userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UsersUserGuidMonthlyCashFlowProfileGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UsersUserGuidMonthlyCashFlowProfileGet`: MonthlyCashFlowResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UsersUserGuidMonthlyCashFlowProfileGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique identifier for the user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersUserGuidMonthlyCashFlowProfileGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**MonthlyCashFlowResponseBody**](MonthlyCashFlowResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UsersUserGuidMonthlyCashFlowProfilePut
+
+> MonthlyCashFlowResponseBody UsersUserGuidMonthlyCashFlowProfilePut(ctx, userGuid).MonthlyCashFlowProfileRequestBody(monthlyCashFlowProfileRequestBody).Execute()
+
+Update monthly cash flow profile
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "userGuid_example" // string | The unique identifier for the user.
+    monthlyCashFlowProfileRequestBody := *openapiclient.NewMonthlyCashFlowProfileRequestBody() // MonthlyCashFlowProfileRequestBody | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformAPI.UsersUserGuidMonthlyCashFlowProfilePut(context.Background(), userGuid).MonthlyCashFlowProfileRequestBody(monthlyCashFlowProfileRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UsersUserGuidMonthlyCashFlowProfilePut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UsersUserGuidMonthlyCashFlowProfilePut`: MonthlyCashFlowResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UsersUserGuidMonthlyCashFlowProfilePut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique identifier for the user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersUserGuidMonthlyCashFlowProfilePutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **monthlyCashFlowProfileRequestBody** | [**MonthlyCashFlowProfileRequestBody**](MonthlyCashFlowProfileRequestBody.md) |  | 
+
+### Return type
+
+[**MonthlyCashFlowResponseBody**](MonthlyCashFlowResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UsersUserGuidTransactionsTransactionGuidSplitDelete
+
+> UsersUserGuidTransactionsTransactionGuidSplitDelete(ctx, transactionGuid, userGuid).Execute()
+
+Delete split transactions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    transactionGuid := "TRN-810828b0-5210-4878-9bd3-f4ce514f90c4" // string | The unique id for a `transaction`.
+    userGuid := "USR-85628b0-5210-4878-9bd3-f4ce154f90c4" // string | The unique id for a `user`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.MxPlatformAPI.UsersUserGuidTransactionsTransactionGuidSplitDelete(context.Background(), transactionGuid, userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UsersUserGuidTransactionsTransactionGuidSplitDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**transactionGuid** | **string** | The unique id for a &#x60;transaction&#x60;. | 
+**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersUserGuidTransactionsTransactionGuidSplitDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UsersUserGuidTransactionsTransactionGuidSplitPost
+
+> SplitTransactionsResponseBody UsersUserGuidTransactionsTransactionGuidSplitPost(ctx, userGuid, transactionGuid).SplitTransactionRequestBody(splitTransactionRequestBody).Execute()
+
+Create split transactions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "userGuid_example" // string | The unique identifier for the user. Defined by MX.
+    transactionGuid := "transactionGuid_example" // string | The unique identifier for the transaction. Defined by MX.
+    splitTransactionRequestBody := *openapiclient.NewSplitTransactionRequestBody(*openapiclient.NewSplitTransactionRequest(float32(54.19))) // SplitTransactionRequestBody |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MxPlatformAPI.UsersUserGuidTransactionsTransactionGuidSplitPost(context.Background(), userGuid, transactionGuid).SplitTransactionRequestBody(splitTransactionRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.UsersUserGuidTransactionsTransactionGuidSplitPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UsersUserGuidTransactionsTransactionGuidSplitPost`: SplitTransactionsResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MxPlatformAPI.UsersUserGuidTransactionsTransactionGuidSplitPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**transactionGuid** | **string** | The unique identifier for the transaction. Defined by MX. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersUserGuidTransactionsTransactionGuidSplitPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **splitTransactionRequestBody** | [**SplitTransactionRequestBody**](SplitTransactionRequestBody.md) |  | 
+
+### Return type
+
+[**SplitTransactionsResponseBody**](SplitTransactionsResponseBody.md)
 
 ### Authorization
 

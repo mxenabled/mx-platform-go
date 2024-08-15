@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Reward** | Pointer to [**CreditCardProduct**](CreditCardProduct.md) |  | [optional] 
+**CreditCardProduct** | Pointer to [**CreditCardProduct**](CreditCardProduct.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewCreditCardProductResponseWithDefaults instantiates a new CreditCardProductRes
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetReward
+### GetCreditCardProduct
 
-`func (o *CreditCardProductResponse) GetReward() CreditCardProduct`
+`func (o *CreditCardProductResponse) GetCreditCardProduct() CreditCardProduct`
 
-GetReward returns the Reward field if non-nil, zero value otherwise.
+GetCreditCardProduct returns the CreditCardProduct field if non-nil, zero value otherwise.
 
-### GetRewardOk
+### GetCreditCardProductOk
 
-`func (o *CreditCardProductResponse) GetRewardOk() (*CreditCardProduct, bool)`
+`func (o *CreditCardProductResponse) GetCreditCardProductOk() (*CreditCardProduct, bool)`
 
-GetRewardOk returns a tuple with the Reward field if it's non-nil, zero value otherwise
+GetCreditCardProductOk returns a tuple with the CreditCardProduct field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetReward
+### SetCreditCardProduct
 
-`func (o *CreditCardProductResponse) SetReward(v CreditCardProduct)`
+`func (o *CreditCardProductResponse) SetCreditCardProduct(v CreditCardProduct)`
 
-SetReward sets Reward field to given value.
+SetCreditCardProduct sets CreditCardProduct field to given value.
 
-### HasReward
+### HasCreditCardProduct
 
-`func (o *CreditCardProductResponse) HasReward() bool`
+`func (o *CreditCardProductResponse) HasCreditCardProduct() bool`
 
-HasReward returns a boolean if a field has been set.
+HasCreditCardProduct returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

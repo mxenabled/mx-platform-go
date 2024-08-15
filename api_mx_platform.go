@@ -11982,6 +11982,432 @@ func (a *MxPlatformAPIService) UpdateUserExecute(r ApiUpdateUserRequest) (*UserR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiUsersUserGuidMonthlyCashFlowProfileGetRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformAPIService
+	userGuid string
+}
+
+func (r ApiUsersUserGuidMonthlyCashFlowProfileGetRequest) Execute() (*MonthlyCashFlowResponseBody, *http.Response, error) {
+	return r.ApiService.UsersUserGuidMonthlyCashFlowProfileGetExecute(r)
+}
+
+/*
+UsersUserGuidMonthlyCashFlowProfileGet Read monthly cash flow profile
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique identifier for the user.
+ @return ApiUsersUserGuidMonthlyCashFlowProfileGetRequest
+*/
+func (a *MxPlatformAPIService) UsersUserGuidMonthlyCashFlowProfileGet(ctx context.Context, userGuid string) ApiUsersUserGuidMonthlyCashFlowProfileGetRequest {
+	return ApiUsersUserGuidMonthlyCashFlowProfileGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return MonthlyCashFlowResponseBody
+func (a *MxPlatformAPIService) UsersUserGuidMonthlyCashFlowProfileGetExecute(r ApiUsersUserGuidMonthlyCashFlowProfileGetRequest) (*MonthlyCashFlowResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MonthlyCashFlowResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformAPIService.UsersUserGuidMonthlyCashFlowProfileGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/monthly_cash_flow_profile"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterValueToString(r.userGuid, "userGuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUsersUserGuidMonthlyCashFlowProfilePutRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformAPIService
+	userGuid string
+	monthlyCashFlowProfileRequestBody *MonthlyCashFlowProfileRequestBody
+}
+
+func (r ApiUsersUserGuidMonthlyCashFlowProfilePutRequest) MonthlyCashFlowProfileRequestBody(monthlyCashFlowProfileRequestBody MonthlyCashFlowProfileRequestBody) ApiUsersUserGuidMonthlyCashFlowProfilePutRequest {
+	r.monthlyCashFlowProfileRequestBody = &monthlyCashFlowProfileRequestBody
+	return r
+}
+
+func (r ApiUsersUserGuidMonthlyCashFlowProfilePutRequest) Execute() (*MonthlyCashFlowResponseBody, *http.Response, error) {
+	return r.ApiService.UsersUserGuidMonthlyCashFlowProfilePutExecute(r)
+}
+
+/*
+UsersUserGuidMonthlyCashFlowProfilePut Update monthly cash flow profile
+
+Use this endpoint to update the attributes of a `monthly_cash_flow_profile`.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique identifier for the user.
+ @return ApiUsersUserGuidMonthlyCashFlowProfilePutRequest
+*/
+func (a *MxPlatformAPIService) UsersUserGuidMonthlyCashFlowProfilePut(ctx context.Context, userGuid string) ApiUsersUserGuidMonthlyCashFlowProfilePutRequest {
+	return ApiUsersUserGuidMonthlyCashFlowProfilePutRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+//  @return MonthlyCashFlowResponseBody
+func (a *MxPlatformAPIService) UsersUserGuidMonthlyCashFlowProfilePutExecute(r ApiUsersUserGuidMonthlyCashFlowProfilePutRequest) (*MonthlyCashFlowResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MonthlyCashFlowResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformAPIService.UsersUserGuidMonthlyCashFlowProfilePut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/monthly_cash_flow_profile"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterValueToString(r.userGuid, "userGuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.monthlyCashFlowProfileRequestBody == nil {
+		return localVarReturnValue, nil, reportError("monthlyCashFlowProfileRequestBody is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.monthlyCashFlowProfileRequestBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUsersUserGuidTransactionsTransactionGuidSplitDeleteRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformAPIService
+	transactionGuid string
+	userGuid string
+}
+
+func (r ApiUsersUserGuidTransactionsTransactionGuidSplitDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UsersUserGuidTransactionsTransactionGuidSplitDeleteExecute(r)
+}
+
+/*
+UsersUserGuidTransactionsTransactionGuidSplitDelete Delete split transactions
+
+This endpoint deletes all split transactions linked to a parent transaction, but it leaves the parent transaction active. This request will also update the parent transaction's has_been_split field to false. This endpoint accepts the optional MX-Skip-Webhook header.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param transactionGuid The unique id for a `transaction`.
+ @param userGuid The unique id for a `user`.
+ @return ApiUsersUserGuidTransactionsTransactionGuidSplitDeleteRequest
+*/
+func (a *MxPlatformAPIService) UsersUserGuidTransactionsTransactionGuidSplitDelete(ctx context.Context, transactionGuid string, userGuid string) ApiUsersUserGuidTransactionsTransactionGuidSplitDeleteRequest {
+	return ApiUsersUserGuidTransactionsTransactionGuidSplitDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		transactionGuid: transactionGuid,
+		userGuid: userGuid,
+	}
+}
+
+// Execute executes the request
+func (a *MxPlatformAPIService) UsersUserGuidTransactionsTransactionGuidSplitDeleteExecute(r ApiUsersUserGuidTransactionsTransactionGuidSplitDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformAPIService.UsersUserGuidTransactionsTransactionGuidSplitDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/transactions/{transaction_guid}/split"
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterValueToString(r.transactionGuid, "transactionGuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterValueToString(r.userGuid, "userGuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiUsersUserGuidTransactionsTransactionGuidSplitPostRequest struct {
+	ctx context.Context
+	ApiService *MxPlatformAPIService
+	userGuid string
+	transactionGuid string
+	splitTransactionRequestBody *SplitTransactionRequestBody
+}
+
+func (r ApiUsersUserGuidTransactionsTransactionGuidSplitPostRequest) SplitTransactionRequestBody(splitTransactionRequestBody SplitTransactionRequestBody) ApiUsersUserGuidTransactionsTransactionGuidSplitPostRequest {
+	r.splitTransactionRequestBody = &splitTransactionRequestBody
+	return r
+}
+
+func (r ApiUsersUserGuidTransactionsTransactionGuidSplitPostRequest) Execute() (*SplitTransactionsResponseBody, *http.Response, error) {
+	return r.ApiService.UsersUserGuidTransactionsTransactionGuidSplitPostExecute(r)
+}
+
+/*
+UsersUserGuidTransactionsTransactionGuidSplitPost Create split transactions
+
+This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction.  When a split transaction is created, the parent transaction's `has_been_split` field will automatically be updated to true and the child transactions' `parent_guid` will have the transaction guid of the parent. The total amount of the child transactions must equal the amount of the parent transaction. Once a transaction has been split it can't be split again.    In order to re-split a transaction, it must first be un-split. This can be done by calling the Delete Split Transactions endpoint. Calling this endpoint will delete the existing child transactions and update the parent transaction's `has_been_split` field to false. You can then re-split the parent transaction by calling Create Split Transaction again.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGuid The unique identifier for the user. Defined by MX.
+ @param transactionGuid The unique identifier for the transaction. Defined by MX.
+ @return ApiUsersUserGuidTransactionsTransactionGuidSplitPostRequest
+*/
+func (a *MxPlatformAPIService) UsersUserGuidTransactionsTransactionGuidSplitPost(ctx context.Context, userGuid string, transactionGuid string) ApiUsersUserGuidTransactionsTransactionGuidSplitPostRequest {
+	return ApiUsersUserGuidTransactionsTransactionGuidSplitPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		userGuid: userGuid,
+		transactionGuid: transactionGuid,
+	}
+}
+
+// Execute executes the request
+//  @return SplitTransactionsResponseBody
+func (a *MxPlatformAPIService) UsersUserGuidTransactionsTransactionGuidSplitPostExecute(r ApiUsersUserGuidTransactionsTransactionGuidSplitPostRequest) (*SplitTransactionsResponseBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SplitTransactionsResponseBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MxPlatformAPIService.UsersUserGuidTransactionsTransactionGuidSplitPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/{user_guid}/transactions/{transaction_guid}/split"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_guid"+"}", url.PathEscape(parameterValueToString(r.userGuid, "userGuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transaction_guid"+"}", url.PathEscape(parameterValueToString(r.transactionGuid, "transactionGuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.mx.api.v1+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.splitTransactionRequestBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiVerifyMemberRequest struct {
 	ctx context.Context
 	ApiService *MxPlatformAPIService
