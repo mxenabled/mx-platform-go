@@ -28,6 +28,7 @@ type RewardsResponse struct {
 	Guid *string `json:"guid,omitempty"`
 	MemberGuid *string `json:"member_guid,omitempty"`
 	UnitType *string `json:"unit_type,omitempty"`
+	UpdatedAt *string `json:"updated_at,omitempty"`
 	UserGuid *string `json:"user_guid,omitempty"`
 }
 
@@ -336,6 +337,38 @@ func (o *RewardsResponse) SetUnitType(v string) {
 	o.UnitType = &v
 }
 
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *RewardsResponse) GetUpdatedAt() string {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret string
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RewardsResponse) GetUpdatedAtOk() (*string, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *RewardsResponse) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
+func (o *RewardsResponse) SetUpdatedAt(v string) {
+	o.UpdatedAt = &v
+}
+
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise.
 func (o *RewardsResponse) GetUserGuid() string {
 	if o == nil || IsNil(o.UserGuid) {
@@ -404,6 +437,9 @@ func (o RewardsResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UnitType) {
 		toSerialize["unit_type"] = o.UnitType
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	if !IsNil(o.UserGuid) {
 		toSerialize["user_guid"] = o.UserGuid

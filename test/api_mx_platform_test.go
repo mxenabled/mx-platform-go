@@ -1502,6 +1502,63 @@ func Test_mxplatformgo_MxPlatformAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MxPlatformAPIService UsersUserGuidMonthlyCashFlowProfileGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+
+		resp, httpRes, err := apiClient.MxPlatformAPI.UsersUserGuidMonthlyCashFlowProfileGet(context.Background(), userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MxPlatformAPIService UsersUserGuidMonthlyCashFlowProfilePut", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+
+		resp, httpRes, err := apiClient.MxPlatformAPI.UsersUserGuidMonthlyCashFlowProfilePut(context.Background(), userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MxPlatformAPIService UsersUserGuidTransactionsTransactionGuidSplitDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var transactionGuid string
+		var userGuid string
+
+		httpRes, err := apiClient.MxPlatformAPI.UsersUserGuidTransactionsTransactionGuidSplitDelete(context.Background(), transactionGuid, userGuid).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MxPlatformAPIService UsersUserGuidTransactionsTransactionGuidSplitPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var transactionGuid string
+
+		resp, httpRes, err := apiClient.MxPlatformAPI.UsersUserGuidTransactionsTransactionGuidSplitPost(context.Background(), userGuid, transactionGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MxPlatformAPIService VerifyMember", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

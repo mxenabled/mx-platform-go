@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AnnualFee** | Pointer to **interface{}** |  | [optional] 
-**DurationOfIntroductoryRateOnBalanceTransfer** | Pointer to **interface{}** |  | [optional] 
-**DurationOfIntroductoryRateOnPurchases** | Pointer to **interface{}** |  | [optional] 
-**Guid** | Pointer to **interface{}** |  | [optional] 
+**AnnualFee** | Pointer to **float32** |  | [optional] 
+**DurationOfIntroductoryRateOnBalanceTransfer** | Pointer to **int32** |  | [optional] 
+**DurationOfIntroductoryRateOnPurchases** | Pointer to **int32** |  | [optional] 
+**Guid** | Pointer to **string** |  | [optional] 
 **HasCashbackRewards** | Pointer to **bool** |  | [optional] 
 **HasOtherRewards** | Pointer to **bool** |  | [optional] 
 **HasTravelRewards** | Pointer to **bool** |  | [optional] 
 **HasZeroIntroductoryAnnualFee** | Pointer to **bool** |  | [optional] 
 **HasZeroPercentIntroductoryRate** | Pointer to **bool** |  | [optional] 
 **HasZeroPercentIntroductoryRateOnBalanceTransfer** | Pointer to **bool** |  | [optional] 
-**FinancialInstitution** | Pointer to **bool** |  | [optional] 
-**IsAcceptingApplications** | Pointer to **bool** |  | [optional] 
+**IsAcceptingApplicants** | Pointer to **bool** |  | [optional] 
+**IsActiveCreditCardProduct** | Pointer to **bool** |  | [optional] 
 **IsSmallBusinessCard** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAnnualFee
 
-`func (o *CreditCardProduct) GetAnnualFee() interface{}`
+`func (o *CreditCardProduct) GetAnnualFee() float32`
 
 GetAnnualFee returns the AnnualFee field if non-nil, zero value otherwise.
 
 ### GetAnnualFeeOk
 
-`func (o *CreditCardProduct) GetAnnualFeeOk() (*interface{}, bool)`
+`func (o *CreditCardProduct) GetAnnualFeeOk() (*float32, bool)`
 
 GetAnnualFeeOk returns a tuple with the AnnualFee field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnnualFee
 
-`func (o *CreditCardProduct) SetAnnualFee(v interface{})`
+`func (o *CreditCardProduct) SetAnnualFee(v float32)`
 
 SetAnnualFee sets AnnualFee field to given value.
 
@@ -63,32 +63,22 @@ SetAnnualFee sets AnnualFee field to given value.
 
 HasAnnualFee returns a boolean if a field has been set.
 
-### SetAnnualFeeNil
-
-`func (o *CreditCardProduct) SetAnnualFeeNil(b bool)`
-
- SetAnnualFeeNil sets the value for AnnualFee to be an explicit nil
-
-### UnsetAnnualFee
-`func (o *CreditCardProduct) UnsetAnnualFee()`
-
-UnsetAnnualFee ensures that no value is present for AnnualFee, not even an explicit nil
 ### GetDurationOfIntroductoryRateOnBalanceTransfer
 
-`func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnBalanceTransfer() interface{}`
+`func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnBalanceTransfer() int32`
 
 GetDurationOfIntroductoryRateOnBalanceTransfer returns the DurationOfIntroductoryRateOnBalanceTransfer field if non-nil, zero value otherwise.
 
 ### GetDurationOfIntroductoryRateOnBalanceTransferOk
 
-`func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnBalanceTransferOk() (*interface{}, bool)`
+`func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnBalanceTransferOk() (*int32, bool)`
 
 GetDurationOfIntroductoryRateOnBalanceTransferOk returns a tuple with the DurationOfIntroductoryRateOnBalanceTransfer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDurationOfIntroductoryRateOnBalanceTransfer
 
-`func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnBalanceTransfer(v interface{})`
+`func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnBalanceTransfer(v int32)`
 
 SetDurationOfIntroductoryRateOnBalanceTransfer sets DurationOfIntroductoryRateOnBalanceTransfer field to given value.
 
@@ -98,32 +88,22 @@ SetDurationOfIntroductoryRateOnBalanceTransfer sets DurationOfIntroductoryRateOn
 
 HasDurationOfIntroductoryRateOnBalanceTransfer returns a boolean if a field has been set.
 
-### SetDurationOfIntroductoryRateOnBalanceTransferNil
-
-`func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnBalanceTransferNil(b bool)`
-
- SetDurationOfIntroductoryRateOnBalanceTransferNil sets the value for DurationOfIntroductoryRateOnBalanceTransfer to be an explicit nil
-
-### UnsetDurationOfIntroductoryRateOnBalanceTransfer
-`func (o *CreditCardProduct) UnsetDurationOfIntroductoryRateOnBalanceTransfer()`
-
-UnsetDurationOfIntroductoryRateOnBalanceTransfer ensures that no value is present for DurationOfIntroductoryRateOnBalanceTransfer, not even an explicit nil
 ### GetDurationOfIntroductoryRateOnPurchases
 
-`func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnPurchases() interface{}`
+`func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnPurchases() int32`
 
 GetDurationOfIntroductoryRateOnPurchases returns the DurationOfIntroductoryRateOnPurchases field if non-nil, zero value otherwise.
 
 ### GetDurationOfIntroductoryRateOnPurchasesOk
 
-`func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnPurchasesOk() (*interface{}, bool)`
+`func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnPurchasesOk() (*int32, bool)`
 
 GetDurationOfIntroductoryRateOnPurchasesOk returns a tuple with the DurationOfIntroductoryRateOnPurchases field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDurationOfIntroductoryRateOnPurchases
 
-`func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnPurchases(v interface{})`
+`func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnPurchases(v int32)`
 
 SetDurationOfIntroductoryRateOnPurchases sets DurationOfIntroductoryRateOnPurchases field to given value.
 
@@ -133,32 +113,22 @@ SetDurationOfIntroductoryRateOnPurchases sets DurationOfIntroductoryRateOnPurcha
 
 HasDurationOfIntroductoryRateOnPurchases returns a boolean if a field has been set.
 
-### SetDurationOfIntroductoryRateOnPurchasesNil
-
-`func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnPurchasesNil(b bool)`
-
- SetDurationOfIntroductoryRateOnPurchasesNil sets the value for DurationOfIntroductoryRateOnPurchases to be an explicit nil
-
-### UnsetDurationOfIntroductoryRateOnPurchases
-`func (o *CreditCardProduct) UnsetDurationOfIntroductoryRateOnPurchases()`
-
-UnsetDurationOfIntroductoryRateOnPurchases ensures that no value is present for DurationOfIntroductoryRateOnPurchases, not even an explicit nil
 ### GetGuid
 
-`func (o *CreditCardProduct) GetGuid() interface{}`
+`func (o *CreditCardProduct) GetGuid() string`
 
 GetGuid returns the Guid field if non-nil, zero value otherwise.
 
 ### GetGuidOk
 
-`func (o *CreditCardProduct) GetGuidOk() (*interface{}, bool)`
+`func (o *CreditCardProduct) GetGuidOk() (*string, bool)`
 
 GetGuidOk returns a tuple with the Guid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGuid
 
-`func (o *CreditCardProduct) SetGuid(v interface{})`
+`func (o *CreditCardProduct) SetGuid(v string)`
 
 SetGuid sets Guid field to given value.
 
@@ -168,16 +138,6 @@ SetGuid sets Guid field to given value.
 
 HasGuid returns a boolean if a field has been set.
 
-### SetGuidNil
-
-`func (o *CreditCardProduct) SetGuidNil(b bool)`
-
- SetGuidNil sets the value for Guid to be an explicit nil
-
-### UnsetGuid
-`func (o *CreditCardProduct) UnsetGuid()`
-
-UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetHasCashbackRewards
 
 `func (o *CreditCardProduct) GetHasCashbackRewards() bool`
@@ -328,55 +288,55 @@ SetHasZeroPercentIntroductoryRateOnBalanceTransfer sets HasZeroPercentIntroducto
 
 HasHasZeroPercentIntroductoryRateOnBalanceTransfer returns a boolean if a field has been set.
 
-### GetFinancialInstitution
+### GetIsAcceptingApplicants
 
-`func (o *CreditCardProduct) GetFinancialInstitution() bool`
+`func (o *CreditCardProduct) GetIsAcceptingApplicants() bool`
 
-GetFinancialInstitution returns the FinancialInstitution field if non-nil, zero value otherwise.
+GetIsAcceptingApplicants returns the IsAcceptingApplicants field if non-nil, zero value otherwise.
 
-### GetFinancialInstitutionOk
+### GetIsAcceptingApplicantsOk
 
-`func (o *CreditCardProduct) GetFinancialInstitutionOk() (*bool, bool)`
+`func (o *CreditCardProduct) GetIsAcceptingApplicantsOk() (*bool, bool)`
 
-GetFinancialInstitutionOk returns a tuple with the FinancialInstitution field if it's non-nil, zero value otherwise
+GetIsAcceptingApplicantsOk returns a tuple with the IsAcceptingApplicants field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFinancialInstitution
+### SetIsAcceptingApplicants
 
-`func (o *CreditCardProduct) SetFinancialInstitution(v bool)`
+`func (o *CreditCardProduct) SetIsAcceptingApplicants(v bool)`
 
-SetFinancialInstitution sets FinancialInstitution field to given value.
+SetIsAcceptingApplicants sets IsAcceptingApplicants field to given value.
 
-### HasFinancialInstitution
+### HasIsAcceptingApplicants
 
-`func (o *CreditCardProduct) HasFinancialInstitution() bool`
+`func (o *CreditCardProduct) HasIsAcceptingApplicants() bool`
 
-HasFinancialInstitution returns a boolean if a field has been set.
+HasIsAcceptingApplicants returns a boolean if a field has been set.
 
-### GetIsAcceptingApplications
+### GetIsActiveCreditCardProduct
 
-`func (o *CreditCardProduct) GetIsAcceptingApplications() bool`
+`func (o *CreditCardProduct) GetIsActiveCreditCardProduct() bool`
 
-GetIsAcceptingApplications returns the IsAcceptingApplications field if non-nil, zero value otherwise.
+GetIsActiveCreditCardProduct returns the IsActiveCreditCardProduct field if non-nil, zero value otherwise.
 
-### GetIsAcceptingApplicationsOk
+### GetIsActiveCreditCardProductOk
 
-`func (o *CreditCardProduct) GetIsAcceptingApplicationsOk() (*bool, bool)`
+`func (o *CreditCardProduct) GetIsActiveCreditCardProductOk() (*bool, bool)`
 
-GetIsAcceptingApplicationsOk returns a tuple with the IsAcceptingApplications field if it's non-nil, zero value otherwise
+GetIsActiveCreditCardProductOk returns a tuple with the IsActiveCreditCardProduct field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsAcceptingApplications
+### SetIsActiveCreditCardProduct
 
-`func (o *CreditCardProduct) SetIsAcceptingApplications(v bool)`
+`func (o *CreditCardProduct) SetIsActiveCreditCardProduct(v bool)`
 
-SetIsAcceptingApplications sets IsAcceptingApplications field to given value.
+SetIsActiveCreditCardProduct sets IsActiveCreditCardProduct field to given value.
 
-### HasIsAcceptingApplications
+### HasIsActiveCreditCardProduct
 
-`func (o *CreditCardProduct) HasIsAcceptingApplications() bool`
+`func (o *CreditCardProduct) HasIsActiveCreditCardProduct() bool`
 
-HasIsAcceptingApplications returns a boolean if a field has been set.
+HasIsActiveCreditCardProduct returns a boolean if a field has been set.
 
 ### GetIsSmallBusinessCard
 

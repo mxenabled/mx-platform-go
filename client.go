@@ -51,6 +51,10 @@ type APIClient struct {
 
 	// API Services
 
+	BudgetsAPI *BudgetsAPIService
+
+	GoalsAPI *GoalsAPIService
+
 	InsightsAPI *InsightsAPIService
 
 	MxPlatformAPI *MxPlatformAPIService
@@ -89,6 +93,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.BudgetsAPI = (*BudgetsAPIService)(&c.common)
+	c.GoalsAPI = (*GoalsAPIService)(&c.common)
 	c.InsightsAPI = (*InsightsAPIService)(&c.common)
 	c.MxPlatformAPI = (*MxPlatformAPIService)(&c.common)
 	c.SpendingPlanAPI = (*SpendingPlanAPIService)(&c.common)
