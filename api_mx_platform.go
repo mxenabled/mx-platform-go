@@ -10670,7 +10670,6 @@ type ApiUpdateAccountByMemberRequest struct {
 	accountUpdateRequestBody *AccountUpdateRequestBody
 }
 
-// Account object to be created with optional parameters (is_hidden)
 func (r ApiUpdateAccountByMemberRequest) AccountUpdateRequestBody(accountUpdateRequestBody AccountUpdateRequestBody) ApiUpdateAccountByMemberRequest {
 	r.accountUpdateRequestBody = &accountUpdateRequestBody
 	return r
@@ -10683,7 +10682,7 @@ func (r ApiUpdateAccountByMemberRequest) Execute() (*AccountResponseBody, *http.
 /*
 UpdateAccountByMember Update account by member
 
-This endpoint allows you to update certain attributes of an `account` resource.
+This endpoint allows you to update certain attributes of an `account` resource, including manual accounts. For manual accounts, you can update every field listed. For aggregated accounts, you can only update `is_business`, `is_hidden` and `metadata`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountGuid The unique id for an `account`.

@@ -6854,7 +6854,7 @@ func main() {
     accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
-    accountUpdateRequestBody := *openapiclient.NewAccountUpdateRequestBody() // AccountUpdateRequestBody | Account object to be created with optional parameters (is_hidden)
+    accountUpdateRequestBody := *openapiclient.NewAccountUpdateRequestBody() // AccountUpdateRequestBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -6888,7 +6888,7 @@ Name | Type | Description  | Notes
 
 
 
- **accountUpdateRequestBody** | [**AccountUpdateRequestBody**](AccountUpdateRequestBody.md) | Account object to be created with optional parameters (is_hidden) | 
+ **accountUpdateRequestBody** | [**AccountUpdateRequestBody**](AccountUpdateRequestBody.md) |  | 
 
 ### Return type
 
