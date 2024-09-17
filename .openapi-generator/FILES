@@ -4,8 +4,10 @@ README.md
 api_budgets.go
 api_goals.go
 api_insights.go
+api_microdeposits.go
 api_mx_platform.go
 api_spending_plan.go
+api_transactions.go
 client.go
 configuration.go
 docs/AccountCreateRequest.md
@@ -99,6 +101,14 @@ docs/MerchantLocationResponseBody.md
 docs/MerchantResponse.md
 docs/MerchantResponseBody.md
 docs/MerchantsResponseBody.md
+docs/MicrodepositRequest.md
+docs/MicrodepositRequestBody.md
+docs/MicrodepositResponse.md
+docs/MicrodepositResponseBody.md
+docs/MicrodepositVerifyRequest.md
+docs/MicrodepositVerifyRequestBody.md
+docs/MicrodepositsAPI.md
+docs/MicrodepositsResponseBody.md
 docs/MonthlyCashFlowProfileRequest.md
 docs/MonthlyCashFlowProfileRequestBody.md
 docs/MonthlyCashFlowResponse.md
@@ -154,6 +164,9 @@ docs/TagsResponseBody.md
 docs/TaxDocumentResponse.md
 docs/TaxDocumentResponseBody.md
 docs/TaxDocumentsResponseBody.md
+docs/TransactionCreateRequest.md
+docs/TransactionCreateRequestBody.md
+docs/TransactionCreateResponseBody.md
 docs/TransactionResponse.md
 docs/TransactionResponseBody.md
 docs/TransactionRuleCreateRequest.md
@@ -165,6 +178,7 @@ docs/TransactionRuleUpdateRequestBody.md
 docs/TransactionRulesResponseBody.md
 docs/TransactionUpdateRequest.md
 docs/TransactionUpdateRequestBody.md
+docs/TransactionsAPI.md
 docs/TransactionsResponseBody.md
 docs/UpdateGoalRequest.md
 docs/UpdateGoalRequestBody.md
@@ -269,6 +283,13 @@ model_merchant_location_response_body.go
 model_merchant_response.go
 model_merchant_response_body.go
 model_merchants_response_body.go
+model_microdeposit_request.go
+model_microdeposit_request_body.go
+model_microdeposit_response.go
+model_microdeposit_response_body.go
+model_microdeposit_verify_request.go
+model_microdeposit_verify_request_body.go
+model_microdeposits_response_body.go
 model_monthly_cash_flow_profile_request.go
 model_monthly_cash_flow_profile_request_body.go
 model_monthly_cash_flow_response.go
@@ -322,6 +343,9 @@ model_tags_response_body.go
 model_tax_document_response.go
 model_tax_document_response_body.go
 model_tax_documents_response_body.go
+model_transaction_create_request.go
+model_transaction_create_request_body.go
+model_transaction_create_response_body.go
 model_transaction_response.go
 model_transaction_response_body.go
 model_transaction_rule_create_request.go
@@ -351,6 +375,8 @@ response.go
 test/api_budgets_test.go
 test/api_goals_test.go
 test/api_insights_test.go
+test/api_microdeposits_test.go
 test/api_mx_platform_test.go
 test/api_spending_plan_test.go
+test/api_transactions_test.go
 utils.go
