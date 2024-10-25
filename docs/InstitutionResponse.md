@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **SupportsAccountStatement** | Pointer to **NullableBool** |  | [optional] 
 **SupportsAccountVerification** | Pointer to **NullableBool** |  | [optional] 
 **SupportsOauth** | Pointer to **NullableBool** |  | [optional] 
+**SupportsTaxDocument** | Pointer to **NullableBool** |  | [optional] 
 **SupportsTransactionHistory** | Pointer to **NullableBool** |  | [optional] 
 **TroubleSigningInUrl** | Pointer to **NullableString** |  | [optional] 
 **Url** | Pointer to **NullableString** |  | [optional] 
@@ -423,6 +424,41 @@ HasSupportsOauth returns a boolean if a field has been set.
 `func (o *InstitutionResponse) UnsetSupportsOauth()`
 
 UnsetSupportsOauth ensures that no value is present for SupportsOauth, not even an explicit nil
+### GetSupportsTaxDocument
+
+`func (o *InstitutionResponse) GetSupportsTaxDocument() bool`
+
+GetSupportsTaxDocument returns the SupportsTaxDocument field if non-nil, zero value otherwise.
+
+### GetSupportsTaxDocumentOk
+
+`func (o *InstitutionResponse) GetSupportsTaxDocumentOk() (*bool, bool)`
+
+GetSupportsTaxDocumentOk returns a tuple with the SupportsTaxDocument field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportsTaxDocument
+
+`func (o *InstitutionResponse) SetSupportsTaxDocument(v bool)`
+
+SetSupportsTaxDocument sets SupportsTaxDocument field to given value.
+
+### HasSupportsTaxDocument
+
+`func (o *InstitutionResponse) HasSupportsTaxDocument() bool`
+
+HasSupportsTaxDocument returns a boolean if a field has been set.
+
+### SetSupportsTaxDocumentNil
+
+`func (o *InstitutionResponse) SetSupportsTaxDocumentNil(b bool)`
+
+ SetSupportsTaxDocumentNil sets the value for SupportsTaxDocument to be an explicit nil
+
+### UnsetSupportsTaxDocument
+`func (o *InstitutionResponse) UnsetSupportsTaxDocument()`
+
+UnsetSupportsTaxDocument ensures that no value is present for SupportsTaxDocument, not even an explicit nil
 ### GetSupportsTransactionHistory
 
 `func (o *InstitutionResponse) GetSupportsTransactionHistory() bool`

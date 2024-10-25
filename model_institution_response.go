@@ -30,6 +30,7 @@ type InstitutionResponse struct {
 	SupportsAccountStatement NullableBool `json:"supports_account_statement,omitempty"`
 	SupportsAccountVerification NullableBool `json:"supports_account_verification,omitempty"`
 	SupportsOauth NullableBool `json:"supports_oauth,omitempty"`
+	SupportsTaxDocument NullableBool `json:"supports_tax_document,omitempty"`
 	SupportsTransactionHistory NullableBool `json:"supports_transaction_history,omitempty"`
 	TroubleSigningInUrl NullableString `json:"trouble_signing_in_url,omitempty"`
 	Url NullableString `json:"url,omitempty"`
@@ -514,6 +515,48 @@ func (o *InstitutionResponse) UnsetSupportsOauth() {
 	o.SupportsOauth.Unset()
 }
 
+// GetSupportsTaxDocument returns the SupportsTaxDocument field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstitutionResponse) GetSupportsTaxDocument() bool {
+	if o == nil || IsNil(o.SupportsTaxDocument.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SupportsTaxDocument.Get()
+}
+
+// GetSupportsTaxDocumentOk returns a tuple with the SupportsTaxDocument field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstitutionResponse) GetSupportsTaxDocumentOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SupportsTaxDocument.Get(), o.SupportsTaxDocument.IsSet()
+}
+
+// HasSupportsTaxDocument returns a boolean if a field has been set.
+func (o *InstitutionResponse) HasSupportsTaxDocument() bool {
+	if o != nil && o.SupportsTaxDocument.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportsTaxDocument gets a reference to the given NullableBool and assigns it to the SupportsTaxDocument field.
+func (o *InstitutionResponse) SetSupportsTaxDocument(v bool) {
+	o.SupportsTaxDocument.Set(&v)
+}
+// SetSupportsTaxDocumentNil sets the value for SupportsTaxDocument to be an explicit nil
+func (o *InstitutionResponse) SetSupportsTaxDocumentNil() {
+	o.SupportsTaxDocument.Set(nil)
+}
+
+// UnsetSupportsTaxDocument ensures that no value is present for SupportsTaxDocument, not even an explicit nil
+func (o *InstitutionResponse) UnsetSupportsTaxDocument() {
+	o.SupportsTaxDocument.Unset()
+}
+
 // GetSupportsTransactionHistory returns the SupportsTransactionHistory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstitutionResponse) GetSupportsTransactionHistory() bool {
 	if o == nil || IsNil(o.SupportsTransactionHistory.Get()) {
@@ -682,6 +725,9 @@ func (o InstitutionResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.SupportsOauth.IsSet() {
 		toSerialize["supports_oauth"] = o.SupportsOauth.Get()
+	}
+	if o.SupportsTaxDocument.IsSet() {
+		toSerialize["supports_tax_document"] = o.SupportsTaxDocument.Get()
 	}
 	if o.SupportsTransactionHistory.IsSet() {
 		toSerialize["supports_transaction_history"] = o.SupportsTransactionHistory.Get()

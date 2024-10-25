@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **CurrencyCode** | Pointer to **NullableString** |  | [optional] 
 **DayPaymentIsDue** | Pointer to **NullableInt32** |  | [optional] 
 **DeathBenefit** | Pointer to **NullableInt32** |  | [optional] 
+**FederalInsuranceStatus** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **HoldingsValue** | Pointer to **NullableFloat32** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
@@ -667,6 +668,41 @@ HasDeathBenefit returns a boolean if a field has been set.
 `func (o *AccountResponse) UnsetDeathBenefit()`
 
 UnsetDeathBenefit ensures that no value is present for DeathBenefit, not even an explicit nil
+### GetFederalInsuranceStatus
+
+`func (o *AccountResponse) GetFederalInsuranceStatus() string`
+
+GetFederalInsuranceStatus returns the FederalInsuranceStatus field if non-nil, zero value otherwise.
+
+### GetFederalInsuranceStatusOk
+
+`func (o *AccountResponse) GetFederalInsuranceStatusOk() (*string, bool)`
+
+GetFederalInsuranceStatusOk returns a tuple with the FederalInsuranceStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederalInsuranceStatus
+
+`func (o *AccountResponse) SetFederalInsuranceStatus(v string)`
+
+SetFederalInsuranceStatus sets FederalInsuranceStatus field to given value.
+
+### HasFederalInsuranceStatus
+
+`func (o *AccountResponse) HasFederalInsuranceStatus() bool`
+
+HasFederalInsuranceStatus returns a boolean if a field has been set.
+
+### SetFederalInsuranceStatusNil
+
+`func (o *AccountResponse) SetFederalInsuranceStatusNil(b bool)`
+
+ SetFederalInsuranceStatusNil sets the value for FederalInsuranceStatus to be an explicit nil
+
+### UnsetFederalInsuranceStatus
+`func (o *AccountResponse) UnsetFederalInsuranceStatus()`
+
+UnsetFederalInsuranceStatus ensures that no value is present for FederalInsuranceStatus, not even an explicit nil
 ### GetGuid
 
 `func (o *AccountResponse) GetGuid() string`

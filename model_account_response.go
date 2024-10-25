@@ -36,6 +36,7 @@ type AccountResponse struct {
 	CurrencyCode NullableString `json:"currency_code,omitempty"`
 	DayPaymentIsDue NullableInt32 `json:"day_payment_is_due,omitempty"`
 	DeathBenefit NullableInt32 `json:"death_benefit,omitempty"`
+	FederalInsuranceStatus NullableString `json:"federal_insurance_status,omitempty"`
 	Guid NullableString `json:"guid,omitempty"`
 	HoldingsValue NullableFloat32 `json:"holdings_value,omitempty"`
 	Id NullableString `json:"id,omitempty"`
@@ -798,6 +799,48 @@ func (o *AccountResponse) SetDeathBenefitNil() {
 // UnsetDeathBenefit ensures that no value is present for DeathBenefit, not even an explicit nil
 func (o *AccountResponse) UnsetDeathBenefit() {
 	o.DeathBenefit.Unset()
+}
+
+// GetFederalInsuranceStatus returns the FederalInsuranceStatus field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFederalInsuranceStatus() string {
+	if o == nil || IsNil(o.FederalInsuranceStatus.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FederalInsuranceStatus.Get()
+}
+
+// GetFederalInsuranceStatusOk returns a tuple with the FederalInsuranceStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFederalInsuranceStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FederalInsuranceStatus.Get(), o.FederalInsuranceStatus.IsSet()
+}
+
+// HasFederalInsuranceStatus returns a boolean if a field has been set.
+func (o *AccountResponse) HasFederalInsuranceStatus() bool {
+	if o != nil && o.FederalInsuranceStatus.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFederalInsuranceStatus gets a reference to the given NullableString and assigns it to the FederalInsuranceStatus field.
+func (o *AccountResponse) SetFederalInsuranceStatus(v string) {
+	o.FederalInsuranceStatus.Set(&v)
+}
+// SetFederalInsuranceStatusNil sets the value for FederalInsuranceStatus to be an explicit nil
+func (o *AccountResponse) SetFederalInsuranceStatusNil() {
+	o.FederalInsuranceStatus.Set(nil)
+}
+
+// UnsetFederalInsuranceStatus ensures that no value is present for FederalInsuranceStatus, not even an explicit nil
+func (o *AccountResponse) UnsetFederalInsuranceStatus() {
+	o.FederalInsuranceStatus.Unset()
 }
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -2582,6 +2625,9 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.DeathBenefit.IsSet() {
 		toSerialize["death_benefit"] = o.DeathBenefit.Get()
+	}
+	if o.FederalInsuranceStatus.IsSet() {
+		toSerialize["federal_insurance_status"] = o.FederalInsuranceStatus.Get()
 	}
 	if o.Guid.IsSet() {
 		toSerialize["guid"] = o.Guid.Get()
