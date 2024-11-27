@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** |  | [optional] 
 **OauthWindowUri** | Pointer to **NullableString** |  | [optional] 
 **SuccessfullyAggregatedAt** | Pointer to **NullableString** |  | [optional] 
+**UseCases** | Pointer to **[]string** |  | [optional] 
 **UserGuid** | Pointer to **NullableString** |  | [optional] 
 **UserId** | Pointer to **NullableString** |  | [optional] 
 
@@ -592,6 +593,41 @@ HasSuccessfullyAggregatedAt returns a boolean if a field has been set.
 `func (o *MemberResponse) UnsetSuccessfullyAggregatedAt()`
 
 UnsetSuccessfullyAggregatedAt ensures that no value is present for SuccessfullyAggregatedAt, not even an explicit nil
+### GetUseCases
+
+`func (o *MemberResponse) GetUseCases() []string`
+
+GetUseCases returns the UseCases field if non-nil, zero value otherwise.
+
+### GetUseCasesOk
+
+`func (o *MemberResponse) GetUseCasesOk() (*[]string, bool)`
+
+GetUseCasesOk returns a tuple with the UseCases field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCases
+
+`func (o *MemberResponse) SetUseCases(v []string)`
+
+SetUseCases sets UseCases field to given value.
+
+### HasUseCases
+
+`func (o *MemberResponse) HasUseCases() bool`
+
+HasUseCases returns a boolean if a field has been set.
+
+### SetUseCasesNil
+
+`func (o *MemberResponse) SetUseCasesNil(b bool)`
+
+ SetUseCasesNil sets the value for UseCases to be an explicit nil
+
+### UnsetUseCases
+`func (o *MemberResponse) UnsetUseCases()`
+
+UnsetUseCases ensures that no value is present for UseCases, not even an explicit nil
 ### GetUserGuid
 
 `func (o *MemberResponse) GetUserGuid() string`

@@ -35,6 +35,7 @@ type MemberResponse struct {
 	Name NullableString `json:"name,omitempty"`
 	OauthWindowUri NullableString `json:"oauth_window_uri,omitempty"`
 	SuccessfullyAggregatedAt NullableString `json:"successfully_aggregated_at,omitempty"`
+	UseCases []string `json:"use_cases,omitempty"`
 	UserGuid NullableString `json:"user_guid,omitempty"`
 	UserId NullableString `json:"user_id,omitempty"`
 }
@@ -718,6 +719,39 @@ func (o *MemberResponse) UnsetSuccessfullyAggregatedAt() {
 	o.SuccessfullyAggregatedAt.Unset()
 }
 
+// GetUseCases returns the UseCases field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberResponse) GetUseCases() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.UseCases
+}
+
+// GetUseCasesOk returns a tuple with the UseCases field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberResponse) GetUseCasesOk() ([]string, bool) {
+	if o == nil || IsNil(o.UseCases) {
+		return nil, false
+	}
+	return o.UseCases, true
+}
+
+// HasUseCases returns a boolean if a field has been set.
+func (o *MemberResponse) HasUseCases() bool {
+	if o != nil && IsNil(o.UseCases) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseCases gets a reference to the given []string and assigns it to the UseCases field.
+func (o *MemberResponse) SetUseCases(v []string) {
+	o.UseCases = v
+}
+
 // GetUserGuid returns the UserGuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MemberResponse) GetUserGuid() string {
 	if o == nil || IsNil(o.UserGuid.Get()) {
@@ -859,6 +893,9 @@ func (o MemberResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.SuccessfullyAggregatedAt.IsSet() {
 		toSerialize["successfully_aggregated_at"] = o.SuccessfullyAggregatedAt.Get()
+	}
+	if o.UseCases != nil {
+		toSerialize["use_cases"] = o.UseCases
 	}
 	if o.UserGuid.IsSet() {
 		toSerialize["user_guid"] = o.UserGuid.Get()
