@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActionableError** | Pointer to **NullableString** |  | [optional] 
 **AggregatedAt** | Pointer to **NullableString** |  | [optional] 
 **BackgroundAggregationIsDisabled** | Pointer to **bool** |  | [optional] 
 **ConnectionStatus** | Pointer to **NullableString** |  | [optional] 
@@ -43,6 +44,41 @@ NewMemberResponseWithDefaults instantiates a new MemberResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetActionableError
+
+`func (o *MemberResponse) GetActionableError() string`
+
+GetActionableError returns the ActionableError field if non-nil, zero value otherwise.
+
+### GetActionableErrorOk
+
+`func (o *MemberResponse) GetActionableErrorOk() (*string, bool)`
+
+GetActionableErrorOk returns a tuple with the ActionableError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActionableError
+
+`func (o *MemberResponse) SetActionableError(v string)`
+
+SetActionableError sets ActionableError field to given value.
+
+### HasActionableError
+
+`func (o *MemberResponse) HasActionableError() bool`
+
+HasActionableError returns a boolean if a field has been set.
+
+### SetActionableErrorNil
+
+`func (o *MemberResponse) SetActionableErrorNil(b bool)`
+
+ SetActionableErrorNil sets the value for ActionableError to be an explicit nil
+
+### UnsetActionableError
+`func (o *MemberResponse) UnsetActionableError()`
+
+UnsetActionableError ensures that no value is present for ActionableError, not even an explicit nil
 ### GetAggregatedAt
 
 `func (o *MemberResponse) GetAggregatedAt() string`

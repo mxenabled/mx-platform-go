@@ -19,6 +19,7 @@ var _ MappedNullable = &MemberResponse{}
 
 // MemberResponse struct for MemberResponse
 type MemberResponse struct {
+	ActionableError NullableString `json:"actionable_error,omitempty"`
 	AggregatedAt NullableString `json:"aggregated_at,omitempty"`
 	BackgroundAggregationIsDisabled *bool `json:"background_aggregation_is_disabled,omitempty"`
 	ConnectionStatus NullableString `json:"connection_status,omitempty"`
@@ -55,6 +56,48 @@ func NewMemberResponse() *MemberResponse {
 func NewMemberResponseWithDefaults() *MemberResponse {
 	this := MemberResponse{}
 	return &this
+}
+
+// GetActionableError returns the ActionableError field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberResponse) GetActionableError() string {
+	if o == nil || IsNil(o.ActionableError.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ActionableError.Get()
+}
+
+// GetActionableErrorOk returns a tuple with the ActionableError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberResponse) GetActionableErrorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ActionableError.Get(), o.ActionableError.IsSet()
+}
+
+// HasActionableError returns a boolean if a field has been set.
+func (o *MemberResponse) HasActionableError() bool {
+	if o != nil && o.ActionableError.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetActionableError gets a reference to the given NullableString and assigns it to the ActionableError field.
+func (o *MemberResponse) SetActionableError(v string) {
+	o.ActionableError.Set(&v)
+}
+// SetActionableErrorNil sets the value for ActionableError to be an explicit nil
+func (o *MemberResponse) SetActionableErrorNil() {
+	o.ActionableError.Set(nil)
+}
+
+// UnsetActionableError ensures that no value is present for ActionableError, not even an explicit nil
+func (o *MemberResponse) UnsetActionableError() {
+	o.ActionableError.Unset()
 }
 
 // GetAggregatedAt returns the AggregatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -846,6 +889,9 @@ func (o MemberResponse) MarshalJSON() ([]byte, error) {
 
 func (o MemberResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ActionableError.IsSet() {
+		toSerialize["actionable_error"] = o.ActionableError.Get()
+	}
 	if o.AggregatedAt.IsSet() {
 		toSerialize["aggregated_at"] = o.AggregatedAt.Get()
 	}
