@@ -19,23 +19,28 @@ var _ MappedNullable = &MemberResponse{}
 
 // MemberResponse struct for MemberResponse
 type MemberResponse struct {
-	ActionableError NullableString `json:"actionable_error,omitempty"`
 	AggregatedAt NullableString `json:"aggregated_at,omitempty"`
 	BackgroundAggregationIsDisabled *bool `json:"background_aggregation_is_disabled,omitempty"`
 	ConnectionStatus NullableString `json:"connection_status,omitempty"`
+	ConnectionStatusMessage NullableString `json:"connection_status_message,omitempty"`
+	Error NullableString `json:"error,omitempty"`
 	Guid NullableString `json:"guid,omitempty"`
 	Id NullableString `json:"id,omitempty"`
 	InstitutionCode NullableString `json:"institution_code,omitempty"`
+	InstitutionGuid *string `json:"institution_guid,omitempty"`
 	IsBeingAggregated NullableBool `json:"is_being_aggregated,omitempty"`
 	IsManagedByUser NullableBool `json:"is_managed_by_user,omitempty"`
 	IsManual NullableBool `json:"is_manual,omitempty"`
 	IsOauth NullableBool `json:"is_oauth,omitempty"`
 	Metadata NullableString `json:"metadata,omitempty"`
-	MostRecentJobDetailCode NullableString `json:"most_recent_job_detail_code,omitempty"`
-	MostRecentJobDetailText NullableString `json:"most_recent_job_detail_text,omitempty"`
+	MostRecentJobDetailCode NullableInt32 `json:"most_recent_job_detail_code,omitempty"`
+	MostRecentJobDetailText NullableBool `json:"most_recent_job_detail_text,omitempty"`
+	MostRecentJobGuid NullableBool `json:"most_recent_job_guid,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	NeedsUpdatedCredentials NullableBool `json:"needs_updated_credentials,omitempty"`
 	OauthWindowUri NullableString `json:"oauth_window_uri,omitempty"`
 	SuccessfullyAggregatedAt NullableString `json:"successfully_aggregated_at,omitempty"`
+	// The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
 	UseCases []string `json:"use_cases,omitempty"`
 	UserGuid NullableString `json:"user_guid,omitempty"`
 	UserId NullableString `json:"user_id,omitempty"`
@@ -56,48 +61,6 @@ func NewMemberResponse() *MemberResponse {
 func NewMemberResponseWithDefaults() *MemberResponse {
 	this := MemberResponse{}
 	return &this
-}
-
-// GetActionableError returns the ActionableError field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MemberResponse) GetActionableError() string {
-	if o == nil || IsNil(o.ActionableError.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ActionableError.Get()
-}
-
-// GetActionableErrorOk returns a tuple with the ActionableError field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MemberResponse) GetActionableErrorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ActionableError.Get(), o.ActionableError.IsSet()
-}
-
-// HasActionableError returns a boolean if a field has been set.
-func (o *MemberResponse) HasActionableError() bool {
-	if o != nil && o.ActionableError.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetActionableError gets a reference to the given NullableString and assigns it to the ActionableError field.
-func (o *MemberResponse) SetActionableError(v string) {
-	o.ActionableError.Set(&v)
-}
-// SetActionableErrorNil sets the value for ActionableError to be an explicit nil
-func (o *MemberResponse) SetActionableErrorNil() {
-	o.ActionableError.Set(nil)
-}
-
-// UnsetActionableError ensures that no value is present for ActionableError, not even an explicit nil
-func (o *MemberResponse) UnsetActionableError() {
-	o.ActionableError.Unset()
 }
 
 // GetAggregatedAt returns the AggregatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -214,6 +177,90 @@ func (o *MemberResponse) SetConnectionStatusNil() {
 // UnsetConnectionStatus ensures that no value is present for ConnectionStatus, not even an explicit nil
 func (o *MemberResponse) UnsetConnectionStatus() {
 	o.ConnectionStatus.Unset()
+}
+
+// GetConnectionStatusMessage returns the ConnectionStatusMessage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberResponse) GetConnectionStatusMessage() string {
+	if o == nil || IsNil(o.ConnectionStatusMessage.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionStatusMessage.Get()
+}
+
+// GetConnectionStatusMessageOk returns a tuple with the ConnectionStatusMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberResponse) GetConnectionStatusMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ConnectionStatusMessage.Get(), o.ConnectionStatusMessage.IsSet()
+}
+
+// HasConnectionStatusMessage returns a boolean if a field has been set.
+func (o *MemberResponse) HasConnectionStatusMessage() bool {
+	if o != nil && o.ConnectionStatusMessage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionStatusMessage gets a reference to the given NullableString and assigns it to the ConnectionStatusMessage field.
+func (o *MemberResponse) SetConnectionStatusMessage(v string) {
+	o.ConnectionStatusMessage.Set(&v)
+}
+// SetConnectionStatusMessageNil sets the value for ConnectionStatusMessage to be an explicit nil
+func (o *MemberResponse) SetConnectionStatusMessageNil() {
+	o.ConnectionStatusMessage.Set(nil)
+}
+
+// UnsetConnectionStatusMessage ensures that no value is present for ConnectionStatusMessage, not even an explicit nil
+func (o *MemberResponse) UnsetConnectionStatusMessage() {
+	o.ConnectionStatusMessage.Unset()
+}
+
+// GetError returns the Error field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberResponse) GetError() string {
+	if o == nil || IsNil(o.Error.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Error.Get()
+}
+
+// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberResponse) GetErrorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Error.Get(), o.Error.IsSet()
+}
+
+// HasError returns a boolean if a field has been set.
+func (o *MemberResponse) HasError() bool {
+	if o != nil && o.Error.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetError gets a reference to the given NullableString and assigns it to the Error field.
+func (o *MemberResponse) SetError(v string) {
+	o.Error.Set(&v)
+}
+// SetErrorNil sets the value for Error to be an explicit nil
+func (o *MemberResponse) SetErrorNil() {
+	o.Error.Set(nil)
+}
+
+// UnsetError ensures that no value is present for Error, not even an explicit nil
+func (o *MemberResponse) UnsetError() {
+	o.Error.Unset()
 }
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -340,6 +387,38 @@ func (o *MemberResponse) SetInstitutionCodeNil() {
 // UnsetInstitutionCode ensures that no value is present for InstitutionCode, not even an explicit nil
 func (o *MemberResponse) UnsetInstitutionCode() {
 	o.InstitutionCode.Unset()
+}
+
+// GetInstitutionGuid returns the InstitutionGuid field value if set, zero value otherwise.
+func (o *MemberResponse) GetInstitutionGuid() string {
+	if o == nil || IsNil(o.InstitutionGuid) {
+		var ret string
+		return ret
+	}
+	return *o.InstitutionGuid
+}
+
+// GetInstitutionGuidOk returns a tuple with the InstitutionGuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MemberResponse) GetInstitutionGuidOk() (*string, bool) {
+	if o == nil || IsNil(o.InstitutionGuid) {
+		return nil, false
+	}
+	return o.InstitutionGuid, true
+}
+
+// HasInstitutionGuid returns a boolean if a field has been set.
+func (o *MemberResponse) HasInstitutionGuid() bool {
+	if o != nil && !IsNil(o.InstitutionGuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstitutionGuid gets a reference to the given string and assigns it to the InstitutionGuid field.
+func (o *MemberResponse) SetInstitutionGuid(v string) {
+	o.InstitutionGuid = &v
 }
 
 // GetIsBeingAggregated returns the IsBeingAggregated field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -553,9 +632,9 @@ func (o *MemberResponse) UnsetMetadata() {
 }
 
 // GetMostRecentJobDetailCode returns the MostRecentJobDetailCode field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MemberResponse) GetMostRecentJobDetailCode() string {
+func (o *MemberResponse) GetMostRecentJobDetailCode() int32 {
 	if o == nil || IsNil(o.MostRecentJobDetailCode.Get()) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.MostRecentJobDetailCode.Get()
@@ -564,7 +643,7 @@ func (o *MemberResponse) GetMostRecentJobDetailCode() string {
 // GetMostRecentJobDetailCodeOk returns a tuple with the MostRecentJobDetailCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MemberResponse) GetMostRecentJobDetailCodeOk() (*string, bool) {
+func (o *MemberResponse) GetMostRecentJobDetailCodeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -580,8 +659,8 @@ func (o *MemberResponse) HasMostRecentJobDetailCode() bool {
 	return false
 }
 
-// SetMostRecentJobDetailCode gets a reference to the given NullableString and assigns it to the MostRecentJobDetailCode field.
-func (o *MemberResponse) SetMostRecentJobDetailCode(v string) {
+// SetMostRecentJobDetailCode gets a reference to the given NullableInt32 and assigns it to the MostRecentJobDetailCode field.
+func (o *MemberResponse) SetMostRecentJobDetailCode(v int32) {
 	o.MostRecentJobDetailCode.Set(&v)
 }
 // SetMostRecentJobDetailCodeNil sets the value for MostRecentJobDetailCode to be an explicit nil
@@ -595,9 +674,9 @@ func (o *MemberResponse) UnsetMostRecentJobDetailCode() {
 }
 
 // GetMostRecentJobDetailText returns the MostRecentJobDetailText field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MemberResponse) GetMostRecentJobDetailText() string {
+func (o *MemberResponse) GetMostRecentJobDetailText() bool {
 	if o == nil || IsNil(o.MostRecentJobDetailText.Get()) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.MostRecentJobDetailText.Get()
@@ -606,7 +685,7 @@ func (o *MemberResponse) GetMostRecentJobDetailText() string {
 // GetMostRecentJobDetailTextOk returns a tuple with the MostRecentJobDetailText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MemberResponse) GetMostRecentJobDetailTextOk() (*string, bool) {
+func (o *MemberResponse) GetMostRecentJobDetailTextOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -622,8 +701,8 @@ func (o *MemberResponse) HasMostRecentJobDetailText() bool {
 	return false
 }
 
-// SetMostRecentJobDetailText gets a reference to the given NullableString and assigns it to the MostRecentJobDetailText field.
-func (o *MemberResponse) SetMostRecentJobDetailText(v string) {
+// SetMostRecentJobDetailText gets a reference to the given NullableBool and assigns it to the MostRecentJobDetailText field.
+func (o *MemberResponse) SetMostRecentJobDetailText(v bool) {
 	o.MostRecentJobDetailText.Set(&v)
 }
 // SetMostRecentJobDetailTextNil sets the value for MostRecentJobDetailText to be an explicit nil
@@ -634,6 +713,48 @@ func (o *MemberResponse) SetMostRecentJobDetailTextNil() {
 // UnsetMostRecentJobDetailText ensures that no value is present for MostRecentJobDetailText, not even an explicit nil
 func (o *MemberResponse) UnsetMostRecentJobDetailText() {
 	o.MostRecentJobDetailText.Unset()
+}
+
+// GetMostRecentJobGuid returns the MostRecentJobGuid field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberResponse) GetMostRecentJobGuid() bool {
+	if o == nil || IsNil(o.MostRecentJobGuid.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.MostRecentJobGuid.Get()
+}
+
+// GetMostRecentJobGuidOk returns a tuple with the MostRecentJobGuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberResponse) GetMostRecentJobGuidOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MostRecentJobGuid.Get(), o.MostRecentJobGuid.IsSet()
+}
+
+// HasMostRecentJobGuid returns a boolean if a field has been set.
+func (o *MemberResponse) HasMostRecentJobGuid() bool {
+	if o != nil && o.MostRecentJobGuid.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMostRecentJobGuid gets a reference to the given NullableBool and assigns it to the MostRecentJobGuid field.
+func (o *MemberResponse) SetMostRecentJobGuid(v bool) {
+	o.MostRecentJobGuid.Set(&v)
+}
+// SetMostRecentJobGuidNil sets the value for MostRecentJobGuid to be an explicit nil
+func (o *MemberResponse) SetMostRecentJobGuidNil() {
+	o.MostRecentJobGuid.Set(nil)
+}
+
+// UnsetMostRecentJobGuid ensures that no value is present for MostRecentJobGuid, not even an explicit nil
+func (o *MemberResponse) UnsetMostRecentJobGuid() {
+	o.MostRecentJobGuid.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -676,6 +797,48 @@ func (o *MemberResponse) SetNameNil() {
 // UnsetName ensures that no value is present for Name, not even an explicit nil
 func (o *MemberResponse) UnsetName() {
 	o.Name.Unset()
+}
+
+// GetNeedsUpdatedCredentials returns the NeedsUpdatedCredentials field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberResponse) GetNeedsUpdatedCredentials() bool {
+	if o == nil || IsNil(o.NeedsUpdatedCredentials.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.NeedsUpdatedCredentials.Get()
+}
+
+// GetNeedsUpdatedCredentialsOk returns a tuple with the NeedsUpdatedCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberResponse) GetNeedsUpdatedCredentialsOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NeedsUpdatedCredentials.Get(), o.NeedsUpdatedCredentials.IsSet()
+}
+
+// HasNeedsUpdatedCredentials returns a boolean if a field has been set.
+func (o *MemberResponse) HasNeedsUpdatedCredentials() bool {
+	if o != nil && o.NeedsUpdatedCredentials.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNeedsUpdatedCredentials gets a reference to the given NullableBool and assigns it to the NeedsUpdatedCredentials field.
+func (o *MemberResponse) SetNeedsUpdatedCredentials(v bool) {
+	o.NeedsUpdatedCredentials.Set(&v)
+}
+// SetNeedsUpdatedCredentialsNil sets the value for NeedsUpdatedCredentials to be an explicit nil
+func (o *MemberResponse) SetNeedsUpdatedCredentialsNil() {
+	o.NeedsUpdatedCredentials.Set(nil)
+}
+
+// UnsetNeedsUpdatedCredentials ensures that no value is present for NeedsUpdatedCredentials, not even an explicit nil
+func (o *MemberResponse) UnsetNeedsUpdatedCredentials() {
+	o.NeedsUpdatedCredentials.Unset()
 }
 
 // GetOauthWindowUri returns the OauthWindowUri field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -762,9 +925,9 @@ func (o *MemberResponse) UnsetSuccessfullyAggregatedAt() {
 	o.SuccessfullyAggregatedAt.Unset()
 }
 
-// GetUseCases returns the UseCases field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUseCases returns the UseCases field value if set, zero value otherwise.
 func (o *MemberResponse) GetUseCases() []string {
-	if o == nil {
+	if o == nil || IsNil(o.UseCases) {
 		var ret []string
 		return ret
 	}
@@ -773,7 +936,6 @@ func (o *MemberResponse) GetUseCases() []string {
 
 // GetUseCasesOk returns a tuple with the UseCases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MemberResponse) GetUseCasesOk() ([]string, bool) {
 	if o == nil || IsNil(o.UseCases) {
 		return nil, false
@@ -783,7 +945,7 @@ func (o *MemberResponse) GetUseCasesOk() ([]string, bool) {
 
 // HasUseCases returns a boolean if a field has been set.
 func (o *MemberResponse) HasUseCases() bool {
-	if o != nil && IsNil(o.UseCases) {
+	if o != nil && !IsNil(o.UseCases) {
 		return true
 	}
 
@@ -889,9 +1051,6 @@ func (o MemberResponse) MarshalJSON() ([]byte, error) {
 
 func (o MemberResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ActionableError.IsSet() {
-		toSerialize["actionable_error"] = o.ActionableError.Get()
-	}
 	if o.AggregatedAt.IsSet() {
 		toSerialize["aggregated_at"] = o.AggregatedAt.Get()
 	}
@@ -901,6 +1060,12 @@ func (o MemberResponse) ToMap() (map[string]interface{}, error) {
 	if o.ConnectionStatus.IsSet() {
 		toSerialize["connection_status"] = o.ConnectionStatus.Get()
 	}
+	if o.ConnectionStatusMessage.IsSet() {
+		toSerialize["connection_status_message"] = o.ConnectionStatusMessage.Get()
+	}
+	if o.Error.IsSet() {
+		toSerialize["error"] = o.Error.Get()
+	}
 	if o.Guid.IsSet() {
 		toSerialize["guid"] = o.Guid.Get()
 	}
@@ -909,6 +1074,9 @@ func (o MemberResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.InstitutionCode.IsSet() {
 		toSerialize["institution_code"] = o.InstitutionCode.Get()
+	}
+	if !IsNil(o.InstitutionGuid) {
+		toSerialize["institution_guid"] = o.InstitutionGuid
 	}
 	if o.IsBeingAggregated.IsSet() {
 		toSerialize["is_being_aggregated"] = o.IsBeingAggregated.Get()
@@ -931,8 +1099,14 @@ func (o MemberResponse) ToMap() (map[string]interface{}, error) {
 	if o.MostRecentJobDetailText.IsSet() {
 		toSerialize["most_recent_job_detail_text"] = o.MostRecentJobDetailText.Get()
 	}
+	if o.MostRecentJobGuid.IsSet() {
+		toSerialize["most_recent_job_guid"] = o.MostRecentJobGuid.Get()
+	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
+	}
+	if o.NeedsUpdatedCredentials.IsSet() {
+		toSerialize["needs_updated_credentials"] = o.NeedsUpdatedCredentials.Get()
 	}
 	if o.OauthWindowUri.IsSet() {
 		toSerialize["oauth_window_uri"] = o.OauthWindowUri.Get()
@@ -940,7 +1114,7 @@ func (o MemberResponse) ToMap() (map[string]interface{}, error) {
 	if o.SuccessfullyAggregatedAt.IsSet() {
 		toSerialize["successfully_aggregated_at"] = o.SuccessfullyAggregatedAt.Get()
 	}
-	if o.UseCases != nil {
+	if !IsNil(o.UseCases) {
 		toSerialize["use_cases"] = o.UseCases
 	}
 	if o.UserGuid.IsSet() {

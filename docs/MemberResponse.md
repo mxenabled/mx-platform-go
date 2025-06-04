@@ -4,24 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ActionableError** | Pointer to **NullableString** |  | [optional] 
 **AggregatedAt** | Pointer to **NullableString** |  | [optional] 
 **BackgroundAggregationIsDisabled** | Pointer to **bool** |  | [optional] 
 **ConnectionStatus** | Pointer to **NullableString** |  | [optional] 
+**ConnectionStatusMessage** | Pointer to **NullableString** |  | [optional] 
+**Error** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
 **InstitutionCode** | Pointer to **NullableString** |  | [optional] 
+**InstitutionGuid** | Pointer to **string** |  | [optional] 
 **IsBeingAggregated** | Pointer to **NullableBool** |  | [optional] 
 **IsManagedByUser** | Pointer to **NullableBool** |  | [optional] 
 **IsManual** | Pointer to **NullableBool** |  | [optional] 
 **IsOauth** | Pointer to **NullableBool** |  | [optional] 
 **Metadata** | Pointer to **NullableString** |  | [optional] 
-**MostRecentJobDetailCode** | Pointer to **NullableString** |  | [optional] 
-**MostRecentJobDetailText** | Pointer to **NullableString** |  | [optional] 
+**MostRecentJobDetailCode** | Pointer to **NullableInt32** |  | [optional] 
+**MostRecentJobDetailText** | Pointer to **NullableBool** |  | [optional] 
+**MostRecentJobGuid** | Pointer to **NullableBool** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
+**NeedsUpdatedCredentials** | Pointer to **NullableBool** |  | [optional] 
 **OauthWindowUri** | Pointer to **NullableString** |  | [optional] 
 **SuccessfullyAggregatedAt** | Pointer to **NullableString** |  | [optional] 
-**UseCases** | Pointer to **[]string** |  | [optional] 
+**UseCases** | Pointer to **[]string** | The use case associated with the member. Valid values are &#x60;PFM&#x60; and/or &#x60;MONEY_MOVEMENT&#x60;. Only set this if you&#39;ve met with MX and have opted in to using this field. | [optional] 
 **UserGuid** | Pointer to **NullableString** |  | [optional] 
 **UserId** | Pointer to **NullableString** |  | [optional] 
 
@@ -44,41 +48,6 @@ NewMemberResponseWithDefaults instantiates a new MemberResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetActionableError
-
-`func (o *MemberResponse) GetActionableError() string`
-
-GetActionableError returns the ActionableError field if non-nil, zero value otherwise.
-
-### GetActionableErrorOk
-
-`func (o *MemberResponse) GetActionableErrorOk() (*string, bool)`
-
-GetActionableErrorOk returns a tuple with the ActionableError field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetActionableError
-
-`func (o *MemberResponse) SetActionableError(v string)`
-
-SetActionableError sets ActionableError field to given value.
-
-### HasActionableError
-
-`func (o *MemberResponse) HasActionableError() bool`
-
-HasActionableError returns a boolean if a field has been set.
-
-### SetActionableErrorNil
-
-`func (o *MemberResponse) SetActionableErrorNil(b bool)`
-
- SetActionableErrorNil sets the value for ActionableError to be an explicit nil
-
-### UnsetActionableError
-`func (o *MemberResponse) UnsetActionableError()`
-
-UnsetActionableError ensures that no value is present for ActionableError, not even an explicit nil
 ### GetAggregatedAt
 
 `func (o *MemberResponse) GetAggregatedAt() string`
@@ -174,6 +143,76 @@ HasConnectionStatus returns a boolean if a field has been set.
 `func (o *MemberResponse) UnsetConnectionStatus()`
 
 UnsetConnectionStatus ensures that no value is present for ConnectionStatus, not even an explicit nil
+### GetConnectionStatusMessage
+
+`func (o *MemberResponse) GetConnectionStatusMessage() string`
+
+GetConnectionStatusMessage returns the ConnectionStatusMessage field if non-nil, zero value otherwise.
+
+### GetConnectionStatusMessageOk
+
+`func (o *MemberResponse) GetConnectionStatusMessageOk() (*string, bool)`
+
+GetConnectionStatusMessageOk returns a tuple with the ConnectionStatusMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionStatusMessage
+
+`func (o *MemberResponse) SetConnectionStatusMessage(v string)`
+
+SetConnectionStatusMessage sets ConnectionStatusMessage field to given value.
+
+### HasConnectionStatusMessage
+
+`func (o *MemberResponse) HasConnectionStatusMessage() bool`
+
+HasConnectionStatusMessage returns a boolean if a field has been set.
+
+### SetConnectionStatusMessageNil
+
+`func (o *MemberResponse) SetConnectionStatusMessageNil(b bool)`
+
+ SetConnectionStatusMessageNil sets the value for ConnectionStatusMessage to be an explicit nil
+
+### UnsetConnectionStatusMessage
+`func (o *MemberResponse) UnsetConnectionStatusMessage()`
+
+UnsetConnectionStatusMessage ensures that no value is present for ConnectionStatusMessage, not even an explicit nil
+### GetError
+
+`func (o *MemberResponse) GetError() string`
+
+GetError returns the Error field if non-nil, zero value otherwise.
+
+### GetErrorOk
+
+`func (o *MemberResponse) GetErrorOk() (*string, bool)`
+
+GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetError
+
+`func (o *MemberResponse) SetError(v string)`
+
+SetError sets Error field to given value.
+
+### HasError
+
+`func (o *MemberResponse) HasError() bool`
+
+HasError returns a boolean if a field has been set.
+
+### SetErrorNil
+
+`func (o *MemberResponse) SetErrorNil(b bool)`
+
+ SetErrorNil sets the value for Error to be an explicit nil
+
+### UnsetError
+`func (o *MemberResponse) UnsetError()`
+
+UnsetError ensures that no value is present for Error, not even an explicit nil
 ### GetGuid
 
 `func (o *MemberResponse) GetGuid() string`
@@ -279,6 +318,31 @@ HasInstitutionCode returns a boolean if a field has been set.
 `func (o *MemberResponse) UnsetInstitutionCode()`
 
 UnsetInstitutionCode ensures that no value is present for InstitutionCode, not even an explicit nil
+### GetInstitutionGuid
+
+`func (o *MemberResponse) GetInstitutionGuid() string`
+
+GetInstitutionGuid returns the InstitutionGuid field if non-nil, zero value otherwise.
+
+### GetInstitutionGuidOk
+
+`func (o *MemberResponse) GetInstitutionGuidOk() (*string, bool)`
+
+GetInstitutionGuidOk returns a tuple with the InstitutionGuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstitutionGuid
+
+`func (o *MemberResponse) SetInstitutionGuid(v string)`
+
+SetInstitutionGuid sets InstitutionGuid field to given value.
+
+### HasInstitutionGuid
+
+`func (o *MemberResponse) HasInstitutionGuid() bool`
+
+HasInstitutionGuid returns a boolean if a field has been set.
+
 ### GetIsBeingAggregated
 
 `func (o *MemberResponse) GetIsBeingAggregated() bool`
@@ -456,20 +520,20 @@ HasMetadata returns a boolean if a field has been set.
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetMostRecentJobDetailCode
 
-`func (o *MemberResponse) GetMostRecentJobDetailCode() string`
+`func (o *MemberResponse) GetMostRecentJobDetailCode() int32`
 
 GetMostRecentJobDetailCode returns the MostRecentJobDetailCode field if non-nil, zero value otherwise.
 
 ### GetMostRecentJobDetailCodeOk
 
-`func (o *MemberResponse) GetMostRecentJobDetailCodeOk() (*string, bool)`
+`func (o *MemberResponse) GetMostRecentJobDetailCodeOk() (*int32, bool)`
 
 GetMostRecentJobDetailCodeOk returns a tuple with the MostRecentJobDetailCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMostRecentJobDetailCode
 
-`func (o *MemberResponse) SetMostRecentJobDetailCode(v string)`
+`func (o *MemberResponse) SetMostRecentJobDetailCode(v int32)`
 
 SetMostRecentJobDetailCode sets MostRecentJobDetailCode field to given value.
 
@@ -491,20 +555,20 @@ HasMostRecentJobDetailCode returns a boolean if a field has been set.
 UnsetMostRecentJobDetailCode ensures that no value is present for MostRecentJobDetailCode, not even an explicit nil
 ### GetMostRecentJobDetailText
 
-`func (o *MemberResponse) GetMostRecentJobDetailText() string`
+`func (o *MemberResponse) GetMostRecentJobDetailText() bool`
 
 GetMostRecentJobDetailText returns the MostRecentJobDetailText field if non-nil, zero value otherwise.
 
 ### GetMostRecentJobDetailTextOk
 
-`func (o *MemberResponse) GetMostRecentJobDetailTextOk() (*string, bool)`
+`func (o *MemberResponse) GetMostRecentJobDetailTextOk() (*bool, bool)`
 
 GetMostRecentJobDetailTextOk returns a tuple with the MostRecentJobDetailText field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMostRecentJobDetailText
 
-`func (o *MemberResponse) SetMostRecentJobDetailText(v string)`
+`func (o *MemberResponse) SetMostRecentJobDetailText(v bool)`
 
 SetMostRecentJobDetailText sets MostRecentJobDetailText field to given value.
 
@@ -524,6 +588,41 @@ HasMostRecentJobDetailText returns a boolean if a field has been set.
 `func (o *MemberResponse) UnsetMostRecentJobDetailText()`
 
 UnsetMostRecentJobDetailText ensures that no value is present for MostRecentJobDetailText, not even an explicit nil
+### GetMostRecentJobGuid
+
+`func (o *MemberResponse) GetMostRecentJobGuid() bool`
+
+GetMostRecentJobGuid returns the MostRecentJobGuid field if non-nil, zero value otherwise.
+
+### GetMostRecentJobGuidOk
+
+`func (o *MemberResponse) GetMostRecentJobGuidOk() (*bool, bool)`
+
+GetMostRecentJobGuidOk returns a tuple with the MostRecentJobGuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMostRecentJobGuid
+
+`func (o *MemberResponse) SetMostRecentJobGuid(v bool)`
+
+SetMostRecentJobGuid sets MostRecentJobGuid field to given value.
+
+### HasMostRecentJobGuid
+
+`func (o *MemberResponse) HasMostRecentJobGuid() bool`
+
+HasMostRecentJobGuid returns a boolean if a field has been set.
+
+### SetMostRecentJobGuidNil
+
+`func (o *MemberResponse) SetMostRecentJobGuidNil(b bool)`
+
+ SetMostRecentJobGuidNil sets the value for MostRecentJobGuid to be an explicit nil
+
+### UnsetMostRecentJobGuid
+`func (o *MemberResponse) UnsetMostRecentJobGuid()`
+
+UnsetMostRecentJobGuid ensures that no value is present for MostRecentJobGuid, not even an explicit nil
 ### GetName
 
 `func (o *MemberResponse) GetName() string`
@@ -559,6 +658,41 @@ HasName returns a boolean if a field has been set.
 `func (o *MemberResponse) UnsetName()`
 
 UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetNeedsUpdatedCredentials
+
+`func (o *MemberResponse) GetNeedsUpdatedCredentials() bool`
+
+GetNeedsUpdatedCredentials returns the NeedsUpdatedCredentials field if non-nil, zero value otherwise.
+
+### GetNeedsUpdatedCredentialsOk
+
+`func (o *MemberResponse) GetNeedsUpdatedCredentialsOk() (*bool, bool)`
+
+GetNeedsUpdatedCredentialsOk returns a tuple with the NeedsUpdatedCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNeedsUpdatedCredentials
+
+`func (o *MemberResponse) SetNeedsUpdatedCredentials(v bool)`
+
+SetNeedsUpdatedCredentials sets NeedsUpdatedCredentials field to given value.
+
+### HasNeedsUpdatedCredentials
+
+`func (o *MemberResponse) HasNeedsUpdatedCredentials() bool`
+
+HasNeedsUpdatedCredentials returns a boolean if a field has been set.
+
+### SetNeedsUpdatedCredentialsNil
+
+`func (o *MemberResponse) SetNeedsUpdatedCredentialsNil(b bool)`
+
+ SetNeedsUpdatedCredentialsNil sets the value for NeedsUpdatedCredentials to be an explicit nil
+
+### UnsetNeedsUpdatedCredentials
+`func (o *MemberResponse) UnsetNeedsUpdatedCredentials()`
+
+UnsetNeedsUpdatedCredentials ensures that no value is present for NeedsUpdatedCredentials, not even an explicit nil
 ### GetOauthWindowUri
 
 `func (o *MemberResponse) GetOauthWindowUri() string`
@@ -654,16 +788,6 @@ SetUseCases sets UseCases field to given value.
 
 HasUseCases returns a boolean if a field has been set.
 
-### SetUseCasesNil
-
-`func (o *MemberResponse) SetUseCasesNil(b bool)`
-
- SetUseCasesNil sets the value for UseCases to be an explicit nil
-
-### UnsetUseCases
-`func (o *MemberResponse) UnsetUseCases()`
-
-UnsetUseCases ensures that no value is present for UseCases, not even an explicit nil
 ### GetUserGuid
 
 `func (o *MemberResponse) GetUserGuid() string`
