@@ -20,61 +20,125 @@ var _ MappedNullable = &AccountResponse{}
 // AccountResponse struct for AccountResponse
 type AccountResponse struct {
 	AccountNumber NullableString `json:"account_number,omitempty"`
+	AccountNumberSetBy NullableInt32 `json:"account_number_set_by,omitempty"`
 	AccountOwnership NullableString `json:"account_ownership,omitempty"`
 	AnnuityPolicyToDate NullableString `json:"annuity_policy_to_date,omitempty"`
 	AnnuityProvider NullableString `json:"annuity_provider,omitempty"`
-	AnnuityTermYear NullableFloat32 `json:"annuity_term_year,omitempty"`
+	AnnuityTermYear NullableInt32 `json:"annuity_term_year,omitempty"`
 	Apr NullableFloat32 `json:"apr,omitempty"`
+	AprSetBy NullableInt32 `json:"apr_set_by,omitempty"`
 	Apy NullableFloat32 `json:"apy,omitempty"`
+	ApySetBy NullableInt32 `json:"apy_set_by,omitempty"`
 	AvailableBalance NullableFloat32 `json:"available_balance,omitempty"`
+	AvailableBalanceSetBy NullableInt32 `json:"available_balance_set_by,omitempty"`
 	AvailableCredit NullableFloat32 `json:"available_credit,omitempty"`
+	AvailableCreditSetBy NullableInt32 `json:"available_credit_set_by,omitempty"`
 	Balance NullableFloat32 `json:"balance,omitempty"`
+	BalanceSetBy NullableInt32 `json:"balance_set_by,omitempty"`
+	CalculatedApr NullableFloat32 `json:"calculated_apr,omitempty"`
 	CashBalance NullableFloat32 `json:"cash_balance,omitempty"`
+	CashBalanceSetBy NullableInt32 `json:"cash_balance_set_by,omitempty"`
 	CashSurrenderValue NullableFloat32 `json:"cash_surrender_value,omitempty"`
+	CashSurrenderValueSetBy NullableInt32 `json:"cash_surrender_value_set_by,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreditLimit NullableFloat32 `json:"credit_limit,omitempty"`
+	CreditLimitSetBy NullableInt32 `json:"credit_limit_set_by,omitempty"`
 	CurrencyCode NullableString `json:"currency_code,omitempty"`
+	CurrencyCodeSetBy NullableInt32 `json:"currency_code_set_by,omitempty"`
 	DayPaymentIsDue NullableInt32 `json:"day_payment_is_due,omitempty"`
+	DayPaymentIsDueSetBy NullableInt32 `json:"day_payment_is_due_set_by,omitempty"`
 	DeathBenefit NullableInt32 `json:"death_benefit,omitempty"`
+	DeathBenefitSetBy NullableInt32 `json:"death_benefit_set_by,omitempty"`
 	FederalInsuranceStatus NullableString `json:"federal_insurance_status,omitempty"`
+	FeedAccountNumber NullableString `json:"feed_account_number,omitempty"`
+	FeedAccountSubtype NullableInt32 `json:"feed_account_subtype,omitempty"`
+	FeedAccountType NullableInt32 `json:"feed_account_type,omitempty"`
+	FeedApr NullableFloat32 `json:"feed_apr,omitempty"`
+	FeedApy NullableFloat32 `json:"feed_apy,omitempty"`
+	FeedAvailableBalance NullableFloat32 `json:"feed_available_balance,omitempty"`
+	FeedBalance NullableFloat32 `json:"feed_balance,omitempty"`
+	FeedCashBalance NullableFloat32 `json:"feed_cash_balance,omitempty"`
+	FeedCashSurrenderValue NullableFloat32 `json:"feed_cash_surrender_value,omitempty"`
+	FeedCreditLimit NullableFloat32 `json:"feed_credit_limit,omitempty"`
+	FeedCurrencyCode NullableString `json:"feed_currency_code,omitempty"`
+	FeedDayPaymentIsDue NullableInt32 `json:"feed_day_payment_is_due,omitempty"`
+	FeedDeathBenefit NullableInt32 `json:"feed_death_benefit,omitempty"`
+	FeedHoldingsValue NullableFloat32 `json:"feed_holdings_value,omitempty"`
+	FeedInterestRate NullableFloat32 `json:"feed_interest_rate,omitempty"`
+	FeedIsClosed NullableBool `json:"feed_is_closed,omitempty"`
+	FeedLastPayment NullableFloat32 `json:"feed_last_payment,omitempty"`
+	FeedLastPaymentAt NullableString `json:"feed_last_payment_at,omitempty"`
+	FeedLoanAmount NullableFloat32 `json:"feed_loan_amount,omitempty"`
+	FeedMaturesOn NullableString `json:"feed_matures_on,omitempty"`
+	FeedMinimumBalance NullableFloat32 `json:"feed_minimum_balance,omitempty"`
+	FeedMinimumPayment NullableFloat32 `json:"feed_minimum_payment,omitempty"`
+	FeedName NullableString `json:"feed_name,omitempty"`
+	FeedNickname NullableString `json:"feed_nickname,omitempty"`
+	FeedOriginalBalance NullableFloat32 `json:"feed_original_balance,omitempty"`
+	FeedPaymentDueAt NullableString `json:"feed_payment_due_at,omitempty"`
+	FeedPayoffBalance NullableFloat32 `json:"feed_payoff_balance,omitempty"`
+	FeedRoutingNumber NullableString `json:"feed_routing_number,omitempty"`
+	FeedStartedOn NullableString `json:"feed_started_on,omitempty"`
+	FeedStatementBalance NullableFloat32 `json:"feed_statement_balance,omitempty"`
+	FeedTotalAccountValue NullableFloat32 `json:"feed_total_account_value,omitempty"`
 	Guid NullableString `json:"guid,omitempty"`
 	HoldingsValue NullableFloat32 `json:"holdings_value,omitempty"`
+	HoldingsValueSetBy NullableInt32 `json:"holdings_value_set_by,omitempty"`
 	Id NullableString `json:"id,omitempty"`
 	ImportedAt NullableString `json:"imported_at,omitempty"`
 	InstitutionCode NullableString `json:"institution_code,omitempty"`
+	InstitutionGuid NullableString `json:"institution_guid,omitempty"`
 	InsuredName NullableString `json:"insured_name,omitempty"`
 	InterestRate NullableFloat32 `json:"interest_rate,omitempty"`
+	InterestRateSetBy NullableInt32 `json:"interest_rate_set_by,omitempty"`
 	IsClosed NullableBool `json:"is_closed,omitempty"`
+	IsClosedSetBy NullableInt32 `json:"is_closed_set_by,omitempty"`
 	IsHidden NullableBool `json:"is_hidden,omitempty"`
 	IsManual NullableBool `json:"is_manual,omitempty"`
 	LastPayment NullableFloat32 `json:"last_payment,omitempty"`
+	LastPaymentSetBy NullableInt32 `json:"last_payment_set_by,omitempty"`
 	LastPaymentAt NullableString `json:"last_payment_at,omitempty"`
+	LastPaymentAtSetBy NullableInt32 `json:"last_payment_at_set_by,omitempty"`
 	LoanAmount NullableFloat32 `json:"loan_amount,omitempty"`
+	LoanAmountSetBy NullableInt32 `json:"loan_amount_set_by,omitempty"`
 	MarginBalance NullableFloat32 `json:"margin_balance,omitempty"`
 	MaturesOn NullableString `json:"matures_on,omitempty"`
+	MaturesOnSetBy NullableInt32 `json:"matures_on_set_by,omitempty"`
 	MemberGuid NullableString `json:"member_guid,omitempty"`
 	MemberId NullableString `json:"member_id,omitempty"`
 	MemberIsManagedByUser NullableBool `json:"member_is_managed_by_user,omitempty"`
 	Metadata NullableString `json:"metadata,omitempty"`
 	MinimumBalance NullableFloat32 `json:"minimum_balance,omitempty"`
+	MinimumBalanceSetBy NullableInt32 `json:"minimum_balance_set_by,omitempty"`
 	MinimumPayment NullableFloat32 `json:"minimum_payment,omitempty"`
+	MinimumPaymentSetBy NullableInt32 `json:"minimum_payment_set_by,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	NameSetBy NullableInt32 `json:"name_set_by,omitempty"`
 	Nickname NullableString `json:"nickname,omitempty"`
+	NicknameSetBy NullableInt32 `json:"nickname_set_by,omitempty"`
 	OriginalBalance NullableFloat32 `json:"original_balance,omitempty"`
+	OriginalBalanceSetBy NullableInt32 `json:"original_balance_set_by,omitempty"`
 	PayOutAmount NullableFloat32 `json:"pay_out_amount,omitempty"`
 	PaymentDueAt NullableString `json:"payment_due_at,omitempty"`
+	PaymentDueAtSetBy NullableInt32 `json:"payment_due_at_set_by,omitempty"`
 	PayoffBalance NullableFloat32 `json:"payoff_balance,omitempty"`
-	PremiumAmount NullableFloat32 `json:"premium_amount,omitempty"`
-	PropertyType NullableString `json:"property_type,omitempty"`
+	PayoffBalanceSetBy NullableInt32 `json:"payoff_balance_set_by,omitempty"`
+	PremiumAmount NullableString `json:"premium_amount,omitempty"`
+	PropertyType NullableInt32 `json:"property_type,omitempty"`
 	RoutingNumber NullableString `json:"routing_number,omitempty"`
 	StartedOn NullableString `json:"started_on,omitempty"`
+	StartedOnSetBy NullableInt32 `json:"started_on_set_by,omitempty"`
 	StatementBalance NullableFloat32 `json:"statement_balance,omitempty"`
+	StatementBalanceSetBy NullableInt32 `json:"statement_balance_set_by,omitempty"`
 	Subtype NullableString `json:"subtype,omitempty"`
+	SubtypeSetBy NullableInt32 `json:"subtype_set_by,omitempty"`
 	TodayUglAmount NullableFloat32 `json:"today_ugl_amount,omitempty"`
 	TodayUglPercentage NullableFloat32 `json:"today_ugl_percentage,omitempty"`
 	TotalAccountValue NullableFloat32 `json:"total_account_value,omitempty"`
+	TotalAccountValueSetBy NullableInt32 `json:"total_account_value_set_by,omitempty"`
 	TotalAccountValueUgl NullableFloat32 `json:"total_account_value_ugl,omitempty"`
 	Type NullableString `json:"type,omitempty"`
+	TypeSetBy NullableInt32 `json:"type_set_by,omitempty"`
 	UpdatedAt NullableString `json:"updated_at,omitempty"`
 	UserGuid NullableString `json:"user_guid,omitempty"`
 	UserId NullableString `json:"user_id,omitempty"`
@@ -137,6 +201,48 @@ func (o *AccountResponse) SetAccountNumberNil() {
 // UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
 func (o *AccountResponse) UnsetAccountNumber() {
 	o.AccountNumber.Unset()
+}
+
+// GetAccountNumberSetBy returns the AccountNumberSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetAccountNumberSetBy() int32 {
+	if o == nil || IsNil(o.AccountNumberSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AccountNumberSetBy.Get()
+}
+
+// GetAccountNumberSetByOk returns a tuple with the AccountNumberSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetAccountNumberSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AccountNumberSetBy.Get(), o.AccountNumberSetBy.IsSet()
+}
+
+// HasAccountNumberSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasAccountNumberSetBy() bool {
+	if o != nil && o.AccountNumberSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountNumberSetBy gets a reference to the given NullableInt32 and assigns it to the AccountNumberSetBy field.
+func (o *AccountResponse) SetAccountNumberSetBy(v int32) {
+	o.AccountNumberSetBy.Set(&v)
+}
+// SetAccountNumberSetByNil sets the value for AccountNumberSetBy to be an explicit nil
+func (o *AccountResponse) SetAccountNumberSetByNil() {
+	o.AccountNumberSetBy.Set(nil)
+}
+
+// UnsetAccountNumberSetBy ensures that no value is present for AccountNumberSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetAccountNumberSetBy() {
+	o.AccountNumberSetBy.Unset()
 }
 
 // GetAccountOwnership returns the AccountOwnership field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -266,9 +372,9 @@ func (o *AccountResponse) UnsetAnnuityProvider() {
 }
 
 // GetAnnuityTermYear returns the AnnuityTermYear field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountResponse) GetAnnuityTermYear() float32 {
+func (o *AccountResponse) GetAnnuityTermYear() int32 {
 	if o == nil || IsNil(o.AnnuityTermYear.Get()) {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.AnnuityTermYear.Get()
@@ -277,7 +383,7 @@ func (o *AccountResponse) GetAnnuityTermYear() float32 {
 // GetAnnuityTermYearOk returns a tuple with the AnnuityTermYear field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountResponse) GetAnnuityTermYearOk() (*float32, bool) {
+func (o *AccountResponse) GetAnnuityTermYearOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -293,8 +399,8 @@ func (o *AccountResponse) HasAnnuityTermYear() bool {
 	return false
 }
 
-// SetAnnuityTermYear gets a reference to the given NullableFloat32 and assigns it to the AnnuityTermYear field.
-func (o *AccountResponse) SetAnnuityTermYear(v float32) {
+// SetAnnuityTermYear gets a reference to the given NullableInt32 and assigns it to the AnnuityTermYear field.
+func (o *AccountResponse) SetAnnuityTermYear(v int32) {
 	o.AnnuityTermYear.Set(&v)
 }
 // SetAnnuityTermYearNil sets the value for AnnuityTermYear to be an explicit nil
@@ -349,6 +455,48 @@ func (o *AccountResponse) UnsetApr() {
 	o.Apr.Unset()
 }
 
+// GetAprSetBy returns the AprSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetAprSetBy() int32 {
+	if o == nil || IsNil(o.AprSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AprSetBy.Get()
+}
+
+// GetAprSetByOk returns a tuple with the AprSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetAprSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AprSetBy.Get(), o.AprSetBy.IsSet()
+}
+
+// HasAprSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasAprSetBy() bool {
+	if o != nil && o.AprSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAprSetBy gets a reference to the given NullableInt32 and assigns it to the AprSetBy field.
+func (o *AccountResponse) SetAprSetBy(v int32) {
+	o.AprSetBy.Set(&v)
+}
+// SetAprSetByNil sets the value for AprSetBy to be an explicit nil
+func (o *AccountResponse) SetAprSetByNil() {
+	o.AprSetBy.Set(nil)
+}
+
+// UnsetAprSetBy ensures that no value is present for AprSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetAprSetBy() {
+	o.AprSetBy.Unset()
+}
+
 // GetApy returns the Apy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetApy() float32 {
 	if o == nil || IsNil(o.Apy.Get()) {
@@ -389,6 +537,48 @@ func (o *AccountResponse) SetApyNil() {
 // UnsetApy ensures that no value is present for Apy, not even an explicit nil
 func (o *AccountResponse) UnsetApy() {
 	o.Apy.Unset()
+}
+
+// GetApySetBy returns the ApySetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetApySetBy() int32 {
+	if o == nil || IsNil(o.ApySetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ApySetBy.Get()
+}
+
+// GetApySetByOk returns a tuple with the ApySetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetApySetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ApySetBy.Get(), o.ApySetBy.IsSet()
+}
+
+// HasApySetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasApySetBy() bool {
+	if o != nil && o.ApySetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetApySetBy gets a reference to the given NullableInt32 and assigns it to the ApySetBy field.
+func (o *AccountResponse) SetApySetBy(v int32) {
+	o.ApySetBy.Set(&v)
+}
+// SetApySetByNil sets the value for ApySetBy to be an explicit nil
+func (o *AccountResponse) SetApySetByNil() {
+	o.ApySetBy.Set(nil)
+}
+
+// UnsetApySetBy ensures that no value is present for ApySetBy, not even an explicit nil
+func (o *AccountResponse) UnsetApySetBy() {
+	o.ApySetBy.Unset()
 }
 
 // GetAvailableBalance returns the AvailableBalance field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -433,6 +623,48 @@ func (o *AccountResponse) UnsetAvailableBalance() {
 	o.AvailableBalance.Unset()
 }
 
+// GetAvailableBalanceSetBy returns the AvailableBalanceSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetAvailableBalanceSetBy() int32 {
+	if o == nil || IsNil(o.AvailableBalanceSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AvailableBalanceSetBy.Get()
+}
+
+// GetAvailableBalanceSetByOk returns a tuple with the AvailableBalanceSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetAvailableBalanceSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AvailableBalanceSetBy.Get(), o.AvailableBalanceSetBy.IsSet()
+}
+
+// HasAvailableBalanceSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasAvailableBalanceSetBy() bool {
+	if o != nil && o.AvailableBalanceSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailableBalanceSetBy gets a reference to the given NullableInt32 and assigns it to the AvailableBalanceSetBy field.
+func (o *AccountResponse) SetAvailableBalanceSetBy(v int32) {
+	o.AvailableBalanceSetBy.Set(&v)
+}
+// SetAvailableBalanceSetByNil sets the value for AvailableBalanceSetBy to be an explicit nil
+func (o *AccountResponse) SetAvailableBalanceSetByNil() {
+	o.AvailableBalanceSetBy.Set(nil)
+}
+
+// UnsetAvailableBalanceSetBy ensures that no value is present for AvailableBalanceSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetAvailableBalanceSetBy() {
+	o.AvailableBalanceSetBy.Unset()
+}
+
 // GetAvailableCredit returns the AvailableCredit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetAvailableCredit() float32 {
 	if o == nil || IsNil(o.AvailableCredit.Get()) {
@@ -473,6 +705,48 @@ func (o *AccountResponse) SetAvailableCreditNil() {
 // UnsetAvailableCredit ensures that no value is present for AvailableCredit, not even an explicit nil
 func (o *AccountResponse) UnsetAvailableCredit() {
 	o.AvailableCredit.Unset()
+}
+
+// GetAvailableCreditSetBy returns the AvailableCreditSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetAvailableCreditSetBy() int32 {
+	if o == nil || IsNil(o.AvailableCreditSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AvailableCreditSetBy.Get()
+}
+
+// GetAvailableCreditSetByOk returns a tuple with the AvailableCreditSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetAvailableCreditSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AvailableCreditSetBy.Get(), o.AvailableCreditSetBy.IsSet()
+}
+
+// HasAvailableCreditSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasAvailableCreditSetBy() bool {
+	if o != nil && o.AvailableCreditSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailableCreditSetBy gets a reference to the given NullableInt32 and assigns it to the AvailableCreditSetBy field.
+func (o *AccountResponse) SetAvailableCreditSetBy(v int32) {
+	o.AvailableCreditSetBy.Set(&v)
+}
+// SetAvailableCreditSetByNil sets the value for AvailableCreditSetBy to be an explicit nil
+func (o *AccountResponse) SetAvailableCreditSetByNil() {
+	o.AvailableCreditSetBy.Set(nil)
+}
+
+// UnsetAvailableCreditSetBy ensures that no value is present for AvailableCreditSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetAvailableCreditSetBy() {
+	o.AvailableCreditSetBy.Unset()
 }
 
 // GetBalance returns the Balance field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -517,6 +791,90 @@ func (o *AccountResponse) UnsetBalance() {
 	o.Balance.Unset()
 }
 
+// GetBalanceSetBy returns the BalanceSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetBalanceSetBy() int32 {
+	if o == nil || IsNil(o.BalanceSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.BalanceSetBy.Get()
+}
+
+// GetBalanceSetByOk returns a tuple with the BalanceSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetBalanceSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BalanceSetBy.Get(), o.BalanceSetBy.IsSet()
+}
+
+// HasBalanceSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasBalanceSetBy() bool {
+	if o != nil && o.BalanceSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBalanceSetBy gets a reference to the given NullableInt32 and assigns it to the BalanceSetBy field.
+func (o *AccountResponse) SetBalanceSetBy(v int32) {
+	o.BalanceSetBy.Set(&v)
+}
+// SetBalanceSetByNil sets the value for BalanceSetBy to be an explicit nil
+func (o *AccountResponse) SetBalanceSetByNil() {
+	o.BalanceSetBy.Set(nil)
+}
+
+// UnsetBalanceSetBy ensures that no value is present for BalanceSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetBalanceSetBy() {
+	o.BalanceSetBy.Unset()
+}
+
+// GetCalculatedApr returns the CalculatedApr field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetCalculatedApr() float32 {
+	if o == nil || IsNil(o.CalculatedApr.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.CalculatedApr.Get()
+}
+
+// GetCalculatedAprOk returns a tuple with the CalculatedApr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetCalculatedAprOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CalculatedApr.Get(), o.CalculatedApr.IsSet()
+}
+
+// HasCalculatedApr returns a boolean if a field has been set.
+func (o *AccountResponse) HasCalculatedApr() bool {
+	if o != nil && o.CalculatedApr.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCalculatedApr gets a reference to the given NullableFloat32 and assigns it to the CalculatedApr field.
+func (o *AccountResponse) SetCalculatedApr(v float32) {
+	o.CalculatedApr.Set(&v)
+}
+// SetCalculatedAprNil sets the value for CalculatedApr to be an explicit nil
+func (o *AccountResponse) SetCalculatedAprNil() {
+	o.CalculatedApr.Set(nil)
+}
+
+// UnsetCalculatedApr ensures that no value is present for CalculatedApr, not even an explicit nil
+func (o *AccountResponse) UnsetCalculatedApr() {
+	o.CalculatedApr.Unset()
+}
+
 // GetCashBalance returns the CashBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetCashBalance() float32 {
 	if o == nil || IsNil(o.CashBalance.Get()) {
@@ -559,6 +917,48 @@ func (o *AccountResponse) UnsetCashBalance() {
 	o.CashBalance.Unset()
 }
 
+// GetCashBalanceSetBy returns the CashBalanceSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetCashBalanceSetBy() int32 {
+	if o == nil || IsNil(o.CashBalanceSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CashBalanceSetBy.Get()
+}
+
+// GetCashBalanceSetByOk returns a tuple with the CashBalanceSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetCashBalanceSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CashBalanceSetBy.Get(), o.CashBalanceSetBy.IsSet()
+}
+
+// HasCashBalanceSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasCashBalanceSetBy() bool {
+	if o != nil && o.CashBalanceSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCashBalanceSetBy gets a reference to the given NullableInt32 and assigns it to the CashBalanceSetBy field.
+func (o *AccountResponse) SetCashBalanceSetBy(v int32) {
+	o.CashBalanceSetBy.Set(&v)
+}
+// SetCashBalanceSetByNil sets the value for CashBalanceSetBy to be an explicit nil
+func (o *AccountResponse) SetCashBalanceSetByNil() {
+	o.CashBalanceSetBy.Set(nil)
+}
+
+// UnsetCashBalanceSetBy ensures that no value is present for CashBalanceSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetCashBalanceSetBy() {
+	o.CashBalanceSetBy.Unset()
+}
+
 // GetCashSurrenderValue returns the CashSurrenderValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetCashSurrenderValue() float32 {
 	if o == nil || IsNil(o.CashSurrenderValue.Get()) {
@@ -599,6 +999,48 @@ func (o *AccountResponse) SetCashSurrenderValueNil() {
 // UnsetCashSurrenderValue ensures that no value is present for CashSurrenderValue, not even an explicit nil
 func (o *AccountResponse) UnsetCashSurrenderValue() {
 	o.CashSurrenderValue.Unset()
+}
+
+// GetCashSurrenderValueSetBy returns the CashSurrenderValueSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetCashSurrenderValueSetBy() int32 {
+	if o == nil || IsNil(o.CashSurrenderValueSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CashSurrenderValueSetBy.Get()
+}
+
+// GetCashSurrenderValueSetByOk returns a tuple with the CashSurrenderValueSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetCashSurrenderValueSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CashSurrenderValueSetBy.Get(), o.CashSurrenderValueSetBy.IsSet()
+}
+
+// HasCashSurrenderValueSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasCashSurrenderValueSetBy() bool {
+	if o != nil && o.CashSurrenderValueSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCashSurrenderValueSetBy gets a reference to the given NullableInt32 and assigns it to the CashSurrenderValueSetBy field.
+func (o *AccountResponse) SetCashSurrenderValueSetBy(v int32) {
+	o.CashSurrenderValueSetBy.Set(&v)
+}
+// SetCashSurrenderValueSetByNil sets the value for CashSurrenderValueSetBy to be an explicit nil
+func (o *AccountResponse) SetCashSurrenderValueSetByNil() {
+	o.CashSurrenderValueSetBy.Set(nil)
+}
+
+// UnsetCashSurrenderValueSetBy ensures that no value is present for CashSurrenderValueSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetCashSurrenderValueSetBy() {
+	o.CashSurrenderValueSetBy.Unset()
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -675,6 +1117,48 @@ func (o *AccountResponse) UnsetCreditLimit() {
 	o.CreditLimit.Unset()
 }
 
+// GetCreditLimitSetBy returns the CreditLimitSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetCreditLimitSetBy() int32 {
+	if o == nil || IsNil(o.CreditLimitSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CreditLimitSetBy.Get()
+}
+
+// GetCreditLimitSetByOk returns a tuple with the CreditLimitSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetCreditLimitSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CreditLimitSetBy.Get(), o.CreditLimitSetBy.IsSet()
+}
+
+// HasCreditLimitSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasCreditLimitSetBy() bool {
+	if o != nil && o.CreditLimitSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreditLimitSetBy gets a reference to the given NullableInt32 and assigns it to the CreditLimitSetBy field.
+func (o *AccountResponse) SetCreditLimitSetBy(v int32) {
+	o.CreditLimitSetBy.Set(&v)
+}
+// SetCreditLimitSetByNil sets the value for CreditLimitSetBy to be an explicit nil
+func (o *AccountResponse) SetCreditLimitSetByNil() {
+	o.CreditLimitSetBy.Set(nil)
+}
+
+// UnsetCreditLimitSetBy ensures that no value is present for CreditLimitSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetCreditLimitSetBy() {
+	o.CreditLimitSetBy.Unset()
+}
+
 // GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetCurrencyCode() string {
 	if o == nil || IsNil(o.CurrencyCode.Get()) {
@@ -715,6 +1199,48 @@ func (o *AccountResponse) SetCurrencyCodeNil() {
 // UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
 func (o *AccountResponse) UnsetCurrencyCode() {
 	o.CurrencyCode.Unset()
+}
+
+// GetCurrencyCodeSetBy returns the CurrencyCodeSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetCurrencyCodeSetBy() int32 {
+	if o == nil || IsNil(o.CurrencyCodeSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CurrencyCodeSetBy.Get()
+}
+
+// GetCurrencyCodeSetByOk returns a tuple with the CurrencyCodeSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetCurrencyCodeSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CurrencyCodeSetBy.Get(), o.CurrencyCodeSetBy.IsSet()
+}
+
+// HasCurrencyCodeSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasCurrencyCodeSetBy() bool {
+	if o != nil && o.CurrencyCodeSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrencyCodeSetBy gets a reference to the given NullableInt32 and assigns it to the CurrencyCodeSetBy field.
+func (o *AccountResponse) SetCurrencyCodeSetBy(v int32) {
+	o.CurrencyCodeSetBy.Set(&v)
+}
+// SetCurrencyCodeSetByNil sets the value for CurrencyCodeSetBy to be an explicit nil
+func (o *AccountResponse) SetCurrencyCodeSetByNil() {
+	o.CurrencyCodeSetBy.Set(nil)
+}
+
+// UnsetCurrencyCodeSetBy ensures that no value is present for CurrencyCodeSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetCurrencyCodeSetBy() {
+	o.CurrencyCodeSetBy.Unset()
 }
 
 // GetDayPaymentIsDue returns the DayPaymentIsDue field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -759,6 +1285,48 @@ func (o *AccountResponse) UnsetDayPaymentIsDue() {
 	o.DayPaymentIsDue.Unset()
 }
 
+// GetDayPaymentIsDueSetBy returns the DayPaymentIsDueSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetDayPaymentIsDueSetBy() int32 {
+	if o == nil || IsNil(o.DayPaymentIsDueSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.DayPaymentIsDueSetBy.Get()
+}
+
+// GetDayPaymentIsDueSetByOk returns a tuple with the DayPaymentIsDueSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetDayPaymentIsDueSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DayPaymentIsDueSetBy.Get(), o.DayPaymentIsDueSetBy.IsSet()
+}
+
+// HasDayPaymentIsDueSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasDayPaymentIsDueSetBy() bool {
+	if o != nil && o.DayPaymentIsDueSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDayPaymentIsDueSetBy gets a reference to the given NullableInt32 and assigns it to the DayPaymentIsDueSetBy field.
+func (o *AccountResponse) SetDayPaymentIsDueSetBy(v int32) {
+	o.DayPaymentIsDueSetBy.Set(&v)
+}
+// SetDayPaymentIsDueSetByNil sets the value for DayPaymentIsDueSetBy to be an explicit nil
+func (o *AccountResponse) SetDayPaymentIsDueSetByNil() {
+	o.DayPaymentIsDueSetBy.Set(nil)
+}
+
+// UnsetDayPaymentIsDueSetBy ensures that no value is present for DayPaymentIsDueSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetDayPaymentIsDueSetBy() {
+	o.DayPaymentIsDueSetBy.Unset()
+}
+
 // GetDeathBenefit returns the DeathBenefit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetDeathBenefit() int32 {
 	if o == nil || IsNil(o.DeathBenefit.Get()) {
@@ -801,6 +1369,48 @@ func (o *AccountResponse) UnsetDeathBenefit() {
 	o.DeathBenefit.Unset()
 }
 
+// GetDeathBenefitSetBy returns the DeathBenefitSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetDeathBenefitSetBy() int32 {
+	if o == nil || IsNil(o.DeathBenefitSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.DeathBenefitSetBy.Get()
+}
+
+// GetDeathBenefitSetByOk returns a tuple with the DeathBenefitSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetDeathBenefitSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DeathBenefitSetBy.Get(), o.DeathBenefitSetBy.IsSet()
+}
+
+// HasDeathBenefitSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasDeathBenefitSetBy() bool {
+	if o != nil && o.DeathBenefitSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDeathBenefitSetBy gets a reference to the given NullableInt32 and assigns it to the DeathBenefitSetBy field.
+func (o *AccountResponse) SetDeathBenefitSetBy(v int32) {
+	o.DeathBenefitSetBy.Set(&v)
+}
+// SetDeathBenefitSetByNil sets the value for DeathBenefitSetBy to be an explicit nil
+func (o *AccountResponse) SetDeathBenefitSetByNil() {
+	o.DeathBenefitSetBy.Set(nil)
+}
+
+// UnsetDeathBenefitSetBy ensures that no value is present for DeathBenefitSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetDeathBenefitSetBy() {
+	o.DeathBenefitSetBy.Unset()
+}
+
 // GetFederalInsuranceStatus returns the FederalInsuranceStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetFederalInsuranceStatus() string {
 	if o == nil || IsNil(o.FederalInsuranceStatus.Get()) {
@@ -841,6 +1451,1308 @@ func (o *AccountResponse) SetFederalInsuranceStatusNil() {
 // UnsetFederalInsuranceStatus ensures that no value is present for FederalInsuranceStatus, not even an explicit nil
 func (o *AccountResponse) UnsetFederalInsuranceStatus() {
 	o.FederalInsuranceStatus.Unset()
+}
+
+// GetFeedAccountNumber returns the FeedAccountNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedAccountNumber() string {
+	if o == nil || IsNil(o.FeedAccountNumber.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FeedAccountNumber.Get()
+}
+
+// GetFeedAccountNumberOk returns a tuple with the FeedAccountNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedAccountNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedAccountNumber.Get(), o.FeedAccountNumber.IsSet()
+}
+
+// HasFeedAccountNumber returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedAccountNumber() bool {
+	if o != nil && o.FeedAccountNumber.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedAccountNumber gets a reference to the given NullableString and assigns it to the FeedAccountNumber field.
+func (o *AccountResponse) SetFeedAccountNumber(v string) {
+	o.FeedAccountNumber.Set(&v)
+}
+// SetFeedAccountNumberNil sets the value for FeedAccountNumber to be an explicit nil
+func (o *AccountResponse) SetFeedAccountNumberNil() {
+	o.FeedAccountNumber.Set(nil)
+}
+
+// UnsetFeedAccountNumber ensures that no value is present for FeedAccountNumber, not even an explicit nil
+func (o *AccountResponse) UnsetFeedAccountNumber() {
+	o.FeedAccountNumber.Unset()
+}
+
+// GetFeedAccountSubtype returns the FeedAccountSubtype field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedAccountSubtype() int32 {
+	if o == nil || IsNil(o.FeedAccountSubtype.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.FeedAccountSubtype.Get()
+}
+
+// GetFeedAccountSubtypeOk returns a tuple with the FeedAccountSubtype field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedAccountSubtypeOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedAccountSubtype.Get(), o.FeedAccountSubtype.IsSet()
+}
+
+// HasFeedAccountSubtype returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedAccountSubtype() bool {
+	if o != nil && o.FeedAccountSubtype.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedAccountSubtype gets a reference to the given NullableInt32 and assigns it to the FeedAccountSubtype field.
+func (o *AccountResponse) SetFeedAccountSubtype(v int32) {
+	o.FeedAccountSubtype.Set(&v)
+}
+// SetFeedAccountSubtypeNil sets the value for FeedAccountSubtype to be an explicit nil
+func (o *AccountResponse) SetFeedAccountSubtypeNil() {
+	o.FeedAccountSubtype.Set(nil)
+}
+
+// UnsetFeedAccountSubtype ensures that no value is present for FeedAccountSubtype, not even an explicit nil
+func (o *AccountResponse) UnsetFeedAccountSubtype() {
+	o.FeedAccountSubtype.Unset()
+}
+
+// GetFeedAccountType returns the FeedAccountType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedAccountType() int32 {
+	if o == nil || IsNil(o.FeedAccountType.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.FeedAccountType.Get()
+}
+
+// GetFeedAccountTypeOk returns a tuple with the FeedAccountType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedAccountTypeOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedAccountType.Get(), o.FeedAccountType.IsSet()
+}
+
+// HasFeedAccountType returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedAccountType() bool {
+	if o != nil && o.FeedAccountType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedAccountType gets a reference to the given NullableInt32 and assigns it to the FeedAccountType field.
+func (o *AccountResponse) SetFeedAccountType(v int32) {
+	o.FeedAccountType.Set(&v)
+}
+// SetFeedAccountTypeNil sets the value for FeedAccountType to be an explicit nil
+func (o *AccountResponse) SetFeedAccountTypeNil() {
+	o.FeedAccountType.Set(nil)
+}
+
+// UnsetFeedAccountType ensures that no value is present for FeedAccountType, not even an explicit nil
+func (o *AccountResponse) UnsetFeedAccountType() {
+	o.FeedAccountType.Unset()
+}
+
+// GetFeedApr returns the FeedApr field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedApr() float32 {
+	if o == nil || IsNil(o.FeedApr.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedApr.Get()
+}
+
+// GetFeedAprOk returns a tuple with the FeedApr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedAprOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedApr.Get(), o.FeedApr.IsSet()
+}
+
+// HasFeedApr returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedApr() bool {
+	if o != nil && o.FeedApr.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedApr gets a reference to the given NullableFloat32 and assigns it to the FeedApr field.
+func (o *AccountResponse) SetFeedApr(v float32) {
+	o.FeedApr.Set(&v)
+}
+// SetFeedAprNil sets the value for FeedApr to be an explicit nil
+func (o *AccountResponse) SetFeedAprNil() {
+	o.FeedApr.Set(nil)
+}
+
+// UnsetFeedApr ensures that no value is present for FeedApr, not even an explicit nil
+func (o *AccountResponse) UnsetFeedApr() {
+	o.FeedApr.Unset()
+}
+
+// GetFeedApy returns the FeedApy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedApy() float32 {
+	if o == nil || IsNil(o.FeedApy.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedApy.Get()
+}
+
+// GetFeedApyOk returns a tuple with the FeedApy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedApyOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedApy.Get(), o.FeedApy.IsSet()
+}
+
+// HasFeedApy returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedApy() bool {
+	if o != nil && o.FeedApy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedApy gets a reference to the given NullableFloat32 and assigns it to the FeedApy field.
+func (o *AccountResponse) SetFeedApy(v float32) {
+	o.FeedApy.Set(&v)
+}
+// SetFeedApyNil sets the value for FeedApy to be an explicit nil
+func (o *AccountResponse) SetFeedApyNil() {
+	o.FeedApy.Set(nil)
+}
+
+// UnsetFeedApy ensures that no value is present for FeedApy, not even an explicit nil
+func (o *AccountResponse) UnsetFeedApy() {
+	o.FeedApy.Unset()
+}
+
+// GetFeedAvailableBalance returns the FeedAvailableBalance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedAvailableBalance() float32 {
+	if o == nil || IsNil(o.FeedAvailableBalance.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedAvailableBalance.Get()
+}
+
+// GetFeedAvailableBalanceOk returns a tuple with the FeedAvailableBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedAvailableBalanceOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedAvailableBalance.Get(), o.FeedAvailableBalance.IsSet()
+}
+
+// HasFeedAvailableBalance returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedAvailableBalance() bool {
+	if o != nil && o.FeedAvailableBalance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedAvailableBalance gets a reference to the given NullableFloat32 and assigns it to the FeedAvailableBalance field.
+func (o *AccountResponse) SetFeedAvailableBalance(v float32) {
+	o.FeedAvailableBalance.Set(&v)
+}
+// SetFeedAvailableBalanceNil sets the value for FeedAvailableBalance to be an explicit nil
+func (o *AccountResponse) SetFeedAvailableBalanceNil() {
+	o.FeedAvailableBalance.Set(nil)
+}
+
+// UnsetFeedAvailableBalance ensures that no value is present for FeedAvailableBalance, not even an explicit nil
+func (o *AccountResponse) UnsetFeedAvailableBalance() {
+	o.FeedAvailableBalance.Unset()
+}
+
+// GetFeedBalance returns the FeedBalance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedBalance() float32 {
+	if o == nil || IsNil(o.FeedBalance.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedBalance.Get()
+}
+
+// GetFeedBalanceOk returns a tuple with the FeedBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedBalanceOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedBalance.Get(), o.FeedBalance.IsSet()
+}
+
+// HasFeedBalance returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedBalance() bool {
+	if o != nil && o.FeedBalance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedBalance gets a reference to the given NullableFloat32 and assigns it to the FeedBalance field.
+func (o *AccountResponse) SetFeedBalance(v float32) {
+	o.FeedBalance.Set(&v)
+}
+// SetFeedBalanceNil sets the value for FeedBalance to be an explicit nil
+func (o *AccountResponse) SetFeedBalanceNil() {
+	o.FeedBalance.Set(nil)
+}
+
+// UnsetFeedBalance ensures that no value is present for FeedBalance, not even an explicit nil
+func (o *AccountResponse) UnsetFeedBalance() {
+	o.FeedBalance.Unset()
+}
+
+// GetFeedCashBalance returns the FeedCashBalance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedCashBalance() float32 {
+	if o == nil || IsNil(o.FeedCashBalance.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedCashBalance.Get()
+}
+
+// GetFeedCashBalanceOk returns a tuple with the FeedCashBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedCashBalanceOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedCashBalance.Get(), o.FeedCashBalance.IsSet()
+}
+
+// HasFeedCashBalance returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedCashBalance() bool {
+	if o != nil && o.FeedCashBalance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedCashBalance gets a reference to the given NullableFloat32 and assigns it to the FeedCashBalance field.
+func (o *AccountResponse) SetFeedCashBalance(v float32) {
+	o.FeedCashBalance.Set(&v)
+}
+// SetFeedCashBalanceNil sets the value for FeedCashBalance to be an explicit nil
+func (o *AccountResponse) SetFeedCashBalanceNil() {
+	o.FeedCashBalance.Set(nil)
+}
+
+// UnsetFeedCashBalance ensures that no value is present for FeedCashBalance, not even an explicit nil
+func (o *AccountResponse) UnsetFeedCashBalance() {
+	o.FeedCashBalance.Unset()
+}
+
+// GetFeedCashSurrenderValue returns the FeedCashSurrenderValue field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedCashSurrenderValue() float32 {
+	if o == nil || IsNil(o.FeedCashSurrenderValue.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedCashSurrenderValue.Get()
+}
+
+// GetFeedCashSurrenderValueOk returns a tuple with the FeedCashSurrenderValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedCashSurrenderValueOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedCashSurrenderValue.Get(), o.FeedCashSurrenderValue.IsSet()
+}
+
+// HasFeedCashSurrenderValue returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedCashSurrenderValue() bool {
+	if o != nil && o.FeedCashSurrenderValue.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedCashSurrenderValue gets a reference to the given NullableFloat32 and assigns it to the FeedCashSurrenderValue field.
+func (o *AccountResponse) SetFeedCashSurrenderValue(v float32) {
+	o.FeedCashSurrenderValue.Set(&v)
+}
+// SetFeedCashSurrenderValueNil sets the value for FeedCashSurrenderValue to be an explicit nil
+func (o *AccountResponse) SetFeedCashSurrenderValueNil() {
+	o.FeedCashSurrenderValue.Set(nil)
+}
+
+// UnsetFeedCashSurrenderValue ensures that no value is present for FeedCashSurrenderValue, not even an explicit nil
+func (o *AccountResponse) UnsetFeedCashSurrenderValue() {
+	o.FeedCashSurrenderValue.Unset()
+}
+
+// GetFeedCreditLimit returns the FeedCreditLimit field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedCreditLimit() float32 {
+	if o == nil || IsNil(o.FeedCreditLimit.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedCreditLimit.Get()
+}
+
+// GetFeedCreditLimitOk returns a tuple with the FeedCreditLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedCreditLimitOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedCreditLimit.Get(), o.FeedCreditLimit.IsSet()
+}
+
+// HasFeedCreditLimit returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedCreditLimit() bool {
+	if o != nil && o.FeedCreditLimit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedCreditLimit gets a reference to the given NullableFloat32 and assigns it to the FeedCreditLimit field.
+func (o *AccountResponse) SetFeedCreditLimit(v float32) {
+	o.FeedCreditLimit.Set(&v)
+}
+// SetFeedCreditLimitNil sets the value for FeedCreditLimit to be an explicit nil
+func (o *AccountResponse) SetFeedCreditLimitNil() {
+	o.FeedCreditLimit.Set(nil)
+}
+
+// UnsetFeedCreditLimit ensures that no value is present for FeedCreditLimit, not even an explicit nil
+func (o *AccountResponse) UnsetFeedCreditLimit() {
+	o.FeedCreditLimit.Unset()
+}
+
+// GetFeedCurrencyCode returns the FeedCurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedCurrencyCode() string {
+	if o == nil || IsNil(o.FeedCurrencyCode.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FeedCurrencyCode.Get()
+}
+
+// GetFeedCurrencyCodeOk returns a tuple with the FeedCurrencyCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedCurrencyCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedCurrencyCode.Get(), o.FeedCurrencyCode.IsSet()
+}
+
+// HasFeedCurrencyCode returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedCurrencyCode() bool {
+	if o != nil && o.FeedCurrencyCode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedCurrencyCode gets a reference to the given NullableString and assigns it to the FeedCurrencyCode field.
+func (o *AccountResponse) SetFeedCurrencyCode(v string) {
+	o.FeedCurrencyCode.Set(&v)
+}
+// SetFeedCurrencyCodeNil sets the value for FeedCurrencyCode to be an explicit nil
+func (o *AccountResponse) SetFeedCurrencyCodeNil() {
+	o.FeedCurrencyCode.Set(nil)
+}
+
+// UnsetFeedCurrencyCode ensures that no value is present for FeedCurrencyCode, not even an explicit nil
+func (o *AccountResponse) UnsetFeedCurrencyCode() {
+	o.FeedCurrencyCode.Unset()
+}
+
+// GetFeedDayPaymentIsDue returns the FeedDayPaymentIsDue field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedDayPaymentIsDue() int32 {
+	if o == nil || IsNil(o.FeedDayPaymentIsDue.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.FeedDayPaymentIsDue.Get()
+}
+
+// GetFeedDayPaymentIsDueOk returns a tuple with the FeedDayPaymentIsDue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedDayPaymentIsDueOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedDayPaymentIsDue.Get(), o.FeedDayPaymentIsDue.IsSet()
+}
+
+// HasFeedDayPaymentIsDue returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedDayPaymentIsDue() bool {
+	if o != nil && o.FeedDayPaymentIsDue.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedDayPaymentIsDue gets a reference to the given NullableInt32 and assigns it to the FeedDayPaymentIsDue field.
+func (o *AccountResponse) SetFeedDayPaymentIsDue(v int32) {
+	o.FeedDayPaymentIsDue.Set(&v)
+}
+// SetFeedDayPaymentIsDueNil sets the value for FeedDayPaymentIsDue to be an explicit nil
+func (o *AccountResponse) SetFeedDayPaymentIsDueNil() {
+	o.FeedDayPaymentIsDue.Set(nil)
+}
+
+// UnsetFeedDayPaymentIsDue ensures that no value is present for FeedDayPaymentIsDue, not even an explicit nil
+func (o *AccountResponse) UnsetFeedDayPaymentIsDue() {
+	o.FeedDayPaymentIsDue.Unset()
+}
+
+// GetFeedDeathBenefit returns the FeedDeathBenefit field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedDeathBenefit() int32 {
+	if o == nil || IsNil(o.FeedDeathBenefit.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.FeedDeathBenefit.Get()
+}
+
+// GetFeedDeathBenefitOk returns a tuple with the FeedDeathBenefit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedDeathBenefitOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedDeathBenefit.Get(), o.FeedDeathBenefit.IsSet()
+}
+
+// HasFeedDeathBenefit returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedDeathBenefit() bool {
+	if o != nil && o.FeedDeathBenefit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedDeathBenefit gets a reference to the given NullableInt32 and assigns it to the FeedDeathBenefit field.
+func (o *AccountResponse) SetFeedDeathBenefit(v int32) {
+	o.FeedDeathBenefit.Set(&v)
+}
+// SetFeedDeathBenefitNil sets the value for FeedDeathBenefit to be an explicit nil
+func (o *AccountResponse) SetFeedDeathBenefitNil() {
+	o.FeedDeathBenefit.Set(nil)
+}
+
+// UnsetFeedDeathBenefit ensures that no value is present for FeedDeathBenefit, not even an explicit nil
+func (o *AccountResponse) UnsetFeedDeathBenefit() {
+	o.FeedDeathBenefit.Unset()
+}
+
+// GetFeedHoldingsValue returns the FeedHoldingsValue field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedHoldingsValue() float32 {
+	if o == nil || IsNil(o.FeedHoldingsValue.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedHoldingsValue.Get()
+}
+
+// GetFeedHoldingsValueOk returns a tuple with the FeedHoldingsValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedHoldingsValueOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedHoldingsValue.Get(), o.FeedHoldingsValue.IsSet()
+}
+
+// HasFeedHoldingsValue returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedHoldingsValue() bool {
+	if o != nil && o.FeedHoldingsValue.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedHoldingsValue gets a reference to the given NullableFloat32 and assigns it to the FeedHoldingsValue field.
+func (o *AccountResponse) SetFeedHoldingsValue(v float32) {
+	o.FeedHoldingsValue.Set(&v)
+}
+// SetFeedHoldingsValueNil sets the value for FeedHoldingsValue to be an explicit nil
+func (o *AccountResponse) SetFeedHoldingsValueNil() {
+	o.FeedHoldingsValue.Set(nil)
+}
+
+// UnsetFeedHoldingsValue ensures that no value is present for FeedHoldingsValue, not even an explicit nil
+func (o *AccountResponse) UnsetFeedHoldingsValue() {
+	o.FeedHoldingsValue.Unset()
+}
+
+// GetFeedInterestRate returns the FeedInterestRate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedInterestRate() float32 {
+	if o == nil || IsNil(o.FeedInterestRate.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedInterestRate.Get()
+}
+
+// GetFeedInterestRateOk returns a tuple with the FeedInterestRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedInterestRateOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedInterestRate.Get(), o.FeedInterestRate.IsSet()
+}
+
+// HasFeedInterestRate returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedInterestRate() bool {
+	if o != nil && o.FeedInterestRate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedInterestRate gets a reference to the given NullableFloat32 and assigns it to the FeedInterestRate field.
+func (o *AccountResponse) SetFeedInterestRate(v float32) {
+	o.FeedInterestRate.Set(&v)
+}
+// SetFeedInterestRateNil sets the value for FeedInterestRate to be an explicit nil
+func (o *AccountResponse) SetFeedInterestRateNil() {
+	o.FeedInterestRate.Set(nil)
+}
+
+// UnsetFeedInterestRate ensures that no value is present for FeedInterestRate, not even an explicit nil
+func (o *AccountResponse) UnsetFeedInterestRate() {
+	o.FeedInterestRate.Unset()
+}
+
+// GetFeedIsClosed returns the FeedIsClosed field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedIsClosed() bool {
+	if o == nil || IsNil(o.FeedIsClosed.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.FeedIsClosed.Get()
+}
+
+// GetFeedIsClosedOk returns a tuple with the FeedIsClosed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedIsClosedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedIsClosed.Get(), o.FeedIsClosed.IsSet()
+}
+
+// HasFeedIsClosed returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedIsClosed() bool {
+	if o != nil && o.FeedIsClosed.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedIsClosed gets a reference to the given NullableBool and assigns it to the FeedIsClosed field.
+func (o *AccountResponse) SetFeedIsClosed(v bool) {
+	o.FeedIsClosed.Set(&v)
+}
+// SetFeedIsClosedNil sets the value for FeedIsClosed to be an explicit nil
+func (o *AccountResponse) SetFeedIsClosedNil() {
+	o.FeedIsClosed.Set(nil)
+}
+
+// UnsetFeedIsClosed ensures that no value is present for FeedIsClosed, not even an explicit nil
+func (o *AccountResponse) UnsetFeedIsClosed() {
+	o.FeedIsClosed.Unset()
+}
+
+// GetFeedLastPayment returns the FeedLastPayment field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedLastPayment() float32 {
+	if o == nil || IsNil(o.FeedLastPayment.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedLastPayment.Get()
+}
+
+// GetFeedLastPaymentOk returns a tuple with the FeedLastPayment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedLastPaymentOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedLastPayment.Get(), o.FeedLastPayment.IsSet()
+}
+
+// HasFeedLastPayment returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedLastPayment() bool {
+	if o != nil && o.FeedLastPayment.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedLastPayment gets a reference to the given NullableFloat32 and assigns it to the FeedLastPayment field.
+func (o *AccountResponse) SetFeedLastPayment(v float32) {
+	o.FeedLastPayment.Set(&v)
+}
+// SetFeedLastPaymentNil sets the value for FeedLastPayment to be an explicit nil
+func (o *AccountResponse) SetFeedLastPaymentNil() {
+	o.FeedLastPayment.Set(nil)
+}
+
+// UnsetFeedLastPayment ensures that no value is present for FeedLastPayment, not even an explicit nil
+func (o *AccountResponse) UnsetFeedLastPayment() {
+	o.FeedLastPayment.Unset()
+}
+
+// GetFeedLastPaymentAt returns the FeedLastPaymentAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedLastPaymentAt() string {
+	if o == nil || IsNil(o.FeedLastPaymentAt.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FeedLastPaymentAt.Get()
+}
+
+// GetFeedLastPaymentAtOk returns a tuple with the FeedLastPaymentAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedLastPaymentAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedLastPaymentAt.Get(), o.FeedLastPaymentAt.IsSet()
+}
+
+// HasFeedLastPaymentAt returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedLastPaymentAt() bool {
+	if o != nil && o.FeedLastPaymentAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedLastPaymentAt gets a reference to the given NullableString and assigns it to the FeedLastPaymentAt field.
+func (o *AccountResponse) SetFeedLastPaymentAt(v string) {
+	o.FeedLastPaymentAt.Set(&v)
+}
+// SetFeedLastPaymentAtNil sets the value for FeedLastPaymentAt to be an explicit nil
+func (o *AccountResponse) SetFeedLastPaymentAtNil() {
+	o.FeedLastPaymentAt.Set(nil)
+}
+
+// UnsetFeedLastPaymentAt ensures that no value is present for FeedLastPaymentAt, not even an explicit nil
+func (o *AccountResponse) UnsetFeedLastPaymentAt() {
+	o.FeedLastPaymentAt.Unset()
+}
+
+// GetFeedLoanAmount returns the FeedLoanAmount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedLoanAmount() float32 {
+	if o == nil || IsNil(o.FeedLoanAmount.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedLoanAmount.Get()
+}
+
+// GetFeedLoanAmountOk returns a tuple with the FeedLoanAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedLoanAmountOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedLoanAmount.Get(), o.FeedLoanAmount.IsSet()
+}
+
+// HasFeedLoanAmount returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedLoanAmount() bool {
+	if o != nil && o.FeedLoanAmount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedLoanAmount gets a reference to the given NullableFloat32 and assigns it to the FeedLoanAmount field.
+func (o *AccountResponse) SetFeedLoanAmount(v float32) {
+	o.FeedLoanAmount.Set(&v)
+}
+// SetFeedLoanAmountNil sets the value for FeedLoanAmount to be an explicit nil
+func (o *AccountResponse) SetFeedLoanAmountNil() {
+	o.FeedLoanAmount.Set(nil)
+}
+
+// UnsetFeedLoanAmount ensures that no value is present for FeedLoanAmount, not even an explicit nil
+func (o *AccountResponse) UnsetFeedLoanAmount() {
+	o.FeedLoanAmount.Unset()
+}
+
+// GetFeedMaturesOn returns the FeedMaturesOn field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedMaturesOn() string {
+	if o == nil || IsNil(o.FeedMaturesOn.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FeedMaturesOn.Get()
+}
+
+// GetFeedMaturesOnOk returns a tuple with the FeedMaturesOn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedMaturesOnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedMaturesOn.Get(), o.FeedMaturesOn.IsSet()
+}
+
+// HasFeedMaturesOn returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedMaturesOn() bool {
+	if o != nil && o.FeedMaturesOn.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedMaturesOn gets a reference to the given NullableString and assigns it to the FeedMaturesOn field.
+func (o *AccountResponse) SetFeedMaturesOn(v string) {
+	o.FeedMaturesOn.Set(&v)
+}
+// SetFeedMaturesOnNil sets the value for FeedMaturesOn to be an explicit nil
+func (o *AccountResponse) SetFeedMaturesOnNil() {
+	o.FeedMaturesOn.Set(nil)
+}
+
+// UnsetFeedMaturesOn ensures that no value is present for FeedMaturesOn, not even an explicit nil
+func (o *AccountResponse) UnsetFeedMaturesOn() {
+	o.FeedMaturesOn.Unset()
+}
+
+// GetFeedMinimumBalance returns the FeedMinimumBalance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedMinimumBalance() float32 {
+	if o == nil || IsNil(o.FeedMinimumBalance.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedMinimumBalance.Get()
+}
+
+// GetFeedMinimumBalanceOk returns a tuple with the FeedMinimumBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedMinimumBalanceOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedMinimumBalance.Get(), o.FeedMinimumBalance.IsSet()
+}
+
+// HasFeedMinimumBalance returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedMinimumBalance() bool {
+	if o != nil && o.FeedMinimumBalance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedMinimumBalance gets a reference to the given NullableFloat32 and assigns it to the FeedMinimumBalance field.
+func (o *AccountResponse) SetFeedMinimumBalance(v float32) {
+	o.FeedMinimumBalance.Set(&v)
+}
+// SetFeedMinimumBalanceNil sets the value for FeedMinimumBalance to be an explicit nil
+func (o *AccountResponse) SetFeedMinimumBalanceNil() {
+	o.FeedMinimumBalance.Set(nil)
+}
+
+// UnsetFeedMinimumBalance ensures that no value is present for FeedMinimumBalance, not even an explicit nil
+func (o *AccountResponse) UnsetFeedMinimumBalance() {
+	o.FeedMinimumBalance.Unset()
+}
+
+// GetFeedMinimumPayment returns the FeedMinimumPayment field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedMinimumPayment() float32 {
+	if o == nil || IsNil(o.FeedMinimumPayment.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedMinimumPayment.Get()
+}
+
+// GetFeedMinimumPaymentOk returns a tuple with the FeedMinimumPayment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedMinimumPaymentOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedMinimumPayment.Get(), o.FeedMinimumPayment.IsSet()
+}
+
+// HasFeedMinimumPayment returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedMinimumPayment() bool {
+	if o != nil && o.FeedMinimumPayment.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedMinimumPayment gets a reference to the given NullableFloat32 and assigns it to the FeedMinimumPayment field.
+func (o *AccountResponse) SetFeedMinimumPayment(v float32) {
+	o.FeedMinimumPayment.Set(&v)
+}
+// SetFeedMinimumPaymentNil sets the value for FeedMinimumPayment to be an explicit nil
+func (o *AccountResponse) SetFeedMinimumPaymentNil() {
+	o.FeedMinimumPayment.Set(nil)
+}
+
+// UnsetFeedMinimumPayment ensures that no value is present for FeedMinimumPayment, not even an explicit nil
+func (o *AccountResponse) UnsetFeedMinimumPayment() {
+	o.FeedMinimumPayment.Unset()
+}
+
+// GetFeedName returns the FeedName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedName() string {
+	if o == nil || IsNil(o.FeedName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FeedName.Get()
+}
+
+// GetFeedNameOk returns a tuple with the FeedName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedName.Get(), o.FeedName.IsSet()
+}
+
+// HasFeedName returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedName() bool {
+	if o != nil && o.FeedName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedName gets a reference to the given NullableString and assigns it to the FeedName field.
+func (o *AccountResponse) SetFeedName(v string) {
+	o.FeedName.Set(&v)
+}
+// SetFeedNameNil sets the value for FeedName to be an explicit nil
+func (o *AccountResponse) SetFeedNameNil() {
+	o.FeedName.Set(nil)
+}
+
+// UnsetFeedName ensures that no value is present for FeedName, not even an explicit nil
+func (o *AccountResponse) UnsetFeedName() {
+	o.FeedName.Unset()
+}
+
+// GetFeedNickname returns the FeedNickname field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedNickname() string {
+	if o == nil || IsNil(o.FeedNickname.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FeedNickname.Get()
+}
+
+// GetFeedNicknameOk returns a tuple with the FeedNickname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedNicknameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedNickname.Get(), o.FeedNickname.IsSet()
+}
+
+// HasFeedNickname returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedNickname() bool {
+	if o != nil && o.FeedNickname.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedNickname gets a reference to the given NullableString and assigns it to the FeedNickname field.
+func (o *AccountResponse) SetFeedNickname(v string) {
+	o.FeedNickname.Set(&v)
+}
+// SetFeedNicknameNil sets the value for FeedNickname to be an explicit nil
+func (o *AccountResponse) SetFeedNicknameNil() {
+	o.FeedNickname.Set(nil)
+}
+
+// UnsetFeedNickname ensures that no value is present for FeedNickname, not even an explicit nil
+func (o *AccountResponse) UnsetFeedNickname() {
+	o.FeedNickname.Unset()
+}
+
+// GetFeedOriginalBalance returns the FeedOriginalBalance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedOriginalBalance() float32 {
+	if o == nil || IsNil(o.FeedOriginalBalance.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedOriginalBalance.Get()
+}
+
+// GetFeedOriginalBalanceOk returns a tuple with the FeedOriginalBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedOriginalBalanceOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedOriginalBalance.Get(), o.FeedOriginalBalance.IsSet()
+}
+
+// HasFeedOriginalBalance returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedOriginalBalance() bool {
+	if o != nil && o.FeedOriginalBalance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedOriginalBalance gets a reference to the given NullableFloat32 and assigns it to the FeedOriginalBalance field.
+func (o *AccountResponse) SetFeedOriginalBalance(v float32) {
+	o.FeedOriginalBalance.Set(&v)
+}
+// SetFeedOriginalBalanceNil sets the value for FeedOriginalBalance to be an explicit nil
+func (o *AccountResponse) SetFeedOriginalBalanceNil() {
+	o.FeedOriginalBalance.Set(nil)
+}
+
+// UnsetFeedOriginalBalance ensures that no value is present for FeedOriginalBalance, not even an explicit nil
+func (o *AccountResponse) UnsetFeedOriginalBalance() {
+	o.FeedOriginalBalance.Unset()
+}
+
+// GetFeedPaymentDueAt returns the FeedPaymentDueAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedPaymentDueAt() string {
+	if o == nil || IsNil(o.FeedPaymentDueAt.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FeedPaymentDueAt.Get()
+}
+
+// GetFeedPaymentDueAtOk returns a tuple with the FeedPaymentDueAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedPaymentDueAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedPaymentDueAt.Get(), o.FeedPaymentDueAt.IsSet()
+}
+
+// HasFeedPaymentDueAt returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedPaymentDueAt() bool {
+	if o != nil && o.FeedPaymentDueAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedPaymentDueAt gets a reference to the given NullableString and assigns it to the FeedPaymentDueAt field.
+func (o *AccountResponse) SetFeedPaymentDueAt(v string) {
+	o.FeedPaymentDueAt.Set(&v)
+}
+// SetFeedPaymentDueAtNil sets the value for FeedPaymentDueAt to be an explicit nil
+func (o *AccountResponse) SetFeedPaymentDueAtNil() {
+	o.FeedPaymentDueAt.Set(nil)
+}
+
+// UnsetFeedPaymentDueAt ensures that no value is present for FeedPaymentDueAt, not even an explicit nil
+func (o *AccountResponse) UnsetFeedPaymentDueAt() {
+	o.FeedPaymentDueAt.Unset()
+}
+
+// GetFeedPayoffBalance returns the FeedPayoffBalance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedPayoffBalance() float32 {
+	if o == nil || IsNil(o.FeedPayoffBalance.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedPayoffBalance.Get()
+}
+
+// GetFeedPayoffBalanceOk returns a tuple with the FeedPayoffBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedPayoffBalanceOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedPayoffBalance.Get(), o.FeedPayoffBalance.IsSet()
+}
+
+// HasFeedPayoffBalance returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedPayoffBalance() bool {
+	if o != nil && o.FeedPayoffBalance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedPayoffBalance gets a reference to the given NullableFloat32 and assigns it to the FeedPayoffBalance field.
+func (o *AccountResponse) SetFeedPayoffBalance(v float32) {
+	o.FeedPayoffBalance.Set(&v)
+}
+// SetFeedPayoffBalanceNil sets the value for FeedPayoffBalance to be an explicit nil
+func (o *AccountResponse) SetFeedPayoffBalanceNil() {
+	o.FeedPayoffBalance.Set(nil)
+}
+
+// UnsetFeedPayoffBalance ensures that no value is present for FeedPayoffBalance, not even an explicit nil
+func (o *AccountResponse) UnsetFeedPayoffBalance() {
+	o.FeedPayoffBalance.Unset()
+}
+
+// GetFeedRoutingNumber returns the FeedRoutingNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedRoutingNumber() string {
+	if o == nil || IsNil(o.FeedRoutingNumber.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FeedRoutingNumber.Get()
+}
+
+// GetFeedRoutingNumberOk returns a tuple with the FeedRoutingNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedRoutingNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedRoutingNumber.Get(), o.FeedRoutingNumber.IsSet()
+}
+
+// HasFeedRoutingNumber returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedRoutingNumber() bool {
+	if o != nil && o.FeedRoutingNumber.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedRoutingNumber gets a reference to the given NullableString and assigns it to the FeedRoutingNumber field.
+func (o *AccountResponse) SetFeedRoutingNumber(v string) {
+	o.FeedRoutingNumber.Set(&v)
+}
+// SetFeedRoutingNumberNil sets the value for FeedRoutingNumber to be an explicit nil
+func (o *AccountResponse) SetFeedRoutingNumberNil() {
+	o.FeedRoutingNumber.Set(nil)
+}
+
+// UnsetFeedRoutingNumber ensures that no value is present for FeedRoutingNumber, not even an explicit nil
+func (o *AccountResponse) UnsetFeedRoutingNumber() {
+	o.FeedRoutingNumber.Unset()
+}
+
+// GetFeedStartedOn returns the FeedStartedOn field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedStartedOn() string {
+	if o == nil || IsNil(o.FeedStartedOn.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FeedStartedOn.Get()
+}
+
+// GetFeedStartedOnOk returns a tuple with the FeedStartedOn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedStartedOnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedStartedOn.Get(), o.FeedStartedOn.IsSet()
+}
+
+// HasFeedStartedOn returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedStartedOn() bool {
+	if o != nil && o.FeedStartedOn.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedStartedOn gets a reference to the given NullableString and assigns it to the FeedStartedOn field.
+func (o *AccountResponse) SetFeedStartedOn(v string) {
+	o.FeedStartedOn.Set(&v)
+}
+// SetFeedStartedOnNil sets the value for FeedStartedOn to be an explicit nil
+func (o *AccountResponse) SetFeedStartedOnNil() {
+	o.FeedStartedOn.Set(nil)
+}
+
+// UnsetFeedStartedOn ensures that no value is present for FeedStartedOn, not even an explicit nil
+func (o *AccountResponse) UnsetFeedStartedOn() {
+	o.FeedStartedOn.Unset()
+}
+
+// GetFeedStatementBalance returns the FeedStatementBalance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedStatementBalance() float32 {
+	if o == nil || IsNil(o.FeedStatementBalance.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedStatementBalance.Get()
+}
+
+// GetFeedStatementBalanceOk returns a tuple with the FeedStatementBalance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedStatementBalanceOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedStatementBalance.Get(), o.FeedStatementBalance.IsSet()
+}
+
+// HasFeedStatementBalance returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedStatementBalance() bool {
+	if o != nil && o.FeedStatementBalance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedStatementBalance gets a reference to the given NullableFloat32 and assigns it to the FeedStatementBalance field.
+func (o *AccountResponse) SetFeedStatementBalance(v float32) {
+	o.FeedStatementBalance.Set(&v)
+}
+// SetFeedStatementBalanceNil sets the value for FeedStatementBalance to be an explicit nil
+func (o *AccountResponse) SetFeedStatementBalanceNil() {
+	o.FeedStatementBalance.Set(nil)
+}
+
+// UnsetFeedStatementBalance ensures that no value is present for FeedStatementBalance, not even an explicit nil
+func (o *AccountResponse) UnsetFeedStatementBalance() {
+	o.FeedStatementBalance.Unset()
+}
+
+// GetFeedTotalAccountValue returns the FeedTotalAccountValue field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetFeedTotalAccountValue() float32 {
+	if o == nil || IsNil(o.FeedTotalAccountValue.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FeedTotalAccountValue.Get()
+}
+
+// GetFeedTotalAccountValueOk returns a tuple with the FeedTotalAccountValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetFeedTotalAccountValueOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedTotalAccountValue.Get(), o.FeedTotalAccountValue.IsSet()
+}
+
+// HasFeedTotalAccountValue returns a boolean if a field has been set.
+func (o *AccountResponse) HasFeedTotalAccountValue() bool {
+	if o != nil && o.FeedTotalAccountValue.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedTotalAccountValue gets a reference to the given NullableFloat32 and assigns it to the FeedTotalAccountValue field.
+func (o *AccountResponse) SetFeedTotalAccountValue(v float32) {
+	o.FeedTotalAccountValue.Set(&v)
+}
+// SetFeedTotalAccountValueNil sets the value for FeedTotalAccountValue to be an explicit nil
+func (o *AccountResponse) SetFeedTotalAccountValueNil() {
+	o.FeedTotalAccountValue.Set(nil)
+}
+
+// UnsetFeedTotalAccountValue ensures that no value is present for FeedTotalAccountValue, not even an explicit nil
+func (o *AccountResponse) UnsetFeedTotalAccountValue() {
+	o.FeedTotalAccountValue.Unset()
 }
 
 // GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -925,6 +2837,48 @@ func (o *AccountResponse) SetHoldingsValueNil() {
 // UnsetHoldingsValue ensures that no value is present for HoldingsValue, not even an explicit nil
 func (o *AccountResponse) UnsetHoldingsValue() {
 	o.HoldingsValue.Unset()
+}
+
+// GetHoldingsValueSetBy returns the HoldingsValueSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetHoldingsValueSetBy() int32 {
+	if o == nil || IsNil(o.HoldingsValueSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.HoldingsValueSetBy.Get()
+}
+
+// GetHoldingsValueSetByOk returns a tuple with the HoldingsValueSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetHoldingsValueSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HoldingsValueSetBy.Get(), o.HoldingsValueSetBy.IsSet()
+}
+
+// HasHoldingsValueSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasHoldingsValueSetBy() bool {
+	if o != nil && o.HoldingsValueSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHoldingsValueSetBy gets a reference to the given NullableInt32 and assigns it to the HoldingsValueSetBy field.
+func (o *AccountResponse) SetHoldingsValueSetBy(v int32) {
+	o.HoldingsValueSetBy.Set(&v)
+}
+// SetHoldingsValueSetByNil sets the value for HoldingsValueSetBy to be an explicit nil
+func (o *AccountResponse) SetHoldingsValueSetByNil() {
+	o.HoldingsValueSetBy.Set(nil)
+}
+
+// UnsetHoldingsValueSetBy ensures that no value is present for HoldingsValueSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetHoldingsValueSetBy() {
+	o.HoldingsValueSetBy.Unset()
 }
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1053,6 +3007,48 @@ func (o *AccountResponse) UnsetInstitutionCode() {
 	o.InstitutionCode.Unset()
 }
 
+// GetInstitutionGuid returns the InstitutionGuid field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetInstitutionGuid() string {
+	if o == nil || IsNil(o.InstitutionGuid.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InstitutionGuid.Get()
+}
+
+// GetInstitutionGuidOk returns a tuple with the InstitutionGuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetInstitutionGuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstitutionGuid.Get(), o.InstitutionGuid.IsSet()
+}
+
+// HasInstitutionGuid returns a boolean if a field has been set.
+func (o *AccountResponse) HasInstitutionGuid() bool {
+	if o != nil && o.InstitutionGuid.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstitutionGuid gets a reference to the given NullableString and assigns it to the InstitutionGuid field.
+func (o *AccountResponse) SetInstitutionGuid(v string) {
+	o.InstitutionGuid.Set(&v)
+}
+// SetInstitutionGuidNil sets the value for InstitutionGuid to be an explicit nil
+func (o *AccountResponse) SetInstitutionGuidNil() {
+	o.InstitutionGuid.Set(nil)
+}
+
+// UnsetInstitutionGuid ensures that no value is present for InstitutionGuid, not even an explicit nil
+func (o *AccountResponse) UnsetInstitutionGuid() {
+	o.InstitutionGuid.Unset()
+}
+
 // GetInsuredName returns the InsuredName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetInsuredName() string {
 	if o == nil || IsNil(o.InsuredName.Get()) {
@@ -1137,6 +3133,48 @@ func (o *AccountResponse) UnsetInterestRate() {
 	o.InterestRate.Unset()
 }
 
+// GetInterestRateSetBy returns the InterestRateSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetInterestRateSetBy() int32 {
+	if o == nil || IsNil(o.InterestRateSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.InterestRateSetBy.Get()
+}
+
+// GetInterestRateSetByOk returns a tuple with the InterestRateSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetInterestRateSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InterestRateSetBy.Get(), o.InterestRateSetBy.IsSet()
+}
+
+// HasInterestRateSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasInterestRateSetBy() bool {
+	if o != nil && o.InterestRateSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInterestRateSetBy gets a reference to the given NullableInt32 and assigns it to the InterestRateSetBy field.
+func (o *AccountResponse) SetInterestRateSetBy(v int32) {
+	o.InterestRateSetBy.Set(&v)
+}
+// SetInterestRateSetByNil sets the value for InterestRateSetBy to be an explicit nil
+func (o *AccountResponse) SetInterestRateSetByNil() {
+	o.InterestRateSetBy.Set(nil)
+}
+
+// UnsetInterestRateSetBy ensures that no value is present for InterestRateSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetInterestRateSetBy() {
+	o.InterestRateSetBy.Unset()
+}
+
 // GetIsClosed returns the IsClosed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetIsClosed() bool {
 	if o == nil || IsNil(o.IsClosed.Get()) {
@@ -1177,6 +3215,48 @@ func (o *AccountResponse) SetIsClosedNil() {
 // UnsetIsClosed ensures that no value is present for IsClosed, not even an explicit nil
 func (o *AccountResponse) UnsetIsClosed() {
 	o.IsClosed.Unset()
+}
+
+// GetIsClosedSetBy returns the IsClosedSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetIsClosedSetBy() int32 {
+	if o == nil || IsNil(o.IsClosedSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.IsClosedSetBy.Get()
+}
+
+// GetIsClosedSetByOk returns a tuple with the IsClosedSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetIsClosedSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsClosedSetBy.Get(), o.IsClosedSetBy.IsSet()
+}
+
+// HasIsClosedSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasIsClosedSetBy() bool {
+	if o != nil && o.IsClosedSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsClosedSetBy gets a reference to the given NullableInt32 and assigns it to the IsClosedSetBy field.
+func (o *AccountResponse) SetIsClosedSetBy(v int32) {
+	o.IsClosedSetBy.Set(&v)
+}
+// SetIsClosedSetByNil sets the value for IsClosedSetBy to be an explicit nil
+func (o *AccountResponse) SetIsClosedSetByNil() {
+	o.IsClosedSetBy.Set(nil)
+}
+
+// UnsetIsClosedSetBy ensures that no value is present for IsClosedSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetIsClosedSetBy() {
+	o.IsClosedSetBy.Unset()
 }
 
 // GetIsHidden returns the IsHidden field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1305,6 +3385,48 @@ func (o *AccountResponse) UnsetLastPayment() {
 	o.LastPayment.Unset()
 }
 
+// GetLastPaymentSetBy returns the LastPaymentSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetLastPaymentSetBy() int32 {
+	if o == nil || IsNil(o.LastPaymentSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.LastPaymentSetBy.Get()
+}
+
+// GetLastPaymentSetByOk returns a tuple with the LastPaymentSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetLastPaymentSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastPaymentSetBy.Get(), o.LastPaymentSetBy.IsSet()
+}
+
+// HasLastPaymentSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasLastPaymentSetBy() bool {
+	if o != nil && o.LastPaymentSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastPaymentSetBy gets a reference to the given NullableInt32 and assigns it to the LastPaymentSetBy field.
+func (o *AccountResponse) SetLastPaymentSetBy(v int32) {
+	o.LastPaymentSetBy.Set(&v)
+}
+// SetLastPaymentSetByNil sets the value for LastPaymentSetBy to be an explicit nil
+func (o *AccountResponse) SetLastPaymentSetByNil() {
+	o.LastPaymentSetBy.Set(nil)
+}
+
+// UnsetLastPaymentSetBy ensures that no value is present for LastPaymentSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetLastPaymentSetBy() {
+	o.LastPaymentSetBy.Unset()
+}
+
 // GetLastPaymentAt returns the LastPaymentAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetLastPaymentAt() string {
 	if o == nil || IsNil(o.LastPaymentAt.Get()) {
@@ -1347,6 +3469,48 @@ func (o *AccountResponse) UnsetLastPaymentAt() {
 	o.LastPaymentAt.Unset()
 }
 
+// GetLastPaymentAtSetBy returns the LastPaymentAtSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetLastPaymentAtSetBy() int32 {
+	if o == nil || IsNil(o.LastPaymentAtSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.LastPaymentAtSetBy.Get()
+}
+
+// GetLastPaymentAtSetByOk returns a tuple with the LastPaymentAtSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetLastPaymentAtSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastPaymentAtSetBy.Get(), o.LastPaymentAtSetBy.IsSet()
+}
+
+// HasLastPaymentAtSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasLastPaymentAtSetBy() bool {
+	if o != nil && o.LastPaymentAtSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastPaymentAtSetBy gets a reference to the given NullableInt32 and assigns it to the LastPaymentAtSetBy field.
+func (o *AccountResponse) SetLastPaymentAtSetBy(v int32) {
+	o.LastPaymentAtSetBy.Set(&v)
+}
+// SetLastPaymentAtSetByNil sets the value for LastPaymentAtSetBy to be an explicit nil
+func (o *AccountResponse) SetLastPaymentAtSetByNil() {
+	o.LastPaymentAtSetBy.Set(nil)
+}
+
+// UnsetLastPaymentAtSetBy ensures that no value is present for LastPaymentAtSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetLastPaymentAtSetBy() {
+	o.LastPaymentAtSetBy.Unset()
+}
+
 // GetLoanAmount returns the LoanAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetLoanAmount() float32 {
 	if o == nil || IsNil(o.LoanAmount.Get()) {
@@ -1387,6 +3551,48 @@ func (o *AccountResponse) SetLoanAmountNil() {
 // UnsetLoanAmount ensures that no value is present for LoanAmount, not even an explicit nil
 func (o *AccountResponse) UnsetLoanAmount() {
 	o.LoanAmount.Unset()
+}
+
+// GetLoanAmountSetBy returns the LoanAmountSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetLoanAmountSetBy() int32 {
+	if o == nil || IsNil(o.LoanAmountSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.LoanAmountSetBy.Get()
+}
+
+// GetLoanAmountSetByOk returns a tuple with the LoanAmountSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetLoanAmountSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LoanAmountSetBy.Get(), o.LoanAmountSetBy.IsSet()
+}
+
+// HasLoanAmountSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasLoanAmountSetBy() bool {
+	if o != nil && o.LoanAmountSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLoanAmountSetBy gets a reference to the given NullableInt32 and assigns it to the LoanAmountSetBy field.
+func (o *AccountResponse) SetLoanAmountSetBy(v int32) {
+	o.LoanAmountSetBy.Set(&v)
+}
+// SetLoanAmountSetByNil sets the value for LoanAmountSetBy to be an explicit nil
+func (o *AccountResponse) SetLoanAmountSetByNil() {
+	o.LoanAmountSetBy.Set(nil)
+}
+
+// UnsetLoanAmountSetBy ensures that no value is present for LoanAmountSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetLoanAmountSetBy() {
+	o.LoanAmountSetBy.Unset()
 }
 
 // GetMarginBalance returns the MarginBalance field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1471,6 +3677,48 @@ func (o *AccountResponse) SetMaturesOnNil() {
 // UnsetMaturesOn ensures that no value is present for MaturesOn, not even an explicit nil
 func (o *AccountResponse) UnsetMaturesOn() {
 	o.MaturesOn.Unset()
+}
+
+// GetMaturesOnSetBy returns the MaturesOnSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetMaturesOnSetBy() int32 {
+	if o == nil || IsNil(o.MaturesOnSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.MaturesOnSetBy.Get()
+}
+
+// GetMaturesOnSetByOk returns a tuple with the MaturesOnSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetMaturesOnSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MaturesOnSetBy.Get(), o.MaturesOnSetBy.IsSet()
+}
+
+// HasMaturesOnSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasMaturesOnSetBy() bool {
+	if o != nil && o.MaturesOnSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaturesOnSetBy gets a reference to the given NullableInt32 and assigns it to the MaturesOnSetBy field.
+func (o *AccountResponse) SetMaturesOnSetBy(v int32) {
+	o.MaturesOnSetBy.Set(&v)
+}
+// SetMaturesOnSetByNil sets the value for MaturesOnSetBy to be an explicit nil
+func (o *AccountResponse) SetMaturesOnSetByNil() {
+	o.MaturesOnSetBy.Set(nil)
+}
+
+// UnsetMaturesOnSetBy ensures that no value is present for MaturesOnSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetMaturesOnSetBy() {
+	o.MaturesOnSetBy.Unset()
 }
 
 // GetMemberGuid returns the MemberGuid field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1683,6 +3931,48 @@ func (o *AccountResponse) UnsetMinimumBalance() {
 	o.MinimumBalance.Unset()
 }
 
+// GetMinimumBalanceSetBy returns the MinimumBalanceSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetMinimumBalanceSetBy() int32 {
+	if o == nil || IsNil(o.MinimumBalanceSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.MinimumBalanceSetBy.Get()
+}
+
+// GetMinimumBalanceSetByOk returns a tuple with the MinimumBalanceSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetMinimumBalanceSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MinimumBalanceSetBy.Get(), o.MinimumBalanceSetBy.IsSet()
+}
+
+// HasMinimumBalanceSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasMinimumBalanceSetBy() bool {
+	if o != nil && o.MinimumBalanceSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMinimumBalanceSetBy gets a reference to the given NullableInt32 and assigns it to the MinimumBalanceSetBy field.
+func (o *AccountResponse) SetMinimumBalanceSetBy(v int32) {
+	o.MinimumBalanceSetBy.Set(&v)
+}
+// SetMinimumBalanceSetByNil sets the value for MinimumBalanceSetBy to be an explicit nil
+func (o *AccountResponse) SetMinimumBalanceSetByNil() {
+	o.MinimumBalanceSetBy.Set(nil)
+}
+
+// UnsetMinimumBalanceSetBy ensures that no value is present for MinimumBalanceSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetMinimumBalanceSetBy() {
+	o.MinimumBalanceSetBy.Unset()
+}
+
 // GetMinimumPayment returns the MinimumPayment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetMinimumPayment() float32 {
 	if o == nil || IsNil(o.MinimumPayment.Get()) {
@@ -1723,6 +4013,48 @@ func (o *AccountResponse) SetMinimumPaymentNil() {
 // UnsetMinimumPayment ensures that no value is present for MinimumPayment, not even an explicit nil
 func (o *AccountResponse) UnsetMinimumPayment() {
 	o.MinimumPayment.Unset()
+}
+
+// GetMinimumPaymentSetBy returns the MinimumPaymentSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetMinimumPaymentSetBy() int32 {
+	if o == nil || IsNil(o.MinimumPaymentSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.MinimumPaymentSetBy.Get()
+}
+
+// GetMinimumPaymentSetByOk returns a tuple with the MinimumPaymentSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetMinimumPaymentSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MinimumPaymentSetBy.Get(), o.MinimumPaymentSetBy.IsSet()
+}
+
+// HasMinimumPaymentSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasMinimumPaymentSetBy() bool {
+	if o != nil && o.MinimumPaymentSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMinimumPaymentSetBy gets a reference to the given NullableInt32 and assigns it to the MinimumPaymentSetBy field.
+func (o *AccountResponse) SetMinimumPaymentSetBy(v int32) {
+	o.MinimumPaymentSetBy.Set(&v)
+}
+// SetMinimumPaymentSetByNil sets the value for MinimumPaymentSetBy to be an explicit nil
+func (o *AccountResponse) SetMinimumPaymentSetByNil() {
+	o.MinimumPaymentSetBy.Set(nil)
+}
+
+// UnsetMinimumPaymentSetBy ensures that no value is present for MinimumPaymentSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetMinimumPaymentSetBy() {
+	o.MinimumPaymentSetBy.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1767,6 +4099,48 @@ func (o *AccountResponse) UnsetName() {
 	o.Name.Unset()
 }
 
+// GetNameSetBy returns the NameSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetNameSetBy() int32 {
+	if o == nil || IsNil(o.NameSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NameSetBy.Get()
+}
+
+// GetNameSetByOk returns a tuple with the NameSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetNameSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NameSetBy.Get(), o.NameSetBy.IsSet()
+}
+
+// HasNameSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasNameSetBy() bool {
+	if o != nil && o.NameSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNameSetBy gets a reference to the given NullableInt32 and assigns it to the NameSetBy field.
+func (o *AccountResponse) SetNameSetBy(v int32) {
+	o.NameSetBy.Set(&v)
+}
+// SetNameSetByNil sets the value for NameSetBy to be an explicit nil
+func (o *AccountResponse) SetNameSetByNil() {
+	o.NameSetBy.Set(nil)
+}
+
+// UnsetNameSetBy ensures that no value is present for NameSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetNameSetBy() {
+	o.NameSetBy.Unset()
+}
+
 // GetNickname returns the Nickname field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetNickname() string {
 	if o == nil || IsNil(o.Nickname.Get()) {
@@ -1809,6 +4183,48 @@ func (o *AccountResponse) UnsetNickname() {
 	o.Nickname.Unset()
 }
 
+// GetNicknameSetBy returns the NicknameSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetNicknameSetBy() int32 {
+	if o == nil || IsNil(o.NicknameSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NicknameSetBy.Get()
+}
+
+// GetNicknameSetByOk returns a tuple with the NicknameSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetNicknameSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NicknameSetBy.Get(), o.NicknameSetBy.IsSet()
+}
+
+// HasNicknameSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasNicknameSetBy() bool {
+	if o != nil && o.NicknameSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNicknameSetBy gets a reference to the given NullableInt32 and assigns it to the NicknameSetBy field.
+func (o *AccountResponse) SetNicknameSetBy(v int32) {
+	o.NicknameSetBy.Set(&v)
+}
+// SetNicknameSetByNil sets the value for NicknameSetBy to be an explicit nil
+func (o *AccountResponse) SetNicknameSetByNil() {
+	o.NicknameSetBy.Set(nil)
+}
+
+// UnsetNicknameSetBy ensures that no value is present for NicknameSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetNicknameSetBy() {
+	o.NicknameSetBy.Unset()
+}
+
 // GetOriginalBalance returns the OriginalBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetOriginalBalance() float32 {
 	if o == nil || IsNil(o.OriginalBalance.Get()) {
@@ -1849,6 +4265,48 @@ func (o *AccountResponse) SetOriginalBalanceNil() {
 // UnsetOriginalBalance ensures that no value is present for OriginalBalance, not even an explicit nil
 func (o *AccountResponse) UnsetOriginalBalance() {
 	o.OriginalBalance.Unset()
+}
+
+// GetOriginalBalanceSetBy returns the OriginalBalanceSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetOriginalBalanceSetBy() int32 {
+	if o == nil || IsNil(o.OriginalBalanceSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.OriginalBalanceSetBy.Get()
+}
+
+// GetOriginalBalanceSetByOk returns a tuple with the OriginalBalanceSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetOriginalBalanceSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OriginalBalanceSetBy.Get(), o.OriginalBalanceSetBy.IsSet()
+}
+
+// HasOriginalBalanceSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasOriginalBalanceSetBy() bool {
+	if o != nil && o.OriginalBalanceSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginalBalanceSetBy gets a reference to the given NullableInt32 and assigns it to the OriginalBalanceSetBy field.
+func (o *AccountResponse) SetOriginalBalanceSetBy(v int32) {
+	o.OriginalBalanceSetBy.Set(&v)
+}
+// SetOriginalBalanceSetByNil sets the value for OriginalBalanceSetBy to be an explicit nil
+func (o *AccountResponse) SetOriginalBalanceSetByNil() {
+	o.OriginalBalanceSetBy.Set(nil)
+}
+
+// UnsetOriginalBalanceSetBy ensures that no value is present for OriginalBalanceSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetOriginalBalanceSetBy() {
+	o.OriginalBalanceSetBy.Unset()
 }
 
 // GetPayOutAmount returns the PayOutAmount field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1935,6 +4393,48 @@ func (o *AccountResponse) UnsetPaymentDueAt() {
 	o.PaymentDueAt.Unset()
 }
 
+// GetPaymentDueAtSetBy returns the PaymentDueAtSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetPaymentDueAtSetBy() int32 {
+	if o == nil || IsNil(o.PaymentDueAtSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.PaymentDueAtSetBy.Get()
+}
+
+// GetPaymentDueAtSetByOk returns a tuple with the PaymentDueAtSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetPaymentDueAtSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PaymentDueAtSetBy.Get(), o.PaymentDueAtSetBy.IsSet()
+}
+
+// HasPaymentDueAtSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasPaymentDueAtSetBy() bool {
+	if o != nil && o.PaymentDueAtSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentDueAtSetBy gets a reference to the given NullableInt32 and assigns it to the PaymentDueAtSetBy field.
+func (o *AccountResponse) SetPaymentDueAtSetBy(v int32) {
+	o.PaymentDueAtSetBy.Set(&v)
+}
+// SetPaymentDueAtSetByNil sets the value for PaymentDueAtSetBy to be an explicit nil
+func (o *AccountResponse) SetPaymentDueAtSetByNil() {
+	o.PaymentDueAtSetBy.Set(nil)
+}
+
+// UnsetPaymentDueAtSetBy ensures that no value is present for PaymentDueAtSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetPaymentDueAtSetBy() {
+	o.PaymentDueAtSetBy.Unset()
+}
+
 // GetPayoffBalance returns the PayoffBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetPayoffBalance() float32 {
 	if o == nil || IsNil(o.PayoffBalance.Get()) {
@@ -1977,10 +4477,52 @@ func (o *AccountResponse) UnsetPayoffBalance() {
 	o.PayoffBalance.Unset()
 }
 
+// GetPayoffBalanceSetBy returns the PayoffBalanceSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetPayoffBalanceSetBy() int32 {
+	if o == nil || IsNil(o.PayoffBalanceSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.PayoffBalanceSetBy.Get()
+}
+
+// GetPayoffBalanceSetByOk returns a tuple with the PayoffBalanceSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetPayoffBalanceSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PayoffBalanceSetBy.Get(), o.PayoffBalanceSetBy.IsSet()
+}
+
+// HasPayoffBalanceSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasPayoffBalanceSetBy() bool {
+	if o != nil && o.PayoffBalanceSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPayoffBalanceSetBy gets a reference to the given NullableInt32 and assigns it to the PayoffBalanceSetBy field.
+func (o *AccountResponse) SetPayoffBalanceSetBy(v int32) {
+	o.PayoffBalanceSetBy.Set(&v)
+}
+// SetPayoffBalanceSetByNil sets the value for PayoffBalanceSetBy to be an explicit nil
+func (o *AccountResponse) SetPayoffBalanceSetByNil() {
+	o.PayoffBalanceSetBy.Set(nil)
+}
+
+// UnsetPayoffBalanceSetBy ensures that no value is present for PayoffBalanceSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetPayoffBalanceSetBy() {
+	o.PayoffBalanceSetBy.Unset()
+}
+
 // GetPremiumAmount returns the PremiumAmount field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountResponse) GetPremiumAmount() float32 {
+func (o *AccountResponse) GetPremiumAmount() string {
 	if o == nil || IsNil(o.PremiumAmount.Get()) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.PremiumAmount.Get()
@@ -1989,7 +4531,7 @@ func (o *AccountResponse) GetPremiumAmount() float32 {
 // GetPremiumAmountOk returns a tuple with the PremiumAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountResponse) GetPremiumAmountOk() (*float32, bool) {
+func (o *AccountResponse) GetPremiumAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -2005,8 +4547,8 @@ func (o *AccountResponse) HasPremiumAmount() bool {
 	return false
 }
 
-// SetPremiumAmount gets a reference to the given NullableFloat32 and assigns it to the PremiumAmount field.
-func (o *AccountResponse) SetPremiumAmount(v float32) {
+// SetPremiumAmount gets a reference to the given NullableString and assigns it to the PremiumAmount field.
+func (o *AccountResponse) SetPremiumAmount(v string) {
 	o.PremiumAmount.Set(&v)
 }
 // SetPremiumAmountNil sets the value for PremiumAmount to be an explicit nil
@@ -2020,9 +4562,9 @@ func (o *AccountResponse) UnsetPremiumAmount() {
 }
 
 // GetPropertyType returns the PropertyType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountResponse) GetPropertyType() string {
+func (o *AccountResponse) GetPropertyType() int32 {
 	if o == nil || IsNil(o.PropertyType.Get()) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.PropertyType.Get()
@@ -2031,7 +4573,7 @@ func (o *AccountResponse) GetPropertyType() string {
 // GetPropertyTypeOk returns a tuple with the PropertyType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountResponse) GetPropertyTypeOk() (*string, bool) {
+func (o *AccountResponse) GetPropertyTypeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -2047,8 +4589,8 @@ func (o *AccountResponse) HasPropertyType() bool {
 	return false
 }
 
-// SetPropertyType gets a reference to the given NullableString and assigns it to the PropertyType field.
-func (o *AccountResponse) SetPropertyType(v string) {
+// SetPropertyType gets a reference to the given NullableInt32 and assigns it to the PropertyType field.
+func (o *AccountResponse) SetPropertyType(v int32) {
 	o.PropertyType.Set(&v)
 }
 // SetPropertyTypeNil sets the value for PropertyType to be an explicit nil
@@ -2145,6 +4687,48 @@ func (o *AccountResponse) UnsetStartedOn() {
 	o.StartedOn.Unset()
 }
 
+// GetStartedOnSetBy returns the StartedOnSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetStartedOnSetBy() int32 {
+	if o == nil || IsNil(o.StartedOnSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.StartedOnSetBy.Get()
+}
+
+// GetStartedOnSetByOk returns a tuple with the StartedOnSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetStartedOnSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StartedOnSetBy.Get(), o.StartedOnSetBy.IsSet()
+}
+
+// HasStartedOnSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasStartedOnSetBy() bool {
+	if o != nil && o.StartedOnSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStartedOnSetBy gets a reference to the given NullableInt32 and assigns it to the StartedOnSetBy field.
+func (o *AccountResponse) SetStartedOnSetBy(v int32) {
+	o.StartedOnSetBy.Set(&v)
+}
+// SetStartedOnSetByNil sets the value for StartedOnSetBy to be an explicit nil
+func (o *AccountResponse) SetStartedOnSetByNil() {
+	o.StartedOnSetBy.Set(nil)
+}
+
+// UnsetStartedOnSetBy ensures that no value is present for StartedOnSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetStartedOnSetBy() {
+	o.StartedOnSetBy.Unset()
+}
+
 // GetStatementBalance returns the StatementBalance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetStatementBalance() float32 {
 	if o == nil || IsNil(o.StatementBalance.Get()) {
@@ -2187,6 +4771,48 @@ func (o *AccountResponse) UnsetStatementBalance() {
 	o.StatementBalance.Unset()
 }
 
+// GetStatementBalanceSetBy returns the StatementBalanceSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetStatementBalanceSetBy() int32 {
+	if o == nil || IsNil(o.StatementBalanceSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.StatementBalanceSetBy.Get()
+}
+
+// GetStatementBalanceSetByOk returns a tuple with the StatementBalanceSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetStatementBalanceSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StatementBalanceSetBy.Get(), o.StatementBalanceSetBy.IsSet()
+}
+
+// HasStatementBalanceSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasStatementBalanceSetBy() bool {
+	if o != nil && o.StatementBalanceSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStatementBalanceSetBy gets a reference to the given NullableInt32 and assigns it to the StatementBalanceSetBy field.
+func (o *AccountResponse) SetStatementBalanceSetBy(v int32) {
+	o.StatementBalanceSetBy.Set(&v)
+}
+// SetStatementBalanceSetByNil sets the value for StatementBalanceSetBy to be an explicit nil
+func (o *AccountResponse) SetStatementBalanceSetByNil() {
+	o.StatementBalanceSetBy.Set(nil)
+}
+
+// UnsetStatementBalanceSetBy ensures that no value is present for StatementBalanceSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetStatementBalanceSetBy() {
+	o.StatementBalanceSetBy.Unset()
+}
+
 // GetSubtype returns the Subtype field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetSubtype() string {
 	if o == nil || IsNil(o.Subtype.Get()) {
@@ -2227,6 +4853,48 @@ func (o *AccountResponse) SetSubtypeNil() {
 // UnsetSubtype ensures that no value is present for Subtype, not even an explicit nil
 func (o *AccountResponse) UnsetSubtype() {
 	o.Subtype.Unset()
+}
+
+// GetSubtypeSetBy returns the SubtypeSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetSubtypeSetBy() int32 {
+	if o == nil || IsNil(o.SubtypeSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.SubtypeSetBy.Get()
+}
+
+// GetSubtypeSetByOk returns a tuple with the SubtypeSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetSubtypeSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SubtypeSetBy.Get(), o.SubtypeSetBy.IsSet()
+}
+
+// HasSubtypeSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasSubtypeSetBy() bool {
+	if o != nil && o.SubtypeSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSubtypeSetBy gets a reference to the given NullableInt32 and assigns it to the SubtypeSetBy field.
+func (o *AccountResponse) SetSubtypeSetBy(v int32) {
+	o.SubtypeSetBy.Set(&v)
+}
+// SetSubtypeSetByNil sets the value for SubtypeSetBy to be an explicit nil
+func (o *AccountResponse) SetSubtypeSetByNil() {
+	o.SubtypeSetBy.Set(nil)
+}
+
+// UnsetSubtypeSetBy ensures that no value is present for SubtypeSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetSubtypeSetBy() {
+	o.SubtypeSetBy.Unset()
 }
 
 // GetTodayUglAmount returns the TodayUglAmount field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -2355,6 +5023,48 @@ func (o *AccountResponse) UnsetTotalAccountValue() {
 	o.TotalAccountValue.Unset()
 }
 
+// GetTotalAccountValueSetBy returns the TotalAccountValueSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetTotalAccountValueSetBy() int32 {
+	if o == nil || IsNil(o.TotalAccountValueSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalAccountValueSetBy.Get()
+}
+
+// GetTotalAccountValueSetByOk returns a tuple with the TotalAccountValueSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetTotalAccountValueSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TotalAccountValueSetBy.Get(), o.TotalAccountValueSetBy.IsSet()
+}
+
+// HasTotalAccountValueSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasTotalAccountValueSetBy() bool {
+	if o != nil && o.TotalAccountValueSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalAccountValueSetBy gets a reference to the given NullableInt32 and assigns it to the TotalAccountValueSetBy field.
+func (o *AccountResponse) SetTotalAccountValueSetBy(v int32) {
+	o.TotalAccountValueSetBy.Set(&v)
+}
+// SetTotalAccountValueSetByNil sets the value for TotalAccountValueSetBy to be an explicit nil
+func (o *AccountResponse) SetTotalAccountValueSetByNil() {
+	o.TotalAccountValueSetBy.Set(nil)
+}
+
+// UnsetTotalAccountValueSetBy ensures that no value is present for TotalAccountValueSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetTotalAccountValueSetBy() {
+	o.TotalAccountValueSetBy.Unset()
+}
+
 // GetTotalAccountValueUgl returns the TotalAccountValueUgl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountResponse) GetTotalAccountValueUgl() float32 {
 	if o == nil || IsNil(o.TotalAccountValueUgl.Get()) {
@@ -2437,6 +5147,48 @@ func (o *AccountResponse) SetTypeNil() {
 // UnsetType ensures that no value is present for Type, not even an explicit nil
 func (o *AccountResponse) UnsetType() {
 	o.Type.Unset()
+}
+
+// GetTypeSetBy returns the TypeSetBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountResponse) GetTypeSetBy() int32 {
+	if o == nil || IsNil(o.TypeSetBy.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.TypeSetBy.Get()
+}
+
+// GetTypeSetByOk returns a tuple with the TypeSetBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountResponse) GetTypeSetByOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TypeSetBy.Get(), o.TypeSetBy.IsSet()
+}
+
+// HasTypeSetBy returns a boolean if a field has been set.
+func (o *AccountResponse) HasTypeSetBy() bool {
+	if o != nil && o.TypeSetBy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTypeSetBy gets a reference to the given NullableInt32 and assigns it to the TypeSetBy field.
+func (o *AccountResponse) SetTypeSetBy(v int32) {
+	o.TypeSetBy.Set(&v)
+}
+// SetTypeSetByNil sets the value for TypeSetBy to be an explicit nil
+func (o *AccountResponse) SetTypeSetByNil() {
+	o.TypeSetBy.Set(nil)
+}
+
+// UnsetTypeSetBy ensures that no value is present for TypeSetBy, not even an explicit nil
+func (o *AccountResponse) UnsetTypeSetBy() {
+	o.TypeSetBy.Unset()
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -2578,6 +5330,9 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.AccountNumber.IsSet() {
 		toSerialize["account_number"] = o.AccountNumber.Get()
 	}
+	if o.AccountNumberSetBy.IsSet() {
+		toSerialize["account_number_set_by"] = o.AccountNumberSetBy.Get()
+	}
 	if o.AccountOwnership.IsSet() {
 		toSerialize["account_ownership"] = o.AccountOwnership.Get()
 	}
@@ -2593,23 +5348,47 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.Apr.IsSet() {
 		toSerialize["apr"] = o.Apr.Get()
 	}
+	if o.AprSetBy.IsSet() {
+		toSerialize["apr_set_by"] = o.AprSetBy.Get()
+	}
 	if o.Apy.IsSet() {
 		toSerialize["apy"] = o.Apy.Get()
+	}
+	if o.ApySetBy.IsSet() {
+		toSerialize["apy_set_by"] = o.ApySetBy.Get()
 	}
 	if o.AvailableBalance.IsSet() {
 		toSerialize["available_balance"] = o.AvailableBalance.Get()
 	}
+	if o.AvailableBalanceSetBy.IsSet() {
+		toSerialize["available_balance_set_by"] = o.AvailableBalanceSetBy.Get()
+	}
 	if o.AvailableCredit.IsSet() {
 		toSerialize["available_credit"] = o.AvailableCredit.Get()
+	}
+	if o.AvailableCreditSetBy.IsSet() {
+		toSerialize["available_credit_set_by"] = o.AvailableCreditSetBy.Get()
 	}
 	if o.Balance.IsSet() {
 		toSerialize["balance"] = o.Balance.Get()
 	}
+	if o.BalanceSetBy.IsSet() {
+		toSerialize["balance_set_by"] = o.BalanceSetBy.Get()
+	}
+	if o.CalculatedApr.IsSet() {
+		toSerialize["calculated_apr"] = o.CalculatedApr.Get()
+	}
 	if o.CashBalance.IsSet() {
 		toSerialize["cash_balance"] = o.CashBalance.Get()
 	}
+	if o.CashBalanceSetBy.IsSet() {
+		toSerialize["cash_balance_set_by"] = o.CashBalanceSetBy.Get()
+	}
 	if o.CashSurrenderValue.IsSet() {
 		toSerialize["cash_surrender_value"] = o.CashSurrenderValue.Get()
+	}
+	if o.CashSurrenderValueSetBy.IsSet() {
+		toSerialize["cash_surrender_value_set_by"] = o.CashSurrenderValueSetBy.Get()
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
@@ -2617,23 +5396,131 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.CreditLimit.IsSet() {
 		toSerialize["credit_limit"] = o.CreditLimit.Get()
 	}
+	if o.CreditLimitSetBy.IsSet() {
+		toSerialize["credit_limit_set_by"] = o.CreditLimitSetBy.Get()
+	}
 	if o.CurrencyCode.IsSet() {
 		toSerialize["currency_code"] = o.CurrencyCode.Get()
+	}
+	if o.CurrencyCodeSetBy.IsSet() {
+		toSerialize["currency_code_set_by"] = o.CurrencyCodeSetBy.Get()
 	}
 	if o.DayPaymentIsDue.IsSet() {
 		toSerialize["day_payment_is_due"] = o.DayPaymentIsDue.Get()
 	}
+	if o.DayPaymentIsDueSetBy.IsSet() {
+		toSerialize["day_payment_is_due_set_by"] = o.DayPaymentIsDueSetBy.Get()
+	}
 	if o.DeathBenefit.IsSet() {
 		toSerialize["death_benefit"] = o.DeathBenefit.Get()
 	}
+	if o.DeathBenefitSetBy.IsSet() {
+		toSerialize["death_benefit_set_by"] = o.DeathBenefitSetBy.Get()
+	}
 	if o.FederalInsuranceStatus.IsSet() {
 		toSerialize["federal_insurance_status"] = o.FederalInsuranceStatus.Get()
+	}
+	if o.FeedAccountNumber.IsSet() {
+		toSerialize["feed_account_number"] = o.FeedAccountNumber.Get()
+	}
+	if o.FeedAccountSubtype.IsSet() {
+		toSerialize["feed_account_subtype"] = o.FeedAccountSubtype.Get()
+	}
+	if o.FeedAccountType.IsSet() {
+		toSerialize["feed_account_type"] = o.FeedAccountType.Get()
+	}
+	if o.FeedApr.IsSet() {
+		toSerialize["feed_apr"] = o.FeedApr.Get()
+	}
+	if o.FeedApy.IsSet() {
+		toSerialize["feed_apy"] = o.FeedApy.Get()
+	}
+	if o.FeedAvailableBalance.IsSet() {
+		toSerialize["feed_available_balance"] = o.FeedAvailableBalance.Get()
+	}
+	if o.FeedBalance.IsSet() {
+		toSerialize["feed_balance"] = o.FeedBalance.Get()
+	}
+	if o.FeedCashBalance.IsSet() {
+		toSerialize["feed_cash_balance"] = o.FeedCashBalance.Get()
+	}
+	if o.FeedCashSurrenderValue.IsSet() {
+		toSerialize["feed_cash_surrender_value"] = o.FeedCashSurrenderValue.Get()
+	}
+	if o.FeedCreditLimit.IsSet() {
+		toSerialize["feed_credit_limit"] = o.FeedCreditLimit.Get()
+	}
+	if o.FeedCurrencyCode.IsSet() {
+		toSerialize["feed_currency_code"] = o.FeedCurrencyCode.Get()
+	}
+	if o.FeedDayPaymentIsDue.IsSet() {
+		toSerialize["feed_day_payment_is_due"] = o.FeedDayPaymentIsDue.Get()
+	}
+	if o.FeedDeathBenefit.IsSet() {
+		toSerialize["feed_death_benefit"] = o.FeedDeathBenefit.Get()
+	}
+	if o.FeedHoldingsValue.IsSet() {
+		toSerialize["feed_holdings_value"] = o.FeedHoldingsValue.Get()
+	}
+	if o.FeedInterestRate.IsSet() {
+		toSerialize["feed_interest_rate"] = o.FeedInterestRate.Get()
+	}
+	if o.FeedIsClosed.IsSet() {
+		toSerialize["feed_is_closed"] = o.FeedIsClosed.Get()
+	}
+	if o.FeedLastPayment.IsSet() {
+		toSerialize["feed_last_payment"] = o.FeedLastPayment.Get()
+	}
+	if o.FeedLastPaymentAt.IsSet() {
+		toSerialize["feed_last_payment_at"] = o.FeedLastPaymentAt.Get()
+	}
+	if o.FeedLoanAmount.IsSet() {
+		toSerialize["feed_loan_amount"] = o.FeedLoanAmount.Get()
+	}
+	if o.FeedMaturesOn.IsSet() {
+		toSerialize["feed_matures_on"] = o.FeedMaturesOn.Get()
+	}
+	if o.FeedMinimumBalance.IsSet() {
+		toSerialize["feed_minimum_balance"] = o.FeedMinimumBalance.Get()
+	}
+	if o.FeedMinimumPayment.IsSet() {
+		toSerialize["feed_minimum_payment"] = o.FeedMinimumPayment.Get()
+	}
+	if o.FeedName.IsSet() {
+		toSerialize["feed_name"] = o.FeedName.Get()
+	}
+	if o.FeedNickname.IsSet() {
+		toSerialize["feed_nickname"] = o.FeedNickname.Get()
+	}
+	if o.FeedOriginalBalance.IsSet() {
+		toSerialize["feed_original_balance"] = o.FeedOriginalBalance.Get()
+	}
+	if o.FeedPaymentDueAt.IsSet() {
+		toSerialize["feed_payment_due_at"] = o.FeedPaymentDueAt.Get()
+	}
+	if o.FeedPayoffBalance.IsSet() {
+		toSerialize["feed_payoff_balance"] = o.FeedPayoffBalance.Get()
+	}
+	if o.FeedRoutingNumber.IsSet() {
+		toSerialize["feed_routing_number"] = o.FeedRoutingNumber.Get()
+	}
+	if o.FeedStartedOn.IsSet() {
+		toSerialize["feed_started_on"] = o.FeedStartedOn.Get()
+	}
+	if o.FeedStatementBalance.IsSet() {
+		toSerialize["feed_statement_balance"] = o.FeedStatementBalance.Get()
+	}
+	if o.FeedTotalAccountValue.IsSet() {
+		toSerialize["feed_total_account_value"] = o.FeedTotalAccountValue.Get()
 	}
 	if o.Guid.IsSet() {
 		toSerialize["guid"] = o.Guid.Get()
 	}
 	if o.HoldingsValue.IsSet() {
 		toSerialize["holdings_value"] = o.HoldingsValue.Get()
+	}
+	if o.HoldingsValueSetBy.IsSet() {
+		toSerialize["holdings_value_set_by"] = o.HoldingsValueSetBy.Get()
 	}
 	if o.Id.IsSet() {
 		toSerialize["id"] = o.Id.Get()
@@ -2644,14 +5531,23 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.InstitutionCode.IsSet() {
 		toSerialize["institution_code"] = o.InstitutionCode.Get()
 	}
+	if o.InstitutionGuid.IsSet() {
+		toSerialize["institution_guid"] = o.InstitutionGuid.Get()
+	}
 	if o.InsuredName.IsSet() {
 		toSerialize["insured_name"] = o.InsuredName.Get()
 	}
 	if o.InterestRate.IsSet() {
 		toSerialize["interest_rate"] = o.InterestRate.Get()
 	}
+	if o.InterestRateSetBy.IsSet() {
+		toSerialize["interest_rate_set_by"] = o.InterestRateSetBy.Get()
+	}
 	if o.IsClosed.IsSet() {
 		toSerialize["is_closed"] = o.IsClosed.Get()
+	}
+	if o.IsClosedSetBy.IsSet() {
+		toSerialize["is_closed_set_by"] = o.IsClosedSetBy.Get()
 	}
 	if o.IsHidden.IsSet() {
 		toSerialize["is_hidden"] = o.IsHidden.Get()
@@ -2662,17 +5558,29 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.LastPayment.IsSet() {
 		toSerialize["last_payment"] = o.LastPayment.Get()
 	}
+	if o.LastPaymentSetBy.IsSet() {
+		toSerialize["last_payment_set_by"] = o.LastPaymentSetBy.Get()
+	}
 	if o.LastPaymentAt.IsSet() {
 		toSerialize["last_payment_at"] = o.LastPaymentAt.Get()
 	}
+	if o.LastPaymentAtSetBy.IsSet() {
+		toSerialize["last_payment_at_set_by"] = o.LastPaymentAtSetBy.Get()
+	}
 	if o.LoanAmount.IsSet() {
 		toSerialize["loan_amount"] = o.LoanAmount.Get()
+	}
+	if o.LoanAmountSetBy.IsSet() {
+		toSerialize["loan_amount_set_by"] = o.LoanAmountSetBy.Get()
 	}
 	if o.MarginBalance.IsSet() {
 		toSerialize["margin_balance"] = o.MarginBalance.Get()
 	}
 	if o.MaturesOn.IsSet() {
 		toSerialize["matures_on"] = o.MaturesOn.Get()
+	}
+	if o.MaturesOnSetBy.IsSet() {
+		toSerialize["matures_on_set_by"] = o.MaturesOnSetBy.Get()
 	}
 	if o.MemberGuid.IsSet() {
 		toSerialize["member_guid"] = o.MemberGuid.Get()
@@ -2689,17 +5597,32 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.MinimumBalance.IsSet() {
 		toSerialize["minimum_balance"] = o.MinimumBalance.Get()
 	}
+	if o.MinimumBalanceSetBy.IsSet() {
+		toSerialize["minimum_balance_set_by"] = o.MinimumBalanceSetBy.Get()
+	}
 	if o.MinimumPayment.IsSet() {
 		toSerialize["minimum_payment"] = o.MinimumPayment.Get()
+	}
+	if o.MinimumPaymentSetBy.IsSet() {
+		toSerialize["minimum_payment_set_by"] = o.MinimumPaymentSetBy.Get()
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+	if o.NameSetBy.IsSet() {
+		toSerialize["name_set_by"] = o.NameSetBy.Get()
+	}
 	if o.Nickname.IsSet() {
 		toSerialize["nickname"] = o.Nickname.Get()
 	}
+	if o.NicknameSetBy.IsSet() {
+		toSerialize["nickname_set_by"] = o.NicknameSetBy.Get()
+	}
 	if o.OriginalBalance.IsSet() {
 		toSerialize["original_balance"] = o.OriginalBalance.Get()
+	}
+	if o.OriginalBalanceSetBy.IsSet() {
+		toSerialize["original_balance_set_by"] = o.OriginalBalanceSetBy.Get()
 	}
 	if o.PayOutAmount.IsSet() {
 		toSerialize["pay_out_amount"] = o.PayOutAmount.Get()
@@ -2707,8 +5630,14 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.PaymentDueAt.IsSet() {
 		toSerialize["payment_due_at"] = o.PaymentDueAt.Get()
 	}
+	if o.PaymentDueAtSetBy.IsSet() {
+		toSerialize["payment_due_at_set_by"] = o.PaymentDueAtSetBy.Get()
+	}
 	if o.PayoffBalance.IsSet() {
 		toSerialize["payoff_balance"] = o.PayoffBalance.Get()
+	}
+	if o.PayoffBalanceSetBy.IsSet() {
+		toSerialize["payoff_balance_set_by"] = o.PayoffBalanceSetBy.Get()
 	}
 	if o.PremiumAmount.IsSet() {
 		toSerialize["premium_amount"] = o.PremiumAmount.Get()
@@ -2722,11 +5651,20 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.StartedOn.IsSet() {
 		toSerialize["started_on"] = o.StartedOn.Get()
 	}
+	if o.StartedOnSetBy.IsSet() {
+		toSerialize["started_on_set_by"] = o.StartedOnSetBy.Get()
+	}
 	if o.StatementBalance.IsSet() {
 		toSerialize["statement_balance"] = o.StatementBalance.Get()
 	}
+	if o.StatementBalanceSetBy.IsSet() {
+		toSerialize["statement_balance_set_by"] = o.StatementBalanceSetBy.Get()
+	}
 	if o.Subtype.IsSet() {
 		toSerialize["subtype"] = o.Subtype.Get()
+	}
+	if o.SubtypeSetBy.IsSet() {
+		toSerialize["subtype_set_by"] = o.SubtypeSetBy.Get()
 	}
 	if o.TodayUglAmount.IsSet() {
 		toSerialize["today_ugl_amount"] = o.TodayUglAmount.Get()
@@ -2737,11 +5675,17 @@ func (o AccountResponse) ToMap() (map[string]interface{}, error) {
 	if o.TotalAccountValue.IsSet() {
 		toSerialize["total_account_value"] = o.TotalAccountValue.Get()
 	}
+	if o.TotalAccountValueSetBy.IsSet() {
+		toSerialize["total_account_value_set_by"] = o.TotalAccountValueSetBy.Get()
+	}
 	if o.TotalAccountValueUgl.IsSet() {
 		toSerialize["total_account_value_ugl"] = o.TotalAccountValueUgl.Get()
 	}
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
+	}
+	if o.TypeSetBy.IsSet() {
+		toSerialize["type_set_by"] = o.TypeSetBy.Get()
 	}
 	if o.UpdatedAt.IsSet() {
 		toSerialize["updated_at"] = o.UpdatedAt.Get()
