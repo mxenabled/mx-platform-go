@@ -116,7 +116,7 @@ Method | HTTP request | Description
 
 ## AggregateMember
 
-> MemberResponseBody AggregateMember(ctx, memberGuid, userGuid).Execute()
+> MemberResponseBody AggregateMember(ctx, memberGuid, userGuid).IncludeHoldings(includeHoldings).IncludeTransactions(includeTransactions).Execute()
 
 Aggregate member
 
@@ -137,10 +137,12 @@ import (
 func main() {
     memberGuid := "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for a `member`.
     userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    includeHoldings := false // bool | When set to `false`, the aggregation will not gather holdings data. Defaults to `true`. (optional)
+    includeTransactions := false // bool | When set to `false`, the aggregation will not gather transactions data. Defaults to `true`. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MxPlatformAPI.AggregateMember(context.Background(), memberGuid, userGuid).Execute()
+    resp, r, err := apiClient.MxPlatformAPI.AggregateMember(context.Background(), memberGuid, userGuid).IncludeHoldings(includeHoldings).IncludeTransactions(includeTransactions).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MxPlatformAPI.AggregateMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -168,6 +170,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **includeHoldings** | **bool** | When set to &#x60;false&#x60;, the aggregation will not gather holdings data. Defaults to &#x60;true&#x60;. | 
+ **includeTransactions** | **bool** | When set to &#x60;false&#x60;, the aggregation will not gather transactions data. Defaults to &#x60;true&#x60;. | 
 
 ### Return type
 

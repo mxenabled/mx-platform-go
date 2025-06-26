@@ -123,8 +123,8 @@ type AccountResponse struct {
 	PaymentDueAtSetBy NullableInt32 `json:"payment_due_at_set_by,omitempty"`
 	PayoffBalance NullableFloat32 `json:"payoff_balance,omitempty"`
 	PayoffBalanceSetBy NullableInt32 `json:"payoff_balance_set_by,omitempty"`
-	PremiumAmount NullableString `json:"premium_amount,omitempty"`
-	PropertyType NullableInt32 `json:"property_type,omitempty"`
+	PremiumAmount NullableFloat32 `json:"premium_amount,omitempty"`
+	PropertyType NullableString `json:"property_type,omitempty"`
 	RoutingNumber NullableString `json:"routing_number,omitempty"`
 	StartedOn NullableString `json:"started_on,omitempty"`
 	StartedOnSetBy NullableInt32 `json:"started_on_set_by,omitempty"`
@@ -4520,9 +4520,9 @@ func (o *AccountResponse) UnsetPayoffBalanceSetBy() {
 }
 
 // GetPremiumAmount returns the PremiumAmount field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountResponse) GetPremiumAmount() string {
+func (o *AccountResponse) GetPremiumAmount() float32 {
 	if o == nil || IsNil(o.PremiumAmount.Get()) {
-		var ret string
+		var ret float32
 		return ret
 	}
 	return *o.PremiumAmount.Get()
@@ -4531,7 +4531,7 @@ func (o *AccountResponse) GetPremiumAmount() string {
 // GetPremiumAmountOk returns a tuple with the PremiumAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountResponse) GetPremiumAmountOk() (*string, bool) {
+func (o *AccountResponse) GetPremiumAmountOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -4547,8 +4547,8 @@ func (o *AccountResponse) HasPremiumAmount() bool {
 	return false
 }
 
-// SetPremiumAmount gets a reference to the given NullableString and assigns it to the PremiumAmount field.
-func (o *AccountResponse) SetPremiumAmount(v string) {
+// SetPremiumAmount gets a reference to the given NullableFloat32 and assigns it to the PremiumAmount field.
+func (o *AccountResponse) SetPremiumAmount(v float32) {
 	o.PremiumAmount.Set(&v)
 }
 // SetPremiumAmountNil sets the value for PremiumAmount to be an explicit nil
@@ -4562,9 +4562,9 @@ func (o *AccountResponse) UnsetPremiumAmount() {
 }
 
 // GetPropertyType returns the PropertyType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountResponse) GetPropertyType() int32 {
+func (o *AccountResponse) GetPropertyType() string {
 	if o == nil || IsNil(o.PropertyType.Get()) {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.PropertyType.Get()
@@ -4573,7 +4573,7 @@ func (o *AccountResponse) GetPropertyType() int32 {
 // GetPropertyTypeOk returns a tuple with the PropertyType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountResponse) GetPropertyTypeOk() (*int32, bool) {
+func (o *AccountResponse) GetPropertyTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -4589,8 +4589,8 @@ func (o *AccountResponse) HasPropertyType() bool {
 	return false
 }
 
-// SetPropertyType gets a reference to the given NullableInt32 and assigns it to the PropertyType field.
-func (o *AccountResponse) SetPropertyType(v int32) {
+// SetPropertyType gets a reference to the given NullableString and assigns it to the PropertyType field.
+func (o *AccountResponse) SetPropertyType(v string) {
 	o.PropertyType.Set(&v)
 }
 // SetPropertyTypeNil sets the value for PropertyType to be an explicit nil

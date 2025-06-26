@@ -29,6 +29,20 @@ type ApiAggregateMemberRequest struct {
 	ApiService *MxPlatformAPIService
 	memberGuid string
 	userGuid string
+	includeHoldings *bool
+	includeTransactions *bool
+}
+
+// When set to &#x60;false&#x60;, the aggregation will not gather holdings data. Defaults to &#x60;true&#x60;.
+func (r ApiAggregateMemberRequest) IncludeHoldings(includeHoldings bool) ApiAggregateMemberRequest {
+	r.includeHoldings = &includeHoldings
+	return r
+}
+
+// When set to &#x60;false&#x60;, the aggregation will not gather transactions data. Defaults to &#x60;true&#x60;.
+func (r ApiAggregateMemberRequest) IncludeTransactions(includeTransactions bool) ApiAggregateMemberRequest {
+	r.includeTransactions = &includeTransactions
+	return r
 }
 
 func (r ApiAggregateMemberRequest) Execute() (*MemberResponseBody, *http.Response, error) {
@@ -77,6 +91,12 @@ func (a *MxPlatformAPIService) AggregateMemberExecute(r ApiAggregateMemberReques
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.includeHoldings != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_holdings", r.includeHoldings, "")
+	}
+	if r.includeTransactions != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_transactions", r.includeTransactions, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

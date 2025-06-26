@@ -108,8 +108,8 @@ Name | Type | Description | Notes
 **PaymentDueAtSetBy** | Pointer to **NullableInt32** |  | [optional] 
 **PayoffBalance** | Pointer to **NullableFloat32** |  | [optional] 
 **PayoffBalanceSetBy** | Pointer to **NullableInt32** |  | [optional] 
-**PremiumAmount** | Pointer to **NullableString** |  | [optional] 
-**PropertyType** | Pointer to **NullableInt32** |  | [optional] 
+**PremiumAmount** | Pointer to **NullableFloat32** |  | [optional] 
+**PropertyType** | Pointer to **NullableString** |  | [optional] 
 **RoutingNumber** | Pointer to **NullableString** |  | [optional] 
 **StartedOn** | Pointer to **NullableString** |  | [optional] 
 **StartedOnSetBy** | Pointer to **NullableInt32** |  | [optional] 
@@ -3779,20 +3779,20 @@ HasPayoffBalanceSetBy returns a boolean if a field has been set.
 UnsetPayoffBalanceSetBy ensures that no value is present for PayoffBalanceSetBy, not even an explicit nil
 ### GetPremiumAmount
 
-`func (o *AccountResponse) GetPremiumAmount() string`
+`func (o *AccountResponse) GetPremiumAmount() float32`
 
 GetPremiumAmount returns the PremiumAmount field if non-nil, zero value otherwise.
 
 ### GetPremiumAmountOk
 
-`func (o *AccountResponse) GetPremiumAmountOk() (*string, bool)`
+`func (o *AccountResponse) GetPremiumAmountOk() (*float32, bool)`
 
 GetPremiumAmountOk returns a tuple with the PremiumAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPremiumAmount
 
-`func (o *AccountResponse) SetPremiumAmount(v string)`
+`func (o *AccountResponse) SetPremiumAmount(v float32)`
 
 SetPremiumAmount sets PremiumAmount field to given value.
 
@@ -3814,20 +3814,20 @@ HasPremiumAmount returns a boolean if a field has been set.
 UnsetPremiumAmount ensures that no value is present for PremiumAmount, not even an explicit nil
 ### GetPropertyType
 
-`func (o *AccountResponse) GetPropertyType() int32`
+`func (o *AccountResponse) GetPropertyType() string`
 
 GetPropertyType returns the PropertyType field if non-nil, zero value otherwise.
 
 ### GetPropertyTypeOk
 
-`func (o *AccountResponse) GetPropertyTypeOk() (*int32, bool)`
+`func (o *AccountResponse) GetPropertyTypeOk() (*string, bool)`
 
 GetPropertyTypeOk returns a tuple with the PropertyType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPropertyType
 
-`func (o *AccountResponse) SetPropertyType(v int32)`
+`func (o *AccountResponse) SetPropertyType(v string)`
 
 SetPropertyType sets PropertyType field to given value.
 
