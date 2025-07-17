@@ -19,6 +19,7 @@ var _ MappedNullable = &OptionResponse{}
 
 // OptionResponse struct for OptionResponse
 type OptionResponse struct {
+	Guid NullableString `json:"guid,omitempty"`
 	Label NullableString `json:"label,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 }
@@ -38,6 +39,48 @@ func NewOptionResponse() *OptionResponse {
 func NewOptionResponseWithDefaults() *OptionResponse {
 	this := OptionResponse{}
 	return &this
+}
+
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OptionResponse) GetGuid() string {
+	if o == nil || IsNil(o.Guid.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Guid.Get()
+}
+
+// GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OptionResponse) GetGuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Guid.Get(), o.Guid.IsSet()
+}
+
+// HasGuid returns a boolean if a field has been set.
+func (o *OptionResponse) HasGuid() bool {
+	if o != nil && o.Guid.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
+func (o *OptionResponse) SetGuid(v string) {
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *OptionResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *OptionResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 // GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -134,6 +177,9 @@ func (o OptionResponse) MarshalJSON() ([]byte, error) {
 
 func (o OptionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
+	}
 	if o.Label.IsSet() {
 		toSerialize["label"] = o.Label.Get()
 	}
