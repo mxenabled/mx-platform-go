@@ -20,6 +20,7 @@ var _ MappedNullable = &ImageOptionResponse{}
 // ImageOptionResponse struct for ImageOptionResponse
 type ImageOptionResponse struct {
 	DataUri NullableString `json:"data_uri,omitempty"`
+	Guid NullableString `json:"guid,omitempty"`
 	Label NullableString `json:"label,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 }
@@ -81,6 +82,48 @@ func (o *ImageOptionResponse) SetDataUriNil() {
 // UnsetDataUri ensures that no value is present for DataUri, not even an explicit nil
 func (o *ImageOptionResponse) UnsetDataUri() {
 	o.DataUri.Unset()
+}
+
+// GetGuid returns the Guid field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ImageOptionResponse) GetGuid() string {
+	if o == nil || IsNil(o.Guid.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Guid.Get()
+}
+
+// GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ImageOptionResponse) GetGuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Guid.Get(), o.Guid.IsSet()
+}
+
+// HasGuid returns a boolean if a field has been set.
+func (o *ImageOptionResponse) HasGuid() bool {
+	if o != nil && o.Guid.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGuid gets a reference to the given NullableString and assigns it to the Guid field.
+func (o *ImageOptionResponse) SetGuid(v string) {
+	o.Guid.Set(&v)
+}
+// SetGuidNil sets the value for Guid to be an explicit nil
+func (o *ImageOptionResponse) SetGuidNil() {
+	o.Guid.Set(nil)
+}
+
+// UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+func (o *ImageOptionResponse) UnsetGuid() {
+	o.Guid.Unset()
 }
 
 // GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -179,6 +222,9 @@ func (o ImageOptionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DataUri.IsSet() {
 		toSerialize["data_uri"] = o.DataUri.Get()
+	}
+	if o.Guid.IsSet() {
+		toSerialize["guid"] = o.Guid.Get()
 	}
 	if o.Label.IsSet() {
 		toSerialize["label"] = o.Label.Get()
