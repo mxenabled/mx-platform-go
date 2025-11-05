@@ -67,6 +67,21 @@ func Test_mxplatformgo_InsightsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test InsightsAPIService ListInsightsByTransaction", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var transactionGuid string
+		var userGuid string
+
+		resp, httpRes, err := apiClient.InsightsAPI.ListInsightsByTransaction(context.Background(), transactionGuid, userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test InsightsAPIService ListInsightsUser", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -126,14 +141,14 @@ func Test_mxplatformgo_InsightsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test InsightsAPIService ReadInsightsUser", func(t *testing.T) {
+	t.Run("Test InsightsAPIService ReadInsightUser", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var userGuid string
 		var insightGuid string
 
-		resp, httpRes, err := apiClient.InsightsAPI.ReadInsightsUser(context.Background(), userGuid, insightGuid).Execute()
+		resp, httpRes, err := apiClient.InsightsAPI.ReadInsightUser(context.Background(), userGuid, insightGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

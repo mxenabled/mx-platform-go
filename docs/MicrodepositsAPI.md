@@ -1,22 +1,23 @@
 # \MicrodepositsAPI
 
-All URIs are relative to *https://api.mx.com*
+All URIs are relative to *https://int-api.mx.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**MicroDepositsMicrodepositGuidVerifyPut**](MicrodepositsAPI.md#MicroDepositsMicrodepositGuidVerifyPut) | **Put** /micro_deposits/{microdeposit_guid}/verify | Verify a Microdeposit
-[**UsersUserGuidMicroDepositsGet**](MicrodepositsAPI.md#UsersUserGuidMicroDepositsGet) | **Get** /users/{user_guid}/micro_deposits | List all microdeposits for a user
-[**UsersUserGuidMicroDepositsMicroDepositGuidDelete**](MicrodepositsAPI.md#UsersUserGuidMicroDepositsMicroDepositGuidDelete) | **Delete** /users/{user_guid}/micro_deposits/{micro_deposit_guid} | Delete a microdeposit
-[**UsersUserGuidMicroDepositsMicroDepositGuidGet**](MicrodepositsAPI.md#UsersUserGuidMicroDepositsMicroDepositGuidGet) | **Get** /users/{user_guid}/micro_deposits/{micro_deposit_guid} | Read a microdeposit for a user
-[**UsersUserGuidMicroDepositsPost**](MicrodepositsAPI.md#UsersUserGuidMicroDepositsPost) | **Post** /users/{user_guid}/micro_deposits | Create a microdeposit
+[**CreateMicrodeposit**](MicrodepositsAPI.md#CreateMicrodeposit) | **Post** /users/{user_guid}/micro_deposits | Create or pre-initiate a microdeposit
+[**DeleteMicrodeposit**](MicrodepositsAPI.md#DeleteMicrodeposit) | **Delete** /users/{user_guid}/micro_deposits/{micro_deposit_guid} | Delete a microdeposit
+[**ListUserMicrodeposits**](MicrodepositsAPI.md#ListUserMicrodeposits) | **Get** /users/{user_guid}/micro_deposits | List all microdeposits for a user
+[**ListUserVerifications**](MicrodepositsAPI.md#ListUserVerifications) | **Get** /users/{user_guid}/account_verifications | List all verifications for a user
+[**ReadUserMicrodeposit**](MicrodepositsAPI.md#ReadUserMicrodeposit) | **Get** /users/{user_guid}/micro_deposits/{micro_deposit_guid} | Read a microdeposit for a user
+[**VerifyMicrodeposit**](MicrodepositsAPI.md#VerifyMicrodeposit) | **Put** /micro_deposits/{micro_deposit_guid}/verify | Verify a Microdeposit
 
 
 
-## MicroDepositsMicrodepositGuidVerifyPut
+## CreateMicrodeposit
 
-> MicrodepositResponseBody MicroDepositsMicrodepositGuidVerifyPut(ctx, microdepositGuid).MicrodepositVerifyRequestBody(microdepositVerifyRequestBody).Execute()
+> MicrodepositResponseBody CreateMicrodeposit(ctx, userGuid).MicrodepositRequestBody(microdepositRequestBody).Execute()
 
-Verify a Microdeposit
+Create or pre-initiate a microdeposit
 
 
 
@@ -33,18 +34,18 @@ import (
 )
 
 func main() {
-    microdepositGuid := "microdepositGuid_example" // string | The unique identifier for the microdeposit. Defined by MX.
-    microdepositVerifyRequestBody := *openapiclient.NewMicrodepositVerifyRequestBody() // MicrodepositVerifyRequestBody |  (optional)
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+    microdepositRequestBody := *openapiclient.NewMicrodepositRequestBody() // MicrodepositRequestBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MicrodepositsAPI.MicroDepositsMicrodepositGuidVerifyPut(context.Background(), microdepositGuid).MicrodepositVerifyRequestBody(microdepositVerifyRequestBody).Execute()
+    resp, r, err := apiClient.MicrodepositsAPI.CreateMicrodeposit(context.Background(), userGuid).MicrodepositRequestBody(microdepositRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.MicroDepositsMicrodepositGuidVerifyPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.CreateMicrodeposit``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `MicroDepositsMicrodepositGuidVerifyPut`: MicrodepositResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MicrodepositsAPI.MicroDepositsMicrodepositGuidVerifyPut`: %v\n", resp)
+    // response from `CreateMicrodeposit`: MicrodepositResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MicrodepositsAPI.CreateMicrodeposit`: %v\n", resp)
 }
 ```
 
@@ -54,17 +55,17 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**microdepositGuid** | **string** | The unique identifier for the microdeposit. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiMicroDepositsMicrodepositGuidVerifyPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateMicrodepositRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **microdepositVerifyRequestBody** | [**MicrodepositVerifyRequestBody**](MicrodepositVerifyRequestBody.md) |  | 
+ **microdepositRequestBody** | [**MicrodepositRequestBody**](MicrodepositRequestBody.md) |  | 
 
 ### Return type
 
@@ -84,79 +85,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UsersUserGuidMicroDepositsGet
+## DeleteMicrodeposit
 
-> MicrodepositsResponseBody UsersUserGuidMicroDepositsGet(ctx, userGuid).Execute()
-
-List all microdeposits for a user
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/mxenabled/mx-platform-go"
-)
-
-func main() {
-    userGuid := "userGuid_example" // string | The unique identifier for the user. Defined by MX.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MicrodepositsAPI.UsersUserGuidMicroDepositsGet(context.Background(), userGuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.UsersUserGuidMicroDepositsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UsersUserGuidMicroDepositsGet`: MicrodepositsResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MicrodepositsAPI.UsersUserGuidMicroDepositsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUsersUserGuidMicroDepositsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**MicrodepositsResponseBody**](MicrodepositsResponseBody.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UsersUserGuidMicroDepositsMicroDepositGuidDelete
-
-> UsersUserGuidMicroDepositsMicroDepositGuidDelete(ctx, microDepositGuid, userGuid).Execute()
+> DeleteMicrodeposit(ctx, microDepositGuid, userGuid).Execute()
 
 Delete a microdeposit
 
@@ -176,13 +107,13 @@ import (
 
 func main() {
     microDepositGuid := "MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb" // string | The unique identifier for the microdeposit. Defined by MX.
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.MicrodepositsAPI.UsersUserGuidMicroDepositsMicroDepositGuidDelete(context.Background(), microDepositGuid, userGuid).Execute()
+    r, err := apiClient.MicrodepositsAPI.DeleteMicrodeposit(context.Background(), microDepositGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.UsersUserGuidMicroDepositsMicroDepositGuidDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.DeleteMicrodeposit``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -195,11 +126,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **microDepositGuid** | **string** | The unique identifier for the microdeposit. Defined by MX. | 
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUsersUserGuidMicroDepositsMicroDepositGuidDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteMicrodepositRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -225,9 +156,149 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UsersUserGuidMicroDepositsMicroDepositGuidGet
+## ListUserMicrodeposits
 
-> MicrodepositResponseBody UsersUserGuidMicroDepositsMicroDepositGuidGet(ctx, userGuid, microDepositGuid).Execute()
+> MicrodepositsResponseBody ListUserMicrodeposits(ctx, userGuid).Execute()
+
+List all microdeposits for a user
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MicrodepositsAPI.ListUserMicrodeposits(context.Background(), userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.ListUserMicrodeposits``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListUserMicrodeposits`: MicrodepositsResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MicrodepositsAPI.ListUserMicrodeposits`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListUserMicrodepositsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**MicrodepositsResponseBody**](MicrodepositsResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListUserVerifications
+
+> MicrodepositResponseBody ListUserVerifications(ctx, userGuid).Execute()
+
+List all verifications for a user
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MicrodepositsAPI.ListUserVerifications(context.Background(), userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.ListUserVerifications``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListUserVerifications`: MicrodepositResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MicrodepositsAPI.ListUserVerifications`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListUserVerificationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**MicrodepositResponseBody**](MicrodepositResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadUserMicrodeposit
+
+> MicrodepositResponseBody ReadUserMicrodeposit(ctx, microDepositGuid, userGuid).Execute()
 
 Read a microdeposit for a user
 
@@ -246,18 +317,18 @@ import (
 )
 
 func main() {
-    userGuid := "userGuid_example" // string | The unique identifier for the user. Defined by MX.
-    microDepositGuid := "microDepositGuid_example" // string | The unique identifier for the microdeposit. Defined by MX.
+    microDepositGuid := "MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb" // string | The unique identifier for the microdeposit. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MicrodepositsAPI.UsersUserGuidMicroDepositsMicroDepositGuidGet(context.Background(), userGuid, microDepositGuid).Execute()
+    resp, r, err := apiClient.MicrodepositsAPI.ReadUserMicrodeposit(context.Background(), microDepositGuid, userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.UsersUserGuidMicroDepositsMicroDepositGuidGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.ReadUserMicrodeposit``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UsersUserGuidMicroDepositsMicroDepositGuidGet`: MicrodepositResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MicrodepositsAPI.UsersUserGuidMicroDepositsMicroDepositGuidGet`: %v\n", resp)
+    // response from `ReadUserMicrodeposit`: MicrodepositResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MicrodepositsAPI.ReadUserMicrodeposit`: %v\n", resp)
 }
 ```
 
@@ -267,12 +338,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
 **microDepositGuid** | **string** | The unique identifier for the microdeposit. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUsersUserGuidMicroDepositsMicroDepositGuidGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadUserMicrodepositRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -298,11 +369,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UsersUserGuidMicroDepositsPost
+## VerifyMicrodeposit
 
-> MicrodepositResponseBody UsersUserGuidMicroDepositsPost(ctx, userGuid).MicrodepositRequestBody(microdepositRequestBody).Execute()
+> MicrodepositResponseBody VerifyMicrodeposit(ctx, microDepositGuid).MicrodepositVerifyRequestBody(microdepositVerifyRequestBody).Execute()
 
-Create a microdeposit
+Verify a Microdeposit
 
 
 
@@ -319,18 +390,18 @@ import (
 )
 
 func main() {
-    userGuid := "userGuid_example" // string | The unique identifier for the user. Defined by MX.
-    microdepositRequestBody := *openapiclient.NewMicrodepositRequestBody() // MicrodepositRequestBody | 
+    microDepositGuid := "MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb" // string | The unique identifier for the microdeposit. Defined by MX.
+    microdepositVerifyRequestBody := *openapiclient.NewMicrodepositVerifyRequestBody() // MicrodepositVerifyRequestBody |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MicrodepositsAPI.UsersUserGuidMicroDepositsPost(context.Background(), userGuid).MicrodepositRequestBody(microdepositRequestBody).Execute()
+    resp, r, err := apiClient.MicrodepositsAPI.VerifyMicrodeposit(context.Background(), microDepositGuid).MicrodepositVerifyRequestBody(microdepositVerifyRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.UsersUserGuidMicroDepositsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MicrodepositsAPI.VerifyMicrodeposit``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UsersUserGuidMicroDepositsPost`: MicrodepositResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `MicrodepositsAPI.UsersUserGuidMicroDepositsPost`: %v\n", resp)
+    // response from `VerifyMicrodeposit`: MicrodepositResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `MicrodepositsAPI.VerifyMicrodeposit`: %v\n", resp)
 }
 ```
 
@@ -340,17 +411,17 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**microDepositGuid** | **string** | The unique identifier for the microdeposit. Defined by MX. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUsersUserGuidMicroDepositsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiVerifyMicrodepositRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **microdepositRequestBody** | [**MicrodepositRequestBody**](MicrodepositRequestBody.md) |  | 
+ **microdepositVerifyRequestBody** | [**MicrodepositVerifyRequestBody**](MicrodepositVerifyRequestBody.md) |  | 
 
 ### Return type
 

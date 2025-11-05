@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **ForgotPasswordUrl** | Pointer to **NullableString** |  | [optional] 
 **ForgotUsernameUrl** | Pointer to **NullableString** |  | [optional] 
 **InstructionalText** | Pointer to **NullableString** |  | [optional] 
+**InstructionalTextSteps** | Pointer to **[]string** | An array of instructional steps that may contain html elements. | [optional] 
+**IsDisabledByClient** | Pointer to **NullableBool** |  | [optional] 
+**IsoCountryCode** | Pointer to **string** |  | [optional] 
 **MediumLogoUrl** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
 **SmallLogoUrl** | Pointer to **NullableString** |  | [optional] 
@@ -179,6 +182,101 @@ HasInstructionalText returns a boolean if a field has been set.
 `func (o *InstitutionResponse) UnsetInstructionalText()`
 
 UnsetInstructionalText ensures that no value is present for InstructionalText, not even an explicit nil
+### GetInstructionalTextSteps
+
+`func (o *InstitutionResponse) GetInstructionalTextSteps() []string`
+
+GetInstructionalTextSteps returns the InstructionalTextSteps field if non-nil, zero value otherwise.
+
+### GetInstructionalTextStepsOk
+
+`func (o *InstitutionResponse) GetInstructionalTextStepsOk() (*[]string, bool)`
+
+GetInstructionalTextStepsOk returns a tuple with the InstructionalTextSteps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstructionalTextSteps
+
+`func (o *InstitutionResponse) SetInstructionalTextSteps(v []string)`
+
+SetInstructionalTextSteps sets InstructionalTextSteps field to given value.
+
+### HasInstructionalTextSteps
+
+`func (o *InstitutionResponse) HasInstructionalTextSteps() bool`
+
+HasInstructionalTextSteps returns a boolean if a field has been set.
+
+### SetInstructionalTextStepsNil
+
+`func (o *InstitutionResponse) SetInstructionalTextStepsNil(b bool)`
+
+ SetInstructionalTextStepsNil sets the value for InstructionalTextSteps to be an explicit nil
+
+### UnsetInstructionalTextSteps
+`func (o *InstitutionResponse) UnsetInstructionalTextSteps()`
+
+UnsetInstructionalTextSteps ensures that no value is present for InstructionalTextSteps, not even an explicit nil
+### GetIsDisabledByClient
+
+`func (o *InstitutionResponse) GetIsDisabledByClient() bool`
+
+GetIsDisabledByClient returns the IsDisabledByClient field if non-nil, zero value otherwise.
+
+### GetIsDisabledByClientOk
+
+`func (o *InstitutionResponse) GetIsDisabledByClientOk() (*bool, bool)`
+
+GetIsDisabledByClientOk returns a tuple with the IsDisabledByClient field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDisabledByClient
+
+`func (o *InstitutionResponse) SetIsDisabledByClient(v bool)`
+
+SetIsDisabledByClient sets IsDisabledByClient field to given value.
+
+### HasIsDisabledByClient
+
+`func (o *InstitutionResponse) HasIsDisabledByClient() bool`
+
+HasIsDisabledByClient returns a boolean if a field has been set.
+
+### SetIsDisabledByClientNil
+
+`func (o *InstitutionResponse) SetIsDisabledByClientNil(b bool)`
+
+ SetIsDisabledByClientNil sets the value for IsDisabledByClient to be an explicit nil
+
+### UnsetIsDisabledByClient
+`func (o *InstitutionResponse) UnsetIsDisabledByClient()`
+
+UnsetIsDisabledByClient ensures that no value is present for IsDisabledByClient, not even an explicit nil
+### GetIsoCountryCode
+
+`func (o *InstitutionResponse) GetIsoCountryCode() string`
+
+GetIsoCountryCode returns the IsoCountryCode field if non-nil, zero value otherwise.
+
+### GetIsoCountryCodeOk
+
+`func (o *InstitutionResponse) GetIsoCountryCodeOk() (*string, bool)`
+
+GetIsoCountryCodeOk returns a tuple with the IsoCountryCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsoCountryCode
+
+`func (o *InstitutionResponse) SetIsoCountryCode(v string)`
+
+SetIsoCountryCode sets IsoCountryCode field to given value.
+
+### HasIsoCountryCode
+
+`func (o *InstitutionResponse) HasIsoCountryCode() bool`
+
+HasIsoCountryCode returns a boolean if a field has been set.
+
 ### GetMediumLogoUrl
 
 `func (o *InstitutionResponse) GetMediumLogoUrl() string`

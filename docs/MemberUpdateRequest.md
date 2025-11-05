@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **string** |  | [optional] 
 **SkipAggregation** | Pointer to **bool** |  | [optional] 
+**UseCases** | Pointer to **[]string** | The use case associated with the member. Valid values are &#x60;PFM&#x60; and/or &#x60;MONEY_MOVEMENT&#x60;. Only set this if you&#39;ve met with MX and have opted in to using this field. | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetSkipAggregation sets SkipAggregation field to given value.
 `func (o *MemberUpdateRequest) HasSkipAggregation() bool`
 
 HasSkipAggregation returns a boolean if a field has been set.
+
+### GetUseCases
+
+`func (o *MemberUpdateRequest) GetUseCases() []string`
+
+GetUseCases returns the UseCases field if non-nil, zero value otherwise.
+
+### GetUseCasesOk
+
+`func (o *MemberUpdateRequest) GetUseCasesOk() (*[]string, bool)`
+
+GetUseCasesOk returns a tuple with the UseCases field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCases
+
+`func (o *MemberUpdateRequest) SetUseCases(v []string)`
+
+SetUseCases sets UseCases field to given value.
+
+### HasUseCases
+
+`func (o *MemberUpdateRequest) HasUseCases() bool`
+
+HasUseCases returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

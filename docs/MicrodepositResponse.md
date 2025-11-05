@@ -4,20 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountName** | Pointer to **string** |  | [optional] 
-**AccountNumber** | Pointer to **string** |  | [optional] 
-**AccountType** | Pointer to **string** |  | [optional] 
-**Email** | Pointer to **string** |  | [optional] 
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
-**RoutingNumber** | Pointer to **string** |  | [optional] 
-**ErrorMessage** | Pointer to **string** |  | [optional] 
+**ErrorMessage** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **string** |  | [optional] 
 **InstitutionCode** | Pointer to **string** |  | [optional] 
 **InstitutionName** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** |  | [optional] 
-**VerifiedAt** | Pointer to **string** |  | [optional] 
+**VerifiedAt** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -37,181 +30,6 @@ will change when the set of required properties is changed
 NewMicrodepositResponseWithDefaults instantiates a new MicrodepositResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAccountName
-
-`func (o *MicrodepositResponse) GetAccountName() string`
-
-GetAccountName returns the AccountName field if non-nil, zero value otherwise.
-
-### GetAccountNameOk
-
-`func (o *MicrodepositResponse) GetAccountNameOk() (*string, bool)`
-
-GetAccountNameOk returns a tuple with the AccountName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountName
-
-`func (o *MicrodepositResponse) SetAccountName(v string)`
-
-SetAccountName sets AccountName field to given value.
-
-### HasAccountName
-
-`func (o *MicrodepositResponse) HasAccountName() bool`
-
-HasAccountName returns a boolean if a field has been set.
-
-### GetAccountNumber
-
-`func (o *MicrodepositResponse) GetAccountNumber() string`
-
-GetAccountNumber returns the AccountNumber field if non-nil, zero value otherwise.
-
-### GetAccountNumberOk
-
-`func (o *MicrodepositResponse) GetAccountNumberOk() (*string, bool)`
-
-GetAccountNumberOk returns a tuple with the AccountNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountNumber
-
-`func (o *MicrodepositResponse) SetAccountNumber(v string)`
-
-SetAccountNumber sets AccountNumber field to given value.
-
-### HasAccountNumber
-
-`func (o *MicrodepositResponse) HasAccountNumber() bool`
-
-HasAccountNumber returns a boolean if a field has been set.
-
-### GetAccountType
-
-`func (o *MicrodepositResponse) GetAccountType() string`
-
-GetAccountType returns the AccountType field if non-nil, zero value otherwise.
-
-### GetAccountTypeOk
-
-`func (o *MicrodepositResponse) GetAccountTypeOk() (*string, bool)`
-
-GetAccountTypeOk returns a tuple with the AccountType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountType
-
-`func (o *MicrodepositResponse) SetAccountType(v string)`
-
-SetAccountType sets AccountType field to given value.
-
-### HasAccountType
-
-`func (o *MicrodepositResponse) HasAccountType() bool`
-
-HasAccountType returns a boolean if a field has been set.
-
-### GetEmail
-
-`func (o *MicrodepositResponse) GetEmail() string`
-
-GetEmail returns the Email field if non-nil, zero value otherwise.
-
-### GetEmailOk
-
-`func (o *MicrodepositResponse) GetEmailOk() (*string, bool)`
-
-GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmail
-
-`func (o *MicrodepositResponse) SetEmail(v string)`
-
-SetEmail sets Email field to given value.
-
-### HasEmail
-
-`func (o *MicrodepositResponse) HasEmail() bool`
-
-HasEmail returns a boolean if a field has been set.
-
-### GetFirstName
-
-`func (o *MicrodepositResponse) GetFirstName() string`
-
-GetFirstName returns the FirstName field if non-nil, zero value otherwise.
-
-### GetFirstNameOk
-
-`func (o *MicrodepositResponse) GetFirstNameOk() (*string, bool)`
-
-GetFirstNameOk returns a tuple with the FirstName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFirstName
-
-`func (o *MicrodepositResponse) SetFirstName(v string)`
-
-SetFirstName sets FirstName field to given value.
-
-### HasFirstName
-
-`func (o *MicrodepositResponse) HasFirstName() bool`
-
-HasFirstName returns a boolean if a field has been set.
-
-### GetLastName
-
-`func (o *MicrodepositResponse) GetLastName() string`
-
-GetLastName returns the LastName field if non-nil, zero value otherwise.
-
-### GetLastNameOk
-
-`func (o *MicrodepositResponse) GetLastNameOk() (*string, bool)`
-
-GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastName
-
-`func (o *MicrodepositResponse) SetLastName(v string)`
-
-SetLastName sets LastName field to given value.
-
-### HasLastName
-
-`func (o *MicrodepositResponse) HasLastName() bool`
-
-HasLastName returns a boolean if a field has been set.
-
-### GetRoutingNumber
-
-`func (o *MicrodepositResponse) GetRoutingNumber() string`
-
-GetRoutingNumber returns the RoutingNumber field if non-nil, zero value otherwise.
-
-### GetRoutingNumberOk
-
-`func (o *MicrodepositResponse) GetRoutingNumberOk() (*string, bool)`
-
-GetRoutingNumberOk returns a tuple with the RoutingNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRoutingNumber
-
-`func (o *MicrodepositResponse) SetRoutingNumber(v string)`
-
-SetRoutingNumber sets RoutingNumber field to given value.
-
-### HasRoutingNumber
-
-`func (o *MicrodepositResponse) HasRoutingNumber() bool`
-
-HasRoutingNumber returns a boolean if a field has been set.
 
 ### GetErrorMessage
 
@@ -238,6 +56,16 @@ SetErrorMessage sets ErrorMessage field to given value.
 
 HasErrorMessage returns a boolean if a field has been set.
 
+### SetErrorMessageNil
+
+`func (o *MicrodepositResponse) SetErrorMessageNil(b bool)`
+
+ SetErrorMessageNil sets the value for ErrorMessage to be an explicit nil
+
+### UnsetErrorMessage
+`func (o *MicrodepositResponse) UnsetErrorMessage()`
+
+UnsetErrorMessage ensures that no value is present for ErrorMessage, not even an explicit nil
 ### GetGuid
 
 `func (o *MicrodepositResponse) GetGuid() string`
@@ -388,6 +216,16 @@ SetVerifiedAt sets VerifiedAt field to given value.
 
 HasVerifiedAt returns a boolean if a field has been set.
 
+### SetVerifiedAtNil
+
+`func (o *MicrodepositResponse) SetVerifiedAtNil(b bool)`
+
+ SetVerifiedAtNil sets the value for VerifiedAt to be an explicit nil
+
+### UnsetVerifiedAt
+`func (o *MicrodepositResponse) UnsetVerifiedAt()`
+
+UnsetVerifiedAt ensures that no value is present for VerifiedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

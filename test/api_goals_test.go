@@ -22,13 +22,13 @@ func Test_mxplatformgo_GoalsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test GoalsAPIService UsersUserGuidGoalsGet", func(t *testing.T) {
+	t.Run("Test GoalsAPIService CreateGoal", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var userGuid string
 
-		resp, httpRes, err := apiClient.GoalsAPI.UsersUserGuidGoalsGet(context.Background(), userGuid).Execute()
+		resp, httpRes, err := apiClient.GoalsAPI.CreateGoal(context.Background(), userGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,28 +36,42 @@ func Test_mxplatformgo_GoalsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GoalsAPIService UsersUserGuidGoalsGoalGuidDelete", func(t *testing.T) {
+	t.Run("Test GoalsAPIService DeleteGoal", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var goalGuid string
 		var userGuid string
 
-		httpRes, err := apiClient.GoalsAPI.UsersUserGuidGoalsGoalGuidDelete(context.Background(), goalGuid, userGuid).Execute()
+		httpRes, err := apiClient.GoalsAPI.DeleteGoal(context.Background(), goalGuid, userGuid).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test GoalsAPIService UsersUserGuidGoalsGoalGuidGet", func(t *testing.T) {
+	t.Run("Test GoalsAPIService ListGoals", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+
+		resp, httpRes, err := apiClient.GoalsAPI.ListGoals(context.Background(), userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GoalsAPIService ReadGoal", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var goalGuid string
 		var userGuid string
 
-		resp, httpRes, err := apiClient.GoalsAPI.UsersUserGuidGoalsGoalGuidGet(context.Background(), goalGuid, userGuid).Execute()
+		resp, httpRes, err := apiClient.GoalsAPI.ReadGoal(context.Background(), goalGuid, userGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,42 +79,28 @@ func Test_mxplatformgo_GoalsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GoalsAPIService UsersUserGuidGoalsGoalGuidPut", func(t *testing.T) {
+	t.Run("Test GoalsAPIService RepositionGoals", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+
+		resp, httpRes, err := apiClient.GoalsAPI.RepositionGoals(context.Background(), userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GoalsAPIService UpdateGoal", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var goalGuid string
 		var userGuid string
 
-		resp, httpRes, err := apiClient.GoalsAPI.UsersUserGuidGoalsGoalGuidPut(context.Background(), goalGuid, userGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test GoalsAPIService UsersUserGuidGoalsPost", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-
-		resp, httpRes, err := apiClient.GoalsAPI.UsersUserGuidGoalsPost(context.Background(), userGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test GoalsAPIService UsersUserGuidGoalsRepositionPut", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-
-		resp, httpRes, err := apiClient.GoalsAPI.UsersUserGuidGoalsRepositionPut(context.Background(), userGuid).Execute()
+		resp, httpRes, err := apiClient.GoalsAPI.UpdateGoal(context.Background(), goalGuid, userGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

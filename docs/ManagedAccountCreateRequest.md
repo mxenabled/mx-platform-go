@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **CurrencyCode** | Pointer to **string** |  | [optional] 
 **DayPaymentIsDue** | Pointer to **int32** |  | [optional] 
 **DeathBenefit** | Pointer to **int32** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | **string** |  | 
 **InterestRate** | Pointer to **float32** |  | [optional] 
 **IsClosed** | Pointer to **bool** |  | [optional] 
 **IsHidden** | Pointer to **bool** |  | [optional] 
@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewManagedAccountCreateRequest
 
-`func NewManagedAccountCreateRequest(balance float32, name string, type_ string, ) *ManagedAccountCreateRequest`
+`func NewManagedAccountCreateRequest(balance float32, id string, name string, type_ string, ) *ManagedAccountCreateRequest`
 
 NewManagedAccountCreateRequest instantiates a new ManagedAccountCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -344,11 +344,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ManagedAccountCreateRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetInterestRate
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DepositAmount1** | Pointer to **int32** |  | [optional] 
-**DepositAmount2** | Pointer to **int32** |  | [optional] 
+**DepositAmount1** | Pointer to **float32** |  | [optional] 
+**DepositAmount2** | Pointer to **float32** |  | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDepositAmount1
 
-`func (o *MicrodepositVerifyRequest) GetDepositAmount1() int32`
+`func (o *MicrodepositVerifyRequest) GetDepositAmount1() float32`
 
 GetDepositAmount1 returns the DepositAmount1 field if non-nil, zero value otherwise.
 
 ### GetDepositAmount1Ok
 
-`func (o *MicrodepositVerifyRequest) GetDepositAmount1Ok() (*int32, bool)`
+`func (o *MicrodepositVerifyRequest) GetDepositAmount1Ok() (*float32, bool)`
 
 GetDepositAmount1Ok returns a tuple with the DepositAmount1 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDepositAmount1
 
-`func (o *MicrodepositVerifyRequest) SetDepositAmount1(v int32)`
+`func (o *MicrodepositVerifyRequest) SetDepositAmount1(v float32)`
 
 SetDepositAmount1 sets DepositAmount1 field to given value.
 
@@ -53,20 +53,20 @@ HasDepositAmount1 returns a boolean if a field has been set.
 
 ### GetDepositAmount2
 
-`func (o *MicrodepositVerifyRequest) GetDepositAmount2() int32`
+`func (o *MicrodepositVerifyRequest) GetDepositAmount2() float32`
 
 GetDepositAmount2 returns the DepositAmount2 field if non-nil, zero value otherwise.
 
 ### GetDepositAmount2Ok
 
-`func (o *MicrodepositVerifyRequest) GetDepositAmount2Ok() (*int32, bool)`
+`func (o *MicrodepositVerifyRequest) GetDepositAmount2Ok() (*float32, bool)`
 
 GetDepositAmount2Ok returns a tuple with the DepositAmount2 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDepositAmount2
 
-`func (o *MicrodepositVerifyRequest) SetDepositAmount2(v int32)`
+`func (o *MicrodepositVerifyRequest) SetDepositAmount2(v float32)`
 
 SetDepositAmount2 sets DepositAmount2 field to given value.
 

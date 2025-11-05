@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Reward** | Pointer to [**RewardResponse**](RewardResponse.md) |  | [optional] 
+**Reward** | Pointer to [**RewardsResponseBodyRewardsInner**](RewardsResponseBodyRewardsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetReward
 
-`func (o *RewardResponseBody) GetReward() RewardResponse`
+`func (o *RewardResponseBody) GetReward() RewardsResponseBodyRewardsInner`
 
 GetReward returns the Reward field if non-nil, zero value otherwise.
 
 ### GetRewardOk
 
-`func (o *RewardResponseBody) GetRewardOk() (*RewardResponse, bool)`
+`func (o *RewardResponseBody) GetRewardOk() (*RewardsResponseBodyRewardsInner, bool)`
 
 GetRewardOk returns a tuple with the Reward field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReward
 
-`func (o *RewardResponseBody) SetReward(v RewardResponse)`
+`func (o *RewardResponseBody) SetReward(v RewardsResponseBodyRewardsInner)`
 
 SetReward sets Reward field to given value.
 

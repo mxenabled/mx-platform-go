@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthorizationCode** | Pointer to [**[]AuthorizationCodeResponse**](AuthorizationCodeResponse.md) |  | [optional] 
+**AuthorizationCode** | Pointer to [**AuthorizationCodeResponse**](AuthorizationCodeResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAuthorizationCode
 
-`func (o *AuthorizationCodeResponseBody) GetAuthorizationCode() []AuthorizationCodeResponse`
+`func (o *AuthorizationCodeResponseBody) GetAuthorizationCode() AuthorizationCodeResponse`
 
 GetAuthorizationCode returns the AuthorizationCode field if non-nil, zero value otherwise.
 
 ### GetAuthorizationCodeOk
 
-`func (o *AuthorizationCodeResponseBody) GetAuthorizationCodeOk() (*[]AuthorizationCodeResponse, bool)`
+`func (o *AuthorizationCodeResponseBody) GetAuthorizationCodeOk() (*AuthorizationCodeResponse, bool)`
 
 GetAuthorizationCodeOk returns a tuple with the AuthorizationCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationCode
 
-`func (o *AuthorizationCodeResponseBody) SetAuthorizationCode(v []AuthorizationCodeResponse)`
+`func (o *AuthorizationCodeResponseBody) SetAuthorizationCode(v AuthorizationCodeResponse)`
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 

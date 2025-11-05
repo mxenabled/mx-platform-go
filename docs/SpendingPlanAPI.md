@@ -1,6 +1,6 @@
 # \SpendingPlanAPI
 
-All URIs are relative to *https://api.mx.com*
+All URIs are relative to *https://int-api.mx.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**ListSpendingPlanIterationItems**](SpendingPlanAPI.md#ListSpendingPlanIterationItems) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items | List spending plan iteration items
 [**ListSpendingPlanIterations**](SpendingPlanAPI.md#ListSpendingPlanIterations) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations | List spending plan iterations
 [**ListSpendingPlans**](SpendingPlanAPI.md#ListSpendingPlans) | **Get** /users/{user_guid}/spending_plans | List spending plans
+[**ReadCurrentSpendingPlanIteration**](SpendingPlanAPI.md#ReadCurrentSpendingPlanIteration) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current | Read current spending plan iteration
 [**ReadSpendingPlanAccount**](SpendingPlanAPI.md#ReadSpendingPlanAccount) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid} | Read spending plan account
 [**ReadSpendingPlanIteration**](SpendingPlanAPI.md#ReadSpendingPlanIteration) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/{iteration_number} | Read a spending plan iteration
 [**ReadSpendingPlanIterationItem**](SpendingPlanAPI.md#ReadSpendingPlanIterationItem) | **Get** /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid} | Read a spending plan iteration item
@@ -42,7 +43,7 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -62,7 +63,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 
 ### Other Parameters
 
@@ -113,7 +114,7 @@ import (
 
 func main() {
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanIterationItemCreateRequestBody := *openapiclient.NewSpendingPlanIterationItemCreateRequestBody(float32(110)) // SpendingPlanIterationItemCreateRequestBody | Iteration item to be created with required parameter (planned_amount)
 
     configuration := openapiclient.NewConfiguration()
@@ -135,7 +136,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 
 ### Other Parameters
 
@@ -187,7 +188,7 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique ID for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
 
     configuration := openapiclient.NewConfiguration()
@@ -206,7 +207,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique ID for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 
 ### Other Parameters
@@ -258,7 +259,7 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique ID for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
     spendingPlanAccountGuid := "ACT-e9f80fee-84da-7s7r-9a5e-0346g4279b4c" // string | The unique ID for the specified account.
 
@@ -278,7 +279,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique ID for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 **spendingPlanAccountGuid** | **string** | The unique ID for the specified account. | 
 
@@ -332,7 +333,7 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique ID for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
     iterationItemGuid := "SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3" // string | The unique ID for the `iteration_item`.
 
@@ -352,7 +353,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique ID for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 **iterationItemGuid** | **string** | The unique ID for the &#x60;iteration_item&#x60;. | 
 
@@ -406,10 +407,10 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -429,7 +430,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 
 ### Other Parameters
@@ -441,8 +442,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -483,10 +484,10 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -506,7 +507,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 
 ### Other Parameters
@@ -518,8 +519,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -560,10 +561,10 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -583,7 +584,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 
 ### Other Parameters
@@ -595,8 +596,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -637,9 +638,9 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -659,7 +660,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 
 ### Other Parameters
 
@@ -669,12 +670,89 @@ Other parameters are passed through a pointer to a apiListSpendingPlansRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
 [**SpendingPlansResponseBody**](SpendingPlansResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadCurrentSpendingPlanIteration
+
+> SpendingPlanIterationResponse ReadCurrentSpendingPlanIteration(ctx, userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+Read current spending plan iteration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+    spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SpendingPlanAPI.ReadCurrentSpendingPlanIteration(context.Background(), userGuid, spendingPlanGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SpendingPlanAPI.ReadCurrentSpendingPlanIteration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadCurrentSpendingPlanIteration`: SpendingPlanIterationResponse
+    fmt.Fprintf(os.Stdout, "Response from `SpendingPlanAPI.ReadCurrentSpendingPlanIteration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
+**spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadCurrentSpendingPlanIterationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
+
+### Return type
+
+[**SpendingPlanIterationResponse**](SpendingPlanIterationResponse.md)
 
 ### Authorization
 
@@ -711,11 +789,11 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
     spendingPlanAccountGuid := "ACT-e9f80fee-84da-7s7r-9a5e-0346g4279b4c" // string | The unique ID for the specified account.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -735,7 +813,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 **spendingPlanAccountGuid** | **string** | The unique ID for the specified account. | 
 
@@ -749,8 +827,8 @@ Name | Type | Description  | Notes
 
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -791,11 +869,11 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
-    iterationNumber := int32(1) // int32 | The current iteration number for the spending plan `iteration``.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    iterationNumber := int32(1) // int32 | The current iteration number for the spending plan `iteration`.
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -815,9 +893,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
-**iterationNumber** | **int32** | The current iteration number for the spending plan &#x60;iteration&#x60;&#x60;. | 
+**iterationNumber** | **int32** | The current iteration number for the spending plan &#x60;iteration&#x60;. | 
 
 ### Other Parameters
 
@@ -829,8 +907,8 @@ Name | Type | Description  | Notes
 
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -871,11 +949,11 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
     iterationItemGuid := "SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3" // string | The unique ID for the `iteration_item`.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -895,7 +973,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 **iterationItemGuid** | **string** | The unique ID for the &#x60;iteration_item&#x60;. | 
 
@@ -909,8 +987,8 @@ Name | Type | Description  | Notes
 
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -951,10 +1029,10 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -974,7 +1052,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 
 ### Other Parameters
@@ -986,8 +1064,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -1028,7 +1106,7 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for a `user`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     spendingPlanGuid := "SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262" // string | The unique ID for the `spending_plan`.
     iterationItemGuid := "SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3" // string | The unique ID for the `iteration_item`.
     spendingPlanIterationItemCreateRequestBody := *openapiclient.NewSpendingPlanIterationItemCreateRequestBody(float32(110)) // SpendingPlanIterationItemCreateRequestBody | Iteration item to be updated with required parameter (planned_amount)
@@ -1051,7 +1129,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique id for a &#x60;user&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **spendingPlanGuid** | **string** | The unique ID for the &#x60;spending_plan&#x60;. | 
 **iterationItemGuid** | **string** | The unique ID for the &#x60;iteration_item&#x60;. | 
 

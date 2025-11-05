@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **NullableString** |  | [optional] 
+**CreatedAt** | Pointer to **NullableString** | Category creation date-time. | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **IsDefault** | Pointer to **NullableBool** |  | [optional] 
 **IsIncome** | Pointer to **NullableBool** |  | [optional] 

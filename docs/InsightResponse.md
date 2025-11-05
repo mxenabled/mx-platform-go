@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **HasAssociatedAccounts** | Pointer to **NullableBool** |  | [optional] 
+**HasAssociatedCategories** | Pointer to **NullableBool** |  | [optional] 
 **HasAssociatedMerchants** | Pointer to **NullableBool** |  | [optional] 
 **HasAssociatedScheduledPayments** | Pointer to **NullableBool** |  | [optional] 
 **HasAssociatedTransactions** | Pointer to **NullableBool** |  | [optional] 
@@ -289,6 +290,41 @@ HasHasAssociatedAccounts returns a boolean if a field has been set.
 `func (o *InsightResponse) UnsetHasAssociatedAccounts()`
 
 UnsetHasAssociatedAccounts ensures that no value is present for HasAssociatedAccounts, not even an explicit nil
+### GetHasAssociatedCategories
+
+`func (o *InsightResponse) GetHasAssociatedCategories() bool`
+
+GetHasAssociatedCategories returns the HasAssociatedCategories field if non-nil, zero value otherwise.
+
+### GetHasAssociatedCategoriesOk
+
+`func (o *InsightResponse) GetHasAssociatedCategoriesOk() (*bool, bool)`
+
+GetHasAssociatedCategoriesOk returns a tuple with the HasAssociatedCategories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasAssociatedCategories
+
+`func (o *InsightResponse) SetHasAssociatedCategories(v bool)`
+
+SetHasAssociatedCategories sets HasAssociatedCategories field to given value.
+
+### HasHasAssociatedCategories
+
+`func (o *InsightResponse) HasHasAssociatedCategories() bool`
+
+HasHasAssociatedCategories returns a boolean if a field has been set.
+
+### SetHasAssociatedCategoriesNil
+
+`func (o *InsightResponse) SetHasAssociatedCategoriesNil(b bool)`
+
+ SetHasAssociatedCategoriesNil sets the value for HasAssociatedCategories to be an explicit nil
+
+### UnsetHasAssociatedCategories
+`func (o *InsightResponse) UnsetHasAssociatedCategories()`
+
+UnsetHasAssociatedCategories ensures that no value is present for HasAssociatedCategories, not even an explicit nil
 ### GetHasAssociatedMerchants
 
 `func (o *InsightResponse) GetHasAssociatedMerchants() bool`

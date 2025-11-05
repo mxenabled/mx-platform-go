@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MicroDeposit** | Pointer to [**MicrodepositRequest**](MicrodepositRequest.md) |  | [optional] 
+**MicroDeposit** | Pointer to [**MicrodepositElements**](MicrodepositElements.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMicroDeposit
 
-`func (o *MicrodepositRequestBody) GetMicroDeposit() MicrodepositRequest`
+`func (o *MicrodepositRequestBody) GetMicroDeposit() MicrodepositElements`
 
 GetMicroDeposit returns the MicroDeposit field if non-nil, zero value otherwise.
 
 ### GetMicroDepositOk
 
-`func (o *MicrodepositRequestBody) GetMicroDepositOk() (*MicrodepositRequest, bool)`
+`func (o *MicrodepositRequestBody) GetMicroDepositOk() (*MicrodepositElements, bool)`
 
 GetMicroDepositOk returns a tuple with the MicroDeposit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMicroDeposit
 
-`func (o *MicrodepositRequestBody) SetMicroDeposit(v MicrodepositRequest)`
+`func (o *MicrodepositRequestBody) SetMicroDeposit(v MicrodepositElements)`
 
 SetMicroDeposit sets MicroDeposit field to given value.
 
