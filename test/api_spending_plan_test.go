@@ -154,6 +154,21 @@ func Test_mxplatformgo_SpendingPlanAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SpendingPlanAPIService ReadCurrentSpendingPlanIteration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var spendingPlanGuid string
+
+		resp, httpRes, err := apiClient.SpendingPlanAPI.ReadCurrentSpendingPlanIteration(context.Background(), userGuid, spendingPlanGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SpendingPlanAPIService ReadSpendingPlanAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

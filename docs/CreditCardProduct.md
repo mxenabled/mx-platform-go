@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AnnualFee** | Pointer to **float32** |  | [optional] 
-**DurationOfIntroductoryRateOnBalanceTransfer** | Pointer to **int32** |  | [optional] 
-**DurationOfIntroductoryRateOnPurchases** | Pointer to **int32** |  | [optional] 
+**DurationOfIntroductoryRateOnBalanceTransfer** | Pointer to **NullableInt32** |  | [optional] 
+**DurationOfIntroductoryRateOnPurchases** | Pointer to **NullableInt32** |  | [optional] 
 **Guid** | Pointer to **string** |  | [optional] 
 **HasCashbackRewards** | Pointer to **bool** |  | [optional] 
 **HasOtherRewards** | Pointer to **bool** |  | [optional] 
@@ -88,6 +88,16 @@ SetDurationOfIntroductoryRateOnBalanceTransfer sets DurationOfIntroductoryRateOn
 
 HasDurationOfIntroductoryRateOnBalanceTransfer returns a boolean if a field has been set.
 
+### SetDurationOfIntroductoryRateOnBalanceTransferNil
+
+`func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnBalanceTransferNil(b bool)`
+
+ SetDurationOfIntroductoryRateOnBalanceTransferNil sets the value for DurationOfIntroductoryRateOnBalanceTransfer to be an explicit nil
+
+### UnsetDurationOfIntroductoryRateOnBalanceTransfer
+`func (o *CreditCardProduct) UnsetDurationOfIntroductoryRateOnBalanceTransfer()`
+
+UnsetDurationOfIntroductoryRateOnBalanceTransfer ensures that no value is present for DurationOfIntroductoryRateOnBalanceTransfer, not even an explicit nil
 ### GetDurationOfIntroductoryRateOnPurchases
 
 `func (o *CreditCardProduct) GetDurationOfIntroductoryRateOnPurchases() int32`
@@ -113,6 +123,16 @@ SetDurationOfIntroductoryRateOnPurchases sets DurationOfIntroductoryRateOnPurcha
 
 HasDurationOfIntroductoryRateOnPurchases returns a boolean if a field has been set.
 
+### SetDurationOfIntroductoryRateOnPurchasesNil
+
+`func (o *CreditCardProduct) SetDurationOfIntroductoryRateOnPurchasesNil(b bool)`
+
+ SetDurationOfIntroductoryRateOnPurchasesNil sets the value for DurationOfIntroductoryRateOnPurchases to be an explicit nil
+
+### UnsetDurationOfIntroductoryRateOnPurchases
+`func (o *CreditCardProduct) UnsetDurationOfIntroductoryRateOnPurchases()`
+
+UnsetDurationOfIntroductoryRateOnPurchases ensures that no value is present for DurationOfIntroductoryRateOnPurchases, not even an explicit nil
 ### GetGuid
 
 `func (o *CreditCardProduct) GetGuid() string`

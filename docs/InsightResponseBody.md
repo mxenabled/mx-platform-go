@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Insight** | Pointer to [**[]InsightResponse**](InsightResponse.md) |  | [optional] 
+**Insight** | Pointer to [**InsightResponse**](InsightResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetInsight
 
-`func (o *InsightResponseBody) GetInsight() []InsightResponse`
+`func (o *InsightResponseBody) GetInsight() InsightResponse`
 
 GetInsight returns the Insight field if non-nil, zero value otherwise.
 
 ### GetInsightOk
 
-`func (o *InsightResponseBody) GetInsightOk() (*[]InsightResponse, bool)`
+`func (o *InsightResponseBody) GetInsightOk() (*InsightResponse, bool)`
 
 GetInsightOk returns a tuple with the Insight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInsight
 
-`func (o *InsightResponseBody) SetInsight(v []InsightResponse)`
+`func (o *InsightResponseBody) SetInsight(v InsightResponse)`
 
 SetInsight sets Insight field to given value.
 

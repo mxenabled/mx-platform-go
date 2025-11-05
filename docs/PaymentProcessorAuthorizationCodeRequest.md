@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountGuid** | Pointer to **NullableString** |  | [optional] 
-**MemberGuid** | Pointer to **NullableString** |  | [optional] 
-**UserGuid** | Pointer to **NullableString** |  | [optional] 
+**AccountGuid** | **string** |  | 
+**MemberGuid** | **string** |  | 
+**UserGuid** | **string** |  | 
 
 ## Methods
 
 ### NewPaymentProcessorAuthorizationCodeRequest
 
-`func NewPaymentProcessorAuthorizationCodeRequest() *PaymentProcessorAuthorizationCodeRequest`
+`func NewPaymentProcessorAuthorizationCodeRequest(accountGuid string, memberGuid string, userGuid string, ) *PaymentProcessorAuthorizationCodeRequest`
 
 NewPaymentProcessorAuthorizationCodeRequest instantiates a new PaymentProcessorAuthorizationCodeRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,22 +46,7 @@ and a boolean to check if the value has been set.
 
 SetAccountGuid sets AccountGuid field to given value.
 
-### HasAccountGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) HasAccountGuid() bool`
-
-HasAccountGuid returns a boolean if a field has been set.
-
-### SetAccountGuidNil
-
-`func (o *PaymentProcessorAuthorizationCodeRequest) SetAccountGuidNil(b bool)`
-
- SetAccountGuidNil sets the value for AccountGuid to be an explicit nil
-
-### UnsetAccountGuid
-`func (o *PaymentProcessorAuthorizationCodeRequest) UnsetAccountGuid()`
-
-UnsetAccountGuid ensures that no value is present for AccountGuid, not even an explicit nil
 ### GetMemberGuid
 
 `func (o *PaymentProcessorAuthorizationCodeRequest) GetMemberGuid() string`
@@ -81,22 +66,7 @@ and a boolean to check if the value has been set.
 
 SetMemberGuid sets MemberGuid field to given value.
 
-### HasMemberGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) HasMemberGuid() bool`
-
-HasMemberGuid returns a boolean if a field has been set.
-
-### SetMemberGuidNil
-
-`func (o *PaymentProcessorAuthorizationCodeRequest) SetMemberGuidNil(b bool)`
-
- SetMemberGuidNil sets the value for MemberGuid to be an explicit nil
-
-### UnsetMemberGuid
-`func (o *PaymentProcessorAuthorizationCodeRequest) UnsetMemberGuid()`
-
-UnsetMemberGuid ensures that no value is present for MemberGuid, not even an explicit nil
 ### GetUserGuid
 
 `func (o *PaymentProcessorAuthorizationCodeRequest) GetUserGuid() string`
@@ -116,22 +86,7 @@ and a boolean to check if the value has been set.
 
 SetUserGuid sets UserGuid field to given value.
 
-### HasUserGuid
 
-`func (o *PaymentProcessorAuthorizationCodeRequest) HasUserGuid() bool`
-
-HasUserGuid returns a boolean if a field has been set.
-
-### SetUserGuidNil
-
-`func (o *PaymentProcessorAuthorizationCodeRequest) SetUserGuidNil(b bool)`
-
- SetUserGuidNil sets the value for UserGuid to be an explicit nil
-
-### UnsetUserGuid
-`func (o *PaymentProcessorAuthorizationCodeRequest) UnsetUserGuid()`
-
-UnsetUserGuid ensures that no value is present for UserGuid, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

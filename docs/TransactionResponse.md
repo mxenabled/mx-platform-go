@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **IsFee** | Pointer to **NullableBool** |  | [optional] 
 **IsIncome** | Pointer to **NullableBool** |  | [optional] 
 **IsInternational** | Pointer to **NullableBool** |  | [optional] 
+**IsManual** | Pointer to **NullableBool** |  | [optional] 
 **IsOverdraftFee** | Pointer to **NullableBool** |  | [optional] 
 **IsPayrollAdvance** | Pointer to **NullableBool** |  | [optional] 
 **IsRecurring** | Pointer to **NullableBool** |  | [optional] 
@@ -732,6 +733,41 @@ HasIsInternational returns a boolean if a field has been set.
 `func (o *TransactionResponse) UnsetIsInternational()`
 
 UnsetIsInternational ensures that no value is present for IsInternational, not even an explicit nil
+### GetIsManual
+
+`func (o *TransactionResponse) GetIsManual() bool`
+
+GetIsManual returns the IsManual field if non-nil, zero value otherwise.
+
+### GetIsManualOk
+
+`func (o *TransactionResponse) GetIsManualOk() (*bool, bool)`
+
+GetIsManualOk returns a tuple with the IsManual field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsManual
+
+`func (o *TransactionResponse) SetIsManual(v bool)`
+
+SetIsManual sets IsManual field to given value.
+
+### HasIsManual
+
+`func (o *TransactionResponse) HasIsManual() bool`
+
+HasIsManual returns a boolean if a field has been set.
+
+### SetIsManualNil
+
+`func (o *TransactionResponse) SetIsManualNil(b bool)`
+
+ SetIsManualNil sets the value for IsManual to be an explicit nil
+
+### UnsetIsManual
+`func (o *TransactionResponse) UnsetIsManual()`
+
+UnsetIsManual ensures that no value is present for IsManual, not even an explicit nil
 ### GetIsOverdraftFee
 
 `func (o *TransactionResponse) GetIsOverdraftFee() bool`

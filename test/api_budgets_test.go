@@ -22,28 +22,70 @@ func Test_mxplatformgo_BudgetsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test BudgetsAPIService UsersUserGuidBudgetsBudgetGuidDelete", func(t *testing.T) {
+	t.Run("Test BudgetsAPIService AutoGenerateBudgets", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+
+		resp, httpRes, err := apiClient.BudgetsAPI.AutoGenerateBudgets(context.Background(), userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BudgetsAPIService CreateBudget", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+
+		resp, httpRes, err := apiClient.BudgetsAPI.CreateBudget(context.Background(), userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BudgetsAPIService DeleteBudget", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var userGuid string
 		var budgetGuid string
 
-		httpRes, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsBudgetGuidDelete(context.Background(), userGuid, budgetGuid).Execute()
+		httpRes, err := apiClient.BudgetsAPI.DeleteBudget(context.Background(), userGuid, budgetGuid).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test BudgetsAPIService UsersUserGuidBudgetsBudgetGuidGet", func(t *testing.T) {
+	t.Run("Test BudgetsAPIService ListAllBudgets", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
+		var userGuid string
+
+		resp, httpRes, err := apiClient.BudgetsAPI.ListAllBudgets(context.Background(), userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BudgetsAPIService ReadSpecificBudget", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
 		var budgetGuid string
-		var userGuid string
 
-		resp, httpRes, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsBudgetGuidGet(context.Background(), budgetGuid, userGuid).Execute()
+		resp, httpRes, err := apiClient.BudgetsAPI.ReadSpecificBudget(context.Background(), userGuid, budgetGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,56 +93,14 @@ func Test_mxplatformgo_BudgetsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BudgetsAPIService UsersUserGuidBudgetsBudgetGuidPut", func(t *testing.T) {
+	t.Run("Test BudgetsAPIService UpdateSpecificBudget", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var userGuid string
 		var budgetGuid string
 
-		resp, httpRes, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsBudgetGuidPut(context.Background(), userGuid, budgetGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test BudgetsAPIService UsersUserGuidBudgetsGeneratePost", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-
-		resp, httpRes, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsGeneratePost(context.Background(), userGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test BudgetsAPIService UsersUserGuidBudgetsGet", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-
-		resp, httpRes, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsGet(context.Background(), userGuid).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test BudgetsAPIService UsersUserGuidBudgetsPost", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var userGuid string
-
-		resp, httpRes, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsPost(context.Background(), userGuid).Execute()
+		resp, httpRes, err := apiClient.BudgetsAPI.UpdateSpecificBudget(context.Background(), userGuid, budgetGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,18 +1,19 @@
 # \InsightsAPI
 
-All URIs are relative to *https://api.mx.com*
+All URIs are relative to *https://int-api.mx.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListAccountsInsight**](InsightsAPI.md#ListAccountsInsight) | **Get** /users/{user_guid}/insights/{insight_guid}/accounts | List all accounts associated with an insight.
-[**ListCategoriesInsight**](InsightsAPI.md#ListCategoriesInsight) | **Get** /users/{user_guid}/insights/{insight_guid}/categories | List all categories associated with an insight.
+[**ListAccountsInsight**](InsightsAPI.md#ListAccountsInsight) | **Get** /users/{user_guid}/insights/{insight_guid}/accounts | List all accounts associated with an insight
+[**ListCategoriesInsight**](InsightsAPI.md#ListCategoriesInsight) | **Get** /users/{user_guid}/insights/{insight_guid}/categories | List all categories associated with an insight
 [**ListInsightsByAccount**](InsightsAPI.md#ListInsightsByAccount) | **Get** /users/{user_guid}/accounts/{account_guid}/insights | List insights by account
-[**ListInsightsUser**](InsightsAPI.md#ListInsightsUser) | **Get** /users/{user_guid}/insights | List all insights for a user.
-[**ListMerchantsInsight**](InsightsAPI.md#ListMerchantsInsight) | **Get** /users/{user_guid}/insights/{insight_guid}/merchants | List all merchants associated with an insight.
+[**ListInsightsByTransaction**](InsightsAPI.md#ListInsightsByTransaction) | **Get** /users/{user_guid}/transactions/{transaction_guid}/insights | List insights by transaction
+[**ListInsightsUser**](InsightsAPI.md#ListInsightsUser) | **Get** /users/{user_guid}/insights | List all insights for a user
+[**ListMerchantsInsight**](InsightsAPI.md#ListMerchantsInsight) | **Get** /users/{user_guid}/insights/{insight_guid}/merchants | List all merchants associated with an insight
 [**ListScheduledPaymentsInsight**](InsightsAPI.md#ListScheduledPaymentsInsight) | **Get** /users/{user_guid}/insights/{insight_guid}/scheduled_payments | List all scheduled payments associated with an insight
-[**ListTransactionsInsight**](InsightsAPI.md#ListTransactionsInsight) | **Get** /users/{user_guid}/insights/{insight_guid}/transactions | List all transactions associated with an insight.
-[**ReadInsightsUser**](InsightsAPI.md#ReadInsightsUser) | **Get** /users/{user_guid}/insights{insight_guid} | Read a specific insight.
-[**UpdateInsight**](InsightsAPI.md#UpdateInsight) | **Put** /users/{user_guid}/insights{insight_guid} | Update insight
+[**ListTransactionsInsight**](InsightsAPI.md#ListTransactionsInsight) | **Get** /users/{user_guid}/insights/{insight_guid}/transactions | List all transactions associated with an insight
+[**ReadInsightUser**](InsightsAPI.md#ReadInsightUser) | **Get** /users/{user_guid}/insights/{insight_guid} | Read insight
+[**UpdateInsight**](InsightsAPI.md#UpdateInsight) | **Put** /users/{user_guid}/insights/{insight_guid} | Update insight
 
 
 
@@ -20,7 +21,7 @@ Method | HTTP request | Description
 
 > AccountsResponseBody ListAccountsInsight(ctx, userGuid, insightGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
 
-List all accounts associated with an insight.
+List all accounts associated with an insight
 
 
 
@@ -37,10 +38,10 @@ import (
 )
 
 func main() {
-    userGuid := "USR-1234-abcd" // string | The unique identifier for the user. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     insightGuid := "BET-1234-abcd" // string | The unique identifier for the insight. Defined by MX.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -60,7 +61,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **insightGuid** | **string** | The unique identifier for the insight. Defined by MX. | 
 
 ### Other Parameters
@@ -72,8 +73,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -97,7 +98,7 @@ Name | Type | Description  | Notes
 
 > CategoriesResponseBody ListCategoriesInsight(ctx, userGuid, insightGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
 
-List all categories associated with an insight.
+List all categories associated with an insight
 
 
 
@@ -114,10 +115,10 @@ import (
 )
 
 func main() {
-    userGuid := "USR-1234-abcd" // string | The unique identifier for the user. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     insightGuid := "BET-1234-abcd" // string | The unique identifier for the insight. Defined by MX.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -137,7 +138,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **insightGuid** | **string** | The unique identifier for the insight. Defined by MX. | 
 
 ### Other Parameters
@@ -149,8 +150,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -191,10 +192,10 @@ import (
 )
 
 func main() {
-    accountGuid := "ACT-7c6f361b-e582-15b6-60c0-358f12466b4b" // string | The unique id for the `account`.
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique id for the `user`.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    accountGuid := "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1" // string | The unique id for an `account`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -214,8 +215,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountGuid** | **string** | The unique id for the &#x60;account&#x60;. | 
-**userGuid** | **string** | The unique id for the &#x60;user&#x60;. | 
+**accountGuid** | **string** | The unique id for an &#x60;account&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 
 ### Other Parameters
 
@@ -226,8 +227,85 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
+
+### Return type
+
+[**InsightsResponseBody**](InsightsResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListInsightsByTransaction
+
+> InsightsResponseBody ListInsightsByTransaction(ctx, transactionGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+
+List insights by transaction
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    transactionGuid := "TRN-810828b0-5210-4878-9bd3-f4ce514f90c4" // string | The unique id for a `transaction`.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.InsightsAPI.ListInsightsByTransaction(context.Background(), transactionGuid, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InsightsAPI.ListInsightsByTransaction``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListInsightsByTransaction`: InsightsResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `InsightsAPI.ListInsightsByTransaction`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**transactionGuid** | **string** | The unique id for a &#x60;transaction&#x60;. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListInsightsByTransactionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -251,7 +329,7 @@ Name | Type | Description  | Notes
 
 > InsightsResponseBody ListInsightsUser(ctx, userGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
 
-List all insights for a user.
+List all insights for a user
 
 
 
@@ -268,9 +346,9 @@ import (
 )
 
 func main() {
-    userGuid := "USR-1234-abcd" // string | The unique identifier for the user. Defined by MX.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -290,7 +368,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 
 ### Other Parameters
 
@@ -300,8 +378,8 @@ Other parameters are passed through a pointer to a apiListInsightsUserRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -325,7 +403,7 @@ Name | Type | Description  | Notes
 
 > MerchantsResponseBody ListMerchantsInsight(ctx, userGuid, insightGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
 
-List all merchants associated with an insight.
+List all merchants associated with an insight
 
 
 
@@ -342,10 +420,10 @@ import (
 )
 
 func main() {
-    userGuid := "USR-1234-abcd" // string | The unique identifier for the user. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     insightGuid := "BET-1234-abcd" // string | The unique identifier for the insight. Defined by MX.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -365,7 +443,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **insightGuid** | **string** | The unique identifier for the insight. Defined by MX. | 
 
 ### Other Parameters
@@ -377,8 +455,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -419,10 +497,10 @@ import (
 )
 
 func main() {
-    userGuid := "USR-1234-abcd" // string | The unique identifier for the user. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     insightGuid := "BET-1234-abcd" // string | The unique identifier for the insight. Defined by MX.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -442,7 +520,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **insightGuid** | **string** | The unique identifier for the insight. Defined by MX. | 
 
 ### Other Parameters
@@ -454,8 +532,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -479,7 +557,7 @@ Name | Type | Description  | Notes
 
 > TransactionsResponseBody ListTransactionsInsight(ctx, userGuid, insightGuid).Page(page).RecordsPerPage(recordsPerPage).Execute()
 
-List all transactions associated with an insight.
+List all transactions associated with an insight
 
 
 
@@ -496,10 +574,10 @@ import (
 )
 
 func main() {
-    userGuid := "USR-1234-abcd" // string | The unique identifier for the user. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     insightGuid := "BET-1234-abcd" // string | The unique identifier for the insight. Defined by MX.
-    page := int32(1) // int32 | Specify current page. (optional)
-    recordsPerPage := int32(10) // int32 | Specify records per page. (optional)
+    page := int32(1) // int32 | Results are paginated. Specify current page. (optional)
+    recordsPerPage := int32(10) // int32 | This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -519,7 +597,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **insightGuid** | **string** | The unique identifier for the insight. Defined by MX. | 
 
 ### Other Parameters
@@ -531,8 +609,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **int32** | Specify current page. | 
- **recordsPerPage** | **int32** | Specify records per page. | 
+ **page** | **int32** | Results are paginated. Specify current page. | 
+ **recordsPerPage** | **int32** | This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead. | 
 
 ### Return type
 
@@ -552,11 +630,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReadInsightsUser
+## ReadInsightUser
 
-> InsightResponseBody ReadInsightsUser(ctx, userGuid, insightGuid).Execute()
+> InsightResponseBody ReadInsightUser(ctx, userGuid, insightGuid).Execute()
 
-Read a specific insight.
+Read insight
 
 
 
@@ -573,18 +651,18 @@ import (
 )
 
 func main() {
-    userGuid := "USR-1234-abcd" // string | The unique identifier for the user. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     insightGuid := "BET-1234-abcd" // string | The unique identifier for the insight. Defined by MX.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InsightsAPI.ReadInsightsUser(context.Background(), userGuid, insightGuid).Execute()
+    resp, r, err := apiClient.InsightsAPI.ReadInsightUser(context.Background(), userGuid, insightGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InsightsAPI.ReadInsightsUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InsightsAPI.ReadInsightUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadInsightsUser`: InsightResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `InsightsAPI.ReadInsightsUser`: %v\n", resp)
+    // response from `ReadInsightUser`: InsightResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `InsightsAPI.ReadInsightUser`: %v\n", resp)
 }
 ```
 
@@ -594,12 +672,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **insightGuid** | **string** | The unique identifier for the insight. Defined by MX. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadInsightsUserRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadInsightUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -627,7 +705,7 @@ Name | Type | Description  | Notes
 
 ## UpdateInsight
 
-> InsightResponse UpdateInsight(ctx, userGuid, insightGuid).InsightUpdateRequest(insightUpdateRequest).Execute()
+> InsightResponse UpdateInsight(ctx, userGuid, insightGuid).InsightUpdateRequestBody(insightUpdateRequestBody).Execute()
 
 Update insight
 
@@ -646,13 +724,13 @@ import (
 )
 
 func main() {
-    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for the user. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     insightGuid := "BET-1234-abcd" // string | The unique identifier for the insight. Defined by MX.
-    insightUpdateRequest := *openapiclient.NewInsightUpdateRequest() // InsightUpdateRequest | The insight to be updated (None of these parameters are required, but the user object cannot be empty.)
+    insightUpdateRequestBody := *openapiclient.NewInsightUpdateRequestBody() // InsightUpdateRequestBody | The insight to be updated (None of these parameters are required, but the user object cannot be empty.)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InsightsAPI.UpdateInsight(context.Background(), userGuid, insightGuid).InsightUpdateRequest(insightUpdateRequest).Execute()
+    resp, r, err := apiClient.InsightsAPI.UpdateInsight(context.Background(), userGuid, insightGuid).InsightUpdateRequestBody(insightUpdateRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InsightsAPI.UpdateInsight``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -668,7 +746,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **insightGuid** | **string** | The unique identifier for the insight. Defined by MX. | 
 
 ### Other Parameters
@@ -680,7 +758,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **insightUpdateRequest** | [**InsightUpdateRequest**](InsightUpdateRequest.md) | The insight to be updated (None of these parameters are required, but the user object cannot be empty.) | 
+ **insightUpdateRequestBody** | [**InsightUpdateRequestBody**](InsightUpdateRequestBody.md) | The insight to be updated (None of these parameters are required, but the user object cannot be empty.) | 
 
 ### Return type
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **CurrentMemberGuid** | Pointer to **string** |  | [optional] 
 **DisableBackgroundAgg** | Pointer to **bool** |  | [optional] 
 **DisableInstitutionSearch** | Pointer to **bool** |  | [optional] 
+**EnableApp2app** | Pointer to **bool** | This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to &#x60;true&#x60;. When set to &#x60;false&#x60;, the widget will **not** direct the end user to the institution&#39;s mobile application. This setting is not persistent. This setting currently only affects Chase institutions.  | [optional] 
 **IncludeIdentity** | Pointer to **bool** |  | [optional] 
 **IncludeTransactions** | Pointer to **bool** |  | [optional] 
 **IsMobileWebview** | Pointer to **bool** |  | [optional] 
@@ -187,6 +188,31 @@ SetDisableInstitutionSearch sets DisableInstitutionSearch field to given value.
 `func (o *ConnectWidgetRequest) HasDisableInstitutionSearch() bool`
 
 HasDisableInstitutionSearch returns a boolean if a field has been set.
+
+### GetEnableApp2app
+
+`func (o *ConnectWidgetRequest) GetEnableApp2app() bool`
+
+GetEnableApp2app returns the EnableApp2app field if non-nil, zero value otherwise.
+
+### GetEnableApp2appOk
+
+`func (o *ConnectWidgetRequest) GetEnableApp2appOk() (*bool, bool)`
+
+GetEnableApp2appOk returns a tuple with the EnableApp2app field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableApp2app
+
+`func (o *ConnectWidgetRequest) SetEnableApp2app(v bool)`
+
+SetEnableApp2app sets EnableApp2app field to given value.
+
+### HasEnableApp2app
+
+`func (o *ConnectWidgetRequest) HasEnableApp2app() bool`
+
+HasEnableApp2app returns a boolean if a field has been set.
 
 ### GetIncludeIdentity
 

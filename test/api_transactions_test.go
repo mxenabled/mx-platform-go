@@ -22,14 +22,233 @@ func Test_mxplatformgo_TransactionsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TransactionsAPIService UsersUserGuidAccountsAccountGuidTransactionsPost", func(t *testing.T) {
+	t.Run("Test TransactionsAPIService CreateManualTransaction", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var userGuid string
 		var accountGuid string
 
-		resp, httpRes, err := apiClient.TransactionsAPI.UsersUserGuidAccountsAccountGuidTransactionsPost(context.Background(), userGuid, accountGuid).Execute()
+		resp, httpRes, err := apiClient.TransactionsAPI.CreateManualTransaction(context.Background(), userGuid, accountGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService CreateSplitTransactions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var transactionGuid string
+		var userGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.CreateSplitTransactions(context.Background(), transactionGuid, userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService DeleteManualTransactions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var transactionGuid string
+
+		httpRes, err := apiClient.TransactionsAPI.DeleteManualTransactions(context.Background(), userGuid, transactionGuid).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService DeleteSplitTransactions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var transactionGuid string
+		var userGuid string
+
+		httpRes, err := apiClient.TransactionsAPI.DeleteSplitTransactions(context.Background(), transactionGuid, userGuid).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService DeleteTransactionRule", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var transactionRuleGuid string
+		var userGuid string
+
+		httpRes, err := apiClient.TransactionsAPI.DeleteTransactionRule(context.Background(), transactionRuleGuid, userGuid).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService EnhanceTransactions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.TransactionsAPI.EnhanceTransactions(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService ExtendHistory", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var memberGuid string
+		var userGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.ExtendHistory(context.Background(), memberGuid, userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService ListTransactions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.ListTransactions(context.Background(), userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService ListTransactionsByAccount", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var accountGuid string
+		var userGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.ListTransactionsByAccount(context.Background(), accountGuid, userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService ListTransactionsByMember", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var memberGuid string
+		var userGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.ListTransactionsByMember(context.Background(), memberGuid, userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService ListTransactionsByTag", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var tagGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.ListTransactionsByTag(context.Background(), userGuid, tagGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService ReadTransaction", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var transactionGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.ReadTransaction(context.Background(), userGuid, transactionGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService RepeatingTransactions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.RepeatingTransactions(context.Background(), userGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService SpecificRepeatingTransaction", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var repeatingTransactionGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.SpecificRepeatingTransaction(context.Background(), userGuid, repeatingTransactionGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService UpdateTransaction", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var transactionGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.UpdateTransaction(context.Background(), userGuid, transactionGuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransactionsAPIService UpdateTransactionByAccount", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userGuid string
+		var memberGuid string
+		var accountGuid string
+		var transactionGuid string
+
+		resp, httpRes, err := apiClient.TransactionsAPI.UpdateTransactionByAccount(context.Background(), userGuid, memberGuid, accountGuid, transactionGuid).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

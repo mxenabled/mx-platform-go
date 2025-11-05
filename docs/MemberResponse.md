@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **BackgroundAggregationIsDisabled** | Pointer to **bool** |  | [optional] 
 **ConnectionStatus** | Pointer to **NullableString** |  | [optional] 
 **ConnectionStatusMessage** | Pointer to **NullableString** |  | [optional] 
-**Error** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
 **Id** | Pointer to **NullableString** |  | [optional] 
 **InstitutionCode** | Pointer to **NullableString** |  | [optional] 
@@ -178,41 +177,6 @@ HasConnectionStatusMessage returns a boolean if a field has been set.
 `func (o *MemberResponse) UnsetConnectionStatusMessage()`
 
 UnsetConnectionStatusMessage ensures that no value is present for ConnectionStatusMessage, not even an explicit nil
-### GetError
-
-`func (o *MemberResponse) GetError() string`
-
-GetError returns the Error field if non-nil, zero value otherwise.
-
-### GetErrorOk
-
-`func (o *MemberResponse) GetErrorOk() (*string, bool)`
-
-GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetError
-
-`func (o *MemberResponse) SetError(v string)`
-
-SetError sets Error field to given value.
-
-### HasError
-
-`func (o *MemberResponse) HasError() bool`
-
-HasError returns a boolean if a field has been set.
-
-### SetErrorNil
-
-`func (o *MemberResponse) SetErrorNil(b bool)`
-
- SetErrorNil sets the value for Error to be an explicit nil
-
-### UnsetError
-`func (o *MemberResponse) UnsetError()`
-
-UnsetError ensures that no value is present for Error, not even an explicit nil
 ### GetGuid
 
 `func (o *MemberResponse) GetGuid() string`

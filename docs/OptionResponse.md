@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Guid** | Pointer to **NullableString** |  | [optional] 
 **Label** | Pointer to **NullableString** |  | [optional] 
 **Value** | Pointer to **NullableString** |  | [optional] 
 
@@ -27,41 +26,6 @@ NewOptionResponseWithDefaults instantiates a new OptionResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetGuid
-
-`func (o *OptionResponse) GetGuid() string`
-
-GetGuid returns the Guid field if non-nil, zero value otherwise.
-
-### GetGuidOk
-
-`func (o *OptionResponse) GetGuidOk() (*string, bool)`
-
-GetGuidOk returns a tuple with the Guid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGuid
-
-`func (o *OptionResponse) SetGuid(v string)`
-
-SetGuid sets Guid field to given value.
-
-### HasGuid
-
-`func (o *OptionResponse) HasGuid() bool`
-
-HasGuid returns a boolean if a field has been set.
-
-### SetGuidNil
-
-`func (o *OptionResponse) SetGuidNil(b bool)`
-
- SetGuidNil sets the value for Guid to be an explicit nil
-
-### UnsetGuid
-`func (o *OptionResponse) UnsetGuid()`
-
-UnsetGuid ensures that no value is present for Guid, not even an explicit nil
 ### GetLabel
 
 `func (o *OptionResponse) GetLabel() string`

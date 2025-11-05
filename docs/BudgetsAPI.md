@@ -1,21 +1,163 @@
 # \BudgetsAPI
 
-All URIs are relative to *https://api.mx.com*
+All URIs are relative to *https://int-api.mx.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**UsersUserGuidBudgetsBudgetGuidDelete**](BudgetsAPI.md#UsersUserGuidBudgetsBudgetGuidDelete) | **Delete** /users/{user_guid}/budgets/{budget_guid} | Delete a budget
-[**UsersUserGuidBudgetsBudgetGuidGet**](BudgetsAPI.md#UsersUserGuidBudgetsBudgetGuidGet) | **Get** /users/{user_guid}/budgets/{budget_guid} | Read a specific budget
-[**UsersUserGuidBudgetsBudgetGuidPut**](BudgetsAPI.md#UsersUserGuidBudgetsBudgetGuidPut) | **Put** /users/{user_guid}/budgets/{budget_guid} | Update a specific budget
-[**UsersUserGuidBudgetsGeneratePost**](BudgetsAPI.md#UsersUserGuidBudgetsGeneratePost) | **Post** /users/{user_guid}/budgets/generate | Auto-generate budgets
-[**UsersUserGuidBudgetsGet**](BudgetsAPI.md#UsersUserGuidBudgetsGet) | **Get** /users/{user_guid}/budgets | List all budgets
-[**UsersUserGuidBudgetsPost**](BudgetsAPI.md#UsersUserGuidBudgetsPost) | **Post** /users/{user_guid}/budgets | Create a budget
+[**AutoGenerateBudgets**](BudgetsAPI.md#AutoGenerateBudgets) | **Post** /users/{user_guid}/budgets/generate | Auto-generate budgets
+[**CreateBudget**](BudgetsAPI.md#CreateBudget) | **Post** /users/{user_guid}/budgets | Create a budget
+[**DeleteBudget**](BudgetsAPI.md#DeleteBudget) | **Delete** /users/{user_guid}/budgets/{budget_guid} | Delete a budget
+[**ListAllBudgets**](BudgetsAPI.md#ListAllBudgets) | **Get** /users/{user_guid}/budgets | List all budgets
+[**ReadSpecificBudget**](BudgetsAPI.md#ReadSpecificBudget) | **Get** /users/{user_guid}/budgets/{budget_guid} | Read a specific budget
+[**UpdateSpecificBudget**](BudgetsAPI.md#UpdateSpecificBudget) | **Put** /users/{user_guid}/budgets/{budget_guid} | Update a specific budget
 
 
 
-## UsersUserGuidBudgetsBudgetGuidDelete
+## AutoGenerateBudgets
 
-> UsersUserGuidBudgetsBudgetGuidDelete(ctx, userGuid, budgetGuid).Execute()
+> BudgetResponseBody AutoGenerateBudgets(ctx, userGuid).Execute()
+
+Auto-generate budgets
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BudgetsAPI.AutoGenerateBudgets(context.Background(), userGuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.AutoGenerateBudgets``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AutoGenerateBudgets`: BudgetResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.AutoGenerateBudgets`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAutoGenerateBudgetsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**BudgetResponseBody**](BudgetResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateBudget
+
+> BudgetResponseBody CreateBudget(ctx, userGuid).BudgetCreateRequestBody(budgetCreateRequestBody).Execute()
+
+Create a budget
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+    budgetCreateRequestBody := *openapiclient.NewBudgetCreateRequestBody() // BudgetCreateRequestBody | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BudgetsAPI.CreateBudget(context.Background(), userGuid).BudgetCreateRequestBody(budgetCreateRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.CreateBudget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateBudget`: BudgetResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.CreateBudget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateBudgetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **budgetCreateRequestBody** | [**BudgetCreateRequestBody**](BudgetCreateRequestBody.md) |  | 
+
+### Return type
+
+[**BudgetResponseBody**](BudgetResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.mx.api.v1+json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteBudget
+
+> DeleteBudget(ctx, userGuid, budgetGuid).Execute()
 
 Delete a budget
 
@@ -34,14 +176,14 @@ import (
 )
 
 func main() {
-    userGuid := "userGuid_example" // string | The unique identifier for the budget. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
     budgetGuid := "budgetGuid_example" // string | The unique identifier for the budget. Defined by MX.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsBudgetGuidDelete(context.Background(), userGuid, budgetGuid).Execute()
+    r, err := apiClient.BudgetsAPI.DeleteBudget(context.Background(), userGuid, budgetGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.UsersUserGuidBudgetsBudgetGuidDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.DeleteBudget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -53,12 +195,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the budget. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 **budgetGuid** | **string** | The unique identifier for the budget. Defined by MX. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUsersUserGuidBudgetsBudgetGuidDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteBudgetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,227 +226,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UsersUserGuidBudgetsBudgetGuidGet
+## ListAllBudgets
 
-> BudgetResponseBody UsersUserGuidBudgetsBudgetGuidGet(ctx, budgetGuid, userGuid).Execute()
-
-Read a specific budget
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/mxenabled/mx-platform-go"
-)
-
-func main() {
-    budgetGuid := "budgetGuid_example" // string | The unique identifier for the budget. Defined by MX.
-    userGuid := "userGuid_example" // string | The unique identifier for the budget. Defined by MX.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsBudgetGuidGet(context.Background(), budgetGuid, userGuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.UsersUserGuidBudgetsBudgetGuidGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UsersUserGuidBudgetsBudgetGuidGet`: BudgetResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.UsersUserGuidBudgetsBudgetGuidGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**budgetGuid** | **string** | The unique identifier for the budget. Defined by MX. | 
-**userGuid** | **string** | The unique identifier for the budget. Defined by MX. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUsersUserGuidBudgetsBudgetGuidGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**BudgetResponseBody**](BudgetResponseBody.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UsersUserGuidBudgetsBudgetGuidPut
-
-> BudgetResponseBody UsersUserGuidBudgetsBudgetGuidPut(ctx, userGuid, budgetGuid).BudgetUpdateRequestBody(budgetUpdateRequestBody).Execute()
-
-Update a specific budget
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/mxenabled/mx-platform-go"
-)
-
-func main() {
-    userGuid := "userGuid_example" // string | The unique identifier for the budget. Defined by MX.
-    budgetGuid := "budgetGuid_example" // string | The unique identifier for the budget. Defined by MX.
-    budgetUpdateRequestBody := *openapiclient.NewBudgetUpdateRequestBody() // BudgetUpdateRequestBody |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsBudgetGuidPut(context.Background(), userGuid, budgetGuid).BudgetUpdateRequestBody(budgetUpdateRequestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.UsersUserGuidBudgetsBudgetGuidPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UsersUserGuidBudgetsBudgetGuidPut`: BudgetResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.UsersUserGuidBudgetsBudgetGuidPut`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the budget. Defined by MX. | 
-**budgetGuid** | **string** | The unique identifier for the budget. Defined by MX. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUsersUserGuidBudgetsBudgetGuidPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **budgetUpdateRequestBody** | [**BudgetUpdateRequestBody**](BudgetUpdateRequestBody.md) |  | 
-
-### Return type
-
-[**BudgetResponseBody**](BudgetResponseBody.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UsersUserGuidBudgetsGeneratePost
-
-> BudgetResponseBody UsersUserGuidBudgetsGeneratePost(ctx, userGuid).Execute()
-
-Auto-generate budgets
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/mxenabled/mx-platform-go"
-)
-
-func main() {
-    userGuid := "userGuid_example" // string | The unique identifier for the user. Defined by MX.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsGeneratePost(context.Background(), userGuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.UsersUserGuidBudgetsGeneratePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UsersUserGuidBudgetsGeneratePost`: BudgetResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.UsersUserGuidBudgetsGeneratePost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUsersUserGuidBudgetsGeneratePostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**BudgetResponseBody**](BudgetResponseBody.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UsersUserGuidBudgetsGet
-
-> BudgetResponseBody UsersUserGuidBudgetsGet(ctx, userGuid).Execute()
+> BudgetResponseBody ListAllBudgets(ctx, userGuid).Execute()
 
 List all budgets
 
@@ -323,17 +247,17 @@ import (
 )
 
 func main() {
-    userGuid := "userGuid_example" // string | The unique identifier for the user. Defined by MX.
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsGet(context.Background(), userGuid).Execute()
+    resp, r, err := apiClient.BudgetsAPI.ListAllBudgets(context.Background(), userGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.UsersUserGuidBudgetsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.ListAllBudgets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UsersUserGuidBudgetsGet`: BudgetResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.UsersUserGuidBudgetsGet`: %v\n", resp)
+    // response from `ListAllBudgets`: BudgetResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.ListAllBudgets`: %v\n", resp)
 }
 ```
 
@@ -343,11 +267,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUsersUserGuidBudgetsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListAllBudgetsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -365,18 +289,18 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.mx.api.v1+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## UsersUserGuidBudgetsPost
+## ReadSpecificBudget
 
-> BudgetResponseBody UsersUserGuidBudgetsPost(ctx, userGuid).BudgetCreateRequestBody(budgetCreateRequestBody).Execute()
+> BudgetResponseBody ReadSpecificBudget(ctx, userGuid, budgetGuid).Execute()
 
-Create a budget
+Read a specific budget
 
 
 
@@ -393,18 +317,18 @@ import (
 )
 
 func main() {
-    userGuid := "userGuid_example" // string | The unique identifier for the user. Defined by MX.
-    budgetCreateRequestBody := *openapiclient.NewBudgetCreateRequestBody() // BudgetCreateRequestBody | 
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+    budgetGuid := "budgetGuid_example" // string | The unique identifier for the budget. Defined by MX.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BudgetsAPI.UsersUserGuidBudgetsPost(context.Background(), userGuid).BudgetCreateRequestBody(budgetCreateRequestBody).Execute()
+    resp, r, err := apiClient.BudgetsAPI.ReadSpecificBudget(context.Background(), userGuid, budgetGuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.UsersUserGuidBudgetsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.ReadSpecificBudget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UsersUserGuidBudgetsPost`: BudgetResponseBody
-    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.UsersUserGuidBudgetsPost`: %v\n", resp)
+    // response from `ReadSpecificBudget`: BudgetResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.ReadSpecificBudget`: %v\n", resp)
 }
 ```
 
@@ -414,17 +338,18 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userGuid** | **string** | The unique identifier for the user. Defined by MX. | 
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
+**budgetGuid** | **string** | The unique identifier for the budget. Defined by MX. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUsersUserGuidBudgetsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadSpecificBudgetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **budgetCreateRequestBody** | [**BudgetCreateRequestBody**](BudgetCreateRequestBody.md) |  | 
+
 
 ### Return type
 
@@ -436,7 +361,82 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.mx.api.v1+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateSpecificBudget
+
+> BudgetResponseBody UpdateSpecificBudget(ctx, userGuid, budgetGuid).BudgetUpdateRequestBody(budgetUpdateRequestBody).Execute()
+
+Update a specific budget
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mxenabled/mx-platform-go"
+)
+
+func main() {
+    userGuid := "USR-fa7537f3-48aa-a683-a02a-b18940482f54" // string | The unique identifier for a `user`, beginning with the prefix `USR-`.
+    budgetGuid := "budgetGuid_example" // string | The unique identifier for the budget. Defined by MX.
+    budgetUpdateRequestBody := *openapiclient.NewBudgetUpdateRequestBody() // BudgetUpdateRequestBody |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BudgetsAPI.UpdateSpecificBudget(context.Background(), userGuid, budgetGuid).BudgetUpdateRequestBody(budgetUpdateRequestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BudgetsAPI.UpdateSpecificBudget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSpecificBudget`: BudgetResponseBody
+    fmt.Fprintf(os.Stdout, "Response from `BudgetsAPI.UpdateSpecificBudget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userGuid** | **string** | The unique identifier for a &#x60;user&#x60;, beginning with the prefix &#x60;USR-&#x60;. | 
+**budgetGuid** | **string** | The unique identifier for the budget. Defined by MX. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSpecificBudgetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **budgetUpdateRequestBody** | [**BudgetUpdateRequestBody**](BudgetUpdateRequestBody.md) |  | 
+
+### Return type
+
+[**BudgetResponseBody**](BudgetResponseBody.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.mx.api.v1+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

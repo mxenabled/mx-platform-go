@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **BudgetedIncome** | Pointer to **float32** | The amount of the budgeted income for the user. | [optional] 
 **BudgetedExpenses** | Pointer to **float32** | The amount of the budgeted expenses for the user. | [optional] 
 **GoalsContribution** | Pointer to **float32** | The monthly dollar amount allocated for goals. | [optional] 
-**EstimatedGoalsContribution** | Pointer to **int32** | The estimated monthly dollar amount allocated for goals calculated from income and budgets. | [optional] 
+**EstimatedGoalsContribution** | Pointer to **NullableFloat32** | The estimated monthly dollar amount allocated for goals calculated from income and budgets. | [optional] 
 **UsesEstimatedGoalsContribution** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -158,20 +158,20 @@ HasGoalsContribution returns a boolean if a field has been set.
 
 ### GetEstimatedGoalsContribution
 
-`func (o *MonthlyCashFlowResponse) GetEstimatedGoalsContribution() int32`
+`func (o *MonthlyCashFlowResponse) GetEstimatedGoalsContribution() float32`
 
 GetEstimatedGoalsContribution returns the EstimatedGoalsContribution field if non-nil, zero value otherwise.
 
 ### GetEstimatedGoalsContributionOk
 
-`func (o *MonthlyCashFlowResponse) GetEstimatedGoalsContributionOk() (*int32, bool)`
+`func (o *MonthlyCashFlowResponse) GetEstimatedGoalsContributionOk() (*float32, bool)`
 
 GetEstimatedGoalsContributionOk returns a tuple with the EstimatedGoalsContribution field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEstimatedGoalsContribution
 
-`func (o *MonthlyCashFlowResponse) SetEstimatedGoalsContribution(v int32)`
+`func (o *MonthlyCashFlowResponse) SetEstimatedGoalsContribution(v float32)`
 
 SetEstimatedGoalsContribution sets EstimatedGoalsContribution field to given value.
 
@@ -181,6 +181,16 @@ SetEstimatedGoalsContribution sets EstimatedGoalsContribution field to given val
 
 HasEstimatedGoalsContribution returns a boolean if a field has been set.
 
+### SetEstimatedGoalsContributionNil
+
+`func (o *MonthlyCashFlowResponse) SetEstimatedGoalsContributionNil(b bool)`
+
+ SetEstimatedGoalsContributionNil sets the value for EstimatedGoalsContribution to be an explicit nil
+
+### UnsetEstimatedGoalsContribution
+`func (o *MonthlyCashFlowResponse) UnsetEstimatedGoalsContribution()`
+
+UnsetEstimatedGoalsContribution ensures that no value is present for EstimatedGoalsContribution, not even an explicit nil
 ### GetUsesEstimatedGoalsContribution
 
 `func (o *MonthlyCashFlowResponse) GetUsesEstimatedGoalsContribution() bool`

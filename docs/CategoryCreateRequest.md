@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Metadata** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
-**ParentGuid** | Pointer to **string** |  | [optional] 
+**ParentGuid** | **string** |  | 
 
 ## Methods
 
 ### NewCategoryCreateRequest
 
-`func NewCategoryCreateRequest(name string, ) *CategoryCreateRequest`
+`func NewCategoryCreateRequest(name string, parentGuid string, ) *CategoryCreateRequest`
 
 NewCategoryCreateRequest instantiates a new CategoryCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -91,11 +91,6 @@ and a boolean to check if the value has been set.
 
 SetParentGuid sets ParentGuid field to given value.
 
-### HasParentGuid
-
-`func (o *CategoryCreateRequest) HasParentGuid() bool`
-
-HasParentGuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

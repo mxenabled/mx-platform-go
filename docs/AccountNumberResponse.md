@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **AccountGuid** | Pointer to **NullableString** |  | [optional] 
 **AccountNumber** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
+**InstitutionNumber** | Pointer to **NullableString** |  | [optional] 
 **LoanGuarantor** | Pointer to **NullableString** |  | [optional] 
 **LoanReferenceNumber** | Pointer to **NullableString** |  | [optional] 
-**InstitutionNumber** | Pointer to **NullableString** |  | [optional] 
 **MemberGuid** | Pointer to **NullableString** |  | [optional] 
 **PassedValidation** | Pointer to **NullableBool** |  | [optional] 
 **RoutingNumber** | Pointer to **NullableString** |  | [optional] 
@@ -141,6 +141,41 @@ HasGuid returns a boolean if a field has been set.
 `func (o *AccountNumberResponse) UnsetGuid()`
 
 UnsetGuid ensures that no value is present for Guid, not even an explicit nil
+### GetInstitutionNumber
+
+`func (o *AccountNumberResponse) GetInstitutionNumber() string`
+
+GetInstitutionNumber returns the InstitutionNumber field if non-nil, zero value otherwise.
+
+### GetInstitutionNumberOk
+
+`func (o *AccountNumberResponse) GetInstitutionNumberOk() (*string, bool)`
+
+GetInstitutionNumberOk returns a tuple with the InstitutionNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstitutionNumber
+
+`func (o *AccountNumberResponse) SetInstitutionNumber(v string)`
+
+SetInstitutionNumber sets InstitutionNumber field to given value.
+
+### HasInstitutionNumber
+
+`func (o *AccountNumberResponse) HasInstitutionNumber() bool`
+
+HasInstitutionNumber returns a boolean if a field has been set.
+
+### SetInstitutionNumberNil
+
+`func (o *AccountNumberResponse) SetInstitutionNumberNil(b bool)`
+
+ SetInstitutionNumberNil sets the value for InstitutionNumber to be an explicit nil
+
+### UnsetInstitutionNumber
+`func (o *AccountNumberResponse) UnsetInstitutionNumber()`
+
+UnsetInstitutionNumber ensures that no value is present for InstitutionNumber, not even an explicit nil
 ### GetLoanGuarantor
 
 `func (o *AccountNumberResponse) GetLoanGuarantor() string`
@@ -211,41 +246,6 @@ HasLoanReferenceNumber returns a boolean if a field has been set.
 `func (o *AccountNumberResponse) UnsetLoanReferenceNumber()`
 
 UnsetLoanReferenceNumber ensures that no value is present for LoanReferenceNumber, not even an explicit nil
-### GetInstitutionNumber
-
-`func (o *AccountNumberResponse) GetInstitutionNumber() string`
-
-GetInstitutionNumber returns the InstitutionNumber field if non-nil, zero value otherwise.
-
-### GetInstitutionNumberOk
-
-`func (o *AccountNumberResponse) GetInstitutionNumberOk() (*string, bool)`
-
-GetInstitutionNumberOk returns a tuple with the InstitutionNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInstitutionNumber
-
-`func (o *AccountNumberResponse) SetInstitutionNumber(v string)`
-
-SetInstitutionNumber sets InstitutionNumber field to given value.
-
-### HasInstitutionNumber
-
-`func (o *AccountNumberResponse) HasInstitutionNumber() bool`
-
-HasInstitutionNumber returns a boolean if a field has been set.
-
-### SetInstitutionNumberNil
-
-`func (o *AccountNumberResponse) SetInstitutionNumberNil(b bool)`
-
- SetInstitutionNumberNil sets the value for InstitutionNumber to be an explicit nil
-
-### UnsetInstitutionNumber
-`func (o *AccountNumberResponse) UnsetInstitutionNumber()`
-
-UnsetInstitutionNumber ensures that no value is present for InstitutionNumber, not even an explicit nil
 ### GetMemberGuid
 
 `func (o *AccountNumberResponse) GetMemberGuid() string`

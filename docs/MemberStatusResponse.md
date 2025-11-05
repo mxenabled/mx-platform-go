@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Challenges** | Pointer to [**[]ChallengeResponse**](ChallengeResponse.md) |  | [optional] 
 **ConnectionStatus** | Pointer to **NullableString** |  | [optional] 
 **Guid** | Pointer to **NullableString** |  | [optional] 
-**HasProcessedAccounts** | Pointer to **NullableBool** |  | [optional] 
 **HasProcessedAccountNumbers** | Pointer to **NullableBool** |  | [optional] 
+**HasProcessedAccounts** | Pointer to **NullableBool** |  | [optional] 
 **HasProcessedTransactions** | Pointer to **NullableBool** |  | [optional] 
 **IsAuthenticated** | Pointer to **NullableBool** |  | [optional] 
 **IsBeingAggregated** | Pointer to **NullableBool** |  | [optional] 
@@ -164,41 +164,6 @@ HasGuid returns a boolean if a field has been set.
 `func (o *MemberStatusResponse) UnsetGuid()`
 
 UnsetGuid ensures that no value is present for Guid, not even an explicit nil
-### GetHasProcessedAccounts
-
-`func (o *MemberStatusResponse) GetHasProcessedAccounts() bool`
-
-GetHasProcessedAccounts returns the HasProcessedAccounts field if non-nil, zero value otherwise.
-
-### GetHasProcessedAccountsOk
-
-`func (o *MemberStatusResponse) GetHasProcessedAccountsOk() (*bool, bool)`
-
-GetHasProcessedAccountsOk returns a tuple with the HasProcessedAccounts field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHasProcessedAccounts
-
-`func (o *MemberStatusResponse) SetHasProcessedAccounts(v bool)`
-
-SetHasProcessedAccounts sets HasProcessedAccounts field to given value.
-
-### HasHasProcessedAccounts
-
-`func (o *MemberStatusResponse) HasHasProcessedAccounts() bool`
-
-HasHasProcessedAccounts returns a boolean if a field has been set.
-
-### SetHasProcessedAccountsNil
-
-`func (o *MemberStatusResponse) SetHasProcessedAccountsNil(b bool)`
-
- SetHasProcessedAccountsNil sets the value for HasProcessedAccounts to be an explicit nil
-
-### UnsetHasProcessedAccounts
-`func (o *MemberStatusResponse) UnsetHasProcessedAccounts()`
-
-UnsetHasProcessedAccounts ensures that no value is present for HasProcessedAccounts, not even an explicit nil
 ### GetHasProcessedAccountNumbers
 
 `func (o *MemberStatusResponse) GetHasProcessedAccountNumbers() bool`
@@ -234,6 +199,41 @@ HasHasProcessedAccountNumbers returns a boolean if a field has been set.
 `func (o *MemberStatusResponse) UnsetHasProcessedAccountNumbers()`
 
 UnsetHasProcessedAccountNumbers ensures that no value is present for HasProcessedAccountNumbers, not even an explicit nil
+### GetHasProcessedAccounts
+
+`func (o *MemberStatusResponse) GetHasProcessedAccounts() bool`
+
+GetHasProcessedAccounts returns the HasProcessedAccounts field if non-nil, zero value otherwise.
+
+### GetHasProcessedAccountsOk
+
+`func (o *MemberStatusResponse) GetHasProcessedAccountsOk() (*bool, bool)`
+
+GetHasProcessedAccountsOk returns a tuple with the HasProcessedAccounts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasProcessedAccounts
+
+`func (o *MemberStatusResponse) SetHasProcessedAccounts(v bool)`
+
+SetHasProcessedAccounts sets HasProcessedAccounts field to given value.
+
+### HasHasProcessedAccounts
+
+`func (o *MemberStatusResponse) HasHasProcessedAccounts() bool`
+
+HasHasProcessedAccounts returns a boolean if a field has been set.
+
+### SetHasProcessedAccountsNil
+
+`func (o *MemberStatusResponse) SetHasProcessedAccountsNil(b bool)`
+
+ SetHasProcessedAccountsNil sets the value for HasProcessedAccounts to be an explicit nil
+
+### UnsetHasProcessedAccounts
+`func (o *MemberStatusResponse) UnsetHasProcessedAccounts()`
+
+UnsetHasProcessedAccounts ensures that no value is present for HasProcessedAccounts, not even an explicit nil
 ### GetHasProcessedTransactions
 
 `func (o *MemberStatusResponse) GetHasProcessedTransactions() bool`

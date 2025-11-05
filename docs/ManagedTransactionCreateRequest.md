@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **MerchantGuid** | Pointer to **string** |  | [optional] 
 **MerchantLocationGuid** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **string** |  | [optional] 
-**PostedAt** | Pointer to **string** |  | [optional] 
+**PostedAt** | **string** |  | 
 **Status** | **string** |  | 
 **TransactedAt** | **string** |  | 
 **Type** | **string** |  | 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewManagedTransactionCreateRequest
 
-`func NewManagedTransactionCreateRequest(amount string, description string, status string, transactedAt string, type_ string, ) *ManagedTransactionCreateRequest`
+`func NewManagedTransactionCreateRequest(amount string, description string, postedAt string, status string, transactedAt string, type_ string, ) *ManagedTransactionCreateRequest`
 
 NewManagedTransactionCreateRequest instantiates a new ManagedTransactionCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -453,11 +453,6 @@ and a boolean to check if the value has been set.
 
 SetPostedAt sets PostedAt field to given value.
 
-### HasPostedAt
-
-`func (o *ManagedTransactionCreateRequest) HasPostedAt() bool`
-
-HasPostedAt returns a boolean if a field has been set.
 
 ### GetStatus
 
