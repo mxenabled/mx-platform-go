@@ -22,6 +22,7 @@ type InstitutionResponse struct {
 	Code NullableString `json:"code,omitempty"`
 	ForgotPasswordUrl NullableString `json:"forgot_password_url,omitempty"`
 	ForgotUsernameUrl NullableString `json:"forgot_username_url,omitempty"`
+	// Render this text when end users are asked for their credentials, as it helps end users provide the correct credentials when creating a new member. May contain `<a></a>` tags to link to explanatory material.
 	InstructionalText NullableString `json:"instructional_text,omitempty"`
 	// An array of instructional steps that may contain html elements.
 	InstructionalTextSteps []string `json:"instructional_text_steps,omitempty"`

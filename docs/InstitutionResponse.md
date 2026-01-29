@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Code** | Pointer to **NullableString** |  | [optional] 
 **ForgotPasswordUrl** | Pointer to **NullableString** |  | [optional] 
 **ForgotUsernameUrl** | Pointer to **NullableString** |  | [optional] 
-**InstructionalText** | Pointer to **NullableString** |  | [optional] 
+**InstructionalText** | Pointer to **NullableString** | Render this text when end users are asked for their credentials, as it helps end users provide the correct credentials when creating a new member. May contain &#x60;&lt;a&gt;&lt;/a&gt;&#x60; tags to link to explanatory material. | [optional] 
 **InstructionalTextSteps** | Pointer to **[]string** | An array of instructional steps that may contain html elements. | [optional] 
 **IsDisabledByClient** | Pointer to **NullableBool** |  | [optional] 
 **IsoCountryCode** | Pointer to **string** |  | [optional] 

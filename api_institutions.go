@@ -44,7 +44,7 @@ func (r ApiListFavoriteInstitutionsRequest) Page(page int32) ApiListFavoriteInst
 	return r
 }
 
-// This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead.
+// This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead.
 func (r ApiListFavoriteInstitutionsRequest) RecordsPerPage(recordsPerPage int32) ApiListFavoriteInstitutionsRequest {
 	r.recordsPerPage = &recordsPerPage
 	return r
@@ -318,7 +318,7 @@ func (r ApiListInstitutionsRequest) Page(page int32) ApiListInstitutionsRequest 
 	return r
 }
 
-// This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;100&#x60;. If the value exceeds &#x60;100&#x60;, the default value of &#x60;25&#x60; will be used instead.
+// This specifies the number of records to be returned on each page. Defaults to &#x60;25&#x60;. The valid range is from &#x60;10&#x60; to &#x60;1000&#x60;. If the value exceeds &#x60;1000&#x60;, the default value of &#x60;25&#x60; will be used instead.
 func (r ApiListInstitutionsRequest) RecordsPerPage(recordsPerPage int32) ApiListInstitutionsRequest {
 	r.recordsPerPage = &recordsPerPage
 	return r
